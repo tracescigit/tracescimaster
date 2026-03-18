@@ -17,6 +17,8 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Maatwebsite\Excel\Facades\Excel as FacadesExcel;
+
 // use Illuminate\Support\Facades\Artisan;
 
 class CodeController extends Controller
@@ -131,7 +133,7 @@ class CodeController extends Controller
 			}
 
 			$file   = $request->file('file')->store('import');
-			$import = Excel::import(new CodeImport($data), $file);
+			$import = FacadesExcel::import(new CodeImport($data), $file);
 			return response(['status'=>'success','message'=>'Import in queue, please check progess in the header.'],200);
 		}
 		catch(Exception $e){
@@ -167,7 +169,7 @@ class CodeController extends Controller
 
 	public function export()
 	{	
-		return Excel::download(new CodeExport, 'codes.xlsx');
+		return FacadesExcel::download(new CodeExport, 'codes.xlsx');
 	}
 
 	public function markExported()

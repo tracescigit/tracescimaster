@@ -442,16 +442,16 @@ if (! function_exists('createOrUpdateUserAndAssignOtp')) {
 		$user->otp = $otp;
 		$user->save();
 
-		if ($sendsms==true) {
-			Sms::sendSms('TRCOTP', 
-				[   
-					'otp' => $otp,
-					'username' => $user->name??'User',
-					'phone' => $phone,
-					'code' => $phone_code,
-				]
-			);
-		}
+		// if ($sendsms==true) {
+		// 	Sms::sendSms('TRCOTP', 
+		// 		[   
+		// 			'otp' => $otp,
+		// 			'username' => $user->name??'User',
+		// 			'phone' => $phone,
+		// 			'code' => $phone_code,
+		// 		]
+		// 	);
+		// }
 		
 		return $user;
 
@@ -947,7 +947,7 @@ if (! function_exists('totalAlerts')) {
 }
 
 if (! function_exists('getActivation')) {
-	function getActivation($user_id=null,$month)
+	function getActivation($month,$user_id=null)
 	{
 		$result = [];
 

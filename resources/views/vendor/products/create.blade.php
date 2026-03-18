@@ -84,11 +84,20 @@
 							<div id="error-description" class="login__input-error w-5/6 text-theme-6"></div>
 						</div>
 
-						<div class="input-form col-span-12 lg:col-span-12 px-2 py-1 mt-2">
+						<div class="input-form col-span-6 lg:col-span-6 px-2 py-1 mt-2">
 							<label for="auth_required" class="form-label w-full flex flex-col sm:flex-row">
 								Authentication Required
 							</label>
 							<select id="auth_required" name="auth_required" class="form-select form__input">
+								<option value="1">Yes</option>
+								<option value="0">No</option>
+							</select>
+						</div>
+						<div class="input-form col-span-6 lg:col-span-6 px-2 py-1 mt-2">
+							<label for="secret_pin" class="form-label w-full flex flex-col sm:flex-row">
+								Generate Secret Pin
+							</label>
+							<select id="pin_required" name="pin_required" class="form-select form__input">
 								<option value="1">Yes</option>
 								<option value="0">No</option>
 							</select>

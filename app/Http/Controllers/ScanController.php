@@ -13,6 +13,12 @@ class ScanController extends Controller
 		$product = $qr->getProduct;
 
 		$auth_required = true;
+		if($qr->getProduct->pin_required==1){
+			$secret_code_check_required=true;
+		}else{
+			$secret_code_check_required=false;
+
+		}
 
 		if ($product && $product->auth_required==false) {
 			$auth_required = false;
@@ -20,6 +26,6 @@ class ScanController extends Controller
 
 		$brand = $qr->getProduct->brand??'TRACESCI';
 
-		return view('web.scan.index')->with('code',$code)->with('auth_required',$auth_required)->with('brand',$brand);
+		return view('web.scan.index')->with('code',$code)->with('auth_required',$auth_required)->with('brand',$brand)->with('secret_code_check_required',$secret_code_check_required);
 	}
 }
