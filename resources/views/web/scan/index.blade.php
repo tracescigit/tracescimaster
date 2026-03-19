@@ -97,9 +97,27 @@ margin-top: 20px;">
 	let otpVerified = 0;
 
 	function assignPosition(position) {
-		lat = position.coords.latitude
-		long = position.coords.longitude
+		lat = position.coords.latitude;
+		long = position.coords.longitude;
+
+		console.log("Latitude:", lat);
+		console.log("Longitude:", long);
 	}
+
+	function showError(error) {
+		console.log("Error getting location:", error.message);
+	}
+
+	function getLocation() {
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(assignPosition, showError);
+		} else {
+			alert("Geolocation is not supported by this browser.");
+		}
+	}
+
+	// Call it automatically OR on button click
+	getLocation();
 
 	cash(function() {
 		async function getOtp() {
@@ -456,10 +474,10 @@ margin-top: 20px;">
 		})
 		async function verifysecretCode(token, global_token) {
 			let secret_code = cash('#secret-code').val()
-			let code='{{$code}}';
+			let code = '{{$code}}';
 			axios.post("{{ url('api/verify-secret-code') }}", {
 				code: code,
-				secret_code:secret_code
+				secret_code: secret_code
 			}).then(res => {
 				// showNotification('success','Success !',res.data.message)
 				// setTimeout(()=>{

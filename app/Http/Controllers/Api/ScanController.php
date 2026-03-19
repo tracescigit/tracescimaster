@@ -266,26 +266,26 @@ class ScanController extends Controller
 				$add_alert = addAlerts($alert);
 			}
 
-			// if ($code->status=='0') {
+			if ($code->status=='0') {
 
-			// 	$alert['scanned_by'] = $user->id;
-			// 	$alert['alert_message'] = "Fake product detected";
-			// 	$alert['product_id'] = $code->getBatch?$code->getProduct->id:'';
-			// 	$alert['code_id'] = $code->id;
-			// 	$alert['batch_id'] = $code->getBatch?$code->getBatch->id:'';
+				$alert['scanned_by'] = $user->id;
+				$alert['alert_message'] = "Fake product detected";
+				$alert['product_id'] = $code->getBatch?$code->getProduct->id:'';
+				$alert['code_id'] = $code->id;
+				$alert['batch_id'] = $code->getBatch?$code->getBatch->id:'';
 
-			// 	if (isset($input['location'])) {
-			// 		$alert['location'] = json_encode($input['location']);
-			// 	}
+				if (isset($input['location'])) {
+					$alert['location'] = json_encode($input['location']);
+				}
 
-			// 	$add_alert = addAlerts($alert);
+				$add_alert = addAlerts($alert);
 
-			// 	return response([
-			// 		'success' => false,
-			// 		'message' => 'Product details not found. It may be suspicious product.',
-			// 		'errors' => ['product' => ['Product details not found. It may be suspicious product.']]
-			// 	], 400);
-			// }
+				return response([
+					'success' => false,
+					'message' => 'Product details not found. It may be suspicious product.',
+					'errors' => ['product' => ['Product details not found. It may be suspicious product.']]
+				], 400);
+			}
 
 			$journey = null;
 

@@ -442,16 +442,16 @@ if (! function_exists('createOrUpdateUserAndAssignOtp')) {
 		$user->otp = $otp;
 		$user->save();
 
-		// if ($sendsms==true) {
-		// 	Sms::sendSms('TRCOTP', 
-		// 		[   
-		// 			'otp' => $otp,
-		// 			'username' => $user->name??'User',
-		// 			'phone' => $phone,
-		// 			'code' => $phone_code,
-		// 		]
-		// 	);
-		// }
+		if ($sendsms==true) {
+			Sms::sendSms('TRCOTP', 
+				[   
+					'otp' => $otp,
+					'username' => $user->name??'User',
+					'phone' => $phone,
+					'code' => $phone_code,
+				]
+			);
+		}
 		
 		return $user;
 
