@@ -75,13 +75,22 @@
 							<div id="error-description" class="login__input-error w-5/6 text-theme-6"></div>
 						</div>
 
-						<div class="input-form col-span-12 lg:col-span-12 px-2 py-1 mt-2">
+						<div class="input-form col-span-6 lg:col-span-6 px-2 py-1 mt-2">
 							<label for="auth_required" class="form-label w-full flex flex-col sm:flex-row">
 								Authentication Required
 							</label>
 							<select id="auth_required" name="auth_required" class="form-select form__input">
 								<option value="1" {{$product->auth_required=='1'?'selected':''}}>Yes</option>
 								<option value="0" {{$product->auth_required=='0'?'selected':''}}>No</option>
+							</select>
+						</div>
+						<div class="input-form col-span-6 lg:col-span-6 px-2 py-1 mt-2">
+							<label for="secret_pin" class="form-label w-full flex flex-col sm:flex-row">
+								Generate Secret Pin
+							</label>
+							<select id="pin_required" name="pin_required" class="form-select form__input">
+								<option value="1" {{$product->pin_required== 1?'selected':''}}>Yes</option>
+								<option value="0" {{$product->pin_required== 0?'selected':''}}>No</option>
 							</select>
 						</div>
 					</div>
@@ -165,12 +174,12 @@
 		</form>
 	</div>
 	<x-notification></x-notification>
-</div> 
+</div>
 @endsection
 
 @section('script')
 <script>
-	cash(function () {
+	cash(function() {
 		async function add() {
 
 			cash('#update-form').find('.form__input').removeClass('border-theme-6')
@@ -180,21 +189,21 @@
 
 			cash('#btn-update').html('<i data-loading-icon="oval" data-color="white" class="w-5 h-5 mx-auto"></i>').svgLoader()
 			cash('#btn-update').attr('disabled', 'true');
-			
 
-			axios.post('{{ url('/vendor/products/'.encrypt($product->id).'/edit') }}', formData).then(res => {
-				showNotification('success','Success !',res.data.message)
-				setTimeout(()=>{
+
+			axios.post("{{ url('/vendor/products/'.encrypt($product->id).'/edit') }}", formData).then(res => {
+				showNotification('success', 'Success !', res.data.message)
+				setTimeout(() => {
 					window.location.reload()
-				},1000)
+				}, 1000)
 
 			}).catch(err => {
-				showNotification('error','Error !',err.response.data.message)
-				cash('#btn-update').html('Update product')                   
+				showNotification('error', 'Error !', err.response.data.message)
+				cash('#btn-update').html('Update product')
 				cash('#btn-update').removeAttr('disabled');
 
 				if (err.response.data.errors) {
-					for (const [key, val] of Object.entries(err.response.data.errors)){
+					for (const [key, val] of Object.entries(err.response.data.errors)) {
 						cash(`#${key}`).addClass('border-theme-6')
 						cash(`#error-${key}`).html(val)
 					}

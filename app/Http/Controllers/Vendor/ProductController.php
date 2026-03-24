@@ -154,7 +154,6 @@ class ProductController extends Controller
 	{
 		try {
 			$id = decrypt($id);
-
 			$input   = $request->all();
 			$product = Product::find($id);
 
@@ -165,6 +164,7 @@ class ProductController extends Controller
 			$product->price = $input['price'];
 			$product->status = $input['status'];
 			$product->auth_required = $input['auth_required'];
+			$product->pin_required = $input['pin_required'];
 			$product->description = $input['description'];
 			$product->user_id = Auth::user()->parent_id ?? Auth::id();
 
