@@ -246,7 +246,7 @@ margin-top: 20px;">
 				phone: phone
 			}).then(res => {
 				cash('#btn-get-otp').hide();
-				if ($secret_code_check_required) {
+				if (!empty($secret_code_check_required)) {
 					verifysecretCode(res.data.token, res.data.token);
 
 				} else {
@@ -254,14 +254,15 @@ margin-top: 20px;">
 				}
 
 
+
 			}).catch(err => {
 				console.log(err)
 				cash('#btn-get-otp').html('Submit')
 
-				if (err.response.data.errors) {
+				if (err?.response?.data?.errors) {
 					for (const [key, val] of Object.entries(err.response.data.errors)) {
-						cash(`#${key}`).addClass('border-red-600')
-						cash(`#error-${key}`).html(val)
+						cash(`#${key}`).addClass('border-red-600');
+						cash(`#error-${key}`).html(val);
 					}
 				}
 			})
