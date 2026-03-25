@@ -191,7 +191,7 @@
 									<td class="text-center border border-slate-600">{{date('d M, Y',strtotime($transaction->created_at))}}</td>
 									<td class="text-center border border-slate-600">{{$transaction->getScan->getCode->code_data??'NA'}}</td>
 									<td class="text-center border border-slate-600">{{$transaction->getScan->getCode->getProduct->name??'NA'}}</td>
-									<td class="text-center border border-slate-600">{{ucfirst($transaction->type??'')}}</td>
+									<td class="text-center border border-slate-600">{{$transaction->type?ucfirst($transaction->type):'-'}}</td>
 									<td class="text-center border border-slate-600">{{$transaction->points}}</td>
 									<td class="text-center border border-slate-600">{{$transaction->amount??'NA'}}</td>
 									<td class="text-center border border-slate-600">{{$transaction->transaction_id??'NA'}}</td>
@@ -208,7 +208,7 @@
 									<td colspan="1" style="text-align:right;">Debit Points : {{getWalletData($user->id,$product['brand']??null)['debit']}}</td>
 									<td colspan="5" style="text-align:right;">Wallet Balance : {{getWalletData($user->id,$product['brand']??null)['balance']}}</td>
 								</tr>
-								
+
 							</tbody>
 						</table>
 					</div>
@@ -229,6 +229,7 @@
 						</h3>
 					</div>
 					@foreach($items as $key=>$item)
+					@if(isset($item['type']))
 					<div class="col-sm-3">
 						<div style="border: 1px solid #ccc; padding: 30px 10px; text-align: center;">
 							@if($item['type']=='amount')
@@ -240,6 +241,7 @@
 							<a href="javascript:;" data-toggle="modal" data-target="{{$item['type']=='amount'?'#reward-modal':'#address-modal'}}" class="redeem btn btn-primary" data-type="{{$item['type']}}" data-points="{{$item['points']}}" data-scheme="{{$reward_scheme->id}}" data-brand="{{$product['brand']??''}}" style="margin-top:10px;">Redeem Now</a>
 						</div>
 					</div>
+					@endif
 					@endforeach
 				</div>
 
