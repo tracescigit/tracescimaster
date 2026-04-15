@@ -5,6 +5,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DarkModeController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\CronController;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -199,6 +201,17 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin', 'auth']], function 
     Route::post('/qr-label-orders/{id}/edit', [App\Http\Controllers\Admin\QrLabelController::class, 'update'])->name('admin-update-qr-label-orders');
     Route::get('/qr-label-orders/{id}/show', [App\Http\Controllers\Admin\QrLabelController::class, 'show'])->name('admin-show-qr-label-orders');
     //End QR Label Orders
+
+    //Blog routes
+    Route::get('/Blog', [App\Http\Controllers\Admin\BlogController::class, 'index'])->name('admin-blog');
+    //end Blog routes
+
+    // Events routes
+    Route::get('/Events', [App\Http\Controllers\Admin\EventController::class,'index'])->name('admin-events');
+    //end Events routes
+
+    //Demo routes
+    Route::get('/Book-demo', [App\Http\Controllers\Admin\DemoController::class,'index'])->name('admin-book-demo');
 
 });
 
