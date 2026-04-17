@@ -1693,7 +1693,7 @@ body:not(.fixed-header) .header-v3 .mega-menu > li > a::before {
 }
 
 .header-contact {
-  background: #f2f2f2;
+  
   padding: 12px 0 0px;
 }
 .header-contact .header-social {
