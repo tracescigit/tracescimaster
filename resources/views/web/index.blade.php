@@ -161,7 +161,7 @@
   <!-- END REVOLUTION SLIDER -->
 </div>
 <!-- the content -->
-<section class="welcome-area">
+<div class="welcome-area">
   <!-- MAIN TITLE AREA -->
   <div class="container">
     <div class="row">
@@ -320,670 +320,671 @@
 
     <div class="spacer-100"></div>
   </div>
+</div>
 
-  <!-- features -->
+<!-- features -->
 
-  <section class="solution-area">
+<div class="solution-area">
+  <!-- MAIN TITLE AREA -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <div class="main-title wow zoomIn">
+          <div class="main-shadow-heading">
+            <h2>Amazing <span>Features</span></h2>
+          </div>
+          <h2>Amazing <span>Features</span></h2>
+          <h3>Satisfy Your Needs</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- END TITLE -->
+  <div class="solution-content">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-md-4">
+          <div class="solution-single-content solution-single-content-no-border wow fadeInLeft">
+            <h2>Easy to use</h2>
+            <p>Simple process driven solution, that suits from small to large manufacturers requirment. ...</p>
+            <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+            <span><i class="icon icon-Chart"></i></span>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <div class="solution-single-content wow fadeInUp">
+            <h2>Protect your Product</h2>
+            <p>Secure packaging and authentication capabilities enable you to protect your brand and keep consumers safe while building brand trust...</p>
+            <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+            <span><i class="icon icon-Shield"></i></span>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <div class="solution-single-content wow fadeInRight">
+            <h2>Engage with end consumer</h2>
+            <p>Get access to valuable market insights, including the end user’s profile.Connect them with your loyality programs ...</p>
+            <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+            <span><i class="icon icon-MessageLeft"></i></span>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <div class="solution-single-content solution-single-content-no-border wow fadeInLeft">
+            <h2>Product serialization</h2>
+            <p>For digital transformation to take place, serialization will be a first step and a key enabler for every brand ...</p>
+            <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+            <span><i class="icon icon-Antenna2"></i></span>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <div class="solution-single-content wow fadeInUp">
+            <h2>Regulatory compliance</h2>
+            <p>Get a powerful one solution supporting various compliance mandates set by different countries for different businesses ...</p>
+            <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+            <span><i class="icon icon-Tools"></i></span>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <div class="solution-single-content wow fadeInRight">
+            <h2>Seamless Hardware integration</h2>
+            <p>Easy to integrate with any printing/labelling device, speed conveyor systems, vision inspection cameras etc ...</p>
+            <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+            <span><i class="icon icon-Puzzle"></i></span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="all-link solution-btn text-center">
+            <a href="#">More Services</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <div class="main-title wow zoomIn">
+          <div class="main-shadow-heading">
+            <h2>How it works? Let Us Help</h2>
+          </div>
+          <h2>How it works? Let Us Help</h2>
+          <h3>Trusted By The Best Marketers</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <!--how it works -->
+  <div id="howitworks" class="choose-riven">
+    <div class="spacer-95"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-7 col-md-6 col-sm-12 col-xs-12"></div>
+        <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12">
+          <div class="title-block">
+            <div class="riven-heading text-left " data-sr="enter left wait 0.3s">
+              <h2>
+                <span>How </span>it works??
+              </h2>
+            </div>
+            <div class="spacer-50"></div>
+          </div>
+          <div id="accordion" class="panel-group">
+            <div class="panel panel-default">
+              <div class="panel-heading ">
+                <h4 class="panel-title  active ">
+                  <a class="accordion-toggle" href="#collapse1" data-parent="#accordion" data-toggle="collapse">Brand Onboarding <span class="indicator indicator-mimus pe-7s-angle-down"></span></a>
+                </h4>
+              </div>
+              <div class="panel-collapse collapse in" id="collapse1">
+                <div class="panel-body">
+                  <p>
+                    Complete paperless on-boarding of brands, manufacturers and solution providers. submit details and upload documents required and after approval, you will get access of the platform.Fill in your information accurately as it impacts your future communication, billing information and free support.</p>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a class="accordion-toggle" href="#collapse2" data-parent="#accordion" data-toggle="collapse">Select a subscription plan<span class="indicator pe-7s-angle-down"></span></a>
+                </h4>
+              </div>
+              <div class="panel-collapse collapse " id="collapse2">
+                <div class="panel-body">
+                  <p>
+                    By default, Free plan will be activated. The FREE plan gives you all the essential features & tools to setup your solution and continue using the platform for a few things / items free forever. You can always upgrade your account to a paid plan if you’re ready to scale beyond the limits of the FREE plan.</p>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a class="accordion-toggle" href="#collapse3" data-parent="#accordion" data-toggle="collapse">Manage product, batch and serialisation<span class="indicator pe-7s-angle-down"></span></a>
+                </h4>
+              </div>
+              <div class="panel-collapse collapse" id="collapse3">
+                <div class="panel-body">
+                  <p>
+                    Flexible Management of your brand, product, batches serialization. </p>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a class="accordion-toggle" href="#collapse4" data-parent="#accordion" data-toggle="collapse">Activate as production goes<span class="indicator pe-7s-angle-down"></span></a>
+                </h4>
+              </div>
+              <div class="panel-collapse collapse" id="collapse4">
+                <div class="panel-body">
+                  <p>
+                    Activate products and keep a track on your raw materials, ingredients, supply chain, shipments, manufacturing batches, product SKUs right down to product level. Thats it</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="image-choose wpb_single_image">
+            <img src="{{asset('web/images/background/bbchain.png')}}" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- video-->
+  <div class="video-home">
+    <div class="bg-gradient">
+      <div class="riven-container container  video-container">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="wpb_text_column wpb_content_element ">
+              <div class="wpb_wrapper">
+                <p><a class="fancybox btn-play" title="Play video" href="{{asset('web/videos/tracesci_storyboard.mp4')}}" data-type="iframe">Watch Now</a></p>
+              </div>
+            </div>
+            <div class="spacer-20"></div>
+            <div class="title-block">
+              <div class="riven-heading text-center">
+                <h2> <span>Now </span> Everyone can afford product traceability</h2>
+              </div>
+            </div><!-- END riven_heading -->
+
+            <div class="wpb_text_column wpb_content_element ">
+              <div class="wpb_wrapper">
+                <p>A solution to deter counterfeiters from stealing your revenue & damaging your brand reputation.</p>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <section class="pricing-table-section grey-bg">
     <!-- MAIN TITLE AREA -->
     <div class="container">
       <div class="row">
         <div class="col-md-12 text-center">
           <div class="main-title wow zoomIn">
             <div class="main-shadow-heading">
-              <h2>Amazing <span>Features</span></h2>
+              <h2>Pricing <span>Plans</span></h2>
             </div>
-            <h2>Amazing <span>Features</span></h2>
-            <h3>Satisfy Your Needs</h3>
+            <h2>Pricing <span>Plans</span></h2>
+            <h3>Our pay as you go pricing plans are driven by usage of platform resources, premium features, support & service levels. Select which suits to you</h3>
           </div>
         </div>
       </div>
     </div>
-
-
-    <!-- END TITLE -->
-    <div class="solution-content">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-6 col-md-4">
-            <div class="solution-single-content solution-single-content-no-border wow fadeInLeft">
-              <h2>Easy to use</h2>
-              <p>Simple process driven solution, that suits from small to large manufacturers requirment. ...</p>
-              <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
-              <span><i class="icon icon-Chart"></i></span>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-4">
-            <div class="solution-single-content wow fadeInUp">
-              <h2>Protect your Product</h2>
-              <p>Secure packaging and authentication capabilities enable you to protect your brand and keep consumers safe while building brand trust...</p>
-              <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
-              <span><i class="icon icon-Shield"></i></span>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-4">
-            <div class="solution-single-content wow fadeInRight">
-              <h2>Engage with end consumer</h2>
-              <p>Get access to valuable market insights, including the end user’s profile.Connect them with your loyality programs ...</p>
-              <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
-              <span><i class="icon icon-MessageLeft"></i></span>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-4">
-            <div class="solution-single-content solution-single-content-no-border wow fadeInLeft">
-              <h2>Product serialization</h2>
-              <p>For digital transformation to take place, serialization will be a first step and a key enabler for every brand ...</p>
-              <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
-              <span><i class="icon icon-Antenna2"></i></span>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-4">
-            <div class="solution-single-content wow fadeInUp">
-              <h2>Regulatory compliance</h2>
-              <p>Get a powerful one solution supporting various compliance mandates set by different countries for different businesses ...</p>
-              <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
-              <span><i class="icon icon-Tools"></i></span>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-4">
-            <div class="solution-single-content wow fadeInRight">
-              <h2>Seamless Hardware integration</h2>
-              <p>Easy to integrate with any printing/labelling device, speed conveyor systems, vision inspection cameras etc ...</p>
-              <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
-              <span><i class="icon icon-Puzzle"></i></span>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="all-link solution-btn text-center">
-              <a href="#">More Services</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  
-
-
-
-
-
-
 
 
     <div class="container">
       <div class="row">
-        <div class="col-md-12 text-center">
-          <div class="main-title wow zoomIn">
-            <div class="main-shadow-heading">
-              <h2>How it works? Let Us Help</h2>
-            </div>
-            <h2>How it works? Let Us Help</h2>
-            <h3>Trusted By The Best Marketers</h3>
+        <div class="col-md-12">
+          <div class="all-link pricinig-head-btn text-center">
+            <a href="#">Monthly</a>
+            <a href="#">Yearly</a>
           </div>
         </div>
       </div>
     </div>
-
-
-
-
-    <!--how it works -->
-    <div id="howitworks" class="choose-riven">
-      <div class="spacer-95"></div>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-7 col-md-6 col-sm-12 col-xs-12"></div>
-          <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12">
-            <div class="title-block">
-              <div class="riven-heading text-left " data-sr="enter left wait 0.3s">
-                <h2>
-                  <span>How </span>it works??
-                </h2>
+    @foreach(getPlan() as $plan)
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-md-4">
+          <div class="pricing-table-content text-center wow fadeInLeft">
+            <div class="pricing-table-head">
+              <div class="pricing-head-top">
+                <span>{{$plan->title}}</span>
               </div>
-              <div class="spacer-50"></div>
-            </div>
-            <div id="accordion" class="panel-group">
-              <div class="panel panel-default">
-                <div class="panel-heading ">
-                  <h4 class="panel-title  active ">
-                    <a class="accordion-toggle" href="#collapse1" data-parent="#accordion" data-toggle="collapse">Brand Onboarding <span class="indicator indicator-mimus pe-7s-angle-down"></span></a>
-                  </h4>
-                </div>
-                <div class="panel-collapse collapse in" id="collapse1">
-                  <div class="panel-body">
-                    <p>
-                      Complete paperless on-boarding of brands, manufacturers and solution providers. submit details and upload documents required and after approval, you will get access of the platform.Fill in your information accurately as it impacts your future communication, billing information and free support.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h4 class="panel-title">
-                    <a class="accordion-toggle" href="#collapse2" data-parent="#accordion" data-toggle="collapse">Select a subscription plan<span class="indicator pe-7s-angle-down"></span></a>
-                  </h4>
-                </div>
-                <div class="panel-collapse collapse " id="collapse2">
-                  <div class="panel-body">
-                    <p>
-                      By default, Free plan will be activated. The FREE plan gives you all the essential features & tools to setup your solution and continue using the platform for a few things / items free forever. You can always upgrade your account to a paid plan if you’re ready to scale beyond the limits of the FREE plan.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h4 class="panel-title">
-                    <a class="accordion-toggle" href="#collapse3" data-parent="#accordion" data-toggle="collapse">Manage product, batch and serialisation<span class="indicator pe-7s-angle-down"></span></a>
-                  </h4>
-                </div>
-                <div class="panel-collapse collapse" id="collapse3">
-                  <div class="panel-body">
-                    <p>
-                      Flexible Management of your brand, product, batches serialization. </p>
-                  </div>
-                </div>
-              </div>
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h4 class="panel-title">
-                    <a class="accordion-toggle" href="#collapse4" data-parent="#accordion" data-toggle="collapse">Activate as production goes<span class="indicator pe-7s-angle-down"></span></a>
-                  </h4>
-                </div>
-                <div class="panel-collapse collapse" id="collapse4">
-                  <div class="panel-body">
-                    <p>
-                      Activate products and keep a track on your raw materials, ingredients, supply chain, shipments, manufacturing batches, product SKUs right down to product level. Thats it</p>
-                  </div>
-                </div>
+              <div class="pricing-head-content">
+                <span>
+                  @if ($country=='India')
+                  &#8377; {{$plan->price_inr}}
+                  @else
+                  $ {{$plan->price_usd}}
+                  @endif
+                </span>
+                <span>/ Monthly</span>
               </div>
             </div>
-          </div>
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="image-choose wpb_single_image">
-              <img src="{{asset('web/images/background/bbchain.png')}}" alt="">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- video-->
-    <div class="video-home">
-      <div class="bg-gradient">
-        <div class="riven-container container  video-container">
-          <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-              <div class="wpb_text_column wpb_content_element ">
-                <div class="wpb_wrapper">
-                  <p><a class="fancybox btn-play" title="Play video" href="{{asset('web/videos/tracesci_storyboard.mp4')}}" data-type="iframe">Watch Now</a></p>
-                </div>
+            <div class="pricing-table-inner-content">
+              <div class="pricing-table-title">
+                <p>All plans are include Funnel Report, Cohort Report, Revenue Report, People Search, and A/B Testing Report.</p>
               </div>
-              <div class="spacer-20"></div>
-              <div class="title-block">
-                <div class="riven-heading text-center">
-                  <h2> <span>Now </span> Everyone can afford product traceability</h2>
-                </div>
-              </div><!-- END riven_heading -->
-
-              <div class="wpb_text_column wpb_content_element ">
-                <div class="wpb_wrapper">
-                  <p>A solution to deter counterfeiters from stealing your revenue & damaging your brand reputation.</p>
-
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-
-
-    <section class="pricing-table-section grey-bg">
-      <!-- MAIN TITLE AREA -->
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 text-center">
-            <div class="main-title wow zoomIn">
-              <div class="main-shadow-heading">
-                <h2>Pricing <span>Plans</span></h2>
-              </div>
-              <h2>Pricing <span>Plans</span></h2>
-              <h3>Our pay as you go pricing plans are driven by usage of platform resources, premium features, support & service levels. Select which suits to you</h3>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="all-link pricinig-head-btn text-center">
-              <a href="#">Monthly</a>
-              <a href="#">Yearly</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      @foreach(getPlan() as $plan)
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-6 col-md-4">
-            <div class="pricing-table-content text-center wow fadeInLeft">
-              <div class="pricing-table-head">
-                <div class="pricing-head-top">
-                  <span>{{$plan->title}}</span>
-                </div>
-                <div class="pricing-head-content">
-                  <span>
-                    @if ($country=='India')
-                    &#8377; {{$plan->price_inr}}
-                    @else
-                    $ {{$plan->price_usd}}
-                    @endif
-                  </span>
-                  <span>/ Monthly</span>
-                </div>
-              </div>
-              <div class="pricing-table-inner-content">
-                <div class="pricing-table-title">
-                  <p>All plans are include Funnel Report, Cohort Report, Revenue Report, People Search, and A/B Testing Report.</p>
-                </div>
-                <div class="pricing-table-list">
-                  <ul>
-                    {!!$plan->description!!}
-                  </ul>
-                  <div class="all-link pricinig-bottom-btn text-center">
-                    <a class="btn btn-default" href="{{url('register')}}">Sign up</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      @endforeach
-      <div class="pricing-table-self">
-        <img src="images/pricing-table-self.png" alt="" class="img-responsive">
-      </div>
-    </section>
-    <!-- Pricing Table -->
-    <div id="pricing_table" class="padding-content pricing-table bg-gray content-section">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="riven-heading text-center" data-sr="enter bottom wait 0.3s">
-              <h2>Pricing <span>Plans</span></h2>
-              <p class="text">Our pay as you go pricing plans are driven by usage of platform resources, premium features, support & service levels. Select which suits to you</p>
-            </div>
-          </div>
-          @foreach(getPlan() as $plan)
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <div class="pricing-content bg-gradient">
-              <div class="box-info">
-                <div class="pricing-title text center">
-                  <h3>{{$plan->title}}</h3>
-                </div>
-                <div class="price bg-gradient">
-                  <div class="price-box">
-                    <div class="price-center">
-                      <span>
-                        @if ($country=='India')
-                        &#8377; {{$plan->price_inr}}
-                        @else
-                        $ {{$plan->price_usd}}
-                        @endif
-                      </span>
-                      <p>monthly</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="pricing-desc mb-2">
+              <div class="pricing-table-list">
+                <ul>
                   {!!$plan->description!!}
-                </div>
-                <div class="pricing-sign">
+                </ul>
+                <div class="all-link pricinig-bottom-btn text-center">
                   <a class="btn btn-default" href="{{url('register')}}">Sign up</a>
                 </div>
               </div>
             </div>
           </div>
-          @endforeach
         </div>
       </div>
     </div>
-
-
-    <!-- Event Calendar -->
-    <div id="event_calendar" class="padding-content content-section">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="riven-heading text-center" data-sr="enter bottom wait 0.3s">
-              <h2><span>Event</span> Calendar</h2>
-              <p class="text">Save the dates. We would love to see you..</p>
-            </div>
-          </div>
-        </div>
-        <div class="spacer-35"></div>
-        <div class="event-container">
-          <div class="event-contents row">
-            <div class="event event_post event-entries-wrap has-loadmore">
-              <div class="event-content col-md-6 col-sm-12 col-xs-12">
-                <div class="row row-event">
-                  <div class="event-box-conner col-md-10 col-sm-10 col-xs-10">
-                    <div class="event_post_content bg-gradient">
-                      <div class="event-thumb">
-                        <img width="456" height="215" alt="event" src="{{asset('web/images/PAMEX2021.jpg')}}" class="event-img">
-                      </div>
-                      <div class="event-desc">
-                        <h3 class="title-eventpost">
-                          <a href="event-lightbox.html" class="various fancybox.ajax">Pamex India 2022</a>
-                        </h3>
-                        <div class="event_post_desc">
-                          23 - 26 March 2022, Mumbai.
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="event-box-center col-md-2 col-sm-2 col-xs-2">
-                    <div class="event_post_date">MAR 23</div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="event-content col-md-6 col-sm-12 col-xs-12">
-                <div class="row row-event">
-                  <div class="event-box-conner col-md-10 col-sm-10 col-xs-10">
-                    <div class="event_post_content bg-gradient">
-
-                      <div class="event-thumb">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10065.462847026438!2d4.3336038!3d50.8984489!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xde9326a4546954ab!2sBrussels%20Expo!5e0!3m2!1sen!2sin!4v1625808010325!5m2!1sen!2sin" width="455" height="215" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                      </div>
-                      <div class="event-desc">
-                        <h3 class="title-eventpost">
-                          <a href="event-lightbox.html" class="various fancybox.ajax">Label Expo Europe 2022</a>
-                        </h3>
-                        <div class="event_post_desc">
-                          26 - 29 April 2022 <br> Brussels Expo
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="event-box-center col-md-2 col-sm-2 col-xs-2">
-                    <div class="event_post_date">APR 26</div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="event-content col-md-6 col-sm-12 col-xs-12">
-                <div class="row row-event">
-                  <div class="event-box-conner col-md-10 col-sm-10 col-xs-10">
-                    <div class="event_post_content bg-gradient">
-                      <div class="event-thumb">
-                        <img width="456" height="215" alt="event" src="{{asset('web/images/Labelexpo2022.jpg')}}" class="event-img">
-                      </div>
-                      <div class="event-desc">
-                        <h3 class="title-eventpost">
-                          <a href="event-lightbox.html" class="various fancybox.ajax">Label Expo India 2022</a>
-                        </h3>
-                        <div class="event_post_desc">
-                          10 - 13 November 2022, India Expo Centre & Mart, Greater Noida, Delhi NCR
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="event-box-center col-md-2 col-sm-2 col-xs-2">
-                    <div class="event_post_date">NOV 10</div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="event-content col-md-6 col-sm-12 col-xs-12">
-                <div class="row row-event">
-                  <div class="event-box-conner col-md-10 col-sm-10 col-xs-10">
-                    <div class="event_post_content bg-gradient">
-                      <div class="event-thumb">
-                        <img width="456" height="215" alt="event" src="{{asset('web/images/cphi2022.jpg')}}" class="event-img">
-                      </div>
-                      <div class="event-desc">
-                        <h3 class="title-eventpost">
-                          <a href="event-lightbox.html" class="various fancybox.ajax">PMEC India 2022</a>
-                        </h3>
-                        <div class="event_post_desc">
-                          29 Nov - 1 Dec 2022, India Expo Centre & Mart, Greater Noida, Delhi NCR
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="event-box-center col-md-2 col-sm-2 col-xs-2">
-                    <div class="event_post_date">NOV 29</div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-        <div class="spacer-100"></div>
-      </div>
+    @endforeach
+    <div class="pricing-table-self">
+      <img src="images/pricing-table-self.png" alt="" class="img-responsive">
     </div>
-    <!-- Testimonials -->
-    <div id="review" class="">
-      <div class="testimonials bg-gradient">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-              <div class="testimonial">
-                <div id="testimonial_slide" class=" owl-carousel">
-                  <div class="testimonial-content">
-                    <div class="testimonial-profile">
-                      <img width="100" height="100" alt="testimonial" src="{{asset('web/images/150x150.jpg')}}" class="testimonial-img">
-                    </div>
-                    <h3 class="name"> Vikas Sethi</h3>
-                    <p class="job">Product manager, Agro Company</p>
-                    <div class="team_description">
-                      <p>Easy onboarding process, no technical knowledge required and seamless integration is the highlights of th solution. Good work.</p>
-                    </div>
-                  </div>
-                  <div class="testimonial-content">
-                    <div class="testimonial-profile">
-                      <img width="100" height="100" alt="testimonial" src="{{asset('web/images/150x150.jpg')}}" class="testimonial-img">
-                    </div>
-                    <h3 class="name"> LyLy Parker</h3>
-                    <p class="job">MD, Label Printer</p>
-                    <div class="team_description">
-                      <p>We usually asked by our client to provide track and trace solution with different use cases, TRACESCI works well with maximum scenario and thats the reason we recommend this..</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Get In Touch -->
-    <div id="get_in_touch" class="contact-box padding-content content-section">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="riven-heading text-center" data-sr="enter bottom wait 0.3s">
-              <h2><span>Get In</span> Touch</h2>
-              <p class="text">Feel free to discuss your project with us, we assure you best of support...</p>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <div class="contact-info">
-              <ul>
-
-                <li class="icon_list_item">
-                  <div class="icon_list_icon">
-                    <h5><i class="fa fa-map-marker" aria-hidden="true"></i> Office </h5>
-                  </div>
-                  Tracesci Pvt Ltd.,<br>
-                  B-15, InfoCity Phase 1, Sector 34,<br>
-                  Gurugram-122001, Haryana, India
-
-                </li>
-                <li class="icon_list_item">
-                  <div class="icon_list_icon">
-                    <h5><i class="fa fa-phone" aria-hidden="true"></i> Phone</h5>
-                  </div>
-
-                  <a href="callto:+911244226771">+91-124-422-6771</a>
-                </li>
-                <li class="icon_list_item">
-                  <div class="icon_list_icon">
-                    <h5><i class="fa fa-envelope" aria-hidden="true"> </i> Email</h5>
-                  </div>
-
-                  <a href="mailto:wecare@tracesci.in">wecare@tracesci.in</a>
-
-                </li>
-                <li>
-                  <h5>Find us elsewhere</h5>
-                  <ul class="social-networks">
-                    <li class="social-fb first"><a href="https://www.facebook.com/jetsciglobal/"><i class="fa fa-facebook"></i></a></li>
-                    <li class="social-linkedin"><a href="https://www.linkedin.com/company/jetsciglobal"><i class="fa fa-linkedin"></i></a></li>
-                    <li class="social-youtube"><a href="https://www.youtube.com/channel/UCDnSaAwRgBssFuTUX_2iCJw"><i class="fa fa-youtube-play"></i></a></li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md-8 col-sm-8 col-xs-12">
-            <div class="wpcf7">
-              <form id="#contact_form" class="wpcf7-form">
-                @csrf
-                <div class="contact-form">
-                  <p class="inner-input mb-0">
-                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-                      Name
-                    </label>
-                    <span class="your-name"><input type="text" id="name" class="contact__input" name="name" required></span>
-                  <div id="error-name" class="text-danger contact__input-error mb-3"></div>
-
-                  </p>
-
-                  <p class="inner-input mb-0">
-                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-email">
-                      Email
-                    </label>
-                    <span class="your-email"><input type="email" id="email" class="contact__input" name="email" required></span>
-                  <div id="error-email" class="text-danger contact__input-error mb-3"></div>
-                  </p>
-
-
-                  <p class="inner-input mb-0">
-                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-mobile">
-                      Mobile
-                    </label>
-                    <span class="your-mobile"><input type="text" id="mobile" class="contact__input" name="mobile" required></span>
-                  <div id="error-mobile" class="text-danger contact__input-error mb-3"></div>
-                  </p>
-
-                  <p class="inner-input mb-0">
-                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-message">
-                      Message
-                    </label>
-                    <span class="textarea"><textarea id="message" class="area contact__input" name="message" required></textarea></span>
-                  <div id="error-message" class="text-danger contact__input-error mb-3"></div>
-
-                  </p>
-
-                  <p class="contact-submit"><button id="btn-contact" type="button" class="btn btn-default button" data-loading-text="Loading...">Submit</button></p>
-                </div>
-              </form>
-              <div class="alert alert-warning hidden" id="contactwait">
-                <strong>Please Wait!</strong>
-              </div>
-              <div class="alert alert-success hidden" id="contactSuccess">
-                <strong>Success!</strong> Your message has been sent to us.
-              </div>
-
-              <div class="alert alert-error p-0 hidden" id="contactError">
-                <strong>Error!</strong> There was an error sending your message.
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="spacer-90"></div>
-    </div>
-
-
-
-    <!-- Map -->
-    <div class="map-info map-contact">
-      <div class="container-fluid no-padding">
-        <div class="row">
-          <div class="col-md-12 col-xs-12 col-sm-12">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3508.631880488345!2d77.01043561507808!3d28.430362582498017!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d181b33427c19%3A0x1d7f2dae6742eec3!2sJETSCI%C2%AE%20Global!5e0!3m2!1sen!2sin!4v1625823933261!5m2!1sen!2sin" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-          </div>
-        </div>
-      </div>
-    </div>
-    <x-notification></x-notification>
   </section>
-  @endsection
+  <!-- Pricing Table -->
+  <div id="pricing_table" class="padding-content pricing-table bg-gray content-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="riven-heading text-center" data-sr="enter bottom wait 0.3s">
+            <h2>Pricing <span>Plans</span></h2>
+            <p class="text">Our pay as you go pricing plans are driven by usage of platform resources, premium features, support & service levels. Select which suits to you</p>
+          </div>
+        </div>
+        @foreach(getPlan() as $plan)
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <div class="pricing-content bg-gradient">
+            <div class="box-info">
+              <div class="pricing-title text center">
+                <h3>{{$plan->title}}</h3>
+              </div>
+              <div class="price bg-gradient">
+                <div class="price-box">
+                  <div class="price-center">
+                    <span>
+                      @if ($country=='India')
+                      &#8377; {{$plan->price_inr}}
+                      @else
+                      $ {{$plan->price_usd}}
+                      @endif
+                    </span>
+                    <p>monthly</p>
+                  </div>
+                </div>
+              </div>
+              <div class="pricing-desc mb-2">
+                {!!$plan->description!!}
+              </div>
+              <div class="pricing-sign">
+                <a class="btn btn-default" href="{{url('register')}}">Sign up</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        @endforeach
+      </div>
+    </div>
+  </div>
 
 
-  @section('script')
+  <!-- Event Calendar -->
+  <div id="event_calendar" class="padding-content content-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="riven-heading text-center" data-sr="enter bottom wait 0.3s">
+            <h2><span>Event</span> Calendar</h2>
+            <p class="text">Save the dates. We would love to see you..</p>
+          </div>
+        </div>
+      </div>
+      <div class="spacer-35"></div>
+      <div class="event-container">
+        <div class="event-contents row">
+          <div class="event event_post event-entries-wrap has-loadmore">
+            <div class="event-content col-md-6 col-sm-12 col-xs-12">
+              <div class="row row-event">
+                <div class="event-box-conner col-md-10 col-sm-10 col-xs-10">
+                  <div class="event_post_content bg-gradient">
+                    <div class="event-thumb">
+                      <img width="456" height="215" alt="event" src="{{asset('web/images/PAMEX2021.jpg')}}" class="event-img">
+                    </div>
+                    <div class="event-desc">
+                      <h3 class="title-eventpost">
+                        <a href="event-lightbox.html" class="various fancybox.ajax">Pamex India 2022</a>
+                      </h3>
+                      <div class="event_post_desc">
+                        23 - 26 March 2022, Mumbai.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="event-box-center col-md-2 col-sm-2 col-xs-2">
+                  <div class="event_post_date">MAR 23</div>
+                </div>
+              </div>
+            </div>
 
-  <script type="text/javascript">
-    cash(function() {
-      async function contact() {
-        cash('.contact__input').removeClass('border-theme-6')
-        cash('.contact__input-error').html('')
+            <div class="event-content col-md-6 col-sm-12 col-xs-12">
+              <div class="row row-event">
+                <div class="event-box-conner col-md-10 col-sm-10 col-xs-10">
+                  <div class="event_post_content bg-gradient">
+
+                    <div class="event-thumb">
+                      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10065.462847026438!2d4.3336038!3d50.8984489!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xde9326a4546954ab!2sBrussels%20Expo!5e0!3m2!1sen!2sin!4v1625808010325!5m2!1sen!2sin" width="455" height="215" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                    <div class="event-desc">
+                      <h3 class="title-eventpost">
+                        <a href="event-lightbox.html" class="various fancybox.ajax">Label Expo Europe 2022</a>
+                      </h3>
+                      <div class="event_post_desc">
+                        26 - 29 April 2022 <br> Brussels Expo
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="event-box-center col-md-2 col-sm-2 col-xs-2">
+                  <div class="event_post_date">APR 26</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="event-content col-md-6 col-sm-12 col-xs-12">
+              <div class="row row-event">
+                <div class="event-box-conner col-md-10 col-sm-10 col-xs-10">
+                  <div class="event_post_content bg-gradient">
+                    <div class="event-thumb">
+                      <img width="456" height="215" alt="event" src="{{asset('web/images/Labelexpo2022.jpg')}}" class="event-img">
+                    </div>
+                    <div class="event-desc">
+                      <h3 class="title-eventpost">
+                        <a href="event-lightbox.html" class="various fancybox.ajax">Label Expo India 2022</a>
+                      </h3>
+                      <div class="event_post_desc">
+                        10 - 13 November 2022, India Expo Centre & Mart, Greater Noida, Delhi NCR
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="event-box-center col-md-2 col-sm-2 col-xs-2">
+                  <div class="event_post_date">NOV 10</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="event-content col-md-6 col-sm-12 col-xs-12">
+              <div class="row row-event">
+                <div class="event-box-conner col-md-10 col-sm-10 col-xs-10">
+                  <div class="event_post_content bg-gradient">
+                    <div class="event-thumb">
+                      <img width="456" height="215" alt="event" src="{{asset('web/images/cphi2022.jpg')}}" class="event-img">
+                    </div>
+                    <div class="event-desc">
+                      <h3 class="title-eventpost">
+                        <a href="event-lightbox.html" class="various fancybox.ajax">PMEC India 2022</a>
+                      </h3>
+                      <div class="event_post_desc">
+                        29 Nov - 1 Dec 2022, India Expo Centre & Mart, Greater Noida, Delhi NCR
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="event-box-center col-md-2 col-sm-2 col-xs-2">
+                  <div class="event_post_date">NOV 29</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="spacer-100"></div>
+    </div>
+  </div>
+  <!-- Testimonials -->
+  <div id="review" class="">
+    <div class="testimonials bg-gradient">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="testimonial">
+              <div id="testimonial_slide" class=" owl-carousel">
+                <div class="testimonial-content">
+                  <div class="testimonial-profile">
+                    <img width="100" height="100" alt="testimonial" src="{{asset('web/images/150x150.jpg')}}" class="testimonial-img">
+                  </div>
+                  <h3 class="name"> Vikas Sethi</h3>
+                  <p class="job">Product manager, Agro Company</p>
+                  <div class="team_description">
+                    <p>Easy onboarding process, no technical knowledge required and seamless integration is the highlights of th solution. Good work.</p>
+                  </div>
+                </div>
+                <div class="testimonial-content">
+                  <div class="testimonial-profile">
+                    <img width="100" height="100" alt="testimonial" src="{{asset('web/images/150x150.jpg')}}" class="testimonial-img">
+                  </div>
+                  <h3 class="name"> LyLy Parker</h3>
+                  <p class="job">MD, Label Printer</p>
+                  <div class="team_description">
+                    <p>We usually asked by our client to provide track and trace solution with different use cases, TRACESCI works well with maximum scenario and thats the reason we recommend this..</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Get In Touch -->
+  <div id="get_in_touch" class="contact-box padding-content content-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="riven-heading text-center" data-sr="enter bottom wait 0.3s">
+            <h2><span>Get In</span> Touch</h2>
+            <p class="text">Feel free to discuss your project with us, we assure you best of support...</p>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-12">
+          <div class="contact-info">
+            <ul>
+
+              <li class="icon_list_item">
+                <div class="icon_list_icon">
+                  <h5><i class="fa fa-map-marker" aria-hidden="true"></i> Office </h5>
+                </div>
+                Tracesci Pvt Ltd.,<br>
+                B-15, InfoCity Phase 1, Sector 34,<br>
+                Gurugram-122001, Haryana, India
+
+              </li>
+              <li class="icon_list_item">
+                <div class="icon_list_icon">
+                  <h5><i class="fa fa-phone" aria-hidden="true"></i> Phone</h5>
+                </div>
+
+                <a href="callto:+911244226771">+91-124-422-6771</a>
+              </li>
+              <li class="icon_list_item">
+                <div class="icon_list_icon">
+                  <h5><i class="fa fa-envelope" aria-hidden="true"> </i> Email</h5>
+                </div>
+
+                <a href="mailto:wecare@tracesci.in">wecare@tracesci.in</a>
+
+              </li>
+              <li>
+                <h5>Find us elsewhere</h5>
+                <ul class="social-networks">
+                  <li class="social-fb first"><a href="https://www.facebook.com/jetsciglobal/"><i class="fa fa-facebook"></i></a></li>
+                  <li class="social-linkedin"><a href="https://www.linkedin.com/company/jetsciglobal"><i class="fa fa-linkedin"></i></a></li>
+                  <li class="social-youtube"><a href="https://www.youtube.com/channel/UCDnSaAwRgBssFuTUX_2iCJw"><i class="fa fa-youtube-play"></i></a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-12">
+          <div class="wpcf7">
+            <form id="#contact_form" class="wpcf7-form">
+              @csrf
+              <div class="contact-form">
+                <p class="inner-input mb-0">
+                  <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                    Name
+                  </label>
+                  <span class="your-name"><input type="text" id="name" class="contact__input" name="name" required></span>
+                <div id="error-name" class="text-danger contact__input-error mb-3"></div>
+
+                </p>
+
+                <p class="inner-input mb-0">
+                  <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-email">
+                    Email
+                  </label>
+                  <span class="your-email"><input type="email" id="email" class="contact__input" name="email" required></span>
+                <div id="error-email" class="text-danger contact__input-error mb-3"></div>
+                </p>
+
+
+                <p class="inner-input mb-0">
+                  <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-mobile">
+                    Mobile
+                  </label>
+                  <span class="your-mobile"><input type="text" id="mobile" class="contact__input" name="mobile" required></span>
+                <div id="error-mobile" class="text-danger contact__input-error mb-3"></div>
+                </p>
+
+                <p class="inner-input mb-0">
+                  <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-message">
+                    Message
+                  </label>
+                  <span class="textarea"><textarea id="message" class="area contact__input" name="message" required></textarea></span>
+                <div id="error-message" class="text-danger contact__input-error mb-3"></div>
+
+                </p>
+
+                <p class="contact-submit"><button id="btn-contact" type="button" class="btn btn-default button" data-loading-text="Loading...">Submit</button></p>
+              </div>
+            </form>
+            <div class="alert alert-warning hidden" id="contactwait">
+              <strong>Please Wait!</strong>
+            </div>
+            <div class="alert alert-success hidden" id="contactSuccess">
+              <strong>Success!</strong> Your message has been sent to us.
+            </div>
+
+            <div class="alert alert-error p-0 hidden" id="contactError">
+              <strong>Error!</strong> There was an error sending your message.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="spacer-90"></div>
+  </div>
+
+
+
+  <!-- Map -->
+  <div class="map-info map-contact">
+    <div class="container-fluid no-padding">
+      <div class="row">
+        <div class="col-md-12 col-xs-12 col-sm-12">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3508.631880488345!2d77.01043561507808!3d28.430362582498017!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d181b33427c19%3A0x1d7f2dae6742eec3!2sJETSCI%C2%AE%20Global!5e0!3m2!1sen!2sin!4v1625823933261!5m2!1sen!2sin" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+  <x-notification></x-notification>
+</div>
+@endsection
+
+
+@section('script')
+
+<script type="text/javascript">
+  cash(function() {
+    async function contact() {
+      cash('.contact__input').removeClass('border-theme-6')
+      cash('.contact__input-error').html('')
+      cash('#contactError').addClass('hidden')
+
+      let name = cash('#name').val()
+      let email = cash('#email').val()
+      let mobile = cash('#mobile').val()
+      let message = cash('#message').val()
+
+      cash('#contactwait').removeClass('hidden')
+      axios.post('{{ url("send_inquiry") }}', {
+        name: name,
+        email: email,
+        mobile: mobile,
+        message: message
+      }).then(res => {
+        cash('#contactSuccess').removeClass('hidden')
         cash('#contactError').addClass('hidden')
+        cash('#contactwait').addClass('hidden')
+        // showNotification('success','Success!',res.data.message)
+        setTimeout(() => {
+          window.location.reload()
+        }, 3000)
+      }).catch(err => {
+        // showNotification('error','Error !',err.response.data.message)
+        cash('#contactError').removeClass('hidden')
+        cash('#contactSuccess').addClass('hidden')
+        cash('#contactwait').addClass('hidden')
 
-        let name = cash('#name').val()
-        let email = cash('#email').val()
-        let mobile = cash('#mobile').val()
-        let message = cash('#message').val()
+        cash('#btn-contact').html('Submit')
 
-        cash('#contactwait').removeClass('hidden')
-        axios.post('{{ url("send_inquiry") }}', {
-          name: name,
-          email: email,
-          mobile: mobile,
-          message: message
-        }).then(res => {
-          cash('#contactSuccess').removeClass('hidden')
-          cash('#contactError').addClass('hidden')
-          cash('#contactwait').addClass('hidden')
-          // showNotification('success','Success!',res.data.message)
-          setTimeout(() => {
-            window.location.reload()
-          }, 3000)
-        }).catch(err => {
-          // showNotification('error','Error !',err.response.data.message)
-          cash('#contactError').removeClass('hidden')
-          cash('#contactSuccess').addClass('hidden')
-          cash('#contactwait').addClass('hidden')
-
-          cash('#btn-contact').html('Submit')
-
-          if (err.response.data.errors) {
-            for (const [key, val] of Object.entries(err.response.data.errors)) {
-              cash(`#${key}`).addClass('border-theme-6')
-              cash(`#error-${key}`).html(val)
-            }
+        if (err.response.data.errors) {
+          for (const [key, val] of Object.entries(err.response.data.errors)) {
+            cash(`#${key}`).addClass('border-theme-6')
+            cash(`#error-${key}`).html(val)
           }
-        })
-
-      }
-      cash('#contact_form').on('keyup', function(e) {
-        if (e.keyCode === 13) {
-          contact()
         }
       })
-      cash('#btn-contact').on('click', function() {
-        contact()
-      })
-    })
-  </script>
 
-  @endsection
+    }
+    cash('#contact_form').on('keyup', function(e) {
+      if (e.keyCode === 13) {
+        contact()
+      }
+    })
+    cash('#btn-contact').on('click', function() {
+      contact()
+    })
+  })
+</script>
+
+@endsection
