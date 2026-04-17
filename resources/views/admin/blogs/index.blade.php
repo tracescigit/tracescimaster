@@ -6,33 +6,44 @@
 @section('subcontent')
 
 
+
 <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
 	<h2 class="text-lg font-medium mr-auto">{{__('blog.blog')}}</h2>
+	<div class="w-full sm:w-auto flex mt-4 sm:mt-0">
+		<a href="{{ route('admin-blogs-create') }}" class="btn btn-primary shadow-md mr-2">Add New Blog</a>
+		<div class="dropdown ml-auto sm:ml-0">
+			<a href="{{ route('admin-blogs-create') }}" class="btn px-2 box text-gray-700 dark:text-gray-300" aria-expanded="false">
+				<span class="w-5 h-5 flex items-center justify-center">
+					<i class="w-4 h-4" data-feather="plus"></i>
+				</span>
+			</a>
+		</div>
+	</div>
 </div>
 
 <div class="intro-y box p-5 mt-5">
 	<div class="grid grid-cols-12">
-		<form id="tabulator-html-filter-form" class="xl:flex sm:mr-auto col-span-12" >
-			
+		<form id="tabulator-html-filter-form" class="xl:flex sm:mr-auto col-span-12">
+
 			<div class="sm:flex items-center sm:mr-4">
 				<label class="w-12 flex-none xl:w-auto xl:flex-initial mr-2">{{__('common.field')}}</label>
 				<select id="tabulator-html-filter-field" class="form-select w-full sm:w-32 xxl:w-full mt-2 sm:mt-0 sm:w-auto">
 					<option value="">{{__('common.please_select')}}</option>
 					<option value="product_name">{{__('common.product_name')}}</option>
 					<option value="code_data">Product Serial No.</option>
-					<option value="phone">{{__('scanhistory.scanned_by')}}</option>	
+					<option value="phone">{{__('scanhistory.scanned_by')}}</option>
 				</select>
 			</div>
 			<div class="sm:flex items-center sm:mr-4 mt-2 xl:mt-0">
 				<label class="w-12 flex-none xl:w-auto xl:flex-initial mr-2">{{__('common.type')}}</label>
-				<select id="tabulator-html-filter-type" class="form-select w-full mt-2 sm:mt-0 sm:w-auto" >
+				<select id="tabulator-html-filter-type" class="form-select w-full mt-2 sm:mt-0 sm:w-auto">
 					<option value="like" selected>{{__('common.like')}}</option>
 					<option value="=">=</option>
 				</select>
 			</div>
 			<div class="sm:flex items-center sm:mr-4 mt-2 xl:mt-0">
 				<label class="w-12 flex-none xl:w-auto xl:flex-initial mr-2">{{__('common.value')}}</label>
-				<input id="tabulator-html-filter-value" type="text" class="form-control sm:w-40 xxl:w-full mt-2 sm:mt-0"  placeholder="{{__('common.search')}}...">
+				<input id="tabulator-html-filter-value" type="text" class="form-control sm:w-40 xxl:w-full mt-2 sm:mt-0" placeholder="{{__('common.search')}}...">
 			</div>
 			<div class="sm:flex items-center sm:mr-4 mt-2 xl:mt-0">
 				<label class="w-12 flex-none xl:w-auto xl:flex-initial mr-2">{{__('common.from_date')}}</label>
@@ -41,7 +52,7 @@
 			<div class="sm:flex items-center mt-2 xl:mt-0">
 				<label class="w-12 flex-none xl:w-auto xl:flex-initial mr-2">{{__('common.to_date')}}</label>
 				<input id="tabulator-html-filter-end-date" type="date" class="form-control sm:w-40 xxl:w-full mt-2 sm:mt-0">
-			</div>			
+			</div>
 		</form>
 		<div class="mt-5 col-span-12">
 			<div class="grid grid-cols-12">
@@ -68,8 +79,8 @@
 					</div>
 				</div>
 				<div class="flex  col-span-6 lg:col-span-3 justify-end">
-					<button id="tabulator-html-filter-go" type="button" class="btn btn-primary w-full sm:w-16" >{{__('common.go')}}</button>
-					<button id="tabulator-html-filter-reset" type="button" class="btn btn-secondary w-full sm:w-16 mt-2 sm:mt-0 sm:ml-1" >{{__('common.reset')}}</button>
+					<button id="tabulator-html-filter-go" type="button" class="btn btn-primary w-full sm:w-16">{{__('common.go')}}</button>
+					<button id="tabulator-html-filter-reset" type="button" class="btn btn-secondary w-full sm:w-16 mt-2 sm:mt-0 sm:ml-1">{{__('common.reset')}}</button>
 				</div>
 			</div>
 		</div>
@@ -81,9 +92,8 @@
 @endsection
 @section('global_script')
 <script>
-	var tabulatorUrl =  '{{ route('admin-alerts') }}';
-	var tabulatorColumns = [
-	{	
+	var tabulatorUrl = "{{ route('admin-blog') }}";
+	var tabulatorColumns = [{
 		formatter: "responsiveCollapse",
 		width: 40,
 		minWidth: 30,
@@ -92,8 +102,8 @@
 		headerSort: false,
 		print: false,
 		download: false,
-		collapsed:true,
-	},	{
+		collapsed: true,
+	}, {
 		title: "ACTIONS",
 		maxWidth: 150,
 		field: "actions",
@@ -105,59 +115,64 @@
 		formatter: function formatter(cell, formatterParams) {
 			return cell.getData().actions;
 		}
-	},{
-		title: "{{strtoupper(__('common.product_name'))}}",
+	}, {
+		title: "{{strtoupper(__('blog.title'))}}",
 		minWidth: 220,
 		responsive: 0,
-		field: "product_name",
-		hozAlign: "center",
-		vertAlign: "middle",
-		print: true,
-		download: true
-	},{
-		title: "{{strtoupper('Product Serial No.')}}",
-		minWidth: 220,
-		responsive: 0,
-		field: "code_data",
-		hozAlign: "center",
-		vertAlign: "middle",
-		print: true,
-		download: true
-	},{
-		title: "{{strtoupper(__('alert.alert_message'))}}",
-		minWidth: 200,
-		responsive: 0,
-		field: "alert_message",
-		vertAlign: "middle",
-		hozAlign: "center",
+		field: "title",
+		headerHozAlign: "left",
+		hozAlign: "left",
+		vertAlign: "left",
 		print: true,
 		download: true
 	}, {
-		title: "{{strtoupper(__('scanhistory.scanned_by'))}}",
-		minWidth: 200,
-		field: "scanned_by",
+		title: "{{strtoupper('publishing date')}}",
+		minWidth: 220,
+		responsive: 0,
+		field: "publish_date",
+		headerHozAlign: "center",
 		hozAlign: "center",
 		vertAlign: "middle",
 		print: true,
 		download: true
 	}, {
-		title: "{{strtoupper(__('alert.action_taken'))}}",
-		minWidth: 180,
-		field: "action_taken",
+		title: "{{strtoupper(__('blog.created_by'))}}",
+		minWidth: 200,
+		responsive: 0,
+		headerHozAlign: "left",
+		field: "publish_by",
+		vertAlign: "left",
+		hozAlign: "left",
+		print: true,
+		download: true
+	}, {
+		title: "{{strtoupper(__('blog.allowed'))}}",
+		minWidth: 200,
+		headerHozAlign: "center",
+		field: "is_allowed",
 		hozAlign: "center",
-		headerSort:false,
 		vertAlign: "middle",
 		print: true,
 		download: true
-	},  {
-		title: "{{strtoupper(__('alert.scanned_on'))}}",
+	}, {
+		title: "{{strtoupper(__('blog.created_at'))}}",
 		minWidth: 180,
 		field: "created_at",
+		headerHozAlign: "center",
+		hozAlign: "center",
+		headerSort: false,
+		vertAlign: "middle",
+		print: true,
+		download: true
+	}, {
+		title: "{{strtoupper(__('blog.status'))}}",
+		minWidth: 180,
+		field: "status",
+		headerHozAlign: "center",
 		hozAlign: "center",
 		vertAlign: "middle",
 		print: true,
 		download: true
-	},
-	];
+	}, ];
 </script>
 @endsection

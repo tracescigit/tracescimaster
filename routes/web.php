@@ -5,7 +5,6 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DarkModeController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\CronController;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
@@ -204,6 +203,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin', 'auth']], function 
 
     //Blog routes
     Route::get('/Blog', [App\Http\Controllers\Admin\BlogController::class, 'index'])->name('admin-blog');
+    Route::get('/Blog/Create', [App\Http\Controllers\Admin\BlogController::class, 'create'])->name('admin-blogs-create');
+    Route::post('/Blog/store', [App\Http\Controllers\Admin\BlogController::class, 'store'])->name('admin-blogs-store');
+    Route::get('/Blogs/{id}/edit', [App\Http\Controllers\Admin\BlogController::class, 'edit'])->name('admin-blogs-edit');
     //end Blog routes
 
     // Events routes

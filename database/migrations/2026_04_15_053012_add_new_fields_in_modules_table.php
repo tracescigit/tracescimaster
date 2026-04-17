@@ -21,9 +21,9 @@ class AddNewFieldsInModulesTable extends Migration
                 'type'          => '1',
                 'menu_position' => '14',
                 'base_route'    => 'admin-blog',
-                'name'          => 'Blog',
-                'icon'          => 'Blog',
-                'slug'          => Str::slug('Blog'),
+                'name'          => 'Blogs',
+                'icon'          => 'file',
+                'slug'          => Str::slug('Blogs'),
                 'view_routes'   => json_encode([
                     'admin-blog','admin-blog-view'
                 ]),
@@ -84,6 +84,6 @@ class AddNewFieldsInModulesTable extends Migration
      */
     public function down()
     {
-        DB::table('modules')->where('slug',Str::slug(['Book Demo','Events','Blog']))->delete();
+        DB::table('modules')->whereIn('slug',[Str::slug('Book Demo'),Str::slug('Events'),Str::slug('Blogs')])->delete();
     }
 }
