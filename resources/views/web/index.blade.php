@@ -3,165 +3,185 @@
 
 <!-- slider -->
 
-<div class="rev_slider_wrapper" style="overflow: visible; height: 825px;">
-  <div id="slider1" class="rev_slider" data-version="5.0" style="margin-top: 0px; margin-bottom: 0px; height: 825px;">
-    <ul class="tp-revslider-mainul" style="visibility: visible; display: block; overflow: hidden; width: 100%; height: 100%; max-height: none; left: 0px;">
-      <li data-index="rs-6" data-transition="parallaxtoright" data-slotamount="default" data-easein="default" data-easeout="default" data-masterspeed="default" data-delay="6510" data-rotate="0" data-saveperformance="off" data-title="1/3" data-description="" class="tp-revslider-slidesli active-revslide" style="width: 100%; height: 100%; overflow: hidden; z-index: 20; visibility: inherit; opacity: 1; background-color: rgba(255, 255, 255, 0);">
+<div class="rev_slider_wrapper">
+  <div id="slider1" class="rev_slider" data-version="5.0">
+    <ul>
+
+      <!-- SLIDE 1 -->
+      <li data-index="rs-1" data-transition="parallaxtoright" data-delay="6500">
+
         <!-- MAIN IMAGE -->
-        <div class="slotholder" style="width: 100%; height: 100%; visibility: inherit; opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);"><!--Runtime Modification - Img tag is Still Available for SEO Goals in Source - <img src="images/slide1.png" alt="" width="1920" height="1080" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="2" class="rev-slidebg defaultimg">-->
-          <div class="tp-dottedoverlay twoxtwo"></div>
-          <div class="tp-bgimg defaultimg" style="background-color: rgba(0, 0, 0, 0); background-repeat: no-repeat; background-image: url('{{asset("dist/images/slide1.png")}}'); background-size: cover; background-position: center center; width: 100%; height: 100%; opacity: 1; visibility: inherit; z-index: 20;" src="{{asset("dist/images/slide1.png")}}"></div>
-        </div>
-        <!-- LAYER NR. 1 -->
-        <div class="tp-parallax-wrap" style="position: absolute; visibility: visible; left: 607px; top: 323px; z-index: 5;">
-          <div class="tp-loop-wrap" style="position:absolute;">
-            <div class="tp-mask-wrap" style="position: absolute; overflow: visible; height: auto; width: auto;">
-              <div class="tp-caption tp-resizeme rs-parallaxlevel-0" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['top','top','top','top']" data-voffset="['325','325','325','325']" data-width="none" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="x:-50px;opacity:0;s:500;e:Power2.easeInOut;" data-transform_out="x:50px;opacity:0;s:500;s:500;" data-start="1200" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 5; white-space: nowrap; font-size: 17px; line-height: 28px; font-weight: 400; color: rgb(71, 71, 71); font-family: Lora; visibility: inherit; transition: none; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; min-height: 0px; min-width: 0px; max-height: none; max-width: none; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform-origin: 50% 50% 0px;">
-                <span class="sl-italic" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;">Informed decisions. Exceptional results</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- LAYER NR. 2 -->
-        <div class="tp-parallax-wrap" style="position: absolute; visibility: visible; left: 443px; top: 368px; z-index: 6;">
-          <div class="tp-loop-wrap" style="position:absolute;">
-            <div class="tp-mask-wrap" style="position: absolute; overflow: hidden; transform: matrix(1, 0, 0, 1, 0, 0); height: auto; width: auto;">
-              <div class="tp-caption Fashion-BigDisplay tp-resizeme rs-parallaxlevel-0" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['top','top','top','top']" data-voffset="['370','370','370','370']" data-width="none" data-height="none" data-whitespace="nowrap" data-fontsize="['50','40','40','25']" data-lineheight="['58','40','40','30']" data-transform_idle="o:1;" data-transform_in="y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;s:1500;e:Power3.easeInOut;" data-transform_out="s:1000;e:Power3.easeInOut;s:1000;e:Power3.easeInOut;" data-mask_in="x:0px;y:0px;s:inherit;e:inherit;" data-start="1800" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 6; white-space: nowrap; font-size: 50px; line-height: 58px; font-weight: 800; color: rgb(34, 34, 34); visibility: inherit; transition: none; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 1px; min-height: 0px; min-width: 0px; max-height: none; max-width: none; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform-origin: 50% 50% 0px;">
-                <div class="text-center heading-rp-small" style="transition: none; line-height: 58px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 1px; font-weight: 800; font-size: 50px;">We Measure The Social Web</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- LAYER NR. 3 -->
-        <div class="tp-parallax-wrap" style="position: absolute; visibility: visible; left: 495px; top: 457px; z-index: 7;">
-          <div class="tp-loop-wrap" style="position:absolute;">
-            <div class="tp-mask-wrap" style="position: absolute; overflow: visible; height: auto; width: auto;">
-              <div class="tp-caption tp-resizeme rs-parallaxlevel-0" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['top','top','top','top']" data-voffset="['460','460','460','460']" data-width="none" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="x:-50px;opacity:0;s:500;e:Power2.easeInOut;" data-transform_out="x:50px;opacity:0;s:500;s:500;" data-start="2400" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 7; white-space: nowrap; font-size: 17px; line-height: 28px; font-weight: 400; color: rgb(71, 71, 71); font-family: Lora; visibility: inherit; transition: none; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; min-height: 0px; min-width: 0px; max-height: none; max-width: none; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform-origin: 50% 50% 0px;">
-                <div class="sl-italic sl-italic-2 text-center" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;">
-                  Our strategists will help you set an objective and choose your tools,<br style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;">
-                  developing a plan that is custom-built for your business.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- LAYER NR. 4 -->
-        <div class="tp-parallax-wrap" style="position: absolute; visibility: visible; left: 531px; top: 532px; z-index: 7;">
-          <div class="tp-loop-wrap" style="position:absolute;">
-            <div class="tp-mask-wrap" style="position: absolute; overflow: visible; height: auto; width: auto;">
-              <div class="tp-caption tp-resizeme rs-parallaxlevel-0" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['top','top','top','top']" data-voffset="['535','535','585','585']" data-width="none" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;" data-transform_out="s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" data-start="2800" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 7; white-space: nowrap; font-weight: 600; padding: 18px 50px; visibility: inherit; transition: none; line-height: 20px; border-width: 0px; margin: 0px; letter-spacing: 0px; font-size: 14px; min-height: 0px; min-width: 0px; max-height: none; max-width: none; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform-origin: 50% 50% 0px;">
-                <div class="rev-slider-btn text-center" style="transition: none; line-height: 20px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 600; font-size: 14px;"><a href="#" style="transition: none; line-height: 20px; border-width: 1px; margin: 0px; padding: 14px 45px; letter-spacing: 0px; font-weight: 700; font-size: 13px;">Read More </a><a href="#" style="transition: none; line-height: 20px; border-width: 1px; margin: 0px; padding: 14px 45px; letter-spacing: 0px; font-weight: 700; font-size: 13px;">Get Started</a></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </li>
-      <li data-index="rs-7" data-transition="parallaxtoright" data-slotamount="default" data-easein="default" data-easeout="default" data-masterspeed="default" data-delay="6500" data-rotate="0" data-saveperformance="off" data-title="2/3" data-description="" class="tp-revslider-slidesli" style="width: 100%; height: 100%; overflow: hidden; z-index: 18; visibility: hidden; opacity: 0; background-color: rgba(255, 255, 255, 0);">
-        <!-- MAIN IMAGE -->
-        <div class="slotholder" style="width: 100%; height: 100%; visibility: inherit; opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);"><!--Runtime Modification - Img tag is Still Available for SEO Goals in Source - <img src="images/slide2.png" alt="" width="1920" height="1080" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="2" class="rev-slidebg defaultimg">-->
-          <div class="tp-dottedoverlay twoxtwo"></div>
-          <div class="tp-bgimg defaultimg" style="background-color: rgba(0, 0, 0, 0); background-repeat: no-repeat; background-image: url('{{asset("dist/images/slide1.png")}}'); background-size: cover; background-position: center center; width: 100%; height: 100%; opacity: 0; visibility: hidden; z-index: 20;" src="{{asset("dist/images/slide1.png")}}"></div>
-        </div><!-- LAYER NR. 1 -->
-        <div class="tp-parallax-wrap" style="position: absolute; visibility: hidden; left: 701px; top: 268px; z-index: 5;">
-          <div class="tp-loop-wrap" style="position:absolute;">
-            <div class="tp-mask-wrap" style="position: absolute; overflow: visible; height: auto; width: auto;">
-              <div class="tp-caption Fashion-BigDisplay tp-resizeme rs-parallaxlevel-0" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['top','top','top','top']" data-voffset="['270','270','270','270']" data-width="none" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="y:-50px;opacity:0;s:500;e:Power2.easeInOut;" data-transform_out="y:-50px;opacity:0;s:500;s:500;" data-start="1200" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 5; white-space: nowrap; font-size: 17px; line-height: 28px; font-weight: 400; color: rgb(71, 71, 71); font-family: Lora; visibility: hidden; transition: none; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 1px; min-height: 0px; min-width: 0px; max-height: none; max-width: none; opacity: 0; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -49.6988, 0, 1); transform-origin: 50% 50% 0px;">
-                <img src="images/logo-type-2.png" alt="" width="120" height="78" data-ww="['120pxpx','120pxpx','120pxpx','120pxpx']" data-hh="['78px','78px','78px','78px']" data-no-retina="" style="width: 119.277px; height: 77.5301px; transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 1px; font-weight: 400; font-size: 17px;">
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- LAYER NR. 2 -->
-        <div class="tp-parallax-wrap" style="position: absolute; visibility: hidden; left: 397px; top: 368px; z-index: 6;">
-          <div class="tp-loop-wrap" style="position:absolute;">
-            <div class="tp-mask-wrap" style="position: absolute; overflow: visible; height: auto; width: auto;">
-              <div class="tp-caption Fashion-BigDisplay tp-resizeme rs-parallaxlevel-0" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['top','top','top','top']" data-voffset="['370','370','370','370']" data-width="none" data-height="none" data-whitespace="nowrap" data-fontsize="['50','40','40','25']" data-lineheight="['58','40','40','30']" data-transform_idle="o:1;" data-transform_in="y:-30px;rX:70deg;opacity:0;s:2000;e:Power4.easeInOut;" data-transform_out="s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" data-start="1800" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 6; white-space: nowrap; font-size: 50px; line-height: 58px; font-weight: 800; color: rgb(34, 34, 34); visibility: hidden; transition: none; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 1px; min-height: 0px; min-width: 0px; max-height: none; max-width: none; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform-origin: 50% 50% 0px;">
-                <div class="text-center heading-rp-small" style="transition: none; line-height: 58px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 1px; font-weight: 800; font-size: 50px;">We Are Helpers, We Are Metrics</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- LAYER NR. 3 -->
-        <div class="tp-parallax-wrap" style="position: absolute; visibility: hidden; left: 478px; top: 457px; z-index: 7;">
-          <div class="tp-loop-wrap" style="position:absolute;">
-            <div class="tp-mask-wrap" style="position: absolute; overflow: visible; height: auto; width: auto;">
-              <div class="tp-caption Fashion-BigDisplay tp-resizeme rs-parallaxlevel-0" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['top','top','top','top']" data-voffset="['460','460','460','460']" data-width="none" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="x:-50px;opacity:0;s:500;e:Power2.easeInOut;" data-transform_out="x:50px;opacity:0;s:500;s:500;" data-start="2400" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 7; white-space: nowrap; font-size: 17px; line-height: 28px; font-weight: 400; color: rgb(71, 71, 71); font-family: Lora; visibility: hidden; transition: none; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 1px; min-height: 0px; min-width: 0px; max-height: none; max-width: none; opacity: 0; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 49.6988, 0, 0, 1); transform-origin: 50% 50% 0px;">
-                <div class="sl-italic sl-italic-2 text-center" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 1px; font-weight: 400; font-size: 17px;">
-                  We are here to provide powerful digital marketing solutions to small and <br style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 1px; font-weight: 400; font-size: 17px;">
-                  medium businesses that are looking to build success online.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- LAYER NR. 4 -->
-        <div class="tp-parallax-wrap" style="position: absolute; visibility: hidden; left: 601px; top: 532px; z-index: 7;">
-          <div class="tp-loop-wrap" style="position:absolute;">
-            <div class="tp-mask-wrap" style="position: absolute; overflow: visible; height: auto; width: auto;">
-              <div class="tp-caption tp-resizeme rs-parallaxlevel-0" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['top','top','top','top']" data-voffset="['535','535','535','535']" data-width="none" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="x:50px;opacity:0;s:500;e:Power2.easeInOut;" data-transform_out="x:-50px;opacity:0;s:500;s:500;" data-start="3000" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 7; white-space: nowrap; font-weight: 600; padding: 20px 50px; visibility: hidden; transition: none; line-height: 20px; border-width: 0px; margin: 0px; letter-spacing: 0px; font-size: 14px; min-height: 0px; min-width: 0px; max-height: none; max-width: none; opacity: 0; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -49.6988, 0, 0, 1); transform-origin: 50% 50% 0px;">
-                <div class="rev-slider-btn rev-slider-btn-3 text-center" style="transition: none; line-height: 20px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 600; font-size: 14px;"><a href="#" style="transition: none; line-height: 20px; border-width: 1px; margin: 0px; padding: 14px 45px; letter-spacing: 0px; font-weight: 700; font-size: 13px;">Get Started Now</a></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </li>
-      <li data-index="rs-14" data-transition="parallaxtoleft" data-slotamount="default" data-easein="default" data-easeout="default" data-masterspeed="default" data-delay="6510" data-rotate="0" data-saveperformance="off" data-title="3/3" data-description="" class="tp-revslider-slidesli" style="width: 100%; height: 100%; overflow: hidden; z-index: 18; visibility: hidden; opacity: 0; background-color: rgba(255, 255, 255, 0);">
-        <!-- MAIN IMAGE -->
-        <div class="slotholder" style="width: 100%; height: 100%; visibility: inherit; opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);"><!--Runtime Modification - Img tag is Still Available for SEO Goals in Source - <img src="images/slide3.png" alt="" width="1920" height="1080" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="2" class="rev-slidebg defaultimg">-->
-          <div class="tp-dottedoverlay twoxtwo"></div>
-          <div class="tp-bgimg defaultimg" style="background-color: rgba(0, 0, 0, 0); background-repeat: no-repeat; background-image: url('{{asset("dist/images/slide1.png")}}'); background-size: cover; background-position: center center; width: 100%; height: 100%; opacity: 0; visibility: hidden; z-index: 20;" src="{{asset("dist/images/slide1.png")}}"></div>
+        <img src="{{asset('dist/images/slide1.png')}}"
+          class="rev-slidebg"
+          data-bgposition="center center"
+          data-bgfit="cover"
+          data-bgrepeat="no-repeat">
+
+        <!-- LAYER 1 -->
+        <div class="tp-caption tp-resizeme"
+          data-x="center"
+          data-y="top"
+          data-voffset="120"
+          data-start="1200"
+          data-transform_in="y:[100%];opacity:0;s:800;"
+          data-transform_out="opacity:0;s:300";>
+          <span class="sl-italic" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;">
+            Let us help you to authenticate and track your product
+          </span>
         </div>
 
-        <!-- LAYER NR. 1 -->
-        <div class="tp-parallax-wrap" style="position: absolute; visibility: hidden; left: 652px; top: 323px; z-index: 5;">
-          <div class="tp-loop-wrap" style="position:absolute;">
-            <div class="tp-mask-wrap" style="position: absolute; overflow: visible; transform: translate3d(0px, 0px, 0px); height: auto; width: auto;">
-              <div class="tp-caption Fashion-BigDisplay tp-resizeme rs-parallaxlevel-0" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['top','top','top','top']" data-voffset="['325','325','325','325']" data-width="none" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="z:0;rX:0deg;rY:0;rZ:0;sX:2;sY:2;skX:0;skY:0;opacity:0;s:1000;e:Power2.easeOut;" data-transform_out="s:1000;e:Power3.easeInOut;s:1000;e:Power3.easeInOut;" data-mask_in="x:0px;y:0px;s:inherit;e:inherit;" data-start="700" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 5; white-space: nowrap; font-size: 17px; line-height: 28px; font-weight: 400; color: rgb(71, 71, 71); font-family: Lora; visibility: hidden; transition: none; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 1px; min-height: 0px; min-width: 0px; max-height: none; max-width: none; opacity: 0.998479; transform: matrix3d(1.00152, 0, 0, 0, 0, 1.00152, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform-origin: 50% 50% 0px;">
-                <span class="sl-italic" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 1px; font-weight: 400; font-size: 17px;">Start growing your business</span>
-              </div>
-            </div>
+        <!-- LAYER 2 -->
+        <div class="tp-caption tp-resizeme"
+          data-x="center" data-y="top" data-voffset="190"
+          data-start="1800"
+          data-transform_in="y:[100%];opacity:0;s:800;"
+          data-transform_out="opacity:0;s:300";>
+          <div class="text-center heading-rp-small" style="transition: none; line-height: 58px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 1px; font-weight: 800; font-size: 50px;">
+            SUPPLY CHAIN TRACESCI PLATEFORM
           </div>
         </div>
-        <!-- LAYER NR. 2 -->
-        <div class="tp-parallax-wrap" style="position: absolute; visibility: hidden; left: 445px; top: 368px; z-index: 6;">
-          <div class="tp-loop-wrap" style="position:absolute;">
-            <div class="tp-mask-wrap" style="position: absolute; overflow: visible; height: auto; width: auto;">
-              <div class="tp-caption Fashion-BigDisplay tp-resizeme rs-parallaxlevel-0" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['top','top','top','top']" data-voffset="['370','370','370','370']" data-width="none" data-height="none" data-whitespace="nowrap" data-fontsize="['50','40','40','25']" data-lineheight="['58','40','40','30']" data-transform_idle="o:1;" data-transform_in="z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;s:1000;e:Power2.easeOut;" data-transform_out="s:1000;e:Power3.easeInOut;s:1000;e:Power3.easeInOut;" data-start="1200" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 6; white-space: nowrap; font-weight: 800; color: rgb(34, 34, 34); visibility: hidden; transition: none; line-height: 58px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 1px; font-size: 50px; min-height: 0px; min-width: 0px; max-height: none; max-width: none; opacity: 0.767392; transform: matrix3d(0.976739, 0, 0, 0, 0, 0.976739, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform-origin: 50% 50% 0px;">
-                Research. Puplish . Measure
-              </div>
-            </div>
+
+        <!-- LAYER 3 -->
+        <div class="tp-caption tp-resizeme"
+          data-x="center" data-y="top" data-voffset="300"
+          data-start="2400" data-transform_in="y:[100%];opacity:0;s:800;"
+          data-transform_out="opacity:0;s:300";>
+          <div class="sl-italic sl-italic-2 text-center" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;">
+            Our strategists will help you set an objective and choose your tools,<br>
+            developing a plan that is custom-built for your business.
           </div>
         </div>
-        <!-- LAYER NR. 3 -->
-        <div class="tp-parallax-wrap" style="position: absolute; visibility: hidden; left: 482px; top: 457px; z-index: 7;">
-          <div class="tp-loop-wrap" style="position:absolute;">
-            <div class="tp-mask-wrap" style="position: absolute; overflow: visible; height: auto; width: auto;">
-              <div class="tp-caption Fashion-BigDisplay tp-resizeme rs-parallaxlevel-0" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['top','top','top','top']" data-voffset="['460','460','490','490']" data-width="none" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="x:-50px;opacity:0;s:500;e:Power2.easeInOut;" data-transform_out="x:50px;opacity:0;s:500;s:500;" data-start="1500" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 7; white-space: nowrap; font-size: 17px; line-height: 28px; font-weight: 400; color: rgb(71, 71, 71); font-family: Lora; visibility: hidden; transition: none; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 1px; min-height: 0px; min-width: 0px; max-height: none; max-width: none; opacity: 0; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 49.6988, 0, 0, 1); transform-origin: 50% 50% 0px;">
-                <div class="sl-italic sl-italic-2 text-center" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 1px; font-weight: 400; font-size: 17px;">
-                  Research influencers, manage your relationships, and conduct outreach <br style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 1px; font-weight: 400; font-size: 17px;">
-                  that’s personalized and efficient.
-                </div>
-              </div>
-            </div>
+
+        <!-- LAYER 4 (Buttons) -->
+        <div class="tp-caption tp-resizeme"
+          data-x="center" data-y="top" data-voffset="430"
+          data-start="2800" data-transform_in="y:[100%];opacity:0;s:800;"
+          data-transform_out="opacity:0;s:300";>
+          <div class="rev-slider-btn text-center">
+            <a a href="{{ url(Auth::check()?myDashboard():'/login') }}">Login</a>
+            <a a href="{{ url(Auth::check()?myDashboard():'/register') }}">Register</a>
           </div>
         </div>
-        <!-- LAYER NR. 4 -->
-        <div class="tp-parallax-wrap" style="position: absolute; visibility: hidden; left: 601px; top: 532px; z-index: 7;">
-          <div class="tp-loop-wrap" style="position:absolute;">
-            <div class="tp-mask-wrap" style="position: absolute; overflow: visible; height: auto; width: auto;">
-              <div class="tp-caption tp-resizeme rs-parallaxlevel-0" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['top','top','top','top']" data-voffset="['535','535','585','585']" data-width="none" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;" data-transform_out="s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" data-start="2000" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 7; white-space: nowrap; font-weight: 600; padding: 20px 50px; visibility: hidden; transition: none; line-height: 20px; border-width: 0px; margin: 0px; letter-spacing: 0px; font-size: 14px; min-height: 0px; min-width: 0px; max-height: none; max-width: none; opacity: 0; transform-origin: 50% 50% 0px; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);">
-                <div class="rev-slider-btn rev-slider-btn-2 text-center" style="transition: none; line-height: 20px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 600; font-size: 14px;"><a href="#" style="transition: none; line-height: 20px; border-width: 1px; margin: 0px; padding: 14px 45px; letter-spacing: 0px; font-weight: 700; font-size: 13px;">Get Started Now</a></div>
-              </div>
-            </div>
-          </div>
-        </div>
+
       </li>
+
+      <!-- SLIDE 2 -->
+
+      <li data-index="rs-2" data-transition="parallaxtoright" data-delay="6500">
+
+        <!-- MAIN IMAGE -->
+        <img src="{{asset('dist/images/slide2.png')}}"
+          class="rev-slidebg"
+          data-bgposition="center center"
+          data-bgfit="cover"
+          data-bgrepeat="no-repeat">
+
+        <!-- LAYER 1 -->
+        <div class="tp-caption tp-resizeme"
+          data-x="center" data-y="top" data-voffset="120"
+          data-start="1200" 
+          data-transform_in="y:[100%];opacity:0;s:800;"
+          data-transform_out="opacity:0;s:300"; >
+          <span class="sl-italic" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;">
+            Informed decisions. Exceptional results
+          </span>
+        </div>
+
+        <!-- LAYER 2 -->
+        <div class="tp-caption tp-resizeme"
+          data-x="center" data-y="top" data-voffset="190"
+          data-start="1800" data-transform_in="y:[100%];opacity:0;s:800;"
+          data-transform_out="opacity:0;s:300"; >
+          <div class="text-center heading-rp-small" style="transition: none; line-height: 58px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 1px; font-weight: 800; font-size: 50px;">
+            We Measure The Social Web
+          </div>
+        </div>
+
+        <!-- LAYER 3 -->
+        <div class="tp-caption tp-resizeme"
+          data-x="center" data-y="top" data-voffset="300"
+          data-start="2400" data-transform_in="y:[100%];opacity:0;s:800;"
+          data-transform_out="opacity:0;s:300"; >
+          <div class="sl-italic sl-italic-2 text-center" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;">
+            Our strategists will help you set an objective and choose your tools,<br>
+            developing a plan that is custom-built for your business.
+          </div>
+        </div>
+
+        <!-- LAYER 4 (Buttons) -->
+        <div class="tp-caption tp-resizeme"
+          data-x="center" data-y="top" data-voffset="430"
+          data-start="2800" data-transform_in="y:[100%];opacity:0;s:800;"
+          data-transform_out="opacity:0;s:300"; >
+          <div class="rev-slider-btn text-center">
+            <a href="#">Read More</a>
+            <a href="#">Get Started</a>
+          </div>
+        </div>
+
+      </li>
+
+      <!-- SLIDE 3 -->
+      <li data-index="rs-3" data-transition="parallaxtoright" data-delay="6500">
+
+        <!-- MAIN IMAGE -->
+        <img src="{{asset('dist/images/slide3.png')}}"
+          class="rev-slidebg"
+          data-bgposition="center center"
+          data-bgfit="cover"
+          data-bgrepeat="no-repeat">
+
+        <!-- LAYER 1 -->
+        <div class="tp-caption tp-resizeme"
+          data-x="center" data-y="top" data-voffset="120"
+          data-start="1200" data-transform_in="y:[100%];opacity:0;s:800;"
+          data-transform_out="opacity:0;s:300"; >
+          <span class="sl-italic" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;">
+            Informed decisions. Exceptional results
+          </span>
+        </div>
+
+        <!-- LAYER 2 -->
+        <div class="tp-caption tp-resizeme"
+          data-x="center" data-y="top" data-voffset="190"
+          data-start="1800" data-transform_in="y:[100%];opacity:0;s:800;"
+          data-transform_out="opacity:0;s:300"; >
+          <div class="text-center heading-rp-small" style="transition: none; line-height: 58px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 1px; font-weight: 800; font-size: 50px;">
+            We Measure The Social Web
+          </div>
+        </div>
+
+        <!-- LAYER 3 -->
+        <div class="tp-caption tp-resizeme"
+          data-x="center" data-y="top" data-voffset="300"
+          data-start="2400" data-transform_in="y:[100%];opacity:0;s:800;"
+          data-transform_out="opacity:0;s:300"; >
+          <div class="sl-italic sl-italic-2 text-center" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;">
+            Our strategists will help you set an objective and choose your tools,<br>
+            developing a plan that is custom-built for your business.
+          </div>
+        </div>
+
+        <!-- LAYER 4 (Buttons) -->
+        <div class="tp-caption tp-resizeme"
+          data-x="center" data-y="top" data-voffset="430"
+          data-start="2800" data-transform_in="y:[100%];opacity:0;s:800;"
+          data-transform_out="opacity:0;s:300"; >
+          <div class="rev-slider-btn text-center">
+            <a href="#">Read More</a>
+            <a href="#">Get Started</a>
+          </div>
+        </div>
+
+      </li>
+
     </ul>
   </div>
-  <!-- END REVOLUTION SLIDER -->
 </div>
+
+
 <!-- the content -->
-<section class="welcome-area">
+<div class="welcome-area">
   <!-- MAIN TITLE AREA -->
   <div class="container">
     <div class="row">
@@ -320,89 +340,89 @@
 
     <div class="spacer-100"></div>
   </div>
+</div>
 
-  <!-- features -->
+<!-- features -->
 
-  <section class="solution-area">
-    <!-- MAIN TITLE AREA -->
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 text-center">
-          <div class="main-title wow zoomIn">
-            <div class="main-shadow-heading">
-              <h2>Amazing <span>Features</span></h2>
-            </div>
+<div class="solution-area">
+  <!-- MAIN TITLE AREA -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <div class="main-title wow zoomIn">
+          <div class="main-shadow-heading">
             <h2>Amazing <span>Features</span></h2>
-            <h3>Satisfy Your Needs</h3>
+          </div>
+          <h2>Amazing <span>Features</span></h2>
+          <h3>Satisfy Your Needs</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- END TITLE -->
+  <div class="solution-content">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-md-4">
+          <div class="solution-single-content solution-single-content-no-border wow fadeInLeft">
+            <h2>Easy to use</h2>
+            <p>Simple process driven solution, that suits from small to large manufacturers requirment. ...</p>
+            <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+            <span><i class="icon icon-Chart"></i></span>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <div class="solution-single-content wow fadeInUp">
+            <h2>Protect your Product</h2>
+            <p>Secure packaging and authentication capabilities enable you to protect your brand and keep consumers safe while building brand trust...</p>
+            <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+            <span><i class="icon icon-Shield"></i></span>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <div class="solution-single-content wow fadeInRight">
+            <h2>Engage with end consumer</h2>
+            <p>Get access to valuable market insights, including the end user’s profile.Connect them with your loyality programs ...</p>
+            <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+            <span><i class="icon icon-MessageLeft"></i></span>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <div class="solution-single-content solution-single-content-no-border wow fadeInLeft">
+            <h2>Product serialization</h2>
+            <p>For digital transformation to take place, serialization will be a first step and a key enabler for every brand ...</p>
+            <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+            <span><i class="icon icon-Antenna2"></i></span>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <div class="solution-single-content wow fadeInUp">
+            <h2>Regulatory compliance</h2>
+            <p>Get a powerful one solution supporting various compliance mandates set by different countries for different businesses ...</p>
+            <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+            <span><i class="icon icon-Tools"></i></span>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <div class="solution-single-content wow fadeInRight">
+            <h2>Seamless Hardware integration</h2>
+            <p>Easy to integrate with any printing/labelling device, speed conveyor systems, vision inspection cameras etc ...</p>
+            <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+            <span><i class="icon icon-Puzzle"></i></span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="all-link solution-btn text-center">
+            <a href="#">More Services</a>
           </div>
         </div>
       </div>
     </div>
-
-
-    <!-- END TITLE -->
-    <div class="solution-content">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-6 col-md-4">
-            <div class="solution-single-content solution-single-content-no-border wow fadeInLeft">
-              <h2>Easy to use</h2>
-              <p>Simple process driven solution, that suits from small to large manufacturers requirment. ...</p>
-              <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
-              <span><i class="icon icon-Chart"></i></span>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-4">
-            <div class="solution-single-content wow fadeInUp">
-              <h2>Protect your Product</h2>
-              <p>Secure packaging and authentication capabilities enable you to protect your brand and keep consumers safe while building brand trust...</p>
-              <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
-              <span><i class="icon icon-Shield"></i></span>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-4">
-            <div class="solution-single-content wow fadeInRight">
-              <h2>Engage with end consumer</h2>
-              <p>Get access to valuable market insights, including the end user’s profile.Connect them with your loyality programs ...</p>
-              <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
-              <span><i class="icon icon-MessageLeft"></i></span>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-4">
-            <div class="solution-single-content solution-single-content-no-border wow fadeInLeft">
-              <h2>Product serialization</h2>
-              <p>For digital transformation to take place, serialization will be a first step and a key enabler for every brand ...</p>
-              <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
-              <span><i class="icon icon-Antenna2"></i></span>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-4">
-            <div class="solution-single-content wow fadeInUp">
-              <h2>Regulatory compliance</h2>
-              <p>Get a powerful one solution supporting various compliance mandates set by different countries for different businesses ...</p>
-              <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
-              <span><i class="icon icon-Tools"></i></span>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-4">
-            <div class="solution-single-content wow fadeInRight">
-              <h2>Seamless Hardware integration</h2>
-              <p>Easy to integrate with any printing/labelling device, speed conveyor systems, vision inspection cameras etc ...</p>
-              <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
-              <span><i class="icon icon-Puzzle"></i></span>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="all-link solution-btn text-center">
-              <a href="#">More Services</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  
+  </div>
 
 
 
@@ -411,101 +431,116 @@
 
 
 
+  <div style="background-color: #f5f5f5; margin-top: 50px; ">
     <div class="container">
       <div class="row">
         <div class="col-md-12 text-center">
           <div class="main-title wow zoomIn">
             <div class="main-shadow-heading">
-              <h2>How it works? Let Us Help</h2>
+              <h2><span>How </span>it works??</h2>
             </div>
-            <h2>How it works? Let Us Help</h2>
+            <h2><span>How </span>it works??</h2>
             <h3>Trusted By The Best Marketers</h3>
           </div>
         </div>
       </div>
     </div>
+    <!-- END TITLE -->
 
-
-
-
-    <!--how it works -->
-    <div id="howitworks" class="choose-riven">
-      <div class="spacer-95"></div>
+    <div class="help-content-area" style="background-color: #f5f5f5;">
       <div class="container">
         <div class="row">
-          <div class="col-lg-7 col-md-6 col-sm-12 col-xs-12"></div>
-          <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12">
-            <div class="title-block">
-              <div class="riven-heading text-left " data-sr="enter left wait 0.3s">
-                <h2>
-                  <span>How </span>it works??
-                </h2>
+          <div class="col-md-6">
+            <div class="help-accordion">
+              <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                  <div class="panel-heading" role="tab" id="headingOne">
+                    <h4 class="panel-title">
+                      <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"> Brand Onboarding </a>
+                    </h4>
+                  </div>
+                  <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="panel-body">Complete paperless on-boarding of brands, manufacturers and solution providers. submit details and upload documents required and after approval, you will get access of the platform.Fill in your information accurately as it impacts your future communication, billing information and free support.</div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading" role="tab" id="headingTwo">
+                    <h4 class="panel-title">
+                      <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"> Select a subscription plan</a>
+                    </h4>
+                  </div>
+                  <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                    <div class="panel-body"> By default, Free plan will be activated. The FREE plan gives you all the essential features & tools to setup your solution and continue using the platform for a few things / items free forever. You can always upgrade your account to a paid plan if you’re ready to scale beyond the limits of the FREE plan.</div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading" role="tab" id="headingThree">
+                    <h4 class="panel-title">
+                      <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree"> Manage product, batch and serialisation </a>
+                    </h4>
+                  </div>
+                  <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                    <div class="panel-body">Flexible Management of your brand, product, batches serialization.</div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading" role="tab" id="headingFour">
+                    <h4 class="panel-title">
+                      <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseTwo"> Activate as production goes</a>
+                    </h4>
+                  </div>
+                  <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                    <div class="panel-body"> Activate products and keep a track on your raw materials, ingredients, supply chain, shipments, manufacturing batches, product SKUs right down to product level. Thats it</div>
+                  </div>
+                </div>
               </div>
-              <div class="spacer-50"></div>
             </div>
-            <div id="accordion" class="panel-group">
-              <div class="panel panel-default">
-                <div class="panel-heading ">
-                  <h4 class="panel-title  active ">
-                    <a class="accordion-toggle" href="#collapse1" data-parent="#accordion" data-toggle="collapse">Brand Onboarding <span class="indicator indicator-mimus pe-7s-angle-down"></span></a>
-                  </h4>
-                </div>
-                <div class="panel-collapse collapse in" id="collapse1">
-                  <div class="panel-body">
-                    <p>
-                      Complete paperless on-boarding of brands, manufacturers and solution providers. submit details and upload documents required and after approval, you will get access of the platform.Fill in your information accurately as it impacts your future communication, billing information and free support.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h4 class="panel-title">
-                    <a class="accordion-toggle" href="#collapse2" data-parent="#accordion" data-toggle="collapse">Select a subscription plan<span class="indicator pe-7s-angle-down"></span></a>
-                  </h4>
-                </div>
-                <div class="panel-collapse collapse " id="collapse2">
-                  <div class="panel-body">
-                    <p>
-                      By default, Free plan will be activated. The FREE plan gives you all the essential features & tools to setup your solution and continue using the platform for a few things / items free forever. You can always upgrade your account to a paid plan if you’re ready to scale beyond the limits of the FREE plan.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h4 class="panel-title">
-                    <a class="accordion-toggle" href="#collapse3" data-parent="#accordion" data-toggle="collapse">Manage product, batch and serialisation<span class="indicator pe-7s-angle-down"></span></a>
-                  </h4>
-                </div>
-                <div class="panel-collapse collapse" id="collapse3">
-                  <div class="panel-body">
-                    <p>
-                      Flexible Management of your brand, product, batches serialization. </p>
-                  </div>
-                </div>
-              </div>
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h4 class="panel-title">
-                    <a class="accordion-toggle" href="#collapse4" data-parent="#accordion" data-toggle="collapse">Activate as production goes<span class="indicator pe-7s-angle-down"></span></a>
-                  </h4>
-                </div>
-                <div class="panel-collapse collapse" id="collapse4">
-                  <div class="panel-body">
-                    <p>
-                      Activate products and keep a track on your raw materials, ingredients, supply chain, shipments, manufacturing batches, product SKUs right down to product level. Thats it</p>
-                  </div>
-                </div>
-              </div>
+            <div class="help-question" style="margin-bottom: 50px;">
+              <p>Feel free to get in touch with any enquiries or questions and one of our members will get back to you as soon as possible !</p>
+              <span><a href="#">Ask A Question <i class="fa fa-long-arrow-right"> </i></a></span>
             </div>
           </div>
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="image-choose wpb_single_image">
-              <img src="{{asset('web/images/background/bbchain.png')}}" alt="">
+          <div class="col-md-6">
+            <div id="help-slider" class="owl-carousel all-carousel owl-theme">
+              <div>
+                <div class="help-slider-content">
+                  <div class="help-slider-text">
+                    <i class="fa fa-quote-left"></i>
+                    <i class="fa fa-quote-right"></i>
+                    <p>In my job as social media strategist, I've tried pretty much every analytics product on the market and when I came across Metrics, I was blown away! Metrics is one of the most impressive social media website efforts I've ever seen.</p>
+                    <img src="{{ asset('dist/images/home-slider-img-left.png') }}" alt="">
+                  </div>
+                  <div class="help-slider-img">
+                    <h2>Mahmoud Baghagho</h2>
+                    <h3>Art Director</h3>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="help-slider-content">
+                  <div class="help-slider-text">
+                    <i class="fa fa-quote-left"></i>
+                    <i class="fa fa-quote-right"></i>
+                    <p>In my job as social media strategist, I've tried pretty much every analytics product on the market and when I came across Metrics, I was blown away! Metrics is one of the most impressive social media website efforts I've ever seen.</p>
+                    <img src="{{ asset('dist/images/home-slider-img-left.png') }}" alt="">
+                  </div>
+                  <div class="help-slider-img">
+                    <h2>Mahmoud Baghagho</h2>
+                    <h3>Art Director</h3>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    </section>
+
+
+
+
+    <!--how it works -->
     <!-- video-->
     <div class="video-home">
       <div class="bg-gradient">
@@ -538,7 +573,7 @@
 
 
 
-
+    <!-- Pricing Table -->
     <section class="pricing-table-section grey-bg">
       <!-- MAIN TITLE AREA -->
       <div class="container">
@@ -605,53 +640,10 @@
       </div>
       @endforeach
       <div class="pricing-table-self">
-        <img src="images/pricing-table-self.png" alt="" class="img-responsive">
+        <img src="{{asset('dist/images/pricing-table-self.png')}}">
       </div>
     </section>
-    <!-- Pricing Table -->
-    <div id="pricing_table" class="padding-content pricing-table bg-gray content-section">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="riven-heading text-center" data-sr="enter bottom wait 0.3s">
-              <h2>Pricing <span>Plans</span></h2>
-              <p class="text">Our pay as you go pricing plans are driven by usage of platform resources, premium features, support & service levels. Select which suits to you</p>
-            </div>
-          </div>
-          @foreach(getPlan() as $plan)
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <div class="pricing-content bg-gradient">
-              <div class="box-info">
-                <div class="pricing-title text center">
-                  <h3>{{$plan->title}}</h3>
-                </div>
-                <div class="price bg-gradient">
-                  <div class="price-box">
-                    <div class="price-center">
-                      <span>
-                        @if ($country=='India')
-                        &#8377; {{$plan->price_inr}}
-                        @else
-                        $ {{$plan->price_usd}}
-                        @endif
-                      </span>
-                      <p>monthly</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="pricing-desc mb-2">
-                  {!!$plan->description!!}
-                </div>
-                <div class="pricing-sign">
-                  <a class="btn btn-default" href="{{url('register')}}">Sign up</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          @endforeach
-        </div>
-      </div>
-    </div>
+
 
 
     <!-- Event Calendar -->
@@ -692,7 +684,7 @@
                 </div>
               </div>
 
-              <div class="event-content col-md-6 col-sm-12 col-xs-12">
+              <div class="event-content col-md-6 col-sm-12 col-xs-12" style="margin:0;">
                 <div class="row row-event">
                   <div class="event-box-conner col-md-10 col-sm-10 col-xs-10">
                     <div class="event_post_content bg-gradient">
@@ -926,64 +918,97 @@
       </div>
     </div>
     <x-notification></x-notification>
-  </section>
-  @endsection
+  </div>
+</div>
+@endsection
 
 
-  @section('script')
+@section('script')
 
-  <script type="text/javascript">
-    cash(function() {
-      async function contact() {
-        cash('.contact__input').removeClass('border-theme-6')
-        cash('.contact__input-error').html('')
+<script type="text/javascript">
+  cash(function() {
+    async function contact() {
+      cash('.contact__input').removeClass('border-theme-6')
+      cash('.contact__input-error').html('')
+      cash('#contactError').addClass('hidden')
+
+      let name = cash('#name').val()
+      let email = cash('#email').val()
+      let mobile = cash('#mobile').val()
+      let message = cash('#message').val()
+
+      cash('#contactwait').removeClass('hidden')
+      axios.post('{{ url("send_inquiry") }}', {
+        name: name,
+        email: email,
+        mobile: mobile,
+        message: message
+      }).then(res => {
+        cash('#contactSuccess').removeClass('hidden')
         cash('#contactError').addClass('hidden')
+        cash('#contactwait').addClass('hidden')
+        // showNotification('success','Success!',res.data.message)
+        setTimeout(() => {
+          window.location.reload()
+        }, 3000)
+      }).catch(err => {
+        // showNotification('error','Error !',err.response.data.message)
+        cash('#contactError').removeClass('hidden')
+        cash('#contactSuccess').addClass('hidden')
+        cash('#contactwait').addClass('hidden')
 
-        let name = cash('#name').val()
-        let email = cash('#email').val()
-        let mobile = cash('#mobile').val()
-        let message = cash('#message').val()
+        cash('#btn-contact').html('Submit')
 
-        cash('#contactwait').removeClass('hidden')
-        axios.post('{{ url("send_inquiry") }}', {
-          name: name,
-          email: email,
-          mobile: mobile,
-          message: message
-        }).then(res => {
-          cash('#contactSuccess').removeClass('hidden')
-          cash('#contactError').addClass('hidden')
-          cash('#contactwait').addClass('hidden')
-          // showNotification('success','Success!',res.data.message)
-          setTimeout(() => {
-            window.location.reload()
-          }, 3000)
-        }).catch(err => {
-          // showNotification('error','Error !',err.response.data.message)
-          cash('#contactError').removeClass('hidden')
-          cash('#contactSuccess').addClass('hidden')
-          cash('#contactwait').addClass('hidden')
-
-          cash('#btn-contact').html('Submit')
-
-          if (err.response.data.errors) {
-            for (const [key, val] of Object.entries(err.response.data.errors)) {
-              cash(`#${key}`).addClass('border-theme-6')
-              cash(`#error-${key}`).html(val)
-            }
+        if (err.response.data.errors) {
+          for (const [key, val] of Object.entries(err.response.data.errors)) {
+            cash(`#${key}`).addClass('border-theme-6')
+            cash(`#error-${key}`).html(val)
           }
-        })
-
-      }
-      cash('#contact_form').on('keyup', function(e) {
-        if (e.keyCode === 13) {
-          contact()
         }
       })
-      cash('#btn-contact').on('click', function() {
-        contact()
-      })
-    })
-  </script>
 
-  @endsection
+    }
+    cash('#contact_form').on('keyup', function(e) {
+      if (e.keyCode === 13) {
+        contact()
+      }
+    })
+    cash('#btn-contact').on('click', function() {
+      contact()
+    })
+  })
+</script>
+<script>
+  var revapi;
+
+  jQuery(document).ready(function() {
+    revapi = jQuery("#slider1").show().revolution({
+      sliderType: "standard",
+      sliderLayout: "fullscreen",
+
+      delay: 999999999, // ⛔ disable auto sliding
+
+      navigation: {
+        arrows: {
+          enable: true,
+          style: "uranus",
+          hide_onleave: false
+        }
+      },
+
+      stopLoop: "on",
+      stopAfterLoops: 0,
+      stopAtSlide: 1,
+
+      disableProgressBar: "on",
+
+      fullScreenOffsetContainer: "" // add header selector if needed
+    });
+
+    // ✅ extra safety: pause autoplay
+    revapi.revpause();
+  });
+</script>
+
+
+@endsection
