@@ -1694,11 +1694,12 @@ input:focus {
   width: 170px;
   height: 50px;
   text-align: center;
-  border: 2px solid #222222;
   display: inline-block;
   text-transform: uppercase;
   padding-top: 14px;
-  color: #222222;
+  color: white;
+  background-color: #7a0d7d;
+  border: 2px solid #7a0d7d;
 }
 .all-link a:hover {
   border: 2px solid #222;
@@ -1921,6 +1922,7 @@ input:focus {
   border-radius: 0px;
 }
 .help-accordion .panel-group .panel-default .panel-heading .panel-title {
+  background: #C0C0C0;
 }
 .help-accordion .panel-group .panel-default .panel-heading .panel-title a.collapsed {
   display: block;
@@ -1928,7 +1930,7 @@ input:focus {
   color: #282828;
   font-weight: bold;
   padding: 30px;
-  background: #f4f4f4;
+  background: #C0C0C0;
 }
 .help-accordion .panel-group .panel-default .panel-heading .panel-title a {
   display: block;
@@ -1940,26 +1942,26 @@ input:focus {
 }
 .help-accordion .panel-group .panel-default .panel-heading .panel-title a:hover {
   color: #7a0d7d;
-  background: #fff;
+  background: #C0C0C0;
+  border:#C0C0C0;
 }
 .help-accordion .panel-default .panel-heading .panel-title a.collapsed:after {
   content: '+';
   right: 30px;
   position: absolute;
-  color: #fff;
+  color: #C0C0C0;
   font-size: 20px;
   top: 30px;
   font-weight: normal;
   width: 20px;
   height: 20px;
-  background: #7a0d7d;
   text-align: center;
 }
 .help-accordion .panel-default .panel-heading .panel-title a:after {
   content: '-';
   right: 30px;
   position: absolute;
-  color: #fff;
+  color: #C0C0C0;
   font-size: 20px;
   top: 30px;
   font-weight: normal;
@@ -1973,9 +1975,10 @@ input:focus {
   font-size: 13px;
   font-weight: bold;
   font-family: 'Lora', serif;
-  padding: 0px 30px 20px 30px;
-  color: #9b9b9b;
+  padding: 20px 30px 20px 30px;
+  color: #36454F;
   line-height: 23px;
+
 }
 .help-question {
   position: relative;
@@ -2028,11 +2031,11 @@ input:focus {
 .help-slider-text {
   position: relative;
   padding: 30px 30px 60px 230px;
-  background: #f4f4f4;
+  background: help-slider-content;
 }
 .help-slider-text p {
   font-size: 17px;
-  color: #9b9b9b;
+  color: #36454F;
   font-style: italic;
   font-family: 'Lora', serif;
   line-height: 27px;
@@ -2486,6 +2489,7 @@ input:focus {
   color: #7a0d7d;
   margin-bottom: 5px;
   border: 2px solid #7a0d7d;
+  background-color: #000;
 }
 .footer-top-btn a:hover {
   border: 2px solid #7a0d7d;
@@ -8852,4 +8856,12 @@ ul.page-breadcrumbs li + li:before {
 .error_message {
   position: absolute;
   bottom: 10px;
+}
+
+.rev_slider_wrapper,
+.rev_slider,
+.rev_slider ul,
+.rev_slider li {
+  width: 100% ;
+  height: 100vh ;
 }
