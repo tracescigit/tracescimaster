@@ -22,6 +22,7 @@ class CreateEventsTable extends Migration
             $table->string('city')->nullable();
             $table->string('image_path')->nullable();
             $table->text('description')->nullable();
+            $table->integer('created_by')->nullable();
             $table->smallInteger('is_allowed')->default(0);
             $table->smallInteger('status')->default(0);
             $table->timestamps();

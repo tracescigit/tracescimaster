@@ -206,10 +206,16 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin', 'auth']], function 
     Route::get('/Blog/Create', [App\Http\Controllers\Admin\BlogController::class, 'create'])->name('admin-blogs-create');
     Route::post('/Blog/store', [App\Http\Controllers\Admin\BlogController::class, 'store'])->name('admin-blogs-store');
     Route::get('/Blogs/{id}/edit', [App\Http\Controllers\Admin\BlogController::class, 'edit'])->name('admin-blogs-edit');
+    Route::put('/Blogs/{id}/update', [App\Http\Controllers\Admin\BlogController::class, 'update'])->name('admin-blogs-update');
     //end Blog routes
 
     // Events routes
     Route::get('/Events', [App\Http\Controllers\Admin\EventController::class,'index'])->name('admin-events');
+    Route::get('/Events/create', [App\Http\Controllers\Admin\EventController::class,'create'])->name('admin-events-create');
+    Route::post('/Events/store', [App\Http\Controllers\Admin\EventController::class,'store'])->name('admin-events-store');
+    Route::get('/Events/{id}/edit', [App\Http\Controllers\Admin\EventController::class,'edit'])->name('admin-events-edit');
+    Route::put('/Events/{id}/update', [App\Http\Controllers\Admin\EventController::class,'update'])->name('admin-events-update');
+
     //end Events routes
 
     //Demo routes

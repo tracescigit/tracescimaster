@@ -7,7 +7,17 @@
 
 
 <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
-	<h2 class="text-lg font-medium mr-auto">{{__('event.event')}}</h2>
+	<h2 class="text-lg font-medium mr-auto">{{__('event.events')}}</h2>
+	<div class="w-full sm:w-auto flex mt-4 sm:mt-0">
+		<a href="{{ route('admin-events-create') }}" class="btn btn-primary shadow-md mr-2">Add New Event</a>
+		<div class="dropdown ml-auto sm:ml-0">
+			<a href="{{ route('admin-events-create') }}" class="btn px-2 box text-gray-700 dark:text-gray-300" aria-expanded="false">
+				<span class="w-5 h-5 flex items-center justify-center">
+					<i class="w-4 h-4" data-feather="plus"></i>
+				</span>
+			</a>
+		</div>
+	</div>
 </div>
 
 <div class="intro-y box p-5 mt-5">
@@ -18,9 +28,12 @@
 				<label class="w-12 flex-none xl:w-auto xl:flex-initial mr-2">{{__('common.field')}}</label>
 				<select id="tabulator-html-filter-field" class="form-select w-full sm:w-32 xxl:w-full mt-2 sm:mt-0 sm:w-auto">
 					<option value="">{{__('common.please_select')}}</option>
-					<option value="product_name">{{__('common.product_name')}}</option>
-					<option value="code_data">Product Serial No.</option>
-					<option value="phone">{{__('scanhistory.scanned_by')}}</option>	
+					<option value="name">{{__('event.name')}}</option>
+					<option value="start_date">{{__('event.start_date')}}</option>
+					<option value="end_date">{{__('event.end_date')}}</option>
+					<option value="is_allowed">{{__('event.allowed')}}</option>
+					<option value="city">{{__('event.city')}}</option>
+					<option value="phone">{{__('event.status')}}</option>
 				</select>
 			</div>
 			<div class="sm:flex items-center sm:mr-4 mt-2 xl:mt-0">
@@ -81,7 +94,7 @@
 @endsection
 @section('global_script')
 <script>
-	var tabulatorUrl =  '{{ route('admin-alerts') }}';
+	var tabulatorUrl =  "{{ route('admin-events') }}";
 	var tabulatorColumns = [
 	{	
 		formatter: "responsiveCollapse",
@@ -99,6 +112,7 @@
 		field: "actions",
 		responsive: 1,
 		vertAlign: "middle",
+		headerHozAlign: "center",
 		print: false,
 		headerSort: false,
 		download: false,
@@ -106,53 +120,69 @@
 			return cell.getData().actions;
 		}
 	},{
-		title: "{{strtoupper(__('common.product_name'))}}",
+		title: "{{strtoupper(__('event.name'))}}",
 		minWidth: 220,
 		responsive: 0,
-		field: "product_name",
+		field: "name",
+		headerHozAlign: "left",
+		hozAlign: "left",
+		vertAlign: "left",
+		print: true,
+		download: true
+	},{
+		title: "{{strtoupper('start Date')}}",
+		minWidth: 220,
+		responsive: 0,
+		field: "start_date",
+		headerHozAlign: "center",
 		hozAlign: "center",
 		vertAlign: "middle",
 		print: true,
 		download: true
 	},{
-		title: "{{strtoupper('Product Serial No.')}}",
-		minWidth: 220,
-		responsive: 0,
-		field: "code_data",
-		hozAlign: "center",
-		vertAlign: "middle",
-		print: true,
-		download: true
-	},{
-		title: "{{strtoupper(__('alert.alert_message'))}}",
+		title: "{{strtoupper(__('event.end_date'))}}",
 		minWidth: 200,
 		responsive: 0,
-		field: "alert_message",
+		field: "end_date",
+		headerHozAlign: "center",
 		vertAlign: "middle",
 		hozAlign: "center",
 		print: true,
 		download: true
 	}, {
-		title: "{{strtoupper(__('scanhistory.scanned_by'))}}",
+		title: "{{strtoupper(__('event.address'))}}",
 		minWidth: 200,
-		field: "scanned_by",
-		hozAlign: "center",
-		vertAlign: "middle",
+		field: "address",
+		hozAlign: "left",
+		headerHozAlign: "left",
+		vertAlign: "left",
 		print: true,
 		download: true
 	}, {
-		title: "{{strtoupper(__('alert.action_taken'))}}",
+		title: "{{strtoupper(__('event.city'))}}",
 		minWidth: 180,
-		field: "action_taken",
+		field: "city",
+		hozAlign: "left",
+		headerHozAlign: "left",
+		headerSort:false,
+		vertAlign: "left",
+		print: true,
+		download: true
+	}, {
+		title: "{{strtoupper(__('event.allowed'))}}",
+		minWidth: 180,
+		field: "is_allowed",
 		hozAlign: "center",
+		headerHozAlign: "center",
 		headerSort:false,
 		vertAlign: "middle",
 		print: true,
 		download: true
 	},  {
-		title: "{{strtoupper(__('alert.scanned_on'))}}",
+		title: "{{strtoupper(__('event.status'))}}",
 		minWidth: 180,
-		field: "created_at",
+		field: "status",
+		headerHozAlign: "center",
 		hozAlign: "center",
 		vertAlign: "middle",
 		print: true,

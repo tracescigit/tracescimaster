@@ -29,9 +29,12 @@
 				<label class="w-12 flex-none xl:w-auto xl:flex-initial mr-2">{{__('common.field')}}</label>
 				<select id="tabulator-html-filter-field" class="form-select w-full sm:w-32 xxl:w-full mt-2 sm:mt-0 sm:w-auto">
 					<option value="">{{__('common.please_select')}}</option>
-					<option value="product_name">{{__('common.product_name')}}</option>
-					<option value="code_data">Product Serial No.</option>
-					<option value="phone">{{__('scanhistory.scanned_by')}}</option>
+					<option value="title">{{__('blog.title')}}</option>
+					<option value="publish_date">{{__('blog.Publishing_date')}}</option>
+					<option value="publish_by">{{__('blog.created_by')}}</option>
+					<option value="is_allowed">{{__('blog.allowed')}}</option>
+					<option value="created_at">{{__('blog.created_at')}}</option>
+					<option value="phone">{{__('blog.status')}}</option>
 				</select>
 			</div>
 			<div class="sm:flex items-center sm:mr-4 mt-2 xl:mt-0">

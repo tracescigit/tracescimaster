@@ -1,23 +1,23 @@
 @extends('admin.layout.' . $layout)
 
 @section('subhead')
-<title>Edit Blog | TRACESCI Admin</title>
-<meta name="description" content="Edit and Update a Blog in TRACESCI.">
+<title>Create Event | TRACESCI Admin</title>
+<meta name="description" content="Create and Upload a New Event in TRACESCI.">
 <meta name="robots" content="noindex, nofollow">
-<meta property="og:title" content="Edit Blog | TRACESCI Admin">
-<meta property="og:description" content="Edit and Update a Blog on TRACESCI.">
+<meta property="og:title" content="Events | TRACESCI Admin">
+<meta property="og:description" content="Create and Upload a new Event on TRACESCI.">
 <meta property="og:type" content="website">
-<link rel="canonical" href="{{ url('/admin/Blog/' . $blog->id . '/edit') }}">
+<link rel="canonical" href="{{ url('/admin/Events/create') }}">
 
 <style>
     /* === Card & Layout Enhancements === */
-    .blog-form-card {
+    .event-form-card {
         border-radius: 12px;
         box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
         overflow: hidden;
     }
 
-    .blog-form-header h2 {
+    .event-form-header h2 {
         color: #fff;
         font-size: 1rem;
         font-weight: 600;
@@ -25,7 +25,7 @@
         letter-spacing: 0.01em;
     }
 
-    .blog-form-header .header-icon {
+    .event-form-header .header-icon {
         width: 36px;
         height: 36px;
         background: rgba(255, 255, 255, 0.18);
@@ -36,7 +36,7 @@
         flex-shrink: 0;
     }
 
-    .blog-form-header .header-icon svg {
+    .event-form-header .header-icon svg {
         width: 18px;
         height: 18px;
         stroke: #fff;
@@ -83,41 +83,6 @@
         color: #d1d5db !important;
     }
 
-    /* === Input with icon prefix === */
-    .input-with-prefix {
-        position: relative;
-    }
-
-    .input-prefix {
-        position: absolute;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        width: 38px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: #f3f4f6;
-        border: 1px solid #d1d5db;
-        border-right: none;
-        border-radius: 8px 0 0 8px;
-        font-size: 0.8rem;
-        font-weight: 600;
-        color: #6b7280;
-        pointer-events: none;
-    }
-
-    .dark .input-prefix {
-        background: #374151;
-        border-color: #4b5563;
-        color: #9ca3af;
-    }
-
-    .input-with-prefix .form__input {
-        padding-left: 46px !important;
-        border-radius: 0 8px 8px 0 !important;
-    }
-
     /* === Character hint === */
     .input-hint {
         font-size: 0.72rem;
@@ -126,7 +91,7 @@
     }
 
     /* === Submit Button === */
-    #btn-update {
+    #btn-add {
         border-radius: 8px !important;
         font-weight: 600 !important;
         letter-spacing: 0.02em !important;
@@ -137,12 +102,12 @@
         gap: 8px;
     }
 
-    #btn-update:not([disabled]):hover {
+    #btn-add:not([disabled]):hover {
         transform: translateY(-1px);
         box-shadow: 0 4px 14px rgba(26, 86, 219, 0.35) !important;
     }
 
-    #btn-update:not([disabled]):active {
+    #btn-add:not([disabled]):active {
         transform: translateY(0);
     }
 
@@ -220,72 +185,39 @@
         background: #fee2e2;
         color: #991b1b;
     }
-
-    /* === Current Image Preview === */
-    .current-image-preview {
-        margin-top: 8px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-
-    .current-image-preview img {
-        width: 64px;
-        height: 64px;
-        object-fit: cover;
-        border-radius: 8px;
-        border: 1px solid #e5e7eb;
-    }
-
-    .current-image-label {
-        font-size: 0.72rem;
-        color: #6b7280;
-    }
-
-    .current-image-label a {
-        color: #1a56db;
-        font-weight: 500;
-        text-decoration: none;
-    }
-
-    .current-image-label a:hover {
-        text-decoration: underline;
-    }
 </style>
 @endsection
 
 @section('subcontent')
 
-{{-- SEO: Structured page heading with breadcrumb --}}
 <header class="intro-y mt-8">
     <div class="page-header-bar">
         <div>
-            <h1 class="text-lg font-medium" style="font-size:1.2rem;">Edit Blog</h1>
+            <h1 class="text-lg font-medium" style="font-size:1.2rem;">Create New Event</h1>
             <nav class="breadcrumb-nav" aria-label="Breadcrumb">
                 <a href="{{ url('/admin') }}">Dashboard</a>
                 <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="9 18 15 12 9 6"></polyline>
                 </svg>
-                <a href="{{ url('/admin/Blog') }}">Blogs</a>
+                <a href="{{ url('/admin/Events') }}">Events</a>
                 <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="9 18 15 12 9 6"></polyline>
                 </svg>
-                <span>Edit: {{ $blog->title }}</span>
+                <span>Create New</span>
             </nav>
         </div>
-        <a href="{{ url('/admin/Blog') }}" class="btn btn-outline-secondary btn-sm" style="border-radius:8px;font-size:0.8rem;">
-            ← Back to Blogs
+        <a href="{{ url('/admin/Events') }}" class="btn btn-outline-secondary btn-sm" style="border-radius:8px;font-size:0.8rem;">
+            ← Back to Events
         </a>
     </div>
 </header>
 
-<main class="grid grid-cols-12 gap-6 mt-5" id="main-content" aria-label="Edit Blog Form">
+<main class="grid grid-cols-12 gap-6 mt-5" id="main-content" aria-label="Create New Event Form">
     <div class="intro-y col-span-12 lg:col-span-12">
-        <form id="edit-form" enctype="multipart/form-data" novalidate aria-label="Edit blog form">
+        <form id="add-form" enctype="multipart/form-data" novalidate aria-label="Create event form">
             @csrf
-            @method('PUT')
 
-            <article class="intro-y box blog-form-card">
+            <article class="intro-y box event-form-card">
 
                 <div class="p-5 pb-7">
                     <div class="grid grid-cols-12">
@@ -294,90 +226,104 @@
                         {{-- Section: Basic Info --}}
                         <div class="field-group-label" role="heading" aria-level="3">Basic Information</div>
 
-                        {{-- Blog Title --}}
+                        {{-- Event Name --}}
                         <div class="input-form col-span-12 lg:col-span-6 px-2 py-1 mt-1">
-                            <label for="title" class="form-label">
-                                Blog Title <span class="required-mark" aria-hidden="true">*</span>
+                            <label for="event_name" class="form-label">
+                                Event Name <span class="required-mark" aria-hidden="true">*</span>
                             </label>
                             <input
-                                id="title"
+                                id="event_name"
                                 type="text"
-                                name="title"
+                                name="event_name"
                                 class="form-control form__input"
-                                placeholder="Please enter title"
-                                value="{{ old('title', $blog->title) }}"
+                                placeholder="Please enter Event Name"
                                 autocomplete="off"
                                 aria-required="true"
-                                aria-describedby="error-title hint-title">
-                            <p id="hint-title" class="input-hint">A clear, descriptive name for the blog.</p>
-                            <div id="error-title" class="login__input-error w-5/6 text-theme-6" role="alert" aria-live="polite"></div>
+                                aria-describedby="error-event_name hint-event_name">
+                            <p id="hint-event_name" class="input-hint">A clear, descriptive Name for the Event.</p>
+                            <div id="error-event_name" class="login__input-error w-5/6 text-theme-6" role="alert" aria-live="polite"></div>
                         </div>
 
-                        {{-- Published Date --}}
+                        {{-- Start Date --}}
                         <div class="input-form col-span-12 lg:col-span-6 px-2 py-1 mt-1">
-                            <label for="publish_date" class="form-label">
-                                Published Date <span class="required-mark" aria-hidden="true">*</span>
+                            <label for="start_date" class="form-label">
+                                Start Date <span class="required-mark" aria-hidden="true">*</span>
                             </label>
                             <input
-                                id="publish_date"
+                                id="start_date"
                                 type="date"
-                                name="publish_date"
+                                name="start_date"
                                 class="form-control form__input"
-                                value="{{ old('publish_date', \Carbon\Carbon::parse($blog->publish_date)->format('Y-m-d')) }}"
                                 aria-required="true"
-                                aria-describedby="error-publish_date hint-publish_date">
-                            <p id="hint-publish_date" class="input-hint">Date for Publishing/releasing of the Blog Provided.</p>
-                            <div id="error-publish_date" class="login__input-error w-5/6 text-theme-6" role="alert" aria-live="polite"></div>
+                                aria-describedby="error-start_date hint-start_date">
+                            <p id="hint-start_date" class="input-hint">Date for Starting of the Event.</p>
+                            <div id="error-start_date" class="login__input-error w-5/6 text-theme-6" role="alert" aria-live="polite"></div>
                         </div>
-
-                        {{-- Published By --}}
+                        {{-- End Date --}}
                         <div class="input-form col-span-12 lg:col-span-6 px-2 py-1 mt-1">
-                            <label for="publish_by" class="form-label">
-                                Published By <span class="required-mark" aria-hidden="true">*</span>
+                            <label for="end_date" class="form-label">
+                                End Date <span class="required-mark" aria-hidden="true">*</span>
                             </label>
                             <input
-                                id="publish_by"
+                                id="end_date"
+                                type="date"
+                                name="end_date"
+                                class="form-control form__input"
+                                aria-required="true"
+                                aria-describedby="error-end_date hint-end_date">
+                            <p id="hint-end_date" class="input-hint">Date for Ending of the Event.</p>
+                            <div id="error-end_date" class="login__input-error w-5/6 text-theme-6" role="alert" aria-live="polite"></div>
+                        </div>
+
+                        {{-- Address --}}
+                        <div class="input-form col-span-12 lg:col-span-6 px-2 py-1 mt-1">
+                            <label for="address" class="form-label">
+                                Address of Event <span class="required-mark" aria-hidden="true">*</span>
+                            </label>
+                            <textarea
+                                id="address"
                                 type="text"
-                                name="publish_by"
+                                name="address"
                                 class="form-control form__input"
-                                placeholder="Please provide Publisher Name"
-                                value="{{ old('publish_by', $blog->publish_by) }}"
+                                placeholder="Please provide Venue and Address Details"
                                 aria-required="true"
-                                aria-describedby="error-publish_by hint-publish_by">
-                            <p id="hint-publish_by" class="input-hint">Name of the Publisher for this Blog.</p>
-                            <div id="error-publish_by" class="login__input-error w-5/6 text-theme-6" role="alert" aria-live="polite"></div>
+                                aria-describedby="error-address hint-address"></textarea>
+                            <p id="hint-address" class="input-hint">Event Venue and Address Details for the Event.</p>
+                            <div id="error-address" class="login__input-error w-5/6 text-theme-6" role="alert" aria-live="polite"></div>
                         </div>
-
-                        {{-- Blog Image --}}
+                        {{-- City --}}
                         <div class="input-form col-span-12 lg:col-span-6 px-2 py-1 mt-1">
-                            <label for="blog_img" class="form-label">
-                                Blog Image
+                            <label for="city" class="form-label">
+                              Event City <span class="required-mark" aria-hidden="true">*</span>
                             </label>
                             <input
-                                id="blog_img"
+                                id="city"
+                                type="text"
+                                name="city"
+                                class="form-control form__input"
+                                placeholder="Please enter Event City"
+                                autocomplete="off"
+                                aria-required="true"
+                                aria-describedby="error-event_name hint-city">
+                            <p id="hint-city" class="input-hint">City of the Event / Location of the Event.</p>
+                            <div id="error-city" class="login__input-error w-5/6 text-theme-6" role="alert" aria-live="polite"></div>
+                        </div>
+
+                        {{-- Event Image --}}
+                        <div class="input-form col-span-12 lg:col-span-6 px-2 py-1 mt-1">
+                            <label for="event_img" class="form-label">
+                                Event Cover Image<span class="required-mark" aria-hidden="true">*</span>
+                            </label>
+                            <input
+                                id="event_img"
                                 type="file"
-                                name="blog_img"
+                                name="event_img"
                                 accept="image/png, image/jpeg, image/jpg"
                                 class="form-control form__input"
-                                aria-describedby="error-blog_img hint-blog_img">
-                            <p id="hint-blog_img" class="input-hint">Upload a new image to replace the current one (JPG, PNG, JPEG). Max size: 2MB. Leave blank to keep existing.</p>
-
-                            
-                            {{-- Current Image Preview --}}
-                            @if($blog->image_path)
-                            <div class="current-image-preview">
-                                <img
-                                    src="{{ asset('storage/' . $blog->image_path) }}"
-                                    alt="Current blog image"
-                                    id="current-img-thumb">
-                                <div class="current-image-label">
-                                    Current image &mdash;
-                                    <a href="{{ asset('storage/' . $blog->image_path) }}" target="_blank" rel="noopener noreferrer">View full size</a>
-                                </div>
-                            </div>
-                            @endif
-
-                            <div id="error-blog_img" class="login__input-error w-5/6 text-theme-6" role="alert" aria-live="polite"></div>
+                                aria-required="true"
+                                aria-describedby="error-event_img hint-event_img">
+                            <p id="hint-event_img" class="input-hint">Upload an Associated Image (JPG, PNG, JPEG). Max size: 2MB.</p>
+                            <div id="error-event_img" class="login__input-error w-5/6 text-theme-6" role="alert" aria-live="polite"></div>
                         </div>
 
                         {{-- Section: Authorization --}}
@@ -394,13 +340,12 @@
                                     type="checkbox"
                                     id="allowed"
                                     name="allowed"
-                                    value="1"
-                                    {{ old('1', $blog->is_allowed) ? 'checked' : '' }}>
+                                    value="1">
                                 <label class="form-check-label" for="allowed">
                                     Display on Homepage
                                 </label>
                             </div>
-                            <p id="hint-allowed" class="input-hint">Mark the Checkbox for Displaying Blog.</p>
+                            <p id="hint-allowed" class="input-hint">Mark the Checkbox for Displaying Event on the Homepage.</p>
                             <div id="error-allowed" class="login__input-error w-5/6 text-theme-6" role="alert" aria-live="polite"></div>
                         </div>
 
@@ -408,47 +353,42 @@
                         <div class="input-form col-span-12 lg:col-span-6 px-2 py-1 mt-1">
                             <label for="status" class="form-label">
                                 Status <span class="required-mark" aria-hidden="true">*</span>
-                                <span
-                                    id="status-badge"
-                                    class="status-preview {{ old('status', $blog->status) == 1 ? 'active' : 'inactive' }}"
-                                    aria-live="polite">
-                                    {{ old('status', $blog->status) == 1 ? 'Active' : 'InActive' }}
-                                </span>
+                                <span id="status-badge" class="status-preview inactive" aria-live="polite">InActive</span>
                             </label>
                             <select
                                 id="status"
                                 name="status"
                                 class="form-select form__input"
                                 aria-describedby="hint-status">
-                                <option value="0" {{ old('status', $blog->status) == 0 ? 'selected' : '' }}>Inactive</option>
-                                <option value="1" {{ old('status', $blog->status) == 1 ? 'selected' : '' }}>Active</option>
+                                <option value="0">Inactive</option>
+                                <option value="1">Active</option>
                             </select>
-                            <p id="hint-status" class="input-hint">Inactive blogs won't be visible on the Homepage.</p>
+                            <p id="hint-status" class="input-hint">Inactive events won't be visible on the Homepage.</p>
                         </div>
 
                         {{-- Description --}}
                         <div class="input-form col-span-12 lg:col-span-12 px-2 py-1 mt-2">
                             <label for="description" class="form-label">
-                                Blog Description
+                                Event Description
                             </label>
                             <textarea
                                 id="description"
                                 rows="5"
                                 name="description"
                                 class="form-control form__input tinymce"
-                                placeholder="Describe what's included in this blog, key features, and any limitations…"
+                                placeholder="Add a short description covering the event’s purpose, key highlights, and overall experience."
                                 minlength="2"
-                                aria-describedby="error-description hint-description">{{ old('description', $blog->description) }}</textarea>
-                            <p id="hint-description" class="input-hint">This description will be Blog's Content along with the Image.</p>
+                                aria-describedby="error-description hint-description"></textarea>
+                            <p id="hint-description" class="input-hint"></p>
                             <div id="error-description" class="login__input-error w-5/6 text-theme-6" role="alert" aria-live="polite"></div>
                         </div>
 
                         {{-- Actions --}}
                         <div class="input-form col-span-12 lg:col-span-12 px-2 py-1 mt-5 flex flex-wrap gap-3 items-center">
-                            <button type="submit" id="btn-update" class="btn btn-primary" aria-label="Save blog changes">
-                                Update Blog
+                            <button type="submit" id="btn-add" class="btn btn-primary" aria-label="Save new event">
+                                Add Event
                             </button>
-                            <a href="{{ url('/admin/Blog') }}" id="btn-cancel" class="btn btn-outline-secondary" aria-label="Cancel and return to blogs list">
+                            <a href="{{ url('/admin/Events') }}" id="btn-cancel" class="btn btn-outline-secondary" aria-label="Cancel and return to events list">
                                 Cancel
                             </a>
                         </div>
@@ -479,60 +419,42 @@
             }
         });
 
-        // Live image preview on new file selection
-        cash('#blog_img').on('change', function() {
-            var file = this.files[0];
-            if (!file) return;
-
-            var thumb = document.getElementById('current-img-thumb');
-            if (thumb) {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    thumb.src = e.target.result;
-                };
-                reader.readAsDataURL(file);
-            }
-        });
-
-        async function update() {
+        async function add() {
 
             // Reset all errors
-            cash('#edit-form').find('input, select, textarea').removeClass('border-theme-6');
-            cash('#edit-form').find('.login__input-error').html('');
+            cash('#add-form').find('input, select, textarea').removeClass('border-theme-6');
+            cash('#add-form').find('.login__input-error').html('');
 
             // Reset TinyMCE border
             if (typeof tinymce !== "undefined" && tinymce.get('description')) {
                 tinymce.get('description').getContainer().style.border = '';
             }
 
-            var formData = new FormData(document.querySelector('#edit-form'));
+            var formData = new FormData(document.querySelector('#add-form'));
 
-            // Spoof PUT method for Laravel
-            formData.append('_method', 'PUT');
-
-            cash('#btn-update')
+            cash('#btn-add')
                 .html('<i data-loading-icon="oval" data-color="white" class="w-4 h-4 mr-2"></i> Saving…')
                 .svgLoader();
 
-            cash('#btn-update').attr('disabled', 'true');
+            cash('#btn-add').attr('disabled', 'true');
 
-            axios.post("{{ route('admin-blogs-update', encrypt($blog->id)) }}", formData)
+            axios.post("{{ url('/admin/Events/store') }}", formData)
                 .then(res => {
                     showNotification('success', 'Success!', res.data.message);
 
                     setTimeout(() => {
-                        window.location.href = "{{ url('/admin/Blog') }}";
+                        window.location.href = "{{ url('/admin/Events') }}";
                     }, 1000);
                 })
                 .catch(err => {
 
                     showNotification('error', 'Error!', err.response.data.message);
 
-                    cash('#btn-update').html(
-                        '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Update Blog'
+                    cash('#btn-add').html(
+                        '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Add Event'
                     );
 
-                    cash('#btn-update').removeAttr('disabled');
+                    cash('#btn-add').removeAttr('disabled');
 
                     if (err.response.data.errors) {
 
@@ -548,8 +470,8 @@
                                 }
                             }
 
-                            if (key === 'blog_img') {
-                                field = cash('#blog_img');
+                            if (key === 'event_img') {
+                                field = cash('#event_img');
                             }
 
                             // Add error class
@@ -572,9 +494,9 @@
         }
 
         // Submit handler
-        cash('#edit-form').on('submit', function(e) {
+        cash('#add-form').on('submit', function(e) {
             e.preventDefault();
-            update();
+            add();
         });
 
         // Remove error on input change

@@ -112,4 +112,39 @@ class BlogController extends Controller
         $blog = Blog::find($id);
         return view('admin.blogs.edit')->with('blog', $blog);
     }
+
+    public function update(Request $request, $id)
+    {
+        try {
+            $id = decrypt($id);
+            $input = $request->all();
+
+            $blog = Blog::find($id);
+
+            if ($blog) {
+
+                $blog->title = $input['title'];
+                $blog->publish_date = $input['publish_date'];
+                $blog->publish_by     = $input['publish_by'];
+                $blog->is_allowed  = $input['allowed'] ?? 0;
+                $blog->status  = $input['status'];
+                $blog->description  = $input['description'];
+                $blog->updated_at = Carbon::now();
+
+                if ($request->hasFile('blog_img')) {
+                    $file = $request->file('blog_img');
+                    $filename = 'blog_image_' . Str::uuid() . '.' . $file->getClientOriginalExtension();
+                    $filepath = $file->storeAs('blogs/images', $filename, 'public');
+                    $blog->image_path = $filepath;
+                }
+
+                $blog->save();
+
+            }
+
+            return response(['message' => 'Blog updated successfully.'], 200);
+        } catch (Exception $e) {
+            return response(['message' => 'Something went wrong.'], 503);
+        }
+    }
 }

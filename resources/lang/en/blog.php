@@ -11,6 +11,7 @@ return [
     "status" => "Status",
     "created_at" => "Created Date",
     "allowed" => "Allowed",
+    "Publishing_date" => "Publishing Date",
 
 
 
