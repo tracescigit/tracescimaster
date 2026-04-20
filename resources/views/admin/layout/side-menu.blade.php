@@ -411,15 +411,15 @@
                 </a>
             </li>
             @endif
-            @if (inAllowedPermissionsByModuleSlug(Auth::id(),'book-demo','view'))
+            @if (inAllowedPermissionsByModuleSlug(Auth::id(),'demo schedule','view'))
             <li>
-                <a href="{{ url('admin/Book-demo') }}" class="side-menu {{request()->is('admin/Book-demo*')?'side-menu--active':''}}">
+                <a href="{{ url('admin/demo-schedule-details') }}" class="side-menu {{request()->is('admin/demo-schedule-details*')?'side-menu--active':''}}">
                     <div class="side-menu__icon">
                         <i data-feather="phone"></i>
                     </div>
                     <div class="side-menu__title">
-                        Book Demo
-                    </div>
+                     Demo Schedule
+                     </div>
                 </a>
             </li>
             @endif

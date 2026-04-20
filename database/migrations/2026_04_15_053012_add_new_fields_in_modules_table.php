@@ -60,15 +60,15 @@ class AddNewFieldsInModulesTable extends Migration
             array(
                 'type'          => '1',
                 'menu_position' => '16',
-                'base_route'    => 'admin-book-demo',
-                'name'          => 'Book Demo',
+                'base_route'    => 'admin-demo-schedule',
+                'name'          => 'Demo Schedule',
                 'icon'          => 'bookmark',
-                'slug'          => Str::slug('Book Demo'),
+                'slug'          => Str::slug('Demo Schedule'),
                 'view_routes'   => json_encode([
-                    'admin-book-demo','admin-book-demo-views'
+                    'admin-demo-schedule','admin-demo-schedule-views'
                 ]),
                 'modify_routes' => json_encode([
-                    'admin-book-demo-create','admin-book-demo-update'
+                    'demo-schedule-create','demo-schedule-store','demo-schedule-update','demo-schedule-edit'
                 ]),
                 'status'        => '1',
                 'created_at'    => Carbon::now(),

@@ -2,6 +2,6 @@
 
 return [
 
-"demo" => "Book Demo",
+"demo" => "Demo Schedule",
 
 ];

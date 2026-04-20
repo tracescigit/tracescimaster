@@ -21,6 +21,7 @@ class CreateTableDemoSchedulingInDatabase extends Migration
 
             // Organization
             $table->string('company_name')->nullable();
+            $table->string('company_email')->nullable();
 
             // Scheduling
             $table->date('demo_date');
@@ -28,6 +29,7 @@ class CreateTableDemoSchedulingInDatabase extends Migration
 
             // Optional
             $table->text('message')->nullable();
+            $table->integer('created_by')->nullable();
 
             // System
             $table->smallInteger('status')->default(0);

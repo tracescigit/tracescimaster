@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\ScanController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DarkModeController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\CronController;
+use App\Http\Controllers\DemoController;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
@@ -29,6 +31,13 @@ Route::get('/cancellation-or-refund-policy', [PageController::class, 'cancellati
 Route::post('/subscribe', [PageController::class, 'addSubscriber'])->name('subscribe');
 
 Route::get('/generate-invoices', [CronController::class, 'generateInvoices'])->name('generateInvoices');
+
+// Demo Scheduling
+Route::get('/demo-scheduling', [DemoController::class, 'create'])->name('demo-schedule-create');
+Route::post('/demo-schedule-details/store', [App\Http\Controllers\DemoController::class, 'store'])->name('demo-schedule-store');
+
+
+
 
 //Scan codes
 Route::get('/p/{code}', [ScanController::class, 'show']);
@@ -210,17 +219,16 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin', 'auth']], function 
     //end Blog routes
 
     // Events routes
-    Route::get('/Events', [App\Http\Controllers\Admin\EventController::class,'index'])->name('admin-events');
-    Route::get('/Events/create', [App\Http\Controllers\Admin\EventController::class,'create'])->name('admin-events-create');
-    Route::post('/Events/store', [App\Http\Controllers\Admin\EventController::class,'store'])->name('admin-events-store');
-    Route::get('/Events/{id}/edit', [App\Http\Controllers\Admin\EventController::class,'edit'])->name('admin-events-edit');
-    Route::put('/Events/{id}/update', [App\Http\Controllers\Admin\EventController::class,'update'])->name('admin-events-update');
+    Route::get('/Events', [App\Http\Controllers\Admin\EventController::class, 'index'])->name('admin-events');
+    Route::get('/Events/create', [App\Http\Controllers\Admin\EventController::class, 'create'])->name('admin-events-create');
+    Route::post('/Events/store', [App\Http\Controllers\Admin\EventController::class, 'store'])->name('admin-events-store');
+    Route::get('/Events/{id}/edit', [App\Http\Controllers\Admin\EventController::class, 'edit'])->name('admin-events-edit');
+    Route::put('/Events/{id}/update', [App\Http\Controllers\Admin\EventController::class, 'update'])->name('admin-events-update');
 
     //end Events routes
 
     //Demo routes
-    Route::get('/Book-demo', [App\Http\Controllers\Admin\DemoController::class,'index'])->name('admin-book-demo');
-
+    Route::get('/demo-schedule-details', [App\Http\Controllers\DemoController::class, 'index'])->name('admin-demo-schedule');
 });
 
 Route::group(['prefix' => 'vendor', 'middleware' => ['vendor', 'auth']], function () {
