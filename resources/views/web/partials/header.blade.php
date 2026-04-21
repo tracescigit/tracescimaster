@@ -65,7 +65,7 @@
         </a>
         <div class="header-contact">
           <ul>
-            <li class="consult-search"><a href="#">BOOK A DEMO</a></li>
+            <li class="consult-search"><a href="{{ route('demo-schedule-create') }}">Schedule Demo</a></li>
           </ul>
         </div>
         <!-- SEARCH + ICON -->
@@ -98,7 +98,7 @@
           <li>
             <a href="#pricing_table">Products</a>
             <ul class="dropdown">
-              <li><a href="#howitworks">Razor 6</a></li>
+              <li><a href="{{ route('product-razor6') }}">Razor 6</a></li>
               <li><a href="#features">Elite 4</a></li>
               <li><a href="#application">Inspection</a></li>
             </ul>

@@ -174,9 +174,9 @@
         /* Rotating words */
         .hero-tagline {
             font-family: 'Syne', sans-serif;
-            font-size: clamp(52px, 7vw, 100px);
+            font-size: clamp(52px, 7vw, 70px);
             font-weight: 800;
-            line-height: 0.95;
+            line-height: 1.2;
             text-transform: uppercase;
             margin-bottom: 40px;
         }
@@ -199,7 +199,7 @@
             font-weight: 500;
             color: rgba(255, 255, 255, 0.85);
             line-height: 1.3;
-            margin-bottom: 40px;
+            margin-bottom: 6px;
         }
 
         .hero-body {
@@ -1382,8 +1382,8 @@
         </div>
 
         <div class="hero-right">
-            <img class="hero-photo" src="https://cdn.prod.website-files.com/618bcfd8f178447ade4b3ba0/61bcb3c74494053435e55d8e_Modes-home-1.jpg" alt="Women in a creative meeting" />
-            <img class="hero-shape" src="https://cdn.prod.website-files.com/618bcfd8f178447ade4b3ba0/618bd4d675ac20766230e2ac_shape-white-hero.svg" alt="" />
+            <img class="hero-photo" src="{{ asset('dist/images/razor6.png')}}" alt="Razor6 Inkjet System" />
+            
             <img class="hero-icon" src="" alt="" />
         </div>
         <!-- <div class="scroll-indicator">
