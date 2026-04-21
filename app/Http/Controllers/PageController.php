@@ -41,6 +41,10 @@ class PageController extends Controller
     {
         return view('web.cancellation.index');
     }
+    public function razor6()
+    {
+        return view('web.products.razor6');
+    }
 
     public function addSubscriber(SubscribeRequest $request)
     {

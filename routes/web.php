@@ -36,6 +36,9 @@ Route::get('/generate-invoices', [CronController::class, 'generateInvoices'])->n
 Route::get('/demo-scheduling', [DemoController::class, 'create'])->name('demo-schedule-create');
 Route::post('/demo-schedule-details/store', [App\Http\Controllers\DemoController::class, 'store'])->name('demo-schedule-store');
 
+// products organisation 
+Route::get('/product/razor6',[PageController::class,'razor6'])->name('product-razor6');
+
 
 
 
