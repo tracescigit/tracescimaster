@@ -1693,7 +1693,7 @@ body:not(.fixed-header) .header-v3 .mega-menu > li > a::before {
 }
 
 .header-contact {
-  background: #f2f2f2;
+  
   padding: 12px 0 0px;
 }
 .header-contact .header-social {
@@ -6037,10 +6037,8 @@ blockquote:before {
   padding-bottom: 96px;
 }
 .testimonials:before {
-  opacity: 0.85;
-  background: transparent
-    linear-gradient(45deg, #700877 0%, #ff2759 100%, #ff2759 100%) repeat scroll
-    0 0;
+  opacity: 0.9;
+  background: linear-gradient(135deg, #4a0050 0%, #7a0d7d 50%, #ff3d7f 100%);
 }
 .testimonials .owl-controls .owl-nav > div {
   border: none;
@@ -7979,10 +7977,8 @@ blockquote:before {
   background: url("../images/1920x600.jpg") no-repeat center center;
 }
 .video-home .bg-gradient:before {
-  opacity: 0.8;
-  background: transparent
-    linear-gradient(45deg, #700877 0%, #ff2759 100%, #ff2759 100%) repeat scroll
-    0 0;
+    opacity: 0.9;
+  background: linear-gradient(135deg, #4a0050 0%, #7a0d7d 50%, #ff3d7f 100%);
 }
 
 .video-container {
