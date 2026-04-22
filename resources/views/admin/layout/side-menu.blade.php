@@ -10,7 +10,7 @@
     <!-- BEGIN: Side Menu -->
     <nav class="side-nav">
         <a href="{{ url('/admin') }}" class="intro-x flex items-center pl-5 pt-4">
-            <img width="60%"  alt="Tracesci" src="{{asset('web/images/logo.png')}}" class="hidden xl:block"></a>
+            <img width="60%" alt="Tracesci" src="{{asset('web/images/logo.png')}}" class="hidden xl:block"></a>
         </a>
         <div class="side-nav__devider my-6"></div>
         <ul>
@@ -223,7 +223,7 @@
             </li>
             @endif
 
-            
+
 
             @if (inAllowedPermissionsByModuleSlug(Auth::id(),'qr-label-orders','modify'))
             <li>
@@ -344,7 +344,7 @@
                 </ul>
             </li>
             @endif
-            
+
             @if (inAllowedPermissionsByModuleSlug(Auth::id(),'users','view'))
             <li>
                 <a href="javascript:;" class="side-menu {{request()->is('admin/users*')?'side-menu--active':''}}">
@@ -387,7 +387,42 @@
                 </ul>
             </li>
             @endif
-
+            @if (inAllowedPermissionsByModuleSlug(Auth::id(),'blogs','view'))
+            <li>
+                <a href="{{ url('admin/Blog') }}" class="side-menu {{request()->is('admin/Blog*')?'side-menu--active':''}}">
+                    <div class="side-menu__icon">
+                        <i data-feather="link"></i>
+                    </div>
+                    <div class="side-menu__title">
+                        Blogs   
+                    </div>
+                </a>
+            </li>
+            @endif
+            @if (inAllowedPermissionsByModuleSlug(Auth::id(),'events','view'))
+            <li>
+                <a href="{{ url('admin/Events') }}" class="side-menu {{request()->is('admin/Events*')?'side-menu--active':''}}">
+                    <div class="side-menu__icon">
+                        <i data-feather="calendar"></i>
+                    </div>
+                    <div class="side-menu__title">
+                        Events   
+                    </div>
+                </a>
+            </li>
+            @endif
+            @if (inAllowedPermissionsByModuleSlug(Auth::id(),'demo schedule','view'))
+            <li>
+                <a href="{{ url('admin/demo-schedule-details') }}" class="side-menu {{request()->is('admin/demo-schedule-details*')?'side-menu--active':''}}">
+                    <div class="side-menu__icon">
+                        <i data-feather="phone"></i>
+                    </div>
+                    <div class="side-menu__title">
+                     Demo Schedule
+                     </div>
+                </a>
+            </li>
+            @endif
             <li>
                 <a href="{{ url('admin/support') }}" class="side-menu {{request()->is('admin/support*')?'side-menu--active':''}}">
                     <div class="side-menu__icon">

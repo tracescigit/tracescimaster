@@ -73,7 +73,6 @@ class MenuComposer
         $firstLevelActiveIndex = '';
         $secondLevelActiveIndex = '';
         $thirdLevelActiveIndex = '';
-        
 
         if ($layout == 'top-menu') {
             foreach (TopMenu::menu() as $menuKey => $menu) {

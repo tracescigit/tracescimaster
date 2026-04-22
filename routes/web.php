@@ -1,10 +1,13 @@
 <?php
 
+use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\ScanController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DarkModeController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\CronController;
+use App\Http\Controllers\DemoController;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,6 +31,16 @@ Route::get('/cancellation-or-refund-policy', [PageController::class, 'cancellati
 Route::post('/subscribe', [PageController::class, 'addSubscriber'])->name('subscribe');
 
 Route::get('/generate-invoices', [CronController::class, 'generateInvoices'])->name('generateInvoices');
+
+// Demo Scheduling
+Route::get('/demo-scheduling', [DemoController::class, 'create'])->name('demo-schedule-create');
+Route::post('/demo-schedule-details/store', [App\Http\Controllers\DemoController::class, 'store'])->name('demo-schedule-store');
+
+// products organisation 
+Route::get('/product/razor6',[PageController::class,'razor6'])->name('product-razor6');
+
+
+
 
 //Scan codes
 Route::get('/p/{code}', [ScanController::class, 'show']);
@@ -200,6 +213,25 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin', 'auth']], function 
     Route::get('/qr-label-orders/{id}/show', [App\Http\Controllers\Admin\QrLabelController::class, 'show'])->name('admin-show-qr-label-orders');
     //End QR Label Orders
 
+    //Blog routes
+    Route::get('/Blog', [App\Http\Controllers\Admin\BlogController::class, 'index'])->name('admin-blog');
+    Route::get('/Blog/Create', [App\Http\Controllers\Admin\BlogController::class, 'create'])->name('admin-blogs-create');
+    Route::post('/Blog/store', [App\Http\Controllers\Admin\BlogController::class, 'store'])->name('admin-blogs-store');
+    Route::get('/Blogs/{id}/edit', [App\Http\Controllers\Admin\BlogController::class, 'edit'])->name('admin-blogs-edit');
+    Route::put('/Blogs/{id}/update', [App\Http\Controllers\Admin\BlogController::class, 'update'])->name('admin-blogs-update');
+    //end Blog routes
+
+    // Events routes
+    Route::get('/Events', [App\Http\Controllers\Admin\EventController::class, 'index'])->name('admin-events');
+    Route::get('/Events/create', [App\Http\Controllers\Admin\EventController::class, 'create'])->name('admin-events-create');
+    Route::post('/Events/store', [App\Http\Controllers\Admin\EventController::class, 'store'])->name('admin-events-store');
+    Route::get('/Events/{id}/edit', [App\Http\Controllers\Admin\EventController::class, 'edit'])->name('admin-events-edit');
+    Route::put('/Events/{id}/update', [App\Http\Controllers\Admin\EventController::class, 'update'])->name('admin-events-update');
+
+    //end Events routes
+
+    //Demo routes
+    Route::get('/demo-schedule-details', [App\Http\Controllers\DemoController::class, 'index'])->name('admin-demo-schedule');
 });
 
 Route::group(['prefix' => 'vendor', 'middleware' => ['vendor', 'auth']], function () {

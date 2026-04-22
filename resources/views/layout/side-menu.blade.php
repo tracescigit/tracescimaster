@@ -27,7 +27,7 @@
                         <i data-feather="{{ $menu['icon'] }}"></i>
                     </div>
                     <div class="side-menu__title">
-                        {{ $menu['title'] }}
+                    {{ $menu['title'] }}
                         @if (isset($menu['sub_menu']))
                         <div class="side-menu__sub-icon">
                             <i data-feather="chevron-down"></i>
