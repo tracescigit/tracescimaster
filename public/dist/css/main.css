@@ -1698,8 +1698,8 @@ input:focus {
   text-transform: uppercase;
   padding-top: 14px;
   color: white;
-  background-color: #7a0d7d;
-  border: 2px solid #7a0d7d;
+  background-color: #343434;
+  border: 2px solid #343434;
 }
 .all-link a:hover {
   border: 2px solid #222;
