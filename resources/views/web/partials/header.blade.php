@@ -92,9 +92,7 @@
             </ul>
           </li>
 
-          <li>
-            <a href="#pricing_table">Pricing Plan</a>
-          </li>
+         
           <li>
             <a href="#pricing_table">Products</a>
             <ul class="dropdown">
