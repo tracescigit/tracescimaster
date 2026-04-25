@@ -11,8 +11,8 @@
     <nav class="side-nav">
         <a href="" class="intro-x flex items-center pl-5 pt-4">
 
-            <span class="hidden xl:block text-white text-lg ml-3">
-                TRACESCI
+            <span class="hidden xl:block text-dark text-lg ml-3">
+               Tracesci.in
             </span>
         </a>
         <div class="side-nav__devider my-6"></div>

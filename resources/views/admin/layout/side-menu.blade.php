@@ -10,8 +10,15 @@
     <!-- BEGIN: Side Menu -->
     <nav class="side-nav">
         <a href="{{ url('/admin') }}" class="intro-x flex items-center pl-5 pt-4">
-            <img width="60%" alt="Tracesci" src="{{asset('web/images/logo.png')}}" class="hidden xl:block"></a>
+            <img width="80%" alt="Tracesci" src="{{asset('dist/images/logo_color.png')}}" class="hidden xl:block"></a>
         </a>
+            <!-- <a href="{{ url('/') }}" class="menuzord-brand">
+                @if (request()->route()->uri!='p/{code}')
+                <span>tracesci.</span>
+                @else
+                <span class="text-white">{{ $brand }}</span>
+                @endif
+            </a> -->
         <div class="side-nav__devider my-6"></div>
         <ul>
             <li>
@@ -394,7 +401,7 @@
                         <i data-feather="link"></i>
                     </div>
                     <div class="side-menu__title">
-                        Blogs   
+                        Blogs
                     </div>
                 </a>
             </li>
@@ -406,7 +413,7 @@
                         <i data-feather="calendar"></i>
                     </div>
                     <div class="side-menu__title">
-                        Events   
+                        Events
                     </div>
                 </a>
             </li>
@@ -418,8 +425,8 @@
                         <i data-feather="phone"></i>
                     </div>
                     <div class="side-menu__title">
-                     Demo Schedule
-                     </div>
+                        Demo Schedule
+                    </div>
                 </a>
             </li>
             @endif
