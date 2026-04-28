@@ -190,7 +190,7 @@
           <div class="main-shadow-heading">
             <h2>Hello, We Are Tracesci</h2>
           </div>
-          <h2>Hello, We Are Tracesci</h2>
+          <h2>Hello, We Are  <span style="color:#7a0d7d";>Tracesci</span></h2>
           <h3>Do More With Social Media</h3>
         </div>
       </div>
@@ -269,7 +269,7 @@
           <div class="title-block">
             <div class="riven-heading text-center" data-sr="enter top wait 0.3s">
               <h2>
-                Powered by <span>Block Chain</span> Authentic, safe and connected
+                Powered by <span style="color:#7a0d7d";>Block Chain</span> Authentic, safe and connected
               </h2>
             </div>
           </div>
@@ -353,7 +353,7 @@
           <div class="main-shadow-heading">
             <h2>Amazing <span>Features</span></h2>
           </div>
-          <h2>Amazing <span>Features</span></h2>
+          <h2>Amazing <span style="color:#7a0d7d";>Features</span></h2>
           <h3>Satisfy Your Needs</h3>
         </div>
       </div>

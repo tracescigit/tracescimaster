@@ -1802,7 +1802,7 @@ input:focus {
   margin-top: 45px;
 }
 .pricing-table-head {
-  background: #7a0d7d;
+  background: #333;
   padding: 7px 45px 45px 45px;
   position: relative;
 }
@@ -1820,7 +1820,7 @@ input:focus {
 }
 .pricing-head-top span {
   font-size: 16px;
-  color: #1b1a1a;
+  color: #ffffff;
   font-weight: bold;
   display: inline-block;
   margin-bottom: 20px;
@@ -2052,8 +2052,7 @@ input:focus {
 .help-slider-content {
   position: relative;
 }
-.help-slider-content {
-}
+  
 .help-slider-img {
   margin-top: 40px;
   margin-left: 30px;
@@ -2083,10 +2082,12 @@ input:focus {
   right: 30px;
 }
 .help-slider-text img {
-  width: auto !important;
+  width: 100% !important;
+  min-width: 800px;
+  height: auto;
   position: absolute;
-  top: 30px;
-  left: 30px;
+  display: block;
+  margin: 0;
 }
 .help-slider-img h2 {
   font-size: 16px;
@@ -2518,12 +2519,12 @@ input:focus {
 .footer-top-btn a:nth-of-type(2) {
   color: #7a0d7d;
   margin-bottom: 5px;
-  border: 2px solid #7a0d7d;
-  background-color: #000;
+  /* border: 2px solid #7a0d7d; */
+  background-color: #ffffff;
 }
 .footer-top-btn a:hover {
-  border: 2px solid #7a0d7d;
-  background: #7a0d7d;
+  border: 2px solid #663968;
+  background: #663968;
   color: #fff;
 }
 /*FOOTER MAIN CONTENT*/
