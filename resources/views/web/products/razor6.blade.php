@@ -34,7 +34,7 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Lora', serif;
             font-size: 16px;
             color: var(--text);
             background: var(--white);
@@ -128,7 +128,7 @@
         }
 
         .contact-tagline {
-            font-family: 'Syne', sans-serif;
+            font-family: 'Lora', serif;
             font-size: clamp(28px, 3vw, 44px);
             font-weight: 800;
             color: var(--navy);
@@ -138,7 +138,7 @@
         }
 
         .contact-tagline span {
-            color: var(--teal);
+            color: #7a0d7d;
         }
 
         .contact-body {
@@ -173,7 +173,7 @@
 
         /* Rotating words */
         .hero-tagline {
-            font-family: 'Syne', sans-serif;
+            font-family: 'Lora', serif;
             font-size: clamp(52px, 7vw, 70px);
             font-weight: 800;
             line-height: 1.2;
@@ -194,7 +194,7 @@
         }
 
         .hero-subtitle {
-            font-family: 'Syne', sans-serif;
+            font-family: 'Lora', serif;
             font-size: clamp(20px, 2.5vw, 32px);
             font-weight: 500;
             color: rgba(255, 255, 255, 0.85);
@@ -333,7 +333,7 @@
         }
 
         #logos h2 {
-            font-family: 'Syne', sans-serif;
+            font-family: 'Lora', serif;
             font-size: 20px;
             font-weight: 700;
             margin-bottom: 32px;
@@ -396,20 +396,20 @@
             letter-spacing: 0.18em;
             text-transform: uppercase;
             font-weight: 600;
-            color: var(--teal);
+            color: 7a0d7d;
         }
 
         .section-heading {
-            font-family: 'Syne', sans-serif;
-            font-size: clamp(32px, 4vw, 56px);
-            font-weight: 800;
+            font-family: 'Lora', serif;
+            font-size: 28px;
+            font-weight: bold;
             line-height: 1.05;
-            color: var(--navy);
+            color: 7a0d7d;
             margin-bottom: 20px;
         }
 
         .section-heading .highlight {
-            color: var(--teal);
+            color: 7a0d7d;
         }
 
         .section-heading .italic {
@@ -420,8 +420,8 @@
             font-size: 17px;
             line-height: 1.75;
             color: var(--muted);
-            max-width: 600px;
             margin-bottom: 48px;
+            text-align: center;
         }
 
         /* ── SERVICES ── */
@@ -449,7 +449,7 @@
         }
 
         .service-title {
-            font-family: 'Syne', sans-serif;
+            font-family: 'Lora', serif;
             font-size: 22px;
             font-weight: 700;
             color: var(--navy);
@@ -601,7 +601,7 @@
         }
 
         .sol-num {
-            font-family: 'Syne', sans-serif;
+            font-family: 'Lora', serif;
             font-size: 48px;
             font-weight: 800;
             color: #f0efeb;
@@ -630,7 +630,7 @@
         }
 
         .sol-title {
-            font-family: 'Syne', sans-serif;
+            font-family: 'Lora', serif;
             font-size: 18px;
             font-weight: 700;
             color: var(--navy);
@@ -647,7 +647,7 @@
         /* ── ANCILLARY ── */
         #ancillary {
             background: var(--white);
-            display: grid;
+            align-items: center;
             grid-template-columns: 1fr 1fr;
             gap: 80px;
             align-items: start;
@@ -655,7 +655,7 @@
 
         .ancillary-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
             gap: 14px;
         }
 
@@ -668,8 +668,8 @@
         }
 
         .ancillary-item:hover {
-            border-color: var(--teal);
-            background: var(--teal-light);
+            border-color: #7a0d7d;
+            background: #e9d6ea;
         }
 
         .anc-icon {
@@ -687,7 +687,7 @@
         .anc-icon svg {
             width: 18px;
             height: 18px;
-            stroke: var(--teal);
+            stroke: #7a0d7d;
             fill: none;
             stroke-width: 1.8;
         }
@@ -767,7 +767,7 @@
             color: var(--white);
             padding: 20px 28px;
             border-radius: 8px;
-            font-family: 'Syne', sans-serif;
+            font-family: 'Lora', serif;
             font-size: 15px;
             font-weight: 700;
             line-height: 1.2;
@@ -795,9 +795,9 @@
         }
 
         .specs-table-header {
-            background: var(--navy);
+            background: #222222;
             padding: 18px 28px;
-            font-family: 'Syne', sans-serif;
+            font-family: 'Lora', serif;
             font-size: 13px;
             font-weight: 700;
             letter-spacing: 0.12em;
@@ -825,9 +825,43 @@
             border-right: 1px solid var(--border);
             background: #fafafa;
         }
+         .spec-key-tech {
+            padding: 23px 28px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--muted);
+            border-right: 1px solid var(--border);
+            background: #fafafa;
+        }
+        .spec-val-tech {
+            padding: 14px 28px;
+            font-size: 13px;
+            color: var(--navy);
+            font-weight: 500;
+            line-height: 1.5;
+        }
+          .spec-key-tech2 {
+            padding: 34px 28px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--muted);
+            border-right: 1px solid var(--border);
+            background: #fafafa;
+        }
+        .spec-val-tech2 {
+            padding: 32px 28px;
+            font-size: 13px;
+            color: var(--navy);
+            font-weight: 500;
+            line-height: 1.5;
+        }
 
         .spec-val {
-            padding: 14px 20px;
+            padding: 14px 28px;
             font-size: 13px;
             color: var(--navy);
             font-weight: 500;
@@ -835,18 +869,30 @@
         }
 
         .spec-val .highlight {
-            color: var(--teal);
+            color: #7a0d7d;
             font-weight: 700;
         }
 
         /* ── HOW WE'RE DIFFERENT ── */
         #different {
-            background: var(--navy);
+            background: rgb(34, 34, 34);
             color: var(--white);
+            align-items: center;
         }
 
         #different .section-heading {
             color: var(--white);
+        }
+
+        .different_section {
+            display: flex;
+            /* 🔥 required */
+            flex-direction: column;
+            /* stack items vertically */
+            align-items: center;
+            /* now it works */
+            text-align: center;
+            /* center text */
         }
 
         .diff-body {
@@ -856,6 +902,17 @@
             max-width: 640px;
             margin-bottom: 40px;
         }
+
+        /* --Tech Specfication -- */
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            margin-top: 48px;
+        }
+
+
 
         .env-grid {
             display: grid;
@@ -873,7 +930,7 @@
         }
 
         .env-card:hover {
-            border-color: var(--teal);
+            border-color: #7a0d7d;
             background: var(--light);
         }
 
@@ -891,13 +948,13 @@
         .env-icon svg {
             width: 24px;
             height: 24px;
-            stroke: var(--teal);
+            stroke: #700877;
             fill: none;
             stroke-width: 1.8;
         }
 
         .env-title {
-            font-family: 'Syne', sans-serif;
+            font-family: 'Lora', serif;
             font-size: 18px;
             font-weight: 700;
             color: var(--white);
@@ -911,7 +968,7 @@
         }
 
         .env-value {
-            font-family: 'Syne', sans-serif;
+            font-family: 'Lora', serif;
             font-size: 28px;
             font-weight: 800;
             color: var(--orange);
@@ -1015,7 +1072,7 @@
         .marquee-track {
             display: inline-block;
             animation: marquee 22s linear infinite;
-            font-family: 'Syne', sans-serif;
+            font-family: 'Lora', serif;
             font-size: 13px;
             font-weight: 700;
             letter-spacing: 0.12em;
@@ -1045,7 +1102,7 @@
 
 
         .idea-title {
-            font-family: 'Syne', sans-serif;
+            font-family: 'Lora', serif;
             font-size: 17px;
             font-weight: 700;
             color: var(--navy);
@@ -1091,7 +1148,7 @@
         }
 
         .contact-form-wrap h2 {
-            font-family: 'Syne', sans-serif;
+            font-family: 'Lora', serif;
             font-size: 28px;
             font-weight: 700;
             color: var(--navy);
@@ -1124,7 +1181,7 @@
             padding: 12px 16px;
             border: 1.5px solid var(--border);
             border-radius: 4px;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Lora', serif;
             font-size: 14px;
             color: var(--text);
             background: var(--white);
@@ -1148,7 +1205,7 @@
             border: none;
             padding: 14px 32px;
             border-radius: 4px;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Lora', serif;
             font-size: 14px;
             font-weight: 600;
             cursor: pointer;
@@ -1208,7 +1265,7 @@
         }
 
         .footer-col h4 {
-            font-family: 'Syne', sans-serif;
+            font-family: 'Lora', serif;
             font-size: 12px;
             font-weight: 700;
             letter-spacing: 0.15em;
@@ -1363,538 +1420,737 @@
   </nav> -->
 
     <!-- HERO -->
-    <section id="hero">
-        <div class="hero-left">
-            <div class="hero-tagline">
-                <span class="tagline-child">Switch to</span> <br>Razor6<br>
-                <span class="hero-word-rotate" id="rotateWord">High Speed PDF Printing</span><br>
 
-            </div>
-            <h1 class="hero-subtitle">High Speed<br>UV Inkjet Systems.</h1>
-            <p class="hero-body">Industrial-grade UV cured inkjet printing with piezo DOD technology. Quick return on investment, operator-friendly ink control, and unmatched throughput for modern production lines.</p>
-            <div class="hero-ctas">
-                <a href="{{ route('demo-schedule-create') }}" id=#services class="btn btn-primary">
-                    Schedule Demo
-                    <img src="https://cdn.prod.website-files.com/618bcfd8f178447ade4b3ba0/618d7c356cbe86d13fc25d4a_arrow-right.svg" alt="→" />
-                </a>
-                <a href="#specs" class="btn btn-ghost">Learn More</a>
-            </div>
-        </div>
+    @extends('web.layouts.app')
+    @section('content')
 
-        <div class="hero-right">
-            <img class="hero-photo" src="{{ asset('dist/images/razor6.png')}}" alt="Razor6 Inkjet System" />
-            
-            <img class="hero-icon" src="" alt="" />
-        </div>
-        <!-- <div class="scroll-indicator">
-      <img src="https://cdn.prod.website-files.com/618bcfd8f178447ade4b3ba0/618bd4d61949934deec2bc4b_arrow-down.svg" alt="scroll down"/>
-    </div> -->
-        <div class="scroll-indicator">
-            <div class="scroll-arrow">
-                <svg viewBox="0 0 24 24">
-                    <polyline points="6 9 12 15 18 9" />
-                </svg>
-            </div>
-            <span>Scroll to explore</span>
-        </div>
+    <!-- slider -->
 
-    </section>
+    <div class="rev_slider_wrapper">
+        <div id="slider1" class="rev_slider" data-version="5.0">
+            <ul>
 
+                <!-- SLIDE 1 -->
+                <li data-index="rs-1" data-transition="parallaxtoright" data-delay="6500">
 
-    <div id="marquee-strip">
-        <!-- MARQUEE -->
-        <div class="marquee-track">
-            <span>Industrial Inkjet</span><span class="sep">◆</span>
-            <span>Variable Data Printing</span><span class="sep">◆</span>
-            <span>Online Verification</span><span class="sep">◆</span>
-            <span>UV Curable Inks</span><span class="sep">◆</span>
-            <span>High Speed PDF</span><span class="sep">◆</span>
-            <span>Piezo DOD Technology</span><span class="sep">◆</span>
-            <span>600 DPI Resolution</span><span class="sep">◆</span>
-            <span>150 mtr/min</span><span class="sep">◆</span>
-            <!-- duplicate -->
-            <span>Industrial Inkjet</span><span class="sep">◆</span>
-            <span>Variable Data Printing</span><span class="sep">◆</span>
-            <span>Online Verification</span><span class="sep">◆</span>
-            <span>UV Curable Inks</span><span class="sep">◆</span>
-            <span>High Speed PDF</span><span class="sep">◆</span>
-            <span>Piezo DOD Technology</span><span class="sep">◆</span>
-            <span>600 DPI Resolution</span><span class="sep">◆</span>
-            <span>150 mtr/min</span><span class="sep">◆</span>
+                    <!-- MAIN IMAGE -->
+                    <img src="{{asset('dist/images/slide1.png')}}"
+                        class="rev-slidebg"
+                        data-bgposition="center center"
+                        data-bgfit="cover"
+                        data-bgrepeat="no-repeat">
+
+                    <!-- LAYER 1 -->
+                    <div class="tp-caption tp-resizeme"
+                        data-x="center"
+                        data-y="top"
+                        data-voffset="120"
+                        data-start="1200"
+                        data-transform_in="y:[100%];opacity:0;s:800;"
+                        data-transform_out="opacity:0;s:300" ;>
+                        <span class="sl-italic" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;">
+                            Let us help you to authenticate and track your product
+                        </span>
+                    </div>
+
+                    <!-- LAYER 2 -->
+                    <div class="tp-caption tp-resizeme"
+                        data-x="center" data-y="top" data-voffset="190"
+                        data-start="1800"
+                        data-transform_in="y:[100%];opacity:0;s:800;"
+                        data-transform_out="opacity:0;s:300" ;>
+                        <div class="text-center heading-rp-small" style="transition: none; line-height: 58px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 1px; font-weight: 800; font-size: 50px;">
+                            SUPPLY CHAIN TRACESCI PLATEFORM
+                        </div>
+                    </div>
+
+                    <!-- LAYER 3 -->
+                    <div class="tp-caption tp-resizeme"
+                        data-x="center" data-y="top" data-voffset="300"
+                        data-start="2400" data-transform_in="y:[100%];opacity:0;s:800;"
+                        data-transform_out="opacity:0;s:300" ;>
+                        <div class="sl-italic sl-italic-2 text-center" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;">
+                            Our strategists will help you set an objective and choose your tools,<br>
+                            developing a plan that is custom-built for your business.
+                        </div>
+                    </div>
+
+                    <!-- LAYER 4 (Buttons) -->
+                    <div class="tp-caption tp-resizeme"
+                        data-x="center" data-y="top" data-voffset="430"
+                        data-start="2800" data-transform_in="y:[100%];opacity:0;s:800;"
+                        data-transform_out="opacity:0;s:300" ;>
+                        <div class="rev-slider-btn text-center">
+                            <a a href="{{ url(Auth::check()?myDashboard():'/login') }}">Login</a>
+                            <a a href="{{ url(Auth::check()?myDashboard():'/register') }}">Register</a>
+                        </div>
+                    </div>
+
+                </li>
+
+                <!-- SLIDE 2 -->
+
+                <li data-index="rs-2" data-transition="parallaxtoright" data-delay="6500">
+
+                    <!-- MAIN IMAGE -->
+                    <img src="{{asset('dist/images/slide2.png')}}"
+                        class="rev-slidebg"
+                        data-bgposition="center center"
+                        data-bgfit="cover"
+                        data-bgrepeat="no-repeat">
+
+                    <!-- LAYER 1 -->
+                    <div class="tp-caption tp-resizeme"
+                        data-x="center" data-y="top" data-voffset="120"
+                        data-start="1200"
+                        data-transform_in="y:[100%];opacity:0;s:800;"
+                        data-transform_out="opacity:0;s:300" ;>
+                        <span class="sl-italic" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;">
+                            Informed decisions. Exceptional results
+                        </span>
+                    </div>
+
+                    <!-- LAYER 2 -->
+                    <div class="tp-caption tp-resizeme"
+                        data-x="center" data-y="top" data-voffset="190"
+                        data-start="1800" data-transform_in="y:[100%];opacity:0;s:800;"
+                        data-transform_out="opacity:0;s:300" ;>
+                        <div class="text-center heading-rp-small" style="transition: none; line-height: 58px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 1px; font-weight: 800; font-size: 50px;">
+                            We Measure The Social Web
+                        </div>
+                    </div>
+
+                    <!-- LAYER 3 -->
+                    <div class="tp-caption tp-resizeme"
+                        data-x="center" data-y="top" data-voffset="300"
+                        data-start="2400" data-transform_in="y:[100%];opacity:0;s:800;"
+                        data-transform_out="opacity:0;s:300" ;>
+                        <div class="sl-italic sl-italic-2 text-center" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;">
+                            Our strategists will help you set an objective and choose your tools,<br>
+                            developing a plan that is custom-built for your business.
+                        </div>
+                    </div>
+
+                    <!-- LAYER 4 (Buttons) -->
+                    <div class="tp-caption tp-resizeme"
+                        data-x="center" data-y="top" data-voffset="430"
+                        data-start="2800" data-transform_in="y:[100%];opacity:0;s:800;"
+                        data-transform_out="opacity:0;s:300" ;>
+                        <div class="rev-slider-btn text-center">
+                            <a href="#">Read More</a>
+                            <a href="#">Get Started</a>
+                        </div>
+                    </div>
+
+                </li>
+
+                <!-- SLIDE 3 -->
+                <li data-index="rs-3" data-transition="parallaxtoright" data-delay="6500">
+
+                    <!-- MAIN IMAGE -->
+                    <img src="{{asset('dist/images/slide3.png')}}"
+                        class="rev-slidebg"
+                        data-bgposition="center center"
+                        data-bgfit="cover"
+                        data-bgrepeat="no-repeat">
+
+                    <!-- LAYER 1 -->
+                    <div class="tp-caption tp-resizeme"
+                        data-x="center" data-y="top" data-voffset="120"
+                        data-start="1200" data-transform_in="y:[100%];opacity:0;s:800;"
+                        data-transform_out="opacity:0;s:300" ;>
+                        <span class="sl-italic" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;">
+                            Informed decisions. Exceptional results
+                        </span>
+                    </div>
+
+                    <!-- LAYER 2 -->
+                    <div class="tp-caption tp-resizeme"
+                        data-x="center" data-y="top" data-voffset="190"
+                        data-start="1800" data-transform_in="y:[100%];opacity:0;s:800;"
+                        data-transform_out="opacity:0;s:300" ;>
+                        <div class="text-center heading-rp-small" style="transition: none; line-height: 58px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 1px; font-weight: 800; font-size: 50px;">
+                            We Measure The Social Web
+                        </div>
+                    </div>
+
+                    <!-- LAYER 3 -->
+                    <div class="tp-caption tp-resizeme"
+                        data-x="center" data-y="top" data-voffset="300"
+                        data-start="2400" data-transform_in="y:[100%];opacity:0;s:800;"
+                        data-transform_out="opacity:0;s:300" ;>
+                        <div class="sl-italic sl-italic-2 text-center" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;">
+                            Our strategists will help you set an objective and choose your tools,<br>
+                            developing a plan that is custom-built for your business.
+                        </div>
+                    </div>
+
+                    <!-- LAYER 4 (Buttons) -->
+                    <div class="tp-caption tp-resizeme"
+                        data-x="center" data-y="top" data-voffset="430"
+                        data-start="2800" data-transform_in="y:[100%];opacity:0;s:800;"
+                        data-transform_out="opacity:0;s:300" ;>
+                        <div class="rev-slider-btn text-center">
+                            <a href="#">Read More</a>
+                            <a href="#">Get Started</a>
+                        </div>
+                    </div>
+
+                </li>
+
+            </ul>
         </div>
     </div>
 
-
-
-    <!-- SERVICES -->
-    <section id="services">
-        <div class="reveal">
-            <div class="section-wave">
-                <img src="https://cdn.prod.website-files.com/618bcfd8f178447ade4b3ba0/618bd7640b7381125ae7d4ec_wave-line.svg" alt="" />
-                <span class="section-wave-label">Core Solutions</span>
-            </div>
-            <h2 class="section-heading">What Razor6 <span class="highlight">delivers</span></h2>
-            <p class="section-sub">Four integrated capabilities built for demanding production environments — from variable data and code verification to ultra-fast PDF output.</p>
-        </div>
-
-        <div class="services-grid reveal">
-            <div class="solution-card">
-
-                <div class="sol-icon">
-                    <svg viewBox="0 0 24 24">
-                        <rect x="2" y="3" width="20" height="14" rx="2" />
-                        <path d="M8 21h8M12 17v4" />
-                    </svg>
-                </div>
-                <div class="sol-title">Industrial Inkjet System</div>
-                <p class="sol-body">Purpose-built for 24×7 industrial production environments. Robust Piezo DOD print head technology delivers consistent, high-quality output across demanding continuous-run operations with minimal downtime.</p>
-            </div>
-
-            <div class="solution-card">
-
-                <div class="sol-icon">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                        <polyline points="14 2 14 8 20 8" />
-                        <line x1="16" y1="13" x2="8" y2="13" />
-                        <line x1="16" y1="17" x2="8" y2="17" />
-                    </svg>
-                </div>
-                <div class="sol-title">Variable Data Printing Software</div>
-                <p class="sol-body">Powered by Tarcesci RapidPro Software — industry-leading VDP engine for serialisation, barcodes, QR codes, personalisation and complex variable data at full production speed without compromising throughput.</p>
-            </div>
-
-            <div class="solution-card">
-
-                <div class="sol-icon">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                        <polyline points="22 4 12 14.01 9 11.01" />
-                    </svg>
-                </div>
-                <div class="sol-title">Online Code Verification</div>
-                <p class="sol-body">Integrated real-time verification ensures every printed code — barcode, QR, DataMatrix, or serialised number — is readable and compliant. Bad codes are flagged and rejected automatically inline, keeping your line 100% accurate.</p>
-            </div>
-
-            <div class="solution-card">
-
-                <div class="sol-icon">
-                    <svg viewBox="0 0 24 24">
-                        <polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-                    </svg>
-                </div>
-                <div class="sol-title">High Speed PDF Printing</div>
-                <p class="sol-body">Native PDF workflow support enables direct-to-press output without ripping delays. Handles complex graphical content, security patterns, and fine text at full line speed — up to 150 metres per minute.</p>
-            </div>
-
-            <div class="solution-card">
-
-                <div class="sol-icon">
-                    <svg viewBox="0 0 24 24">
-                        <circle cx="12" cy="12" r="3" />
-                        <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
-                        <path d="M4.93 4.93a10 10 0 0 0 0 14.14" />
-                    </svg>
-                </div>
-                <div class="sol-title">UV Cured Aqueous Inks</div>
-                <p class="sol-body">Dual ink compatibility — UV curable and aqueous systems — in 0.5L and 1L tank configurations. Black, Spot colour, and Security ink options provide versatility across packaging, labels, pharma, and security applications.</p>
-            </div>
-
-            <div class="solution-card">
-
-                <div class="sol-icon">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                    </svg>
-                </div>
-                <div class="sol-title">Quick ROI &amp; Easy Operation</div>
-                <p class="sol-body">Operator-friendly ink control with intuitive interface minimises training time. Designed for swift installation and rapid start-up, ensuring fast return on investment and low total cost of ownership across your production lifecycle.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- PERFORMANCE -->
-    <section id="alliances">
-        <div class="reveal">
-            <div class="section-wave">
-                <img src="https://cdn.prod.website-files.com/618bcfd8f178447ade4b3ba0/618bd7640b7381125ae7d4ec_wave-line.svg" alt="" />
-                <span class="section-wave-label" style="color:var(--teal)">Performance</span>
-            </div>
-            <h2 class="section-heading" style="color:white">Built for<br><span class="highlight">speed &amp; precision</span></h2>
-            <p class="section-sub">The Razor6 is engineered to deliver exceptional throughput without sacrificing print quality — even in the harshest 24×7 continuous production environments.</p>
-
-        </div>
-        <div class="reveal" style="transition-delay:0.1s">
-            <p style="font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.35);font-weight:600;margin-bottom:24px;">Suited Best for</p>
-            <div class="partners-logos">
-                <div class="partner-logo-box">
-                    <p style="font-size:20px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.35);font-weight:600;;">Paper &amp; Coated</p>
-                </div>
-                <div class="partner-logo-box">
-                    <p style="font-size:20px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.35);font-weight:600;;">Plastics &amp; PVC</p>
-                </div>
-                <div class="partner-logo-box">
-                    <p style="font-size:20px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.35);font-weight:600;;">Cartons</p>
-                </div>
-                <div class="partner-logo-box">
-                    <p style="font-size:20px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.35);font-weight:600;;">Blister Packs</p>
-                </div>
-                <div class="partner-logo-box">
-                    <p style="font-size:20px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.35);font-weight:600;;">Security Substrates</p>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- TECH SPECS -->
-    <section id="specs">
-        <div class="specs-inner">
-            <div class="reveal">
-                <div class="section-wave-label" style="color:var(--teal)">Technical Specifications</div>
-                <h2 class="section-heading">Razor6<br><span class="highlight">Spec Sheet</span></h2>
-                <p class="section-sub">Precision-engineered with Piezo DOD technology and UV curable aqueous inks for consistent high-performance output.</p>
-                <div class="specs-table reveal" style="margin-left: 20px;">
-                    <div class="specs-table-header">Print Engine</div>
-                    <div class="spec-row">
-                        <div class="spec-key">Print Heads</div>
-                        <div class="spec-val">Piezo DOD Technology</div>
-                    </div>
-                    <div class="spec-row">
-                        <div class="spec-key">Print Width</div>
-                        <div class="spec-val"><span class="highlight">Multiple of 54.1 mm</span> (2.1")</div>
-                    </div>
-                    <div class="spec-row">
-                        <div class="spec-key">Resolution</div>
-                        <div class="spec-val">600×600, 600×300 dpi and more</div>
-                    </div>
-                    <div class="spec-row">
-                        <div class="spec-key">Drop Volume</div>
-                        <div class="spec-val">Binary: <span class="highlight">5pl</span> / Greyscale: 5–15pl</div>
-                    </div>
-                    <div class="spec-row">
-                        <div class="spec-key">Speed</div>
-                        <div class="spec-val">Up to <span class="highlight">150 mtr/min</span> (resolution dependent)</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="reveal" style="transition-delay:0.1s">
-                <div class="specs-table" style="margin-top: 20px;">
-                    <div class="specs-table-header">Ink &amp; Substrates</div>
-                    <div class="spec-row">
-                        <div class="spec-key">Compatible Inks</div>
-                        <div class="spec-val">UV Curable, Aqueous</div>
-                    </div>
-                    <div class="spec-row">
-                        <div class="spec-key">Ink Tank</div>
-                        <div class="spec-val">0.5L / 1L</div>
-                    </div>
-                    <div class="spec-row">
-                        <div class="spec-key">Colour Options</div>
-                        <div class="spec-val">Black, Spot, <span class="highlight">Security Inks</span></div>
-                    </div>
-                    <div class="spec-row">
-                        <div class="spec-key">Substrates</div>
-                        <div class="spec-val">Paper, Coated, Plastics, PVC, Cartons, Blister etc.</div>
-                    </div>
-                </div>
-
-                <div class="specs-table" style="margin-top:50px">
-                    <div class="specs-table-header">Software &amp; Environment</div>
-                    <div class="spec-row">
-                        <div class="spec-key">VDP Software</div>
-                        <div class="spec-val"><span class="highlight">Tarcesci RapidPro</span></div>
-                    </div>
-                    <div class="spec-row">
-                        <div class="spec-key">Temperature</div>
-                        <div class="spec-val">20–28 °C</div>
-                    </div>
-                    <div class="spec-row">
-                        <div class="spec-key">Humidity</div>
-                        <div class="spec-val">40–60%, Non-Condensing</div>
+    <div class="solution-area" style="background-color: #f5f5f5;">
+        <!-- MAIN TITLE AREA -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <div class="main-title wow zoomIn">
+                        <div class="main-shadow-heading">
+                            <h2>Core <span>Solution</span></h2>
+                        </div>
+                        <h2>Core<span> Solution</span></h2>
+                        <h3>Four integrated capabilities built for demanding production environments — from variable data and code verification to ultra-fast PDF output.</h3>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- ANCILLARY EQUIPMENT -->
-    <section id="ancillary">
-        <div class="reveal">
-            <div class="section-wave-label" style="color:var(--teal)">Ancillary Equipment</div>
-            <h2 class="section-heading">Complete your<br><span class="highlight">production line</span></h2>
-            <p class="section-sub">Ancillary equipment available at additional cost — configure the exact system your production environment demands.</p>
-
-        </div>
-
-        <div class="ancillary-grid reveal" style="transition-delay:0.1s">
-            <div class="ancillary-item">
-                <div class="anc-icon">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                    </svg>
+        <div class="solution-content" style="margin-bottom: 50px;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-md-4">
+                        <div class="solution-single-content solution-single-content-no-border wow fadeInLeft">
+                            <h2>Industrial Inkjet System</h2>
+                            <p>Purpose-built for 24×7 industrial production environments. Robust Piezo DOD print head technology delivers consistent, high-quality output across demanding continuous-run operations with minimal downtime.. ...</p>
+                            <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+                            <span><i class="icon icon-Chart"></i></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="solution-single-content wow fadeInUp">
+                            <h2>Variable Data Printing Software</h2>
+                            <p>Powered by Tarcesci RapidPro Software — industry-leading VDP engine for serialisation, barcodes, QR codes, personalisation and complex variable data at full production speed without compromising throughput....</p>
+                            <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+                            <span><i class="icon icon-Shield"></i></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="solution-single-content wow fadeInRight">
+                            <h2>Online Code Verification</h2>
+                            <p>Integrated real-time verification ensures every printed code — barcode, QR, DataMatrix, or serialised number — is readable and compliant. Bad codes are flagged and rejected automatically inline, keeping your line 100% accurate....</p>
+                            <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+                            <span><i class="icon icon-MessageLeft"></i></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="solution-single-content solution-single-content-no-border wow fadeInLeft">
+                            <h2>High Speed PDF Printing</h2>
+                            <p>Native PDF workflow support enables direct-to-press output without ripping delays. Handles complex graphical content, security patterns, and fine text at full line speed — up to 150 metres per minute....</p>
+                            <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+                            <span><i class="icon icon-Antenna2"></i></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="solution-single-content wow fadeInUp">
+                            <h2>UV Cured Aqueous Inks</h2>
+                            <p>Dual ink compatibility — UV curable and aqueous systems — in 0.5L and 1L tank configurations. Black, Spot colour, and Security ink options provide versatility across packaging, labels, pharma, and security applications....</p>
+                            <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+                            <span><i class="icon icon-Tools"></i></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="solution-single-content wow fadeInRight">
+                            <h2>Quick ROI & Easy Operation</h2>
+                            <p>Operator-friendly ink control with intuitive interface minimises training time. Designed for swift installation and rapid start-up, ensuring fast return on investment and low total cost of ownership across your production lifecycle....</p>
+                            <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+                            <span><i class="icon icon-Puzzle"></i></span>
+                        </div>
+                    </div>
                 </div>
-                <div class="anc-title">Print Head Guarding</div>
-                <div class="anc-note">Protection &amp; safety enclosure</div>
-            </div>
-            <div class="ancillary-item">
-                <div class="anc-icon">
-                    <svg viewBox="0 0 24 24">
-                        <circle cx="12" cy="12" r="5" />
-                        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
-                    </svg>
-                </div>
-                <div class="anc-title">UV Dryer</div>
-                <div class="anc-note">Instant UV ink curing</div>
-            </div>
-            <div class="ancillary-item">
-                <div class="anc-icon">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
-                    </svg>
-                </div>
-                <div class="anc-title">Web Cleaner</div>
-                <div class="anc-note">Inline substrate cleaning</div>
-            </div>
-            <div class="ancillary-item">
-                <div class="anc-icon">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M18 8h1a4 4 0 0 1 0 8h-1" />
-                        <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z" />
-                        <line x1="6" y1="1" x2="6" y2="4" />
-                        <line x1="10" y1="1" x2="10" y2="4" />
-                        <line x1="14" y1="1" x2="14" y2="4" />
-                    </svg>
-                </div>
-                <div class="anc-title">Web Guide</div>
-                <div class="anc-note">Precision web alignment</div>
-            </div>
-            <div class="ancillary-item">
-                <div class="anc-icon">
-                    <svg viewBox="0 0 24 24">
-                        <polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-                    </svg>
-                </div>
-                <div class="anc-title">Anti-Static Bars</div>
-                <div class="anc-note">Static elimination system</div>
-            </div>
-            <div class="ancillary-item">
-                <div class="anc-icon">
-                    <svg viewBox="0 0 24 24">
-                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
-                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
-                    </svg>
-                </div>
-                <div class="anc-title">Sheet Feeder–Stacker</div>
-                <div class="anc-note">Automated feed &amp; collection</div>
-            </div>
-            <div class="ancillary-item">
-                <div class="anc-icon">
-                    <svg viewBox="0 0 24 24">
-                        <circle cx="12" cy="12" r="10" />
-                        <polyline points="12 6 12 12 16 14" />
-                    </svg>
-                </div>
-                <div class="anc-title">Reel to Reel System</div>
-                <div class="anc-note">Continuous roll media handling</div>
-            </div>
-            <div class="ancillary-item">
-                <div class="anc-icon">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                        <polyline points="22 4 12 14.01 9 11.01" />
-                    </svg>
-                </div>
-                <div class="anc-title">Corona Treater</div>
-                <div class="anc-note">Surface treatment for adhesion</div>
-            </div>
-            <div class="ancillary-item">
-                <div class="anc-icon">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                        <circle cx="12" cy="12" r="3" />
-                    </svg>
-                </div>
-                <div class="anc-title">Inspection System</div>
-                <div class="anc-note">100% inline print inspection</div>
-            </div>
-            <div class="ancillary-item">
-                <div class="anc-icon">
-                    <svg viewBox="0 0 24 24">
-                        <polyline points="3 6 5 6 21 6" />
-                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2" />
-                    </svg>
-                </div>
-                <div class="anc-title">Numeric Rejection</div>
-                <div class="anc-note">Automated defect rejection</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- HOW WE'RE DIFFERENT -->
-    <section id="different">
-        <div class="reveal">
-            <div class="section-wave">
-                <img src="https://cdn.prod.website-files.com/618bcfd8f178447ade4b3ba0/618bd7640b7381125ae7d4ec_wave-line.svg" alt="" />
-                <span class="section-wave-label">Working Environment</span>
-            </div>
-            <h2 class="section-heading" style="color:white">Optimised for<br><span class="highlight">consistent performance</span></h2>
-        </div>
-        <div class="env-grid">
-            <div class="env-card reveal">
-                <div class="env-icon">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z" />
-                    </svg>
-                </div>
-                <div class="env-value">20–28°C</div>
-                <div class="env-title">Temperature Range</div>
-                <p class="env-body">Maintain ambient temperature between 20–28°C for optimal ink viscosity and print head performance throughout extended production runs.</p>
-            </div>
-            <div class="env-card reveal" style="transition-delay:0.1s">
-                <div class="env-icon">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
-                    </svg>
-                </div>
-                <div class="env-value">40–60%</div>
-                <div class="env-title">Relative Humidity</div>
-                <p class="env-body">Non-condensing humidity range of 40–60% RH prevents ink drying issues and ensures consistent drop formation from Piezo DOD print heads.</p>
-            </div>
-            <div class="env-card reveal" style="transition-delay:0.2s">
-                <div class="env-icon">
-                    <svg viewBox="0 0 24 24">
-                        <circle cx="12" cy="12" r="10" />
-                        <polyline points="12 6 12 12 16 14" />
-                    </svg>
-                </div>
-                <div class="env-value">24×7</div>
-                <div class="env-title">Continuous Operation</div>
-                <p class="env-body">The Razor6 is engineered for round-the-clock industrial production with robust print head durability, minimal maintenance cycles, and quick-access ink systems for non-stop throughput.</p>
-            </div>
-        </div>
-    </section>
-
-
-
-    <!-- CONTACT -->
-    <section id="contact">
-        <div class="contact-photo reveal">
-            <img src="https://cdn.prod.website-files.com/618bcfd8f178447ade4b3ba0/61bcb317af56b916bbd53472_modes-footer-1.png" alt="Man and woman working together" />
-        </div>
-        <div class="contact-form-wrap reveal" style="transition-delay:0.1s">
-            <div class="section-eyebrow">Get In Touch</div>
-            <div class="contact-tagline">Ready to<br>shift into<br><span>production mode?</span></div>
-            <p class="contact-body">Tell us about your production requirements and we'll configure the ideal Razor6 system for your line — including any ancillary equipment needed for a complete solution.</p>
-            <div class="contact-highlights">
-                <div class="contact-highlight">
-                    <div class="ch-dot"></div>
-                    Industrial inkjet for 24×7 environments
-                </div>
-                <div class="contact-highlight">
-                    <div class="ch-dot"></div>
-                    UV cured &amp; aqueous ink compatibility
-                </div>
-                <div class="contact-highlight">
-                    <div class="ch-dot"></div>
-                    Tracesci RapidPro VDP software included
-                </div>
-                <div class="contact-highlight">
-                    <div class="ch-dot"></div>
-                    Quick return on investment
-                </div>
-                <div class="contact-highlight">
-                    <div class="ch-dot"></div>
-                    Full ancillary equipment range available
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="all-link solution-btn text-center">
+                            <a href="#">More Services</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- FOOTER -->
-    <!-- <footer>
-        <div class="footer-top">
-            <div>
-                <div class="footer-logo">
-                    <img src="https://cdn.prod.website-files.com/618bcfd8f178447ade4b3ba0/667306cdcfb3da4eb3545d25_Modes.svg" alt="Modes" />
+        <section id="different" style="background-color: #fff;">
+            <div class="different_section" style="align-items: center; color:#222222">
+                <div class="section-wave" style="align-items: center;">
+                    <span class="section-wave-label" style="text-align: center;color:#222222">Technical Specifications</span>
                 </div>
-                <p class="footer-desc">Digital products and services consultancy for modern financial services organizations.</p>
-                <div class="footer-social">
-                    <a href="https://www.instagram.com/modes_inc" target="_blank">
-                        <img src="https://cdn.prod.website-files.com/618bcfd8f178447ade4b3ba0/618bd764b9b8cbcdfb10af3b_social-ig.svg" alt="Instagram" />
-                    </a>
-                    <a href="https://www.linkedin.com/company/modesinc" target="_blank">
-                        <img src="https://cdn.prod.website-files.com/618bcfd8f178447ade4b3ba0/618bd7649a050e98000ac540_social-li.svg" alt="LinkedIn" />
-                    </a>
-                    <a href="https://twitter.com/modesInc" target="_blank">
-                        <img src="https://cdn.prod.website-files.com/618bcfd8f178447ade4b3ba0/618bd76455bf3aaad72bddd0_social-tw.svg" alt="Twitter" />
-                    </a>
-                </div>
+                <h2 class="section-heading" style="color:#222222">Razor6 Spec Sheet</h2>
+                <p>Precision-engineered with Piezo DOD technology and UV curable aqueous inks for consistent high-performance output.</p>
             </div>
-            <div class="footer-col">
-                <h4>Company</h4>
-                <ul>
-                    <li><a href="https://www.modesinc.com/about">About</a></li>
-                    <li><a href="https://www.modesinc.com/how-were-different">Why us</a></li>
-                    <li><a href="https://www.modesinc.com/career">Work with us</a></li>
-                    <li><a href="https://www.modesinc.com/privacy-policy">Privacy</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Services</h4>
-                <ul>
-                    <li><a href="https://www.modesinc.com/services">Transformation</a></li>
-                    <li><a href="https://www.modesinc.com/services">Org Design</a></li>
-                    <li><a href="https://www.modesinc.com/services">Change Management</a></li>
-                    <li><a href="https://www.modesinc.com/alliances">Alliances</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Resources</h4>
-                <ul>
-                    <li><a href="https://www.modesinc.com/ideas">IDEAS</a></li>
-                    <li><a href="https://www.modesinc.com/connect">Connect</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>© 2025 Modes — All rights reserved</p>
-            <p>Digital products and services consultancy</p>
-        </div>
-    </footer> -->
+            <div class="tech-grid">
+                
+                    <div class="reveal">
+                        <div class="specs-table reveal">
+                            <div class="specs-table-header">Print Engine</div>
+                            <div class="spec-row">
+                                <div class="spec-key">Print Heads</div>
+                                <div class="spec-val">Piezo DOD Technology</div>
+                            </div>
+                            <div class="spec-row">
+                                <div class="spec-key">Print Width</div>
+                                <div class="spec-val"><span class="highlight">Multiple of 54.1 mm</span> (2.1")</div>
+                            </div>
+                            <div class="spec-row">
+                                <div class="spec-key">Resolution</div>
+                                <div class="spec-val">600×600, 600×300 dpi and more</div>
+                            </div>
+                            <div class="spec-row">
+                                <div class="spec-key">Drop Volume</div>
+                                <div class="spec-val">Binary: <span class="highlight">5pl</span> / Greyscale: 5–15pl</div>
+                            </div>
+                            <div class="spec-row">
+                                <div class="spec-key">Speed</div>
+                                <div class="spec-val">Up to <span class="highlight">150 mtr/min</span> (resolution dependent)</div>
+                            </div>
+                        </div>
+                    </div>
 
-    <script>
-        // Scroll reveal
-        const reveals = document.querySelectorAll('.reveal');
-        const io = new IntersectionObserver(entries => {
-            entries.forEach(e => {
-                if (e.isIntersecting) {
-                    e.target.classList.add('visible');
-                    io.unobserve(e.target);
-                }
+                    <div class="reveal" style="transition-delay:0.1s">
+                        <div class="specs-table">
+                            <div class="specs-table-header">Ink &amp; Substrates</div>
+                            <div class="spec-row">
+                                <div class="spec-key-tech">Compatible Inks</div>
+                                <div class="spec-val-tech">UV Curable, Aqueous</div>
+                            </div>
+                            <div class="spec-row">
+                                <div class="spec-key-tech">Ink Tank</div>
+                                <div class="spec-val-tech">0.5L / 1L</div>
+                            </div>
+                            <div class="spec-row">
+                                <div class="spec-key-tech">Colour Options</div>
+                                <div class="spec-val-tech">Black, Spot, <span class="highlight">Security Inks</span></div>
+                            </div>
+                            <div class="spec-row">
+                                <div class="spec-key-tech">Substrates</div>
+                                <div class="spec-val-tech">Paper, Coated, Plastics, PVC, Cartons, Blister etc.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                        <div class="reveal" style="transition-delay:0.2s">
+
+                        <div class="specs-table" >
+                            <div class="specs-table-header">Software &amp; Environment</div>
+                            <div class="spec-row">
+                                <div class="spec-key-tech2">VDP Software</div>
+                                <div class="spec-val-tech2"><span class="highlight">Tarcesci RapidPro</span></div>
+                            </div>
+                            <div class="spec-row">
+                                <div class="spec-key-tech2">Temperature</div>
+                                <div class="spec-val-tech2">20–28 °C</div>
+                            </div>
+                            <div class="spec-row">
+                                <div class="spec-key-tech2">Humidity</div>
+                                <div class="spec-val-tech2">40–60%, Non-Condensing</div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </section>
+
+
+
+
+
+        <section class="feature-area feature-2-area">
+            <div class="feature-heading-area  wow zoomIn">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="feature-heading-left ">
+                                <h2>Built for speed & precision</h2>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="feature-heading-right">
+                                <p>The Razor6 is engineered to deliver exceptional throughput without sacrificing print quality — even in the harshest 24×7 continuous production environments.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="feature-2-area">
+                <div class="feature-2-right wow fadeInRight"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+
+                            <!-- Nav tabs -->
+                            <ul class="feature-2-left wow fadeInDown">
+                                <li>
+                                    <h2><span></span>Suited Best For :</h2>
+                                </li>
+                                <li>
+                                    <h3 href="#"><span><i class="icon icon-FileBox"></i></span>Paper & Coated</h3>
+                                </li>
+                                <li>
+                                    <h3 href="#"><span><i class="icon icon-ClipboardChart"></i></span>Plastics & PVC</h3>
+
+                                </li>
+                                <li>
+                                    <h3 href="#"><span><i class="icon icon-Settings"></i></span>Cartons</h3>
+
+                                </li>
+                                <li>
+                                    <h3 href="#"><span><i class="icon icon-Settings"></i></span>Blister Packs</h3>
+
+                                </li>
+                                <li>
+                                    <h3 href="#"><span><i class="icon icon-Settings"></i></span>Security Substrates</h3>
+
+                                </li>
+                            </ul>
+                            <div class="feature-2-left-btn">
+                                <a href="#">Explore Features</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="ancillary">
+            <div class="reveal" style="text-align:center">
+                <div class="section-wave-label" style="color:#7a0d7d">Ancillary Equipment</div>
+                <h2 class="section-heading">Complete your <span class="highlight">production line</span></h2>
+                <p class="section-sub">Ancillary equipment available at additional cost — configure the exact system your production environment demands.</p>
+
+            </div>
+
+            <div class="ancillary-grid reveal" style="transition-delay:0.1s">
+                <div class="ancillary-item">
+                    <div class="anc-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                        </svg>
+                    </div>
+                    <div class="anc-title">Print Head Guarding</div>
+                    <div class="anc-note">Protection &amp; safety enclosure</div>
+                </div>
+                <div class="ancillary-item">
+                    <div class="anc-icon">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="5" />
+                            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+                        </svg>
+                    </div>
+                    <div class="anc-title">UV Dryer</div>
+                    <div class="anc-note">Instant UV ink curing</div>
+                </div>
+                <div class="ancillary-item">
+                    <div class="anc-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                        </svg>
+                    </div>
+                    <div class="anc-title">Web Cleaner</div>
+                    <div class="anc-note">Inline substrate cleaning</div>
+                </div>
+                <div class="ancillary-item">
+                    <div class="anc-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M18 8h1a4 4 0 0 1 0 8h-1" />
+                            <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z" />
+                            <line x1="6" y1="1" x2="6" y2="4" />
+                            <line x1="10" y1="1" x2="10" y2="4" />
+                            <line x1="14" y1="1" x2="14" y2="4" />
+                        </svg>
+                    </div>
+                    <div class="anc-title">Web Guide</div>
+                    <div class="anc-note">Precision web alignment</div>
+                </div>
+                <div class="ancillary-item">
+                    <div class="anc-icon">
+                        <svg viewBox="0 0 24 24">
+                            <polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                        </svg>
+                    </div>
+                    <div class="anc-title">Anti-Static Bars</div>
+                    <div class="anc-note">Static elimination system</div>
+                </div>
+                <div class="ancillary-item">
+                    <div class="anc-icon">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+                        </svg>
+                    </div>
+                    <div class="anc-title">Sheet Feeder–Stacker</div>
+                    <div class="anc-note">Automated feed &amp; collection</div>
+                </div>
+                <div class="ancillary-item">
+                    <div class="anc-icon">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10" />
+                            <polyline points="12 6 12 12 16 14" />
+                        </svg>
+                    </div>
+                    <div class="anc-title">Reel to Reel System</div>
+                    <div class="anc-note">Continuous roll media handling</div>
+                </div>
+                <div class="ancillary-item">
+                    <div class="anc-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                            <polyline points="22 4 12 14.01 9 11.01" />
+                        </svg>
+                    </div>
+                    <div class="anc-title">Corona Treater</div>
+                    <div class="anc-note">Surface treatment for adhesion</div>
+                </div>
+                <div class="ancillary-item">
+                    <div class="anc-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                            <circle cx="12" cy="12" r="3" />
+                        </svg>
+                    </div>
+                    <div class="anc-title">Inspection System</div>
+                    <div class="anc-note">100% inline print inspection</div>
+                </div>
+                <div class="ancillary-item">
+                    <div class="anc-icon">
+                        <svg viewBox="0 0 24 24">
+                            <polyline points="3 6 5 6 21 6" />
+                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2" />
+                        </svg>
+                    </div>
+                    <div class="anc-title">Numeric Rejection</div>
+                    <div class="anc-note">Automated defect rejection</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="different">
+            <div class="different_section" style="align-items: center;">
+                <div class="section-wave" style="align-items: center;">
+                    <span class="section-wave-label" style="text-align: center;">Working Environment</span>
+                </div>
+                <h2 class="section-heading" style="color:white">Optimised for <span class="highlight">consistent performance</span></h2>
+            </div>
+            <div class="env-grid">
+                <div class="env-card reveal">
+                    <div class="env-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z" />
+                        </svg>
+                    </div>
+                    <div class="env-value">20–28°C</div>
+                    <div class="env-title">Temperature Range</div>
+                    <p class="env-body">Maintain ambient temperature between 20–28°C for optimal ink viscosity and print head performance throughout extended production runs.</p>
+                </div>
+                <div class="env-card reveal" style="transition-delay:0.1s">
+                    <div class="env-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
+                        </svg>
+                    </div>
+                    <div class="env-value">40–60%</div>
+                    <div class="env-title">Relative Humidity</div>
+                    <p class="env-body">Non-condensing humidity range of 40–60% RH prevents ink drying issues and ensures consistent drop formation from Piezo DOD print heads.</p>
+                </div>
+                <div class="env-card reveal" style="transition-delay:0.2s">
+                    <div class="env-icon">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10" />
+                            <polyline points="12 6 12 12 16 14" />
+                        </svg>
+                    </div>
+                    <div class="env-value">24×7</div>
+                    <div class="env-title">Continuous Operation</div>
+                    <p class="env-body">The Razor6 is engineered for round-the-clock industrial production with robust print head durability, minimal maintenance cycles, and quick-access ink systems for non-stop throughput.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="contact-photo reveal">
+                <img src="https://cdn.prod.website-files.com/618bcfd8f178447ade4b3ba0/61bcb317af56b916bbd53472_modes-footer-1.png" alt="Man and woman working together" />
+            </div>
+            <div class="contact-form-wrap reveal" style="transition-delay:0.1s">
+                <div class="section-eyebrow">Get In Touch</div>
+                <div class="contact-tagline">Ready to<br>shift into<br><span>production mode?</span></div>
+                <p class="contact-body">Tell us about your production requirements and we'll configure the ideal Razor6 system for your line — including any ancillary equipment needed for a complete solution.</p>
+                <div class="contact-highlights">
+                    <div class="contact-highlight">
+                        <div class="ch-dot"></div>
+                        Industrial inkjet for 24×7 environments
+                    </div>
+                    <div class="contact-highlight">
+                        <div class="ch-dot"></div>
+                        UV cured &amp; aqueous ink compatibility
+                    </div>
+                    <div class="contact-highlight">
+                        <div class="ch-dot"></div>
+                        Tracesci RapidPro VDP software included
+                    </div>
+                    <div class="contact-highlight">
+                        <div class="ch-dot"></div>
+                        Quick return on investment
+                    </div>
+                    <div class="contact-highlight">
+                        <div class="ch-dot"></div>
+                        Full ancillary equipment range available
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    
+
+
+     
+
+
+
+ 
+
+
+
+
+
+
+
+  
+
+
+
+
+
+   
+
+        <script>
+            // Scroll reveal
+            const reveals = document.querySelectorAll('.reveal');
+            const io = new IntersectionObserver(entries => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('visible');
+                        io.unobserve(e.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
             });
-        }, {
-            threshold: 0.1
-        });
-        reveals.forEach(el => io.observe(el));
+            reveals.forEach(el => io.observe(el));
 
-        // Word rotator
-        const words = ['High Speed PDF Printing', 'UV Cured', 'Aqueous Inks', '24x7 Production Enviroments'];
-        let idx = 0;
-        const el = document.getElementById('rotateWord');
-        setInterval(() => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(12px)';
-            setTimeout(() => {
-                idx = (idx + 1) % words.length;
-                el.textContent = words[idx];
-                el.style.opacity = '1';
-                el.style.transform = 'translateY(0)';
-            }, 300);
-        }, 2400);
-        el.style.transition = 'opacity 0.3s, transform 0.3s';
-    </script>
+            // Word rotator
+            const words = ['High Speed PDF Printing', 'UV Cured', 'Aqueous Inks', '24x7 Production Enviroments'];
+            let idx = 0;
+            const el = document.getElementById('rotateWord');
+            setInterval(() => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(12px)';
+                setTimeout(() => {
+                    idx = (idx + 1) % words.length;
+                    el.textContent = words[idx];
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, 300);
+            }, 2400);
+            el.style.transition = 'opacity 0.3s, transform 0.3s';
+        </script>
 </body>
 
 </html>
+
+@endsection
+
+
+@section('script')
+
+<script type="text/javascript">
+    cash(function() {
+        async function contact() {
+            cash('.contact__input').removeClass('border-theme-6')
+            cash('.contact__input-error').html('')
+            cash('#contactError').addClass('hidden')
+
+            let name = cash('#name').val()
+            let email = cash('#email').val()
+            let mobile = cash('#mobile').val()
+            let message = cash('#message').val()
+
+            cash('#contactwait').removeClass('hidden')
+            axios.post('{{ url("send_inquiry") }}', {
+                name: name,
+                email: email,
+                mobile: mobile,
+                message: message
+            }).then(res => {
+                cash('#contactSuccess').removeClass('hidden')
+                cash('#contactError').addClass('hidden')
+                cash('#contactwait').addClass('hidden')
+                // showNotification('success','Success!',res.data.message)
+                setTimeout(() => {
+                    window.location.reload()
+                }, 3000)
+            }).catch(err => {
+                // showNotification('error','Error !',err.response.data.message)
+                cash('#contactError').removeClass('hidden')
+                cash('#contactSuccess').addClass('hidden')
+                cash('#contactwait').addClass('hidden')
+
+                cash('#btn-contact').html('Submit')
+
+                if (err.response.data.errors) {
+                    for (const [key, val] of Object.entries(err.response.data.errors)) {
+                        cash(`#${key}`).addClass('border-theme-6')
+                        cash(`#error-${key}`).html(val)
+                    }
+                }
+            })
+
+        }
+        cash('#contact_form').on('keyup', function(e) {
+            if (e.keyCode === 13) {
+                contact()
+            }
+        })
+        cash('#btn-contact').on('click', function() {
+            contact()
+        })
+    })
+</script>
+<script>
+    var revapi;
+
+    jQuery(document).ready(function() {
+        revapi = jQuery("#slider1").show().revolution({
+            sliderType: "standard",
+            sliderLayout: "fullscreen",
+
+            delay: 999999999, // ⛔ disable auto sliding
+
+            navigation: {
+                arrows: {
+                    enable: true,
+                    style: "uranus",
+                    hide_onleave: false
+                }
+            },
+
+            stopLoop: "on",
+            stopAfterLoops: 0,
+            stopAtSlide: 1,
+
+            disableProgressBar: "on",
+
+            fullScreenOffsetContainer: "" // add header selector if needed
+        });
+
+        // ✅ extra safety: pause autoplay
+        revapi.revpause();
+    });
+</script>

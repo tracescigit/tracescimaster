@@ -37,7 +37,7 @@
           data-transform_in="y:[100%];opacity:0;s:800;"
           data-transform_out="opacity:0;s:300";>
           <div class="text-center heading-rp-small" style="transition: none; line-height: 58px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 1px; font-weight: 800; font-size: 50px;">
-            SUPPLY CHAIN TRACESCI PLATEFORM
+            SUPPLY CHAIN TRACESCI PLATFORM
           </div>
         </div>
 
@@ -188,9 +188,9 @@
       <div class="col-md-12 text-center">
         <div class="main-title wow zoomIn">
           <div class="main-shadow-heading">
-            <h2>Hello, We Are Metrics</h2>
+            <h2>Hello, We Are Tracesci</h2>
           </div>
-          <h2>Hello, We Are Metrics</h2>
+          <h2>Hello, We Are Tracesci</h2>
           <h3>Do More With Social Media</h3>
         </div>
       </div>
@@ -507,7 +507,7 @@
                   <div class="help-slider-text">
                     <i class="fa fa-quote-left"></i>
                     <i class="fa fa-quote-right"></i>
-                    <p>In my job as social media strategist, I've tried pretty much every analytics product on the market and when I came across Metrics, I was blown away! Metrics is one of the most impressive social media website efforts I've ever seen.</p>
+                    <p>In my job as social media strategist, I've tried pretty much every analytics product on the market and when I came across Tracesci, I was blown away! Tracesci is one of the most impressive social media website efforts I've ever seen.</p>
                     <img src="{{ asset('dist/images/home-slider-img-left.png') }}" alt="">
                   </div>
                   <div class="help-slider-img">
@@ -521,7 +521,7 @@
                   <div class="help-slider-text">
                     <i class="fa fa-quote-left"></i>
                     <i class="fa fa-quote-right"></i>
-                    <p>In my job as social media strategist, I've tried pretty much every analytics product on the market and when I came across Metrics, I was blown away! Metrics is one of the most impressive social media website efforts I've ever seen.</p>
+                    <p>In my job as social media strategist, I've tried pretty much every analytics product on the market and when I came across Tracesci, I was blown away! Tracesci is one of the most impressive social media website efforts I've ever seen.</p>
                     <img src="{{ asset('dist/images/home-slider-img-left.png') }}" alt="">
                   </div>
                   <div class="help-slider-img">
