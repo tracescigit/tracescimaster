@@ -825,7 +825,8 @@
             border-right: 1px solid var(--border);
             background: #fafafa;
         }
-         .spec-key-tech {
+
+        .spec-key-tech {
             padding: 23px 28px;
             font-size: 12px;
             font-weight: 600;
@@ -835,6 +836,7 @@
             border-right: 1px solid var(--border);
             background: #fafafa;
         }
+
         .spec-val-tech {
             padding: 14px 28px;
             font-size: 13px;
@@ -842,8 +844,9 @@
             font-weight: 500;
             line-height: 1.5;
         }
-          .spec-key-tech2 {
-            padding: 34px 28px;
+
+        .spec-key-tech2 {
+            padding: 40px 28px;
             font-size: 12px;
             font-weight: 600;
             text-transform: uppercase;
@@ -852,6 +855,7 @@
             border-right: 1px solid var(--border);
             background: #fafafa;
         }
+
         .spec-val-tech2 {
             padding: 32px 28px;
             font-size: 13px;
@@ -923,15 +927,16 @@
 
         .env-card {
             background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid;
+            border-color: #222222;
             border-radius: 12px;
             padding: 36px 30px;
-            transition: background 0.2s;
+            transition: background 0.3s ease, border-color 0.3s ease;
         }
 
         .env-card:hover {
             border-color: #7a0d7d;
-            background: var(--light);
+            background: #e9d6ea;
         }
 
         .env-icon {
@@ -957,21 +962,21 @@
             font-family: 'Lora', serif;
             font-size: 18px;
             font-weight: 700;
-            color: var(--white);
+            color: #222222;
             margin-bottom: 8px;
         }
 
         .env-body {
             font-size: 13px;
             line-height: 1.75;
-            color: rgba(255, 255, 255, 0.5);
+            color: #222222;
         }
 
         .env-value {
             font-family: 'Lora', serif;
             font-size: 28px;
             font-weight: 800;
-            color: var(--orange);
+            color: #222222;
             margin-bottom: 4px;
         }
 
@@ -1609,9 +1614,9 @@
                 <div class="col-md-12 text-center">
                     <div class="main-title wow zoomIn">
                         <div class="main-shadow-heading">
-                            <h2>Core <span>Solution</span></h2>
+                            <h2 >Core <span>Solution</span></h2>
                         </div>
-                        <h2>Core<span> Solution</span></h2>
+                        <h2 style="color:#7a0d7d">Core<span> Solution</span></h2>
                         <h3>Four integrated capabilities built for demanding production environments — from variable data and code verification to ultra-fast PDF output.</h3>
                     </div>
                 </div>
@@ -1681,81 +1686,91 @@
         </div>
 
         <section id="different" style="background-color: #fff;">
-            <div class="different_section" style="align-items: center; color:#222222">
-                <div class="section-wave" style="align-items: center;">
-                    <span class="section-wave-label" style="text-align: center;color:#222222">Technical Specifications</span>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <div class="main-title wow zoomIn">
+                            <div class="main-shadow-heading">
+                                <h2 >Technical Specifications</h2>
+                            </div>
+                            <h2 style="color:#7a0d7d">Technical Specifications</h2>
+                            <h3>Precision-engineered with Piezo DOD technology and UV curable aqueous inks for consistent high-performance output.</h3>
+                            
+                        </div>
+                        <h3 style="color: #0a0a0a;">Razor6 Spec Sheet</h3>
+                        
+                    </div>
                 </div>
-                <h2 class="section-heading" style="color:#222222">Razor6 Spec Sheet</h2>
-                <p>Precision-engineered with Piezo DOD technology and UV curable aqueous inks for consistent high-performance output.</p>
             </div>
+            
             <div class="tech-grid">
-                
-                    <div class="reveal">
-                        <div class="specs-table reveal">
-                            <div class="specs-table-header">Print Engine</div>
-                            <div class="spec-row">
-                                <div class="spec-key">Print Heads</div>
-                                <div class="spec-val">Piezo DOD Technology</div>
-                            </div>
-                            <div class="spec-row">
-                                <div class="spec-key">Print Width</div>
-                                <div class="spec-val"><span class="highlight">Multiple of 54.1 mm</span> (2.1")</div>
-                            </div>
-                            <div class="spec-row">
-                                <div class="spec-key">Resolution</div>
-                                <div class="spec-val">600×600, 600×300 dpi and more</div>
-                            </div>
-                            <div class="spec-row">
-                                <div class="spec-key">Drop Volume</div>
-                                <div class="spec-val">Binary: <span class="highlight">5pl</span> / Greyscale: 5–15pl</div>
-                            </div>
-                            <div class="spec-row">
-                                <div class="spec-key">Speed</div>
-                                <div class="spec-val">Up to <span class="highlight">150 mtr/min</span> (resolution dependent)</div>
-                            </div>
+
+                <div class="reveal">
+                    <div class="specs-table reveal">
+                        <div class="specs-table-header">Print Engine</div>
+                        <div class="spec-row">
+                            <div class="spec-key">Print Heads</div>
+                            <div class="spec-val">Piezo DOD Technology</div>
+                        </div>
+                        <div class="spec-row">
+                            <div class="spec-key">Print Width</div>
+                            <div class="spec-val"><span class="highlight">Multiple of 54.1 mm</span> (2.1")</div>
+                        </div>
+                        <div class="spec-row">
+                            <div class="spec-key">Resolution</div>
+                            <div class="spec-val">600×600, 600×300 dpi and more</div>
+                        </div>
+                        <div class="spec-row">
+                            <div class="spec-key">Drop Volume</div>
+                            <div class="spec-val">Binary: <span class="highlight">5pl</span> / Greyscale: 5–15pl</div>
+                        </div>
+                        <div class="spec-row">
+                            <div class="spec-key">Speed</div>
+                            <div class="spec-val">Up to <span class="highlight">150 mtr/min</span> (resolution dependent)</div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="reveal" style="transition-delay:0.1s">
-                        <div class="specs-table">
-                            <div class="specs-table-header">Ink &amp; Substrates</div>
-                            <div class="spec-row">
-                                <div class="spec-key-tech">Compatible Inks</div>
-                                <div class="spec-val-tech">UV Curable, Aqueous</div>
-                            </div>
-                            <div class="spec-row">
-                                <div class="spec-key-tech">Ink Tank</div>
-                                <div class="spec-val-tech">0.5L / 1L</div>
-                            </div>
-                            <div class="spec-row">
-                                <div class="spec-key-tech">Colour Options</div>
-                                <div class="spec-val-tech">Black, Spot, <span class="highlight">Security Inks</span></div>
-                            </div>
-                            <div class="spec-row">
-                                <div class="spec-key-tech">Substrates</div>
-                                <div class="spec-val-tech">Paper, Coated, Plastics, PVC, Cartons, Blister etc.</div>
-                            </div>
+                <div class="reveal" style="transition-delay:0.1s">
+                    <div class="specs-table">
+                        <div class="specs-table-header">Ink &amp; Substrates</div>
+                        <div class="spec-row">
+                            <div class="spec-key-tech">Compatible Inks</div>
+                            <div class="spec-val-tech">UV Curable, Aqueous</div>
+                        </div>
+                        <div class="spec-row">
+                            <div class="spec-key-tech">Ink Tank</div>
+                            <div class="spec-val-tech">0.5L / 1L</div>
+                        </div>
+                        <div class="spec-row">
+                            <div class="spec-key-tech">Colour Options</div>
+                            <div class="spec-val-tech">Black, Spot, <span class="highlight">Security Inks</span></div>
+                        </div>
+                        <div class="spec-row">
+                            <div class="spec-key-tech">Substrates</div>
+                            <div class="spec-val-tech">Paper, Coated, Plastics, PVC, Cartons, Blister etc.</div>
                         </div>
                     </div>
+                </div>
 
-                        <div class="reveal" style="transition-delay:0.2s">
+                <div class="reveal" style="transition-delay:0.2s">
 
-                        <div class="specs-table" >
-                            <div class="specs-table-header">Software &amp; Environment</div>
-                            <div class="spec-row">
-                                <div class="spec-key-tech2">VDP Software</div>
-                                <div class="spec-val-tech2"><span class="highlight">Tarcesci RapidPro</span></div>
-                            </div>
-                            <div class="spec-row">
-                                <div class="spec-key-tech2">Temperature</div>
-                                <div class="spec-val-tech2">20–28 °C</div>
-                            </div>
-                            <div class="spec-row">
-                                <div class="spec-key-tech2">Humidity</div>
-                                <div class="spec-val-tech2">40–60%, Non-Condensing</div>
-                            </div>
+                    <div class="specs-table">
+                        <div class="specs-table-header">Software &amp; Environment</div>
+                        <div class="spec-row">
+                            <div class="spec-key-tech2">VDP Software</div>
+                            <div class="spec-val-tech2"><span class="highlight">Tarcesci RapidPro</span></div>
+                        </div>
+                        <div class="spec-row">
+                            <div class="spec-key-tech2">Temperature</div>
+                            <div class="spec-val-tech2">20–28 °C</div>
+                        </div>
+                        <div class="spec-row">
+                            <div class="spec-key-tech2">Humidity</div>
+                            <div class="spec-val-tech2">40–60%, Non-Condensing</div>
                         </div>
                     </div>
+                </div>
             </div>
         </section>
 
@@ -1763,7 +1778,7 @@
 
 
 
-        <section class="feature-area feature-2-area">
+        <section class="feature-area feature-2-area" style="background-color: #f5f5f5;">
             <div class="feature-heading-area  wow zoomIn">
                 <div class="container">
                     <div class="row">
@@ -1822,10 +1837,14 @@
 
         <section id="ancillary">
             <div class="reveal" style="text-align:center">
-                <div class="section-wave-label" style="color:#7a0d7d">Ancillary Equipment</div>
-                <h2 class="section-heading">Complete your <span class="highlight">production line</span></h2>
-                <p class="section-sub">Ancillary equipment available at additional cost — configure the exact system your production environment demands.</p>
-
+                <div class="main-title wow zoomIn">
+                        <div class="main-shadow-heading">
+                            <h2>Ancillary <span>Equipment</span></h2>
+                        </div>
+                        <h2 style="color:#7a0d7d">Ancillary<span> Equipment</span></h2>
+                        <h3 class="section-heading">Complete your <span class="highlight">production line</span></h3>
+                        <p class="section-sub">Ancillary equipment available at additional cost — configure the exact system your production environment demands.</p>
+                    </div>
             </div>
 
             <div class="ancillary-grid reveal" style="transition-delay:0.1s">
@@ -1932,12 +1951,20 @@
             </div>
         </section>
 
-        <section id="different">
+        <section id="different" style="background-color: #f5f5f5;color:#222222;">
             <div class="different_section" style="align-items: center;">
                 <div class="section-wave" style="align-items: center;">
-                    <span class="section-wave-label" style="text-align: center;">Working Environment</span>
+                    <div class="main-title wow zoomIn">
+                            <div class="main-shadow-heading">
+                                <h2 >Working Environment</h2>
+                            </div>
+                            <h2 style="color:#7a0d7d">Working Environment</h2>
+                            <h3>Optimised for <span class="highlight">consistent performance</span></h3>
+                            
+                        </div>
+    
                 </div>
-                <h2 class="section-heading" style="color:white">Optimised for <span class="highlight">consistent performance</span></h2>
+
             </div>
             <div class="env-grid">
                 <div class="env-card reveal">
@@ -2007,14 +2034,6 @@
             </div>
         </section>
 
-    
-
-
-     
-
-
-
- 
 
 
 
@@ -2022,53 +2041,47 @@
 
 
 
-  
 
 
 
 
-
-   
-
-        <script>
-            // Scroll reveal
-            const reveals = document.querySelectorAll('.reveal');
-            const io = new IntersectionObserver(entries => {
-                entries.forEach(e => {
-                    if (e.isIntersecting) {
-                        e.target.classList.add('visible');
-                        io.unobserve(e.target);
-                    }
-                });
-            }, {
-                threshold: 0.1
-            });
-            reveals.forEach(el => io.observe(el));
-
-            // Word rotator
-            const words = ['High Speed PDF Printing', 'UV Cured', 'Aqueous Inks', '24x7 Production Enviroments'];
-            let idx = 0;
-            const el = document.getElementById('rotateWord');
-            setInterval(() => {
-                el.style.opacity = '0';
-                el.style.transform = 'translateY(12px)';
-                setTimeout(() => {
-                    idx = (idx + 1) % words.length;
-                    el.textContent = words[idx];
-                    el.style.opacity = '1';
-                    el.style.transform = 'translateY(0)';
-                }, 300);
-            }, 2400);
-            el.style.transition = 'opacity 0.3s, transform 0.3s';
-        </script>
 </body>
 
 </html>
 
-@endsection
-
-
 @section('script')
+
+<script>
+{{-- Scroll reveal --}}
+const reveals = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver(entries => {
+entries.forEach(e => {
+if (e.isIntersecting) {
+e.target.classList.add('visible');
+io.unobserve(e.target);
+}
+});
+}, { threshold: 0.1 });
+reveals.forEach(el => io.observe(el));
+
+{{-- Word rotator --}}
+const words = ['High Speed PDF Printing', 'UV Cured', 'Aqueous Inks', '24x7 Production Environments'];
+let idx = 0;
+const el = document.getElementById('rotateWord');
+if (el) {
+el.style.transition = 'opacity 0.3s, transform 0.3s';
+setInterval(() => {
+el.style.opacity = '0';
+el.style.transform = 'translateY(12px)';
+setTimeout(() => {
+idx = (idx + 1) % words.length;
+el.textContent = words[idx];
+el.style.opacity = '1';
+el.style.transform = 'translateY(0)';
+}, 300);
+}, 2400);
+}
+</script>
 
 <script type="text/javascript">
     cash(function() {
@@ -2092,18 +2105,14 @@
                 cash('#contactSuccess').removeClass('hidden')
                 cash('#contactError').addClass('hidden')
                 cash('#contactwait').addClass('hidden')
-                // showNotification('success','Success!',res.data.message)
                 setTimeout(() => {
                     window.location.reload()
                 }, 3000)
             }).catch(err => {
-                // showNotification('error','Error !',err.response.data.message)
                 cash('#contactError').removeClass('hidden')
                 cash('#contactSuccess').addClass('hidden')
                 cash('#contactwait').addClass('hidden')
-
                 cash('#btn-contact').html('Submit')
-
                 if (err.response.data.errors) {
                     for (const [key, val] of Object.entries(err.response.data.errors)) {
                         cash(`#${key}`).addClass('border-theme-6')
@@ -2111,8 +2120,8 @@
                     }
                 }
             })
-
         }
+
         cash('#contact_form').on('keyup', function(e) {
             if (e.keyCode === 13) {
                 contact()
@@ -2123,34 +2132,24 @@
         })
     })
 </script>
+
 <script>
     var revapi;
-
     jQuery(document).ready(function() {
         revapi = jQuery("#slider1").show().revolution({
             sliderType: "standard",
             sliderLayout: "fullscreen",
-
-            delay: 999999999, // ⛔ disable auto sliding
-
+            delay: 6500,
             navigation: {
                 arrows: {
-                    enable: true,
-                    style: "uranus",
-                    hide_onleave: false
+                    enable: true
+                },
+                bullets: {
+                    enable: true
                 }
-            },
-
-            stopLoop: "on",
-            stopAfterLoops: 0,
-            stopAtSlide: 1,
-
-            disableProgressBar: "on",
-
-            fullScreenOffsetContainer: "" // add header selector if needed
+            }
         });
-
-        // ✅ extra safety: pause autoplay
-        revapi.revpause();
     });
 </script>
+
+@endsection
