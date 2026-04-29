@@ -81,7 +81,7 @@
         }
 
         .navbar-brand span {
-            color: #1D9E75;
+            color: #7a0d7d;
         }
 
         .navbar-back {
@@ -96,7 +96,7 @@
         }
 
         .navbar-back:hover {
-            color: #1D9E75;
+            color: #7a0d7d;
         }
 
         /* ── Page ── */
@@ -119,7 +119,7 @@
             letter-spacing: 0.1em;
             text-transform: uppercase;
             color: #7a0d7d;
-            background: #b85bbb;
+            background: #d9a3db;;
             padding: 4px 14px;
             margin-bottom: 14px;
         }
@@ -159,7 +159,7 @@
         .trust-icon {
             width: 16px;
             height: 16px;
-            color: #1D9E75;
+            color: #7a0d7d;
             flex-shrink: 0;
         }
 
@@ -201,7 +201,7 @@
         }
 
         .step.active .step-num {
-            background: #1D9E75;
+            background: #7a0d7d;
             color: white;
             border-color: #7a0d7d;
         }
@@ -211,9 +211,9 @@
         }
 
         .step.done .step-num {
-            background: #E1F5EE;
+            background: #d9a3db;
             color: #7a0d7d;
-            border-color: #9FE1CB;
+            border-color: #b85bbb;
         }
 
         .step.done .step-label {
@@ -348,8 +348,8 @@
         }
 
         .cal-cell:hover:not(.empty):not(.past):not(.weekend):not(.fully-booked) {
-            background: #f0f7f5;
-            border-color: #9FE1CB;
+            background: #e3b8e5;
+            border-color: #b85bbb;
             color: #7a0d7d;
         }
 
@@ -364,13 +364,13 @@
         }
 
         .cal-cell.today {
-            border-color: #1D9E75;
+            border-color: #7a0d7d;
             color: #7a0d7d;
             font-weight: 600;
         }
 
         .cal-cell.selected {
-            background: #1D9E75;
+            background: #7a0d7d;
             color: #ffffff !important;
             border-color: #7a0d7d;
             font-weight: 600;
@@ -463,13 +463,13 @@
         }
 
         .slot-btn:hover:not(.booked):not([disabled]) {
-            background: #f0f7f5;
-            border-color: #9FE1CB;
+            background: #e3b8e5;
+            border-color: #b85bbb;
             color: #7a0d7d;
         }
 
         .slot-btn.selected-slot {
-            background: #1D9E75;
+            background: #7a0d7d;
             color: white;
             border-color: #7a0d7d;
         }
@@ -484,8 +484,8 @@
 
         /* ── Form ── */
         .booking-summary-box {
-            background: #f0f7f5;
-            border: 1px solid #9FE1CB;
+            background: #e3b8e5;
+            border: 1px solid #b85bbb;
      
             padding: 10px 14px;
             font-size: 12.5px;
@@ -561,7 +561,7 @@
 
         .form-input:focus,
         .form-textarea:focus {
-            border-color: #1D9E75;
+            border-color: #7a0d7d;
             box-shadow: 0 0 0 3px rgba(29, 158, 117, 0.12);
         }
 
@@ -603,7 +603,7 @@
         .submit-btn {
             width: 100%;
             padding: 12px;
-            background: #1D9E75;
+            background: #7a0d7d;
             color: white;
             border: none;
     
@@ -670,7 +670,7 @@
             width: 68px;
             height: 68px;
             border-radius: 50%;
-            background: #E1F5EE;
+            background: #d9a3db;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -695,8 +695,8 @@
         .success-details {
             display: inline-block;
             margin-top: 1.5rem;
-            background: #f0f7f5;
-            border: 1px solid #9FE1CB;
+            background: #e3b8e5;
+            border: 1px solid #b85bbb;
   
             padding: 14px 28px;
             font-size: 13px;
@@ -721,7 +721,7 @@
         }
 
         .page-footer a:hover {
-            color: #1D9E75;
+            color: #7a0d7d;
         }
     </style>
 </head>
@@ -823,7 +823,7 @@
                     <div class="cal-dates" id="cal-dates" role="grid" aria-label="Select a date for your demo"></div>
                     <div class="cal-legend" aria-label="Calendar legend">
                         <div class="legend-item">
-                            <div class="legend-dot" style="background:#1D9E75;" aria-hidden="true"></div>Selected
+                            <div class="legend-dot" style="background:#7a0d7d;" aria-hidden="true"></div>Selected
                         </div>
                         <div class="legend-item">
                             <div class="legend-dot" style="background:#EF9F27;" aria-hidden="true"></div>Few slots left
@@ -928,7 +928,7 @@
             <p>We've sent a confirmation to your email. Looking forward to speaking with you about TRACESCI.</p>
             <div class="success-details" id="success-details"></div>
             <p style="margin-top:1.75rem;">
-                <a href="{{ url('/') }}" style="color:#1D9E75;font-size:13px;font-weight:600;text-decoration:none;">← Back to homepage</a>
+                <a href="{{ url('/') }}" style="color:#7a0d7d;font-size:13px;font-weight:600;text-decoration:none;">← Back to homepage</a>
             </p>
         </div>
     </main>
