@@ -1,5 +1,8 @@
+@extends('web.layouts.app')
+@section('content')
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> 
 
 <head>
     <meta charset="UTF-8">
@@ -115,10 +118,9 @@
             font-weight: 600;
             letter-spacing: 0.1em;
             text-transform: uppercase;
-            color: #0F6E56;
-            background: #E1F5EE;
+            color: #7a0d7d;
+            background: #b85bbb;
             padding: 4px 14px;
-            border-radius: 999px;
             margin-bottom: 14px;
         }
 
@@ -179,7 +181,7 @@
         .step-num {
             width: 26px;
             height: 26px;
-            border-radius: 50%;
+            
             display: flex;
             align-items: center;
             justify-content: center;
@@ -201,7 +203,7 @@
         .step.active .step-num {
             background: #1D9E75;
             color: white;
-            border-color: #0F6E56;
+            border-color: #7a0d7d;
         }
 
         .step.active .step-label {
@@ -210,12 +212,12 @@
 
         .step.done .step-num {
             background: #E1F5EE;
-            color: #0F6E56;
+            color: #7a0d7d;
             border-color: #9FE1CB;
         }
 
         .step.done .step-label {
-            color: #0F6E56;
+            color: #7a0d7d;
         }
 
         .step-sep {
@@ -247,7 +249,7 @@
         .card {
             background: #ffffff;
             border: 1px solid #e4eaf0;
-            border-radius: 16px;
+          
             padding: 1.5rem;
             box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
         }
@@ -255,7 +257,7 @@
         .card-sm {
             background: #ffffff;
             border: 1px solid #e4eaf0;
-            border-radius: 16px;
+            
             padding: 1.25rem 1.5rem;
             box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
             margin-top: 1rem;
@@ -287,7 +289,7 @@
         .cal-nav-btn {
             background: none;
             border: 1px solid #e4eaf0;
-            border-radius: 8px;
+           
             width: 30px;
             height: 30px;
             cursor: pointer;
@@ -336,7 +338,7 @@
             align-items: center;
             justify-content: center;
             font-size: 13px;
-            border-radius: 10px;
+           
             cursor: pointer;
             color: #0d1b2a;
             position: relative;
@@ -348,7 +350,7 @@
         .cal-cell:hover:not(.empty):not(.past):not(.weekend):not(.fully-booked) {
             background: #f0f7f5;
             border-color: #9FE1CB;
-            color: #0F6E56;
+            color: #7a0d7d;
         }
 
         .cal-cell.empty {
@@ -363,19 +365,19 @@
 
         .cal-cell.today {
             border-color: #1D9E75;
-            color: #0F6E56;
+            color: #7a0d7d;
             font-weight: 600;
         }
 
         .cal-cell.selected {
             background: #1D9E75;
             color: #ffffff !important;
-            border-color: #0F6E56;
+            border-color: #7a0d7d;
             font-weight: 600;
         }
 
         .cal-cell.selected:hover {
-            background: #0F6E56;
+            background: #7a0d7d;
         }
 
         .cal-cell.fully-booked {
@@ -451,7 +453,7 @@
             text-align: center;
             font-size: 12px;
             font-weight: 500;
-            border-radius: 10px;
+         
             border: 1px solid #e4eaf0;
             background: #ffffff;
             color: #0d1b2a;
@@ -463,13 +465,13 @@
         .slot-btn:hover:not(.booked):not([disabled]) {
             background: #f0f7f5;
             border-color: #9FE1CB;
-            color: #0F6E56;
+            color: #7a0d7d;
         }
 
         .slot-btn.selected-slot {
             background: #1D9E75;
             color: white;
-            border-color: #0F6E56;
+            border-color: #7a0d7d;
         }
 
         .slot-btn.booked {
@@ -484,10 +486,10 @@
         .booking-summary-box {
             background: #f0f7f5;
             border: 1px solid #9FE1CB;
-            border-radius: 10px;
+     
             padding: 10px 14px;
             font-size: 12.5px;
-            color: #0F6E56;
+            color: #7a0d7d;
             margin-bottom: 1rem;
             line-height: 1.9;
             display: none;
@@ -542,7 +544,7 @@
         .form-textarea {
             font-size: 13.5px;
             border: 1px solid #d8e2ec;
-            border-radius: 10px;
+        
             padding: 9px 12px;
             background: #ffffff;
             color: #0d1b2a;
@@ -586,7 +588,7 @@
 
         .alert {
             padding: 11px 14px;
-            border-radius: 10px;
+         
             font-size: 13px;
             margin-bottom: 12px;
             display: none;
@@ -604,7 +606,7 @@
             background: #1D9E75;
             color: white;
             border: none;
-            border-radius: 10px;
+    
             font-size: 14px;
             font-weight: 600;
             cursor: pointer;
@@ -619,7 +621,7 @@
         }
 
         .submit-btn:hover:not(:disabled) {
-            background: #0F6E56;
+            background: #7a0d7d;
         }
 
         .submit-btn:active:not(:disabled) {
@@ -695,10 +697,10 @@
             margin-top: 1.5rem;
             background: #f0f7f5;
             border: 1px solid #9FE1CB;
-            border-radius: 12px;
+  
             padding: 14px 28px;
             font-size: 13px;
-            color: #0F6E56;
+            color: #7a0d7d;
             line-height: 2;
             text-align: left;
         }
@@ -725,17 +727,24 @@
 </head>
 
 <body>
-
-    {{-- Navbar --}}
-    <nav class="navbar" role="navigation" aria-label="Site navigation">
-        <a href="{{ url('/') }}" class="navbar-brand">TRACE<span>SCI</span></a>
-        <a href="{{ url('/') }}" class="navbar-back" aria-label="Back to homepage">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <polyline points="15 18 9 12 15 6" />
-            </svg>
-            Back to homepage
-        </a>
-    </nav>
+    <section class="page-title-area blog-standard-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <div class="about-head-content">
+                        <h2>Demonstration</h2>
+                        <p>Get insight of our product</p>
+                    </div>
+                    <div class="breadcrumbs text-center">
+                        <ul class="page-breadcrumbs">
+                            <li><a href="#">home</a></li>
+                            <li><a href="#">Demo</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <main class="demo-page" itemscope itemtype="https://schema.org/Event">
         <meta itemprop="name" content="TRACESCI Product Demo">
@@ -911,7 +920,7 @@
         {{-- Success screen --}}
         <div class="success-screen" id="success-screen" aria-live="polite" role="status">
             <div class="success-circle" aria-hidden="true">
-                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#7a0d7d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="20 6 9 17 4 12" />
                 </svg>
             </div>

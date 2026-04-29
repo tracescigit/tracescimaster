@@ -7204,7 +7204,7 @@ ul.page-breadcrumbs li + li:before {
 ******************************************/
 
 .blog-standard-area {
-  background: url(../images/page-titles/blog-bg.png) no-repeat;
+  background: url(../images/blog-bg.png) no-repeat;
   background-attachment: fixed;
   background-size: cover;
 }
