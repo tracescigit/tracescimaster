@@ -42,6 +42,8 @@ Route::get('/product/razor6',[PageController::class,'razor6'])->name('product-ra
 
 // Solutions
 Route::get('/solutions/cloud',[SolutionController::class,'cloud'])->name('cloud-solution');
+// blog organisation
+Route::get('/blog',[PageController::class,'blog'])->name('blog');
 
 
 

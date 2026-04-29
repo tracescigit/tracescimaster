@@ -46,6 +46,11 @@ class PageController extends Controller
         return view('web.products.razor6');
     }
 
+    public function blog()
+    {
+        return view('web.blog.blogpage');
+    }
+
     public function addSubscriber(SubscribeRequest $request)
     {
         $input = $request->all();
