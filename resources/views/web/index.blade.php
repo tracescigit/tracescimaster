@@ -1,6 +1,33 @@
 @extends('web.layouts.app')
 @section('content')
-
+<style>
+  .uranus.tparrows {
+    cursor: pointer;
+    background: #fff;
+    min-width: 60px !important;
+    min-height: 60px !important;
+    position: absolute;
+    display: block;
+    z-index: 100;
+    color: #222;
+}
+.uranus.tparrows:before {
+    font-family: "revicons";
+    font-size: 30px;
+    color: #aaa;
+    display: block;
+    line-height: 70px;
+    text-align: center;
+    -webkit-transition: color 0.3s;
+    -moz-transition: color 0.3s;
+    transition: color 0.3s;
+    z-index: 2;
+    position: relative;
+    background: #fff;
+    min-width: 70px;
+    min-height: 70px;
+}
+</style>
 <!-- slider -->
 
 <div class="rev_slider_wrapper">
