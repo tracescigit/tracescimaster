@@ -10,17 +10,36 @@ use Illuminate\Support\Facades\Mail;
 use Stevebauman\Location\Facades\Location;
 
 class PageController extends Controller
-{   
+{
 
     public function index()
     {
         $country = 'India';
-        
+
         // if ($position = Location::get()) {
         //     $country = $position->countryName;
         // }
 
-        return view('web.index')->with('country',$country);
+        return view('web.index')->with('country', $country);
+    }
+    public function about()
+    {
+        $country = 'India';
+
+        // if ($position = Location::get()) {
+        //     $country = $position->countryName;
+        // }
+        return view('web.about');
+    }
+    public function contactus()
+    {
+        $country = 'India';
+
+        // if ($position = Location::get()) {
+        //     $country = $position->countryName;
+        // }
+
+        return view('web.contactus');
     }
 
     public function terms()
@@ -54,31 +73,29 @@ class PageController extends Controller
     public function addSubscriber(SubscribeRequest $request)
     {
         $input = $request->all();
-        $subscriber = Subscriber::where('email',$input['email'])->first();
+        $subscriber = Subscriber::where('email', $input['email'])->first();
 
         $body = '
         <p> Hi,You have new subscriber on below email - </p>
-        <p> '.$input['email'].' <p>
+        <p> ' . $input['email'] . ' <p>
         <p> Thanks - Team Tracesci </p>
         ';
 
         $data = [
             'email' => 'jetsciglobal@monotech.in',
-            'email_subject'=>'New subscriber on Tracesci',
-            'bcc'=>'kunal.kothari@monotech.in',
+            'email_subject' => 'New subscriber on Tracesci',
+            'bcc' => 'kunal.kothari@monotech.in',
             'email_body' => $body
         ];
 
         $send_email = sendFrontEmail($data);
 
-        if($subscriber){
-            return ['status'=>true,'message'=>'You are already subscribed to our newsletter.'];
-        }
-        else{
+        if ($subscriber) {
+            return ['status' => true, 'message' => 'You are already subscribed to our newsletter.'];
+        } else {
             $subscriber = Subscriber::create($input);
-            return ['status'=>true,'message'=>'You are now subscribed to our newsletter.'];
+            return ['status' => true, 'message' => 'You are now subscribed to our newsletter.'];
         }
-        
     }
 
     /**
@@ -290,7 +307,7 @@ class PageController extends Controller
     {
         return view('pages/wizard-layout-2');
     }
-    
+
     /**
      * Show specified view.
      *
@@ -724,20 +741,20 @@ class PageController extends Controller
     public function sendInquiry(ContactUsRequest $request)
     {
         // dd($request->all());
-        try{
+        try {
             $input = $request->all();
-            
+
             $mail_array = [];
             $mail_array['email_subject'] = "TRACESCI got an Inquiry";
             $mail_array['email'] = 'jetsciglobal@monotech.in';
             $mail_array['bcc']   = 'kunal.kothari@monotech.in';
-            $mail_array['email_body'] = '<p>Dear Admin, </p> <p> User '.$input['name'].' has sent you an inquiry.
+            $mail_array['email_body'] = '<p>Dear Admin, </p> <p> User ' . $input['name'] . ' has sent you an inquiry.
             <p>Here are the details:</p>
-            <p>Email id : "'.$input['email'].'".</p>
-            <p>Mobile no : "'.$input['mobile'].'".</p>
+            <p>Email id : "' . $input['email'] . '".</p>
+            <p>Mobile no : "' . $input['mobile'] . '".</p>
             <p>Message:</p>
             <p>
-            '.$input['message'].'
+            ' . $input['message'] . '
             </p>
             <p>With thanks,</p> <p>TRACESCI . </p>';
 
@@ -746,7 +763,7 @@ class PageController extends Controller
             $user_mail_array = [];
             $user_mail_array['email_subject'] = "Thanks for reaching out TRACESCI";
             $user_mail_array['email'] = $input['email'];
-            $user_mail_array['email_body'] = '<p>Dear '.$input['name'].'.</p>
+            $user_mail_array['email_body'] = '<p>Dear ' . $input['name'] . '.</p>
             <p>Thanks for reaching out!</p>
             <p>We’re thrilled to hear from you. Our exciting team will be in touch with you soon.</p>
             <p>Subscribe us to be the first to know about latest TRACESCI updates. </p>
@@ -759,12 +776,9 @@ class PageController extends Controller
             $status  = 'success';
             $status_code = 201;
 
-            return response(['message'=>$message,'status'=>$status],$status_code);
-
-        }catch(Exception $e){
-            return response(['message'=>'Error','status'=>'failed'], 503);
+            return response(['message' => $message, 'status' => $status], $status_code);
+        } catch (Exception $e) {
+            return response(['message' => 'Error', 'status' => 'failed'], 503);
         }
-
-
     }
 }

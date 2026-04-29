@@ -113,7 +113,7 @@
             </div>
             <div class="col-sm-6 col-md-6 no-padding-right">
               <div class="footer-bottom-right">
-                <p>Powered by <a href="https://tracesci.in">Tracesci.in</a>
+                <p>Powered by <a class="text-white" href="https://tracesci.in">tracesci.</a>
               </div>
             </div>
           </div>
