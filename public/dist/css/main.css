@@ -2083,7 +2083,7 @@ input:focus {
 }
 .help-slider-text img {
   width: 100% !important;
-  min-width: 800px;
+  min-width: 996px;
   height: auto;
   position: absolute;
   display: block;
