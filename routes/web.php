@@ -39,6 +39,9 @@ Route::post('/demo-schedule-details/store', [App\Http\Controllers\DemoController
 // products organisation 
 Route::get('/product/razor6',[PageController::class,'razor6'])->name('product-razor6');
 
+// blog organisation
+Route::get('/blog',[PageController::class,'blog'])->name('blog');
+
 
 
 

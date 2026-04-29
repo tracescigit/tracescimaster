@@ -377,14 +377,14 @@
 
         /* ── SECTION SHARED ── */
         section {
-            padding: 100px 56px;
+            padding: 0 56px 100px 56px;
         }
 
         .section-wave {
             display: flex;
             align-items: center;
-            gap: 10px;
-            margin-bottom: 12px;
+            
+            
         }
 
         .section-wave img {
@@ -1784,7 +1784,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="feature-heading-left ">
-                                <h2>Built for speed & precision</h2>
+                                <h2 style="color: #7a0d7d; font-weight: bold">Built for speed & precision</h2>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -1826,9 +1826,9 @@
 
                                 </li>
                             </ul>
-                            <div class="feature-2-left-btn">
+                            <!-- <div class="feature-2-left-btn">
                                 <a href="#">Explore Features</a>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -1836,7 +1836,7 @@
         </section>
 
         <section id="ancillary">
-            <div class="reveal" style="text-align:center">
+            <div class="reveal" style="text-align:center; padding: 30px">
                 <div class="main-title wow zoomIn">
                         <div class="main-shadow-heading">
                             <h2>Ancillary <span>Equipment</span></h2>
@@ -2001,7 +2001,7 @@
             </div>
         </section>
 
-        <section id="contact">
+        <section id="contact" style="padding:50px">
             <div class="contact-photo reveal">
                 <img src="https://cdn.prod.website-files.com/618bcfd8f178447ade4b3ba0/61bcb317af56b916bbd53472_modes-footer-1.png" alt="Man and woman working together" />
             </div>
