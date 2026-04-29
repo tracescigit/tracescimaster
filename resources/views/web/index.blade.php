@@ -574,7 +574,7 @@
 
 
     <!-- Pricing Table -->
-    <section class="pricing-table-section grey-bg">
+    {{--<section class="pricing-table-section grey-bg">
       <!-- MAIN TITLE AREA -->
       <div class="container">
         <div class="row">
@@ -642,7 +642,7 @@
       <div class="pricing-table-self">
         <img src="{{asset('dist/images/pricing-table-self.png')}}">
       </div>
-    </section>
+    </section>--}}
 
 
 
