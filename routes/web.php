@@ -23,6 +23,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [PageController::class, 'index'])->name('home');
+Route::get('/about', [PageController::class, 'about'])->name('about');
+Route::get('/get_in_touch', [PageController::class, 'contactus'])->name('contact-us');
+
+
 Route::get('dark-mode-switcher', [DarkModeController::class, 'switch'])->name('dark-mode-switcher');
 Route::post('/send_inquiry', [PageController::class, 'sendInquiry'])->name('send_inquiry');
 Route::get('/terms-of-use', [PageController::class, 'terms'])->name('terms');

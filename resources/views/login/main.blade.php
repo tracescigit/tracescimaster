@@ -10,7 +10,7 @@
         <!-- BEGIN: Login Info -->
         <div class="hidden xl:flex flex-col min-h-screen">
             <a href="{{ url('/') }}" class="-intro-x flex items-center pt-5">
-                <img width="20%"  alt="Tracesci" src="{{asset('web/images/logo.png')}}" class=""></a>
+                <img width="20%" alt="Tracesci" src="{{asset('web/images/logo.png')}}" class=""></a>
             </a>
             <div class="my-auto">
                 <img alt="TRACESCI" class="-intro-x w-1/2 -mt-16" src="{{ asset('dist/images/illustration.svg') }}">
@@ -48,64 +48,64 @@
         <!-- END: Login Form -->
     </div>
     <x-notification></x-notification>
-</div>    
+</div>
 @endsection
 
 @section('script')
 <script>
     var submitted = false
 
-    cash(function () {
+    cash(function() {
         async function login() {
             submitted = true
-                // Reset state
-                cash('#login-form').find('.login__input').removeClass('border-theme-6')
-                cash('#login-form').find('.login__input-error').html('')
+            // Reset state
+            cash('#login-form').find('.login__input').removeClass('border-theme-6')
+            cash('#login-form').find('.login__input-error').html('')
 
-                // Post form
-                let email_or_phone = cash('#email_or_phone').val()
-                let password = cash('#password').val()
-                let rememberMe = cash('#remember-me').val()
-                
-                // Loading state
-                cash('#btn-login').html('<i data-loading-icon="oval" data-color="white" class="w-5 h-5 mx-auto"></i>').svgLoader()
-                await helper.delay(500)
+            // Post form
+            let email_or_phone = cash('#email_or_phone').val()
+            let password = cash('#password').val()
+            let rememberMe = cash('#remember-me').val()
 
-                axios.post('{{ url('/login') }}', {
-                    email_or_phone: email_or_phone,
-                    password: password,
-                    remember_me: rememberMe
-                }).then(res => {
-                   submitted = false
-                   showNotification('success','Success !',res.data.message)
-                   setTimeout(()=>{
+            // Loading state
+            cash('#btn-login').html('<i data-loading-icon="oval" data-color="white" class="w-5 h-5 mx-auto"></i>').svgLoader()
+            await helper.delay(500)
+
+            axios.post('{{ url(' / login ') }}', {
+                email_or_phone: email_or_phone,
+                password: password,
+                remember_me: rememberMe
+            }).then(res => {
+                submitted = false
+                showNotification('success', 'Success !', res.data.message)
+                setTimeout(() => {
                     window.location.href = res.data.url
-                },2000)
-               }).catch(err => {
-                   submitted = false
-                   showNotification('error','Error !',err.response.data.message)
-                   cash('#btn-login').html('Login')
+                }, 2000)
+            }).catch(err => {
+                submitted = false
+                showNotification('error', 'Error !', err.response.data.message)
+                cash('#btn-login').html('Login')
 
-                   if (err.response.data.errors) {
+                if (err.response.data.errors) {
                     for (const [key, val] of Object.entries(err.response.data.errors)) {
                         cash(`#${key}`).addClass('border-theme-6')
                         cash(`#error-${key}`).html(val)
                     }
                 }
             })
-           }
+        }
 
-           cash('#login-form').on('keyup', function(e) {
-            if (e.keyCode === 13 && submitted==false) {
+        cash('#login-form').on('keyup', function(e) {
+            if (e.keyCode === 13 && submitted == false) {
                 login()
             }
         })
 
-           cash('#btn-login').on('click', function() {
-            if (submitted==false) {
+        cash('#btn-login').on('click', function() {
+            if (submitted == false) {
                 login()
             }
         })
-       })
-   </script>
-   @endsection
+    })
+</script>
+@endsection

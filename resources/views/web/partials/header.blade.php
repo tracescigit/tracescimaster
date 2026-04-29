@@ -7,13 +7,13 @@
       <div class="right-menu-list">
         <ul>
           <li class="active"><a href="home.html">Home</a></li>
-          <li><a href="about-1.html">About</a></li>
+          <li><a href="{{ route('about')}}">About</a></li>
           <li><a href="products.html">Products</a></li>
           <li><a href="solution-1.html">Solution</a></li>
           <li><a href="feature-typography.html">Pricing Plan</a></li>
           <li><a href="plans.html">Products</a></li>
           <li><a href="blog-standard-right-sidebar.html">Blogs</a></li>
-          <li><a href="contact-1.html">Get In Touch</a></li>
+          <li><a href="{{route('contact-us')}}">Get In Touch</a></li>
           <li><a href="{{ url(Auth::check()?myDashboard():'/login') }}">Login</a></li>
         </ul>
       </div>
@@ -80,7 +80,7 @@
             <a href="{{ url('/') }}">Home</a>
           </li>
           <li>
-            <a href="{{ url('/') }}">About</a>
+            <a href="{{ route('about')}}">About</a>
           </li>
 
           <li>
@@ -106,7 +106,7 @@
           </li>
 
           <li>
-            <a href="#get_in_touch">Get In Touch</a>
+            <a href="{{route('contact-us')}}">Get In Touch</a>
           </li>
 
           <li>
