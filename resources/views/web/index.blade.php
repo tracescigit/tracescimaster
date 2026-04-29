@@ -10,8 +10,9 @@
     display: block;
     z-index: 100;
     color: #222;
-}
-.uranus.tparrows:before {
+  }
+
+  .uranus.tparrows:before {
     font-family: "revicons";
     font-size: 30px;
     color: #aaa;
@@ -26,7 +27,7 @@
     background: #fff;
     min-width: 70px;
     min-height: 70px;
-}
+  }
 </style>
 <!-- slider -->
 
@@ -51,7 +52,7 @@
           data-voffset="120"
           data-start="1200"
           data-transform_in="y:[100%];opacity:0;s:800;"
-          data-transform_out="opacity:0;s:300";>
+          data-transform_out="opacity:0;s:300" ;>
           <span class="sl-italic" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;">
             Let us help you to authenticate and track your product
           </span>
@@ -62,7 +63,7 @@
           data-x="center" data-y="top" data-voffset="190"
           data-start="1800"
           data-transform_in="y:[100%];opacity:0;s:800;"
-          data-transform_out="opacity:0;s:300";>
+          data-transform_out="opacity:0;s:300" ;>
           <div class="text-center heading-rp-small" style="transition: none; line-height: 58px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 1px; font-weight: 800; font-size: 50px;">
             SUPPLY CHAIN TRACESCI PLATFORM
           </div>
@@ -72,7 +73,7 @@
         <div class="tp-caption tp-resizeme"
           data-x="center" data-y="top" data-voffset="300"
           data-start="2400" data-transform_in="y:[100%];opacity:0;s:800;"
-          data-transform_out="opacity:0;s:300";>
+          data-transform_out="opacity:0;s:300" ;>
           <div class="sl-italic sl-italic-2 text-center" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;">
             Our strategists will help you set an objective and choose your tools,<br>
             developing a plan that is custom-built for your business.
@@ -83,7 +84,7 @@
         <div class="tp-caption tp-resizeme"
           data-x="center" data-y="top" data-voffset="430"
           data-start="2800" data-transform_in="y:[100%];opacity:0;s:800;"
-          data-transform_out="opacity:0;s:300";>
+          data-transform_out="opacity:0;s:300" ;>
           <div class="rev-slider-btn text-center">
             <a a href="{{ url(Auth::check()?myDashboard():'/login') }}">Login</a>
             <a a href="{{ url(Auth::check()?myDashboard():'/register') }}">Register</a>
@@ -106,9 +107,9 @@
         <!-- LAYER 1 -->
         <div class="tp-caption tp-resizeme"
           data-x="center" data-y="top" data-voffset="120"
-          data-start="1200" 
+          data-start="1200"
           data-transform_in="y:[100%];opacity:0;s:800;"
-          data-transform_out="opacity:0;s:300"; >
+          data-transform_out="opacity:0;s:300" ;>
           <span class="sl-italic" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;">
             Informed decisions. Exceptional results
           </span>
@@ -118,7 +119,7 @@
         <div class="tp-caption tp-resizeme"
           data-x="center" data-y="top" data-voffset="190"
           data-start="1800" data-transform_in="y:[100%];opacity:0;s:800;"
-          data-transform_out="opacity:0;s:300"; >
+          data-transform_out="opacity:0;s:300" ;>
           <div class="text-center heading-rp-small" style="transition: none; line-height: 58px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 1px; font-weight: 800; font-size: 50px;">
             We Measure The Social Web
           </div>
@@ -128,7 +129,7 @@
         <div class="tp-caption tp-resizeme"
           data-x="center" data-y="top" data-voffset="300"
           data-start="2400" data-transform_in="y:[100%];opacity:0;s:800;"
-          data-transform_out="opacity:0;s:300"; >
+          data-transform_out="opacity:0;s:300" ;>
           <div class="sl-italic sl-italic-2 text-center" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;">
             Our strategists will help you set an objective and choose your tools,<br>
             developing a plan that is custom-built for your business.
@@ -139,7 +140,7 @@
         <div class="tp-caption tp-resizeme"
           data-x="center" data-y="top" data-voffset="430"
           data-start="2800" data-transform_in="y:[100%];opacity:0;s:800;"
-          data-transform_out="opacity:0;s:300"; >
+          data-transform_out="opacity:0;s:300" ;>
           <div class="rev-slider-btn text-center">
             <a href="#">Read More</a>
             <a href="#">Get Started</a>
@@ -162,7 +163,7 @@
         <div class="tp-caption tp-resizeme"
           data-x="center" data-y="top" data-voffset="120"
           data-start="1200" data-transform_in="y:[100%];opacity:0;s:800;"
-          data-transform_out="opacity:0;s:300"; >
+          data-transform_out="opacity:0;s:300" ;>
           <span class="sl-italic" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;">
             Informed decisions. Exceptional results
           </span>
@@ -172,7 +173,7 @@
         <div class="tp-caption tp-resizeme"
           data-x="center" data-y="top" data-voffset="190"
           data-start="1800" data-transform_in="y:[100%];opacity:0;s:800;"
-          data-transform_out="opacity:0;s:300"; >
+          data-transform_out="opacity:0;s:300" ;>
           <div class="text-center heading-rp-small" style="transition: none; line-height: 58px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 1px; font-weight: 800; font-size: 50px;">
             We Measure The Social Web
           </div>
@@ -182,7 +183,7 @@
         <div class="tp-caption tp-resizeme"
           data-x="center" data-y="top" data-voffset="300"
           data-start="2400" data-transform_in="y:[100%];opacity:0;s:800;"
-          data-transform_out="opacity:0;s:300"; >
+          data-transform_out="opacity:0;s:300" ;>
           <div class="sl-italic sl-italic-2 text-center" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;">
             Our strategists will help you set an objective and choose your tools,<br>
             developing a plan that is custom-built for your business.
@@ -193,7 +194,7 @@
         <div class="tp-caption tp-resizeme"
           data-x="center" data-y="top" data-voffset="430"
           data-start="2800" data-transform_in="y:[100%];opacity:0;s:800;"
-          data-transform_out="opacity:0;s:300"; >
+          data-transform_out="opacity:0;s:300" ;>
           <div class="rev-slider-btn text-center">
             <a href="#">Read More</a>
             <a href="#">Get Started</a>
@@ -217,7 +218,7 @@
           <div class="main-shadow-heading">
             <h2>Hello, We Are Tracesci</h2>
           </div>
-          <h2>Hello, We Are  <span style="color:#7a0d7d";>Tracesci</span></h2>
+          <h2>Hello, We Are <span style="color:#7a0d7d" ;>Tracesci</span></h2>
           <h3>Do More With Social Media</h3>
         </div>
       </div>
@@ -296,7 +297,7 @@
           <div class="title-block">
             <div class="riven-heading text-center" data-sr="enter top wait 0.3s">
               <h2>
-                Powered by <span style="color:#7a0d7d";>Block Chain</span> Authentic, safe and connected
+                Powered by <span style="color:#7a0d7d" ;>Block Chain</span> Authentic, safe and connected
               </h2>
             </div>
           </div>
@@ -380,7 +381,7 @@
           <div class="main-shadow-heading">
             <h2>Amazing <span>Features</span></h2>
           </div>
-          <h2>Amazing <span style="color:#7a0d7d";>Features</span></h2>
+          <h2>Amazing <span style="color:#7a0d7d" ;>Features</span></h2>
           <h3>Satisfy Your Needs</h3>
         </div>
       </div>
@@ -569,7 +570,7 @@
 
     <!--how it works -->
     <!-- video-->
-    <div class="video-home">
+    {{--<div class="video-home">
       <div class="bg-gradient">
         <div class="riven-container container  video-container">
           <div class="row">
@@ -577,31 +578,31 @@
               <div class="wpb_text_column wpb_content_element ">
                 <div class="wpb_wrapper">
                   <p><a class="fancybox btn-play" title="Play video" href="{{asset('web/videos/tracesci_storyboard.mp4')}}" data-type="iframe">Watch Now</a></p>
-                </div>
-              </div>
-              <div class="spacer-20"></div>
-              <div class="title-block">
-                <div class="riven-heading text-center">
-                  <h2> <span>Now </span> Everyone can afford product traceability</h2>
-                </div>
-              </div><!-- END riven_heading -->
+  </div>
+</div>
+<div class="spacer-20"></div>
+<div class="title-block">
+  <div class="riven-heading text-center">
+    <h2> <span>Now </span> Everyone can afford product traceability</h2>
+  </div>
+</div><!-- END riven_heading -->
 
-              <div class="wpb_text_column wpb_content_element ">
-                <div class="wpb_wrapper">
-                  <p>A solution to deter counterfeiters from stealing your revenue & damaging your brand reputation.</p>
+<div class="wpb_text_column wpb_content_element ">
+  <div class="wpb_wrapper">
+    <p>A solution to deter counterfeiters from stealing your revenue & damaging your brand reputation.</p>
 
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>--}}
 
 
 
-    <!-- Pricing Table -->
-    {{--<section class="pricing-table-section grey-bg">
+<!-- Pricing Table -->
+{{--<section class="pricing-table-section grey-bg">
       <!-- MAIN TITLE AREA -->
       <div class="container">
         <div class="row">
@@ -636,195 +637,198 @@
               <div class="pricing-table-head">
                 <div class="pricing-head-top">
                   <span>{{$plan->title}}</span>
-                </div>
-                <div class="pricing-head-content">
-                  <span>
-                    @if ($country=='India')
-                    &#8377; {{$plan->price_inr}}
-                    @else
-                    $ {{$plan->price_usd}}
-                    @endif
-                  </span>
-                  <span>/ Monthly</span>
-                </div>
-              </div>
-              <div class="pricing-table-inner-content">
-                <div class="pricing-table-title">
-                  <p>All plans are include Funnel Report, Cohort Report, Revenue Report, People Search, and A/B Testing Report.</p>
-                </div>
-                <div class="pricing-table-list">
-                  <ul>
-                    {!!$plan->description!!}
-                  </ul>
-                  <div class="all-link pricinig-bottom-btn text-center">
-                    <a class="btn btn-default" href="{{url('register')}}">Sign up</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      @endforeach
-      <div class="pricing-table-self">
-        <img src="{{asset('dist/images/pricing-table-self.png')}}">
-      </div>
-    </section>--}}
-
-
-
-    <!-- Event Calendar -->
-    <div id="event_calendar" class="padding-content content-section">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="riven-heading text-center" data-sr="enter bottom wait 0.3s">
-              <h2><span>Event</span> Calendar</h2>
-              <p class="text">Save the dates. We would love to see you..</p>
-            </div>
-          </div>
-        </div>
-        <div class="spacer-35"></div>
-        <div class="event-container">
-          <div class="event-contents row">
-            <div class="event event_post event-entries-wrap has-loadmore">
-              <div class="event-content col-md-6 col-sm-12 col-xs-12">
-                <div class="row row-event">
-                  <div class="event-box-conner col-md-10 col-sm-10 col-xs-10">
-                    <div class="event_post_content bg-gradient">
-                      <div class="event-thumb">
-                        <img width="456" height="215" alt="event" src="{{asset('web/images/PAMEX2021.jpg')}}" class="event-img">
-                      </div>
-                      <div class="event-desc">
-                        <h3 class="title-eventpost">
-                          <a href="event-lightbox.html" class="various fancybox.ajax">Pamex India 2022</a>
-                        </h3>
-                        <div class="event_post_desc">
-                          23 - 26 March 2022, Mumbai.
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="event-box-center col-md-2 col-sm-2 col-xs-2">
-                    <div class="event_post_date">MAR 23</div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="event-content col-md-6 col-sm-12 col-xs-12" style="margin:0;">
-                <div class="row row-event">
-                  <div class="event-box-conner col-md-10 col-sm-10 col-xs-10">
-                    <div class="event_post_content bg-gradient">
-
-                      <div class="event-thumb">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10065.462847026438!2d4.3336038!3d50.8984489!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xde9326a4546954ab!2sBrussels%20Expo!5e0!3m2!1sen!2sin!4v1625808010325!5m2!1sen!2sin" width="455" height="215" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                      </div>
-                      <div class="event-desc">
-                        <h3 class="title-eventpost">
-                          <a href="event-lightbox.html" class="various fancybox.ajax">Label Expo Europe 2022</a>
-                        </h3>
-                        <div class="event_post_desc">
-                          26 - 29 April 2022 <br> Brussels Expo
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="event-box-center col-md-2 col-sm-2 col-xs-2">
-                    <div class="event_post_date">APR 26</div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="event-content col-md-6 col-sm-12 col-xs-12">
-                <div class="row row-event">
-                  <div class="event-box-conner col-md-10 col-sm-10 col-xs-10">
-                    <div class="event_post_content bg-gradient">
-                      <div class="event-thumb">
-                        <img width="456" height="215" alt="event" src="{{asset('web/images/Labelexpo2022.jpg')}}" class="event-img">
-                      </div>
-                      <div class="event-desc">
-                        <h3 class="title-eventpost">
-                          <a href="event-lightbox.html" class="various fancybox.ajax">Label Expo India 2022</a>
-                        </h3>
-                        <div class="event_post_desc">
-                          10 - 13 November 2022, India Expo Centre & Mart, Greater Noida, Delhi NCR
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="event-box-center col-md-2 col-sm-2 col-xs-2">
-                    <div class="event_post_date">NOV 10</div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="event-content col-md-6 col-sm-12 col-xs-12">
-                <div class="row row-event">
-                  <div class="event-box-conner col-md-10 col-sm-10 col-xs-10">
-                    <div class="event_post_content bg-gradient">
-                      <div class="event-thumb">
-                        <img width="456" height="215" alt="event" src="{{asset('web/images/cphi2022.jpg')}}" class="event-img">
-                      </div>
-                      <div class="event-desc">
-                        <h3 class="title-eventpost">
-                          <a href="event-lightbox.html" class="various fancybox.ajax">PMEC India 2022</a>
-                        </h3>
-                        <div class="event_post_desc">
-                          29 Nov - 1 Dec 2022, India Expo Centre & Mart, Greater Noida, Delhi NCR
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="event-box-center col-md-2 col-sm-2 col-xs-2">
-                    <div class="event_post_date">NOV 29</div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-        <div class="spacer-100"></div>
-      </div>
+</div>
+<div class="pricing-head-content">
+  <span>
+    @if ($country=='India')
+    &#8377; {{$plan->price_inr}}
+    @else
+    $ {{$plan->price_usd}}
+    @endif
+  </span>
+  <span>/ Monthly</span>
+</div>
+</div>
+<div class="pricing-table-inner-content">
+  <div class="pricing-table-title">
+    <p>All plans are include Funnel Report, Cohort Report, Revenue Report, People Search, and A/B Testing Report.</p>
+  </div>
+  <div class="pricing-table-list">
+    <ul>
+      {!!$plan->description!!}
+    </ul>
+    <div class="all-link pricinig-bottom-btn text-center">
+      <a class="btn btn-default" href="{{url('register')}}">Sign up</a>
     </div>
-    <!-- Testimonials -->
-    <div id="review" class="">
-      <div class="testimonials bg-gradient">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-              <div class="testimonial">
-                <div id="testimonial_slide" class=" owl-carousel">
-                  <div class="testimonial-content">
-                    <div class="testimonial-profile">
-                      <img width="100" height="100" alt="testimonial" src="{{asset('web/images/150x150.jpg')}}" class="testimonial-img">
-                    </div>
-                    <h3 class="name"> Vikas Sethi</h3>
-                    <p class="job">Product manager, Agro Company</p>
-                    <div class="team_description">
-                      <p>Easy onboarding process, no technical knowledge required and seamless integration is the highlights of th solution. Good work.</p>
-                    </div>
-                  </div>
-                  <div class="testimonial-content">
-                    <div class="testimonial-profile">
-                      <img width="100" height="100" alt="testimonial" src="{{asset('web/images/150x150.jpg')}}" class="testimonial-img">
-                    </div>
-                    <h3 class="name"> LyLy Parker</h3>
-                    <p class="job">MD, Label Printer</p>
-                    <div class="team_description">
-                      <p>We usually asked by our client to provide track and trace solution with different use cases, TRACESCI works well with maximum scenario and thats the reason we recommend this..</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+@endforeach
+<div class="pricing-table-self">
+  <img src="{{asset('dist/images/pricing-table-self.png')}}">
+</div>
+</section>--}}
+
+
+
+<!-- Event Calendar -->
+<div id="event_calendar" class="padding-content content-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="riven-heading text-center" data-sr="enter bottom wait 0.3s">
+          <h2><span>Event</span> Calendar</h2>
+          <p class="text">Save the dates. We would love to see you..</p>
         </div>
       </div>
     </div>
+    <div class="spacer-35"></div>
+    <div class="event-container">
+      <div class="event-contents row">
+        <div class="event event_post event-entries-wrap has-loadmore">
+          <div class="event-content col-md-6 col-sm-12 col-xs-12">
+            <div class="row row-event">
+              <div class="event-box-conner col-md-10 col-sm-10 col-xs-10">
+                <div class="event_post_content bg-gradient">
+                  <div class="event-thumb">
+                    <img width="456" height="215" alt="event" src="{{asset('web/images/PAMEX2021.jpg')}}" class="event-img">
+                  </div>
+                  <div class="event-desc">
+                    <h3 class="title-eventpost">
+                      <a href="event-lightbox.html" class="various fancybox.ajax">Pamex India 2022</a>
+                    </h3>
+                    <div class="event_post_desc">
+                      23 - 26 March 2022, Mumbai.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="event-box-center col-md-2 col-sm-2 col-xs-2">
+                <div class="event_post_date">MAR 23</div>
+              </div>
+            </div>
+          </div>
 
-    <!-- Get In Touch -->
-    <div id="get_in_touch" class="contact-box padding-content content-section">
+          <div class="event-content col-md-6 col-sm-12 col-xs-12" style="margin:0;">
+            <div class="row row-event">
+              <div class="event-box-conner col-md-10 col-sm-10 col-xs-10">
+                <div class="event_post_content bg-gradient">
+
+                  <div class="event-thumb">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10065.462847026438!2d4.3336038!3d50.8984489!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xde9326a4546954ab!2sBrussels%20Expo!5e0!3m2!1sen!2sin!4v1625808010325!5m2!1sen!2sin" width="455" height="215" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                  </div>
+                  <div class="event-desc">
+                    <h3 class="title-eventpost">
+                      <a href="event-lightbox.html" class="various fancybox.ajax">Label Expo Europe 2022</a>
+                    </h3>
+                    <div class="event_post_desc">
+                      26 - 29 April 2022 <br> Brussels Expo
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="event-box-center col-md-2 col-sm-2 col-xs-2">
+                <div class="event_post_date">APR 26</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="event-content col-md-6 col-sm-12 col-xs-12">
+            <div class="row row-event">
+              <div class="event-box-conner col-md-10 col-sm-10 col-xs-10">
+                <div class="event_post_content bg-gradient">
+                  <div class="event-thumb">
+                    <img width="456" height="215" alt="event" src="{{asset('web/images/Labelexpo2022.jpg')}}" class="event-img">
+                  </div>
+                  <div class="event-desc">
+                    <h3 class="title-eventpost">
+                      <a href="event-lightbox.html" class="various fancybox.ajax">Label Expo India 2022</a>
+                    </h3>
+                    <div class="event_post_desc">
+                      10 - 13 November 2022, India Expo Centre & Mart, Greater Noida, Delhi NCR
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="event-box-center col-md-2 col-sm-2 col-xs-2">
+                <div class="event_post_date">NOV 10</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="event-content col-md-6 col-sm-12 col-xs-12">
+            <div class="row row-event">
+              <div class="event-box-conner col-md-10 col-sm-10 col-xs-10">
+                <div class="event_post_content bg-gradient">
+                  <div class="event-thumb">
+                    <img width="456" height="215" alt="event" src="{{asset('web/images/cphi2022.jpg')}}" class="event-img">
+                  </div>
+                  <div class="event-desc">
+                    <h3 class="title-eventpost">
+                      <a href="event-lightbox.html" class="various fancybox.ajax">PMEC India 2022</a>
+                    </h3>
+                    <div class="event_post_desc">
+                      29 Nov - 1 Dec 2022, India Expo Centre & Mart, Greater Noida, Delhi NCR
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="event-box-center col-md-2 col-sm-2 col-xs-2">
+                <div class="event_post_date">NOV 29</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="spacer-100"></div>
+  </div>
+</div>
+<!-- Testimonials -->
+<div id="review" class="">
+  <div class="testimonials bg-gradient">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="testimonial">
+            <div id="testimonial_slide" class=" owl-carousel">
+              <div class="testimonial-content">
+                <div class="testimonial-profile">
+                  <img src="https://picsum.photos/300/200?3">
+                </div>
+                <h3 class="name"> Vikas Sethi</h3>
+                <p class="job">Product manager, Agro Company</p>
+                <div class="team_description">
+                  <div class="content">
+                    <h3>Countdown & Hover Modules</h3>
+                    <p>New modules introduced with great UI...</p>
+                  </div>
+                </div>
+              </div>
+              <div class="testimonial-content">
+                <div class="testimonial-profile">
+                  <img width="100" height="100" alt="testimonial" src="{{asset('web/images/150x150.jpg')}}" class="testimonial-img">
+                </div>
+                <h3 class="name"> LyLy Parker</h3>
+                <p class="job">MD, Label Printer</p>
+                <div class="team_description">
+                  <p>We usually asked by our client to provide track and trace solution with different use cases, TRACESCI works well with maximum scenario and thats the reason we recommend this..</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Get In Touch -->
+{{--<div id="get_in_touch" class="contact-box padding-content content-section">
       <div class="container">
         <div class="row">
           <div class="col-md-12 col-sm-12 col-xs-12">
@@ -841,7 +845,7 @@
                   <div class="icon_list_icon">
                     <h5><i class="fa fa-map-marker" aria-hidden="true"></i> Office </h5>
                   </div>
-                  Tracesci Pvt Ltd.,<br>
+                  Tracesci Global Pvt. Ltd.,<br>
                   B-15, InfoCity Phase 1, Sector 34,<br>
                   Gurugram-122001, Haryana, India
 
@@ -943,9 +947,9 @@
           </div>
         </div>
       </div>
-    </div>
-    <x-notification></x-notification>
-  </div>
+    </div>--}}
+<x-notification></x-notification>
+</div>
 </div>
 @endsection
 
