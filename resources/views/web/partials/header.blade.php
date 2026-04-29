@@ -1,126 +1,107 @@
-<div class="right-full-menu">
-  <div class="right_menu_item">
-    <div class="right_menu_item-content">
-      <div class="right-menu-icon">
-        <a href="home.html"><img src="images/logo.png" alt=""></a>
-      </div>
-      <div class="right-menu-list">
-        <ul>
-          <li class="active"><a href="home.html">Home</a></li>
-          <li><a href="about-1.html">About</a></li>
-          <li><a href="products.html">Products</a></li>
-          <li><a href="solution-1.html">Solution</a></li>
-          <li><a href="feature-typography.html">Pricing Plan</a></li>
-          <li><a href="plans.html">Products</a></li>
-          <li><a href="blog-standard-right-sidebar.html">Blogs</a></li>
-          <li><a href="contact-1.html">Get In Touch</a></li>
-          <li><a href="{{ url(Auth::check()?myDashboard():'/login') }}">Login</a></li>
-        </ul>
-      </div>
-      <div class="right-menu-social-box">
-        <ul class="cms-social">
-          <li class="facebook">
-            <a href="#"><i class="fa fa-facebook"></i></a>
-          </li>
-          <li class="twitter">
-            <a href="#"><i class="fa fa-twitter"></i></a>
-          </li>
-          <li class="google">
-            <a href="#"><i class="fa fa-pinterest"></i></a>
-          </li>
-          <li class="linkedin">
-            <a href="#"><i class="fa fa-linkedin"></i></a>
-          </li>
-          <li class="linkedin">
-            <a href="#"><i class="fa fa-rss"></i></a>
-          </li>
-        </ul>
-        <div class="footer-bottom-right right-menu-copyright">
-          <p>© 2015 - 2016 Metrics. All Rights Reserved</p>
-          <p>
-            With Love by <span><a href="#">tracesci</a></span>
-          </p>
+<header id="masthead" class="site-header header-v1">
+  <div class="header-top">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <h1 class="header-logo {{request()->route()->uri!='p/{code}'?'':'w-100 brand-logo'}}">
+
+            @if (request()->route()->uri!='p/{code}')
+            <a href="{{ url('/') }}" rel="home" style="padding-right: 5px !important;">
+              <img width="30%" alt="Tracesci" src="{{asset('web/images/logo.png')}}" class=""></a>
+            @else
+            @if(!empty($brand_logo))
+            <img width="40px" height="40px" alt="Product Img" src="{{ asset($brand_logo) }}">
+            @endif
+            <span class="text-white">{{$brand}}</span>
+            @endif
+          </h1>
         </div>
-      </div>
-    </div>
-  </div>
-  <div class="close_ic"></div>
-</div>
-
-
-
-<header class="header-area navbar-fixed-top">
-  <div class="container custom-header">
-    <div class="row">
-
-      <div id="menuzord" class="menuzord">
-
-        <!-- LOGO -->
-        <a href="{{ url('/') }}" class="menuzord-brand">
+        <div class="col-md-12 col-sm-12 col-xs-12">
           @if (request()->route()->uri!='p/{code}')
-          <span >tracesci.</span>
-          @else
-          <span class="text-white">{{ $brand }}</span>
+          <nav id="site-navigation" class="main-navigation">
+            <button class="menu-toggle"><i class="fa fa-bars"></i> <span> Explore</span></button>
+            <div class="menu-onepage-applanding-container">
+              <ul id="menu-onepage-applanding" class="mega-menu">
+                <li class="menu-item current-menu-parent menu-item-has-children page_item_has_children">
+                  <a href="{{ url('/') }}">Home</a>
+                </li>
+
+                <li class="menu-item"><a href="#howitworks">Solution</a>
+                  <span aria-expanded="true" role="menubar" data-toggle="dropdown" class="dropdown-toggle caret"><i class="fa fa-chevron-down"></i></span>
+                  <ul class="children dropdown-menu">
+                    <li class="menu-item current-menu-item current_page_item">
+                      <a href="#howitworks">How it works</a>
+                    </li>
+                    <li class="menu-item current-menu-item current_page_item">
+                      <a href="#features">Features</a>
+                    </li>
+                    <li class="menu-item current-menu-item current_page_item">
+                      <a href="#application">Applications</a>
+                    </li>
+                    <li class="menu-item">
+                      <a href="#event_calendar">Events</a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="menu-item"><a href="#pricing_table">Pricing Plan</a></li>
+                <li class="menu-item"><a href="#get_in_touch">Get In Touch</a></li>
+                <li class="menu-item"><a href="{{ url(Auth::check()?myDashboard():'/login') }}">{{ Auth::check()?'Dashboard':'Login' }}</a></li>
+              </ul>
+            </div>
+          </nav>
           @endif
-        </a>
-        <div class="header-contact">
-          <ul>
-            <li class="consult-search"><a href="{{ route('demo-schedule-create') }}">Schedule Demo</a></li>
-          </ul>
+
         </div>
-        <!-- SEARCH + ICON -->
-
-
-
-        <!-- MAIN MENU -->
-        @if (request()->route()->uri!='p/{code}')
-        <ul class="menuzord-menu menuzord-menu-bg">
-
-          <li class="active">
-            <a href="{{ url('/') }}">Home</a>
-          </li>
-          <li>
-            <a href="{{ url('/') }}">About</a>
-          </li>
-
-          <li>
-            <a href="#howitworks">Solution</a>
-            <ul class="dropdown">
-              <li><a href="#howitworks">Cloud</a></li>
-              <li><a href="#features">Enterprise</a></li>
-              <li><a href="#application">Custom</a></li>
-            </ul>
-          </li>
-
-         
-          <li>
-            <a href="#pricing_table">Products</a>
-            <ul class="dropdown">
-              <li><a href="{{ route('product-razor6') }}">Razor 6</a></li>
-              <li><a href="#features">Elite 4</a></li>
-              <li><a href="#application">Inspection</a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="#pricing_table">Blogs</a>
-          </li>
-
-          <li>
-            <a href="#get_in_touch">Get In Touch</a>
-          </li>
-
-          <li>
-            <a href="{{ url(Auth::check()?myDashboard():'/login') }}">
-              {{ Auth::check() ? 'Dashboard' : 'Login' }}
-            </a>
-          </li>
-          <li class="right_menu">
-            <a href="#"><i class="fa fa-bars"></i></a>
-          </li>
-        </ul>
-        @endif
-
       </div>
     </div>
   </div>
+
+  @if (request()->route()->uri!='p/{code}')
+  <div class="header-sticky">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2 col-sm-1 col-xs-6">
+          <div class="header-sticky-logo">
+            <a href="{{ url('/') }}" rel="home"><img width="120" alt="Riven" src="{{asset('dist/images/logo_color.png')}}" class=""></a>
+          </div>
+        </div>
+        <div class="col-md-10 col-sm-11 col-xs-6">
+          <nav class="main-navigation" id="sticky-navigation">
+            <div class="menu-onepage-applanding-container">
+              <ul class="mega-menu" id="menu-onepage-applanding-1">
+                <li class="menu-item current-menu-parent menu-item-has-children page_item_has_children">
+                  <a href="{{ url('/') }}">Home</a>
+
+                </li>
+
+                <li class="menu-item"><a href="#howitworks">Solution</a>
+                  <span aria-expanded="true" role="menubar" data-toggle="dropdown" class="dropdown-toggle caret"><i class="fa fa-chevron-down"></i></span>
+                  <ul class="children dropdown-menu">
+                    <li class="menu-item current-menu-item current_page_item">
+                      <a href="#howitworks">How it works</a>
+                    </li>
+                    <li class="menu-item current-menu-item current_page_item">
+                      <a href="#features">Features</a>
+                    </li>
+                    <li class="menu-item current-menu-item current_page_item">
+                      <a href="#application">Applications</a>
+                    </li>
+                    <li class="menu-item">
+                      <a href="#event_calendar">Events</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="menu-item"><a href="#pricing_table">Pricing Plan</a></li>
+                <li class="menu-item"><a href="#get_in_touch">Get In Touch</a></li>
+                <li class="menu-item"><a href="{{ url(Auth::check()?myDashboard():'/login') }}">{{ Auth::check()?'Dashboard':'Login' }}</a></li>
+
+              </ul>
+            </div>
+          </nav><!-- #site-navigation -->
+        </div>
+      </div>
+    </div>
+  </div>
+  @endif
 </header>

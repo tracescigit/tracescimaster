@@ -56,7 +56,16 @@
 							<input id="price" type="number" name="price" class="form-control form__input" value="{{number_format((float)$product->price,2,'.','')}}" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="0" step="0.01" maxlength="10" placeholder="Enter price" minlength="2">
 							<div id="error-price" class="login__input-error w-5/6 text-theme-6"></div>
 						</div>
-
+						<div class="input-form col-span-6 lg:col-span-6 px-2 py-1 mt-2">
+							<label for="template" class="form-label w-full flex flex-col sm:flex-row">
+								Select Template
+							</label>
+							<select id="template_id" name="template_id" class="form-select form__input">
+								@foreach($templates as $template)
+								<option value="{{$template->id}}" {{$template->id==$product->template_id?'selected':''}}>{{$template->name}}</option>
+								@endforeach
+							</select>
+						</div>
 						<div class="input-form col-span-12 lg:col-span-6 px-2 py-1 mt-2">
 							<label for="status" class="form-label w-full flex flex-col sm:flex-row">
 								Status
@@ -146,27 +155,51 @@
 							</div>
 						</div>
 					</div>
+					<div class="grid grid-cols-12 mb-4">
+						<div class="col-span-6">
+							<div class="grid grid-cols-12">
 
-					<div class="grid grid-cols-12 mt-6">
-						<div class="input-form col-span-12 lg:col-span-6 px-2 py-1">
-							<label for="media" class="form-label w-full flex flex-col sm:flex-row required">
-								Product media
-							</label>
-							<input id="media" type="file" name="media" class="form-control form__input" accept="audio/*,video/*" />
-							<div id="error-media" class="login__input-error w-5/6 text-theme-6"></div>
-						</div>
+								<div class="input-form col-span-12 lg:col-span-6 px-2 py-1">
+									<label for="media" class="form-label w-full flex flex-col sm:flex-row required">
+										Product media
+									</label>
+									<input id="media" type="file" name="media" class="form-control form__input" accept="audio/*,video/*" />
+									<div id="error-media" class="login__input-error w-5/6 text-theme-6"></div>
+								</div>
 
-						@if ($product->media)
-						<div class="input-form col-span-12 lg:col-span-6 px-2 py-1">
+								@if ($product->media)
+								<div class="input-form col-span-12 lg:col-span-6 px-2 py-1">
+								</div>
+								<div class="input-form col-span-12 lg:col-span-3 px-2 py-1 my-3">
+									<a href="{{$product->media}}" target="_blank"> <i data-feather="file"></i> View Uploaded File</a>
+								</div>
+								@endif
+							</div>
+
+							<div class="input-form col-span-12 lg:col-span-6 px-2 py-1">
+								<label for="media" class="form-label w-full flex flex-col sm:flex-row required">
+									Logo
+								</label>
+								<input id="logo" type="file" name="logo" class="form-control form__input" accept="image/*" />
+								<div id="error-logo" class="login__input-error w-5/6 text-theme-6"></div>
+							</div>
+
+							@if ($product->logo)
+							<div class="input-form col-span-6 px-2 py-1 mt-3">
+								<div class="h-40 relative image-fit cursor-pointer zoom-in mx-auto">
+									<img class="rounded-md" alt="Product Logo" src="{{ asset($product->logo) }}">
+								</div>
+							</div>
+							@endif
 						</div>
-						<div class="input-form col-span-12 lg:col-span-3 px-2 py-1 my-3">
-							<a href="{{$product->media}}" target="_blank"> <i data-feather="file"></i> View Uploaded File</a>
-						</div>
-						@endif
 					</div>
-
 				</div>
 			</div>
+
+
+
+
+
 
 			<div class="input-form col-span-12 lg:col-span-12 py-1 mt-3">
 				<button type="submit" id="btn-update" class="btn btn-primary w-full xl:w-32 xl:mr-3 align-top">Update product</button>
