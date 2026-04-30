@@ -6019,7 +6019,7 @@ blockquote:before {
  *  7.6 Testimonial
  */
 .testimonials {
-  background: url("../images/1920x572.jpg") no-repeat center center;
+  background-color: #fff;
   background-size: cover;
   padding-top: 100px;
   padding-bottom: 96px;
