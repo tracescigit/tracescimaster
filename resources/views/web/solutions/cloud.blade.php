@@ -495,15 +495,15 @@
                 <div class="row">
                     <div class="col-md-4 wow fadeInLeft" style="margin-bottom:20px;">
                         <img src="{{ asset('web/images/04/img-slider.png') }}" alt="Live GPS Tracking" style="width:100%; height:auto; border-radius:8px; box-shadow: 0 8px 30px rgba(0,0,0,0.1);">
-                        <p style="text-align:center; margin-top:12px; color:#7a0d7d; font-weight:600;">Live GPS Location Tracking</p>
+                        <p style="text-align:center; margin-top:12px; color:#000000; font-weight:600;">Live GPS Location Tracking</p>
                     </div>
                     <div class="col-md-4 wow fadeInUp" style="margin-bottom:20px;">
                         <img src="{{ asset('web/images/04/img-slider.png') }}" alt="Scan History Timeline" style="width:100%; height:auto; border-radius:8px; box-shadow: 0 8px 30px rgba(0,0,0,0.1);">
-                        <p style="text-align:center; margin-top:12px; color:#7a0d7d; font-weight:600;">Full Scan History Timeline</p>
+                        <p style="text-align:center; margin-top:12px; color:#000000; font-weight:600;">Full Scan History Timeline</p>
                     </div>
                     <div class="col-md-4 wow fadeInRight" style="margin-bottom:20px;">
                         <img src="{{ asset('web/images/04/img-slider.png') }}" alt="Blockchain Verification Ledger" style="width:100%; height:auto; border-radius:8px; box-shadow: 0 8px 30px rgba(0,0,0,0.1);">
-                        <p style="text-align:center; margin-top:12px; color:#7a0d7d; font-weight:600;">Immutable Blockchain Ledger</p>
+                        <p style="text-align:center; margin-top:12px; color:#000000; font-weight:600;">Immutable Blockchain Ledger</p>
                     </div>
                 </div>
             </div>
