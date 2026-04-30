@@ -6,7 +6,7 @@
             <div class="col-md-12 text-center">
                 <div class="about-head-content">
                     <h2>Who We Are</h2>
-                    <p>we’re an award-winning digital marketing agency based in New York.</p>
+                    <p>We're a technology company dedicated to product authentication and anti-counterfeiting solutions.</p>
                 </div>
                 <div class="breadcrumbs text-center">
                     <ul class="page-breadcrumbs">
@@ -32,9 +32,9 @@
             <div class="col-md-12 text-left">
                 <div class="main-title main-title-left wow fadeInLeft">
                     <div class="main-shadow-heading">
-                        <h2>Hello, Welcome To Metrics</h2>
+                        <h2>Hello, Welcome To TRACESCI</h2>
                     </div>
-                    <h2>Hello, Welcome To Metrics</h2>
+                    <h2>Hello, Welcome To <span style="color: #7a0d7d;">TRACESCI</span></h2>
                     <h3>Get To Know About Us</h3>
                 </div>
             </div>
@@ -46,7 +46,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="welcome-2-left-content wow fadeInLeft">
-                        <p>we’re Metrics, an award-winning digital marketing agency based in New York. Founded by Begha over many cups of tea at her kitchen table in 2009, our brand promise is simple: to provide powerful digital marketing solutions to small and medium businesses that are looking to build success online.</p>
+                        <p>We're TRACESCI, a product authentication and track & trace technology company based in Chennai, India. We provide a complete anti-counterfeiting ecosystem that helps governments, brands, and consumers combat illicit trade, protect revenue, and ensure the safety of products across the supply chain.</p>
                         <div class="all-link pricinig-head-btn">
                             <a href="#">More About Us</a>
                         </div>
@@ -57,22 +57,22 @@
                         <div class="col-sm-4">
                             <div class="welcome-2-right-content-inner">
                                 <span><i class="icon icon-Chart"></i></span>
-                                <h2><span class="counter">97</span>%</h2>
-                                <p>Increase In Revenue</p>
+                                <h2><span class="counter">100</span>%</h2>
+                                <p>End-to-End Solution</p>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="welcome-2-right-content-inner w-r-l-border">
                                 <span><i class="icon icon-Users"></i></span>
-                                <h2><span class="counter">100</span>%</h2>
-                                <p>Positive Feedback</p>
+                                <h2><span class="counter">24</span>/7</h2>
+                                <p>Customer Support</p>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="welcome-2-right-content-inner w-r-l-border">
                                 <span><i class="icon icon-ChartUp"></i></span>
-                                <h2><span class="counter">800</span>%</h2>
-                                <p>More Conversion</p>
+                                <h2><span class="counter">6</span>+</h2>
+                                <p>Industry Verticals</p>
                             </div>
                         </div>
                     </div>
@@ -94,21 +94,21 @@
             <div class="col-sm-6 col-md-4 no-padding">
                 <div class="our-philosophy-inner our-philosophy-inner-bg-1">
                     <h2>Our Mission</h2>
-                    <p>We encourage every team member to be a whole person. We have a flexible, high trust environment that is focused on doing great work. We’re growing and moving at a fast pace, so everyone has the chance to work on exciting projects and try new things. You'll get to solve problems and deliver in a big way.</p>
+                    <p>To combat illicit trade, counterfeiting, revenue leakage, and the circulation of unsafe products. We empower governments, brands, and consumers with intelligent traceability solutions that protect every link in the supply chain — from manufacturer to end user.</p>
                     <span><i class="icon icon-Flag"></i></span>
                 </div>
             </div>
             <div class="col-sm-6 col-md-4 no-padding">
                 <div class="our-philosophy-inner our-philosophy-inner-bg-2">
                     <h2>Our Vision</h2>
-                    <p>Our purpose is to build solutions that remove the barriers preventing people from doing their best work, and this is at the heart of how we approach our own work, every day. We set our sights high and want to have a significant impact on the people we reach, as we have plans for improvements and expansion.</p>
+                    <p>To build a world where every product is authentic, every supply chain is transparent, and every consumer is protected. We envision a global ecosystem where traceability is accessible and affordable for businesses of all sizes — from startups to large enterprises and governments.</p>
                     <span><i class="icon icon-Bulb"></i></span>
                 </div>
             </div>
             <div class="col-sm-6 col-md-4 no-padding">
                 <div class="our-philosophy-inner our-philosophy-inner-bg-3">
                     <h2>Our Philosophy</h2>
-                    <p>Learning and Growth. We’re building a learning organization, so you not only develop your craft but your ability to partner with others and be a strong team member. We know that building a high trust, high performance company takes grit. So, we stay connected and approach each challenge together.</p>
+                    <p>We believe in making every consumer a brand protector. By combining blockchain technology, serialization, and mobile intelligence, we create solutions that are not only powerful but also easy to adopt. Innovation, integrity, and impact drive everything we do at TRACESCI.</p>
                     <span><i class="icon icon-PaperClip"></i></span>
                 </div>
             </div>
@@ -122,8 +122,7 @@
 <!-- =========================
         START TEAM SECTION
       ============================== -->
-{{--<section class="team-area team-no-bottom-padding">
-    <!-- MAIN TITLE AREA -->
+<!-- <section class="team-area team-no-bottom-padding">
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
@@ -137,8 +136,7 @@
             </div>
         </div>
     </div>
-    <!-- END TITLE -->
-    <!-- TEAM CONTENT -->
+   
     <div class="container wow zoomIn">
         <div class="row">
             <div class="col-sm-6 col-md-3">
@@ -287,7 +285,7 @@
             </div>
         </div>
     </div>
-</section>--}}
+</section> -->
 <div class="progress-bar-area">
     <div class="container">
         <div class="row">
@@ -295,29 +293,29 @@
                 <div class="progressbar">
                     <div class="col-md-6">
                         <div class="progress_cont">
-                            <div class="skill">Marketing<span class="pull-right"></span></div>
+                            <div class="skill">Authentication<span class="pull-right"></span></div>
                             <div class="progress">
-                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 0%"><span class="sr-only">94% Complete (success)</span></div>
+                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100" style="width: 0%"><span class="sr-only">98% Complete (success)</span></div>
                             </div>
                         </div>
                         <div class="progress_cont">
-                            <div class="skill">Engagement <span class="pull-right"></span></div>
+                            <div class="skill">Consumer Engagement <span class="pull-right"></span></div>
                             <div class="progress">
-                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 0%"><span class="sr-only">94% Complete (success)</span></div>
+                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 0%"><span class="sr-only">85% Complete (success)</span></div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="progress_cont">
-                            <div class="skill">Security <span class="pull-right"></span></div>
+                            <div class="skill">Supply Chain Security <span class="pull-right"></span></div>
                             <div class="progress">
-                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100" style="width: 0%"><span class="sr-only">94% Complete (success)</span></div>
+                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 0%"><span class="sr-only">95% Complete (success)</span></div>
                             </div>
                         </div>
                         <div class="progress_cont">
-                            <div class="skill">Analytics <span class="pull-right"></span></div>
+                            <div class="skill">Data Analytics <span class="pull-right"></span></div>
                             <div class="progress">
-                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100" style="width: 0%"><span class="sr-only">94% Complete (success)</span></div>
+                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100" style="width: 0%"><span class="sr-only">92% Complete (success)</span></div>
                             </div>
                         </div>
                     </div>
@@ -335,44 +333,52 @@
       START OUR STORY 2 SECTION
       ============================== -->
 <section class="our-story-area our-story-2 grey-bg">
-    <div class="our-story-left wow fadeInLeft"></div>
-    <div class="our-story-content wow fadeInRight">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6"></div>
-                <div class="col-md-6">
-                    <div class="our-story-2-head">
-                        <h3>Our Story</h3>
-                        <h2>How It All Begin!</h2>
-                        <p>we’re Metrics, an award-winning digital marketing agency based in New York. Founded by Begha over many cups of tea at her kitchen table in 2009, our brand promise is simple: to provide powerful digital marketing solutions to small and medium businesses that are looking to build success online.</p>
+    <img class="wow fadeInLeft"
+        src="{{ asset('web/images/about.jpg') }}"
+        alt="Image"
+        style="
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 46%;
+            height: 100%;
+         ">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6"></div>
+            <div class="col-md-6">
+                <div class="our-story-2-head">
+                    <h3>Our Story</h3>
+                    <h2>How It All <span style="color: #7a0d7d;">Began!</span></h2>
+                    <p>We're TRACESCI, a product authentication and track & trace technology company headquartered in Chennai, Tamil Nadu. Born out of a growing need to fight illicit trade and counterfeiting, we set out to build a one-stop ecosystem that protects brands, governments, and consumers — making traceability affordable and accessible for everyone.</p>
+                </div>
+                <div class="col-sm-6 col-md-6">
+                    <div class="our-story-inner">
+                        <h2>Who We Are</h2>
+                        <p>A young and enthusiastic team of technology professionals leveraging the latest innovations in blockchain, serialization, and mobile intelligence to secure global supply chains.</p>
                     </div>
-                    <div class="col-sm-6 col-md-6">
-                        <div class="our-story-inner">
-                            <h2>Who we are</h2>
-                            <p>A small team of a very talented people with digital marketing roots as far back as the 90's. Individually good and collectively great!</p>
-                        </div>
+                </div>
+                <div class="col-sm-6 col-md-6">
+                    <div class="our-story-inner">
+                        <h2>What We <span style="color: #7a0d7d;">Do</span></h2>
+                        <p>We provide an end-to-end cloud-based track & trace platform combining serialization, authentication, mobile apps, real-time dashboards, and third-party integrations for brands and governments.</p>
                     </div>
-                    <div class="col-sm-6 col-md-6">
-                        <div class="our-story-inner">
-                            <h2>What we do</h2>
-                            <p>Produce a quality marketing application to make it easier for agencies to run their business and provide reports to their clients.</p>
-                        </div>
+                </div>
+                <div class="col-sm-6 col-md-6">
+                    <div class="our-story-inner">
+                        <h2>Why We Do <span style="color: #7a0d7d;">It</span></h2>
+                        <p>Illicit trade costs economies billions and puts lives at risk. We are driven by the belief that every product should be verifiable and every consumer should be safe from counterfeit goods.</p>
                     </div>
-                    <div class="col-sm-6 col-md-6">
-                        <div class="our-story-inner">
-                            <h2>Why we do it</h2>
-                            <p>Passion and love for developing. We are obsess over every detail. From making the user interface easy to providing the latest marketing data.</p>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-6">
-                        <div class="our-story-inner">
-                            <h2>Whats Our Values?</h2>
-                            <p>We set our sights high and want to have a significant impact on the people we reach. We are in a cutting-edge space and have plans for improvements.</p>
-                        </div>
+                </div>
+                <div class="col-sm-6 col-md-6">
+                    <div class="our-story-inner">
+                        <h2>Our Values</h2>
+                        <p>Integrity, innovation, and impact. We work in a 3-way partnership model with brands, label printers, and our platform — ensuring seamless integration, fast ROI, and long-term support for every client.</p>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </section>
 <!-- =========================
@@ -391,8 +397,8 @@
                     <div class="main-shadow-heading">
                         <h2>Don't Just Take Our Word For It</h2>
                     </div>
-                    <h2>Don't Just Take Our Word For It</h2>
-                    <h3>Trusted By The Best Brands</h3>
+                    <h2>Don't Just Take <span style="color: #7a0d7d;">Our Word</span> For It</h2>
+                    <h3>Trusted By Brands & Governments</h3>
                 </div>
             </div>
         </div>
@@ -405,56 +411,56 @@
                     <div class="client-2-slider">
                         <div class="client-2-slider-content">
                             <span><i class="fa fa-quote-left"></i></span>
-                            <h3>In my job as social media strategist, I've tried every analytics product on the market and when I came across Metrics, I was blown away!</h3>
+                            <h3>TRACESCI's platform gave us complete visibility across our supply chain. Counterfeiting incidents dropped dramatically after we deployed their serialization system.</h3>
                             <img src="images/client/client-user-1.png" alt="">
                         </div>
-                        <h2>Mahmoud Baghagho</h2>
-                        <h3>Art Director</h3>
+                        <h2>Supply Chain Director</h2>
+                        <h3>FMCG Brand</h3>
                     </div>
                     <div class="client-2-slider">
                         <div class="client-2-slider-content">
                             <span><i class="fa fa-quote-left"></i></span>
-                            <h3>The ability to generate reports that tell more about a website than a prospect knows is the key to building business using Metrics.</h3>
+                            <h3>The blockchain-based track & trace solution from TRACESCI has significantly improved our tax compliance monitoring and reduced revenue leakage across the region.</h3>
                             <img src="images/client/client-user-2.png" alt="">
                         </div>
-                        <h2>Fouad Badawy</h2>
-                        <h3>CEO</h3>
+                        <h2>Revenue Authority Official</h2>
+                        <h3>Government Body</h3>
                     </div>
                     <div class="client-2-slider">
                         <div class="client-2-slider-content">
                             <span><i class="fa fa-quote-left"></i></span>
-                            <h3>Metrics is one of the most impressive social media software efforts I've ever seen. From the intuitive interface to the powerful tools.</h3>
+                            <h3>We were impressed by how quickly customers adopted scanning. TRACESCI’s mobile app turned consumers into active participants in protecting our brand.</h3>
                             <img src="images/client/client-user-3.png" alt="">
                         </div>
-                        <h2>Mostafa Mabrouk</h2>
-                        <h3>Web Developer</h3>
+                        <h2>Brand Manager</h2>
+                        <h3>Pharmaceutical Company</h3>
                     </div>
                     <div class="client-2-slider">
                         <div class="client-2-slider-content">
                             <span><i class="fa fa-quote-left"></i></span>
-                            <h3>In my job as social media strategist, I've tried every analytics product on the market and when I came across Metrics, I was blown away!</h3>
+                            <h3>TRACESCI's platform gave us complete visibility across our supply chain. Counterfeiting incidents dropped dramatically after we deployed their serialization system.</h3>
                             <img src="images/client/client-user-1.png" alt="">
                         </div>
-                        <h2>Mahmoud Baghagho</h2>
-                        <h3>Art Director</h3>
+                        <h2>Supply Chain Director</h2>
+                        <h3>FMCG Brand</h3>
                     </div>
                     <div class="client-2-slider">
                         <div class="client-2-slider-content">
                             <span><i class="fa fa-quote-left"></i></span>
-                            <h3>The ability to generate reports that tell more about a website than a prospect knows is the key to building business using Metrics.</h3>
+                            <h3>The blockchain-based track & trace solution from TRACESCI has significantly improved our tax compliance monitoring and reduced revenue leakage across the region.</h3>
                             <img src="images/client/client-user-2.png" alt="">
                         </div>
-                        <h2>Fouad Badawy</h2>
-                        <h3>CEO</h3>
+                        <h2>Revenue Authority Official</h2>
+                        <h3>Government Body</h3>
                     </div>
                     <div class="client-2-slider">
                         <div class="client-2-slider-content">
                             <span><i class="fa fa-quote-left"></i></span>
-                            <h3>Metrics is one of the most impressive social media software efforts I've ever seen. From the intuitive interface to the powerful tools.</h3>
+                            <h3>We were impressed by how quickly customers adopted scanning. TRACESCI’s mobile app turned consumers into active participants in protecting our brand.</h3>
                             <img src="images/client/client-user-3.png" alt="">
                         </div>
-                        <h2>Mostafa Mabrouk</h2>
-                        <h3>Web Developer</h3>
+                        <h2>Brand Manager</h2>
+                        <h3>Pharmaceutical Company</h3>
                     </div>
                 </div>
             </div>
