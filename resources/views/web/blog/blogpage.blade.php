@@ -84,7 +84,7 @@
                     </div>
                     <div class="breadcrumbs text-center">
                         <ul class="page-breadcrumbs">
-                            <li><a href="#">home</a></li>
+                            <li><a href="{{ url('/') }}">Home</a></li>
                             <li><a href="#">Blog</a></li>
                         </ul>
                     </div>
@@ -104,6 +104,7 @@
             <div class="row">
                 <div class="col-md-12 no-padding text-left">
                     <div class="blog-2-column-left-content">
+
                         <div class="col-sm-6 col-md-6">
                             <div class="blog-2-column-content">
                                 <div class="full-intro-img">
@@ -111,14 +112,14 @@
                                 </div>
                                 <div class="full-intro-head">
                                     <p>
-                                        Oct 16, 2015 . <span><a href="#">Business</a></span>. Comments : <span><a href="#">80</a></span>
+                                        Oct 16, 2015 . <span><a href="#">Business</a></span></span>
                                     </p>
                                     <h2><a href="#">Beyond the SEO: After Optimizing Your Website</a></h2>
                                 </div>
                                 <div class="full-intro-content">
                                     <p>We all know that no user is the same. Aside from the basics such as age, gender, socio-economic background and so every person differs in life experiences, interests, and preferences.</p>
                                     <p>
-                                        <img src="{{asset('dist/images/blog-user-1.png')}}" alt="">By:<span><a href="#"> Ahmed Ebraheem</a></span>
+                                        By:<span><a href="#"> Ahmed Ebraheem</a></span>
                                     </p>
                                 </div>
                             </div>
