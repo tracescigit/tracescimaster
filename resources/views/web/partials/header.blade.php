@@ -97,8 +97,8 @@
             <a href="#pricing_table">Products</a>
             <ul class="dropdown">
               <li><a href="{{ route('product-razor6') }}">Razor 6</a></li>
-              <li><a href="#features">Elite 4</a></li>
-              <li><a href="#application">Hyperloop</a></li>
+              <li><a href="{{route('product-elite4')}}">Elite 4</a></li>
+              <li><a href="{{route('product-hyperloop')}}">Hyperloop</a></li>
             </ul>
           </li>
           <li>
