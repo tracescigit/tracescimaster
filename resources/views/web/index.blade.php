@@ -570,7 +570,7 @@
         <div class="row">
           <div class="col-md-4">
             <div class="feature-heading-left welcome-9-left wow fadeInLeft">
-              <h2><span style="color: #7a0d7d;">Fun Facts</span></h2>
+              <h2><span>Fun Facts</span></h2>
             </div>
           </div>
           <div class="col-md-8">
@@ -592,14 +592,14 @@
               <div class="col-sm-3">
                 <div class="welcome-2-right-content-inner w-r-l-border">
                   <span><i class="icon icon-ChartUp"></i></span>
-                  <h2><span>125+</span>%</h2>
+                  <h2><span>125+</span></h2>
                   <p>Clients</p>
                 </div>
               </div>
               <div class="col-sm-3">
                 <div class="welcome-2-right-content-inner w-r-l-border">
                   <span><i class="icon icon-ChartUp"></i></span>
-                  <h2><span>97M</span>%</h2>
+                  <h2><span>97M</span></h2>
                   <p>Unique Codes</p>
                 </div>
               </div>
