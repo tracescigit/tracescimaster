@@ -86,8 +86,8 @@
           data-start="2800" data-transform_in="y:[100%];opacity:0;s:800;"
           data-transform_out="opacity:0;s:300" ;>
           <div class="rev-slider-btn text-center">
-            <a a href="{{ url(Auth::check()?myDashboard():'/login') }}">Login</a>
-            <a a href="{{ url(Auth::check()?myDashboard():'/register') }}">Register</a>
+            <a href="{{ url(Auth::check()?myDashboard():'/login') }}">Login</a>
+            <a href="{{ url(Auth::check()?myDashboard():'/register') }}">Register</a>
           </div>
         </div>
 
@@ -788,8 +788,57 @@
     <div class="spacer-100"></div>
   </div>
 </div>
+@if(!empty($blogs) && count($blogs) > 0)
+
+<section class="solution-2-area grey-bg">
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <div class="main-title wow zoomIn">
+          <div class="main-shadow-heading">
+            <h2>Our Blog</h2>
+          </div>
+          <h2>Our Blog</h2>
+          <h3>A blog about analytics, marketing & testing</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="solution-2-content">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div id="solution-slider" class="owl-carousel all-carousel owl-theme">
+            @foreach($blogs as $index => $blog)
+            @if($index == 6)
+            @break
+            @endif
+            <div class="solution-slider-content">
+              <div class="solution-slider-img">
+                <img src="{{ asset('dist/images/solution-slider-2.png') }}" alt="">
+                <h2>{{ $index + 1 }}</h2>
+              </div>
+              <div class="solution-slider-text">
+                <h2>{{ $blog->title ?? 'Blog Title' }}</h2>
+                <p>{{ Str::limit($blog->description ?? 'Blog description', 100) }}</p>
+                <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+              </div>
+            </div>
+            @endforeach
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+@endif
 <!-- Testimonials -->
-<div id="review" class="">
+{{--<div id="review" class="">
   <div class="testimonials bg-gradient">
     <div class="container">
       <div class="row">
@@ -798,34 +847,31 @@
             <div id="testimonial_slide" class=" owl-carousel">
               <div class="testimonial-content">
                 <div class="testimonial-profile">
-                  <img src="https://picsum.photos/300/200?3">
-                </div>
-                <h3 class="name"> Vikas Sethi</h3>
-                <p class="job">Product manager, Agro Company</p>
-                <div class="team_description">
-                  <div class="content">
-                    <h3>Countdown & Hover Modules</h3>
-                    <p>New modules introduced with great UI...</p>
-                  </div>
-                </div>
-              </div>
-              <div class="testimonial-content">
-                <div class="testimonial-profile">
                   <img width="100" height="100" alt="testimonial" src="{{asset('web/images/150x150.jpg')}}" class="testimonial-img">
-                </div>
-                <h3 class="name"> LyLy Parker</h3>
-                <p class="job">MD, Label Printer</p>
-                <div class="team_description">
-                  <p>We usually asked by our client to provide track and trace solution with different use cases, TRACESCI works well with maximum scenario and thats the reason we recommend this..</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+</div>
+<h3 class="name"> Vikas Sethi</h3>
+<p class="job">Product manager, Agro Company</p>
+<div class="team_description">
+  <p>Easy onboarding process, no technical knowledge required and seamless integration is the highlights of th solution. Good work.</p>
+</div>
+</div>
+<div class="testimonial-content">
+  <div class="testimonial-profile">
+    <img width="100" height="100" alt="testimonial" src="{{asset('web/images/150x150.jpg')}}" class="testimonial-img">
+  </div>
+  <h3 class="name"> LyLy Parker</h3>
+  <p class="job">MD, Label Printer</p>
+  <div class="team_description">
+    <p>We usually asked by our client to provide track and trace solution with different use cases, TRACESCI works well with maximum scenario and thats the reason we recommend this..</p>
   </div>
 </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>--}}
 
 <!-- Get In Touch -->
 {{--<div id="get_in_touch" class="contact-box padding-content content-section">
@@ -845,7 +891,7 @@
                   <div class="icon_list_icon">
                     <h5><i class="fa fa-map-marker" aria-hidden="true"></i> Office </h5>
                   </div>
-                  Tracesci Global Pvt. Ltd.,<br>
+                  Tracesci Pvt Ltd.,<br>
                   B-15, InfoCity Phase 1, Sector 34,<br>
                   Gurugram-122001, Haryana, India
 
