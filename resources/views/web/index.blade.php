@@ -565,280 +565,221 @@
     </div>
     </section>
 
+<div class="welcome-2-content welcome-9-content" style="background-color: #fff;">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="feature-heading-left welcome-9-left wow fadeInLeft">
+              <h2><span style="color: #7a0d7d;">Fun Facts</span></h2>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="welcome-2-right-content">
+              <div class="col-sm-3">
+                <div class="welcome-2-right-content-inner">
+                  <span><i class="icon icon-Chart"></i></span>
+                  <h2><span >10+</span></h2>
+                  <p>Countries</p>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="welcome-2-right-content-inner w-r-l-border wow fadeInRight">
+                  <span><i class="icon icon-Users"></i></span>
+                  <h2><span >300+</span></h2>
+                  <p>Users</p>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="welcome-2-right-content-inner w-r-l-border">
+                  <span><i class="icon icon-ChartUp"></i></span>
+                  <h2><span>125+</span>%</h2>
+                  <p>Clients</p>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="welcome-2-right-content-inner w-r-l-border">
+                  <span><i class="icon icon-ChartUp"></i></span>
+                  <h2><span>97M</span>%</h2>
+                  <p>Unique Codes</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  
 
 
 
-    <!--how it works -->
-    <!-- video-->
-    {{--<div class="video-home">
-      <div class="bg-gradient">
-        <div class="riven-container container  video-container">
-          <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-              <div class="wpb_text_column wpb_content_element ">
-                <div class="wpb_wrapper">
-                  <p><a class="fancybox btn-play" title="Play video" href="{{asset('web/videos/tracesci_storyboard.mp4')}}" data-type="iframe">Watch Now</a></p>
-  </div>
-</div>
-<div class="spacer-20"></div>
-<div class="title-block">
-  <div class="riven-heading text-center">
-    <h2> <span>Now </span> Everyone can afford product traceability</h2>
-  </div>
-</div><!-- END riven_heading -->
 
-<div class="wpb_text_column wpb_content_element ">
-  <div class="wpb_wrapper">
-    <p>A solution to deter counterfeiters from stealing your revenue & damaging your brand reputation.</p>
+    <!-- Event Calendar -->
+    <div id="event_calendar" class="padding-content content-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="riven-heading text-center" data-sr="enter bottom wait 0.3s">
+              <h2><span>Event</span> Calendar</h2>
+              <p class="text">Save the dates. We would love to see you..</p>
+            </div>
+          </div>
+        </div>
+        <div class="spacer-35"></div>
+        <div class="event-container">
+          <div class="event-contents row">
+            <div class="event event_post event-entries-wrap has-loadmore">
+              <div class="event-content col-md-6 col-sm-12 col-xs-12">
+                <div class="row row-event">
+                  <div class="event-box-conner col-md-10 col-sm-10 col-xs-10">
+                    <div class="event_post_content bg-gradient">
+                      <div class="event-thumb">
+                        <img width="456" height="215" alt="event" src="{{asset('web/images/PAMEX2021.jpg')}}" class="event-img">
+                      </div>
+                      <div class="event-desc">
+                        <h3 class="title-eventpost">
+                          <a href="event-lightbox.html" class="various fancybox.ajax">Pamex India 2022</a>
+                        </h3>
+                        <div class="event_post_desc">
+                          23 - 26 March 2022, Mumbai.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="event-box-center col-md-2 col-sm-2 col-xs-2">
+                    <div class="event_post_date">MAR 23</div>
+                  </div>
+                </div>
+              </div>
 
-  </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>--}}
+              <div class="event-content col-md-6 col-sm-12 col-xs-12" style="margin:0;">
+                <div class="row row-event">
+                  <div class="event-box-conner col-md-10 col-sm-10 col-xs-10">
+                    <div class="event_post_content bg-gradient">
 
+                      <div class="event-thumb">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10065.462847026438!2d4.3336038!3d50.8984489!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xde9326a4546954ab!2sBrussels%20Expo!5e0!3m2!1sen!2sin!4v1625808010325!5m2!1sen!2sin" width="455" height="215" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                      </div>
+                      <div class="event-desc">
+                        <h3 class="title-eventpost">
+                          <a href="event-lightbox.html" class="various fancybox.ajax">Label Expo Europe 2022</a>
+                        </h3>
+                        <div class="event_post_desc">
+                          26 - 29 April 2022 <br> Brussels Expo
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="event-box-center col-md-2 col-sm-2 col-xs-2">
+                    <div class="event_post_date">APR 26</div>
+                  </div>
+                </div>
+              </div>
 
+              <div class="event-content col-md-6 col-sm-12 col-xs-12">
+                <div class="row row-event">
+                  <div class="event-box-conner col-md-10 col-sm-10 col-xs-10">
+                    <div class="event_post_content bg-gradient">
+                      <div class="event-thumb">
+                        <img width="456" height="215" alt="event" src="{{asset('web/images/Labelexpo2022.jpg')}}" class="event-img">
+                      </div>
+                      <div class="event-desc">
+                        <h3 class="title-eventpost">
+                          <a href="event-lightbox.html" class="various fancybox.ajax">Label Expo India 2022</a>
+                        </h3>
+                        <div class="event_post_desc">
+                          10 - 13 November 2022, India Expo Centre & Mart, Greater Noida, Delhi NCR
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="event-box-center col-md-2 col-sm-2 col-xs-2">
+                    <div class="event_post_date">NOV 10</div>
+                  </div>
+                </div>
+              </div>
 
-<!-- Pricing Table -->
-{{--<section class="pricing-table-section grey-bg">
-      <!-- MAIN TITLE AREA -->
+              <div class="event-content col-md-6 col-sm-12 col-xs-12">
+                <div class="row row-event">
+                  <div class="event-box-conner col-md-10 col-sm-10 col-xs-10">
+                    <div class="event_post_content bg-gradient">
+                      <div class="event-thumb">
+                        <img width="456" height="215" alt="event" src="{{asset('web/images/cphi2022.jpg')}}" class="event-img">
+                      </div>
+                      <div class="event-desc">
+                        <h3 class="title-eventpost">
+                          <a href="event-lightbox.html" class="various fancybox.ajax">PMEC India 2022</a>
+                        </h3>
+                        <div class="event_post_desc">
+                          29 Nov - 1 Dec 2022, India Expo Centre & Mart, Greater Noida, Delhi NCR
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="event-box-center col-md-2 col-sm-2 col-xs-2">
+                    <div class="event_post_date">NOV 29</div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="spacer-100"></div>
+      </div>
+    </div>
+    @if(!empty($blogs) && count($blogs) > 0)
+
+    <section class="solution-2-area grey-bg">
+
       <div class="container">
         <div class="row">
           <div class="col-md-12 text-center">
             <div class="main-title wow zoomIn">
               <div class="main-shadow-heading">
-                <h2>Pricing <span>Plans</span></h2>
+                <h2>Our Blog</h2>
               </div>
-              <h2>Pricing <span>Plans</span></h2>
-              <h3>Our pay as you go pricing plans are driven by usage of platform resources, premium features, support & service levels. Select which suits to you</h3>
+              <h2>Our Blog</h2>
+              <h3>A blog about analytics, marketing & testing</h3>
             </div>
           </div>
         </div>
       </div>
 
+      <div class="solution-2-content">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div id="solution-slider" class="owl-carousel all-carousel owl-theme">
+                @foreach($blogs as $index => $blog)
+                @if($index == 6)
+                @break
+                @endif
+                <div class="solution-slider-content">
+                  <div class="solution-slider-img">
+                    <img src="{{ asset('dist/images/solution-slider-2.png') }}" alt="">
+                    <h2>{{ $index + 1 }}</h2>
+                  </div>
+                  <div class="solution-slider-text">
+                    <h2>{{ $blog->title ?? 'Blog Title' }}</h2>
+                    <p>{{ Str::limit($blog->description ?? 'Blog description', 100) }}</p>
+                    <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+                  </div>
+                </div>
+                @endforeach
+              </div>
 
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="all-link pricinig-head-btn text-center">
-              <a href="#">Monthly</a>
-              <a href="#">Yearly</a>
             </div>
           </div>
         </div>
       </div>
-      @foreach(getPlan() as $plan)
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-6 col-md-4">
-            <div class="pricing-table-content text-center wow fadeInLeft">
-              <div class="pricing-table-head">
-                <div class="pricing-head-top">
-                  <span>{{$plan->title}}</span>
-</div>
-<div class="pricing-head-content">
-  <span>
-    @if ($country=='India')
-    &#8377; {{$plan->price_inr}}
-    @else
-    $ {{$plan->price_usd}}
+
+    </section>
+
     @endif
-  </span>
-  <span>/ Monthly</span>
-</div>
-</div>
-<div class="pricing-table-inner-content">
-  <div class="pricing-table-title">
-    <p>All plans are include Funnel Report, Cohort Report, Revenue Report, People Search, and A/B Testing Report.</p>
-  </div>
-  <div class="pricing-table-list">
-    <ul>
-      {!!$plan->description!!}
-    </ul>
-    <div class="all-link pricinig-bottom-btn text-center">
-      <a class="btn btn-default" href="{{url('register')}}">Sign up</a>
-    </div>
-  </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-@endforeach
-<div class="pricing-table-self">
-  <img src="{{asset('dist/images/pricing-table-self.png')}}">
-</div>
-</section>--}}
-
-
-
-<!-- Event Calendar -->
-<div id="event_calendar" class="padding-content content-section">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 col-sm-12 col-xs-12">
-        <div class="riven-heading text-center" data-sr="enter bottom wait 0.3s">
-          <h2><span>Event</span> Calendar</h2>
-          <p class="text">Save the dates. We would love to see you..</p>
-        </div>
-      </div>
-    </div>
-    <div class="spacer-35"></div>
-    <div class="event-container">
-      <div class="event-contents row">
-        <div class="event event_post event-entries-wrap has-loadmore">
-          <div class="event-content col-md-6 col-sm-12 col-xs-12">
-            <div class="row row-event">
-              <div class="event-box-conner col-md-10 col-sm-10 col-xs-10">
-                <div class="event_post_content bg-gradient">
-                  <div class="event-thumb">
-                    <img width="456" height="215" alt="event" src="{{asset('web/images/PAMEX2021.jpg')}}" class="event-img">
-                  </div>
-                  <div class="event-desc">
-                    <h3 class="title-eventpost">
-                      <a href="event-lightbox.html" class="various fancybox.ajax">Pamex India 2022</a>
-                    </h3>
-                    <div class="event_post_desc">
-                      23 - 26 March 2022, Mumbai.
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="event-box-center col-md-2 col-sm-2 col-xs-2">
-                <div class="event_post_date">MAR 23</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="event-content col-md-6 col-sm-12 col-xs-12" style="margin:0;">
-            <div class="row row-event">
-              <div class="event-box-conner col-md-10 col-sm-10 col-xs-10">
-                <div class="event_post_content bg-gradient">
-
-                  <div class="event-thumb">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10065.462847026438!2d4.3336038!3d50.8984489!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xde9326a4546954ab!2sBrussels%20Expo!5e0!3m2!1sen!2sin!4v1625808010325!5m2!1sen!2sin" width="455" height="215" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                  </div>
-                  <div class="event-desc">
-                    <h3 class="title-eventpost">
-                      <a href="event-lightbox.html" class="various fancybox.ajax">Label Expo Europe 2022</a>
-                    </h3>
-                    <div class="event_post_desc">
-                      26 - 29 April 2022 <br> Brussels Expo
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="event-box-center col-md-2 col-sm-2 col-xs-2">
-                <div class="event_post_date">APR 26</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="event-content col-md-6 col-sm-12 col-xs-12">
-            <div class="row row-event">
-              <div class="event-box-conner col-md-10 col-sm-10 col-xs-10">
-                <div class="event_post_content bg-gradient">
-                  <div class="event-thumb">
-                    <img width="456" height="215" alt="event" src="{{asset('web/images/Labelexpo2022.jpg')}}" class="event-img">
-                  </div>
-                  <div class="event-desc">
-                    <h3 class="title-eventpost">
-                      <a href="event-lightbox.html" class="various fancybox.ajax">Label Expo India 2022</a>
-                    </h3>
-                    <div class="event_post_desc">
-                      10 - 13 November 2022, India Expo Centre & Mart, Greater Noida, Delhi NCR
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="event-box-center col-md-2 col-sm-2 col-xs-2">
-                <div class="event_post_date">NOV 10</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="event-content col-md-6 col-sm-12 col-xs-12">
-            <div class="row row-event">
-              <div class="event-box-conner col-md-10 col-sm-10 col-xs-10">
-                <div class="event_post_content bg-gradient">
-                  <div class="event-thumb">
-                    <img width="456" height="215" alt="event" src="{{asset('web/images/cphi2022.jpg')}}" class="event-img">
-                  </div>
-                  <div class="event-desc">
-                    <h3 class="title-eventpost">
-                      <a href="event-lightbox.html" class="various fancybox.ajax">PMEC India 2022</a>
-                    </h3>
-                    <div class="event_post_desc">
-                      29 Nov - 1 Dec 2022, India Expo Centre & Mart, Greater Noida, Delhi NCR
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="event-box-center col-md-2 col-sm-2 col-xs-2">
-                <div class="event_post_date">NOV 29</div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-    <div class="spacer-100"></div>
-  </div>
-</div>
-@if(!empty($blogs) && count($blogs) > 0)
-
-<section class="solution-2-area grey-bg">
-
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 text-center">
-        <div class="main-title wow zoomIn">
-          <div class="main-shadow-heading">
-            <h2>Our Blog</h2>
-          </div>
-          <h2>Our Blog</h2>
-          <h3>A blog about analytics, marketing & testing</h3>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="solution-2-content">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div id="solution-slider" class="owl-carousel all-carousel owl-theme">
-            @foreach($blogs as $index => $blog)
-            @if($index == 6)
-            @break
-            @endif
-            <div class="solution-slider-content">
-              <div class="solution-slider-img">
-                <img src="{{ asset('dist/images/solution-slider-2.png') }}" alt="">
-                <h2>{{ $index + 1 }}</h2>
-              </div>
-              <div class="solution-slider-text">
-                <h2>{{ $blog->title ?? 'Blog Title' }}</h2>
-                <p>{{ Str::limit($blog->description ?? 'Blog description', 100) }}</p>
-                <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
-              </div>
-            </div>
-            @endforeach
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </div>
-
-</section>
-
-@endif
-<!-- Testimonials -->
-{{--<div id="review" class="">
+    <!-- Testimonials -->
+    {{--<div id="review" class="">
   <div class="testimonials bg-gradient">
     <div class="container">
       <div class="row">
@@ -848,12 +789,12 @@
               <div class="testimonial-content">
                 <div class="testimonial-profile">
                   <img width="100" height="100" alt="testimonial" src="{{asset('web/images/150x150.jpg')}}" class="testimonial-img">
-</div>
-<h3 class="name"> Vikas Sethi</h3>
-<p class="job">Product manager, Agro Company</p>
-<div class="team_description">
-  <p>Easy onboarding process, no technical knowledge required and seamless integration is the highlights of th solution. Good work.</p>
-</div>
+  </div>
+  <h3 class="name"> Vikas Sethi</h3>
+  <p class="job">Product manager, Agro Company</p>
+  <div class="team_description">
+    <p>Easy onboarding process, no technical knowledge required and seamless integration is the highlights of th solution. Good work.</p>
+  </div>
 </div>
 <div class="testimonial-content">
   <div class="testimonial-profile">
