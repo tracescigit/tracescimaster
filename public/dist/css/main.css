@@ -2826,8 +2826,8 @@ input:focus {
   left: 0;
 }
 .solution-slider-text {
-  padding-left: 95px;
-  margin-top: 30px;
+  /* padding-left: 95px; */
+  /* margin-top: 30px; */
 }
 .solution-slider-text h2 {
   font-size: 23px;
@@ -4226,8 +4226,8 @@ input:focus {
   height: 636px;
 }
 .full-intro-head {
-  padding-top: 80px;
-  padding-bottom: 35px;
+  /* padding-top: 80px; */
+  /* padding-bottom: 35px; */
 }
 .full-intro-head > span {
   height: 50px;

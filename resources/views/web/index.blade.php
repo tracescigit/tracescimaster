@@ -817,13 +817,18 @@
             @endif
             <div class="solution-slider-content">
               <div class="solution-slider-img">
-                <img src="{{ asset('dist/images/solution-slider-2.png') }}" alt="">
-                <h2>{{ $index + 1 }}</h2>
+                <img src="{{ asset('storage/' . $blog->image_path) }}"
+                  alt="Current blog image">
               </div>
               <div class="solution-slider-text">
-                <h2>{{ $blog->title ?? 'Blog Title' }}</h2>
-                <p>{{ Str::limit($blog->description ?? 'Blog description', 100) }}</p>
-                <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+                <div class="full-intro-head">
+                  <p>
+                    {{$blog->publish_date ?? '--'}} <span><a href="#">Business</a></span>.
+                  </p>
+                </div>
+                <p>{{ $blog->title ?? 'Blog Title' }}</p>
+                <!-- <p>{!!Str::limit($blog->description ?? 'Blog description', 100)!!}</p> -->
+                <a href="{{route('blog')}}">Learn More <i class="fa fa-long-arrow-right"></i></a>
               </div>
             </div>
             @endforeach
