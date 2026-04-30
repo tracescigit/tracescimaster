@@ -737,7 +737,7 @@
                     </div>
                     <div class="breadcrumbs text-center">
                         <ul class="page-breadcrumbs">
-                            <li><a href="#">home</a></li>
+                            <li><a href="{{ url('/') }}">Home</a></li>
                             <li><a href="#">Demo</a></li>
                         </ul>
                     </div>
@@ -754,31 +754,9 @@
 
         {{-- Hero --}}
         <header class="hero">
-            <span class="hero-eyebrow">Free &middot; 30 minutes &middot; No commitment</span>
             <h1>Book a product demo</h1>
             <p>See TRACESCI in action with a personalised live walkthrough. Ask questions, explore features, and find out if it's the right fit for your team.</p>
-            <div class="trust-strip">
-                <span class="trust-item">
-                    <svg class="trust-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <circle cx="10" cy="10" r="8" />
-                        <polyline points="10 6 10 10 13 12" />
-                    </svg>
-                    30-min session
-                </span>
-                <span class="trust-item">
-                    <svg class="trust-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <polyline points="4 10 8 14 16 6" />
-                    </svg>
-                    No credit card needed
-                </span>
-                <span class="trust-item">
-                    <svg class="trust-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <circle cx="10" cy="10" r="8" />
-                        <path d="M10 6v4l3 1.5" />
-                    </svg>
-                    Live Q&amp;A included
-                </span>
-            </div>
+
         </header>
 
         {{-- Steps --}}
@@ -932,16 +910,6 @@
             </p>
         </div>
     </main>
-
-    <footer class="page-footer">
-        <p>
-            &copy; {{ date('Y') }} TRACESCI. All rights reserved.
-            &nbsp;&middot;&nbsp;
-            <a href="{{ url('/privacy') }}">Privacy Policy</a>
-            &nbsp;&middot;&nbsp;
-            <a href="{{ url('/contact') }}">Contact</a>
-        </p>
-    </footer>
 
     <script>
         (function() {

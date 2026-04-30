@@ -2,17 +2,16 @@
   <div class="right_menu_item">
     <div class="right_menu_item-content">
       <div class="right-menu-icon">
-        <a href="home.html"><img src="images/logo.png" alt=""></a>
+        <a href="{{ url('/') }}"><img src="images/logo.png" alt=""></a>
       </div>
       <div class="right-menu-list">
         <ul>
-          <li class="active"><a href="home.html">Home</a></li>
-          <li><a href="{{ route('about')}}">About</a></li>
-          <li><a href="products.html">Products</a></li>
-          <li><a href="solution-1.html">Solution</a></li>
-          <li><a href="feature-typography.html">Pricing Plan</a></li>
-          <li><a href="plans.html">Products</a></li>
-          <li><a href="blog-standard-right-sidebar.html">Blogs</a></li>
+          <li class="active"><a href="{{ url('/') }}">Home</a></li>
+          <li><a href="{{ url('/about') }}">About</a></li>
+          <li><a href="{{ url('/product/razor6') }}">Products</a></li>
+          <li><a href="{{ url('/cloud-solution') }}">Solution</a></li>
+
+          <li><a href="{{route('blog')}}">Blogs</a></li>
           <li><a href="{{route('contact-us')}}">Get In Touch</a></li>
           <li><a href="{{ url(Auth::check()?myDashboard():'/login') }}">Login</a></li>
         </ul>
@@ -80,7 +79,7 @@
             <a href="{{ url('/') }}">Home</a>
           </li>
           <li>
-            <a href="{{ route('about')}}">About</a>
+            <a href="{{ url('/about') }}">About</a>
           </li>
 
           <li>
@@ -94,7 +93,7 @@
 
          
           <li>
-            <a href="#pricing_table">Products</a>
+            <a href="{{ url('/product/razor6') }}">Products</a>
             <ul class="dropdown">
               <li><a href="{{ route('product-razor6') }}">Razor 6</a></li>
               <li><a href="{{route('product-elite4')}}">Elite 4</a></li>
