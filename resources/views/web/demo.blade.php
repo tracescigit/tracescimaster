@@ -1,5 +1,8 @@
+@extends('web.layouts.app')
+@section('content')
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> 
 
 <head>
     <meta charset="UTF-8">
@@ -78,7 +81,7 @@
         }
 
         .navbar-brand span {
-            color: #1D9E75;
+            color: #7a0d7d;
         }
 
         .navbar-back {
@@ -93,7 +96,7 @@
         }
 
         .navbar-back:hover {
-            color: #1D9E75;
+            color: #7a0d7d;
         }
 
         /* ── Page ── */
@@ -115,10 +118,9 @@
             font-weight: 600;
             letter-spacing: 0.1em;
             text-transform: uppercase;
-            color: #0F6E56;
-            background: #E1F5EE;
+            color: #7a0d7d;
+            background: #d9a3db;;
             padding: 4px 14px;
-            border-radius: 999px;
             margin-bottom: 14px;
         }
 
@@ -157,7 +159,7 @@
         .trust-icon {
             width: 16px;
             height: 16px;
-            color: #1D9E75;
+            color: #7a0d7d;
             flex-shrink: 0;
         }
 
@@ -179,7 +181,7 @@
         .step-num {
             width: 26px;
             height: 26px;
-            border-radius: 50%;
+            
             display: flex;
             align-items: center;
             justify-content: center;
@@ -199,9 +201,9 @@
         }
 
         .step.active .step-num {
-            background: #1D9E75;
+            background: #7a0d7d;
             color: white;
-            border-color: #0F6E56;
+            border-color: #7a0d7d;
         }
 
         .step.active .step-label {
@@ -209,13 +211,13 @@
         }
 
         .step.done .step-num {
-            background: #E1F5EE;
-            color: #0F6E56;
-            border-color: #9FE1CB;
+            background: #d9a3db;
+            color: #7a0d7d;
+            border-color: #b85bbb;
         }
 
         .step.done .step-label {
-            color: #0F6E56;
+            color: #7a0d7d;
         }
 
         .step-sep {
@@ -247,7 +249,7 @@
         .card {
             background: #ffffff;
             border: 1px solid #e4eaf0;
-            border-radius: 16px;
+          
             padding: 1.5rem;
             box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
         }
@@ -255,7 +257,7 @@
         .card-sm {
             background: #ffffff;
             border: 1px solid #e4eaf0;
-            border-radius: 16px;
+            
             padding: 1.25rem 1.5rem;
             box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
             margin-top: 1rem;
@@ -287,7 +289,7 @@
         .cal-nav-btn {
             background: none;
             border: 1px solid #e4eaf0;
-            border-radius: 8px;
+           
             width: 30px;
             height: 30px;
             cursor: pointer;
@@ -336,7 +338,7 @@
             align-items: center;
             justify-content: center;
             font-size: 13px;
-            border-radius: 10px;
+           
             cursor: pointer;
             color: #0d1b2a;
             position: relative;
@@ -346,9 +348,9 @@
         }
 
         .cal-cell:hover:not(.empty):not(.past):not(.weekend):not(.fully-booked) {
-            background: #f0f7f5;
-            border-color: #9FE1CB;
-            color: #0F6E56;
+            background: #e3b8e5;
+            border-color: #b85bbb;
+            color: #7a0d7d;
         }
 
         .cal-cell.empty {
@@ -362,20 +364,20 @@
         }
 
         .cal-cell.today {
-            border-color: #1D9E75;
-            color: #0F6E56;
+            border-color: #7a0d7d;
+            color: #7a0d7d;
             font-weight: 600;
         }
 
         .cal-cell.selected {
-            background: #1D9E75;
+            background: #7a0d7d;
             color: #ffffff !important;
-            border-color: #0F6E56;
+            border-color: #7a0d7d;
             font-weight: 600;
         }
 
         .cal-cell.selected:hover {
-            background: #0F6E56;
+            background: #7a0d7d;
         }
 
         .cal-cell.fully-booked {
@@ -451,7 +453,7 @@
             text-align: center;
             font-size: 12px;
             font-weight: 500;
-            border-radius: 10px;
+         
             border: 1px solid #e4eaf0;
             background: #ffffff;
             color: #0d1b2a;
@@ -461,15 +463,15 @@
         }
 
         .slot-btn:hover:not(.booked):not([disabled]) {
-            background: #f0f7f5;
-            border-color: #9FE1CB;
-            color: #0F6E56;
+            background: #e3b8e5;
+            border-color: #b85bbb;
+            color: #7a0d7d;
         }
 
         .slot-btn.selected-slot {
-            background: #1D9E75;
+            background: #7a0d7d;
             color: white;
-            border-color: #0F6E56;
+            border-color: #7a0d7d;
         }
 
         .slot-btn.booked {
@@ -482,12 +484,12 @@
 
         /* ── Form ── */
         .booking-summary-box {
-            background: #f0f7f5;
-            border: 1px solid #9FE1CB;
-            border-radius: 10px;
+            background: #e3b8e5;
+            border: 1px solid #b85bbb;
+     
             padding: 10px 14px;
             font-size: 12.5px;
-            color: #0F6E56;
+            color: #7a0d7d;
             margin-bottom: 1rem;
             line-height: 1.9;
             display: none;
@@ -542,7 +544,7 @@
         .form-textarea {
             font-size: 13.5px;
             border: 1px solid #d8e2ec;
-            border-radius: 10px;
+        
             padding: 9px 12px;
             background: #ffffff;
             color: #0d1b2a;
@@ -559,7 +561,7 @@
 
         .form-input:focus,
         .form-textarea:focus {
-            border-color: #1D9E75;
+            border-color: #7a0d7d;
             box-shadow: 0 0 0 3px rgba(29, 158, 117, 0.12);
         }
 
@@ -586,7 +588,7 @@
 
         .alert {
             padding: 11px 14px;
-            border-radius: 10px;
+         
             font-size: 13px;
             margin-bottom: 12px;
             display: none;
@@ -601,10 +603,10 @@
         .submit-btn {
             width: 100%;
             padding: 12px;
-            background: #1D9E75;
+            background: #7a0d7d;
             color: white;
             border: none;
-            border-radius: 10px;
+    
             font-size: 14px;
             font-weight: 600;
             cursor: pointer;
@@ -619,7 +621,7 @@
         }
 
         .submit-btn:hover:not(:disabled) {
-            background: #0F6E56;
+            background: #7a0d7d;
         }
 
         .submit-btn:active:not(:disabled) {
@@ -668,7 +670,7 @@
             width: 68px;
             height: 68px;
             border-radius: 50%;
-            background: #E1F5EE;
+            background: #d9a3db;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -693,12 +695,12 @@
         .success-details {
             display: inline-block;
             margin-top: 1.5rem;
-            background: #f0f7f5;
-            border: 1px solid #9FE1CB;
-            border-radius: 12px;
+            background: #e3b8e5;
+            border: 1px solid #b85bbb;
+  
             padding: 14px 28px;
             font-size: 13px;
-            color: #0F6E56;
+            color: #7a0d7d;
             line-height: 2;
             text-align: left;
         }
@@ -719,23 +721,30 @@
         }
 
         .page-footer a:hover {
-            color: #1D9E75;
+            color: #7a0d7d;
         }
     </style>
 </head>
 
 <body>
-
-    {{-- Navbar --}}
-    <nav class="navbar" role="navigation" aria-label="Site navigation">
-        <a href="{{ url('/') }}" class="navbar-brand">TRACE<span>SCI</span></a>
-        <a href="{{ url('/') }}" class="navbar-back" aria-label="Back to homepage">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <polyline points="15 18 9 12 15 6" />
-            </svg>
-            Back to homepage
-        </a>
-    </nav>
+    <section class="page-title-area blog-standard-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <div class="about-head-content">
+                        <h2>Demonstration</h2>
+                        <p>Get insight of our product</p>
+                    </div>
+                    <div class="breadcrumbs text-center">
+                        <ul class="page-breadcrumbs">
+                            <li><a href="#">home</a></li>
+                            <li><a href="#">Demo</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <main class="demo-page" itemscope itemtype="https://schema.org/Event">
         <meta itemprop="name" content="TRACESCI Product Demo">
@@ -814,7 +823,7 @@
                     <div class="cal-dates" id="cal-dates" role="grid" aria-label="Select a date for your demo"></div>
                     <div class="cal-legend" aria-label="Calendar legend">
                         <div class="legend-item">
-                            <div class="legend-dot" style="background:#1D9E75;" aria-hidden="true"></div>Selected
+                            <div class="legend-dot" style="background:#7a0d7d;" aria-hidden="true"></div>Selected
                         </div>
                         <div class="legend-item">
                             <div class="legend-dot" style="background:#EF9F27;" aria-hidden="true"></div>Few slots left
@@ -911,7 +920,7 @@
         {{-- Success screen --}}
         <div class="success-screen" id="success-screen" aria-live="polite" role="status">
             <div class="success-circle" aria-hidden="true">
-                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#7a0d7d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="20 6 9 17 4 12" />
                 </svg>
             </div>
@@ -919,7 +928,7 @@
             <p>We've sent a confirmation to your email. Looking forward to speaking with you about TRACESCI.</p>
             <div class="success-details" id="success-details"></div>
             <p style="margin-top:1.75rem;">
-                <a href="{{ url('/') }}" style="color:#1D9E75;font-size:13px;font-weight:600;text-decoration:none;">← Back to homepage</a>
+                <a href="{{ url('/') }}" style="color:#7a0d7d;font-size:13px;font-weight:600;text-decoration:none;">← Back to homepage</a>
             </p>
         </div>
     </main>

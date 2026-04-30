@@ -2083,7 +2083,7 @@ input:focus {
 }
 .help-slider-text img {
   width: 100% !important;
-  min-width: 800px;
+  min-width: 996px;
   height: auto;
   position: absolute;
   display: block;
@@ -7204,7 +7204,7 @@ ul.page-breadcrumbs li + li:before {
 ******************************************/
 
 .blog-standard-area {
-  background: url(../images/page-titles/blog-bg.png) no-repeat;
+  background: url(../images/blog-bg.png) no-repeat;
   background-attachment: fixed;
   background-size: cover;
 }

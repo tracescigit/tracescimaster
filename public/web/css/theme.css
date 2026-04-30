@@ -7994,9 +7994,9 @@ blockquote:before {
   width: 94px;
 }
 .btn-play::before {
-  border: 1px solid #ffffff;
+  border: 3px solid #000000;
   border-radius: 50%;
-  color: #ffffff;
+  color: #000000;
   content: "\e624";
   font-family: Pe-icon-7-stroke;
   font-size: 40px;
@@ -8015,7 +8015,7 @@ blockquote:before {
   width: 76px;
 }
 .btn-play::after {
-  border: 3px solid #ffffff;
+  border: 3px solid #000000;
   border-radius: 50%;
   content: "";
   height: 94px;
