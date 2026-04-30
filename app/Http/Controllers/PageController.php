@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ContactUsRequest;
 use App\Http\Requests\SubscribeRequest;
+use App\Models\Blog;
 use App\Models\Subscriber;
 use Illuminate\Support\Facades\Mail;
 use Stevebauman\Location\Facades\Location;
@@ -14,13 +15,14 @@ class PageController extends Controller
 
     public function index()
     {
+        $blogs = Blog::where('is_allowed',1)->get();
         $country = 'India';
 
         // if ($position = Location::get()) {
         //     $country = $position->countryName;
         // }
 
-        return view('web.index')->with('country', $country);
+        return view('web.index')->with('country', $country)->with('blogs',$blogs);
     }
     public function about()
     {

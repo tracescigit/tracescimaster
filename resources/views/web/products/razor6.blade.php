@@ -1616,7 +1616,7 @@
                         <div class="main-shadow-heading">
                             <h2 >Core <span>Solution</span></h2>
                         </div>
-                        <h2 style="color:#7a0d7d">Core<span> Solution</span></h2>
+                        <h2 >Core<span style="color:#7a0d7d"> Solutions</span></h2>
                         <h3>Four integrated capabilities built for demanding production environments — from variable data and code verification to ultra-fast PDF output.</h3>
                     </div>
                 </div>
@@ -1693,7 +1693,7 @@
                             <div class="main-shadow-heading">
                                 <h2 >Technical Specifications</h2>
                             </div>
-                            <h2 style="color:#7a0d7d">Technical Specifications</h2>
+                            <h2 style="color:#7a0d7d">Technical <span style="color:#7a0d7d">Specifications</span></h2>
                             <h3>Precision-engineered with Piezo DOD technology and UV curable aqueous inks for consistent high-performance output.</h3>
                             
                         </div>
