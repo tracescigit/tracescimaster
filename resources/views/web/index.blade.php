@@ -778,6 +778,7 @@
     </section>
 
     @endif
+<<<<<<< HEAD
   </span>
   <span>/ Monthly</span>
 </div>
@@ -977,6 +978,10 @@
 @endif
 <!-- Testimonials -->
 {{--<div id="review" class="">
+=======
+    <!-- Testimonials -->
+    {{--<div id="review" class="">
+>>>>>>> c8fbea7dbede404414744c3fbac2e43242a4c543
   <div class="testimonials bg-gradient">
     <div class="container">
       <div class="row">

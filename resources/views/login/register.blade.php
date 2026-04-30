@@ -5,12 +5,40 @@
 @endsection
 
 @section('content')
+<style>
+    .tab {
+        display: inline-block;
+        text-align: center;
+        padding: 12px 0;
+        font-weight: 600;
+        font-size: 14px;
+        cursor: pointer;
+        border: 1px solid #333;
+        background: transparent;
+        color: #333;
+        width: 100%;
+    }
+
+    /* Active (like LOGIN button) */
+    .tab.active {
+        background: #1e1e1e;
+        color: #fff;
+        border: 1px solid #1e1e1e;
+    }
+
+    /* Hover */
+    .tab:hover {
+        background: #333;
+        color: #fff;
+    }
+</style>
+
 <div class="container sm:px-10">
     <div class="block xl:grid grid-cols-2 gap-4">
         <!-- BEGIN: Login Info -->
         <div class="hidden xl:flex flex-col min-h-screen">
             <a href="{{ url('/') }}" class="-intro-x flex items-center pt-5">
-                <img width="20%"  alt="Tracesci" src="{{asset('web/images/logo.png')}}" class=""></a>
+                <img width="20%" alt="Tracesci" src="{{asset('web/images/logo.png')}}" class=""></a>
             </a>
             <div class="my-auto">
                 <img alt="Midone Tailwind HTML Admin Template" class="-intro-x w-1/2 -mt-16" src="{{ asset('dist/images/illustration.svg') }}">
@@ -62,9 +90,10 @@
 
                     </form>
                 </div>
-
                 <div class="intro-x mt-3 xl:mt-4 text-center xl:text-left px-2">
-                    <button id="btn-signup" class="btn btn-primary py-3 px-4 w-full xl:w-32 xl:mr-3 align-top">Next</button>
+                    <button id="btn-signup" class="tab active w-full xl:w-32">
+                        NEXT
+                    </button>
                 </div>
 
             </div>
@@ -72,12 +101,12 @@
         <!-- END: Login Form -->
     </div>
     <x-notification></x-notification>
-</div>    
+</div>
 @endsection
 
 @section('script')
 <script>
-    cash(function () {
+    cash(function() {
         async function register() {
 
             cash('#register-form').find('.form__input').removeClass('border-theme-6')
@@ -91,17 +120,17 @@
 
             axios.post(`{{url('/register')}}`, formData).then(res => {
 
-                showNotification('success','Success !',res.data.message)
-                setTimeout(()=>{
-                    window.location.href = '{{ url('/register/company-informations') }}'
-                },2000)
+                showNotification('success', 'Success !', res.data.message)
+                setTimeout(() => {
+                    window.location.href = '{{ url(' / register / company - informations ') }}'
+                }, 2000)
 
             }).catch(err => {
-                showNotification('error','Error !',err.response.data.message)
-                cash('#btn-signup').html('Next')                   
+                showNotification('error', 'Error !', err.response.data.message)
+                cash('#btn-signup').html('Next')
 
                 if (err.response.data.errors) {
-                    for (const [key, val] of Object.entries(err.response.data.errors)){
+                    for (const [key, val] of Object.entries(err.response.data.errors)) {
                         cash(`#${key}`).addClass('border-theme-6')
                         cash(`#error-${key}`).html(val)
                     }
