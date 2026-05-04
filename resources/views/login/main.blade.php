@@ -39,9 +39,9 @@
                     </div>
                     <a href="{{ url('forgot-password') }}">Forgot Password?</a>
                 </div>
-                <div class="auth-tabs mt-4" style="margin-top:50px;">
-                    <button id="btn-login" class="tab active">LOGIN</button>
-                    <a href="{{ url('/register') }}" class="tab">REGISTER</a>
+                <div class="intro-x mt-5 xl:mt-8 text-center xl:text-left">
+                    <button id="btn-login" class="btn btn-primary py-3 px-4 w-full xl:w-32 xl:mr-3 align-top">Login</button>
+                    <a href="{{ url('/register') }}" class="btn btn-outline-secondary py-3 px-4 w-full xl:w-32 mt-3 xl:mt-0 align-top">Sign up</a>
                 </div>
             </div>
         </div>
@@ -71,7 +71,7 @@
             cash('#btn-login').html('<i data-loading-icon="oval" data-color="white" class="w-5 h-5 mx-auto"></i>').svgLoader()
             await helper.delay(500)
 
-            axios.post("{{ url('/login')}}", {
+            axios.post('{{ url(' / login ') }}', {
                 email_or_phone: email_or_phone,
                 password: password,
                 remember_me: rememberMe
