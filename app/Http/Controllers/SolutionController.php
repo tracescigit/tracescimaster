@@ -10,4 +10,8 @@ class SolutionController extends Controller
     {
         return view('web.solutions.cloud');
     }
+    public function enterprise()
+    {
+        return view('web.solutions.enterprise');
+    }
 }

@@ -4905,7 +4905,6 @@ ul.page-breadcrumbs li + li:before {
   text-transform: uppercase;
   margin-bottom: 10px;
   position: relative;
-  top: 20px;
 }
 .progress {
   height: 4px;

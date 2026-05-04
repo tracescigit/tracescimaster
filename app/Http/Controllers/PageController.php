@@ -77,7 +77,8 @@ class PageController extends Controller
 
     public function blog()
     {
-        return view('web.blog.blogpage');
+        $blogs = Blog::where('is_allowed', 1)->get();
+        return view('web.blog.blogpage')->with('blogs',$blogs);
     }
 
     public function addSubscriber(SubscribeRequest $request)

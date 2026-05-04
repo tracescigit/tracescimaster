@@ -48,6 +48,7 @@ Route::get('/product/hyperloop',[PageController::class,'hyperloop'])->name('prod
 
 // Solutions
 Route::get('/solutions/cloud',[SolutionController::class,'cloud'])->name('cloud-solution');
+Route::get('/solutions/Enterprise',[SolutionController::class,'enterprise'])->name('enterprise-solution');
 // blog organisation
 Route::get('/blog',[PageController::class,'blog'])->name('blog');
 

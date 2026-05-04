@@ -1,5 +1,49 @@
 @extends('web.layouts.app')
 @section('content')
+<style>
+    /* Ensure columns behave properly */
+    .progressbar {
+        overflow: hidden;
+        /* clears float issues */
+    }
+
+    /* Fix spacing between columns on smaller screens */
+    .progressbar .col-md-6 {
+        margin-bottom: 20px;
+    }
+
+    /* Space between each progress block */
+    .progress_cont {
+        margin-bottom: 25px;
+    }
+
+    /* Skill title alignment */
+    .skill {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 6px;
+        font-weight: 600;
+    }
+
+    /* Make sure progress bar container behaves properly */
+    .progress {
+        height: 5px;
+        overflow: hidden;
+        background-color: #eee;
+    }
+
+    /* Fix overlapping / stacking issues */
+    .progress-bar {
+        display: block;
+        height: 100%;
+    }
+
+    /* Optional: show percentage on right properly */
+    .skill .pull-right {
+        float: right;
+    }
+</style>
 <section class="page-title-area aboout-1-head-area">
     <div class="container">
         <div class="row">

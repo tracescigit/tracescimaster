@@ -121,7 +121,7 @@
           data-start="1800" data-transform_in="y:[100%];opacity:0;s:800;"
           data-transform_out="opacity:0;s:300" ;>
           <div class="text-center heading-rp-small" style="transition: none; line-height: 58px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 1px; font-weight: 800; font-size: 50px;">
-            We Measure The Social Web
+            Engage, Authenticate, and Protect
           </div>
         </div>
 
@@ -175,7 +175,7 @@
           data-start="1800" data-transform_in="y:[100%];opacity:0;s:800;"
           data-transform_out="opacity:0;s:300" ;>
           <div class="text-center heading-rp-small" style="transition: none; line-height: 58px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 1px; font-weight: 800; font-size: 50px;">
-            We Measure The Social Web
+            Turn Consumers Into Brand Protectors
           </div>
         </div>
 
@@ -219,7 +219,7 @@
             <h2>Hello, We Are Tracesci</h2>
           </div>
           <h2>Hello, We Are <span style="color:#7a0d7d" ;>Tracesci</span></h2>
-          <h3>Do More With Social Media</h3>
+          <h3>Strengthen Your Brand With Smart Traceability</h3>
         </div>
       </div>
     </div>
@@ -484,299 +484,136 @@
                 <div class="panel panel-default">
                   <div class="panel-heading" role="tab" id="headingOne">
                     <h4 class="panel-title">
-                      <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"> Brand Onboarding </a>
+                      <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Step 1 — Brand & Manufacturer Onboarding
+                      </a>
                     </h4>
                   </div>
                   <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                    <div class="panel-body">Complete paperless on-boarding of brands, manufacturers and solution providers. submit details and upload documents required and after approval, you will get access of the platform.Fill in your information accurately as it impacts your future communication, billing information and free support.</div>
+                    <div class="panel-body">
+                      Complete paperless onboarding for brand owners, manufacturers and supply chain partners.
+                      Submit your company details, upload required documents and — once approved — gain full
+                      access to the Tracesci cloud platform. A FREE plan is activated by default, giving you
+                      all the essential tools to set up your solution and run a pilot at no cost, forever.
+                    </div>
                   </div>
                 </div>
                 <div class="panel panel-default">
                   <div class="panel-heading" role="tab" id="headingTwo">
                     <h4 class="panel-title">
-                      <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"> Select a subscription plan</a>
+                      <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Step 2 — Configure Products, SKUs & Pricing Plan
+                      </a>
                     </h4>
                   </div>
                   <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                    <div class="panel-body"> By default, Free plan will be activated. The FREE plan gives you all the essential features & tools to setup your solution and continue using the platform for a few things / items free forever. You can always upgrade your account to a paid plan if you’re ready to scale beyond the limits of the FREE plan.</div>
+                    <div class="panel-body">
+                      Set up your product catalogue, define SKUs, packaging levels and batch parameters through
+                      the intuitive manufacturer interface. Choose a subscription plan that fits your volume —
+                      from the free tier for small businesses and startups all the way to enterprise plans
+                      for high-volume manufacturers. Upgrade anytime as your production scales, with no lock-in.
+                    </div>
                   </div>
                 </div>
                 <div class="panel panel-default">
                   <div class="panel-heading" role="tab" id="headingThree">
                     <h4 class="panel-title">
-                      <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree"> Manage product, batch and serialisation </a>
+                      <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Step 3 — Serialize & Activate on the Production Line
+                      </a>
                     </h4>
                   </div>
                   <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                    <div class="panel-body">Flexible Management of your brand, product, batches serialization.</div>
+                    <div class="panel-body">
+                      Generate and print unique QR or barcode labels for every product unit directly through
+                      the Tracesci platform — integrated with your label supplier and printing hardware.
+                      Each code is activated the moment it's applied, creating an immutable blockchain record
+                      tied to that specific product, batch, manufacturing location and timestamp.
+                    </div>
                   </div>
                 </div>
                 <div class="panel panel-default">
                   <div class="panel-heading" role="tab" id="headingFour">
                     <h4 class="panel-title">
-                      <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseTwo"> Activate as production goes</a>
+                      <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        Step 4 — Track, Verify, Report & Enforce
+                      </a>
                     </h4>
                   </div>
                   <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
-                    <div class="panel-body"> Activate products and keep a track on your raw materials, ingredients, supply chain, shipments, manufacturing batches, product SKUs right down to product level. Thats it</div>
+                    <div class="panel-body">
+                      As products move through the supply chain — from warehouse to distributor to retailer to
+                      consumer — every scan is logged in real time with GPS location data. Governments and
+                      inspectors can verify authenticity in the field using the mobile app. Consumers can
+                      report counterfeits directly. The analytics dashboard surfaces fraud patterns and
+                      generates enforcement reports instantly — making every stakeholder a line of defence.
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
             <div class="help-question" style="margin-bottom: 50px;">
-              <p>Feel free to get in touch with any enquiries or questions and one of our members will get back to you as soon as possible !</p>
-              <span><a href="#">Ask A Question <i class="fa fa-long-arrow-right"> </i></a></span>
+              <p>Have questions about implementing Tracesci in your production environment or connecting it to your existing systems? Our team will walk you through every step.</p>
+              <!-- <span><a href="#">Talk to an Expert <i class="fa fa-long-arrow-right"> </i></a></span> -->
             </div>
           </div>
           <div class="col-md-6">
-            <div id="help-slider" class="owl-carousel all-carousel owl-theme">
-              <div>
-                <div class="help-slider-content">
-                  <div class="help-slider-text">
-                    <i class="fa fa-quote-left"></i>
-                    <i class="fa fa-quote-right"></i>
-                    <p>In my job as social media strategist, I've tried pretty much every analytics product on the market and when I came across Tracesci, I was blown away! Tracesci is one of the most impressive social media website efforts I've ever seen.</p>
-                    <img src="{{ asset('dist/images/home-slider-img-left.png') }}" alt="">
-                  </div>
-                  <div class="help-slider-img">
-                    <h2>Mahmoud Baghagho</h2>
-                    <h3>Art Director</h3>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div class="help-slider-content">
-                  <div class="help-slider-text">
-                    <i class="fa fa-quote-left"></i>
-                    <i class="fa fa-quote-right"></i>
-                    <p>In my job as social media strategist, I've tried pretty much every analytics product on the market and when I came across Tracesci, I was blown away! Tracesci is one of the most impressive social media website efforts I've ever seen.</p>
-                    <img src="{{ asset('dist/images/home-slider-img-left.png') }}" alt="">
-                  </div>
-                  <div class="help-slider-img">
-                    <h2>Mahmoud Baghagho</h2>
-                    <h3>Art Director</h3>
-                  </div>
-                </div>
-              </div>
+            <div class="help-slider-text">
+              <img src="{{ asset('dist/images/bbchain.png') }}" alt="Blockchain Traceability Diagram" style="left:-100px !important;">
             </div>
           </div>
         </div>
       </div>
     </div>
-    </section>
-
-<div class="welcome-2-content welcome-9-content" style="background-color: #fff;">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-4">
-            <div class="feature-heading-left welcome-9-left wow fadeInLeft">
-              <h2><span style="color: #7a0d7d;">Fun Facts</span></h2>
-            </div>
-          </div>
-          <div class="col-md-8">
-            <div class="welcome-2-right-content">
-              <div class="col-sm-3">
-                <div class="welcome-2-right-content-inner">
-                  <span><i class="icon icon-Chart"></i></span>
-                  <h2><span >10+</span></h2>
-                  <p>Countries</p>
-                </div>
-              </div>
-              <div class="col-sm-3">
-                <div class="welcome-2-right-content-inner w-r-l-border wow fadeInRight">
-                  <span><i class="icon icon-Users"></i></span>
-                  <h2><span >300+</span></h2>
-                  <p>Users</p>
-                </div>
-              </div>
-              <div class="col-sm-3">
-                <div class="welcome-2-right-content-inner w-r-l-border">
-                  <span><i class="icon icon-ChartUp"></i></span>
-                  <h2><span>125+</span>%</h2>
-                  <p>Clients</p>
-                </div>
-              </div>
-              <div class="col-sm-3">
-                <div class="welcome-2-right-content-inner w-r-l-border">
-                  <span><i class="icon icon-ChartUp"></i></span>
-                  <h2><span>97M</span>%</h2>
-                  <p>Unique Codes</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-  
+  </div>
+</div>
 
 
 
 
-    <!-- Event Calendar -->
-    <div id="event_calendar" class="padding-content content-section">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="riven-heading text-center" data-sr="enter bottom wait 0.3s">
-              <h2><span>Event</span> Calendar</h2>
-              <p class="text">Save the dates. We would love to see you..</p>
-            </div>
-          </div>
-        </div>
-        <div class="spacer-35"></div>
-        <div class="event-container">
-          <div class="event-contents row">
-            <div class="event event_post event-entries-wrap has-loadmore">
-              <div class="event-content col-md-6 col-sm-12 col-xs-12">
-                <div class="row row-event">
-                  <div class="event-box-conner col-md-10 col-sm-10 col-xs-10">
-                    <div class="event_post_content bg-gradient">
-                      <div class="event-thumb">
-                        <img width="456" height="215" alt="event" src="{{asset('web/images/PAMEX2021.jpg')}}" class="event-img">
-                      </div>
-                      <div class="event-desc">
-                        <h3 class="title-eventpost">
-                          <a href="event-lightbox.html" class="various fancybox.ajax">Pamex India 2022</a>
-                        </h3>
-                        <div class="event_post_desc">
-                          23 - 26 March 2022, Mumbai.
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="event-box-center col-md-2 col-sm-2 col-xs-2">
-                    <div class="event_post_date">MAR 23</div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="event-content col-md-6 col-sm-12 col-xs-12" style="margin:0;">
-                <div class="row row-event">
-                  <div class="event-box-conner col-md-10 col-sm-10 col-xs-10">
-                    <div class="event_post_content bg-gradient">
-
-                      <div class="event-thumb">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10065.462847026438!2d4.3336038!3d50.8984489!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xde9326a4546954ab!2sBrussels%20Expo!5e0!3m2!1sen!2sin!4v1625808010325!5m2!1sen!2sin" width="455" height="215" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                      </div>
-                      <div class="event-desc">
-                        <h3 class="title-eventpost">
-                          <a href="event-lightbox.html" class="various fancybox.ajax">Label Expo Europe 2022</a>
-                        </h3>
-                        <div class="event_post_desc">
-                          26 - 29 April 2022 <br> Brussels Expo
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="event-box-center col-md-2 col-sm-2 col-xs-2">
-                    <div class="event_post_date">APR 26</div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="event-content col-md-6 col-sm-12 col-xs-12">
-                <div class="row row-event">
-                  <div class="event-box-conner col-md-10 col-sm-10 col-xs-10">
-                    <div class="event_post_content bg-gradient">
-                      <div class="event-thumb">
-                        <img width="456" height="215" alt="event" src="{{asset('web/images/Labelexpo2022.jpg')}}" class="event-img">
-                      </div>
-                      <div class="event-desc">
-                        <h3 class="title-eventpost">
-                          <a href="event-lightbox.html" class="various fancybox.ajax">Label Expo India 2022</a>
-                        </h3>
-                        <div class="event_post_desc">
-                          10 - 13 November 2022, India Expo Centre & Mart, Greater Noida, Delhi NCR
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="event-box-center col-md-2 col-sm-2 col-xs-2">
-                    <div class="event_post_date">NOV 10</div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="event-content col-md-6 col-sm-12 col-xs-12">
-                <div class="row row-event">
-                  <div class="event-box-conner col-md-10 col-sm-10 col-xs-10">
-                    <div class="event_post_content bg-gradient">
-                      <div class="event-thumb">
-                        <img width="456" height="215" alt="event" src="{{asset('web/images/cphi2022.jpg')}}" class="event-img">
-                      </div>
-                      <div class="event-desc">
-                        <h3 class="title-eventpost">
-                          <a href="event-lightbox.html" class="various fancybox.ajax">PMEC India 2022</a>
-                        </h3>
-                        <div class="event_post_desc">
-                          29 Nov - 1 Dec 2022, India Expo Centre & Mart, Greater Noida, Delhi NCR
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="event-box-center col-md-2 col-sm-2 col-xs-2">
-                    <div class="event_post_date">NOV 29</div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-        <div class="spacer-100"></div>
-      </div>
-    </div>
-    @if(!empty($blogs) && count($blogs) > 0)
-
-    <section class="solution-2-area grey-bg">
-
+<!-- Pricing Table -->
+{{--<section class="pricing-table-section grey-bg">
+      <!-- MAIN TITLE AREA -->
       <div class="container">
         <div class="row">
           <div class="col-md-12 text-center">
             <div class="main-title wow zoomIn">
               <div class="main-shadow-heading">
-                <h2>Our Blog</h2>
+                <h2>Pricing <span>Plans</span></h2>
               </div>
-              <h2>Our Blog</h2>
-              <h3>A blog about analytics, marketing & testing</h3>
+              <h2>Pricing <span>Plans</span></h2>
+              <h3>Our pay as you go pricing plans are driven by usage of platform resources, premium features, support & service levels. Select which suits to you</h3>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="solution-2-content">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12">
-              <div id="solution-slider" class="owl-carousel all-carousel owl-theme">
-                @foreach($blogs as $index => $blog)
-                @if($index == 6)
-                @break
-                @endif
-                <div class="solution-slider-content">
-                  <div class="solution-slider-img">
-                    <img src="{{ asset('dist/images/solution-slider-2.png') }}" alt="">
-                    <h2>{{ $index + 1 }}</h2>
-                  </div>
-                  <div class="solution-slider-text">
-                    <h2>{{ $blog->title ?? 'Blog Title' }}</h2>
-                    <p>{{ Str::limit($blog->description ?? 'Blog description', 100) }}</p>
-                    <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
-                  </div>
-                </div>
-                @endforeach
-              </div>
 
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="all-link pricinig-head-btn text-center">
+              <a href="#">Monthly</a>
+              <a href="#">Yearly</a>
             </div>
           </div>
         </div>
       </div>
-
-    </section>
-
+      @foreach(getPlan() as $plan)
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6 col-md-4">
+            <div class="pricing-table-content text-center wow fadeInLeft">
+              <div class="pricing-table-head">
+                <div class="pricing-head-top">
+                  <span>{{$plan->title}}</span>
+</div>
+<div class="pricing-head-content">
+  <span>
+    @if ($country=='India')
+    &#8377; {{$plan->price_inr}}
+    @else
+    $ {{$plan->price_usd}}
     @endif
   </span>
   <span>/ Monthly</span>
@@ -986,12 +823,12 @@
               <div class="testimonial-content">
                 <div class="testimonial-profile">
                   <img width="100" height="100" alt="testimonial" src="{{asset('web/images/150x150.jpg')}}" class="testimonial-img">
-  </div>
-  <h3 class="name"> Vikas Sethi</h3>
-  <p class="job">Product manager, Agro Company</p>
-  <div class="team_description">
-    <p>Easy onboarding process, no technical knowledge required and seamless integration is the highlights of th solution. Good work.</p>
-  </div>
+</div>
+<h3 class="name"> Vikas Sethi</h3>
+<p class="job">Product manager, Agro Company</p>
+<div class="team_description">
+  <p>Easy onboarding process, no technical knowledge required and seamless integration is the highlights of th solution. Good work.</p>
+</div>
 </div>
 <div class="testimonial-content">
   <div class="testimonial-profile">
