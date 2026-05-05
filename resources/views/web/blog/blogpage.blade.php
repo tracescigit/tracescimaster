@@ -65,8 +65,8 @@
     <!-- =========================
         START HEADER SECTION
       ============================== -->
-   
-   
+
+
     <!-- =========================
         END HEADER SECTION
       ============================== -->
@@ -99,35 +99,40 @@
     <!-- =========================
         START FULL INTRO SECTION
       ============================== -->
+    @if(!empty($blogs) && count($blogs) > 0)
     <section class="full-intro-area">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 no-padding text-left">
                     <div class="blog-2-column-left-content">
-
+                        @foreach($blogs as $index => $blog)
+                        @if($index == 6)
+                        @break
+                        @endif
                         <div class="col-sm-6 col-md-6">
                             <div class="blog-2-column-content">
                                 <div class="full-intro-img">
-                                    <img src="{{asset('dist/images/single-blog-1.png')}}" alt="" class="img-responsive">
+                                    <img src="{{ asset('storage/' . $blog->image_path) }}" alt="" class="Blog-Image">
                                 </div>
                                 <div class="full-intro-head">
                                     <p>
-                                        Oct 16, 2015 . <span><a href="#">Business</a></span></span>
+                                        {{$blog->publish_date ?? '--'}} <span><a href="#">Business</a></span>.
                                     </p>
-                                    <h2><a href="#">Beyond the SEO: After Optimizing Your Website</a></h2>
+                                    <h3>{{ $blog->title ?? 'Blog Title' }}</h3>
                                 </div>
                                 <div class="full-intro-content">
-                                    <p>We all know that no user is the same. Aside from the basics such as age, gender, socio-economic background and so every person differs in life experiences, interests, and preferences.</p>
+                                    <p>{{!! $blog->description ?? 'Blog description'!!}}</p>
                                     <p>
-                                        By:<span><a href="#"> Ahmed Ebraheem</a></span>
+                                        By:<span>{{ $blog->publish_by ?? 'Blog Published By' }}</span>
                                     </p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6 col-md-6">
+                        @endforeach
+                        <!-- <div class="col-sm-6 col-md-6">
                             <div class="blog-2-column-content">
                                 <div class="full-intro-img">
-                                    <img src="{{asset('dist/images/single-blog-2.png')}}"alt="" class="img-responsive">
+                                    <img src="{{asset('dist/images/single-blog-2.png')}}" alt="" class="img-responsive">
                                 </div>
                                 <div class="full-intro-head">
                                     <p>
@@ -294,7 +299,7 @@
                                     </p>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="col-md-12 matrics-pagination matrics-blog-pagination text-center clearfix">
                             <nav>
                                 <ul class="pagination">
@@ -313,6 +318,7 @@
             </div>
         </div>
     </section>
+    @endif
 
 
     <!-- Include all compiled plugins (below), or include individual files as needed -->

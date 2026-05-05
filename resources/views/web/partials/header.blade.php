@@ -86,8 +86,8 @@
             <a href="#howitworks">Solution</a>
             <ul class="dropdown">
               <li><a href="{{route('cloud-solution')}}">Cloud</a></li>
-              <li><a href="#features">Enterprise</a></li>
-              <li><a href="#application">Custom</a></li>
+              <li><a href="{{route('enterprise-solution')}}">Enterprise</a></li>
+              <li><a href="#application">Customise</a></li>
             </ul>
           </li>
 
@@ -101,7 +101,7 @@
             </ul>
           </li>
           <li>
-            <a href="#pricing_table">Blogs</a>
+            <a href="{{route('blog')}}">Blogs</a>
           </li>
 
           <li>
