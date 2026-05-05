@@ -1,7 +1,85 @@
 @extends('web.layouts.app')
 @section('content')
+<style>
+    /* Section spacing */
+    .help-content-area {
+        padding: 60px 0;
+    }
 
+    /* Accordion spacing */
+    .help-accordion {
+        margin-bottom: 30px;
+    }
 
+    /* Fix panel spacing */
+    .panel {
+        margin-bottom: 10px;
+    }
+
+    /* Improve readability */
+    .panel-body {
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    /* Fix image alignment */
+    .help-slider-text {
+        display: flex;
+        align-items: start;
+        justify-content: start;
+        height: 100%;
+    }
+
+    /* Image fix */
+    .help-img {
+        max-width: 100%;
+        height: auto;
+        position: absolute;
+        right: -220px !important;
+    }
+
+    /* ================= RESPONSIVE ================= */
+
+    /* Tablet */
+    @media (max-width: 991px) {
+
+        .help-content-area .row {
+            display: block;
+        }
+
+        .help-content-area .col-md-6 {
+            width: 100%;
+            margin-bottom: 30px;
+        }
+
+        .help-slider-text {
+            margin-top: 20px;
+        }
+    }
+
+    /* Mobile */
+    @media (max-width: 576px) {
+
+        .panel-title a {
+            font-size: 14px;
+            line-height: 1.4;
+            display: block;
+        }
+
+        .panel-body {
+            font-size: 13px;
+        }
+
+        .help-question {
+            text-align: center;
+        }
+
+        .help-question a {
+            display: inline-block;
+            margin-top: 10px;
+        }
+    }
+</style>
 <div class="rev_slider_wrapper">
     <div id="slider1" class="rev_slider" data-version="5.0">
         <ul>
@@ -432,7 +510,9 @@
                     </div>
                     <div class="col-md-6">
                         <div class="help-slider-text">
-                            <img src="{{ asset('dist/images/bbchain.png') }}" alt="Blockchain Traceability Diagram" style="left:-100px !important;">
+                            <img src="{{ asset('dist/images/bbchain.png') }}"
+                                alt="Blockchain Traceability Diagram"
+                                class="help-img">
                         </div>
                     </div>
                 </div>
@@ -653,7 +733,7 @@
                                 signals — revealing exactly where fakes are entering your supply chain and which markets
                                 are most at risk, so brands, inspectors and governments can act fast.
                             </p>
-                            
+
                         </div>
                     </div>
                     <div class="col-md-6 wow fadeInRight">
