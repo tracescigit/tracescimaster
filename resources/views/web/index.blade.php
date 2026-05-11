@@ -565,59 +565,8 @@
         </div>
       </div>
     </div>
-<<<<<<< HEAD
-    </section>
-
-<div class="welcome-2-content welcome-9-content" style="background-color: #fff;">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-4">
-            <div class="feature-heading-left welcome-9-left wow fadeInLeft">
-              <h2><span>Fun Facts</span></h2>
-            </div>
-          </div>
-          <div class="col-md-8">
-            <div class="welcome-2-right-content">
-              <div class="col-sm-3">
-                <div class="welcome-2-right-content-inner">
-                  <span><i class="icon icon-Chart"></i></span>
-                  <h2><span >10+</span></h2>
-                  <p>Countries</p>
-                </div>
-              </div>
-              <div class="col-sm-3">
-                <div class="welcome-2-right-content-inner w-r-l-border wow fadeInRight">
-                  <span><i class="icon icon-Users"></i></span>
-                  <h2><span >300+</span></h2>
-                  <p>Users</p>
-                </div>
-              </div>
-              <div class="col-sm-3">
-                <div class="welcome-2-right-content-inner w-r-l-border">
-                  <span><i class="icon icon-ChartUp"></i></span>
-                  <h2><span>125+</span></h2>
-                  <p>Clients</p>
-                </div>
-              </div>
-              <div class="col-sm-3">
-                <div class="welcome-2-right-content-inner w-r-l-border">
-                  <span><i class="icon icon-ChartUp"></i></span>
-                  <h2><span>97M</span></h2>
-                  <p>Unique Codes</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-  
-=======
   </div>
 </div>
->>>>>>> 82714df56cdd0854e0eb93932fc8023a3d9e42a9
 
 
 
@@ -657,7 +606,7 @@
             <div class="pricing-table-content text-center wow fadeInLeft">
               <div class="pricing-table-head">
                 <div class="pricing-head-top">
-                  <span>{{$plan->title}}</span>
+                  <span>{{$plan->title}}</span> 
 </div>
 <div class="pricing-head-content">
   <span>
@@ -666,10 +615,6 @@
     @else
     $ {{$plan->price_usd}}
     @endif
-<<<<<<< HEAD
-    <!-- Testimonials -->
-    {{--<div id="review" class="">
-=======
   </span>
   <span>/ Monthly</span>
 </div>
@@ -869,7 +814,6 @@
 @endif
 <!-- Testimonials -->
 {{--<div id="review" class="">
->>>>>>> 82714df56cdd0854e0eb93932fc8023a3d9e42a9
   <div class="testimonials bg-gradient">
     <div class="container">
       <div class="row">
