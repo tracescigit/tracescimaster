@@ -5,6 +5,33 @@
 @endsection
 
 @section('content')
+<style>
+    .all-link a {
+        width: 170px;
+        height: 50px;
+        text-align: center;
+        display: inline-block;
+        text-transform: uppercase;
+        padding-top: 14px;
+        color: white;
+        background-color: #343434;
+        border: 2px solid #343434;
+    }
+
+    .all-link a:hover {
+        border: 2px solid #222;
+        color: #fff;
+        background: #222;
+    }
+
+    .all-link a:nth-of-type(1) {
+        margin-right: -2px;
+    }
+
+    .all-link a:nth-of-type(2) {
+        margin-left: -2px;
+    }
+</style>
 <div class="container sm:px-10">
     <div class="block xl:grid grid-cols-2 gap-4">
         <!-- BEGIN: Login Info -->
@@ -40,7 +67,7 @@
                     <a href="{{ url('forgot-password') }}">Forgot Password?</a>
                 </div>
                 <div class="intro-x mt-5 xl:mt-8 text-center xl:text-left">
-                    <button id="btn-login" class="btn btn-primary py-3 px-4 w-full xl:w-32 xl:mr-3 align-top">Login</button>
+                    <a id="btn-login" class="all-link py-3 px-4 w-full xl:w-32 xl:mr-3 align-top">Login</a>
                     <a href="{{ url('/register') }}" class="btn btn-outline-secondary py-3 px-4 w-full xl:w-32 mt-3 xl:mt-0 align-top">Sign up</a>
                 </div>
             </div>
