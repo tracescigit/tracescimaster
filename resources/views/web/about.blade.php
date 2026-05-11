@@ -43,6 +43,50 @@
     .skill .pull-right {
         float: right;
     }
+
+    /* Section spacing */
+    .our-story-area {
+        position: relative;
+        padding: 80px 0;
+    }
+
+    /* Left image */
+    .contact-photo {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 46%;
+        height: 100%;
+    }
+
+    .story-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* Content spacing */
+    .our-story-2-head {
+        margin-bottom: 30px;
+    }
+
+    .our-story-inner {
+        padding: 15px;
+    }
+
+    /* 🔥 Responsive Fix */
+    @media (max-width: 991px) {
+        .contact-photo {
+            position: relative;
+            width: 100%;
+            height: auto;
+            margin-bottom: 30px;
+        }
+
+        .story-img {
+            height: auto;
+        }
+    }
 </style>
 <section class="page-title-area aboout-1-head-area">
     <div class="container">
@@ -376,54 +420,68 @@
 <!-- =========================
       START OUR STORY 2 SECTION
       ============================== -->
-<section class="our-story-area our-story-2 grey-bg">
-    <img class="wow fadeInLeft"
-        src="{{ asset('web/images/about.jpg') }}"
-        alt="Image"
-        style="
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 46%;
-            height: 100%;
-         ">
+<section class="our-story-area our-story-2 grey-bg position-relative">
+
+    <!-- Left Image -->
+    <div class="contact-photo reveal">
+        <img src="{{asset('web/images/how_started.jpg')}}"
+            alt="Man and woman working together"
+            class="story-img">
+    </div>
+
     <div class="container">
-        <div class="row">
-            <div class="col-md-6"></div>
+        <div class="row align-items-center">
+
+            <!-- Empty space for image on desktop -->
+            <div class="col-md-6 d-none d-md-block"></div>
+
+            <!-- Content -->
             <div class="col-md-6">
                 <div class="our-story-2-head">
                     <h3>Our Story</h3>
                     <h2>How It All <span style="color: #7a0d7d;">Began!</span></h2>
-                    <p>We're TRACESCI, a product authentication and track & trace technology company headquartered in Chennai, Tamil Nadu. Born out of a growing need to fight illicit trade and counterfeiting, we set out to build a one-stop ecosystem that protects brands, governments, and consumers — making traceability affordable and accessible for everyone.</p>
+                    <p>
+                        We're TRACESCI, a product authentication and track & trace technology company headquartered in Chennai with branches also on Gurugram and Mumbai,Established to combat the rising challenges of illicit trade and counterfeiting.
+                    </p>
                 </div>
-                <div class="col-sm-6 col-md-6">
-                    <div class="our-story-inner">
-                        <h2>Who We Are</h2>
-                        <p>A young and enthusiastic team of technology professionals leveraging the latest innovations in blockchain, serialization, and mobile intelligence to secure global supply chains.</p>
+
+                <!-- Inner Grid -->
+                <div class="row mt-4">
+
+                    <div class="col-sm-6 mb-2">
+                        <div class="our-story-inner">
+                            <h2>Who We Are</h2>
+                            <p>A dynamic team of technology and supply chain experts dedicated to transforming how products are authenticated and tracked. </p>
+                        </div>
                     </div>
-                </div>
-                <div class="col-sm-6 col-md-6">
-                    <div class="our-story-inner">
-                        <h2>What We <span style="color: #7a0d7d;">Do</span></h2>
-                        <p>We provide an end-to-end cloud-based track & trace platform combining serialization, authentication, mobile apps, real-time dashboards, and third-party integrations for brands and governments.</p>
+
+                    <div class="col-sm-6 mb-2">
+                        <div class="our-story-inner">
+                            <h2>What We <span style="color: #7a0d7d;">Do</span></h2>
+                            <p>Driven by innovation and purpose, we collaborate with brands, governments, and industry partners to combat counterfeiting and illicit trade.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="col-sm-6 col-md-6">
-                    <div class="our-story-inner">
-                        <h2>Why We Do <span style="color: #7a0d7d;">It</span></h2>
-                        <p>Illicit trade costs economies billions and puts lives at risk. We are driven by the belief that every product should be verifiable and every consumer should be safe from counterfeit goods.</p>
+
+                    <div class="col-sm-6 mb-2">
+                        <div class="our-story-inner">
+                            <h2>Why We Do <span style="color: #7a0d7d;">It</span></h2>
+                            <p>We do this to address the growing threat of illicit trade and counterfeiting, which not only causes massive revenue losses but also puts consumer safety at serious risk.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="col-sm-6 col-md-6">
-                    <div class="our-story-inner">
-                        <h2>Our Values</h2>
-                        <p>Integrity, innovation, and impact. We work in a 3-way partnership model with brands, label printers, and our platform — ensuring seamless integration, fast ROI, and long-term support for every client.</p>
+
+                    <div class="col-sm-6 mb-2">
+                        <div class="our-story-inner">
+                            <h2>Our Values</h2>
+                            <p>Our values are rooted in integrity, innovation, and impact. We believe in building trust through transparent and secure systems that protect brands, governments, and consumers alike.</p>
+                        </div>
                     </div>
+
                 </div>
             </div>
+
         </div>
     </div>
-    </div>
+
 </section>
 <!-- =========================
       END OUR STORY 2 SECTION
