@@ -41,8 +41,8 @@
           <div class="footer-main-content-inner">
             <h2>Our Products</h2>
             <ul>
-              <li><a href="#howitworks">Take The Tour</a></li>
-              <li><a href="{{ route('home') }}#pricing_table">Plans & Pricing</a></li>
+              <li><a href="{{ route('home') }}#howitworks">Take The Tour</a></li>
+              <li><a href="{{ route('cloud-solution') }}#pricing_table">Plans & Pricing</a></li>
             </ul>
           </div>
         </div>
@@ -63,7 +63,7 @@
             <ul>
               <li><a href="{{route('contact-us')}}">Contact Us</a></li>
               <li><a href="{{route('blog')}}">Our Blog</a></li>
-              <li><a href="#howitworks">FAQs</a></li>
+              <li><a href="{{ route('home') }}#howitworks">FAQs</a></li>
             </ul>
           </div>
         </div>

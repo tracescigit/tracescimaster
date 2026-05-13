@@ -98,7 +98,7 @@
                 </div>
                 <div class="breadcrumbs text-center">
                     <ul class="page-breadcrumbs">
-                        <li><a href="#">home</a></li>
+                        <li><a href="{{route('home')}}">home</a></li>
                         <li><a href="#">About Us</a></li>
                     </ul>
                 </div>
