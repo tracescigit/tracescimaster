@@ -42,7 +42,7 @@
             <h2>Our Products</h2>
             <ul>
               <li><a href="#howitworks">Take The Tour</a></li>
-              <li><a href="#pricing_table">Plans & Pricing</a></li>
+              <li><a href="{{ route('home') }}#pricing_table">Plans & Pricing</a></li>
             </ul>
           </div>
         </div>
