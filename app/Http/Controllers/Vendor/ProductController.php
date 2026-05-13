@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Vendor\ProductCreateRequest;
 use App\Http\Requests\Vendor\ProductUpdateRequest;
 use App\Models\Product;
+use App\Models\ProductTemplate;
 use Carbon\Carbon;
 use File;
 use Illuminate\Http\Request;
@@ -72,7 +73,12 @@ class ProductController extends Controller
 
 	public function create()
 	{
-		return view('vendor.products.create');
+		$user = Auth::user();
+		$userId = $user->parent_id ?? $user->id;
+		$templates = ProductTemplate::where('status', 1)
+			->where('user_id', $userId)
+			->get();
+		return view('vendor.products.create')->with('templates', $templates);
 	}
 
 	public function store(ProductCreateRequest $request)
@@ -98,6 +104,7 @@ class ProductController extends Controller
 			$product->auth_required = $input['auth_required'];
 			$product->pin_required = $input['pin_required'];
 			$product->description = $input['description'];
+			$product->template_id = $input['template_id'];
 			$product->user_id = Auth::user()->parent_id ?? Auth::id();
 
 			if ($request->hasFile('file')) {
@@ -132,6 +139,16 @@ class ProductController extends Controller
 
 				$product->media = $path;
 			}
+			if ($request->hasFile('logo')) {
+				$file = $request->file('logo');
+				$timestamp = str_replace([' ', ':'], '-', Carbon::now()->toDateTimeString());
+				$name = $timestamp . '-' . uniqid() . '-' . str_replace([' ', ':'], '-', $file->getClientOriginalName());
+
+				Storage::putFileAs('public/products', $file, $name);
+				$path = Storage::url('products/' . $name);
+
+				$product->logo = $path;
+			}
 
 			$product->save();
 			$product->product_hashed_code = Hashids::encode($product->id);
@@ -147,7 +164,14 @@ class ProductController extends Controller
 		$id = decrypt($id);
 
 		$product = Product::find($id);
-		return view('vendor.products.edit')->with('product', $product)->with('page_name', 'vendor-products');
+		$user = Auth::user();
+		$userId = $user->parent_id ?? $user->id;
+
+		$templates = ProductTemplate::where('status', 1)
+			->where('user_id', $userId)
+			->get();
+
+		return view('vendor.products.edit')->with('product', $product)->with('templates', $templates)->with('page_name', 'vendor-products');
 	}
 
 	public function update(ProductUpdateRequest $request, $id)
@@ -167,6 +191,7 @@ class ProductController extends Controller
 			$product->pin_required = $input['pin_required'];
 			$product->description = $input['description'];
 			$product->user_id = Auth::user()->parent_id ?? Auth::id();
+			$product->template_id = $input['template_id'];
 
 			if ($request->hasFile('file')) {
 
@@ -206,7 +231,16 @@ class ProductController extends Controller
 
 				$product->media = $path;
 			}
+			if ($request->hasFile('logo')) {
+				$file = $request->file('logo');
+				$timestamp = str_replace([' ', ':'], '-', Carbon::now()->toDateTimeString());
+				$name = $timestamp . '-' . uniqid() . '-' . str_replace([' ', ':'], '-', $file->getClientOriginalName());
 
+				Storage::putFileAs('public/products', $file, $name);
+				$path = Storage::url('products/' . $name);
+
+				$product->logo = $path;
+			}
 			$product->save();
 
 			return response(['message' => 'Product updated successfully.'], 201);

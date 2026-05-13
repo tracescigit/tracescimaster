@@ -25,7 +25,7 @@
 			<div class="sm:flex items-center sm:mr-4">
 				<label class="w-12 flex-none xl:w-auto xl:flex-initial mr-2">Field</label>
 				<select id="tabulator-html-filter-field" class="form-select w-full sm:w-32 xxl:w-full mt-2 sm:mt-0 sm:w-auto">
-					<option value="product_name">Product Name</option>
+					<option value="name">Template Name</option>
 					<option value="created_by">Created By</option>
 				</select>
 			</div>
@@ -110,7 +110,7 @@
 				return cell.getData().actions;
 			}
 		}, {
-			title: "PRODUCT NAME",
+			title: "TEMPLATE NAME",
 			minWidth: 200,
 			responsive: 0,
 			field: "product_name",
@@ -120,17 +120,6 @@
 			download: false,
 			formatter: function formatter(cell, formatterParams) {
 				return "<div>\n                            <div class=\"font-medium whitespace-nowrap\">".concat(cell.getData().product_name, "</div>");
-			}
-		}, {
-			title: "Compay Name",
-			minWidth: 200,
-			field: "company_name",
-			hozAlign: "center",
-			vertAlign: "middle",
-			print: false,
-			download: false,
-			formatter: function formatter(cell, formatterParams) {
-				return "<div>\n                            <div class=\"font-medium whitespace-nowrap\">".concat(cell.getData().company_name, "</div>\n                            ");
 			}
 		}, {
 			title: "CREATED ON",

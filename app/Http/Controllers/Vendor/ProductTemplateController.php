@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Vendor;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\TemplateCreateRequest;
+use App\Http\Requests\TemplateEditRequest;
 use App\Models\Product;
 use App\Models\ProductTemplate;
 use Illuminate\Http\Request;
@@ -40,9 +42,8 @@ class ProductTemplateController extends Controller
 
             foreach ($products as $product) {
 
-                $u['product_name']  = $product->product_name ?? '-';
+                $u['product_name']  = $product->name ?? '-';
                 $u['created_by']    = $product->user_name ?? '-';
-                $u['company_name']  = $product->business_name ?? '-';
                 $u['created_at']    = date('M d, Y', strtotime($product->created_at)) ?? '-';
                 $actions            = view('vendor.product_template.actions', ['id' => $product->id]);
                 $u['actions']       = $actions->render();
@@ -70,12 +71,12 @@ class ProductTemplateController extends Controller
         return view('vendor.product_template.create')->with('products', $products);
     }
 
-    public function store(Request $request)
+    public function store(TemplateCreateRequest $request)
     {
         try {
             $input   = $request->all();
             $template = new ProductTemplate;
-            $template->product_id = $input['product_id'];
+            $template->name = $input['name'];
             $template->field_name = json_encode($input['fields']);
             $template->user_id = Auth::user()->id;
             $template->status = 1;
@@ -94,14 +95,13 @@ class ProductTemplateController extends Controller
         return view('vendor.product_template.edit')->with('template', $template)->with('products', $products)->with('page_name', 'vendor-products-template');
     }
 
-    public function update(Request $request, $id)
+    public function update(TemplateEditRequest $request, $id)
     {
         try {
             $id = decrypt($id);
             $input   = $request->all();
-            dd($input);
             $template = new ProductTemplate;
-            $template->product_id = $input['product_id'];
+            $template->name = $input['name'];
             $template->field_name = json_encode($input['fields']);
             $template->user_id = Auth::user()->id;
             $template->status = 1;
