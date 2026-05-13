@@ -38,6 +38,9 @@
         right: -220px !important;
     }
 
+   
+
+
     /* ================= RESPONSIVE ================= */
 
     /* Tablet */
@@ -505,7 +508,7 @@
                         </div>
                         <div class="help-question" style="margin-bottom: 50px;">
                             <p>Have questions about implementing Tracesci in your production environment or connecting it to your existing systems? Our team will walk you through every step.</p>
-                            <span><a href="#">Talk to an Expert <i class="fa fa-long-arrow-right"> </i></a></span>
+                           
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -591,20 +594,22 @@
 
 
         <!-- Pricing Section -->
-        <section class="pricing-table-section grey-bg">
+        <section id="pricing_table" class="pricing-table-section grey-bg">
+            <!-- MAIN TITLE AREA -->
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 text-center">
                         <div class="main-title wow zoomIn">
                             <div class="main-shadow-heading">
-                                <h2>Simple, Scalable Pricing</h2>
+                                <h2>Join Our Successful Customers</h2>
                             </div>
-                            <h2>Simple, Scalable Pricing</h2>
-                            <h3>Start Free — Pay as You Grow</h3>
+                            <h2>Join Our Successful Customers</h2>
+                            <h3>Choose Your Plan</h3>
                         </div>
                     </div>
                 </div>
             </div>
+            <!-- END TITLE -->
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -615,99 +620,38 @@
                     </div>
                 </div>
             </div>
+            <!-- PRICING TABLE CONTENT -->
+            @foreach(getPlan() as $plan)
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6 col-md-4">
                         <div class="pricing-table-content text-center wow fadeInLeft">
                             <div class="pricing-table-head">
                                 <div class="pricing-head-top">
-                                    <span>Starter Plan</span>
+                                    <span>{{$plan->title}}</span>
                                 </div>
                                 <div class="pricing-head-content">
-                                    <span>$</span>
-                                    <span>50</span>
-                                    <span>/ Monthly</span>
+                                    <span> @if ($country=='India')
+                                        &#8377; {{$plan->price_inr}}/-
+                                        @else
+                                        $ {{$plan->price_usd}}
+                                        @endif
+                                        <br>
+                                        <span>Monthly</span>
+                                    </span>
                                 </div>
+
                             </div>
                             <div class="pricing-table-inner-content">
                                 <div class="pricing-table-title">
-                                    <p>Perfect for small businesses, startups and printing vendors exploring product authentication for the first time.</p>
+                                    <p>All plans are include Funnel Report, Cohort Report, Revenue Report, People Search, and A/B Testing Report.</p>
                                 </div>
                                 <div class="pricing-table-list">
                                     <ul>
-                                        <li><span>1</span> Brand</li>
-                                        <li><span>Up to 5</span> Product SKUs</li>
-                                        <li>QR Code Serialization</li>
-                                        <li>Consumer Verification App</li>
-                                        <li>Basic Scan Analytics</li>
-                                        <li><span>10,000</span> Codes / Month</li>
+                                        {!!$plan->description!!}
                                     </ul>
                                     <div class="all-link pricinig-bottom-btn text-center">
-                                        <a href="#">Get Started Now <i class="fa fa-long-arrow-right"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-4">
-                        <div class="pricing-table-content text-center wow fadeInLeft">
-                            <div class="pricing-table-head">
-                                <div class="pricing-head-top">
-                                    <span>Growth Plan</span>
-                                </div>
-                                <div class="pricing-head-content">
-                                    <span>$</span>
-                                    <span>70</span>
-                                    <span>/ Monthly</span>
-                                </div>
-                            </div>
-                            <div class="pricing-table-inner-content">
-                                <div class="pricing-table-title">
-                                    <p>For growing manufacturers needing multi-brand traceability, supply chain tracking and fraud detection.</p>
-                                </div>
-                                <div class="pricing-table-list">
-                                    <ul>
-                                        <li><span>3</span> Brands</li>
-                                        <li><span>Up to 25</span> Product SKUs</li>
-                                        <li>QR + GS1 Barcode Serialization</li>
-                                        <li>End-to-End Supply Chain Tracking</li>
-                                        <li>Suspicious Activity Alerts</li>
-                                        <li><span>50,000</span> Codes / Month</li>
-                                    </ul>
-                                    <div class="all-link pricinig-bottom-btn text-center">
-                                        <a href="#">Get Started Now <i class="fa fa-long-arrow-right"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-4">
-                        <div class="pricing-table-content text-center wow fadeInLeft">
-                            <div class="pricing-table-head">
-                                <div class="pricing-head-top">
-                                    <span>Enterprise Plan</span>
-                                </div>
-                                <div class="pricing-head-content">
-                                    <span>$</span>
-                                    <span>90</span>
-                                    <span>/ Monthly</span>
-                                </div>
-                            </div>
-                            <div class="pricing-table-inner-content">
-                                <div class="pricing-table-title">
-                                    <p>Full-scale traceability for large manufacturers, government programs and multi-market supply chain operations.</p>
-                                </div>
-                                <div class="pricing-table-list">
-                                    <ul>
-                                        <li><span>Unlimited</span> Brands</li>
-                                        <li><span>Unlimited</span> Product SKUs</li>
-                                        <li>Full Serialization Suite</li>
-                                        <li>Blockchain Ledger + GPS Tracking</li>
-                                        <li>Inspector & Government Access</li>
-                                        <li><span>Unlimited</span> Codes / Month</li>
-                                    </ul>
-                                    <div class="all-link pricinig-bottom-btn text-center">
-                                        <a href="#">Get Started Now <i class="fa fa-long-arrow-right"></i></a>
+                                        <a href="{{route('register-view')}}">Sign Up Now <i class="fa fa-long-arrow-right"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -715,6 +659,7 @@
                     </div>
                 </div>
             </div>
+            @endforeach
             <div class="pricing-table-self">
                 <img src="{{asset('dist/images/pricing-table-self.png')}}">
             </div>

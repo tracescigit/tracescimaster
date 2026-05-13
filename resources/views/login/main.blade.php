@@ -98,7 +98,7 @@
             cash('#btn-login').html('<i data-loading-icon="oval" data-color="white" class="w-5 h-5 mx-auto"></i>').svgLoader()
             await helper.delay(500)
 
-            axios.post('{{ url(' / login ') }}', {
+            axios.post("{{ url('/login') }}", {
                 email_or_phone: email_or_phone,
                 password: password,
                 remember_me: rememberMe
