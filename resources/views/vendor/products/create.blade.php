@@ -52,7 +52,7 @@
 								@foreach (currencies() as $currency)
 								<option value="{{$currency->currency}}" {{strtolower($currency->currency)=='inr'?'selected':''}}>{{$currency->currency}}</option>
 								@endforeach
-								@endif								
+								@endif
 							</select>
 						</div>
 
@@ -63,8 +63,17 @@
 							<input id="price" type="number" name="price" class="form-control form__input" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="0" step="0.01" maxlength="10" placeholder="Enter price" minlength="2">
 							<div id="error-price" class="login__input-error w-5/6 text-theme-6"></div>
 						</div>
-
-						<div class="input-form col-span-12 lg:col-span-12 px-2 py-1 mt-2">
+						<div class="input-form col-span-6 lg:col-span-6 px-2 py-1 mt-2">
+							<label for="template" class="form-label w-full flex flex-col sm:flex-row">
+								Select Template
+							</label>
+							<select id="template_id" name="template_id" class="form-select form__input">
+								@foreach($templates as $template)
+								<option value="{{$template->id}}">{{$template->name}}</option>
+								@endforeach
+							</select>
+						</div>
+						<div class="input-form col-span-6 lg:col-span-6 px-2 py-1 mt-2">
 							<label for="status" class="form-label w-full flex flex-col sm:flex-row">
 								Status
 							</label>
@@ -72,7 +81,7 @@
 								<option value="1">Active</option>
 								<option value="0">Inactive</option>
 							</select>
-							<p class=" mt-2 mb-2 text-md">{!!__('product.status')!!} 
+							<p class=" mt-2 mb-2 text-md">{!!__('product.status')!!}
 							</p>
 						</div>
 
@@ -141,12 +150,27 @@
 					</div>
 
 					<div class="grid grid-cols-12 mt-6">
-						<div class="input-form col-span-12 lg:col-span-6 px-2 py-1">
-							<label for="media" class="form-label w-full flex flex-col sm:flex-row required">
-								Product media
-							</label>
-							<input id="media" type="file" name="media" class="form-control form__input" accept="audio/*,video/*" />
-							<div id="error-media" class="login__input-error w-5/6 text-theme-6"></div>
+						<div class="col-span-6">
+							<div class="grid grid-cols-12">
+								<div class="input-form col-span-12 lg:col-span-6 px-2 py-1">
+									<label for="media" class="form-label w-full flex flex-col sm:flex-row required">
+										Product media
+									</label>
+									<input id="media" type="file" name="media" class="form-control form__input" accept="audio/*,video/*" />
+									<div id="error-media" class="login__input-error w-5/6 text-theme-6"></div>
+								</div>
+							</div>
+						</div>
+						<div class="col-span-6">
+							<div class="grid grid-cols-12">
+								<div class="input-form col-span-12 px-2 py-1">
+									<label for="file" class="form-label w-full flex flex-col sm:flex-row">
+										Product Logo
+									</label>
+									<input id="logo" type="file" name="logo" class="form-control form__input" accept="image/*">
+									<div id="error-logo" class="login__input-error w-5/6 text-theme-6"></div>
+								</div>
+							</div>
 						</div>
 					</div>
 
@@ -159,12 +183,12 @@
 		</form>
 	</div>
 	<x-notification></x-notification>
-</div> 
+</div>
 @endsection
 
 @section('script')
 <script>
-	cash(function () {
+	cash(function() {
 		async function add() {
 
 			cash('#add-form').find('.form__input').removeClass('border-theme-6')
@@ -174,19 +198,19 @@
 			cash('#btn-add').attr('disabled', 'true');
 			cash('#btn-add').html('<i data-loading-icon="oval" data-color="white" class="w-5 h-5 mx-auto"></i>').svgLoader()
 
-			axios.post('{{ url('/vendor/products/create') }}', formData).then(res => {
-				showNotification('success','Success !',res.data.message)
-				setTimeout(()=>{
-					window.location.href = '{{ url('/vendor/products') }}'
-				},1000)
+			axios.post("{{ url('/vendor/products/create') }}", formData).then(res => {
+				showNotification('success', 'Success !', res.data.message)
+				setTimeout(() => {
+					window.location.href = "{{ url('/vendor/products')}}"
+				}, 1000)
 
 			}).catch(err => {
 				cash('#btn-add').removeAttr('disabled');
-				showNotification('error','Error !',err.response.data.message)
-				cash('#btn-add').html('Add product')                   
+				showNotification('error', 'Error !', err.response.data.message)
+				cash('#btn-add').html('Add product')
 
 				if (err.response.data.errors) {
-					for (const [key, val] of Object.entries(err.response.data.errors)){
+					for (const [key, val] of Object.entries(err.response.data.errors)) {
 						cash(`#${key}`).addClass('border-theme-6')
 						cash(`#error-${key}`).html(val)
 					}

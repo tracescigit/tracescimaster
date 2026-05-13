@@ -111,6 +111,7 @@ class ScanController extends Controller
 			if ($code->getProduct) {
 				$response['id'] = $code->getProduct->id ?? '';
 				$response['name'] = $code->getProduct->name ?? '';
+				$response['logo'] = $code->getProduct->logo ?? '';
 				$response['brand'] = $code->getProduct->brand ?? '';
 				$response['description'] = $code->getProduct->description ? $code->getProduct->description : '';
 				$response['html_description'] = $code->getProduct->description ? $code->getProduct->description : '';
@@ -294,7 +295,7 @@ class ScanController extends Controller
 				}
 			}
 
-			$permissions = ProductTemplate::where('product_id', $code->product_id)->first();
+			$permissions = ProductTemplate::where('id', $code->getProduct->getTemplate->id)->first();
 			$renderfile = view('web.scan.table', ['product' => $response, 'journey' => $journey, 'user' => $user, 'permissions' => $permissions]);
 			$view = $renderfile->render();
 

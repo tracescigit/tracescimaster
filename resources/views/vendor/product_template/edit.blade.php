@@ -29,14 +29,10 @@
 
 						<div class="input-form col-span-12 lg:col-span-6 px-2 py-1">
 							<label for="name" class="form-label w-full flex flex-col sm:flex-row">
-								Product name
+								Template name
 							</label>
-							<select id="product_id" name="product_id" class="form-select form__input">
-								@foreach ($products as $product)
-								<option value="{{$product->id}}" {{$template->id==$product->id?'selected':''}}>{{$product->name}}</option>
-								@endforeach
-							</select>
-							<div id="error-product_id" class="login__input-error w-5/6 text-theme-6"></div>
+							<input id="name" type="text" name="name" value="{{$template->name}}" class="form-control form__input" placeholder="Enter Template name" minlength="2">
+							<div id="error-name" class="login__input-error w-5/6 text-theme-6"></div>
 						</div>
 
 					</div>

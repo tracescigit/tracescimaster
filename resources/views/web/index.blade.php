@@ -571,8 +571,46 @@
 
 
 
+<<<<<<< HEAD
 <!-- Pricing Table -->
 {{--<section class="pricing-table-section grey-bg">
+=======
+    <!--how it works -->
+    <!-- video-->
+    <div class="video-home">
+      <div class="bg-gradient">
+        <div class="riven-container container  video-container">
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="wpb_text_column wpb_content_element ">
+                <div class="wpb_wrapper">
+                  <p><a class="fancybox btn-play" title="Play video" href="{{asset('web/videos/tracesci_storyboard.mp4')}}" data-type="iframe">Watch Now</a></p>
+                </div>
+              </div>
+              <div class="spacer-20"></div>
+              <div class="title-block">
+                <div class="riven-heading text-center">
+                  <h2> <span>Now </span> Everyone can afford product traceability</h2>
+                </div>
+              </div><!-- END riven_heading -->
+
+              <div class="wpb_text_column wpb_content_element ">
+                <div class="wpb_wrapper">
+                  <p>A solution to deter counterfeiters from stealing your revenue & damaging your brand reputation.</p>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- Pricing Table -->
+    {{--<section class="pricing-table-section grey-bg">
+>>>>>>> f8941ab7480a8d703323417fb2f50a02ccc91cf3
       <!-- MAIN TITLE AREA -->
       <div class="container">
         <div class="row">
