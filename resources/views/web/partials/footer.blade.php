@@ -16,8 +16,8 @@
             </div>
             <div class="col-md-5">
               <div class="all-link pricinig-head-btn footer-top-btn">
-                <a href="#">Take The Tour</a>
-                <a href="#">Get Started</a>
+                <a href="{{ route('home') }}#howitworks">Take The Tour</a>
+                <a href="{{ route('cloud-solution') }}#pricing_table">Get Started</a>
               </div>
             </div>
           </div>
