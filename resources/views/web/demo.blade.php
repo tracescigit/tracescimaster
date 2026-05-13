@@ -518,12 +518,12 @@
             }
         }
 
-        .form-group {
+        /* .form-group {
             display: flex;
             flex-direction: column;
             gap: 5px;
             margin-bottom: 12px;
-        }
+        } */
 
         .form-group.no-mb {
             margin-bottom: 0;

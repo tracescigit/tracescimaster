@@ -6,14 +6,33 @@
       </div>
       <div class="right-menu-list">
         <ul>
-          <li class="active"><a href="{{ url('/') }}">Home</a></li>
-          <li><a href="{{ url('/about') }}">About</a></li>
-          <li><a href="{{ url('/product/razor6') }}">Products</a></li>
-          <li><a href="{{ url('/cloud-solution') }}">Solution</a></li>
+          <li class="{{ request()->routeIs('home') ? 'active' : '' }}">
+            <a href="{{ url('/') }}">Home</a>
+          </li>
 
-          <li><a href="{{route('blog')}}">Blogs</a></li>
-          <li><a href="{{route('contact-us')}}">Get In Touch</a></li>
-          <li><a href="{{ url(Auth::check()?myDashboard():'/login') }}">Login</a></li>
+          <li class="{{ request()->is('about') ? 'active' : '' }}">
+            <a href="{{ url('/about') }}">About</a>
+          </li>
+
+          <li class="{{ request()->is('product/razor6') ? 'active' : '' }}">
+            <a href="{{ url('/product/razor6') }}">Products</a>
+          </li>
+
+          <li class="{{ request()->is('cloud-solution') ? 'active' : '' }}">
+            <a href="{{ url('/cloud-solution') }}">Solution</a>
+          </li>
+
+          <li class="{{ request()->routeIs('blog') ? 'active' : '' }}">
+            <a href="{{ route('blog') }}">Blogs</a>
+          </li>
+
+          <li class="{{ request()->routeIs('contact-us') ? 'active' : '' }}">
+            <a href="{{ route('contact-us') }}">Get In Touch</a>
+          </li>
+
+          <li class="{{ request()->is('login') ? 'active' : '' }}">
+            <a href="{{ url(Auth::check() ? myDashboard() : '/login') }}">Login</a>
+          </li>
         </ul>
       </div>
       <div class="right-menu-social-box">
@@ -25,7 +44,7 @@
             <a href="https://www.youtube.com/@TracesciGlobal"><i class="fa fa-youtube"></i></a>
           </li>
           <li class="linkedin">
-            <a href="https://in.linkedin.com/company/tracesci-solutions-pvt-ltd"><i class="fa fa-rss"></i></a>
+            <a href="https://in.linkedin.com/company/tracesci-solutions-pvt-ltd"><i class="fa fa-linkedin"></i></a>
           </li>
         </ul>
         <div class="footer-bottom-right right-menu-copyright">
@@ -51,7 +70,7 @@
         <!-- LOGO -->
         <a href="{{ url('/') }}" class="menuzord-brand">
           @if (request()->route()->uri!='p/{code}')
-          <span >tracesci.</span>
+          <span>tracesci.</span>
           @else
           <span class="text-white">{{ $brand }}</span>
           @endif
@@ -69,44 +88,58 @@
         @if (request()->route()->uri!='p/{code}')
         <ul class="menuzord-menu menuzord-menu-bg">
 
-          <li class="active">
+          <li class="{{ request()->is('/') ? 'active' : '' }}">
             <a href="{{ url('/') }}">Home</a>
           </li>
-          <li>
+
+          <li class="{{ request()->is('about') ? 'active' : '' }}">
             <a href="{{ url('/about') }}">About</a>
           </li>
 
-          <li>
+          <li class="{{ request()->is('cloud-solution') || request()->is('enterprise-solution') ? 'active' : '' }}">
             <a href="#howitworks">Solution</a>
             <ul class="dropdown">
-              <li><a href="{{route('cloud-solution')}}">Cloud</a></li>
-              <li><a href="{{route('enterprise-solution')}}">Enterprise</a></li>
-              <li><a href="#application">Customise</a></li>
+              <li>
+                <a href="{{ route('cloud-solution') }}">Cloud</a>
+              </li>
+              <li>
+                <a href="{{ route('enterprise-solution') }}">Enterprise</a>
+              </li>
+              <li>
+                <a href="#application">Customise</a>
+              </li>
             </ul>
           </li>
 
-         
-          <li>
+          <li class="{{ request()->is('product/razor6') || request()->is('product/elite4') || request()->is('product/hyperloop') ? 'active' : '' }}">
             <a href="{{ url('/product/razor6') }}">Products</a>
             <ul class="dropdown">
-              <li><a href="{{ route('product-razor6') }}">Razor 6</a></li>
-              <li><a href="{{route('product-elite4')}}">Elite 4</a></li>
-              <li><a href="{{route('product-hyperloop')}}">Hyperloop</a></li>
+              <li>
+                <a href="{{ route('product-razor6') }}">Razor 6</a>
+              </li>
+              <li>
+                <a href="{{ route('product-elite4') }}">Elite 4</a>
+              </li>
+              <li>
+                <a href="{{ route('product-hyperloop') }}">Hyperloop</a>
+              </li>
             </ul>
           </li>
-          <li>
-            <a href="{{route('blog')}}">Blogs</a>
+
+          <li class="{{ request()->is('blog') ? 'active' : '' }}">
+            <a href="{{ route('blog') }}">Blogs</a>
           </li>
 
-          <li>
-            <a href="{{route('contact-us')}}">Get In Touch</a>
+          <li class="{{ request()->is('contact-us') ? 'active' : '' }}">
+            <a href="{{ route('contact-us') }}">Get In Touch</a>
           </li>
 
-          <li>
-            <a href="{{ url(Auth::check()?myDashboard():'/login') }}">
+          <li class="{{ request()->is('login') ? 'active' : '' }}">
+            <a href="{{ url(Auth::check() ? myDashboard() : '/login') }}">
               {{ Auth::check() ? 'Dashboard' : 'Login' }}
             </a>
           </li>
+
           <li class="right_menu">
             <a href="#"><i class="fa fa-bars"></i></a>
           </li>

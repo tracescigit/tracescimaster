@@ -98,7 +98,7 @@
                 </div>
                 <div class="breadcrumbs text-center">
                     <ul class="page-breadcrumbs">
-                        <li><a href="#">home</a></li>
+                        <li><a href="{{route('home')}}">home</a></li>
                         <li><a href="#">About Us</a></li>
                     </ul>
                 </div>
@@ -135,9 +135,9 @@
                 <div class="col-md-6">
                     <div class="welcome-2-left-content wow fadeInLeft">
                         <p>We're TRACESCI, a product authentication and track & trace technology company based in Chennai, India. We provide a complete anti-counterfeiting ecosystem that helps governments, brands, and consumers combat illicit trade, protect revenue, and ensure the safety of products across the supply chain.</p>
-                        <div class="all-link pricinig-head-btn">
+                        <!-- <div class="all-link pricinig-head-btn">
                             <a href="#">More About Us</a>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="col-md-6">

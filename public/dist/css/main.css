@@ -7744,7 +7744,8 @@ ul.page-breadcrumbs li + li:before {
        SHOP PAGES   
 ******************************************/
 .shop-area {
-  background: url(../images/page-titles/shop-bg.png) no-repeat;
+  background: url(../images/shop-bg.png) no-repeat;
+  background: url(../images/about-us-bg.png);
   background-attachment: fixed;
   background-size: cover;
 }

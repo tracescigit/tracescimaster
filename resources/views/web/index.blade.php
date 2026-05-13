@@ -143,7 +143,7 @@
           data-transform_out="opacity:0;s:300" ;>
           <div class="rev-slider-btn text-center">
             <a href="#">Read More</a>
-            <a href="#">Get Started</a>
+            <a href="/solutions/cloud#pricing_table">Get Started</a>
           </div>
         </div>
 
@@ -599,7 +599,7 @@
             <div class="pricing-table-content text-center wow fadeInLeft">
               <div class="pricing-table-head">
                 <div class="pricing-head-top">
-                  <span>{{$plan->title}}</span>
+                  <span>{{$plan->title}}</span> 
 </div>
 <div class="pricing-head-content">
   <span>

@@ -211,7 +211,7 @@
          flex-wrap: wrap;
      }
 
-     .btn {
+     /* .btn {
          display: inline-flex;
          align-items: center;
          gap: 10px;
@@ -222,7 +222,7 @@
          text-decoration: none;
          transition: all 0.2s;
          letter-spacing: 0.02em;
-     }
+     } */
 
      .btn-primary {
          background: var(--teal);
@@ -1161,7 +1161,7 @@
          margin-bottom: 32px;
      }
 
-     .form-group {
+     /* .form-group {
          margin-bottom: 18px;
      }
 
@@ -1197,7 +1197,7 @@
      .form-group textarea {
          min-height: 100px;
          resize: vertical;
-     }
+     } */
 
      .form-submit {
          background: var(--teal);

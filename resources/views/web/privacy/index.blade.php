@@ -1,23 +1,26 @@
 @extends('web.layouts.app')
 @section('content')
-<div class="main-slider" style="height: 150px; background: transparent linear-gradient( 
-45deg , #700877 0%, #ff2759 100%, #ff2759 100%) repeat scroll 0 0;">
-</div>
-<div class="text-bg" style="font-size: 36px;
-color: rgb(209, 86, 136);
-padding: 6px 18px 7px;
-text-transform: uppercase;
-transition: none 0s ease 0s;
-line-height: 45px;
-border-width: 0px;
-margin: 0px auto;
-text-align: center;
-letter-spacing: 2px;
-font-weight: 900;
-margin-top: 20px;">Privacy Policy
-</div>
+<section class="page-title-area shop-area">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <div class="about-head-content">
+              <h2>Privacy Policy</h2>
+              <p>Your privacy matters to us — we are committed to keeping your personal information secure and protected.</p>
+            </div>
+            <!-- <div class="breadcrumbs text-center">
+              <ul class="page-breadcrumbs">
+                <li><a href="#">home</a></li>
+                <li><a href="#">Shop</a></li>
+              </ul>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </section>
+
 <div id="main" class="wrapper"> 
-	<div class="container" style="padding-top: 20px; padding-bottom: 60px; text-align: justify;">
+	<div class="container" style="padding-top: 60px; padding-bottom: 60px; text-align: justify; font-family: 'Droid Serif', serif;">
 		<div class="mb-2 mt-4">
 			<p class="text-gray-600">We respects any concerns regarding the protection of the security and privacy of personal data.
 				<br>
@@ -26,7 +29,7 @@ margin-top: 20px;">Privacy Policy
 			</p>
 		</div>
 		<div class="mt-2 mb-4">
-			<h4 class="text-gray-600 font-bold mb-2">Scope of personal data processing</h4>
+			<h4 class="mb-2" style="color: #7a0d7d;font-weight: bold;">Scope of personal data processing</h4>
 			<p class="text-gray-600 p-2">As a general rule we do not process our users' personal data unless it is necessary to enable us to present a functioning website and our content and services. As a matter of course, our users' personal data is not processed without the user's consent. One exception would be cases in which it is not possible to obtain the consent beforehand for practical reasons, and/or if processing of the data is permitted by legal provisions.
 				<br>
 				In particular, your data is processed for the following purposes:
@@ -44,7 +47,7 @@ margin-top: 20px;">Privacy Policy
 			</p>
 		</div>
 		<div class="mt-2 mb-4">
-			<h4 class="text-gray-600 font-bold mb-2">
+			<h4 class="mb-2" style="color: #7a0d7d;font-weight: bold;">
 				Legal basis for processing personal data
 			</h4>
 			<p class="text-gray-600 p-2">
@@ -60,14 +63,14 @@ margin-top: 20px;">Privacy Policy
 			</p>
 		&emsp;</div>
 		<div class="mt-2 mb-4">
-			<h4 class="text-gray-600 font-bold mb-2">
+			<h4 class="mb-2" style="color: #7a0d7d;font-weight: bold;">
 				Retention period and erasure of personal data
 			</h4>
 			<p class="text-gray-600 p-2">
 				We only process and store your personal data for the period necessary to fulfil the purpose for which it is stored. When its purpose has been fulfilled or ceases to exist, your personal data is erased or blocked. It can be stored for longer than this if such provisions appear in the European or national legislatures in legally binding ordinances, laws or other regulations of the European Union to which the controller is subject. The data is also blocked or erased when a retention period stipulated in the aforementioned norms expires, unless there is a pressing need for continued retention of the data to enable the conclusion or fulfilment of a contract.
 			</p>
 			<div class="mt-2 mb-4">
-				<h4 class="text-gray-600 font-bold mb-2">
+				<h4 class="mb-2" style="color: #7a0d7d;font-weight: bold;">
 					Providing Websites and compiling log files
 				</h4>
 				<p class="text-gray-600 p-2">
@@ -100,7 +103,7 @@ margin-top: 20px;">Privacy Policy
 				</p>
 			</div>
 			<div class="mt-2 mb-4">
-				<h4 class="text-gray-600 font-bold mb-2">
+				<h4 class="mb-2" style="color: #7a0d7d;font-weight: bold;">
 					Data security on the Internet
 				</h4>
 				<p class="text-gray-600 p-2">
@@ -124,7 +127,7 @@ margin-top: 20px;">Privacy Policy
 				</div>
 			</div>
 			<div class="mt-2 mb-4">
-				<h4 class="text-gray-600 font-bold mb-2">
+				<h4 class="mb-2" style="color: #7a0d7d;font-weight: bold;">
 
 					Recommendations for improving your personal data security
 				</h4>
@@ -135,7 +138,7 @@ margin-top: 20px;">Privacy Policy
 				</p>
 			</div>
 			<div class="mt-2 mb-4">
-				<h4 class="text-gray-600 font-bold mb-2">
+				<h4 class="mb-2" style="color: #7a0d7d;font-weight: bold;">
 					Updating of this Data Protection Statement
 
 				</h4>
