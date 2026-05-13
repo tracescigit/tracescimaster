@@ -58,9 +58,9 @@
                         <li>
                             <h5>Find us elsewhere</h5>
                             <ul class="social-networks">
-                                <li class="social-fb first"><a href="https://www.facebook.com/jetsciglobal/"><i class="fa fa-facebook"></i></a></li>
-                                <li class="social-linkedin"><a href="https://www.linkedin.com/company/jetsciglobal"><i class="fa fa-linkedin"></i></a></li>
-                                <li class="social-youtube"><a href="https://www.youtube.com/channel/UCDnSaAwRgBssFuTUX_2iCJw"><i class="fa fa-youtube-play"></i></a></li>
+                                <li class="social-fb first"><a href="https://www.facebook.com/tracesciSolutions/"><i class="fa fa-facebook"></i></a></li>
+                                <li class="social-linkedin"><a href="https://in.linkedin.com/company/tracesci-solutions-pvt-ltd"><i class="fa fa-linkedin"></i></a></li>
+                                <li class="social-youtube"><a href="https://www.youtube.com/@TracesciGlobal"><i class="fa fa-youtube-play"></i></a></li>
                             </ul>
                         </li>
                     </ul>
