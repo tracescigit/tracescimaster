@@ -39,18 +39,18 @@ margin-top: 20px;">Terms of Use
 		</p>
 		<ul class="text-gray-600">
 			<li class="list-style-bullet px-6 p-3">
-				<span style="color: #7a0d7d;font-weight: bold;">Scope :</span>
+				<h4 style="color: #7a0d7d;font-weight: bold;">Scope :</h4>
 				<br>
 				The use of the website is subject exclusively to the following conditions. In individual cases, these Terms of Use may be amended, modified or replaced by further conditions, e.g. for the purchase of products and/or services. On the Website we provide users with certain information such as data, texts, logos, layouts, graphics, photos, illustrations, videos, animations, pictures, documents, software and similar material or other information (hereinafter collectively referred to as 'Content') for retrieval or download. 
 			</li>
 			<li class="list-style-bullet px-6 p-3">
 				
-				<span style="color: #7a0d7d;font-weight: bold;">External Links :</span>
+				<h4 style="color: #7a0d7d;font-weight: bold;">External Links :</h4>
 				<br>
 				The Website may refer directly or indirectly to external website and contain links to other external website that are not maintained by us. These external website contain information from natural and/or legal persons who are legally independent of and are subject to the liability of the respective website operator. We are neither responsible for the content of these external website and the links listed therein, nor are these contents checked, approved, supported, confirmed or made our own. We have no influence whatsoever on the current and future design of the linked website. The use of external links and external website is at the user's own risk. 
 			</li>
 			<li class="list-style-bullet px-6 p-3">
-				<span style="color: #7a0d7d;font-weight: bold;">Liability :</span>
+				<h4 style="color: #7a0d7d;font-weight: bold;">Liability :</h4>
 				
 				<br>
 				The Website have been designed with the utmost care and are regularly updated. Nevertheless, we do not accept any liability for the accuracy, up-to-dateness, correctness, completeness, accuracy, usefulness or usability of the Content contained therein or the freedom from intellectual property rights and other rights of third parties. We do not make any representations regarding the suitability of the Contents of the Website for specific purposes and do not make any guarantees or representations regarding any general or specific characteristics. 
@@ -58,13 +58,13 @@ margin-top: 20px;">Terms of Use
 				Our liability shall be excluded, unless there is a mandatory liability under the applicable law or in case of intent or gross negligence, injury to life, body or health, the assumption of a guarantee of quality, fraudulent concealment of a defect or breach of essential contractual obligations. However, damages for the breach of essential contractual obligations shall be limited to the foreseeable, typically occurring damages, unless in case of intent or gross negligence. A change in the burden of proof to the detriment of the user shall not be implied hereby. The Content of the Website shall not be deemed to be an offer in the legal sense. We make every effort to keep the Website free of viruses. Nevertheless, we accept no liability that Contents obtained from the user via the Website are free of viruses or harmful components. The user is responsible for ensuring that adequate security precautions and checking mechanisms are in place.  
 			</li>
 			<li class="list-style-bullet px-6 p-3">
-				<span style="color: #7a0d7d; font-weight: bold;">Trademarks, Copyright and other Rights:</span>
+				<h4 style="color: #7a0d7d; font-weight: bold;">Trademarks, Copyright and other Rights:</h4>
 				 
 				<br>
 				The Contents of the Website and their arrangement are subject to trademark protection, copyright protection, intellectual property rights or other rights of their respective owners. The user shall observe these rights. 
 			</li> 
 			<li class="list-style-bullet px-6 p-3">
-				<span style="color: #7a0d7d;font-weight: bold;">Right of Use : </span>
+				<h4 style="color: #7a0d7d;font-weight: bold;">Right of Use : </h4>
 				
 				<ul> 
 					<li class="list-style-circle px-6 p-1">
@@ -94,13 +94,13 @@ margin-top: 20px;">Terms of Use
 				</ul>
 			</li>
 			<li class="list-style-bullet px-6 p-3">
-				<span style="color: #7a0d7d;font-weight: bold;">Password and Registration :</span>
+				<h4 style="color: #7a0d7d;font-weight: bold;">Password and Registration :</h4>
 				
 				<br>
 				Some pages of the Website may be password protected. There is no entitlement to registration. We are entitled to refuse the use our password-protected services for objective reasons or to delete the registration definitively. Objective reasons include in particular the entry or use of false or misleading data or infringements of applicable law.  
 			</li>
 			<li class="list-style-bullet px-6 p-3">
-				<span style="color: #7a0d7d;font-weight: bold;">Modifications and Amendments :</span>
+				<h4 style="color: #7a0d7d;font-weight: bold;">Modifications and Amendments :</h4>
 
 				
 				<br>
@@ -108,14 +108,14 @@ margin-top: 20px;">Terms of Use
 			</li>
 
 			<li class="list-style-bullet px-6 p-3">
-				<span style="color: #7a0d7d;font-weight: bold;">Miscellaneous:</span>
+				<h4 style="color: #7a0d7d;font-weight: bold;">Miscellaneous:</h4>
 				
 				<br>
 				In these Terms of Use and on the Website, the use of other gender variants is generally waived in order to improve readability. Unless the context otherwise requires, all genders are generally meant and implied. In the event that individual provisions of these Terms of Use are invalid, the validity of the remaining provisions shall remain unaffected. Additional agreements require the written form. If the user is a merchant, the exclusive place of jurisdiction shall be RDC. RDC law shall apply.
 			</li>
 
 			{{-- <li class="list-style-bullet px-6 p-3">
-				<span style="color: #7a0d7d;font-weight: bold;">CANCELLATION AND REFUND POLICY:</span>
+				<h4 style="color: #7a0d7d;font-weight: bold;">CANCELLATION AND REFUND POLICY:</h4>
 				
 				<br>
 				Monotech System Ltd. has not have any cancellation or refund policy. Once the payment has been made on the platform no refunds will be processed.
