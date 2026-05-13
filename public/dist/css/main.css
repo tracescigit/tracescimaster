@@ -3629,8 +3629,9 @@ input:focus {
   top: 0;
   height: 100%;
   width: 60%;
-  background: url('../images/tab-content-2.png');
+  background: url('/dist/images/Elite4_machine.png') !important;
   background-size: cover;
+  background-repeat: no-repeat;
 }
 .feature-2-left {
 }
@@ -3644,7 +3645,7 @@ input:focus {
 }
 .feature-2-left li h3 {
   font-size: 18px;
-  color:#222222";
+  color:#222222;
   font-weight: 600;
   margin-bottom: 20px;
   display: block;
@@ -4904,7 +4905,6 @@ ul.page-breadcrumbs li + li:before {
   text-transform: uppercase;
   margin-bottom: 10px;
   position: relative;
-  top: 20px;
 }
 .progress {
   height: 4px;

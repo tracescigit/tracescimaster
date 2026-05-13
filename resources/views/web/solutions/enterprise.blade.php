@@ -1,85 +1,7 @@
 @extends('web.layouts.app')
 @section('content')
-<style>
-    /* Section spacing */
-    .help-content-area {
-        padding: 60px 0;
-    }
 
-    /* Accordion spacing */
-    .help-accordion {
-        margin-bottom: 30px;
-    }
 
-    /* Fix panel spacing */
-    .panel {
-        margin-bottom: 10px;
-    }
-
-    /* Improve readability */
-    .panel-body {
-        font-size: 14px;
-        line-height: 1.7;
-    }
-
-    /* Fix image alignment */
-    .help-slider-text {
-        display: flex;
-        align-items: start;
-        justify-content: start;
-        height: 100%;
-    }
-
-    /* Image fix */
-    .help-img {
-        max-width: 100%;
-        height: auto;
-        position: absolute;
-        right: -220px !important;
-    }
-
-    /* ================= RESPONSIVE ================= */
-
-    /* Tablet */
-    @media (max-width: 991px) {
-
-        .help-content-area .row {
-            display: block;
-        }
-
-        .help-content-area .col-md-6 {
-            width: 100%;
-            margin-bottom: 30px;
-        }
-
-        .help-slider-text {
-            margin-top: 20px;
-        }
-    }
-
-    /* Mobile */
-    @media (max-width: 576px) {
-
-        .panel-title a {
-            font-size: 14px;
-            line-height: 1.4;
-            display: block;
-        }
-
-        .panel-body {
-            font-size: 13px;
-        }
-
-        .help-question {
-            text-align: center;
-        }
-
-        .help-question a {
-            display: inline-block;
-            margin-top: 10px;
-        }
-    }
-</style>
 <div class="rev_slider_wrapper">
     <div id="slider1" class="rev_slider" data-version="5.0">
         <ul>
@@ -99,7 +21,7 @@
                     data-start="1200" data-transform_in="y:[100%];opacity:0;s:800;"
                     data-transform_out="opacity:0;s:300" ;>
                     <span class="sl-italic" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;">
-                        One Platform. Every Stakeholder. Zero Counterfeits.
+                        Full Control. Every Stakeholder. Zero Counterfeits.
                     </span>
                 </div>
 
@@ -109,7 +31,7 @@
                     data-start="1800" data-transform_in="y:[100%];opacity:0;s:800;"
                     data-transform_out="opacity:0;s:300" ;>
                     <div class="text-center heading-rp-small" style="transition: none; line-height: 58px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 1px; font-weight: 800; font-size: 50px;">
-                        Cloud-Powered Track & Trace for Every Product.
+                        Enterprise-Grade Track &amp; Trace — Built for You.
                     </div>
                 </div>
 
@@ -119,8 +41,8 @@
                     data-start="2400" data-transform_in="y:[100%];opacity:0;s:800;"
                     data-transform_out="opacity:0;s:300" ;>
                     <div class="sl-italic sl-italic-2 text-center" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;">
-                        Serialize every product unit with a unique QR code. Track its complete journey<br>
-                        from manufacturer to end consumer — accessible by brands, inspectors, and governments.
+                        A fully customized, large-scale serialization and authentication platform<br>
+                        for governments, large brands and enterprises — hosted, on-premise or dedicated portal.
                     </div>
                 </div>
 
@@ -131,18 +53,17 @@
 </div>
 
 
-<!-- the content -->
+<!-- Overview -->
 <div class="welcome-area">
-    <!-- MAIN TITLE AREA -->
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
                 <div class="main-title wow zoomIn">
                     <div class="main-shadow-heading">
-                        <h2>Hello, We Are Tracesci</h2>
+                        <h2>Enterprise Solution</h2>
                     </div>
-                    <h2>Hello, We Are <span style="color:#7a0d7d">Tracesci</span></h2>
-                    <h3>Cloud-Based Product Serialization, Authentication & Supply Chain Traceability</h3>
+                    <h2><span style="color:#7a0d7d">Enterprise Solution</span> — Tracesci</h2>
+                    <h3>Fully Customized, Large-Scale Track &amp; Trace Infrastructure</h3>
                 </div>
             </div>
         </div>
@@ -154,10 +75,10 @@
                 <!-- ITEM 1 -->
                 <div class="col-sm-3 col-md-3">
                     <div class="welcome-single-content wow fadeInLeft text-center">
-                        <h3>Anti-Counterfeiting</h3>
-                        <h2><span>01.</span> Authenticate</h2>
+                        <h3>Customized Platform</h3>
+                        <h2><span>01.</span> Tailored</h2>
                         <p>
-                            Every product unit gets a cryptographically unique QR code — making counterfeits instantly detectable by consumers, inspectors and brands alike.
+                            Every deployment is built around your specific business or government requirements — flexible architecture, custom workflows and a dedicated portal configured to your use case.
                         </p>
                     </div>
                 </div>
@@ -165,10 +86,10 @@
                 <!-- ITEM 2 -->
                 <div class="col-sm-3 col-md-3">
                     <div class="welcome-single-content wow fadeInDown text-center">
-                        <h3>Supply Chain Visibility</h3>
-                        <h2><span>02.</span> Track</h2>
+                        <h3>Multi-Stakeholder</h3>
+                        <h2><span>02.</span> Integrated</h2>
                         <p>
-                            Follow every product from raw material intake through manufacturing, packaging and distribution — right to the end consumer's scan.
+                            Manufacturer, brand, authority, printer and inspector modules — all connected in one unified system with role-based access control and centralized monitoring.
                         </p>
                     </div>
                 </div>
@@ -176,10 +97,10 @@
                 <!-- ITEM 3 -->
                 <div class="col-sm-3 col-md-3">
                     <div class="welcome-single-content wow fadeInUp text-center">
-                        <h3>Real-Time Fraud Alerts</h3>
-                        <h2><span>03.</span> Monitor</h2>
+                        <h3>Deployment Flexibility</h3>
+                        <h2><span>03.</span> On Your Terms</h2>
                         <p>
-                            Behavior-based alert engine flags abnormal scan patterns, geo-location anomalies and suspected diversion — enabling instant enforcement action.
+                            Choose client-server, hosted cloud, on-premise or a fully dedicated portal. Your data, your infrastructure, your control — with Tracesci powering it all.
                         </p>
                     </div>
                 </div>
@@ -187,10 +108,10 @@
                 <!-- ITEM 4 -->
                 <div class="col-sm-3 col-md-3">
                     <div class="welcome-single-content wow fadeInRight text-center">
-                        <h3>GS1 Compliant</h3>
-                        <h2><span>04.</span> Standardize</h2>
+                        <h3>Scalable at Volume</h3>
+                        <h2><span>04.</span> Enterprise-Ready</h2>
                         <p>
-                            Fully GS1-compliant serialization that meets regulatory mandates across pharma, food, tobacco and more — in multiple countries.
+                            Built for large product volumes, multi-market supply chains and government-scale traceability programs — with unlimited brands, SKUs and serialization capacity.
                         </p>
                     </div>
                 </div>
@@ -199,7 +120,7 @@
         </div>
     </div>
 
-    <!-- Industries Section -->
+    <!-- Platform Overview Section -->
     <div id="application" class="refresh-phone padding-content">
         <div class="container">
             <div class="row">
@@ -207,19 +128,19 @@
                     <div class="title-block">
                         <div class="riven-heading text-center" data-sr="enter top wait 0.3s">
                             <h2>
-                                Powered by <span style="color:#7a0d7d">Blockchain</span> — One Platform for Every Stakeholder
+                                One Platform. Every Stakeholder. Powered by <span style="color:#7a0d7d">Blockchain</span>.
                             </h2>
                         </div>
                     </div>
                     <div class="refresh-phone-content">
                         <div class="text-desc">
                             <p class="text-center">
-                                Tracesci's fully cloud-based Track &amp; Trace SaaS platform gives governments, brands, manufacturers,
-                                inspectors and consumers a single unified system to authenticate and monitor products across the entire
-                                supply chain. Every product unit is assigned a unique QR code at the point of manufacture —
-                                scan it at any point to instantly verify authenticity, view the complete product journey,
-                                and trigger real-time fraud alerts. Every event is logged on an immutable blockchain ledger,
-                                accessible from anywhere, by any authorised stakeholder.
+                                Tracesci's Enterprise Solution delivers a fully customized track &amp; trace platform for organizations
+                                that require deep control, security and integration at scale. Whether you are a government authority,
+                                a large brand or an enterprise manufacturer, we configure a dedicated system — complete with
+                                manufacturer, brand, authority and printer modules — tailored to your workflows, your infrastructure
+                                and your regulatory environment. Every product event is logged on an immutable blockchain ledger,
+                                accessible in real time by every authorised stakeholder.
                             </p>
                         </div>
                         <a class="btn btn-primary ubtn">Industries We Serve</a>
@@ -291,34 +212,34 @@
         <div class="row align-items-center">
             <div class="col-md-6">
                 <div class="main-title wow fadeInLeft">
-                    <h2>Interactive <span style="color:#7a0d7d;">Analytics Dashboard</span></h2>
+                    <h2>Centralized <span style="color:#7a0d7d;">Analytics Dashboard</span></h2>
                     <p style="color:#555; font-size:16px; margin-top:15px;">
-                        Get a real-time, bird's-eye view of your entire product ecosystem from one centralized dashboard.
+                        Get a real-time, bird's-eye view of your entire enterprise product ecosystem from one centralized command center.
                         Monitor live serialization status, track active shipments, generate enforcement reports,
-                        visualise geo-location data and receive instant fraud alerts — all accessible by
+                        visualise geo-location heat maps and receive instant fraud alerts — accessible by
                         manufacturers, brand owners, inspectors and government authorities from any device.
                     </p>
                 </div>
             </div>
             <div class="col-md-6 wow fadeInRight">
-                <img src="{{ asset('web/images/04/img-slider.png') }}" alt="Tracesci Dashboard Screenshot" style="width:100%; height:80%; border-radius:8px; box-shadow: 0 10px 40px rgba(122,13,125,0.15);">
+                <img src="{{ asset('web/images/04/img-slider.png') }}" alt="Tracesci Enterprise Dashboard" style="width:100%; height:80%; border-radius:8px; box-shadow: 0 10px 40px rgba(122,13,125,0.15);">
             </div>
         </div>
     </div>
 </div>
 
 
-<!-- Features Section -->
+<!-- Core Capabilities & Features Section -->
 <div class="solution-area">
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
                 <div class="main-title wow zoomIn">
                     <div class="main-shadow-heading">
-                        <h2>Platform <span>Features</span></h2>
+                        <h2>Core <span>Capabilities</span></h2>
                     </div>
-                    <h2>Platform <span style="color:#7a0d7d">Features</span></h2>
-                    <h3>Cloud, Mobile & Software — Everything to Secure Your Supply Chain</h3>
+                    <h2>Core <span style="color:#7a0d7d">Capabilities</span></h2>
+                    <h3>Everything You Need to Secure Your Supply Chain at Scale</h3>
                 </div>
             </div>
         </div>
@@ -329,50 +250,50 @@
             <div class="row">
                 <div class="col-sm-6 col-md-4">
                     <div class="solution-single-content solution-single-content-no-border wow fadeInLeft">
-                        <h2>Unique QR Serialization</h2>
-                        <p>Every product unit is assigned a cryptographically unique QR or barcode label at the point of manufacture. Codes are activated in real time on the production line and registered on an immutable blockchain record...</p>
-                        <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
-                        <span><i class="icon icon-Antenna2"></i></span>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <div class="solution-single-content wow fadeInUp">
-                        <h2>Brand & Product Protection</h2>
-                        <p>Non-additive digital authentication secures your packaging without modifying your existing production line. Eliminate revenue loss from counterfeits and build lasting consumer trust in your brand...</p>
-                        <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
-                        <span><i class="icon icon-Shield"></i></span>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <div class="solution-single-content wow fadeInRight">
-                        <h2>Mobile Apps for All Stakeholders</h2>
-                        <p>Dedicated Android and iOS apps for consumers to verify authenticity, and for inspectors to perform quick field audits. Works online and offline. Consumers can also report counterfeit products directly through the app...</p>
-                        <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
-                        <span><i class="icon icon-MessageLeft"></i></span>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <div class="solution-single-content solution-single-content-no-border wow fadeInLeft">
-                        <h2>End-to-End Supply Chain Traceability</h2>
-                        <p>Track every product from raw material intake through manufacturing, packaging, distribution and last-mile delivery. Each checkpoint is immutably recorded — accessible to all authorised stakeholders in real time...</p>
+                        <h2>Full Track &amp; Trace System</h2>
+                        <p>End-to-end product traceability from raw material intake through manufacturing, packaging, distribution and last-mile delivery. Every checkpoint is immutably recorded and accessible to all authorised stakeholders in real time.</p>
                         <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
                         <span><i class="icon icon-Chart"></i></span>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-4">
                     <div class="solution-single-content wow fadeInUp">
-                        <h2>Regulatory Compliance</h2>
-                        <p>Stay ahead of government traceability mandates. Our GS1-compliant platform supports compliance requirements across pharma, food, tobacco and more — with quick report generation built for enforcement agencies...</p>
+                        <h2>Product Authentication at All Levels</h2>
+                        <p>Every product unit is assigned a cryptographically unique QR or barcode label. Authentication is available to consumers, inspectors, government authorities and brand teams — across the entire supply chain hierarchy.</p>
                         <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
-                        <span><i class="icon icon-Tools"></i></span>
+                        <span><i class="icon icon-Shield"></i></span>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-4">
                     <div class="solution-single-content wow fadeInRight">
-                        <h2>Seamless Hardware Integration</h2>
-                        <p>Plug directly into your existing printing, labelling and conveyor systems. Compatible with vision inspection cameras, high-speed production lines and all major barcode formats — no production disruption...</p>
+                        <h2>Multi-Stakeholder Integration</h2>
+                        <p>Dedicated modules for manufacturers, brand owners, government authorities and printers — each with role-based access, custom workflows and a unified view of the entire product ecosystem.</p>
                         <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
                         <span><i class="icon icon-Puzzle"></i></span>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="solution-single-content solution-single-content-no-border wow fadeInLeft">
+                        <h2>Custom Mobile Applications</h2>
+                        <p>Bespoke Android and iOS apps built specifically for your enterprise workflows — supporting inspectors, auditors and consumers. Works online and offline. Consumers can report counterfeit products directly through the app.</p>
+                        <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+                        <span><i class="icon icon-MessageLeft"></i></span>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="solution-single-content wow fadeInUp">
+                        <h2>Real-Time Alerts &amp; Fraud Detection</h2>
+                        <p>Behavior-based alert engine flags abnormal scan patterns, geo-location anomalies and suspected diversion the moment they occur — enabling instant enforcement action by inspectors and brand teams.</p>
+                        <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+                        <span><i class="icon icon-Antenna2"></i></span>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="solution-single-content wow fadeInRight">
+                        <h2>High-Level Security &amp; Data Control</h2>
+                        <p>Secure, role-based access for every stakeholder. Hosted, on-premise or dedicated portal deployment options. Scalable for large product volumes — with full data sovereignty and compliance-ready audit trails.</p>
+                        <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+                        <span><i class="icon icon-Tools"></i></span>
                     </div>
                 </div>
             </div>
@@ -382,16 +303,16 @@
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-md-6 wow fadeInLeft">
-                            <img src="{{ asset('web/images/04/img-slider.png') }}" alt="Product Serialization Screenshot" style="width:100%; height:auto; border-radius:8px; box-shadow: 0 10px 40px rgba(122,13,125,0.15);">
+                            <img src="{{ asset('web/images/04/img-slider.png') }}" alt="Enterprise Serialization" style="width:100%; height:auto; border-radius:8px; box-shadow: 0 10px 40px rgba(122,13,125,0.15);">
                         </div>
                         <div class="col-md-6 wow fadeInRight" style="padding-left:40px;">
                             <div class="main-title text-left">
-                                <h2>Product <span style="color:#7a0d7d;">Serialization</span> at Scale</h2>
+                                <h2>Serialization <span style="color:#7a0d7d;">at Enterprise Scale</span></h2>
                                 <p style="color:#555; font-size:16px; margin-top:15px;">
                                     Assign a tamper-evident digital identity to every unit you produce — from a single carton
-                                    to millions of SKUs. The serialization module integrates directly with your label supplier
-                                    and printing hardware, generates codes on demand, and activates them in real time as
-                                    products roll off the line. Scalable infrastructure handles large SKU volumes with ease.
+                                    to millions of SKUs across multiple brands and markets. The serialization module integrates
+                                    directly with your label supplier and printing hardware, generates codes on demand and
+                                    activates them in real time as products roll off the line. Unlimited capacity, zero production disruption.
                                 </p>
                             </div>
                         </div>
@@ -420,7 +341,7 @@
                             <h2><span>How </span>It Works</h2>
                         </div>
                         <h2>How It <span style="color:#7a0d7d">Works</span></h2>
-                        <h3>From Registration to Full Supply Chain Control in 4 Steps</h3>
+                        <h3>From Onboarding to Full Enterprise Supply Chain Control in 4 Steps</h3>
                     </div>
                 </div>
             </div>
@@ -436,16 +357,16 @@
                                     <div class="panel-heading" role="tab" id="headingOne">
                                         <h4 class="panel-title">
                                             <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                Step 1 — Brand & Manufacturer Onboarding
+                                                Step 1 — Consultation &amp; Custom Configuration
                                             </a>
                                         </h4>
                                     </div>
                                     <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                                         <div class="panel-body">
-                                            Complete paperless onboarding for brand owners, manufacturers and supply chain partners.
-                                            Submit your company details, upload required documents and — once approved — gain full
-                                            access to the Tracesci cloud platform. A FREE plan is activated by default, giving you
-                                            all the essential tools to set up your solution and run a pilot at no cost, forever.
+                                            Our enterprise team works with you to map your exact requirements — business processes,
+                                            regulatory environment, stakeholder roles and integration points. We design a platform
+                                            architecture tailored to your use case, whether that is a government track &amp; trace mandate,
+                                            a multi-brand manufacturer deployment or a security document system.
                                         </div>
                                     </div>
                                 </div>
@@ -453,16 +374,16 @@
                                     <div class="panel-heading" role="tab" id="headingTwo">
                                         <h4 class="panel-title">
                                             <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                                Step 2 — Configure Products, SKUs & Pricing Plan
+                                                Step 2 — Module Setup &amp; Stakeholder Onboarding
                                             </a>
                                         </h4>
                                     </div>
                                     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                                         <div class="panel-body">
-                                            Set up your product catalogue, define SKUs, packaging levels and batch parameters through
-                                            the intuitive manufacturer interface. Choose a subscription plan that fits your volume —
-                                            from the free tier for small businesses and startups all the way to enterprise plans
-                                            for high-volume manufacturers. Upgrade anytime as your production scales, with no lock-in.
+                                            Configure your manufacturer, brand, authority and printer modules with tailored access controls
+                                            for every stakeholder group. Onboard manufacturers, inspectors, auditors and government users
+                                            through a fully paperless process. Custom mobile applications are built and deployed for your
+                                            specific inspector and consumer workflows.
                                         </div>
                                     </div>
                                 </div>
@@ -470,16 +391,16 @@
                                     <div class="panel-heading" role="tab" id="headingThree">
                                         <h4 class="panel-title">
                                             <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                                Step 3 — Serialize & Activate on the Production Line
+                                                Step 3 — Serialize &amp; Activate at Scale
                                             </a>
                                         </h4>
                                     </div>
                                     <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                                         <div class="panel-body">
-                                            Generate and print unique QR or barcode labels for every product unit directly through
-                                            the Tracesci platform — integrated with your label supplier and printing hardware.
-                                            Each code is activated the moment it's applied, creating an immutable blockchain record
-                                            tied to that specific product, batch, manufacturing location and timestamp.
+                                            Generate and print unique QR or barcode labels for every product unit — integrated directly
+                                            with your label supplier and existing printing hardware. Each code is activated the moment
+                                            it is applied, creating an immutable blockchain record tied to that specific product, batch,
+                                            manufacturing location and timestamp. Handles unlimited volume across multiple production sites.
                                         </div>
                                     </div>
                                 </div>
@@ -487,32 +408,30 @@
                                     <div class="panel-heading" role="tab" id="headingFour">
                                         <h4 class="panel-title">
                                             <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                                Step 4 — Track, Verify, Report & Enforce
+                                                Step 4 — Monitor, Enforce &amp; Report in Real Time
                                             </a>
                                         </h4>
                                     </div>
                                     <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
                                         <div class="panel-body">
-                                            As products move through the supply chain — from warehouse to distributor to retailer to
-                                            consumer — every scan is logged in real time with GPS location data. Governments and
-                                            inspectors can verify authenticity in the field using the mobile app. Consumers can
-                                            report counterfeits directly. The analytics dashboard surfaces fraud patterns and
-                                            generates enforcement reports instantly — making every stakeholder a line of defence.
+                                            As products move through the supply chain, every scan is logged with GPS location data.
+                                            Government inspectors verify authenticity in the field using the custom mobile app.
+                                            The centralized dashboard surfaces geo-data analysis, consumer engagement insights and
+                                            fraud patterns — generating enforcement reports instantly for regulatory authorities
+                                            and brand protection teams. Every stakeholder is an active line of defence.
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="help-question" style="margin-bottom: 50px;">
-                            <p>Have questions about implementing Tracesci in your production environment or connecting it to your existing systems? Our team will walk you through every step.</p>
-                            <span><a href="#">Talk to an Expert <i class="fa fa-long-arrow-right"> </i></a></span>
+                            <p>Ready to implement Tracesci Enterprise in your organization? Our team will guide you through every step — from architecture design to go-live.</p>
+                            <!-- <span><a href="#">Talk to an Expert <i class="fa fa-long-arrow-right"> </i></a></span> -->
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="help-slider-text">
-                            <img src="{{ asset('dist/images/bbchain.png') }}"
-                                alt="Blockchain Traceability Diagram"
-                                class="help-img">
+                            <img src="{{ asset('dist/images/bbchain.png') }}" alt="Blockchain Traceability Diagram" style="left:-100px !important;">
                         </div>
                     </div>
                 </div>
@@ -539,16 +458,17 @@
                             <div class="title-block">
                                 <div class="riven-heading text-center">
                                     <h2 style="color: #000 !important; font-weight: 400 !important;">
-                                        <span style="font-weight: 800 !important;">Make Every Consumer</span> a Brand Protector
+                                        <span style="font-weight: 800 !important;">Built for Organizations</span> That Demand Full Control
                                     </h2>
                                 </div>
                             </div>
                             <div class="wpb_text_column wpb_content_element">
                                 <div class="wpb_wrapper">
                                     <p style="color: #000 !important; font-weight: 300 !important;">
-                                        Counterfeiting costs global businesses over $4 trillion a year. With Tracesci, every consumer who scans
-                                        a QR code becomes an active participant in brand protection — verifying authenticity, reporting fakes
-                                        and connecting with the brands they trust. Affordable for manufacturers of every size, from startups to enterprises.
+                                        Counterfeiting costs global businesses over $4 trillion a year. Tracesci's Enterprise Solution gives governments,
+                                        large brands and enterprises the customized, large-scale infrastructure they need to eradicate fakes — with full
+                                        control over data, deployment and stakeholder access. Every consumer who scans a QR code becomes an active
+                                        participant in brand protection.
                                     </p>
                                 </div>
                             </div>
@@ -566,9 +486,9 @@
                         <h2>Real-Time <span style="color:#7a0d7d;">Supply Chain Visibility</span></h2>
                         <p style="color:#555; font-size:16px; max-width:650px; margin:15px auto 0;">
                             Know exactly where every product is at every moment. From the instant a QR code is
-                            activated on the production line to the moment a consumer or inspector scans it for
-                            verification — every event is geo-tagged, timestamped and tamper-proof on the blockchain.
-                            Accessible by all authorised stakeholders in real time.
+                            activated on the production line to the moment an inspector or consumer scans it —
+                            every event is geo-tagged, timestamped and tamper-proof on the blockchain.
+                            Accessible by all authorised stakeholders in real time, from anywhere.
                         </p>
                     </div>
                 </div>
@@ -590,135 +510,53 @@
         </div>
 
 
-        <!-- Pricing Section -->
-        <section class="pricing-table-section grey-bg">
+        <!-- Ideal For Section -->
+        <section style="padding: 60px 0; background: #fff;">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 text-center">
                         <div class="main-title wow zoomIn">
                             <div class="main-shadow-heading">
-                                <h2>Simple, Scalable Pricing</h2>
+                                <h2>Ideal For</h2>
                             </div>
-                            <h2>Simple, Scalable Pricing</h2>
-                            <h3>Start Free — Pay as You Grow</h3>
+                            <h2>Who Is It <span style="color:#7a0d7d">Ideal For?</span></h2>
+                            <h3>Built for Organizations That Require Full Control, Customization and Scale</h3>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="all-link pricinig-head-btn text-center">
-                            <a href="#">Monthly</a>
-                            <a href="#">Yearly</a>
+                <div class="row" style="margin-top: 30px;">
+                    <div class="col-sm-6 col-md-3 text-center wow fadeInLeft" style="margin-bottom:30px;">
+                        <div style="border-radius:10px; padding:30px 20px;">
+                            <i class="icon icon-Shield" style="font-size:40px; color:#7a0d7d;"></i>
+                            <h3 style="margin-top:15px; color:#7a0d7d;">Governments</h3>
+                            <p style="color:#555;">National and regional authorities running large-scale product traceability, tax stamp or regulatory compliance mandates.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3 text-center wow fadeInUp" style="margin-bottom:30px;">
+                        <div style="border-radius:10px; padding:30px 20px;">
+                            <i class="icon icon-Antenna2" style="font-size:40px; color:#7a0d7d;"></i>
+                            <h3 style="margin-top:15px; color:#7a0d7d;">Large Brands &amp; Enterprises</h3>
+                            <p style="color:#555;">Multi-brand manufacturers and brand owners needing full supply chain visibility across complex, multi-market operations.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3 text-center wow fadeInUp" style="margin-bottom:30px;">
+                        <div style="border-radius:10px; padding:30px 20px;">
+                            <i class="icon icon-Tools" style="font-size:40px; color:#7a0d7d;"></i>
+                            <h3 style="margin-top:15px; color:#7a0d7d;">Security Document Systems</h3>
+                            <p style="color:#555;">Organizations issuing secure, serialized documents — from certificates and licenses to regulated product labels requiring anti-tampering.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3 text-center wow fadeInRight" style="margin-bottom:30px;">
+                        <div style="border-radius:10px; padding:30px 20px;">
+                            <i class="icon icon-MessageLeft" style="font-size:40px; color:#7a0d7d;"></i>
+                            <h3 style="margin-top:15px; color:#7a0d7d;">Education Sector</h3>
+                            <p style="color:#555;">Institutions authenticating academic credentials, certificates and secure documentation to prevent fraud and forgery.</p>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-6 col-md-4">
-                        <div class="pricing-table-content text-center wow fadeInLeft">
-                            <div class="pricing-table-head">
-                                <div class="pricing-head-top">
-                                    <span>Starter Plan</span>
-                                </div>
-                                <div class="pricing-head-content">
-                                    <span>$</span>
-                                    <span>50</span>
-                                    <span>/ Monthly</span>
-                                </div>
-                            </div>
-                            <div class="pricing-table-inner-content">
-                                <div class="pricing-table-title">
-                                    <p>Perfect for small businesses, startups and printing vendors exploring product authentication for the first time.</p>
-                                </div>
-                                <div class="pricing-table-list">
-                                    <ul>
-                                        <li><span>1</span> Brand</li>
-                                        <li><span>Up to 5</span> Product SKUs</li>
-                                        <li>QR Code Serialization</li>
-                                        <li>Consumer Verification App</li>
-                                        <li>Basic Scan Analytics</li>
-                                        <li><span>10,000</span> Codes / Month</li>
-                                    </ul>
-                                    <div class="all-link pricinig-bottom-btn text-center">
-                                        <a href="#">Get Started Now <i class="fa fa-long-arrow-right"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-4">
-                        <div class="pricing-table-content text-center wow fadeInLeft">
-                            <div class="pricing-table-head">
-                                <div class="pricing-head-top">
-                                    <span>Growth Plan</span>
-                                </div>
-                                <div class="pricing-head-content">
-                                    <span>$</span>
-                                    <span>70</span>
-                                    <span>/ Monthly</span>
-                                </div>
-                            </div>
-                            <div class="pricing-table-inner-content">
-                                <div class="pricing-table-title">
-                                    <p>For growing manufacturers needing multi-brand traceability, supply chain tracking and fraud detection.</p>
-                                </div>
-                                <div class="pricing-table-list">
-                                    <ul>
-                                        <li><span>3</span> Brands</li>
-                                        <li><span>Up to 25</span> Product SKUs</li>
-                                        <li>QR + GS1 Barcode Serialization</li>
-                                        <li>End-to-End Supply Chain Tracking</li>
-                                        <li>Suspicious Activity Alerts</li>
-                                        <li><span>50,000</span> Codes / Month</li>
-                                    </ul>
-                                    <div class="all-link pricinig-bottom-btn text-center">
-                                        <a href="#">Get Started Now <i class="fa fa-long-arrow-right"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-4">
-                        <div class="pricing-table-content text-center wow fadeInLeft">
-                            <div class="pricing-table-head">
-                                <div class="pricing-head-top">
-                                    <span>Enterprise Plan</span>
-                                </div>
-                                <div class="pricing-head-content">
-                                    <span>$</span>
-                                    <span>90</span>
-                                    <span>/ Monthly</span>
-                                </div>
-                            </div>
-                            <div class="pricing-table-inner-content">
-                                <div class="pricing-table-title">
-                                    <p>Full-scale traceability for large manufacturers, government programs and multi-market supply chain operations.</p>
-                                </div>
-                                <div class="pricing-table-list">
-                                    <ul>
-                                        <li><span>Unlimited</span> Brands</li>
-                                        <li><span>Unlimited</span> Product SKUs</li>
-                                        <li>Full Serialization Suite</li>
-                                        <li>Blockchain Ledger + GPS Tracking</li>
-                                        <li>Inspector & Government Access</li>
-                                        <li><span>Unlimited</span> Codes / Month</li>
-                                    </ul>
-                                    <div class="all-link pricinig-bottom-btn text-center">
-                                        <a href="#">Get Started Now <i class="fa fa-long-arrow-right"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="pricing-table-self">
-                <img src="{{asset('dist/images/pricing-table-self.png')}}">
             </div>
         </section>
+
 
         <!-- Analytics & Reporting Section -->
         <div class="software-screen-section" style="padding: 60px 0;">
@@ -726,18 +564,36 @@
                 <div class="row align-items-center">
                     <div class="col-md-6 wow fadeInLeft" style="padding-right:40px;">
                         <div class="main-title text-left">
-                            <h2>Analytics & <span style="color:#7a0d7d;">Anti-Counterfeit Intelligence</span></h2>
+                            <h2>Geo-Data Analysis &amp; <span style="color:#7a0d7d;">Anti-Counterfeit Intelligence</span></h2>
                             <p style="color:#555; font-size:16px; margin-top:15px;">
                                 Data is your most powerful weapon against counterfeiting. Tracesci's analytics engine
                                 surfaces geo-location heat maps, consumer scanning behaviour and behavior-based fraud
                                 signals — revealing exactly where fakes are entering your supply chain and which markets
-                                are most at risk, so brands, inspectors and governments can act fast.
+                                are most at risk. Enforcement reports generated instantly for government authorities
+                                and brand protection teams.
                             </p>
-
                         </div>
                     </div>
                     <div class="col-md-6 wow fadeInRight">
                         <img src="{{ asset('web/images/04/img-slider.png') }}" alt="Tracesci Analytics Dashboard" style="width:100%; height:auto; border-radius:8px; box-shadow: 0 10px 40px rgba(122,13,125,0.15);">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div style="background: #333; padding: 60px 0; text-align:center;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2 style="color:#fff; font-weight:800; font-size:34px; margin-bottom:15px;">Ready to Deploy Enterprise Track &amp; Trace?</h2>
+                        <p style="color:rgba(255,255,255,0.85); font-size:17px; max-width:600px; margin:0 auto 30px;">
+                            Talk to our enterprise team. We will assess your requirements, design the right architecture
+                            and walk you through every step — from pilot to full-scale deployment.
+                        </p>
+                        <a href="{{route('demo-schedule-create')}}" class="btn btn-primary" style="background:#fff; color:#7a0d7d; font-weight:700; font-size:16px; padding:14px 36px;">
+                            Request a Demo <i class="fa fa-long-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
             </div>

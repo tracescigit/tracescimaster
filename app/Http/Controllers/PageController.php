@@ -15,14 +15,14 @@ class PageController extends Controller
 
     public function index()
     {
-        $blogs = Blog::where('is_allowed',1)->get();
+        $blogs = Blog::where('is_allowed', 1)->get();
         $country = 'India';
 
         // if ($position = Location::get()) {
         //     $country = $position->countryName;
         // }
 
-        return view('web.index')->with('country', $country)->with('blogs',$blogs);
+        return view('web.index')->with('country', $country)->with('blogs', $blogs);
     }
     public function about()
     {
@@ -66,10 +66,19 @@ class PageController extends Controller
     {
         return view('web.products.razor6');
     }
+    public function elite4()
+    {
+        return view('web.products.elite4');
+    }
+    public function hyperloop()
+    {
+        return view('web.products.hyperloop');
+    }
 
     public function blog()
     {
-        return view('web.blog.blogpage');
+        $blogs = Blog::where('is_allowed', 1)->get();
+        return view('web.blog.blogpage')->with('blogs',$blogs);
     }
 
     public function addSubscriber(SubscribeRequest $request)

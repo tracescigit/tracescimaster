@@ -43,9 +43,12 @@ Route::post('/demo-schedule-details/store', [App\Http\Controllers\DemoController
 
 // products organisation 
 Route::get('/product/razor6',[PageController::class,'razor6'])->name('product-razor6');
+Route::get('/product/elite4',[PageController::class,'elite4'])->name('product-elite4');
+Route::get('/product/hyperloop',[PageController::class,'hyperloop'])->name('product-hyperloop');
 
 // Solutions
 Route::get('/solutions/cloud',[SolutionController::class,'cloud'])->name('cloud-solution');
+Route::get('/solutions/Enterprise',[SolutionController::class,'enterprise'])->name('enterprise-solution');
 // blog organisation
 Route::get('/blog',[PageController::class,'blog'])->name('blog');
 

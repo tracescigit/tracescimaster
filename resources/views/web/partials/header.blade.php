@@ -86,8 +86,8 @@
             <a href="#howitworks">Solution</a>
             <ul class="dropdown">
               <li><a href="{{route('cloud-solution')}}">Cloud</a></li>
-              <li><a href="#features">Enterprise</a></li>
-              <li><a href="#application">Custom</a></li>
+              <li><a href="{{route('enterprise-solution')}}">Enterprise</a></li>
+              <li><a href="#application">Customise</a></li>
             </ul>
           </li>
 
@@ -96,12 +96,12 @@
             <a href="{{ url('/product/razor6') }}">Products</a>
             <ul class="dropdown">
               <li><a href="{{ route('product-razor6') }}">Razor 6</a></li>
-              <li><a href="#features">Elite 4</a></li>
-              <li><a href="#application">Hyperloop</a></li>
+              <li><a href="{{route('product-elite4')}}">Elite 4</a></li>
+              <li><a href="{{route('product-hyperloop')}}">Hyperloop</a></li>
             </ul>
           </li>
           <li>
-            <a href="#pricing_table">Blogs</a>
+            <a href="{{route('blog')}}">Blogs</a>
           </li>
 
           <li>
