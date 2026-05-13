@@ -1303,6 +1303,129 @@
          color: rgba(255, 255, 255, 0.3);
      }
 
+     .product_demo {
+         background: linear-gradient(135deg, #151515 0%, #2a082b 45%, #7a0d7d 100%);
+         padding: 120px 0;
+         text-align: center;
+         position: relative;
+         overflow: hidden;
+     }
+
+     .product_demo::before {
+         content: "";
+         position: absolute;
+         width: 700px;
+         height: 700px;
+         border-radius: 50%;
+         background: radial-gradient(rgba(255, 255, 255, 0.08), transparent 70%);
+         top: -320px;
+         left: -180px;
+         animation: floatGlow 10s ease-in-out infinite;
+     }
+
+     .product_demo::after {
+         content: "";
+         position: absolute;
+         width: 500px;
+         height: 500px;
+         border-radius: 50%;
+         background: radial-gradient(rgba(255, 255, 255, 0.05), transparent 70%);
+         bottom: -220px;
+         right: -140px;
+         animation: floatGlow 12s ease-in-out infinite;
+     }
+
+     .product_demo .container {
+         position: relative;
+         z-index: 2;
+     }
+
+     .demo-badge {
+         display: inline-block;
+         background: rgba(255, 255, 255, 0.12);
+         border: 1px solid rgba(255, 255, 255, 0.18);
+         color: #ffffff;
+         padding: 10px 22px;
+         font-size: 13px;
+         font-weight: 600;
+         letter-spacing: 0.08em;
+         text-transform: uppercase;
+         margin-bottom: 30px;
+         backdrop-filter: blur(8px);
+         animation: fadeUp 0.8s ease;
+     }
+
+     .product_demo h2 {
+         color: #fff;
+         font-weight: 800;
+         font-size: 52px;
+         line-height: 1.15;
+         margin-bottom: 24px;
+         position: relative;
+         animation: fadeUp 1s ease;
+         letter-spacing: -1px;
+     }
+
+     .product_demo p {
+         color: rgba(255, 255, 255, 0.82);
+         font-size: 18px;
+         line-height: 1.9;
+         max-width: 760px;
+         margin: 0 auto 45px;
+         animation: fadeUp 1.2s ease;
+     }
+
+     .demo-actions {
+         animation: fadeUp 1.4s ease;
+     }
+
+     .product_demo .enterprise-btn {
+         background: #fff;
+         color: #7a0d7d !important;
+         font-weight: 700;
+         font-size: 16px;
+         padding: 18px 42px;
+         display: inline-flex;
+         align-items: center;
+         gap: 14px;
+         text-decoration: none;
+         transition: all 0.35s ease;
+         position: relative;
+         overflow: hidden;
+         z-index: 1;
+         box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+     }
+
+     .product_demo .enterprise-btn::before {
+         content: "";
+         position: absolute;
+         width: 0%;
+         height: 100%;
+         left: 0;
+         top: 0;
+         background: #7a0d7d;
+         transition: width 0.4s ease;
+         z-index: -1;
+     }
+
+     .product_demo .enterprise-btn:hover::before {
+         width: 100%;
+     }
+
+     .product_demo .enterprise-btn:hover {
+         color: #fff !important;
+         transform: translateY(-6px) scale(1.03);
+         box-shadow: 0 22px 45px rgba(0, 0, 0, 0.35);
+     }
+
+     .product_demo .enterprise-btn i {
+         transition: 0.35s ease;
+     }
+
+     .product_demo .enterprise-btn:hover i {
+         transform: translateX(7px);
+     }
+
      /* ── REVEAL ── */
      .reveal {
          opacity: 0;
@@ -1388,11 +1511,12 @@
              <li data-index="rs-1" data-transition="parallaxtoright" data-delay="6500">
 
                  <!-- MAIN IMAGE -->
-                 <img src="{{asset('dist/images/slide1.png')}}"
+                 <img src="{{asset('dist/images/slide4.png')}}"
                      class="rev-slidebg"
                      data-bgposition="center center"
-                     data-bgfit="cover"
-                     data-bgrepeat="no-repeat">
+                     data-bgfit="contain"
+                     data-bgrepeat="no-repeat"
+                     style="width:100%; max-width:900px; height:auto; margin:auto;">
 
                  <!-- LAYER 1 -->
                  <div class="tp-caption tp-resizeme"
@@ -1403,7 +1527,7 @@
                      data-transform_in="y:[100%];opacity:0;s:800;"
                      data-transform_out="opacity:0;s:300" ;>
                      <span class="sl-italic" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;">
-                         Let us help you to authenticate and track your product
+                         Industrial Inkjet for 24×7 Production Environments
                      </span>
                  </div>
 
@@ -1414,7 +1538,7 @@
                      data-transform_in="y:[100%];opacity:0;s:800;"
                      data-transform_out="opacity:0;s:300" ;>
                      <div class="text-center heading-rp-small" style="transition: none; line-height: 58px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 1px; font-weight: 800; font-size: 50px;">
-                         SUPPLY CHAIN TRACESCI PLATEFORM
+                         RAZOR6 HIGH SPEED INKJET SYSTEM
                      </div>
                  </div>
 
@@ -1424,19 +1548,8 @@
                      data-start="2400" data-transform_in="y:[100%];opacity:0;s:800;"
                      data-transform_out="opacity:0;s:300" ;>
                      <div class="sl-italic sl-italic-2 text-center" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;">
-                         Our strategists will help you set an objective and choose your tools,<br>
-                         developing a plan that is custom-built for your business.
-                     </div>
-                 </div>
-
-                 <!-- LAYER 4 (Buttons) -->
-                 <div class="tp-caption tp-resizeme"
-                     data-x="center" data-y="top" data-voffset="430"
-                     data-start="2800" data-transform_in="y:[100%];opacity:0;s:800;"
-                     data-transform_out="opacity:0;s:300" ;>
-                     <div class="rev-slider-btn text-center">
-                         <a a href="{{ url(Auth::check()?myDashboard():'/login') }}">Login</a>
-                         <a a href="{{ url(Auth::check()?myDashboard():'/register') }}">Register</a>
+                         Precision-engineered Piezo DOD technology delivering<br>
+                         exceptional throughput and print quality at production speed.
                      </div>
                  </div>
 
@@ -1460,7 +1573,7 @@
                      data-transform_in="y:[100%];opacity:0;s:800;"
                      data-transform_out="opacity:0;s:300" ;>
                      <span class="sl-italic" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;">
-                         Informed decisions. Exceptional results
+                         Variable Data Printing at Full Production Speed
                      </span>
                  </div>
 
@@ -1470,7 +1583,7 @@
                      data-start="1800" data-transform_in="y:[100%];opacity:0;s:800;"
                      data-transform_out="opacity:0;s:300" ;>
                      <div class="text-center heading-rp-small" style="transition: none; line-height: 58px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 1px; font-weight: 800; font-size: 50px;">
-                         We Measure The Social Web
+                         TRACESCI RAPIDPRO SOFTWARE
                      </div>
                  </div>
 
@@ -1480,19 +1593,8 @@
                      data-start="2400" data-transform_in="y:[100%];opacity:0;s:800;"
                      data-transform_out="opacity:0;s:300" ;>
                      <div class="sl-italic sl-italic-2 text-center" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;">
-                         Our strategists will help you set an objective and choose your tools,<br>
-                         developing a plan that is custom-built for your business.
-                     </div>
-                 </div>
-
-                 <!-- LAYER 4 (Buttons) -->
-                 <div class="tp-caption tp-resizeme"
-                     data-x="center" data-y="top" data-voffset="430"
-                     data-start="2800" data-transform_in="y:[100%];opacity:0;s:800;"
-                     data-transform_out="opacity:0;s:300" ;>
-                     <div class="rev-slider-btn text-center">
-                         <a href="#">Read More</a>
-                         <a href="#">Get Started</a>
+                         Serialisation, QR codes, barcodes and complex variable data<br>
+                         printing without compromising throughput or performance.
                      </div>
                  </div>
 
@@ -1514,7 +1616,7 @@
                      data-start="1200" data-transform_in="y:[100%];opacity:0;s:800;"
                      data-transform_out="opacity:0;s:300" ;>
                      <span class="sl-italic" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;">
-                         Informed decisions. Exceptional results
+                         UV Curable & Aqueous Ink Compatibility
                      </span>
                  </div>
 
@@ -1524,7 +1626,7 @@
                      data-start="1800" data-transform_in="y:[100%];opacity:0;s:800;"
                      data-transform_out="opacity:0;s:300" ;>
                      <div class="text-center heading-rp-small" style="transition: none; line-height: 58px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 1px; font-weight: 800; font-size: 50px;">
-                         We Measure The Social Web
+                         BUILT FOR SPEED & PRECISION
                      </div>
                  </div>
 
@@ -1534,19 +1636,8 @@
                      data-start="2400" data-transform_in="y:[100%];opacity:0;s:800;"
                      data-transform_out="opacity:0;s:300" ;>
                      <div class="sl-italic sl-italic-2 text-center" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;">
-                         Our strategists will help you set an objective and choose your tools,<br>
-                         developing a plan that is custom-built for your business.
-                     </div>
-                 </div>
-
-                 <!-- LAYER 4 (Buttons) -->
-                 <div class="tp-caption tp-resizeme"
-                     data-x="center" data-y="top" data-voffset="430"
-                     data-start="2800" data-transform_in="y:[100%];opacity:0;s:800;"
-                     data-transform_out="opacity:0;s:300" ;>
-                     <div class="rev-slider-btn text-center">
-                         <a href="#">Read More</a>
-                         <a href="#">Get Started</a>
+                         Engineered for continuous industrial production with<br>
+                         inline verification, fast ROI and complete ancillary integration.
                      </div>
                  </div>
 
@@ -1775,7 +1866,7 @@
 
                              </li>
                          </ul>
-                         
+
                      </div>
                  </div>
              </div>
@@ -1981,6 +2072,37 @@
          </div>
  </div>
  </section>
+ <div class="product_demo">
+     <div class="container">
+         <div class="row">
+             <div class="col-md-12">
+
+                 <div class="demo-badge">
+                     Razor6 Industrial Inkjet System
+                 </div>
+
+                 <h2>
+                     High-Speed Variable Data Printing for 24×7 Production
+                 </h2>
+
+                 <p>
+                     Razor6 combines Piezo DOD inkjet technology, Tracesci RapidPro VDP software,
+                     online code verification, and ultra-fast PDF printing into one industrial-grade
+                     production platform — delivering reliable high-resolution output at speeds up to
+                     150 m/min across packaging, labels, pharma, and security substrates.
+                 </p>
+
+                 <div class="demo-actions">
+                     <a href="{{route('demo-schedule-create')}}" class="enterprise-btn">
+                         Schedule Razor6 Demo
+                         <i class="fa fa-long-arrow-right"></i>
+                     </a>
+                 </div>
+
+             </div>
+         </div>
+     </div>
+ </div>
 
  @section('script')
 
