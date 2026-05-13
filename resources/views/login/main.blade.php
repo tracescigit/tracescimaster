@@ -32,6 +32,44 @@
         margin-left: -2px;
     }
 </style>
+<style>
+    .auth-tabs {
+        display: flex;
+        width: 300px;
+        border: 1px solid #333;
+    }
+
+    .auth-tabs .tab {
+        flex: 1;
+        text-align: center;
+        padding: 12px 0;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+        cursor: pointer;
+        border: none;
+        outline: none;
+    }
+
+    /* Active (LOGIN) */
+    .auth-tabs .active {
+        background: #1e1e1e;
+        color: #fff;
+    }
+
+    /* Inactive (REGISTER) */
+    .auth-tabs .tab:not(.active) {
+        background: transparent;
+        color: #333;
+        border-left: 1px solid #333;
+    }
+
+    /* Hover effect */
+    .auth-tabs .tab:hover {
+        background: #333;
+        color: #fff;
+    }
+</style>
 <div class="container sm:px-10">
     <div class="block xl:grid grid-cols-2 gap-4">
         <!-- BEGIN: Login Info -->
@@ -66,9 +104,9 @@
                     </div>
                     <a href="{{ url('forgot-password') }}">Forgot Password?</a>
                 </div>
-                <div class="intro-x mt-5 xl:mt-8 text-center xl:text-left">
-                    <a id="btn-login" class="all-link py-3 px-4 w-full xl:w-32 xl:mr-3 align-top">Login</a>
-                    <a href="{{ url('/register') }}" class="btn btn-outline-secondary py-3 px-4 w-full xl:w-32 mt-3 xl:mt-0 align-top">Sign up</a>
+                <div class="auth-tabs mt-4" style="margin-top:50px;">
+                    <button id="btn-login" class="tab active">LOGIN</button>
+                    <a href="{{ url('/register') }}" class="tab">REGISTER</a>
                 </div>
             </div>
         </div>
@@ -98,7 +136,7 @@
             cash('#btn-login').html('<i data-loading-icon="oval" data-color="white" class="w-5 h-5 mx-auto"></i>').svgLoader()
             await helper.delay(500)
 
-            axios.post('{{ url(' / login ') }}', {
+            axios.post("{{ url('/login') }}", {
                 email_or_phone: email_or_phone,
                 password: password,
                 remember_me: rememberMe

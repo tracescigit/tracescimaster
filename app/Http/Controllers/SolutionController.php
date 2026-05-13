@@ -8,7 +8,8 @@ class SolutionController extends Controller
 {
     public function Cloud()
     {
-        return view('web.solutions.cloud');
+        $country = 'India';
+        return view('web.solutions.cloud')->with('country',$country);
     }
     public function enterprise()
     {
