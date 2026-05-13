@@ -52,8 +52,8 @@
             <ul>
               <li><a href="{{route('cloud-solution')}}">Cloud Solution</a></li>
               <li><a href="{{route('enterprise-solution')}}">Enterprise Solution</a></li>
-              <li><a href="#">Custom Solution</a></li>
-              <li><a href="#">Dashboard</a></li>
+              <li><a href="{{route('home')}}">Custom Solution</a></li>
+              <li><a href="{{route('home')}}">Dashboard</a></li>
             </ul>
           </div>
         </div>
