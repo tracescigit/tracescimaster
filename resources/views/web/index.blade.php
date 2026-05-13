@@ -459,7 +459,7 @@
 
 
 
-  <div style="background-color: #f5f5f5; margin-top: 50px; ">
+  <div id="howitworks" style="background-color: #f5f5f5; margin-top: 50px; ">
     <div class="container">
       <div class="row">
         <div class="col-md-12 text-center">

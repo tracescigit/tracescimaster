@@ -19,25 +19,19 @@
       <div class="right-menu-social-box">
         <ul class="cms-social">
           <li class="facebook">
-            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="https://www.facebook.com/tracesciSolutions/"><i class="fa fa-facebook"></i></a>
           </li>
-          <li class="twitter">
-            <a href="#"><i class="fa fa-twitter"></i></a>
-          </li>
-          <li class="google">
-            <a href="#"><i class="fa fa-pinterest"></i></a>
+          <li class="youtube">
+            <a href="https://www.youtube.com/@TracesciGlobal"><i class="fa fa-youtube"></i></a>
           </li>
           <li class="linkedin">
-            <a href="#"><i class="fa fa-linkedin"></i></a>
-          </li>
-          <li class="linkedin">
-            <a href="#"><i class="fa fa-rss"></i></a>
+            <a href="https://in.linkedin.com/company/tracesci-solutions-pvt-ltd"><i class="fa fa-rss"></i></a>
           </li>
         </ul>
         <div class="footer-bottom-right right-menu-copyright">
-          <p>© 2015 - 2016 Metrics. All Rights Reserved</p>
+          <p>© 2026 Metrics. All Rights Reserved</p>
           <p>
-            With Love by <span><a href="#">tracesci</a></span>
+            Powered by <span><a href="{{route('home')}}">tracesci.</a></span>
           </p>
         </div>
       </div>
