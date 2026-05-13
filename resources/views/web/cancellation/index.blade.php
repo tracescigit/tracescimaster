@@ -21,7 +21,7 @@
     </section>
 
 <div id="main" class="wrapper"> 
-	<div class="container" style="padding-top: 60px; padding-bottom: 60px; text-align: justify;">
+	<div class="container" style="padding-top: 60px; padding-bottom: 60px; text-align: justify; font-family: 'Droid Serif', serif;">
 		
 		<ul class="text-gray-600">
 

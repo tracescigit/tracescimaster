@@ -34,7 +34,7 @@ font-weight: 900;
 margin-top: 20px;">Terms of Use
 </div> -->
 <div id="main" class="wrapper" > 
-	<div class="container" style="padding-top: 60px; padding-bottom: 60px; text-align: justify; font-family: 'PT Sans', sans-serif;">
+	<div class="container" style="padding-top: 60px; padding-bottom: 60px; text-align: justify; font-family: 'Droid Serif', serif,">
 		<p class="text-gray-900 mb-4 p-6">Please read the following Terms of Use carefully before using our website. With the beginning of the use of our website, the validity of these Terms of Use in the respective version is accepted:
 		</p>
 		<ul class="text-gray-600">

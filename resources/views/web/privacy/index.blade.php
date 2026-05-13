@@ -20,7 +20,7 @@
     </section>
 
 <div id="main" class="wrapper"> 
-	<div class="container" style="padding-top: 60px; padding-bottom: 60px; text-align: justify; font-family: 'PT Sans', sans-serif;">
+	<div class="container" style="padding-top: 60px; padding-bottom: 60px; text-align: justify; font-family: 'Droid Serif', serif;">
 		<div class="mb-2 mt-4">
 			<p class="text-gray-600">We respects any concerns regarding the protection of the security and privacy of personal data.
 				<br>
