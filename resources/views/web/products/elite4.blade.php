@@ -210,7 +210,7 @@
         gap: 16px;
         flex-wrap: wrap;
     }
-/* 
+
     .btn {
         display: inline-flex;
         align-items: center;
@@ -222,7 +222,7 @@
         text-decoration: none;
         transition: all 0.2s;
         letter-spacing: 0.02em;
-    } */
+    }
 
     .btn-primary {
         background: var(--teal);
@@ -1150,7 +1150,7 @@
         margin-bottom: 32px;
     }
 
-    /* .form-group {
+    .form-group {
         margin-bottom: 18px;
     }
 
@@ -1186,7 +1186,7 @@
     .form-group textarea {
         min-height: 100px;
         resize: vertical;
-    } */
+    }
 
     .form-submit {
         background: var(--teal);
@@ -1305,7 +1305,7 @@
     }
 
     .product_demo {
-        background: linear-gradient(135deg, #151515 0%, #2a082b 45%, #7a0d7d 100%);
+        background: #ffffff;
         padding: 120px 0;
         text-align: center;
         position: relative;
@@ -1343,9 +1343,9 @@
 
     .demo-badge {
         display: inline-block;
-        background: rgba(255, 255, 255, 0.12);
-        border: 1px solid rgba(255, 255, 255, 0.18);
-        color: #ffffff;
+        background: #fff;
+        border: 1px solid #000000;
+        color: #000000;
         padding: 10px 22px;
         font-size: 13px;
         font-weight: 600;
@@ -1357,7 +1357,7 @@
     }
 
     .product_demo h2 {
-        color: #fff;
+        color: #000000;
         font-weight: 800;
         font-size: 52px;
         line-height: 1.15;
@@ -1368,7 +1368,7 @@
     }
 
     .product_demo p {
-        color: rgba(255, 255, 255, 0.82);
+        color: #000000;
         font-size: 18px;
         line-height: 1.9;
         max-width: 760px;
@@ -1426,6 +1426,7 @@
     .product_demo .enterprise-btn:hover i {
         transform: translateX(7px);
     }
+
 
     /* ── MOBILE ── */
     @media (max-width: 960px) {
@@ -1505,7 +1506,7 @@
                     data-bgposition="center center"
                     data-bgfit="auto"
                     data-bgrepeat="no-repeat">
-<!-- <img src="{{asset('dist/images/elite4_machine.png')}}"
+                <!-- <img src="{{asset('dist/images/elite4_machine.png')}}"
     class="rev-slidebg"
     data-bgposition="center center"
     data-bgfit="contain"
@@ -2173,9 +2174,9 @@
         <div class="row">
             <div class="col-md-12">
 
-                <div class="demo-badge">
+                <!-- <div class="demo-badge">
                     Elite4 High-Speed Inkjet System
-                </div>
+                </div> -->
 
                 <h2>
                     Multicolor Variable Data Printing &amp; Product Authentication
