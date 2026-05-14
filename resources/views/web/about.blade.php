@@ -1,5 +1,5 @@
 @extends('web.layouts.app')
-@section('content')
+@section('subhead')
 <style>
     /* Ensure columns behave properly */
     .progressbar {
@@ -88,6 +88,8 @@
         }
     }
 </style>
+@endsection
+@section('content')
 <section class="page-title-area aboout-1-head-area">
     <div class="container">
         <div class="row">

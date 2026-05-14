@@ -1,5 +1,5 @@
 @extends('web.layouts.app')
-@section('content')
+@section('subhead')
 
 <style>
     *,
@@ -210,7 +210,8 @@
         gap: 16px;
         flex-wrap: wrap;
     }
-/* 
+
+    /* 
     .btn {
         display: inline-flex;
         align-items: center;
@@ -1368,6 +1369,8 @@
         }
     }
 </style>
+@endsection
+@section('content')
 
 <div class="rev_slider_wrapper">
     <div id="slider1" class="rev_slider" data-version="5.0">
@@ -2040,39 +2043,40 @@
     </div>
     </div>
 </section>
-
+@endsection
 @section('script')
 
 <script>
-{{-- Scroll reveal --}}
-const reveals = document.querySelectorAll('.reveal');
-const io = new IntersectionObserver(entries => {
-entries.forEach(e => {
-if (e.isIntersecting) {
-e.target.classList.add('visible');
-io.unobserve(e.target);
-}
-});
-}, { threshold: 0.1 });
-reveals.forEach(el => io.observe(el));
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.classList.add('visible');
+                io.unobserve(e.target);
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+    reveals.forEach(el => io.observe(el));
 
-{{-- Word rotator --}}
-const words = ['High Speed Multicolor Inkjet', 'CMYK UV & Aqueous Inks', 'Variable Data Printing', 'Track & Trace'];
-let idx = 0;
-const el = document.getElementById('rotateWord');
-if (el) {
-el.style.transition = 'opacity 0.3s, transform 0.3s';
-setInterval(() => {
-el.style.opacity = '0';
-el.style.transform = 'translateY(12px)';
-setTimeout(() => {
-idx = (idx + 1) % words.length;
-el.textContent = words[idx];
-el.style.opacity = '1';
-el.style.transform = 'translateY(0)';
-}, 300);
-}, 2400);
-}
+
+    const words = ['High Speed Multicolor Inkjet', 'CMYK UV & Aqueous Inks', 'Variable Data Printing', 'Track & Trace'];
+    let idx = 0;
+    const el = document.getElementById('rotateWord');
+    if (el) {
+        el.style.transition = 'opacity 0.3s, transform 0.3s';
+        setInterval(() => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(12px)';
+            setTimeout(() => {
+                idx = (idx + 1) % words.length;
+                el.textContent = words[idx];
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            }, 300);
+        }, 2400);
+    }
 </script>
 
 <script type="text/javascript">
@@ -2144,5 +2148,4 @@ el.style.transform = 'translateY(0)';
     });
 </script>
 
-@endsection
 @endsection

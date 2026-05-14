@@ -1,5 +1,5 @@
 @extends('web.layouts.app')
-@section('content')
+@section('subhead')
 <style>
     /* Section spacing */
     .help-content-area {
@@ -38,7 +38,7 @@
         right: -220px !important;
     }
 
-   
+
 
 
     /* ================= RESPONSIVE ================= */
@@ -83,6 +83,9 @@
         }
     }
 </style>
+@endsection
+@section('content')
+
 <div class="rev_slider_wrapper">
     <div id="slider1" class="rev_slider" data-version="5.0">
         <ul>
@@ -508,7 +511,7 @@
                         </div>
                         <div class="help-question" style="margin-bottom: 50px;">
                             <p>Have questions about implementing Tracesci in your production environment or connecting it to your existing systems? Our team will walk you through every step.</p>
-                           
+
                         </div>
                     </div>
                     <div class="col-md-6">
