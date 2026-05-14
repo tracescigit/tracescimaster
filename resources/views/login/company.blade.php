@@ -107,7 +107,7 @@
 
                 showNotification('success','Success !',res.data.message)
                 setTimeout(()=>{
-                    window.location.href = '{{ url('/register/otp') }}'
+                    window.location.href = '{{url("/register/otp") }}'
                 },2000)
 
             }).catch(err => {

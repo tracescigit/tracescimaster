@@ -101,7 +101,7 @@
             }).then(res => {
                 showNotification('success', 'Success !', res.data.message)
                 setTimeout(() => {
-                    window.location.href = '{{ url(' / login ') }}'
+                    window.location.href = '{{ url("/login") }}'
                 }, 2000)
             }).catch(err => {
                 showNotification('error', 'Error !', err.response.data.message)
