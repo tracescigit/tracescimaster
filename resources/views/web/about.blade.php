@@ -87,6 +87,58 @@
             height: auto;
         }
     }
+
+    #client-bg-2-slider .owl-stage {
+        display: flex;
+        align-items: stretch;
+    }
+
+    #client-bg-2-slider .owl-item {
+        display: flex;
+        height: auto;
+    }
+
+    .client-2-slider {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+        padding: 20px;
+    }
+
+    .client-2-slider-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 420px;
+        /* Equal height for all cards */
+        padding: 30px 25px;
+    }
+
+    .client-2-slider-content h3 {
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        line-height: 1.8;
+    }
+
+    .client-2-slider img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-top: 20px;
+    }
+
+    .client-2-slider h2,
+    .client-2-slider>h3 {
+        text-align: center;
+    }
 </style>
 <section class="page-title-area aboout-1-head-area">
     <div class="container">
@@ -178,28 +230,44 @@
       ============================== -->
 <section class="our-philosophy-area wow fadeInLeft">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-6 col-md-4 no-padding">
-                <div class="our-philosophy-inner our-philosophy-inner-bg-1">
+        <div class="row d-flex align-items-stretch">
+
+            <div class="col-sm-6 col-md-4 no-padding d-flex">
+                <div class="our-philosophy-inner our-philosophy-inner-bg-1 w-100">
                     <h2>Our Mission</h2>
-                    <p>To combat illicit trade, counterfeiting, revenue leakage, and the circulation of unsafe products. We empower governments, brands, and consumers with intelligent traceability solutions that protect every link in the supply chain — from manufacturer to end user.</p>
+                    <p>
+                        To combat illicit trade, counterfeiting, revenue leakage, and the circulation of unsafe products.
+                        We empower governments, brands, and consumers with intelligent traceability solutions that protect
+                        every link in the supply chain — from manufacturer to end user.
+                    </p>
                     <span><i class="icon icon-Flag"></i></span>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-4 no-padding">
-                <div class="our-philosophy-inner our-philosophy-inner-bg-2">
+
+            <div class="col-sm-6 col-md-4 no-padding d-flex">
+                <div class="our-philosophy-inner our-philosophy-inner-bg-2 w-100">
                     <h2>Our Vision</h2>
-                    <p>To build a world where every product is authentic, every supply chain is transparent, and every consumer is protected. We envision a global ecosystem where traceability is accessible and affordable for businesses of all sizes — from startups to large enterprises and governments.</p>
+                    <p>
+                        To build a world where every product is authentic, every supply chain is transparent, and every
+                        consumer is protected. We envision a global ecosystem where traceability is accessible and
+                        affordable for businesses of all sizes — from startups to large enterprises and governments.
+                    </p>
                     <span><i class="icon icon-Bulb"></i></span>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-4 no-padding">
-                <div class="our-philosophy-inner our-philosophy-inner-bg-3">
+
+            <div class="col-sm-6 col-md-4 no-padding d-flex">
+                <div class="our-philosophy-inner our-philosophy-inner-bg-3 w-100">
                     <h2>Our Philosophy</h2>
-                    <p>We believe in making every consumer a brand protector. By combining blockchain technology, serialization, and mobile intelligence, we create solutions that are not only powerful but also easy to adopt. Innovation, integrity, and impact drive everything we do at TRACESCI.</p>
+                    <p>
+                        We believe in making every consumer a brand protector. By combining blockchain technology,
+                        serialization, and mobile intelligence, we create solutions that are not only powerful but also
+                        easy to adopt. Innovation, integrity, and impact drive everything we do at TRACESCI.
+                    </p>
                     <span><i class="icon icon-PaperClip"></i></span>
                 </div>
             </div>
+
         </div>
     </div>
 </section>
