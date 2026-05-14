@@ -1,5 +1,5 @@
 @extends('web.layouts.app')
-@section('content')
+@section('subhead')
 <style>
   .uranus.tparrows {
     cursor: pointer;
@@ -29,6 +29,9 @@
     min-height: 70px;
   }
 </style>
+@endsection
+@section('content')
+
 <!-- slider -->
 
 <div class="rev_slider_wrapper">
@@ -599,7 +602,7 @@
             <div class="pricing-table-content text-center wow fadeInLeft">
               <div class="pricing-table-head">
                 <div class="pricing-head-top">
-                  <span>{{$plan->title}}</span> 
+                  <span>{{$plan->title}}</span>
 </div>
 <div class="pricing-head-content">
   <span>

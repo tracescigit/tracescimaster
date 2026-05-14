@@ -1,5 +1,5 @@
 @extends('web.layouts.app')
-@section('content')
+@section('subhead')
 
 <style>
     *,
@@ -211,6 +211,7 @@
         flex-wrap: wrap;
     }
 
+    /* 
     .btn {
         display: inline-flex;
         align-items: center;
@@ -222,7 +223,7 @@
         text-decoration: none;
         transition: all 0.2s;
         letter-spacing: 0.02em;
-    }
+    } */
 
     .btn-primary {
         background: var(--teal);
@@ -1150,7 +1151,7 @@
         margin-bottom: 32px;
     }
 
-    .form-group {
+    /* .form-group {
         margin-bottom: 18px;
     }
 
@@ -1186,7 +1187,7 @@
     .form-group textarea {
         min-height: 100px;
         resize: vertical;
-    }
+    } */
 
     .form-submit {
         background: var(--teal);
@@ -1304,130 +1305,6 @@
         transform: none;
     }
 
-    .product_demo {
-        background: #ffffff;
-        padding: 120px 0;
-        text-align: center;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .product_demo::before {
-        content: "";
-        position: absolute;
-        width: 700px;
-        height: 700px;
-        border-radius: 50%;
-        background: radial-gradient(rgba(255, 255, 255, 0.08), transparent 70%);
-        top: -320px;
-        left: -180px;
-        animation: floatGlow 10s ease-in-out infinite;
-    }
-
-    .product_demo::after {
-        content: "";
-        position: absolute;
-        width: 500px;
-        height: 500px;
-        border-radius: 50%;
-        background: radial-gradient(rgba(255, 255, 255, 0.05), transparent 70%);
-        bottom: -220px;
-        right: -140px;
-        animation: floatGlow 12s ease-in-out infinite;
-    }
-
-    .product_demo .container {
-        position: relative;
-        z-index: 2;
-    }
-
-    .demo-badge {
-        display: inline-block;
-        background: #fff;
-        border: 1px solid #000000;
-        color: #000000;
-        padding: 10px 22px;
-        font-size: 13px;
-        font-weight: 600;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        margin-bottom: 30px;
-        backdrop-filter: blur(8px);
-        animation: fadeUp 0.8s ease;
-    }
-
-    .product_demo h2 {
-        color: #000000;
-        font-weight: 800;
-        font-size: 52px;
-        line-height: 1.15;
-        margin-bottom: 24px;
-        position: relative;
-        animation: fadeUp 1s ease;
-        letter-spacing: -1px;
-    }
-
-    .product_demo p {
-        color: #000000;
-        font-size: 18px;
-        line-height: 1.9;
-        max-width: 760px;
-        margin: 0 auto 45px;
-        animation: fadeUp 1.2s ease;
-    }
-
-    .demo-actions {
-        animation: fadeUp 1.4s ease;
-    }
-
-    .product_demo .enterprise-btn {
-        background: #fff;
-        color: #7a0d7d !important;
-        font-weight: 700;
-        font-size: 16px;
-        padding: 18px 42px;
-        display: inline-flex;
-        align-items: center;
-        gap: 14px;
-        text-decoration: none;
-        transition: all 0.35s ease;
-        position: relative;
-        overflow: hidden;
-        z-index: 1;
-        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
-    }
-
-    .product_demo .enterprise-btn::before {
-        content: "";
-        position: absolute;
-        width: 0%;
-        height: 100%;
-        left: 0;
-        top: 0;
-        background: #7a0d7d;
-        transition: width 0.4s ease;
-        z-index: -1;
-    }
-
-    .product_demo .enterprise-btn:hover::before {
-        width: 100%;
-    }
-
-    .product_demo .enterprise-btn:hover {
-        color: #fff !important;
-        transform: translateY(-6px) scale(1.03);
-        box-shadow: 0 22px 45px rgba(0, 0, 0, 0.35);
-    }
-
-    .product_demo .enterprise-btn i {
-        transition: 0.35s ease;
-    }
-
-    .product_demo .enterprise-btn:hover i {
-        transform: translateX(7px);
-    }
-
-
     /* ── MOBILE ── */
     @media (max-width: 960px) {
         nav {
@@ -1492,6 +1369,8 @@
         }
     }
 </style>
+@endsection
+@section('content')
 
 <div class="rev_slider_wrapper">
     <div id="slider1" class="rev_slider" data-version="5.0">
@@ -1506,12 +1385,7 @@
                     data-bgposition="center center"
                     data-bgfit="auto"
                     data-bgrepeat="no-repeat">
-                <!-- <img src="{{asset('dist/images/elite4_machine.png')}}"
-    class="rev-slidebg"
-    data-bgposition="center center"
-    data-bgfit="contain"
-    data-bgrepeat="no-repeat"
-    style="width:100%; max-width:900px; height:auto; margin:auto;"> -->
+
                 <!-- LAYER 1 -->
                 <div class="tp-caption tp-resizeme"
                     data-x="center"
@@ -1552,10 +1426,6 @@
                     data-x="center" data-y="top" data-voffset="430"
                     data-start="2800" data-transform_in="y:[100%];opacity:0;s:800;"
                     data-transform_out="opacity:0;s:300" ;>
-                    <div class="rev-slider-btn text-center">
-                        <a a href="{{ url(Auth::check()?myDashboard():'/login') }}">Login</a>
-                        <a a href="{{ url(Auth::check()?myDashboard():'/register') }}">Register</a>
-                    </div>
                 </div>
 
             </li>
@@ -2169,70 +2039,40 @@
     </div>
     </div>
 </section>
-<div class="product_demo">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-
-                <!-- <div class="demo-badge">
-                    Elite4 High-Speed Inkjet System
-                </div> -->
-
-                <h2>
-                    Multicolor Variable Data Printing &amp; Product Authentication
-                </h2>
-
-                <p>
-                    Elite4 delivers high-speed CMYK variable data printing with
-                    barcode, QR code, serialisation, authentication, and track &amp;
-                    trace capabilities — supporting production speeds up to 60 m/min
-                    with industrial piezoelectric printheads and centralized multi-head control.
-                </p>
-
-                <div class="demo-actions">
-                    <a href="{{route('demo-schedule-create')}}" class="enterprise-btn">
-                        Schedule Elite4 Demo
-                        <i class="fa fa-long-arrow-right"></i>
-                    </a>
-                </div>
-
-            </div>
-        </div>
-    </div>
-</div>
-
+@endsection
 @section('script')
 
 <script>
-{{-- Scroll reveal --}}
-const reveals = document.querySelectorAll('.reveal');
-const io = new IntersectionObserver(entries => {
-entries.forEach(e => {
-if (e.isIntersecting) {
-e.target.classList.add('visible');
-io.unobserve(e.target);
-}
-});
-}, { threshold: 0.1 });
-reveals.forEach(el => io.observe(el));
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.classList.add('visible');
+                io.unobserve(e.target);
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+    reveals.forEach(el => io.observe(el));
 
-{{-- Word rotator --}}
-const words = ['High Speed Multicolor Inkjet', 'CMYK UV & Aqueous Inks', 'Variable Data Printing', 'Track & Trace'];
-let idx = 0;
-const el = document.getElementById('rotateWord');
-if (el) {
-el.style.transition = 'opacity 0.3s, transform 0.3s';
-setInterval(() => {
-el.style.opacity = '0';
-el.style.transform = 'translateY(12px)';
-setTimeout(() => {
-idx = (idx + 1) % words.length;
-el.textContent = words[idx];
-el.style.opacity = '1';
-el.style.transform = 'translateY(0)';
-}, 300);
-}, 2400);
-}
+
+    const words = ['High Speed Multicolor Inkjet', 'CMYK UV & Aqueous Inks', 'Variable Data Printing', 'Track & Trace'];
+    let idx = 0;
+    const el = document.getElementById('rotateWord');
+    if (el) {
+        el.style.transition = 'opacity 0.3s, transform 0.3s';
+        setInterval(() => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(12px)';
+            setTimeout(() => {
+                idx = (idx + 1) % words.length;
+                el.textContent = words[idx];
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            }, 300);
+        }, 2400);
+    }
 </script>
 
 <script type="text/javascript">
@@ -2304,5 +2144,4 @@ el.style.transform = 'translateY(0)';
     });
 </script>
 
-@endsection
 @endsection

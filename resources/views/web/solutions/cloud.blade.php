@@ -1,5 +1,5 @@
 @extends('web.layouts.app')
-@section('content')
+@section('subhead')
 <style>
     /* Section spacing */
     .help-content-area {
@@ -38,6 +38,7 @@
         right: -220px !important;
     }
 
+<<<<<<< HEAD
     .product_demo {
         background: #ffffff;
         padding: 120px 0;
@@ -162,6 +163,8 @@
     }
 
 
+=======
+>>>>>>> c0a77dd70cf985bff0f2d75ca1d256caca44f48c
 
 
 
@@ -207,6 +210,9 @@
         }
     }
 </style>
+@endsection
+@section('content')
+
 <div class="rev_slider_wrapper">
     <div id="slider1" class="rev_slider" data-version="5.0">
         <ul>

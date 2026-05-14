@@ -63,20 +63,20 @@
   <!-- jQuery (IMPORTANT FIRST) -->
   <script src="{{ asset('dist/js/jquery-1.11.3.min.js') }}"></script>
   <!-- GOOGLE FONT -->
-  <!-- Google Fonts (All in One) --> 
+  <!-- Google Fonts (All in One) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&family=Raleway:wght@100;200;300;400;500;600;700;800;900&family=Droid+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
   <!-- <script type="text/javascript" src="{{asset('web/js/jquery.js')}}"></script> -->
   <script src="{{asset('dist/js/jquery-1.11.3.min.js')}}"></script>
   <!-- RS5.0 Core JS Files -->
-<script type="text/javascript" src="{{asset('dist/js/jquery.themepunch.tools.min.js?rev=5.0')}}"></script>
-<script type="text/javascript" src="{{asset('dist/js/jquery.themepunch.revolution.min.js?rev=5.0')}}"></script>
-<script type="text/javascript" src="{{asset('dist/js/revolution.extension.slideanims.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('dist/js/revolution.extension.layeranimation.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('dist/js/revolution.extension.navigation.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('dist/js/revolution.extension.parallax.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('dist/js/revolution.extension.actions.min.js')}}"></script>
+  <script type="text/javascript" src="{{asset('dist/js/jquery.themepunch.tools.min.js?rev=5.0')}}"></script>
+  <script type="text/javascript" src="{{asset('dist/js/jquery.themepunch.revolution.min.js?rev=5.0')}}"></script>
+  <script type="text/javascript" src="{{asset('dist/js/revolution.extension.slideanims.min.js')}}"></script>
+  <script type="text/javascript" src="{{asset('dist/js/revolution.extension.layeranimation.min.js')}}"></script>
+  <script type="text/javascript" src="{{asset('dist/js/revolution.extension.navigation.min.js')}}"></script>
+  <script type="text/javascript" src="{{asset('dist/js/revolution.extension.parallax.min.js')}}"></script>
+  <script type="text/javascript" src="{{asset('dist/js/revolution.extension.actions.min.js')}}"></script>
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -97,7 +97,7 @@
     gtag('config', 'G-SM33TFD3S8');
   </script>
 
-
+  @yield('subhead')
 </head>
 
 <body class="home fixed-header">

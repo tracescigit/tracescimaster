@@ -1,6 +1,5 @@
  @extends('web.layouts.app')
- @section('content')
-
+ @section('subhead')
  <style>
      *,
      *::before,
@@ -1502,6 +1501,9 @@
          }
      }
  </style>
+ @endsection
+ @section('content')
+
 
  <div class="rev_slider_wrapper">
      <div id="slider1" class="rev_slider" data-version="5.0">
