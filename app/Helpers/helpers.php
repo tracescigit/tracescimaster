@@ -947,7 +947,7 @@ if (! function_exists('totalAlerts')) {
 }
 
 if (! function_exists('getActivation')) {
-	function getActivation($user_id=null,$month)
+	function getActivation($month,$user_id=null)
 	{
 		$result = [];
 
