@@ -3,6 +3,7 @@
 namespace App\Exports;
 
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Log;
 use Maatwebsite\Excel\Concerns\FromView;
 
 class BulkExport implements FromView
@@ -14,6 +15,7 @@ class BulkExport implements FromView
 
 	public function view(): View
 	{
+		Log::info(['codes'=>$this->codes]);
 		return view('exports.codes', ['codes' => $this->codes]);
 	}
 }

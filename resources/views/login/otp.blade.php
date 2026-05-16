@@ -72,7 +72,7 @@
 
                 showNotification('success','Success !',res.data.message)
                 setTimeout(()=>{
-                    window.location.href = '{{ url('/register/success') }}'
+                    window.location.href = '{{ url("/register/success") }}'
                 },2000)
 
             }).catch(err => {

@@ -5,17 +5,82 @@
 @endsection
 
 @section('content')
+<style>
+    .all-link a {
+        width: 170px;
+        height: 50px;
+        text-align: center;
+        display: inline-block;
+        text-transform: uppercase;
+        padding-top: 14px;
+        color: white;
+        background-color: #343434;
+        border: 2px solid #343434;
+    }
+
+    .all-link a:hover {
+        border: 2px solid #222;
+        color: #fff;
+        background: #222;
+    }
+
+    .all-link a:nth-of-type(1) {
+        margin-right: -2px;
+    }
+
+    .all-link a:nth-of-type(2) {
+        margin-left: -2px;
+    }
+</style>
+<style>
+    .auth-tabs {
+        display: flex;
+        width: 300px;
+        border: 1px solid #333;
+    }
+
+    .auth-tabs .tab {
+        flex: 1;
+        text-align: center;
+        padding: 12px 0;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+        cursor: pointer;
+        border: none;
+        outline: none;
+    }
+
+    /* Active (LOGIN) */
+    .auth-tabs .active {
+        background: #1e1e1e;
+        color: #fff;
+    }
+
+    /* Inactive (REGISTER) */
+    .auth-tabs .tab:not(.active) {
+        background: transparent;
+        color: #333;
+        border-left: 1px solid #333;
+    }
+
+    /* Hover effect */
+    .auth-tabs .tab:hover {
+        background: #333;
+        color: #fff;
+    }
+</style>
 <div class="container sm:px-10">
     <div class="block xl:grid grid-cols-2 gap-4">
         <!-- BEGIN: Login Info -->
         <div class="hidden xl:flex flex-col min-h-screen">
             <a href="{{ url('/') }}" class="-intro-x flex items-center pt-5">
-                <img width="20%"  alt="Tracesci" src="{{asset('web/images/logo.png')}}" class=""></a>
+                <img width="20%" alt="Tracesci" src="{{asset('dist/images/tracesci logo_white.png')}}" class=""></a>
             </a>
             <div class="my-auto">
                 <img alt="TRACESCI" class="-intro-x w-1/2 -mt-16" src="{{ asset('dist/images/illustration.svg') }}">
-                <div class="-intro-x text-white font-medium text-4xl leading-tight mt-10">A few more clicks to <br> sign in to your account.</div>
-                <div class="-intro-x mt-5 text-lg text-white text-opacity-70 dark:text-gray-500">Track your all invoices at one place</div>
+                <div class="-intro-x text-white font-medium text-4xl leading-tight mt-10">A <span style="color: #7a0d7d;"> few</span> more clicks to <br> sign in to your<span style="color: #7a0d7d;"> account.</span></div>
+                <div class="-intro-x mt-5 text-lg text-white text-opacity-70 dark:text-gray-500"><span style="color: #7a0d7d;"> Track</span> your all invoices at one place</div>
             </div>
         </div>
         <!-- END: Login Info -->
@@ -23,7 +88,7 @@
         <div class="h-screen xl:h-auto flex py-5 xl:py-0 my-10 xl:my-0">
             <div class="my-auto mx-auto xl:ml-20 bg-white dark:bg-dark-1 xl:bg-transparent px-5 sm:px-8 py-8 xl:p-0 rounded-md shadow-md xl:shadow-none w-full sm:w-3/4 lg:w-2/4 xl:w-auto">
                 <h2 class="intro-x font-bold text-2xl xl:text-3xl text-center xl:text-left">Sign In</h2>
-                <div class="intro-x mt-2 text-gray-500 xl:hidden text-center">A few more clicks to sign in to your account. Manage all your e-commerce accounts in one place</div>
+                <div class="intro-x mt-2 text-gray-500 xl:hidden text-center">A few more clicks to sign in to your Manage all your e-commerce accounts in one place</div>
                 <div class="intro-x mt-8">
                     <form id="login-form">
                         <input id="email_or_phone" type="text" class="intro-x login__input form-control py-3 px-4 border-gray-300 block" placeholder="Email or phone" value="">
@@ -39,73 +104,73 @@
                     </div>
                     <a href="{{ url('forgot-password') }}">Forgot Password?</a>
                 </div>
-                <div class="intro-x mt-5 xl:mt-8 text-center xl:text-left">
-                    <button id="btn-login" class="btn btn-primary py-3 px-4 w-full xl:w-32 xl:mr-3 align-top">Login</button>
-                    <a href="{{ url('/register') }}" class="btn btn-outline-secondary py-3 px-4 w-full xl:w-32 mt-3 xl:mt-0 align-top">Sign up</a>
+                <div class="auth-tabs mt-4" style="margin-top:50px;">
+                    <button id="btn-login" class="tab active">LOGIN</button>
+                    <a href="{{ url('/register') }}" class="tab">REGISTER</a>
                 </div>
             </div>
         </div>
         <!-- END: Login Form -->
     </div>
     <x-notification></x-notification>
-</div>    
+</div>
 @endsection
 
 @section('script')
 <script>
     var submitted = false
 
-    cash(function () {
+    cash(function() {
         async function login() {
             submitted = true
-                // Reset state
-                cash('#login-form').find('.login__input').removeClass('border-theme-6')
-                cash('#login-form').find('.login__input-error').html('')
+            // Reset state
+            cash('#login-form').find('.login__input').removeClass('border-theme-6')
+            cash('#login-form').find('.login__input-error').html('')
 
-                // Post form
-                let email_or_phone = cash('#email_or_phone').val()
-                let password = cash('#password').val()
-                let rememberMe = cash('#remember-me').val()
-                
-                // Loading state
-                cash('#btn-login').html('<i data-loading-icon="oval" data-color="white" class="w-5 h-5 mx-auto"></i>').svgLoader()
-                await helper.delay(500)
+            // Post form
+            let email_or_phone = cash('#email_or_phone').val()
+            let password = cash('#password').val()
+            let rememberMe = cash('#remember-me').val()
 
-                axios.post('{{ url('/login') }}', {
-                    email_or_phone: email_or_phone,
-                    password: password,
-                    remember_me: rememberMe
-                }).then(res => {
-                   submitted = false
-                   showNotification('success','Success !',res.data.message)
-                   setTimeout(()=>{
+            // Loading state
+            cash('#btn-login').html('<i data-loading-icon="oval" data-color="white" class="w-5 h-5 mx-auto"></i>').svgLoader()
+            await helper.delay(500)
+
+            axios.post("{{ url('/login') }}", {
+                email_or_phone: email_or_phone,
+                password: password,
+                remember_me: rememberMe
+            }).then(res => {
+                submitted = false
+                showNotification('success', 'Success !', res.data.message)
+                setTimeout(() => {
                     window.location.href = res.data.url
-                },2000)
-               }).catch(err => {
-                   submitted = false
-                   showNotification('error','Error !',err.response.data.message)
-                   cash('#btn-login').html('Login')
+                }, 2000)
+            }).catch(err => {
+                submitted = false
+                showNotification('error', 'Error !', err.response.data.message)
+                cash('#btn-login').html('Login')
 
-                   if (err.response.data.errors) {
+                if (err.response.data.errors) {
                     for (const [key, val] of Object.entries(err.response.data.errors)) {
                         cash(`#${key}`).addClass('border-theme-6')
                         cash(`#error-${key}`).html(val)
                     }
                 }
             })
-           }
+        }
 
-           cash('#login-form').on('keyup', function(e) {
-            if (e.keyCode === 13 && submitted==false) {
+        cash('#login-form').on('keyup', function(e) {
+            if (e.keyCode === 13 && submitted == false) {
                 login()
             }
         })
 
-           cash('#btn-login').on('click', function() {
-            if (submitted==false) {
+        cash('#btn-login').on('click', function() {
+            if (submitted == false) {
                 login()
             }
         })
-       })
-   </script>
-   @endsection
+    })
+</script>
+@endsection

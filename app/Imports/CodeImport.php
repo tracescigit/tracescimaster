@@ -3,6 +3,7 @@
 namespace App\Imports;
 
 use App\Models\Code;
+use App\Models\Product;
 use App\Models\UploadProgress;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
@@ -26,14 +27,14 @@ use Throwable;
 use Str;
 
 class CodeImport implements
-ToArray,
-WithHeadingRow,
-SkipsOnError,
-WithValidation,
-SkipsOnFailure,
-WithChunkReading,
-ShouldQueue,
-WithEvents
+    ToArray,
+    WithHeadingRow,
+    SkipsOnError,
+    WithValidation,
+    SkipsOnFailure,
+    WithChunkReading,
+    ShouldQueue,
+    WithEvents
 {
     use Importable, SkipsErrors, SkipsFailures, RegistersEventListeners;
 
@@ -47,10 +48,11 @@ WithEvents
         $this->progress_id  = uniqid();
     }
 
-    public function generateQR() {
+    public function generateQR()
+    {
         $code = Str::random(15);
 
-        if (Code::where('qr_code',$code)->exists()) {
+        if (Code::where('qr_code', $code)->exists()) {
             return $this->generateQR();
         }
 
@@ -60,7 +62,7 @@ WithEvents
 
     public function progress()
     {
-        $progress = UploadProgress::where('user_id',$this->user_id)->where('progress_id',$this->progress_id)->first();
+        $progress = UploadProgress::where('user_id', $this->user_id)->where('progress_id', $this->progress_id)->first();
 
         if (!$progress) {
             $progress = new UploadProgress;
@@ -78,11 +80,11 @@ WithEvents
 
     public function array(array $array)
     {
-        if(count($array)>0){
+        if (count($array) > 0) {
             $progress = $this->progress();
             foreach ($array as $key => $row) {
 
-                if (getAvailableCredits($this->user_id) && !Code::where('code_data',$row['code_data'])->exists()) {
+                if (getAvailableCredits($this->user_id) && !Code::where('code_data', $row['code_data'])->exists()) {
                     $secret        = $this->generateQR();
                     $collect = [
                         'product_id'          => $this->product_id,
@@ -92,13 +94,17 @@ WithEvents
                         'code_data'           => $row['code_data'],
                         'status'              => '0',
                         'qr_code'             => $secret,
-                        'url'                 => env('APP_URL','https://tracesci.in').'/api/p/'.$secret,
+                        'url'                 => env('APP_URL', 'https://tracesci.in') . '/api/p/' . $secret,
                         'exported'            => '1'
                     ];
+                    if (Product::where('id', $this->product_id)->value('pin_required') == 1) {
+                        $secret_code =  Str::random(8);
+                        $collect['secret_code'] = $secret_code;
+                    }
                     Code::create($collect);
-                    $progress->uploaded_rows = $progress->uploaded_rows+1;
+                    $progress->uploaded_rows = $progress->uploaded_rows + 1;
                 }
-                $progress->processed_rows = $progress->processed_rows+1;
+                $progress->processed_rows = $progress->processed_rows + 1;
                 $progress->save();
             }
         }
@@ -111,7 +117,7 @@ WithEvents
     }
 
     public function rules(): array
-    {   
+    {
         return [
             'code_data' => 'required|unique:codes',
         ];
@@ -136,12 +142,12 @@ WithEvents
             $progress = $this->progress();
             $errors = [];
 
-            if ($progress->error_logs!='') {
-                $errors = json_decode($progress->error_logs,true);
+            if ($progress->error_logs != '') {
+                $errors = json_decode($progress->error_logs, true);
             }
 
             foreach ($failure as $key => $fail) {
-                $item = 'On row '.$fail->row().': '.implode(',', $fail->errors());
+                $item = 'On row ' . $fail->row() . ': ' . implode(',', $fail->errors());
                 array_push($errors, $item);
             }
 
@@ -149,5 +155,4 @@ WithEvents
             $progress->save();
         }
     }
-
 }

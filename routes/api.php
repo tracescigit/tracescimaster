@@ -24,6 +24,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/get-otp', [AuthController::class, 'getOtp']);
 Route::post('/verify-otp', [AuthController::class, 'verifyOtp']);
+Route::post('/verify-secret-code', [AuthController::class, 'verifySecretCode']);
+
 Route::post('password-login', [AuthController::class, 'passwordLogin']);
 Route::post('/p/{code}', [ScanController::class, 'show']);
 Route::post('scan-history', [ScanController::class, 'scanHistory']);

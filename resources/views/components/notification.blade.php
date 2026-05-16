@@ -7,4 +7,4 @@
     		<div class="text-gray-600 mt-1 notification-content"></div>
     	</div>
     </div>
-    <button id="notification-toggle"></button>
+  

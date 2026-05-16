@@ -10,7 +10,7 @@
     <!-- BEGIN: Side Menu -->
     <nav class="side-nav">
         <a href="{{ url('/vendor') }}" class="intro-x flex items-center pl-5 pt-4">
-            <img width="60%"  alt="Tracesci" src="{{asset('web/images/logo.png')}}" class="hidden xl:block"></a>
+            <img width="60%" alt="Tracesci" src="{{asset('web/images/logo.png')}}" class="hidden xl:block"></a>
         </a>
         <div class="side-nav__devider my-6"></div>
         <ul>
@@ -123,6 +123,18 @@
                         </a>
                     </li>
                     @endif
+                    @if (inAllowedPermissionsByModuleSlug(Auth::id(),'product-template','view'))
+                    <li>
+                        <a href="{{ url('vendor/products_template') }}" class="side-menu {{request()->is('vendor/products_template*')?'side-menu--active':''}}">
+                            <div class="side-menu__icon">
+                                <i data-feather="activity"></i>
+                            </div>
+                            <div class="side-menu__title">
+                                Product Template
+                            </div>
+                        </a>
+                    </li>
+                    @endif
                 </ul>
             </li>
             @endif
@@ -231,7 +243,7 @@
             </li>
             @endif
 
-            @if (inAllowedPermissionsByModuleSlug(Auth::id(),'schemes','view') || inAllowedPermissionsByModuleSlug(Auth::id(),'cashbacks','view')  || inAllowedPermissionsByModuleSlug(Auth::id(),'rewards','view') || inAllowedPermissionsByModuleSlug(Auth::id(),'reward-orders','view'))
+            @if (inAllowedPermissionsByModuleSlug(Auth::id(),'schemes','view') || inAllowedPermissionsByModuleSlug(Auth::id(),'cashbacks','view') || inAllowedPermissionsByModuleSlug(Auth::id(),'rewards','view') || inAllowedPermissionsByModuleSlug(Auth::id(),'reward-orders','view'))
             <li>
                 <a href="javascript:;" class="side-menu {{(request()->is('vendor/schemes*') || request()->is('vendor/cashbacks*') || request()->is('vendor/reward*') || request()->is('vendor/wallets*'))?'side-menu--active':''}}">
                     <div class="side-menu__icon">
@@ -382,7 +394,7 @@
                     </li>
 
                 </ul>
-            </li>            
+            </li>
             @endif
 
             @if (inAllowedPermissionsByModuleSlug(Auth::id(),'supply-chain-roles','view') || inAllowedPermissionsByModuleSlug(Auth::id(),'supply-chain-users','view') || inAllowedPermissionsByModuleSlug(Auth::id(),'supply-chain-management','view'))

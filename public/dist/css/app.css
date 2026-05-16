@@ -72,7 +72,7 @@ Improve consistency of default fonts in all browsers. (https://github.com/sindre
 */
 
 body {
-font-family: 'Lato', sans-serif !important;
+font-family: Helvetica Neue', Helvetica, Arial, sans-serif !important;
 }
 
 /*
@@ -368,7 +368,7 @@ ul {
  */
 
 html {
-  font-family: 'Lato', sans-serif !important;
+  font-family: Helvetica Neue', Helvetica, Arial, sans-serif !important;
   line-height: 1.5; /* 2 */
 }
 
@@ -1058,7 +1058,7 @@ video {
 .btn-primary {
     --tw-bg-opacity: 1;
     --tw-border-opacity: 1;
-    background: transparent linear-gradient( 45deg , #700877 0%, #ff2759 100%, #ff2759 100%) repeat scroll 0 0;
+    background-color: #7a0d7d;
 }
 
 .dark .btn-primary{
@@ -5842,9 +5842,10 @@ video {
   background-attachment: fixed;
   /*padding-top: 1.25rem;*/
   /*padding-bottom: 1.25rem;*/
-  background: transparent linear-gradient(
-45deg
-, #700877 0%, #ff2759 100%, #ff2759 100%) repeat scroll 0 0;
+  /* background: transparent linear-gradient(
+  45deg
+, #700877 0%, #ff2759 100%, #ff2759 100%) repeat scroll 0 0; */
+  background: #ffffff;
 }
 
 .top-bar {
@@ -5883,7 +5884,8 @@ video {
 .login:before {
   content: "";
   margin-left: -48%;
-  background-image: url(../images/bg-login-page.svg);
+  /* background-image: url('https://plus.unsplash.com/premium_photo-1720192861639-1524439fc166?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bG9naW58ZW58MHx8MHx8fDA%3D'); */
+  background: #000000;
   background-repeat: no-repeat;
   background-size: auto 100%;
   background-position: right;
@@ -7519,12 +7521,14 @@ video {
   height: 50px;
   border-radius: 9999px;
   display: flex;
+  font-weight: bolder; 
   align-items: center;
   margin-bottom: 0.25rem;
   padding-left: 1.25rem;
   position: relative;
   --tw-text-opacity: 1;
-  color: rgba(255, 255, 255, var(--tw-text-opacity));
+  /* color: rgba(255, 255, 255, var(--tw-text-opacity)); */
+  color: #000000;
 }
 
 .side-nav .side-menu .side-menu__title {
@@ -9635,7 +9639,7 @@ video {
 .side-nav > ul > li > .side-menu.side-menu--active .side-menu__title {
   font-weight: 500;
   --tw-text-opacity: 1;
-  color: rgba(45, 55, 72, var(--tw-text-opacity));
+  color: #7a0d7d;
 }
 
 .dark .side-nav > ul > li > .side-menu.side-menu--active .side-menu__title{
@@ -9678,12 +9682,12 @@ video {
 
 .side-nav > ul > li > .side-menu:hover:not(.side-menu--active):not(.side-menu--open) .side-menu__icon:before {
   --tw-bg-opacity: 1;
-  background-color: rgba(131,40,132, var(--tw-bg-opacity));
+  background-color: rgb(219, 148, 222, var(--tw-bg-opacity));
 }
 
 .dark .side-nav > ul > li > .side-menu:hover:not(.side-menu--active):not(.side-menu--open) .side-menu__icon:before{
   --tw-bg-opacity: 1;
-  background-color: rgba(30, 37, 51, var(--tw-bg-opacity));
+  background-color: rgb(219, 148, 222, var(--tw-bg-opacity));
 }
 
 @-webkit-keyframes intro-devider-animation {
@@ -9803,7 +9807,7 @@ video {
 .breadcrumb .breadcrumb--active {
   font-weight: 500;
   --tw-text-opacity: 1;
-  color: rgba(139,21,61, var(--tw-text-opacity));
+  color: #7a0d7d;
 }
 
 .dark .breadcrumb .breadcrumb--active{
