@@ -111,7 +111,7 @@
 
                 <div class="newsletter-wrapper text-center">
 
-                    <h2>Join Our Newsletter</h2>
+                    <h2>Join Our <span style="color:#7a0d7d;">Newsletter</span></h2>
                     <p>Get latest news and updates from us</p>
 
                     @if (request()->route()->uri!='p/{code}')
@@ -210,7 +210,7 @@
           <div class="footer-bottom-content clearfix">
             <div class="col-sm-6 col-md-6 no-padding-left">
               <div class="footer-bottom-left">
-                <a class="text-white" href="{{ url('/about-monotech-systems-limited') }}">About Tracesci Global Pvt Ltd |</a>
+                <a class="text-white" href="{{ url('/about') }}">About Tracesci Global Pvt Ltd |</a>
                 <a class="text-white" href="{{ url('/privacy-policy') }}"> Privacy Policy |</a>
                 <a class="text-white" href="{{ url('/terms-of-use') }}"> Terms of Use |</a>
                 <a class="text-white" href="{{ url('/cancellation-or-refund-policy') }}"> Cancellation/Refund Policy </a>

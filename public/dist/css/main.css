@@ -1532,7 +1532,7 @@ input:focus {
         WELCOME SECTION     
 -----------------------------------------*/
 .welcome-area {
-  padding-bottom: 70px;
+  padding-bottom: 20px;
 }
 .main-title {
   position: relative;
@@ -1636,7 +1636,7 @@ input:focus {
 .solution-single-content {
   padding-left: 90px;
   position: relative;
-  min-height: 170px;
+  min-height: 100px;
 }
 .solution-single-content:before {
   position: absolute;
