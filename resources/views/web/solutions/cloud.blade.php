@@ -334,7 +334,7 @@
                     <div class="solution-single-content solution-single-content-no-border wow fadeInLeft">
                         <h2>Unique QR Serialization</h2>
                         <p>Every product unit is assigned a cryptographically unique QR or barcode label at the point of manufacture. Codes are activated in real time on the production line and registered on an immutable blockchain record...</p>
-                        <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+                        <a href="#"></a>
                         <span><i class="icon icon-Antenna2"></i></span>
                     </div>
                 </div>
@@ -342,7 +342,7 @@
                     <div class="solution-single-content wow fadeInUp">
                         <h2>Brand & Product Protection</h2>
                         <p>Non-additive digital authentication secures your packaging without modifying your existing production line. Eliminate revenue loss from counterfeits and build lasting consumer trust in your brand...</p>
-                        <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+                        <a href="#"></a>
                         <span><i class="icon icon-Shield"></i></span>
                     </div>
                 </div>
@@ -350,7 +350,7 @@
                     <div class="solution-single-content wow fadeInRight">
                         <h2>Mobile Apps for All Stakeholders</h2>
                         <p>Dedicated Android and iOS apps for consumers to verify authenticity, and for inspectors to perform quick field audits. Works online and offline. Consumers can also report counterfeit products directly through the app...</p>
-                        <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+                        <a href="#"></a>
                         <span><i class="icon icon-MessageLeft"></i></span>
                     </div>
                 </div>
@@ -358,7 +358,7 @@
                     <div class="solution-single-content solution-single-content-no-border wow fadeInLeft">
                         <h2>End-to-End Supply Chain Traceability</h2>
                         <p>Track every product from raw material intake through manufacturing, packaging, distribution and last-mile delivery. Each checkpoint is immutably recorded — accessible to all authorised stakeholders in real time...</p>
-                        <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+                        <a href="#"></a>
                         <span><i class="icon icon-Chart"></i></span>
                     </div>
                 </div>
@@ -366,7 +366,7 @@
                     <div class="solution-single-content wow fadeInUp">
                         <h2>Regulatory Compliance</h2>
                         <p>Stay ahead of government traceability mandates. Our GS1-compliant platform supports compliance requirements across pharma, food, tobacco and more — with quick report generation built for enforcement agencies...</p>
-                        <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+                        <a href="#"></a>
                         <span><i class="icon icon-Tools"></i></span>
                     </div>
                 </div>
@@ -374,7 +374,7 @@
                     <div class="solution-single-content wow fadeInRight">
                         <h2>Seamless Hardware Integration</h2>
                         <p>Plug directly into your existing printing, labelling and conveyor systems. Compatible with vision inspection cameras, high-speed production lines and all major barcode formats — no production disruption...</p>
-                        <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+                        <a href="#"></a>
                         <span><i class="icon icon-Puzzle"></i></span>
                     </div>
                 </div>
@@ -414,7 +414,7 @@
 
 
     <!-- How It Works Section -->
-    <div style="background-color: #f5f5f5; margin-top: 50px;">
+    <!-- <div style="background-color: #f5f5f5; margin-top: 50px;">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-center">
@@ -610,7 +610,7 @@
                 </div>
             </div>
             <!-- END TITLE -->
-            <div class="container">
+            <!-- <div class="container">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="all-link pricinig-head-btn text-center">
@@ -619,7 +619,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- PRICING TABLE CONTENT -->
             @foreach(getPlan() as $plan)
             <div class="container">
@@ -689,7 +689,7 @@
         </div>
 
         <x-notification></x-notification>
-    </div>
+    <!-- </div> --> 
 </div>
 @endsection
 

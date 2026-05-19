@@ -4,28 +4,143 @@
 </a>
 @endif
 <!--Footer-->
+<style>
+.newsletter-section {
+    background: #222222;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.newsletter-wrapper h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 15px;
+    font-family: 'Raleway', sans-serif;;
+}
+
+.newsletter-wrapper p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 50px;
+    font-family: 'Raleway', sans-serif;
+}
+
+.newsletter-form {
+    position: relative;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.newsletter-input {
+    width: 100%;
+    height: 60px;
+    border: none;
+    border-radius: 0px;
+    padding: 0 60px 0 40px;
+    font-size: 15px;
+    color: #777;
+    background: #f3f3f3;
+    outline: none;
+    box-shadow: none;
+}
+
+.newsletter-input::placeholder {
+    color: #999;
+}
+
+.newsletter-btn {
+    position: absolute;
+    top: 50%;
+    right: 25px;
+    transform: translateY(-50%);
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 2px solid #cfcfcf;
+    background: transparent;
+    color: #999;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.newsletter-btn:hover {
+    background: #7a0d7d;
+    border-color: #7a0d7d;
+    color: #fff;
+}
+
+@media (max-width: 767px) {
+
+    .newsletter-section {
+        padding: 70px 20px;
+    }
+
+    .newsletter-wrapper h2 {
+        font-size: 38px;
+    }
+
+    .newsletter-wrapper p {
+        font-size: 18px;
+        margin-bottom: 35px;
+    }
+
+    .newsletter-input {
+        height: 70px;
+        font-size: 18px;
+        padding: 0 90px 0 25px;
+    }
+
+    .newsletter-btn {
+        width: 50px;
+        height: 50px;
+        right: 12px;
+        font-size: 26px;
+    }
+}
+
+
+</style>
 
 <div class="footer-area">
-  <div class="footer-top">
+  
+    <section class="newsletter-section">
     <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="join-team footer-subscribe clearfix">
-            <div class="col-md-7">
-              <p>Our social marketing solutions help more than 2500 companies around the world deliver great results. We can't stand average, and our clients can't either.</p>
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="newsletter-wrapper text-center">
+
+                    <h2>Join Our Newsletter</h2>
+                    <p>Get latest news and updates from us</p>
+
+                    @if (request()->route()->uri!='p/{code}')
+                    <form class="newsletter-form">
+                        <input type="email"
+                               placeholder="Enter your email"
+                               name="email"
+                               class="newsletter-input"
+                               id="email">
+
+                        <button type="submit" class="newsletter-btn">
+                            <i class="fa fa-angle-right"></i>
+                        </button>
+                    </form>
+
+                    <div id="subsmessage"
+                         class="text-center text-white"
+                         style="margin-top:20px;">
+                    </div>
+                    @endif
+
+                </div>
+
             </div>
-            <div class="col-md-5">
-              <div class="all-link pricinig-head-btn footer-top-btn">
-                <a href="{{ route('home') }}#howitworks">Take The Tour</a>
-                <a href="{{ route('cloud-solution') }}#pricing_table">Get Started</a>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
-  <div class="footer-main-content">
+</section>
+  
+  <!-- <div class="footer-main-content">
     <div class="container">
       <div class="row">
         <div class="col-sm-6 col-md-3">
@@ -87,7 +202,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
   <div class="footer-bottom">
     <div class="container">
       <div class="row">

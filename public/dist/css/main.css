@@ -659,7 +659,7 @@ input:focus {
   margin: 0;
   display: inline-block;
   font-family: 'Raleway', sans-serif;
-  font-weight: 900;
+  font-weight: 600;
 }
 .menuzord {
   background: transparent;
@@ -4816,37 +4816,59 @@ ul.page-breadcrumbs li + li:before {
 -----------------------------------------*/
 .our-philosophy-area {
 }
+
+.our-philosophy-area .row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.our-philosophy-area [class*="col-"] {
+  display: flex;
+  margin-bottom: 10px;
+}
+
 .our-philosophy-inner {
   position: relative;
   padding: 75px 75px 85px 180px;
-  margin-bottom: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
+
 .our-philosophy-inner-bg-1 {
   background: #616161;
 }
+
 .our-philosophy-inner-bg-2 {
   background: #2d2d2d;
 }
+
 .our-philosophy-inner-bg-3 {
   background: #7a0d7d;
 }
+
 .our-philosophy-inner h2 {
   font-size: 22px;
   color: #ffffff;
   font-weight: 600;
   margin-top: 0;
 }
+
 .our-philosophy-inner p {
   font-size: 14px;
   color: #f0f0f0;
   font-family: 'Raleway', sans-serif;
   line-height: 23px;
+  margin-bottom: 0;
 }
+
 .our-philosophy-inner span {
   position: absolute;
   top: 100px;
   left: 80px;
 }
+
 .our-philosophy-inner-bg-1 span:before {
   position: absolute;
   content: '';
@@ -4856,6 +4878,7 @@ ul.page-breadcrumbs li + li:before {
   left: -20px;
   background: #7b7b7b;
 }
+
 .our-philosophy-inner-bg-2 span:before {
   position: absolute;
   content: '';
@@ -4865,6 +4888,7 @@ ul.page-breadcrumbs li + li:before {
   left: -20px;
   background: #4f4f4f;
 }
+
 .our-philosophy-inner-bg-3 span:before {
   position: absolute;
   content: '';
@@ -4874,18 +4898,27 @@ ul.page-breadcrumbs li + li:before {
   left: -20px;
   background: #65c2bd;
 }
+
 .our-philosophy-inner span i {
   font-size: 32px;
   color: #f4f4f4;
 }
+
 @media (max-width: 767px) {
-  .our-philosophy-inner {
-    position: relative;
-    padding: 75px 10px 85px 50px;
-    margin-bottom: 10px;
+
+  .our-philosophy-area .row {
+    display: block;
   }
+
+  .our-philosophy-area [class*="col-"] {
+    display: block;
+  }
+
+  .our-philosophy-inner {
+    padding: 75px 10px 85px 50px;
+  }
+
   .our-philosophy-inner span {
-    position: absolute;
     top: 100px;
     left: 10px;
   }

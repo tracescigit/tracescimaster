@@ -109,7 +109,7 @@
                         @if($index == 6)
                         @break
                         @endif
-                        <div class="col-sm-6 col-md-6">
+                        <div class="col-sm-6 col-md-4">
                             <div class="blog-2-column-content">
                                 <div class="full-intro-img">
                                     <img src="{{ asset('storage/' . $blog->image_path) }}" alt="" class="Blog-Image">

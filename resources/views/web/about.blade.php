@@ -178,28 +178,32 @@
       ============================== -->
 <section class="our-philosophy-area wow fadeInLeft">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-6 col-md-4 no-padding">
-                <div class="our-philosophy-inner our-philosophy-inner-bg-1">
+        <div class="row d-flex align-items-stretch">
+            
+            <div class="col-sm-6 col-md-4 no-padding d-flex">
+                <div class="our-philosophy-inner our-philosophy-inner-bg-1 w-100">
                     <h2>Our Mission</h2>
                     <p>To combat illicit trade, counterfeiting, revenue leakage, and the circulation of unsafe products. We empower governments, brands, and consumers with intelligent traceability solutions that protect every link in the supply chain — from manufacturer to end user.</p>
                     <span><i class="icon icon-Flag"></i></span>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-4 no-padding">
-                <div class="our-philosophy-inner our-philosophy-inner-bg-2">
+
+            <div class="col-sm-6 col-md-4 no-padding d-flex">
+                <div class="our-philosophy-inner our-philosophy-inner-bg-2 w-100">
                     <h2>Our Vision</h2>
                     <p>To build a world where every product is authentic, every supply chain is transparent, and every consumer is protected. We envision a global ecosystem where traceability is accessible and affordable for businesses of all sizes — from startups to large enterprises and governments.</p>
                     <span><i class="icon icon-Bulb"></i></span>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-4 no-padding">
-                <div class="our-philosophy-inner our-philosophy-inner-bg-3">
+
+            <div class="col-sm-6 col-md-4 no-padding d-flex">
+                <div class="our-philosophy-inner our-philosophy-inner-bg-3 w-100">
                     <h2>Our Philosophy</h2>
                     <p>We believe in making every consumer a brand protector. By combining blockchain technology, serialization, and mobile intelligence, we create solutions that are not only powerful but also easy to adopt. Innovation, integrity, and impact drive everything we do at TRACESCI.</p>
                     <span><i class="icon icon-PaperClip"></i></span>
                 </div>
             </div>
+
         </div>
     </div>
 </section>
@@ -374,7 +378,7 @@
         </div>
     </div>
 </section> -->
-<div class="progress-bar-area">
+<!-- <div class="progress-bar-area">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -411,7 +415,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 <!-- =========================
         END TEAM SECTION

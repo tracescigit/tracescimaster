@@ -397,7 +397,7 @@
           <div class="solution-single-content solution-single-content-no-border wow fadeInLeft">
             <h2>Easy to use</h2>
             <p>Simple process driven solution, that suits from small to large manufacturers requirment. ...</p>
-            <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+            <a href="#"></a>
             <span><i class="icon icon-Chart"></i></span>
           </div>
         </div>
@@ -405,15 +405,15 @@
           <div class="solution-single-content wow fadeInUp">
             <h2>Protect your Product</h2>
             <p>Secure packaging and authentication capabilities enable you to protect your brand and keep consumers safe while building brand trust...</p>
-            <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+            <a href="#"></a>
             <span><i class="icon icon-Shield"></i></span>
           </div>
         </div>
         <div class="col-sm-6 col-md-4">
           <div class="solution-single-content wow fadeInRight">
-            <h2>Engage with end consumer</h2>
+            <h2>Engagement</h2>
             <p>Get access to valuable market insights, including the end user’s profile.Connect them with your loyality programs ...</p>
-            <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+            <a href="#"></a>
             <span><i class="icon icon-MessageLeft"></i></span>
           </div>
         </div>
@@ -421,7 +421,7 @@
           <div class="solution-single-content solution-single-content-no-border wow fadeInLeft">
             <h2>Product serialization</h2>
             <p>For digital transformation to take place, serialization will be a first step and a key enabler for every brand ...</p>
-            <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+            <a href="#"></a>
             <span><i class="icon icon-Antenna2"></i></span>
           </div>
         </div>
@@ -429,23 +429,16 @@
           <div class="solution-single-content wow fadeInUp">
             <h2>Regulatory compliance</h2>
             <p>Get a powerful one solution supporting various compliance mandates set by different countries for different businesses ...</p>
-            <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+            <a href="#"></a>
             <span><i class="icon icon-Tools"></i></span>
           </div>
         </div>
         <div class="col-sm-6 col-md-4">
           <div class="solution-single-content wow fadeInRight">
-            <h2>Seamless Hardware integration</h2>
+            <h2>Hardware integration</h2>
             <p>Easy to integrate with any printing/labelling device, speed conveyor systems, vision inspection cameras etc ...</p>
-            <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+            <a href="#"></a>
             <span><i class="icon icon-Puzzle"></i></span>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="all-link solution-btn text-center">
-            <a href="#">More Services</a>
           </div>
         </div>
       </div>
@@ -460,7 +453,7 @@
             <div class="main-shadow-heading">
               <h2><span>How </span>it works??</h2>
             </div>
-            <h2><span>How </span>it works??</h2>
+            <h2><span>How </span>it <span style="color:#7a0d7d;">works</span>??</h2>
             <h3>Trusted By The Best Marketers</h3>
           </div>
         </div>
