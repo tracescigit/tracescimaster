@@ -18,9 +18,11 @@
 				<label class="w-12 flex-none xl:w-auto xl:flex-initial mr-2">{{__('common.field')}}</label>
 				<select id="tabulator-html-filter-field" class="form-select w-full sm:w-32 xxl:w-full mt-2 sm:mt-0 sm:w-auto">
 					<option value="">{{__('common.please_select')}}</option>
-					<option value="product_name">{{__('common.product_name')}}</option>
-					<option value="code_data">Product Serial No.</option>
-					<option value="phone">{{__('scanhistory.scanned_by')}}</option>	
+					<option value="company_name">{{__('Company Name')}}</option>
+					<option value="company_email">Company Email</option>
+					<option value="demo_date">Demo Date</option>	
+					<option value="demo_time">Demo Time</option>	
+					<option value="status">Status</option>	
 				</select>
 			</div>
 			<div class="sm:flex items-center sm:mr-4 mt-2 xl:mt-0">
@@ -81,7 +83,7 @@
 @endsection
 @section('global_script')
 <script>
-	var tabulatorUrl =  '{{ route('admin-alerts') }}';
+	var tabulatorUrl =  "{{ route('admin-demo-schedule') }}";
 	var tabulatorColumns = [
 	{	
 		formatter: "responsiveCollapse",
@@ -106,54 +108,71 @@
 			return cell.getData().actions;
 		}
 	},{
-		title: "{{strtoupper(__('common.product_name'))}}",
+		title: "{{strtoupper(__('common.company_name'))}}",
 		minWidth: 220,
 		responsive: 0,
-		field: "product_name",
+		field: "company_name",
+		hozAlign: "left",
+		headerHozAlign: "left",
+		vertAlign: "left",
+		print: true,
+		download: true
+	},{
+		title: "{{strtoupper('Demo Date')}}",
+		minWidth: 220,
+		responsive: 0,
+		field: "demo_date",
 		hozAlign: "center",
+		headerHozAlign: "center",
+		vertAlign: "middle",
+		print: true,
+		download: true
+	},
+	{
+		title: "{{strtoupper('Demo Time')}}",
+		minWidth: 220,
+		responsive: 0,
+		field: "demo_time",
+		hozAlign: "center",
+		headerHozAlign: "center",
 		vertAlign: "middle",
 		print: true,
 		download: true
 	},{
-		title: "{{strtoupper('Product Serial No.')}}",
-		minWidth: 220,
-		responsive: 0,
-		field: "code_data",
-		hozAlign: "center",
-		vertAlign: "middle",
-		print: true,
-		download: true
-	},{
-		title: "{{strtoupper(__('alert.alert_message'))}}",
+		title: "{{strtoupper(__('Message'))}}",
 		minWidth: 200,
 		responsive: 0,
-		field: "alert_message",
-		vertAlign: "middle",
-		hozAlign: "center",
+		field: "message",
+		vertAlign: "left",
+		headerHozAlign: "left",
+		hozAlign: "left",
 		print: true,
 		download: true
 	}, {
-		title: "{{strtoupper(__('scanhistory.scanned_by'))}}",
+		title: "{{strtoupper(__('Company Email'))}}",
 		minWidth: 200,
-		field: "scanned_by",
-		hozAlign: "center",
-		vertAlign: "middle",
+		field: "company_email",
+		hozAlign: "left",
+		headerHozAlign: "left",
+		vertAlign: "left",
 		print: true,
 		download: true
 	}, {
-		title: "{{strtoupper(__('alert.action_taken'))}}",
+		title: "{{strtoupper(__('Phone'))}}",
 		minWidth: 180,
-		field: "action_taken",
-		hozAlign: "center",
+		field: "phone",
+		hozAlign: "right",
+		headerHozAlign: "right",
 		headerSort:false,
-		vertAlign: "middle",
+		vertAlign: "right",
 		print: true,
 		download: true
 	},  {
-		title: "{{strtoupper(__('alert.scanned_on'))}}",
+		title: "{{strtoupper(__('status'))}}",
 		minWidth: 180,
-		field: "created_at",
+		field: "status",
 		hozAlign: "center",
+		headerHozAlign: "center",
 		vertAlign: "middle",
 		print: true,
 		download: true

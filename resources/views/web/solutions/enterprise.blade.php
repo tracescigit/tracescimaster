@@ -1,6 +1,131 @@
 @extends('web.layouts.app')
 @section('content')
+<style>
+    .product_demo {
+        background: #ffffff;
+        padding: 120px 0;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
 
+    .product_demo::before {
+        content: "";
+        position: absolute;
+        width: 700px;
+        height: 700px;
+        border-radius: 50%;
+        background: radial-gradient(rgba(255, 255, 255, 0.08), transparent 70%);
+        top: -320px;
+        left: -180px;
+        animation: floatGlow 10s ease-in-out infinite;
+    }
+
+    .product_demo::after {
+        content: "";
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        border-radius: 50%;
+        background: radial-gradient(rgba(255, 255, 255, 0.05), transparent 70%);
+        bottom: -220px;
+        right: -140px;
+        animation: floatGlow 12s ease-in-out infinite;
+    }
+
+    .product_demo .container {
+        position: relative;
+        z-index: 2;
+    }
+
+    .demo-badge {
+        display: inline-block;
+        background: #fff;
+        border: 1px solid #000000;
+        color: #000000;
+        padding: 10px 22px;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 30px;
+        backdrop-filter: blur(8px);
+        animation: fadeUp 0.8s ease;
+    }
+
+    .product_demo h2 {
+        color: #000000;
+        font-weight: 800;
+        font-size: 52px;
+        line-height: 1.15;
+        margin-bottom: 24px;
+        position: relative;
+        animation: fadeUp 1s ease;
+        letter-spacing: -1px;
+    }
+
+    .product_demo p {
+        color: #000000;
+        font-size: 18px;
+        line-height: 1.9;
+        max-width: 760px;
+        margin: 0 auto 45px;
+        animation: fadeUp 1.2s ease;
+    }
+
+    .demo-actions {
+        animation: fadeUp 1.4s ease;
+    }
+
+    .product_demo .enterprise-btn {
+        background: #fff;
+        color: #7a0d7d !important;
+        font-weight: 700;
+        font-size: 16px;
+        padding: 18px 42px;
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+        text-decoration: none;
+        transition: all 0.35s ease;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+    }
+
+    .product_demo .enterprise-btn::before {
+        content: "";
+        position: absolute;
+        width: 0%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        background: #7a0d7d;
+        transition: width 0.4s ease;
+        z-index: -1;
+    }
+
+    .product_demo .enterprise-btn:hover::before {
+        width: 100%;
+    }
+
+    .product_demo .enterprise-btn:hover {
+        color: #fff !important;
+        transform: translateY(-6px) scale(1.03);
+        box-shadow: 0 22px 45px rgba(0, 0, 0, 0.35);
+    }
+
+    .product_demo .enterprise-btn i {
+        transition: 0.35s ease;
+    }
+
+    .product_demo .enterprise-btn:hover i {
+        transform: translateX(7px);
+    }
+
+
+</style>
 
 <div class="rev_slider_wrapper">
     <div id="slider1" class="rev_slider" data-version="5.0">

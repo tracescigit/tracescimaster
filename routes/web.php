@@ -42,15 +42,15 @@ Route::get('/demo-scheduling', [DemoController::class, 'create'])->name('demo-sc
 Route::post('/demo-schedule-details/store', [App\Http\Controllers\DemoController::class, 'store'])->name('demo-schedule-store');
 
 // products organisation 
-Route::get('/product/razor6',[PageController::class,'razor6'])->name('product-razor6');
-Route::get('/product/elite4',[PageController::class,'elite4'])->name('product-elite4');
-Route::get('/product/hyperloop',[PageController::class,'hyperloop'])->name('product-hyperloop');
+Route::get('/product/razor6', [PageController::class, 'razor6'])->name('product-razor6');
+Route::get('/product/elite4', [PageController::class, 'elite4'])->name('product-elite4');
+Route::get('/product/hyperloop', [PageController::class, 'hyperloop'])->name('product-hyperloop');
 
 // Solutions
-Route::get('/solutions/cloud',[SolutionController::class,'cloud'])->name('cloud-solution');
-Route::get('/solutions/enterprise',[SolutionController::class,'enterprise'])->name('enterprise-solution');
+Route::get('/solutions/cloud', [SolutionController::class, 'cloud'])->name('cloud-solution');
+Route::get('/solutions/enterprise', [SolutionController::class, 'enterprise'])->name('enterprise-solution');
 // blog organisation
-Route::get('/blog',[PageController::class,'blog'])->name('blog');
+Route::get('/blog', [PageController::class, 'blog'])->name('blog');
 
 
 
@@ -245,6 +245,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin', 'auth']], function 
 
     //Demo routes
     Route::get('/demo-schedule-details', [App\Http\Controllers\DemoController::class, 'index'])->name('admin-demo-schedule');
+    Route::get('/demo-schedule-details/{id}/edit', [App\Http\Controllers\DemoController::class, 'edit'])->name('admin-demo-schedule-edit');
 });
 
 Route::group(['prefix' => 'vendor', 'middleware' => ['vendor', 'auth']], function () {

@@ -75,7 +75,7 @@
         <!-- BEGIN: Login Info -->
         <div class="hidden xl:flex flex-col min-h-screen">
             <a href="{{ url('/') }}" class="-intro-x flex items-center pt-5">
-                <img width="20%" alt="Tracesci" src="{{asset('web/images/logo.png')}}" class=""></a>
+                <img width="20%" alt="Tracesci" src="{{asset('dist/images/tracesci logo_white.png')}}" class=""></a>
             </a>
             <div class="my-auto">
                 <img alt="TRACESCI" class="-intro-x w-1/2 -mt-16" src="{{ asset('dist/images/illustration.svg') }}">

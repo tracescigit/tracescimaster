@@ -1058,7 +1058,7 @@ video {
 .btn-primary {
     --tw-bg-opacity: 1;
     --tw-border-opacity: 1;
-    background: transparent linear-gradient( 45deg , #700877 0%, #ff2759 100%, #ff2759 100%) repeat scroll 0 0;
+    background-color: #7a0d7d;
 }
 
 .dark .btn-primary{
@@ -9807,7 +9807,7 @@ video {
 .breadcrumb .breadcrumb--active {
   font-weight: 500;
   --tw-text-opacity: 1;
-  color: rgba(139,21,61, var(--tw-text-opacity));
+  color: #7a0d7d;
 }
 
 .dark .breadcrumb .breadcrumb--active{

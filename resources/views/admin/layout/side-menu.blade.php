@@ -10,7 +10,7 @@
     <!-- BEGIN: Side Menu -->
     <nav class="side-nav">
         <a href="{{ url('/admin') }}" class="intro-x flex items-center pl-5 pt-4">
-            <img width="80%" alt="Tracesci" src="{{asset('dist/images/logo_color.png')}}" class="hidden xl:block"></a>
+            <img width="80%" alt="Tracesci" src="{{asset('dist/images/tracesci logo_Black.png')}}" class="hidden xl:block"></a>
         </a>
             <!-- <a href="{{ url('/') }}" class="menuzord-brand">
                 @if (request()->route()->uri!='p/{code}')
