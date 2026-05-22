@@ -225,7 +225,7 @@
                     data-x="center" data-y="top" data-voffset="120"
                     data-start="1200" data-transform_in="y:[100%];opacity:0;s:800;"
                     data-transform_out="opacity:0;s:300" ;>
-                    <span class="sl-italic" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;">
+                    <span  style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 600; font-size: 17px;">
                         One Platform. Every Stakeholder. Zero Counterfeits.
                     </span>
                 </div>
@@ -245,7 +245,7 @@
                     data-x="center" data-y="top" data-voffset="300"
                     data-start="2400" data-transform_in="y:[100%];opacity:0;s:800;"
                     data-transform_out="opacity:0;s:300" ;>
-                    <div class="sl-italic sl-italic-2 text-center" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;">
+                    <div class="text-center" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 600; font-size: 17px;">
                         Serialize every product unit with a unique QR code. Track its complete journey<br>
                         from manufacturer to end consumer — accessible by brands, inspectors, and governments.
                     </div>
@@ -282,9 +282,10 @@
                 <div class="col-sm-3 col-md-3">
                     <div class="welcome-single-content wow fadeInLeft text-center">
                         <h3>Anti-Counterfeiting</h3>
-                        <h2><span>01.</span> Authenticate</h2>
+                        <h2><span>01.</span> Verify</h2>
                         <p>
-                            Every product unit gets a cryptographically unique QR code — making counterfeits instantly detectable by consumers, inspectors and brands alike.
+                            Detect suspicious scans and diversion risks with advanced analytics for faster enforcement response and stronger supply chain protection.
+
                         </p>
                     </div>
                 </div>
@@ -293,9 +294,9 @@
                 <div class="col-sm-3 col-md-3">
                     <div class="welcome-single-content wow fadeInDown text-center">
                         <h3>Supply Chain Visibility</h3>
-                        <h2><span>02.</span> Track</h2>
+                        <h2><span>02.</span> Trace</h2>
                         <p>
-                            Follow every product from raw material intake through manufacturing, packaging and distribution — right to the end consumer's scan.
+                            Track legitimate products with real-time supply chain transparency on one unified platform for governments, brands, and distributors.
                         </p>
                     </div>
                 </div>
@@ -304,9 +305,9 @@
                 <div class="col-sm-3 col-md-3">
                     <div class="welcome-single-content wow fadeInUp text-center">
                         <h3>Real-Time Fraud Alerts</h3>
-                        <h2><span>03.</span> Monitor</h2>
+                        <h2><span>03.</span> Observe</h2>
                         <p>
-                            Behavior-based alert engine flags abnormal scan patterns, geo-location anomalies and suspected diversion — enabling instant enforcement action.
+                            Flag abnormal scans, geo-location anomalies, and product diversion risks with instant intelligence for brands and enforcement agencies.
                         </p>
                     </div>
                 </div>
@@ -315,10 +316,9 @@
                 <div class="col-sm-3 col-md-3">
                     <div class="welcome-single-content wow fadeInRight text-center">
                         <h3>GS1 Compliant</h3>
-                        <h2><span>04.</span> Standardize</h2>
+                        <h2><span>04.</span> Unify</h2>
                         <p>
-                            Fully GS1-compliant serialization that meets regulatory mandates across pharma, food, tobacco and more — in multiple countries.
-                        </p>
+                            Enable governments to prevent illicit trade, secure tax revenues, and help brands protect markets while driving innovation and economic growth.
                     </div>
                 </div>
 
@@ -334,7 +334,7 @@
                     <div class="title-block">
                         <div class="riven-heading text-center" data-sr="enter top wait 0.3s">
                             <h2>
-                                Powered by <span style="color:#7a0d7d">Blockchain</span> — One Platform for Every Stakeholder
+                                Unified <span style="color:#7a0d7d">Blockchain Platform</span> for Complete Supply Chain Visibility
                             </h2>
                         </div>
                     </div>
@@ -362,7 +362,7 @@
                         <img height="150" src="{{asset('web/images/Picture1.jpg')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="Apparel" />
                     </div>
                     <div class="desc text-center">
-                        <h3>Apparel</h3>
+                        <h3>FMCG</h3>
                     </div>
                 </div>
                 <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 0.6s">
@@ -370,7 +370,7 @@
                         <img height="150" src="{{asset('web/images/Picture2.jpg')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="Food" />
                     </div>
                     <div class="desc text-center">
-                        <h3>Food</h3>
+                        <h3>Agriculture</h3>
                     </div>
                 </div>
                 <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 0.9s">
@@ -378,7 +378,7 @@
                         <img height="150" src="{{asset('web/images/Picture3.jpg')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="Automobile" />
                     </div>
                     <div class="desc text-center">
-                        <h3>Automobile</h3>
+                        <h3>Chemicals</h3>
                     </div>
                 </div>
                 <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 1.2s">
@@ -386,7 +386,7 @@
                         <img height="150" src="{{asset('web/images/Picture4.jpg')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="Tobacco" />
                     </div>
                     <div class="desc text-center">
-                        <h3>Tobacco</h3>
+                        <h3>Textiles</h3>
                     </div>
                 </div>
                 <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 0.9s">
@@ -394,7 +394,7 @@
                         <img height="150" src="{{asset('web/images/Picture5.jpg')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="Pharma" />
                     </div>
                     <div class="desc text-center">
-                        <h3>Pharma</h3>
+                        <h3>Packaging</h3>
                     </div>
                 </div>
                 <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 1.2s">
@@ -402,7 +402,7 @@
                         <img height="150" src="{{asset('web/images/Picture6.jpg')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="Beverages" />
                     </div>
                     <div class="desc text-center">
-                        <h3>Beverages</h3>
+                        <h3>Warehousing</h3>
                     </div>
                 </div>
             </div>
@@ -526,13 +526,7 @@
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="all-link solution-btn text-center">
-                        <a href="#">View All Features</a>
-                    </div>
-                </div>
-            </div>
+            
         </div>
     </div>
 
