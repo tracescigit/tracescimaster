@@ -359,7 +359,7 @@
             <div class="row">
                 <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 0.3s">
                     <div class="thumbnail-game text-center">
-                        <img height="150" src="{{asset('web/images/Picture1.jpg')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="Apparel" />
+                        <img height="150" src="{{asset('web/images/fmcg.png')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="Apparel" />
                     </div>
                     <div class="desc text-center">
                         <h3>FMCG</h3>
@@ -367,15 +367,15 @@
                 </div>
                 <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 0.6s">
                     <div class="thumbnail-game text-center">
-                        <img height="150" src="{{asset('web/images/Picture2.jpg')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="Food" />
+                        <img height="150" src="{{asset('web/images/dairy.png')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="Food" />
                     </div>
                     <div class="desc text-center">
-                        <h3>Agriculture</h3>
+                        <h3>Dairy</h3>
                     </div>
                 </div>
                 <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 0.9s">
                     <div class="thumbnail-game text-center">
-                        <img height="150" src="{{asset('web/images/Picture3.jpg')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="Automobile" />
+                        <img height="150" src="{{asset('web/images/chemicals.png')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="Automobile" />
                     </div>
                     <div class="desc text-center">
                         <h3>Chemicals</h3>
@@ -383,7 +383,7 @@
                 </div>
                 <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 1.2s">
                     <div class="thumbnail-game text-center">
-                        <img height="150" src="{{asset('web/images/Picture4.jpg')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="Tobacco" />
+                        <img height="150" src="{{asset('web/images/textiles.png')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="Tobacco" />
                     </div>
                     <div class="desc text-center">
                         <h3>Textiles</h3>
@@ -391,7 +391,7 @@
                 </div>
                 <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 0.9s">
                     <div class="thumbnail-game text-center">
-                        <img height="150" src="{{asset('web/images/Picture5.jpg')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="Pharma" />
+                        <img height="150" src="{{asset('web/images/packaging.png')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="Pharma" />
                     </div>
                     <div class="desc text-center">
                         <h3>Packaging</h3>
@@ -399,7 +399,7 @@
                 </div>
                 <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 1.2s">
                     <div class="thumbnail-game text-center">
-                        <img height="150" src="{{asset('web/images/Picture6.jpg')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="Beverages" />
+                        <img height="150" src="{{asset('web/images/warehousing.png')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="Beverages" />
                     </div>
                     <div class="desc text-center">
                         <h3>Warehousing</h3>
@@ -456,7 +456,7 @@
             <div class="row">
                 <div class="col-sm-6 col-md-4">
                     <div class="solution-single-content solution-single-content-no-border wow fadeInLeft">
-                        <h2>Unique QR Serialization</h2>
+                        <h2>Encrypted QR Authentication</h2>
                         <p>Every product unit is assigned a cryptographically unique QR or barcode label at the point of manufacture. Codes are activated in real time on the production line and registered on an immutable blockchain record...</p>
                         <a href="#"></a>
                         <span><i class="icon icon-Antenna2"></i></span>
@@ -464,7 +464,7 @@
                 </div>
                 <div class="col-sm-6 col-md-4">
                     <div class="solution-single-content wow fadeInUp">
-                        <h2>Brand & Product Protection</h2>
+                        <h2>Advanced Brand Protection</h2>
                         <p>Non-additive digital authentication secures your packaging without modifying your existing production line. Eliminate revenue loss from counterfeits and build lasting consumer trust in your brand...</p>
                         <a href="#"></a>
                         <span><i class="icon icon-Shield"></i></span>
@@ -472,7 +472,7 @@
                 </div>
                 <div class="col-sm-6 col-md-4">
                     <div class="solution-single-content wow fadeInRight">
-                        <h2>Mobile Apps for All Stakeholders</h2>
+                        <h2>Stakeholder Mobile Applications</h2>
                         <p>Dedicated Android and iOS apps for consumers to verify authenticity, and for inspectors to perform quick field audits. Works online and offline. Consumers can also report counterfeit products directly through the app...</p>
                         <a href="#"></a>
                         <span><i class="icon icon-MessageLeft"></i></span>
@@ -480,7 +480,7 @@
                 </div>
                 <div class="col-sm-6 col-md-4">
                     <div class="solution-single-content solution-single-content-no-border wow fadeInLeft">
-                        <h2>End-to-End Supply Chain Traceability</h2>
+                        <h2>Complete Supply Traceability</h2>
                         <p>Track every product from raw material intake through manufacturing, packaging, distribution and last-mile delivery. Each checkpoint is immutably recorded — accessible to all authorised stakeholders in real time...</p>
                         <a href="#"></a>
                         <span><i class="icon icon-Chart"></i></span>
@@ -488,7 +488,7 @@
                 </div>
                 <div class="col-sm-6 col-md-4">
                     <div class="solution-single-content wow fadeInUp">
-                        <h2>Regulatory Compliance</h2>
+                        <h2>Regulatory Compliance Management</h2>
                         <p>Stay ahead of government traceability mandates. Our GS1-compliant platform supports compliance requirements across pharma, food, tobacco and more — with quick report generation built for enforcement agencies...</p>
                         <a href="#"></a>
                         <span><i class="icon icon-Tools"></i></span>
@@ -496,7 +496,7 @@
                 </div>
                 <div class="col-sm-6 col-md-4">
                     <div class="solution-single-content wow fadeInRight">
-                        <h2>Seamless Hardware Integration</h2>
+                        <h2>Integrated Hardware Connectivity</h2>
                         <p>Plug directly into your existing printing, labelling and conveyor systems. Compatible with vision inspection cameras, high-speed production lines and all major barcode formats — no production disruption...</p>
                         <a href="#"></a>
                         <span><i class="icon icon-Puzzle"></i></span>

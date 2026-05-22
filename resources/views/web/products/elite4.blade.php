@@ -1790,7 +1790,7 @@
 
                     <div class="spec-row">
                         <div class="spec-key">Printing DPI</div>
-                        <div class="spec-val"><span class="highlight">300–2400 DPI</span> Adjustable</div>
+                        <div class="spec-val"><span class="highlight">300–1200 DPI</span> Adjustable</div>
                     </div>
 
                     <div class="spec-row">
@@ -1805,7 +1805,7 @@
 
                     <div class="spec-row">
                         <div class="spec-key">Printing Distance</div>
-                        <div class="spec-val"><span class="highlight">2–5 mm</span></div>
+                        <div class="spec-val"><span class="highlight">2–4 mm</span></div>
                     </div>
 
                     <div class="spec-row">

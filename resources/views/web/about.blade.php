@@ -520,8 +520,8 @@
                             <h3>TRACESCI's platform gave us complete visibility across our supply chain. Counterfeiting incidents dropped dramatically after we deployed their serialization system.</h3>
                             <img src="images/client/client-user-1.png" alt="">
                         </div>
-                        <h2>Supply Chain Director</h2>
-                        <h3>FMCG Brand</h3>
+                        <h2>LyLy Parker</h2>
+                        <h3>MD, Label Printer</h3>
                     </div>
                     <div class="client-2-slider">
                         <div class="client-2-slider-content">
@@ -529,8 +529,8 @@
                             <h3>The blockchain-based track & trace solution from TRACESCI has significantly improved our tax compliance monitoring and reduced revenue leakage across the region.</h3>
                             <img src="images/client/client-user-2.png" alt="">
                         </div>
-                        <h2>Revenue Authority Official</h2>
-                        <h3>Government Body</h3>
+                        <h2> Vikas Sethi</h2>
+                        <h3>Product manager, Agro Company</h3>
                     </div>
                     <div class="client-2-slider">
                         <div class="client-2-slider-content">
@@ -538,8 +538,8 @@
                             <h3>We were impressed by how quickly customers adopted scanning. TRACESCI’s mobile app turned consumers into active participants in protecting our brand.</h3>
                             <img src="images/client/client-user-3.png" alt="">
                         </div>
-                        <h2>Brand Manager</h2>
-                        <h3>Pharmaceutical Company</h3>
+                        <h2>Varun Sehgal</h2>
+                        <h3>Sales Director</h3>
                     </div>
                     <div class="client-2-slider">
                         <div class="client-2-slider-content">

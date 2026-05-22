@@ -218,7 +218,7 @@
             </div>
             <div class="col-sm-6 col-md-6 no-padding-right">
               <div class="footer-bottom-right">
-                <p>Powered by <a class="text-white" href="{{route('home')}}">tracesci.</a>
+                <p>© 2026. All rights reserved by <a class="text-white" href="{{route('home')}}">tracesci.</a>
               </div>
             </div>
           </div>
