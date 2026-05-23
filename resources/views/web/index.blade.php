@@ -384,7 +384,7 @@
             <h2><span>02.</span> Track</h2>
 
             <p>
-              Blockchain-enabled supply chain tracking with deep insights of each product
+              Blockchain-powered supply chain tracking with real-time product insights.
             </p>
 
           </div>
