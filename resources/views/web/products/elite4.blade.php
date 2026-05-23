@@ -124,7 +124,7 @@
 
     .contact-tagline {
         font-family: 'Lora', serif;
-        font-size: clamp(28px, 3vw, 44px);
+        font-size: clamp(28px, 3vw, 28px);
         font-weight: 800;
         color: var(--navy);
         line-height: 1.1;
@@ -1305,11 +1305,19 @@
     }
 
     .product_demo {
-        background: #ffffff;
-        padding: 120px 0;
+        background: #f5f5f5;
+        padding: 10px 0px 20px 0;
+        /* reduced top padding from 30px to 10px */
         text-align: center;
         position: relative;
         overflow: hidden;
+        display: flex;
+        align-items: center;
+        min-height: 60vh;
+    }
+
+    .product_demo .container {
+        width: 100%;
     }
 
     .product_demo::before {
@@ -1359,7 +1367,7 @@
     .product_demo h2 {
         color: #000000;
         font-weight: 800;
-        font-size: 52px;
+        font-size: 28px;
         line-height: 1.15;
         margin-bottom: 24px;
         position: relative;
@@ -1369,7 +1377,7 @@
 
     .product_demo p {
         color: #000000;
-        font-size: 18px;
+        font-size: 15px;
         line-height: 1.9;
         max-width: 760px;
         margin: 0 auto 45px;
@@ -1695,7 +1703,7 @@
                     <div class="solution-single-content solution-single-content-no-border wow fadeInLeft">
                         <h2>High Speed Multicolor Inkjet System</h2>
                         <p>Purpose-built for demanding production environments. Industrial piezoelectric printheads (normal service life of 3 years or more) deliver consistent, high-quality multicolor output at speeds up to 60 m/min with minimal downtime...</p>
-                        <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+                        <a href="#"></a>
                         <span><i class="icon icon-Chart"></i></span>
                     </div>
                 </div>
@@ -1703,7 +1711,7 @@
                     <div class="solution-single-content wow fadeInUp">
                         <h2>Variable Data Printing Software</h2>
                         <p>Powered by Tracesci VDP Software — print barcodes, QR codes, dates and times, work group numbers, counters, graphics, tables, and databases in real-time. Printheads can be combined arbitrarily with multiple documents printed simultaneously at full production speed...</p>
-                        <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+                        <a href="#"></a>
                         <span><i class="icon icon-Shield"></i></span>
                     </div>
                 </div>
@@ -1711,7 +1719,7 @@
                     <div class="solution-single-content wow fadeInRight">
                         <h2>Track and Trace</h2>
                         <p>Integrated real-time printing of serialised codes ensures every item is uniquely identified and trackable across the supply chain. Supports full product authentication, anti-counterfeiting, and compliance workflows with centrally controlled print management...</p>
-                        <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+                        <a href="#"></a>
                         <span><i class="icon icon-MessageLeft"></i></span>
                     </div>
                 </div>
@@ -1719,7 +1727,7 @@
                     <div class="solution-single-content solution-single-content-no-border wow fadeInLeft">
                         <h2>Product Authentication</h2>
                         <p>Leverage the Elite4's multicolor CMYK inkjet capability to print overt and covert security marks, QR codes, and unique identifiers directly onto packaging at full line speed — enabling end-to-end product authentication from factory to consumer...</p>
-                        <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+                        <a href="#"></a>
                         <span><i class="icon icon-Antenna2"></i></span>
                     </div>
                 </div>
@@ -1727,7 +1735,7 @@
                     <div class="solution-single-content wow fadeInUp">
                         <h2>CMYK UV &amp; Aqueous Inks</h2>
                         <p>Dual ink compatibility — CMYK UV curable and aqueous systems — with continuous ink supply delivering to up to 4 printheads simultaneously. Automatic ink type identification with low ink level alarm. Black, spot colour, and security ink options for pharma, packaging, labels, and security applications...</p>
-                        <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+                        <a href="#"></a>
                         <span><i class="icon icon-Tools"></i></span>
                     </div>
                 </div>
@@ -1735,7 +1743,7 @@
                     <div class="solution-single-content wow fadeInRight">
                         <h2>Easy Operation &amp; Quick ROI</h2>
                         <p>15-inch industrial-grade capacitive touchscreen (1280×800) running Windows for intuitive operation. PLC, RS485, RS232, WAN and LAN connectivity for seamless system integration. Designed for swift installation and rapid start-up, ensuring fast return on investment...</p>
-                        <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+                        <a href="#"></a>
                         <span><i class="icon icon-Puzzle"></i></span>
                     </div>
                 </div>
@@ -1743,7 +1751,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="all-link solution-btn text-center">
-                        <a href="#">More Services</a>
+
                     </div>
                 </div>
             </div>
@@ -2142,7 +2150,7 @@
     </div>
     <div class="contact-form-wrap reveal" style="transition-delay:0.1s">
         <div class="section-eyebrow">Get In Touch</div>
-        <div class="contact-tagline">Ready to<br>shift into<br><span>production mode?</span></div>
+        <div class="contact-tagline">Ready to shift into<br><span>production mode?</span></div>
         <p class="contact-body">Tell us about your production requirements and we'll configure the ideal Elite4 system for your line — including any ancillary equipment needed for a complete multicolor inkjet solution.</p>
         <div class="contact-highlights">
             <div class="contact-highlight">
@@ -2179,7 +2187,7 @@
                 </div> -->
 
                 <h2>
-                    Multicolor Variable Data Printing &amp; Product Authentication
+                    Multicolor Variable Data Printing &amp; <span style="color: #7a0d7d;">Product Authentication</span>
                 </h2>
 
                 <p>

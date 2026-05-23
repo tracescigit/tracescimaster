@@ -619,7 +619,7 @@
 
     .contact-tagline {
         font-family: 'Lora', serif;
-        font-size: clamp(28px, 3vw, 44px);
+        font-size: clamp(28px, 3vw, 28px);
         font-weight: 800;
         color: var(--navy);
         line-height: 1.1;
@@ -662,12 +662,20 @@
     }
 
     .product_demo {
-        background: #ffffff;
-        padding: 120px 0;
-        text-align: center;
-        position: relative;
-        overflow: hidden;
-    }
+         background: #f5f5f5;
+         padding: 10px 0px 20px 0;
+         /* reduced top padding from 30px to 10px */
+         text-align: center;
+         position: relative;
+         overflow: hidden;
+         display: flex;
+         align-items: center;
+         min-height: 60vh;
+     }
+
+     .product_demo .container {
+         width: 100%;
+     }
 
     .product_demo::before {
         content: "";
@@ -716,7 +724,7 @@
     .product_demo h2 {
         color: #000000;
         font-weight: 800;
-        font-size: 52px;
+        font-size: 28px;
         line-height: 1.15;
         margin-bottom: 24px;
         position: relative;
@@ -726,7 +734,7 @@
 
     .product_demo p {
         color: #000000;
-        font-size: 18px;
+        font-size: 15px;
         line-height: 1.9;
         max-width: 760px;
         margin: 0 auto 45px;
@@ -1072,7 +1080,7 @@
                     <div class="solution-single-content solution-single-content-no-border wow fadeInLeft">
                         <h2>Variable Data Printing</h2>
                         <p>Powered by tracesci VDP software — print barcodes, QR codes, serial numbers, dates, counters, and custom graphics inline at full production speed. Printheads can be combined arbitrarily with multiple documents printed simultaneously for complete traceability...</p>
-                        <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+                        <a href="#"></a>
                         <span><i class="icon icon-Chart"></i></span>
                     </div>
                 </div>
@@ -1080,7 +1088,7 @@
                     <div class="solution-single-content wow fadeInUp">
                         <h2>High Speed Vision Inspection</h2>
                         <p>100% online inspection at up to 250 m/min. Detects scratches, stains, de-ink, foreign particles, colour deviations, and logo errors. Reads 1D/2D/QR and security codes with full OCR/ICV verification and automated inspection report generation...</p>
-                        <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+                        <a href="#"></a>
                         <span><i class="icon icon-Shield"></i></span>
                     </div>
                 </div>
@@ -1088,7 +1096,7 @@
                     <div class="solution-single-content wow fadeInRight">
                         <h2>Automated Digital Slitting</h2>
                         <p>9-blade digitally positioned slitting at up to 150 m/min with automatic blade positioning via HMI — no manual changeover required. Integrated QC defect-removal plate ensures only perfect rolls leave the line...</p>
-                        <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+                        <a href="#"></a>
                         <span><i class="icon icon-MessageLeft"></i></span>
                     </div>
                 </div>
@@ -1096,7 +1104,7 @@
                     <div class="solution-single-content solution-single-content-no-border wow fadeInLeft">
                         <h2>Dual Rewinder &amp; Web Guide</h2>
                         <p>Dual rewinder with integrated dual web guide (one unit after unwinder, one before slitting) ensures perfect tension-controlled rewinding and precise roll geometry — eliminating edge misalignment at any speed...</p>
-                        <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+                        <a href="#"></a>
                         <span><i class="icon icon-Antenna2"></i></span>
                     </div>
                 </div>
@@ -1104,7 +1112,7 @@
                     <div class="solution-single-content wow fadeInUp">
                         <h2>Label Transfer Device</h2>
                         <p>Inline label transfer device enables seamless reel changeover and label repositioning without stopping production, maximising uptime across continuous manufacturing runs in pharma, packaging, and security applications...</p>
-                        <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+                        <a href="#"></a>
                         <span><i class="icon icon-Tools"></i></span>
                     </div>
                 </div>
@@ -1112,7 +1120,7 @@
                     <div class="solution-single-content wow fadeInRight">
                         <h2>Track &amp; Trace Integration</h2>
                         <p>End-to-end serialisation and authentication from the tracesci platform — uniquely identify every item across the supply chain. Supports full product authentication, anti-counterfeiting, and compliance workflows with centrally controlled print management...</p>
-                        <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+                        <a href="#"></a>
                         <span><i class="icon icon-Puzzle"></i></span>
                     </div>
                 </div>
@@ -1120,7 +1128,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="all-link solution-btn text-center">
-                        <a href="#">More Services</a>
+                        
                     </div>
                 </div>
             </div>
@@ -1489,9 +1497,9 @@
         <img src="https://cdn.prod.website-files.com/618bcfd8f178447ade4b3ba0/61bcb317af56b916bbd53472_modes-footer-1.png" alt="Team working on production line" />
     </div>
     <div class="contact-info reveal" style="transition-delay:0.1s">
-        <div class="section-eyebrow">Get In Touch</div>
+        <div class="section-eyebrow" style="margin-top: 5px;">Get In Touch</div>
         <div class="contact-tagline">
-            Ready to<br>loop into<br><span>production mode?</span>
+            Ready to loop into<br><span>production mode?</span>
         </div>
         <p class="contact-body">Tell us about your production requirements and we'll configure the ideal Hyperloop system for your line — including VDP software setup, vision inspection calibration, and slitting configuration.</p>
         <div class="contact-highlights">
@@ -1528,7 +1536,7 @@
                 </div> -->
 
                 <h2>
-                    High-Speed Inspection, Slitting &amp; Variable Data Printing
+                    <span style="color: #7a0d7d;">High-Speed Inspection</span>, Slitting &amp; Variable Data Printing
                 </h2>
 
                 <p>

@@ -124,7 +124,7 @@
 
      .contact-tagline {
          font-family: 'Lora', serif;
-         font-size: clamp(28px, 3vw, 44px);
+         font-size: clamp(28px, 3vw, 28px);
          font-weight: 800;
          color: var(--navy);
          line-height: 1.1;
@@ -1304,11 +1304,18 @@
      }
 
      .product_demo {
-         background: #ffffff;
-         padding: 120px 0;
+         background: #f5f5f5;
+         padding: 10px 0px 20px 0;
          text-align: center;
          position: relative;
          overflow: hidden;
+         display: flex;
+         align-items: center;
+         min-height: 60vh;
+     }
+
+     .product_demo .container {
+         width: 100%;
      }
 
      .product_demo::before {
@@ -1355,15 +1362,13 @@
          animation: fadeUp 0.8s ease;
      }
 
-     .product_demo h2 {
+     .product_demo p {
          color: #000000;
-         font-weight: 800;
-         font-size: 52px;
-         line-height: 1.15;
-         margin-bottom: 24px;
-         position: relative;
-         animation: fadeUp 1s ease;
-         letter-spacing: -1px;
+         font-size: 15px;
+         line-height: 1.9;
+         max-width: 760px;
+         margin: 0 auto 45px;
+         animation: fadeUp 1.2s ease;
      }
 
      .product_demo p {
@@ -1424,6 +1429,26 @@
 
      .product_demo .enterprise-btn:hover i {
          transform: translateX(7px);
+     }
+
+     .product_demo h2 {
+         color: #000000;
+         font-weight: 800;
+         font-size: 28px;
+         line-height: 1.15;
+         margin-bottom: 24px;
+         position: relative;
+         animation: fadeUp 1s ease;
+         letter-spacing: -1px;
+     }
+
+     .product_demo p {
+         color: #000000;
+         font-size: 15px;
+         line-height: 1.9;
+         max-width: 760px;
+         margin: 0 auto 45px;
+         animation: fadeUp 1.2s ease;
      }
 
      /* ── REVEAL ── */
@@ -1670,7 +1695,7 @@
                      <div class="solution-single-content solution-single-content-no-border wow fadeInLeft">
                          <h2>Industrial Inkjet System</h2>
                          <p>Purpose-built for 24×7 industrial production environments. Robust Piezo DOD print head technology delivers consistent, high-quality output across demanding continuous-run operations with minimal downtime.. ...</p>
-                         <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+                         <a href="#"></a>
                          <span><i class="icon icon-Chart"></i></span>
                      </div>
                  </div>
@@ -1678,7 +1703,7 @@
                      <div class="solution-single-content wow fadeInUp">
                          <h2>Variable Data Printing Software</h2>
                          <p>Powered by Tarcesci RapidPro Software — industry-leading VDP engine for serialisation, barcodes, QR codes, personalisation and complex variable data at full production speed without compromising throughput....</p>
-                         <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+                         <a href="#"></a>
                          <span><i class="icon icon-Shield"></i></span>
                      </div>
                  </div>
@@ -1686,7 +1711,7 @@
                      <div class="solution-single-content wow fadeInRight">
                          <h2>Online Code Verification</h2>
                          <p>Integrated real-time verification ensures every printed code — barcode, QR, DataMatrix, or serialised number — is readable and compliant. Bad codes are flagged and rejected automatically inline, keeping your line 100% accurate....</p>
-                         <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+                         <a href="#"></a>
                          <span><i class="icon icon-MessageLeft"></i></span>
                      </div>
                  </div>
@@ -1694,7 +1719,7 @@
                      <div class="solution-single-content solution-single-content-no-border wow fadeInLeft">
                          <h2>High Speed PDF Printing</h2>
                          <p>Native PDF workflow support enables direct-to-press output without ripping delays. Handles complex graphical content, security patterns, and fine text at full line speed — up to 150 metres per minute....</p>
-                         <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+                         <a href="#"></a>
                          <span><i class="icon icon-Antenna2"></i></span>
                      </div>
                  </div>
@@ -1702,7 +1727,7 @@
                      <div class="solution-single-content wow fadeInUp">
                          <h2>UV Cured Aqueous Inks</h2>
                          <p>Dual ink compatibility — UV curable and aqueous systems — in 0.5L and 1L tank configurations. Black, Spot colour, and Security ink options provide versatility across packaging, labels, pharma, and security applications....</p>
-                         <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+                         <a href="#"></a>
                          <span><i class="icon icon-Tools"></i></span>
                      </div>
                  </div>
@@ -1710,7 +1735,7 @@
                      <div class="solution-single-content wow fadeInRight">
                          <h2>Quick ROI & Easy Operation</h2>
                          <p>Operator-friendly ink control with intuitive interface minimises training time. Designed for swift installation and rapid start-up, ensuring fast return on investment and low total cost of ownership across your production lifecycle....</p>
-                         <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+                         <a href="#"></a>
                          <span><i class="icon icon-Puzzle"></i></span>
                      </div>
                  </div>
@@ -1718,7 +1743,7 @@
              <div class="row">
                  <div class="col-md-12">
                      <div class="all-link solution-btn text-center">
-                         <a href="#">More Services</a>
+
                      </div>
                  </div>
              </div>
@@ -2045,7 +2070,7 @@
          </div>
          <div class="contact-form-wrap reveal" style="transition-delay:0.1s">
              <div class="section-eyebrow">Get In Touch</div>
-             <div class="contact-tagline">Ready to<br>shift into<br><span>production mode?</span></div>
+             <div class="contact-tagline">Ready to shift into<br><span>production mode?</span></div>
              <p class="contact-body">Tell us about your production requirements and we'll configure the ideal Razor6 system for your line — including any ancillary equipment needed for a complete solution.</p>
              <div class="contact-highlights">
                  <div class="contact-highlight">
@@ -2082,7 +2107,7 @@
                  </div> -->
 
                  <h2>
-                     High-Speed Variable Data Printing for 24×7 Production
+                     High-Speed Variable Data Printing for <span style="color: #7a0d7d;">24×7 Production</span>
                  </h2>
 
                  <p>
