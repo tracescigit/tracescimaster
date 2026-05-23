@@ -36,7 +36,7 @@
 				<h4 style="color: #7a0d7d;font-weight: bold;">What if I have any concerns related content / services ?</h4>
 	
 				<br>
-				You can always reach out to us through chat box or through mail  <a href="mailto:info@tracesci.in"> info@tracesci.in </a> and our team will resolve your issues.
+				You can always reach out to us through chat box or through mail  <a href="mailto:info@tracesci.in"> wecare@tracesci.in </a> and our team will resolve your issues.
 			</li>
 
 			

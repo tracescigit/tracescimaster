@@ -28,138 +28,139 @@
     min-width: 70px;
     min-height: 70px;
   }
-  .trace-process-section{
-    background:#f5f5f5;
-    position:relative;
-    overflow:hidden;
-}
 
-.trace-process-section{
-    background:#f5f5f5;
-    overflow:hidden;
-}
+  .trace-process-section {
+    background: #f5f5f5;
+    position: relative;
+    overflow: hidden;
+  }
 
-.section-title{
-    margin-bottom:40px;
-}
+  .trace-process-section {
+    background: #f5f5f5;
+    overflow: hidden;
+  }
 
-.subtitle{
-    display:inline-block;
-    background:#7a0d7d;
-    color:#fff;
-    padding:8px 20px;
-    border-radius:30px;
-    font-size:14px;
-    font-weight:600;
-    margin-bottom:20px;
-}
+  .section-title {
+    margin-bottom: 40px;
+  }
 
-.section-title h2{
-    font-size:48px;
-    font-weight:700;
-    color:#111;
-    margin-bottom:20px;
-}
+  .subtitle {
+    display: inline-block;
+    background: #7a0d7d;
+    color: #fff;
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
 
-.section-title p{
-    max-width:750px;
-    margin:auto;
-    color:#666;
-    font-size:18px;
-    line-height:1.8;
-}
+  .section-title h2 {
+    font-size: 48px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 20px;
+  }
 
-.center-image{
-    margin-bottom:70px;
-}
+  .section-title p {
+    max-width: 750px;
+    margin: auto;
+    color: #666;
+    font-size: 18px;
+    line-height: 1.8;
+  }
 
-.center-image img{
-    width:650px;
-    max-width:100%;
-}
+  .center-image {
+    margin-bottom: 70px;
+  }
 
-.process-grid .mb-4{
-    margin-bottom:30px;
-}
+  .center-image img {
+    width: 650px;
+    max-width: 100%;
+  }
 
-.process-card{
-    background:#fff;
-    border-radius:20px;
-    padding:35px;
-    text-align:center;
-    height:100%;
-    box-shadow:0 10px 35px rgba(0,0,0,0.05);
-    transition:0.3s ease;
-    border-top:4px solid #7a0d7d;
-}
+  .process-grid .mb-4 {
+    margin-bottom: 30px;
+  }
 
-.process-card:hover{
-    transform:translateY(-8px);
-}
+  .process-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 35px;
+    text-align: center;
+    height: 100%;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.05);
+    transition: 0.3s ease;
+    border-top: 4px solid #7a0d7d;
+  }
 
-.step-badge{
-    width:65px;
-    height:65px;
-    margin:0 auto 20px;
-    background:#7a0d7d;
-    color:#fff;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:22px;
-    font-weight:700;
-}
+  .process-card:hover {
+    transform: translateY(-8px);
+  }
 
-.process-card h3{
-    font-size:24px;
-    font-weight:700;
-    margin-bottom:15px;
-    color:#111;
-}
+  .step-badge {
+    width: 65px;
+    height: 65px;
+    margin: 0 auto 20px;
+    background: #7a0d7d;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: 700;
+  }
 
-.process-card p{
-    color:#666;
-    line-height:1.8;
-    font-size:16px;
-    margin:0;
-}
+  .process-card h3 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #111;
+  }
 
-@media(max-width:991px){
+  .process-card p {
+    color: #666;
+    line-height: 1.8;
+    font-size: 16px;
+    margin: 0;
+  }
 
-    .section-title h2{
-        font-size:36px;
+  @media(max-width:991px) {
+
+    .section-title h2 {
+      font-size: 36px;
     }
 
-    .center-image img{
-        width:350px;
+    .center-image img {
+      width: 350px;
     }
 
-}
+  }
 
-@media(max-width:767px){
+  @media(max-width:767px) {
 
-    .trace-process-section{
-        padding:70px 0;
+    .trace-process-section {
+      padding: 70px 0;
     }
 
-    .section-title h2{
-        font-size:30px;
+    .section-title h2 {
+      font-size: 30px;
     }
 
-    .process-card{
-        padding:25px;
+    .process-card {
+      padding: 25px;
     }
 
-    .process-card h3{
-        font-size:20px;
+    .process-card h3 {
+      font-size: 20px;
     }
 
-    .center-image{
-        margin-bottom:50px;
+    .center-image {
+      margin-bottom: 50px;
     }
 
-}
+  }
 </style>
 <!-- slider -->
 
@@ -384,7 +385,8 @@
             <h2><span>02.</span> Track</h2>
 
             <p>
-              Blockchain-powered supply chain tracking with real-time product insights.
+              Blockchain-driven supply chain tracking with real-time insights.
+
             </p>
 
           </div>
@@ -530,7 +532,7 @@
             <h2>Easy to use</h2>
             <p>Scalable solution enabling secure traceability, compliance, counterfeit prevention, operational efficiency, and supply chain visibility for Products.
 
-</p>
+            </p>
             <a href="#"></a>
             <span><i class="icon icon-Chart"></i></span>
           </div>
@@ -539,7 +541,7 @@
           <div class="solution-single-content wow fadeInUp">
             <h2>Protect your Product</h2>
             <p>Secure packaging and authentication safeguard brands, protect consumers, prevent counterfeiting, build trust, and ensure product authenticity worldwide.
-</p>
+            </p>
             <a href="#"></a>
             <span><i class="icon icon-Shield"></i></span>
           </div>
@@ -548,7 +550,7 @@
           <div class="solution-single-content wow fadeInRight">
             <h2>Engagement</h2>
             <p>Gain valuable consumer insights, understand end-user behavior, and connect customers seamlessly with loyalty and engagement programs.
-</p>
+            </p>
             <a href="#"></a>
             <span><i class="icon icon-MessageLeft"></i></span>
           </div>
@@ -557,7 +559,7 @@
           <div class="solution-single-content solution-single-content-no-border wow fadeInLeft">
             <h2>Product serialization</h2>
             <p>Serialization drives digital transformation by enabling secure traceability, operational transparency, smarter supply chains, and connected brand ecosystems.
-</p>
+            </p>
             <a href="#"></a>
             <span><i class="icon icon-Antenna2"></i></span>
           </div>
@@ -566,7 +568,7 @@
           <div class="solution-single-content wow fadeInUp">
             <h2>Regulatory compliance</h2>
             <p>Access a unified solution supporting global compliance mandates, enabling secure operations, regulatory adherence, and seamless business integration worldwide.
-</p>
+            </p>
             <a href="#"></a>
             <span><i class="icon icon-Tools"></i></span>
           </div>
@@ -575,7 +577,7 @@
           <div class="solution-single-content wow fadeInRight">
             <h2>Hardware integration</h2>
             <p>Built for seamless integration with printers, labeling equipment, conveyor systems, and intelligent vision inspection solutions for fully automated production environments.
-</p>
+            </p>
             <a href="#"></a>
             <span><i class="icon icon-Puzzle"></i></span>
           </div>
@@ -601,75 +603,75 @@
     <!-- END TITLE -->
 
     <section class="trace-process-section">
-    <div class="container">
+      <div class="container">
 
         <!-- SECTION TITLE -->
         <div class="section-title text-center">
-            <h2>Secure Product Traceability Workflow</h2>
-            <p>
-                One connected platform for onboarding, serialization,
-                authentication and real-time enforcement.
-            </p>
+          <h2>Secure Product Traceability Workflow</h2>
+          <p>
+            One connected platform for onboarding, serialization,
+            authentication and real-time enforcement.
+          </p>
         </div>
 
         <!-- CENTER IMAGE -->
         <div class="center-image text-center">
-            <img src="{{ asset('dist/images/bbchain.png') }}"
-                 class="img-responsive center-block"
-                 alt="Blockchain Traceability">
+          <img src="{{ asset('dist/images/bbchain.png') }}"
+            class="img-responsive center-block"
+            alt="Blockchain Traceability">
         </div>
 
         <!-- PROCESS GRID -->
         <div class="row process-grid">
 
-            <div class="col-md-6 col-sm-6 mb-4">
-                <div class="process-card">
-                    <div class="step-badge">01</div>
-                    <h3>Enterprise Onboarding</h3>
-                    <p>
-                        Register manufacturers, verify compliance documents, and provide secure platform access with role-based controls, enabling seamless onboarding, authenticated operations, centralized management, and real-time visibility across the supply chain ecosystem while ensuring security, transparency, and regulatory compliance.
+          <div class="col-md-6 col-sm-6 mb-4">
+            <div class="process-card">
+              <div class="step-badge">01</div>
+              <h3>Enterprise Onboarding</h3>
+              <p>
+                Register manufacturers, verify compliance documents, and provide secure platform access with role-based controls, enabling seamless onboarding, authenticated operations, centralized management, and real-time visibility across the supply chain ecosystem while ensuring security, transparency, and regulatory compliance.
 
-                    </p>
-                </div>
+              </p>
             </div>
+          </div>
 
-            <div class="col-md-6 col-sm-6 mb-4">
-                <div class="process-card">
-                    <div class="step-badge">02</div>
-                    <h3>Product Serialization</h3>
-                    <p>
-                        Create SKUs, define packaging hierarchies, and configure serialization workflows with ease, enabling accurate product identification, seamless aggregation, efficient inventory control, real-time traceability, and secure supply chain operations across manufacturing, distribution, and retail environments.
+          <div class="col-md-6 col-sm-6 mb-4">
+            <div class="process-card">
+              <div class="step-badge">02</div>
+              <h3>Product Serialization</h3>
+              <p>
+                Create SKUs, define packaging hierarchies, and configure serialization workflows with ease, enabling accurate product identification, seamless aggregation, efficient inventory control, real-time traceability, and secure supply chain operations across manufacturing, distribution, and retail environments.
 
-                    </p>
-                </div>
+              </p>
             </div>
+          </div>
 
-            <div class="col-md-6 col-sm-6 mb-4">
-                <div class="process-card">
-                    <div class="step-badge">03</div>
-                    <h3>Cryptographic Code Generation</h3>
-                    <p>
-                        Print and activate unique QR codes or barcode identities on every product, enabling secure authentication, real-time traceability, anti-counterfeiting protection, streamlined inventory management, seamless aggregation, and complete visibility across manufacturing, distribution, retail, and consumer verification processes.
+          <div class="col-md-6 col-sm-6 mb-4">
+            <div class="process-card">
+              <div class="step-badge">03</div>
+              <h3>Cryptographic Code Generation</h3>
+              <p>
+                Print and activate unique QR codes or barcode identities on every product, enabling secure authentication, real-time traceability, anti-counterfeiting protection, streamlined inventory management, seamless aggregation, and complete visibility across manufacturing, distribution, retail, and consumer verification processes.
 
-                    </p>
-                </div>
+              </p>
             </div>
+          </div>
 
-            <div class="col-md-6 col-sm-6 mb-4">
-                <div class="process-card">
-                    <div class="step-badge">04</div>
-                    <h3>Supply Chain Surveillance & Enforcement</h3>
-                    <p>
-                        Monitor product movement, detect suspicious activity, and verify authenticity in real time, enabling faster fraud prevention, supply chain transparency, secure product tracking, intelligent risk detection, enforcement response, and trusted consumer engagement across manufacturing, distribution, and retail networks.
+          <div class="col-md-6 col-sm-6 mb-4">
+            <div class="process-card">
+              <div class="step-badge">04</div>
+              <h3>Supply Chain Surveillance & Enforcement</h3>
+              <p>
+                Monitor product movement, detect suspicious activity, and verify authenticity in real time, enabling faster fraud prevention, supply chain transparency, secure product tracking, intelligent risk detection, enforcement response, and trusted consumer engagement across manufacturing, distribution, and retail networks.
 
-                    </p>
-                </div>
+              </p>
             </div>
+          </div>
 
         </div>
 
-    </div>
-</section>
+      </div>
+    </section>
   </div>
 </div>
 
@@ -711,7 +713,7 @@
             <div class="pricing-table-content text-center wow fadeInLeft">
               <div class="pricing-table-head">
                 <div class="pricing-head-top">
-                  <span>{{$plan->title}}</span> 
+                  <span>{{$plan->title}}</span>
 </div>
 <div class="pricing-head-content">
   <span>

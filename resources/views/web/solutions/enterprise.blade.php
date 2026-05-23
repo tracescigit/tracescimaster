@@ -123,8 +123,6 @@
     .product_demo .enterprise-btn:hover i {
         transform: translateX(7px);
     }
-
-
 </style>
 
 <div class="rev_slider_wrapper">
@@ -203,7 +201,8 @@
                         <h3>Customized Platform</h3>
                         <h2><span>01.</span> Tailored</h2>
                         <p>
-                            Every deployment is built around your specific business or government requirements — flexible architecture, custom workflows and a dedicated portal configured to your use case.
+                            Every deployment is tailored to your business needs with flexible workflows and customized solutions.
+
                         </p>
                     </div>
                 </div>
@@ -214,7 +213,8 @@
                         <h3>Multi-Stakeholder</h3>
                         <h2><span>02.</span> Integrated</h2>
                         <p>
-                            Manufacturer, brand, authority, printer and inspector modules — all connected in one unified system with role-based access control and centralized monitoring.
+                            Integrated enterprise modules with centralized monitoring and secure role-based access.
+
                         </p>
                     </div>
                 </div>
@@ -225,7 +225,8 @@
                         <h3>Deployment Flexibility</h3>
                         <h2><span>03.</span> On Your Terms</h2>
                         <p>
-                            Choose client-server, hosted cloud, on-premise or a fully dedicated portal. Your data, your infrastructure, your control — with Tracesci powering it all.
+                            Flexible deployment options with complete control over your data, infrastructure, and operations.
+
                         </p>
                     </div>
                 </div>
@@ -234,9 +235,9 @@
                 <div class="col-sm-3 col-md-3">
                     <div class="welcome-single-content wow fadeInRight text-center">
                         <h3>Scalable at Volume</h3>
-                        <h2><span>04.</span> Enterprise-Ready</h2>
+                        <h2><span>04.</span> Adaptive</h2>
                         <p>
-                            Built for large product volumes, multi-market supply chains and government-scale traceability programs — with unlimited brands, SKUs and serialization capacity.
+                            Built for large-scale traceability with support for unlimited brands, SKUs, and product volumes.
                         </p>
                     </div>
                 </div>
@@ -444,19 +445,42 @@
                     </div>
                 </div>
             </div>
-
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="all-link solution-btn text-center">
-                        <a href="#">View All Features</a>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 
 
     <!-- How It Works Section -->
+</div>
+<div class="product_demo">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <!-- <div class="demo-badge">
+                    Tracesci Cloud Solution
+                </div> -->
+
+                <h2>
+                    Blockchain-Powered Product Traceability & Authentication
+                </h2>
+
+                <p>
+                    Tracesci Cloud Solution enables secure product serialization, anti-counterfeit
+                    verification, mobile authentication, and end-to-end supply chain traceability
+                    through a scalable blockchain-powered platform built for modern manufacturers,
+                    regulators, and global distribution networks.
+                </p>
+
+                <div class="demo-actions">
+                    <a href="{{route('demo-schedule-create')}}" class="enterprise-btn">
+                        Schedule Cloud Demo
+                        <i class="fa fa-long-arrow-right"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
 
