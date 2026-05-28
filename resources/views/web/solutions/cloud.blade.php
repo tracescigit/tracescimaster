@@ -225,7 +225,7 @@
                     data-x="center" data-y="top" data-voffset="120"
                     data-start="1200" data-transform_in="y:[100%];opacity:0;s:800;"
                     data-transform_out="opacity:0;s:300" ;>
-                    <span class="sl-italic" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;">
+                    <span style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 600; font-size: 17px;">
                         One Platform. Every Stakeholder. Zero Counterfeits.
                     </span>
                 </div>
@@ -245,7 +245,7 @@
                     data-x="center" data-y="top" data-voffset="300"
                     data-start="2400" data-transform_in="y:[100%];opacity:0;s:800;"
                     data-transform_out="opacity:0;s:300" ;>
-                    <div class="sl-italic sl-italic-2 text-center" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;">
+                    <div class="text-center" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 600; font-size: 17px;">
                         Serialize every product unit with a unique QR code. Track its complete journey<br>
                         from manufacturer to end consumer — accessible by brands, inspectors, and governments.
                     </div>
@@ -282,9 +282,10 @@
                 <div class="col-sm-3 col-md-3">
                     <div class="welcome-single-content wow fadeInLeft text-center">
                         <h3>Anti-Counterfeiting</h3>
-                        <h2><span>01.</span> Authenticate</h2>
+                        <h2><span>01.</span> Verify</h2>
                         <p>
-                            Every product unit gets a cryptographically unique QR code — making counterfeits instantly detectable by consumers, inspectors and brands alike.
+                            Detect suspicious scans and diversion risks with advanced analytics for faster enforcement response and stronger supply chain protection.
+
                         </p>
                     </div>
                 </div>
@@ -293,9 +294,9 @@
                 <div class="col-sm-3 col-md-3">
                     <div class="welcome-single-content wow fadeInDown text-center">
                         <h3>Supply Chain Visibility</h3>
-                        <h2><span>02.</span> Track</h2>
+                        <h2><span>02.</span> Trace</h2>
                         <p>
-                            Follow every product from raw material intake through manufacturing, packaging and distribution — right to the end consumer's scan.
+                            Track legitimate products with real-time supply chain transparency on one unified platform for governments, brands, and distributors.
                         </p>
                     </div>
                 </div>
@@ -304,9 +305,9 @@
                 <div class="col-sm-3 col-md-3">
                     <div class="welcome-single-content wow fadeInUp text-center">
                         <h3>Real-Time Fraud Alerts</h3>
-                        <h2><span>03.</span> Monitor</h2>
+                        <h2><span>03.</span> Observe</h2>
                         <p>
-                            Behavior-based alert engine flags abnormal scan patterns, geo-location anomalies and suspected diversion — enabling instant enforcement action.
+                            Flag abnormal scans, geo-location anomalies, and product diversion risks with instant intelligence for brands and enforcement agencies.
                         </p>
                     </div>
                 </div>
@@ -315,10 +316,9 @@
                 <div class="col-sm-3 col-md-3">
                     <div class="welcome-single-content wow fadeInRight text-center">
                         <h3>GS1 Compliant</h3>
-                        <h2><span>04.</span> Standardize</h2>
+                        <h2><span>04.</span> Unify</h2>
                         <p>
-                            Fully GS1-compliant serialization that meets regulatory mandates across pharma, food, tobacco and more — in multiple countries.
-                        </p>
+                            Enable governments to prevent illicit trade, secure tax revenues, and help brands protect markets while driving innovation and economic growth.
                     </div>
                 </div>
 
@@ -334,7 +334,7 @@
                     <div class="title-block">
                         <div class="riven-heading text-center" data-sr="enter top wait 0.3s">
                             <h2>
-                                Powered by <span style="color:#7a0d7d">Blockchain</span> — One Platform for Every Stakeholder
+                                Unified <span style="color:#7a0d7d">Blockchain Platform</span> for Complete Supply Chain Visibility
                             </h2>
                         </div>
                     </div>
@@ -359,50 +359,50 @@
             <div class="row">
                 <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 0.3s">
                     <div class="thumbnail-game text-center">
-                        <img height="150" src="{{asset('web/images/Picture1.jpg')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="Apparel" />
+                        <img height="150" src="{{asset('web/images/fmcg.png')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="Apparel" />
                     </div>
                     <div class="desc text-center">
-                        <h3>Apparel</h3>
+                        <h3>FMCG</h3>
                     </div>
                 </div>
                 <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 0.6s">
                     <div class="thumbnail-game text-center">
-                        <img height="150" src="{{asset('web/images/Picture2.jpg')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="Food" />
+                        <img height="150" src="{{asset('web/images/dairy.png')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="Food" />
                     </div>
                     <div class="desc text-center">
-                        <h3>Food</h3>
+                        <h3>Dairy</h3>
                     </div>
                 </div>
                 <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 0.9s">
                     <div class="thumbnail-game text-center">
-                        <img height="150" src="{{asset('web/images/Picture3.jpg')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="Automobile" />
+                        <img height="150" src="{{asset('web/images/chemicals.png')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="Automobile" />
                     </div>
                     <div class="desc text-center">
-                        <h3>Automobile</h3>
+                        <h3>Chemicals</h3>
                     </div>
                 </div>
                 <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 1.2s">
                     <div class="thumbnail-game text-center">
-                        <img height="150" src="{{asset('web/images/Picture4.jpg')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="Tobacco" />
+                        <img height="150" src="{{asset('web/images/textiles.png')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="Tobacco" />
                     </div>
                     <div class="desc text-center">
-                        <h3>Tobacco</h3>
+                        <h3>Textiles</h3>
                     </div>
                 </div>
                 <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 0.9s">
                     <div class="thumbnail-game text-center">
-                        <img height="150" src="{{asset('web/images/Picture5.jpg')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="Pharma" />
+                        <img height="150" src="{{asset('web/images/packaging.png')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="Pharma" />
                     </div>
                     <div class="desc text-center">
-                        <h3>Pharma</h3>
+                        <h3>Packaging</h3>
                     </div>
                 </div>
                 <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 1.2s">
                     <div class="thumbnail-game text-center">
-                        <img height="150" src="{{asset('web/images/Picture6.jpg')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="Beverages" />
+                        <img height="150" src="{{asset('web/images/warehousing.png')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="Beverages" />
                     </div>
                     <div class="desc text-center">
-                        <h3>Beverages</h3>
+                        <h3>Warehousing</h3>
                     </div>
                 </div>
             </div>
@@ -456,7 +456,7 @@
             <div class="row">
                 <div class="col-sm-6 col-md-4">
                     <div class="solution-single-content solution-single-content-no-border wow fadeInLeft">
-                        <h2>Unique QR Serialization</h2>
+                        <h2>Encrypted QR Authentication</h2>
                         <p>Every product unit is assigned a cryptographically unique QR or barcode label at the point of manufacture. Codes are activated in real time on the production line and registered on an immutable blockchain record...</p>
                         <a href="#"></a>
                         <span><i class="icon icon-Antenna2"></i></span>
@@ -464,7 +464,7 @@
                 </div>
                 <div class="col-sm-6 col-md-4">
                     <div class="solution-single-content wow fadeInUp">
-                        <h2>Brand & Product Protection</h2>
+                        <h2>Advanced Brand Protection</h2>
                         <p>Non-additive digital authentication secures your packaging without modifying your existing production line. Eliminate revenue loss from counterfeits and build lasting consumer trust in your brand...</p>
                         <a href="#"></a>
                         <span><i class="icon icon-Shield"></i></span>
@@ -472,7 +472,7 @@
                 </div>
                 <div class="col-sm-6 col-md-4">
                     <div class="solution-single-content wow fadeInRight">
-                        <h2>Mobile Apps for All Stakeholders</h2>
+                        <h2>Stakeholder Mobile Applications</h2>
                         <p>Dedicated Android and iOS apps for consumers to verify authenticity, and for inspectors to perform quick field audits. Works online and offline. Consumers can also report counterfeit products directly through the app...</p>
                         <a href="#"></a>
                         <span><i class="icon icon-MessageLeft"></i></span>
@@ -480,7 +480,7 @@
                 </div>
                 <div class="col-sm-6 col-md-4">
                     <div class="solution-single-content solution-single-content-no-border wow fadeInLeft">
-                        <h2>End-to-End Supply Chain Traceability</h2>
+                        <h2>Complete Supply Traceability</h2>
                         <p>Track every product from raw material intake through manufacturing, packaging, distribution and last-mile delivery. Each checkpoint is immutably recorded — accessible to all authorised stakeholders in real time...</p>
                         <a href="#"></a>
                         <span><i class="icon icon-Chart"></i></span>
@@ -488,7 +488,7 @@
                 </div>
                 <div class="col-sm-6 col-md-4">
                     <div class="solution-single-content wow fadeInUp">
-                        <h2>Regulatory Compliance</h2>
+                        <h2>Regulatory Compliance Management</h2>
                         <p>Stay ahead of government traceability mandates. Our GS1-compliant platform supports compliance requirements across pharma, food, tobacco and more — with quick report generation built for enforcement agencies...</p>
                         <a href="#"></a>
                         <span><i class="icon icon-Tools"></i></span>
@@ -496,7 +496,7 @@
                 </div>
                 <div class="col-sm-6 col-md-4">
                     <div class="solution-single-content wow fadeInRight">
-                        <h2>Seamless Hardware Integration</h2>
+                        <h2>Integrated Hardware Connectivity</h2>
                         <p>Plug directly into your existing printing, labelling and conveyor systems. Compatible with vision inspection cameras, high-speed production lines and all major barcode formats — no production disruption...</p>
                         <a href="#"></a>
                         <span><i class="icon icon-Puzzle"></i></span>
@@ -507,6 +507,7 @@
             <!-- Serialization Feature Highlight -->
 
 
+<<<<<<< HEAD
 
         </div>
     </div>
@@ -529,6 +530,8 @@
                     </p>
                 </div>
             </div>
+=======
+>>>>>>> daf17bb5e56a95f65695accf62789df1f9d483de
         </div>
     </div>
 </div>
@@ -641,8 +644,9 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
 
+<<<<<<< HEAD
         <!-- Video Section -->
 <div class="video-home" style="width: auto;">
     <div class="bg" style="background-image: url({{ asset('dist/images/logo_color.png') }}) !important; background-size: 10% !important; background-position: center !important; background-repeat: no-repeat !important; min-height: 500px !important; width: 100% !important; background:rgb(192, 192, 192);">
@@ -726,12 +730,143 @@
                     </div>
                     <h2>Join Our Successful Customers</h2>
                     <h3>Choose Your Plan</h3>
+=======
+    <div class="video-home" style="width: 100%;">
+
+        <div class="bg" style="
+        background-color: rgb(192, 192, 192);
+        min-height: 500px;
+        width: 100%;
+        text-align: center;
+    ">
+
+            <div class="riven-container container video-container" style="padding: 108px 0 104px;">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+
+                        <!-- Watch Button -->
+                        <div class="wpb_text_column wpb_content_element">
+                            <div class="wpb_wrapper">
+                                <p>
+                                    <a class="fancybox btn-play"
+                                        title="Watch Tracesci in action"
+                                        href="{{ asset('web/videos/tracesci_storyboard.mp4') }}"
+                                        data-type="iframe">
+                                        Watch Now
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Logo -->
+                        <div style="margin: 20px 0 90px;">
+                            <img src="{{ asset('dist/images/tracesci logo_black.png') }}"
+                                alt="TRACESCI Logo"
+                                style="
+                                max-width: 180px;
+                                width: 100%;
+                                height: auto;
+                            ">
+                        </div>
+
+                        <!-- Heading -->
+                        <div class="title-block">
+                            <div class="riven-heading text-center">
+                                <h2 style="
+                                color: #000;
+                                font-weight: 400;
+                                line-height: 1.4;
+                            ">
+                                    <span style="font-weight: 800;">
+                                        Make Every Consumer
+                                    </span>
+                                    a Brand Protector
+                                </h2>
+                            </div>
+                        </div>
+
+                        <!-- Description -->
+                        <div class="wpb_text_column wpb_content_element">
+                            <div class="wpb_wrapper">
+                                <p style="
+                                color: #000;
+                                font-weight: 300;
+                                max-width: 900px;
+                                margin: 20px auto 0;
+                                line-height: 1.8;
+                            ">
+                                    Counterfeiting costs global businesses over $4 trillion annually.
+                                    With TRACESCI, every consumer who scans a QR code becomes an active
+                                    participant in brand protection — verifying authenticity, reporting
+                                    fake products, and engaging directly with trusted brands.
+                                    Built for businesses of every scale, from startups to enterprises.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Real-Time Tracking Screenshots -->
+    <div class="software-screen-section" style="padding: 60px 0;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center wow zoomIn" style="margin-bottom:40px;">
+                    <h2>Real-Time <span style="color:#7a0d7d;">Supply Chain Visibility</span></h2>
+                    <p style="color:#555; font-size:16px; max-width:650px; margin:15px auto 0;">
+                        Know exactly where every product is at every moment. From the instant a QR code is
+                        activated on the production line to the moment a consumer or inspector scans it for
+                        verification — every event is geo-tagged, timestamped and tamper-proof on the blockchain.
+                        Accessible by all authorised stakeholders in real time.
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 wow fadeInLeft" style="margin-bottom:20px;">
+                    <img src="{{ asset('web/images/04/img-slider.png') }}" alt="Live GPS Tracking" style="width:100%; height:auto; border-radius:8px; box-shadow: 0 8px 30px rgba(0,0,0,0.1);">
+                    <p style="text-align:center; margin-top:12px; color:#000000; font-weight:600;">Live GPS Location Tracking</p>
+                </div>
+                <div class="col-md-4 wow fadeInUp" style="margin-bottom:20px;">
+                    <img src="{{ asset('web/images/04/img-slider.png') }}" alt="Scan History Timeline" style="width:100%; height:auto; border-radius:8px; box-shadow: 0 8px 30px rgba(0,0,0,0.1);">
+                    <p style="text-align:center; margin-top:12px; color:#000000; font-weight:600;">Full Scan History Timeline</p>
+                </div>
+                <div class="col-md-4 wow fadeInRight" style="margin-bottom:20px;">
+                    <img src="{{ asset('web/images/04/img-slider.png') }}" alt="Blockchain Verification Ledger" style="width:100%; height:auto; border-radius:8px; box-shadow: 0 8px 30px rgba(0,0,0,0.1);">
+                    <p style="text-align:center; margin-top:12px; color:#000000; font-weight:600;">Immutable Blockchain Ledger</p>
+>>>>>>> daf17bb5e56a95f65695accf62789df1f9d483de
                 </div>
             </div>
         </div>
     </div>
+<<<<<<< HEAD
     <!-- END TITLE -->
     <!-- <div class="container">
+=======
+
+
+    <!-- Pricing Section -->
+    <section id="pricing_table" class="pricing-table-section grey-bg">
+        <!-- MAIN TITLE AREA -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <div class="main-title wow zoomIn">
+                        <div class="main-shadow-heading">
+                            <h2>Join Our Successful Customers</h2>
+                        </div>
+                        <h2>Join Our Successful Customers</h2>
+                        <h3>Choose Your Plan</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END TITLE -->
+        <!-- <div class="container">
+>>>>>>> daf17bb5e56a95f65695accf62789df1f9d483de
                 <div class="row">
                     <div class="col-md-12">
                         <div class="all-link pricinig-head-btn text-center">
@@ -741,6 +876,7 @@
                     </div>
                 </div>
             </div> -->
+<<<<<<< HEAD
     <!-- PRICING TABLE CONTENT -->
     @foreach(getPlan() as $plan)
     <div class="container">
@@ -773,12 +909,48 @@
                             </ul>
                             <div class="all-link pricinig-bottom-btn text-center">
                                 <a href="{{route('register-view')}}">Sign Up Now <i class="fa fa-long-arrow-right"></i></a>
+=======
+        <!-- PRICING TABLE CONTENT -->
+        @foreach(getPlan() as $plan)
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-md-4">
+                    <div class="pricing-table-content text-center wow fadeInLeft">
+                        <div class="pricing-table-head">
+                            <div class="pricing-head-top">
+                                <span>{{$plan->title}}</span>
+                            </div>
+                            <div class="pricing-head-content">
+                                <span> @if ($country=='India')
+                                    &#8377; {{$plan->price_inr}}/-
+                                    @else
+                                    $ {{$plan->price_usd}}
+                                    @endif
+                                    <br>
+                                    <span>Monthly</span>
+                                </span>
+                            </div>
+
+                        </div>
+                        <div class="pricing-table-inner-content">
+                            <div class="pricing-table-title">
+                                <p>All plans are include Funnel Report, Cohort Report, Revenue Report, People Search, and A/B Testing Report.</p>
+                            </div>
+                            <div class="pricing-table-list">
+                                <ul>
+                                    {!!$plan->description!!}
+                                </ul>
+                                <div class="all-link pricinig-bottom-btn text-center">
+                                    <a href="{{route('register-view')}}">Sign Up Now <i class="fa fa-long-arrow-right"></i></a>
+                                </div>
+>>>>>>> daf17bb5e56a95f65695accf62789df1f9d483de
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+<<<<<<< HEAD
     </div>
     @endforeach
     <div class="pricing-table-self">
@@ -804,11 +976,41 @@
             </div>
             <div class="col-md-6 wow fadeInRight">
                 <img src="{{ asset('dist/images/conterfied.png') }}" alt="Tracesci Analytics Dashboard" style="width:100%; height:auto; border-radius:8px; box-shadow: 0 10px 40px rgba(122,13,125,0.15);">
+=======
+        @endforeach
+        <div class="pricing-table-self">
+            <img src="{{asset('dist/images/pricing-table-self.png')}}">
+        </div>
+    </section>
+
+    <!-- Analytics & Reporting Section -->
+    <div class="software-screen-section" style="padding: 60px 0;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 wow fadeInLeft" style="padding-right:40px;">
+                    <div class="main-title text-left">
+                        <h2>Analytics & <span style="color:#7a0d7d;">Anti-Counterfeit Intelligence</span></h2>
+                        <p style="color:#555; font-size:16px; margin-top:15px;">
+                            Data is your most powerful weapon against counterfeiting. Tracesci's analytics engine
+                            surfaces geo-location heat maps, consumer scanning behaviour and behavior-based fraud
+                            signals — revealing exactly where fakes are entering your supply chain and which markets
+                            are most at risk, so brands, inspectors and governments can act fast.
+                        </p>
+
+                    </div>
+                </div>
+                <div class="col-md-6 wow fadeInRight">
+                    <img src="{{ asset('web/images/04/img-slider.png') }}" alt="Tracesci Analytics Dashboard" style="width:100%; height:auto; border-radius:8px; box-shadow: 0 10px 40px rgba(122,13,125,0.15);">
+                </div>
+>>>>>>> daf17bb5e56a95f65695accf62789df1f9d483de
             </div>
         </div>
     </div>
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> daf17bb5e56a95f65695accf62789df1f9d483de
     <x-notification></x-notification>
     <!-- </div> -->
 </div>

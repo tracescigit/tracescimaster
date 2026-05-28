@@ -28,6 +28,139 @@
     min-width: 70px;
     min-height: 70px;
   }
+
+  .trace-process-section {
+    background: #f5f5f5;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .trace-process-section {
+    background: #f5f5f5;
+    overflow: hidden;
+  }
+
+  .section-title {
+    margin-bottom: 40px;
+  }
+
+  .subtitle {
+    display: inline-block;
+    background: #7a0d7d;
+    color: #fff;
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  .section-title h2 {
+    font-size: 48px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 20px;
+  }
+
+  .section-title p {
+    max-width: 750px;
+    margin: auto;
+    color: #666;
+    font-size: 18px;
+    line-height: 1.8;
+  }
+
+  .center-image {
+    margin-bottom: 70px;
+  }
+
+  .center-image img {
+    width: 650px;
+    max-width: 100%;
+  }
+
+  .process-grid .mb-4 {
+    margin-bottom: 30px;
+  }
+
+  .process-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 35px;
+    text-align: center;
+    height: 100%;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.05);
+    transition: 0.3s ease;
+    border-top: 4px solid #7a0d7d;
+  }
+
+  .process-card:hover {
+    transform: translateY(-8px);
+  }
+
+  .step-badge {
+    width: 65px;
+    height: 65px;
+    margin: 0 auto 20px;
+    background: #7a0d7d;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  .process-card h3 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #111;
+  }
+
+  .process-card p {
+    color: #666;
+    line-height: 1.8;
+    font-size: 16px;
+    margin: 0;
+  }
+
+  @media(max-width:991px) {
+
+    .section-title h2 {
+      font-size: 36px;
+    }
+
+    .center-image img {
+      width: 350px;
+    }
+
+  }
+
+  @media(max-width:767px) {
+
+    .trace-process-section {
+      padding: 70px 0;
+    }
+
+    .section-title h2 {
+      font-size: 30px;
+    }
+
+    .process-card {
+      padding: 25px;
+    }
+
+    .process-card h3 {
+      font-size: 20px;
+    }
+
+    .center-image {
+      margin-bottom: 50px;
+    }
+
+  }
 </style>
 <!-- slider -->
 
@@ -254,7 +387,8 @@
             <h2><span>02.</span> Track</h2>
 
             <p>
-              Blockchain-enabled supply chain tracking with deep insights of each product
+              Blockchain-driven supply chain tracking with real-time insights.
+
             </p>
 
           </div>
@@ -398,7 +532,9 @@
         <div class="col-sm-6 col-md-4">
           <div class="solution-single-content solution-single-content-no-border wow fadeInLeft">
             <h2>Easy to use</h2>
-            <p>Simple process driven solution, that suits from small to large manufacturers requirment. ...</p>
+            <p>Scalable solution enabling secure traceability, compliance, counterfeit prevention, operational efficiency, and supply chain visibility for Products.
+
+            </p>
             <a href="#"></a>
             <span><i class="icon icon-Chart"></i></span>
           </div>
@@ -406,7 +542,8 @@
         <div class="col-sm-6 col-md-4">
           <div class="solution-single-content wow fadeInUp">
             <h2>Protect your Product</h2>
-            <p>Secure packaging and authentication capabilities enable you to protect your brand and keep consumers safe while building brand trust...</p>
+            <p>Secure packaging and authentication safeguard brands, protect consumers, prevent counterfeiting, build trust, and ensure product authenticity worldwide.
+            </p>
             <a href="#"></a>
             <span><i class="icon icon-Shield"></i></span>
           </div>
@@ -414,7 +551,8 @@
         <div class="col-sm-6 col-md-4">
           <div class="solution-single-content wow fadeInRight">
             <h2>Engagement</h2>
-            <p>Get access to valuable market insights, including the end user’s profile.Connect them with your loyality programs ...</p>
+            <p>Gain valuable consumer insights, understand end-user behavior, and connect customers seamlessly with loyalty and engagement programs.
+            </p>
             <a href="#"></a>
             <span><i class="icon icon-MessageLeft"></i></span>
           </div>
@@ -422,7 +560,8 @@
         <div class="col-sm-6 col-md-4">
           <div class="solution-single-content solution-single-content-no-border wow fadeInLeft">
             <h2>Product serialization</h2>
-            <p>For digital transformation to take place, serialization will be a first step and a key enabler for every brand ...</p>
+            <p>Serialization drives digital transformation by enabling secure traceability, operational transparency, smarter supply chains, and connected brand ecosystems.
+            </p>
             <a href="#"></a>
             <span><i class="icon icon-Antenna2"></i></span>
           </div>
@@ -430,7 +569,8 @@
         <div class="col-sm-6 col-md-4">
           <div class="solution-single-content wow fadeInUp">
             <h2>Regulatory compliance</h2>
-            <p>Get a powerful one solution supporting various compliance mandates set by different countries for different businesses ...</p>
+            <p>Access a unified solution supporting global compliance mandates, enabling secure operations, regulatory adherence, and seamless business integration worldwide.
+            </p>
             <a href="#"></a>
             <span><i class="icon icon-Tools"></i></span>
           </div>
@@ -438,7 +578,8 @@
         <div class="col-sm-6 col-md-4">
           <div class="solution-single-content wow fadeInRight">
             <h2>Hardware integration</h2>
-            <p>Easy to integrate with any printing/labelling device, speed conveyor systems, vision inspection cameras etc ...</p>
+            <p>Built for seamless integration with printers, labeling equipment, conveyor systems, and intelligent vision inspection solutions for fully automated production environments.
+            </p>
             <a href="#"></a>
             <span><i class="icon icon-Puzzle"></i></span>
           </div>
@@ -463,96 +604,76 @@
     </div>
     <!-- END TITLE -->
 
-    <div class="help-content-area" style="background-color: #f5f5f5;">
+    <section class="trace-process-section">
       <div class="container">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="help-accordion">
-              <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                <div class="panel panel-default">
-                  <div class="panel-heading" role="tab" id="headingOne">
-                    <h4 class="panel-title">
-                      <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        Step 1 — Brand & Manufacturer Onboarding
-                      </a>
-                    </h4>
-                  </div>
-                  <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                    <div class="panel-body">
-                      Complete paperless onboarding for brand owners, manufacturers and supply chain partners.
-                      Submit your company details, upload required documents and — once approved — gain full
-                      access to the Tracesci cloud platform. A FREE plan is activated by default, giving you
-                      all the essential tools to set up your solution and run a pilot at no cost, forever.
-                    </div>
-                  </div>
-                </div>
-                <div class="panel panel-default">
-                  <div class="panel-heading" role="tab" id="headingTwo">
-                    <h4 class="panel-title">
-                      <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        Step 2 — Configure Products, SKUs & Pricing Plan
-                      </a>
-                    </h4>
-                  </div>
-                  <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                    <div class="panel-body">
-                      Set up your product catalogue, define SKUs, packaging levels and batch parameters through
-                      the intuitive manufacturer interface. Choose a subscription plan that fits your volume —
-                      from the free tier for small businesses and startups all the way to enterprise plans
-                      for high-volume manufacturers. Upgrade anytime as your production scales, with no lock-in.
-                    </div>
-                  </div>
-                </div>
-                <div class="panel panel-default">
-                  <div class="panel-heading" role="tab" id="headingThree">
-                    <h4 class="panel-title">
-                      <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                        Step 3 — Serialize & Activate on the Production Line
-                      </a>
-                    </h4>
-                  </div>
-                  <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                    <div class="panel-body">
-                      Generate and print unique QR or barcode labels for every product unit directly through
-                      the Tracesci platform — integrated with your label supplier and printing hardware.
-                      Each code is activated the moment it's applied, creating an immutable blockchain record
-                      tied to that specific product, batch, manufacturing location and timestamp.
-                    </div>
-                  </div>
-                </div>
-                <div class="panel panel-default">
-                  <div class="panel-heading" role="tab" id="headingFour">
-                    <h4 class="panel-title">
-                      <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                        Step 4 — Track, Verify, Report & Enforce
-                      </a>
-                    </h4>
-                  </div>
-                  <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
-                    <div class="panel-body">
-                      As products move through the supply chain — from warehouse to distributor to retailer to
-                      consumer — every scan is logged in real time with GPS location data. Governments and
-                      inspectors can verify authenticity in the field using the mobile app. Consumers can
-                      report counterfeits directly. The analytics dashboard surfaces fraud patterns and
-                      generates enforcement reports instantly — making every stakeholder a line of defence.
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="help-question" style="margin-bottom: 50px;">
-              <p>Have questions about implementing Tracesci in your production environment or connecting it to your existing systems? Our team will walk you through every step.</p>
-              <!-- <span><a href="#">Talk to an Expert <i class="fa fa-long-arrow-right"> </i></a></span> -->
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="help-slider-text">
-              <img src="{{ asset('dist/images/bbchain.png') }}" alt="Blockchain Traceability Diagram" style="left:-100px !important;">
-            </div>
-          </div>
+
+        <!-- SECTION TITLE -->
+        <div class="section-title text-center">
+          <h2>Secure Product Traceability Workflow</h2>
+          <p>
+            One connected platform for onboarding, serialization,
+            authentication and real-time enforcement.
+          </p>
         </div>
+
+        <!-- CENTER IMAGE -->
+        <div class="center-image text-center">
+          <img src="{{ asset('dist/images/bbchain.png') }}"
+            class="img-responsive center-block"
+            alt="Blockchain Traceability">
+        </div>
+
+        <!-- PROCESS GRID -->
+        <div class="row process-grid">
+
+          <div class="col-md-6 col-sm-6 mb-4">
+            <div class="process-card">
+              <div class="step-badge">01</div>
+              <h3>Enterprise Onboarding</h3>
+              <p>
+                Register manufacturers, verify compliance documents, and provide secure platform access with role-based controls, enabling seamless onboarding, authenticated operations, centralized management, and real-time visibility across the supply chain ecosystem while ensuring security, transparency, and regulatory compliance.
+
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-sm-6 mb-4">
+            <div class="process-card">
+              <div class="step-badge">02</div>
+              <h3>Product Serialization</h3>
+              <p>
+                Create SKUs, define packaging hierarchies, and configure serialization workflows with ease, enabling accurate product identification, seamless aggregation, efficient inventory control, real-time traceability, and secure supply chain operations across manufacturing, distribution, and retail environments.
+
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-sm-6 mb-4">
+            <div class="process-card">
+              <div class="step-badge">03</div>
+              <h3>Cryptographic Code Generation</h3>
+              <p>
+                Print and activate unique QR codes or barcode identities on every product, enabling secure authentication, real-time traceability, anti-counterfeiting protection, streamlined inventory management, seamless aggregation, and complete visibility across manufacturing, distribution, retail, and consumer verification processes.
+
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-sm-6 mb-4">
+            <div class="process-card">
+              <div class="step-badge">04</div>
+              <h3>Supply Chain Surveillance & Enforcement</h3>
+              <p>
+                Monitor product movement, detect suspicious activity, and verify authenticity in real time, enabling faster fraud prevention, supply chain transparency, secure product tracking, intelligent risk detection, enforcement response, and trusted consumer engagement across manufacturing, distribution, and retail networks.
+
+              </p>
+            </div>
+          </div>
+
+        </div>
+
       </div>
-    </div>
+    </section>
   </div>
 </div>
 
@@ -594,7 +715,7 @@
             <div class="pricing-table-content text-center wow fadeInLeft">
               <div class="pricing-table-head">
                 <div class="pricing-head-top">
-                  <span>{{$plan->title}}</span> 
+                  <span>{{$plan->title}}</span>
 </div>
 <div class="pricing-head-content">
   <span>

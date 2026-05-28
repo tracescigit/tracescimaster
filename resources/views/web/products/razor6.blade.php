@@ -1735,7 +1735,7 @@
                  </div>
                  <div class="col-sm-6 col-md-4">
                      <div class="solution-single-content wow fadeInUp">
-                         <h2>UV Cured Aqueous Inks</h2>
+                         <h2>UV-Curable Aqueous Ink Systems</h2>
                          <p>Dual ink compatibility — UV curable and aqueous systems — in 0.5L and 1L tank configurations. Black, Spot colour, and Security ink options provide versatility across packaging, labels, pharma, and security applications....</p>
                          <a href="#"></a>
                          <span><i class="icon icon-Tools"></i></span>

@@ -11,7 +11,7 @@
 
     {{-- SEO Meta --}}
     <title>Book a Demo | TRACESCI</title>
-    <meta name="description" content="Schedule a personalised 30-minute TRACESCI product demo. Pick a date and time that works for you — no credit card required.">
+    <meta name="description" content="Schedule a personalised TRACESCI product demo. Pick a date and time that works for you — no credit card required.">
     <meta name="keywords" content="TRACESCI, book demo, product demo, schedule demo, free demo">
     <meta name="robots" content="index, follow">
     <meta name="author" content="TRACESCI">
@@ -20,14 +20,14 @@
     {{-- Open Graph --}}
     <meta property="og:type" content="website">
     <meta property="og:title" content="Book a Demo | TRACESCI">
-    <meta property="og:description" content="See TRACESCI in action with a live personalised walkthrough. Book your free 30-minute demo today.">
+    <meta property="og:description" content="See TRACESCI in action with a live personalised walkthrough. Book your free demo today.">
     <meta property="og:url" content="{{ url('/book-demo') }}">
     <meta property="og:site_name" content="TRACESCI">
 
     {{-- Twitter Card --}}
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Book a Demo | TRACESCI">
-    <meta name="twitter:description" content="See TRACESCI in action. Book your free 30-minute personalised demo today.">
+    <meta name="twitter:description" content="See TRACESCI in action. Book your free  personalised demo today.">
 
     {{-- CSRF for axios --}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -748,7 +748,7 @@
 
     <main class="demo-page" itemscope itemtype="https://schema.org/Event">
         <meta itemprop="name" content="TRACESCI Product Demo">
-        <meta itemprop="description" content="30-minute live personalised product demo of TRACESCI">
+        <meta itemprop="description" content="live personalised product demo of TRACESCI">
         <meta itemprop="eventStatus" content="https://schema.org/EventScheduled">
         <meta itemprop="eventAttendanceMode" content="https://schema.org/OnlineEventAttendanceMode">
 
@@ -921,7 +921,7 @@
             /* Booked slots from controller — format: { 'YYYY-MM-DD': ['09:00','10:00'], ... } */
             const BOOKED_SLOTS = @json($bookedSlots ?? []);
 
-            const ALL_SLOTS = ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00', '17:00'];
+            const ALL_SLOTS = ['10:00', '11:00','12:00','13:00', '14:00', '15:00', '16:00', '17:00'];
             const MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
                 'August', 'September', 'October', 'November', 'December'
             ];
@@ -1041,7 +1041,7 @@
                 const el = document.getElementById('booking-summary');
                 if (selectedDate && selectedSlot) {
                     el.style.display = 'block';
-                    el.innerHTML = `<strong>Date:</strong> ${fmtDate(selectedDate)}<br><strong>Time:</strong> ${fmtSlot(selectedSlot)} IST &nbsp;&middot;&nbsp; 30-min demo`;
+                    el.innerHTML = `<strong>Date:</strong> ${fmtDate(selectedDate)}<br><strong>Time:</strong> ${fmtSlot(selectedSlot)} IST &nbsp;&middot;&nbsp; 60-min demo`;
                 } else {
                     el.style.display = 'none';
                 }

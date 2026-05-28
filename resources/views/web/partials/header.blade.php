@@ -48,10 +48,9 @@
           </li>
         </ul>
         <div class="footer-bottom-right right-menu-copyright">
-          <p>© 2026 Metrics. All Rights Reserved</p>
-          <p>
-            Powered by <span><a href="{{route('home')}}">tracesci.</a></span>
-          </p>
+          <p>© {{$year}}. All Rights Reserved by 
+            <br>
+            <a class="text-white" href="{{route('home')}}">tracesci.</a>
         </div>
       </div>
     </div>
