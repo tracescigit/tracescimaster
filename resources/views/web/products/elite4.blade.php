@@ -9,6 +9,16 @@
         padding: 0;
         box-sizing: border-box;
     }
+    .feature-2-right {
+    position: absolute;
+    left: 40%;
+    top: 0;
+    height: 100%;
+    width: 60%;
+    background: url('/dist/images/elite4_3.png') no-repeat center center !important;
+    background-size: cover !important;
+    box-shadow: -8px 0px 8px rgba(0, 0, 0, 0.1);
+}
 
     :root {
         --black: #0a0a0a;
@@ -438,7 +448,7 @@
     }
 
     .service-card:hover {
-        background: var(--teal-light);
+        background: #e9d6ea;
     }
 
     .service-title {
@@ -585,7 +595,7 @@
     }
 
     .solution-card:hover {
-        background: var(--teal-light);
+        background: #e9d6ea;
     }
 
     .solution-card:hover .sol-num {
@@ -605,7 +615,7 @@
     .sol-icon {
         width: 44px;
         height: 44px;
-        background: var(--teal-light);
+        background: #e9d6ea;
         border-radius: 10px;
         display: flex;
         align-items: center;
@@ -1434,6 +1444,7 @@
     .product_demo .enterprise-btn:hover i {
         transform: translateX(7px);
     }
+    
 
 
     /* ── MOBILE ── */
@@ -1501,19 +1512,19 @@
     }
 </style>
 
-<div class="rev_slider_wrapper">
+<!-- <div class="rev_slider_wrapper">
     <div id="slider1" class="rev_slider" data-version="5.0">
-        <ul>
+        <ul> -->
 
             <!-- SLIDE 1 -->
-            <li data-index="rs-1" data-transition="parallaxtoright" data-delay="6500">
+            <!-- <li data-index="rs-1" data-transition="parallaxtoright" data-delay="6500"> -->
 
                 <!-- MAIN IMAGE -->
-                <img src="{{asset('dist/images/slide1.png')}}"
+                <!-- <img src="{{asset('dist/images/slide1.png')}}"
                     class="rev-slidebg"
                     data-bgposition="center center"
                     data-bgfit="auto"
-                    data-bgrepeat="no-repeat">
+                    data-bgrepeat="no-repeat"> -->
                 <!-- <img src="{{asset('dist/images/elite4_machine.png')}}"
     class="rev-slidebg"
     data-bgposition="center center"
@@ -1521,7 +1532,7 @@
     data-bgrepeat="no-repeat"
     style="width:100%; max-width:900px; height:auto; margin:auto;"> -->
                 <!-- LAYER 1 -->
-                <div class="tp-caption tp-resizeme"
+                <!-- <div class="tp-caption tp-resizeme"
                     data-x="center"
                     data-y="top"
                     data-voffset="120"
@@ -1531,10 +1542,10 @@
                     <span class="sl-italic" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;">
                         Go from black to brilliant
                     </span>
-                </div>
+                </div> -->
 
                 <!-- LAYER 2 -->
-                <div class="tp-caption tp-resizeme"
+                <!-- <div class="tp-caption tp-resizeme"
                     data-x="center" data-y="top" data-voffset="190"
                     data-start="1800"
                     data-transform_in="y:[100%];opacity:0;s:800;"
@@ -1542,10 +1553,10 @@
                     <div class="text-center heading-rp-small" style="transition: none; line-height: 58px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 1px; font-weight: 800; font-size: 50px;">
                         ELITE4 <br>Multicolor Inkjet System
                     </div>
-                </div>
+                </div> -->
 
                 <!-- LAYER 3 -->
-                <div class="tp-caption tp-resizeme"
+                <!-- <div class="tp-caption tp-resizeme"
                     data-x="center" data-y="top" data-voffset="300"
                     data-start="2400" data-transform_in="y:[100%];opacity:0;s:800;"
                     data-transform_out="opacity:0;s:300" ;>
@@ -1553,10 +1564,10 @@
                         VDP • Track & Trace • Authentication <br>
                         Optimized for high-throughput color printing
                     </div>
-                </div>
+                </div> -->
 
                 <!-- LAYER 4 (Buttons) -->
-                <div class="tp-caption tp-resizeme"
+                <!-- <div class="tp-caption tp-resizeme"
                     data-x="center" data-y="top" data-voffset="430"
                     data-start="2800" data-transform_in="y:[100%];opacity:0;s:800;"
                     data-transform_out="opacity:0;s:300" ;>
@@ -1564,22 +1575,22 @@
                         <a a href="{{ url(Auth::check()?myDashboard():'/login') }}">Login</a>
                         <a a href="{{ url(Auth::check()?myDashboard():'/register') }}">Register</a>
                     </div>
-                </div>
+                </div> -->
 
-            </li>
+            <!-- </li> -->
 
             <!-- SLIDE 2 -->
-            <li data-index="rs-2" data-transition="parallaxtoright" data-delay="6500">
+            <!-- <li data-index="rs-2" data-transition="parallaxtoright" data-delay="6500"> -->
 
                 <!-- MAIN IMAGE -->
-                <img src="{{asset('dist/images/slide2.png')}}"
+                <!-- <img src="{{asset('dist/images/slide2.png')}}"
                     class="rev-slidebg"
                     data-bgposition="center center"
                     data-bgfit="cover"
-                    data-bgrepeat="no-repeat">
+                    data-bgrepeat="no-repeat"> -->
 
                 <!-- LAYER 1 -->
-                <div class="tp-caption tp-resizeme"
+                <!-- <div class="tp-caption tp-resizeme"
                     data-x="center" data-y="top" data-voffset="120"
                     data-start="1200"
                     data-transform_in="y:[100%];opacity:0;s:800;"
@@ -1587,30 +1598,30 @@
                     <span class="sl-italic" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;">
                         Decide smarter. Deliver better
                     </span>
-                </div>
+                </div> -->
 
                 <!-- LAYER 2 -->
-                <div class="tp-caption tp-resizeme"
+                <!-- <div class="tp-caption tp-resizeme"
                     data-x="center" data-y="top" data-voffset="190"
                     data-start="1800" data-transform_in="y:[100%];opacity:0;s:800;"
                     data-transform_out="opacity:0;s:300" ;>
                     <div class="text-center heading-rp-small" style="transition: none; line-height: 58px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 1px; font-weight: 800; font-size: 50px;">
                         track, trace & authentication
                     </div>
-                </div>
+                </div> -->
 
                 <!-- LAYER 3 -->
-                <div class="tp-caption tp-resizeme"
+                <!-- <div class="tp-caption tp-resizeme"
                     data-x="center" data-y="top" data-voffset="300"
                     data-start="2400" data-transform_in="y:[100%];opacity:0;s:800;"
                     data-transform_out="opacity:0;s:300" ;>
                     <div class="sl-italic sl-italic-2 text-center" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;">
                         We help configure and deploy Elite4,<br> tailored to your production needs
                     </div>
-                </div>
+                </div> -->
 
                 <!-- LAYER 4 (Buttons) -->
-                <div class="tp-caption tp-resizeme"
+                <!-- <div class="tp-caption tp-resizeme"
                     data-x="center" data-y="top" data-voffset="430"
                     data-start="2800" data-transform_in="y:[100%];opacity:0;s:800;"
                     data-transform_out="opacity:0;s:300" ;>
@@ -1618,42 +1629,42 @@
                         <a href="#">Read More</a>
                         <a href="#">Get Started</a>
                     </div>
-                </div>
+                </div> -->
 
-            </li>
+            <!-- </li> -->
 
             <!-- SLIDE 3 -->
-            <li data-index="rs-3" data-transition="parallaxtoright" data-delay="6500">
+            <!-- <li data-index="rs-3" data-transition="parallaxtoright" data-delay="6500"> -->
 
                 <!-- MAIN IMAGE -->
-                <img src="{{asset('dist/images/slide3.png')}}"
+                <!-- <img src="{{asset('dist/images/slide3.png')}}"
                     class="rev-slidebg"
                     data-bgposition="center center"
                     data-bgfit="cover"
-                    data-bgrepeat="no-repeat">
+                    data-bgrepeat="no-repeat"> -->
 
                 <!-- LAYER 1 -->
-                <div class="tp-caption tp-resizeme"
+                <!-- <div class="tp-caption tp-resizeme"
                     data-x="center" data-y="top" data-voffset="120"
                     data-start="1200" data-transform_in="y:[100%];opacity:0;s:800;"
                     data-transform_out="opacity:0;s:300" ;>
                     <span class="sl-italic" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;">
                         VDP • Authentication • Supply Chain Intelligence
                     </span>
-                </div>
+                </div> -->
 
                 <!-- LAYER 2 -->
-                <div class="tp-caption tp-resizeme"
+                <!-- <div class="tp-caption tp-resizeme"
                     data-x="center" data-y="top" data-voffset="190"
                     data-start="1800" data-transform_in="y:[100%];opacity:0;s:800;"
                     data-transform_out="opacity:0;s:300" ;>
                     <div class="text-center heading-rp-small" style="transition: none; line-height: 58px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 1px; font-weight: 800; font-size: 50px;">
                         High-Speed Multicolor Inkjet
                     </div>
-                </div>
+                </div> -->
 
                 <!-- LAYER 3 -->
-                <div class="tp-caption tp-resizeme"
+                <!-- <div class="tp-caption tp-resizeme"
                     data-x="center" data-y="top" data-voffset="300"
                     data-start="2400" data-transform_in="y:[100%];opacity:0;s:800;"
                     data-transform_out="opacity:0;s:300" ;>
@@ -1661,10 +1672,10 @@
                         Up to 60 m/min • 300–2400 DPI • CMYK UV/Aqueous <br>
                         Seamless Tracesci VDP integration for codes & serialisation
                     </div>
-                </div>
+                </div> -->
 
                 <!-- LAYER 4 (Buttons) -->
-                <div class="tp-caption tp-resizeme"
+                <!-- <div class="tp-caption tp-resizeme"
                     data-x="center" data-y="top" data-voffset="430"
                     data-start="2800" data-transform_in="y:[100%];opacity:0;s:800;"
                     data-transform_out="opacity:0;s:300" ;>
@@ -1672,13 +1683,32 @@
                         <a href="#">Read More</a>
                         <a href="#">Get Started</a>
                     </div>
-                </div>
+                </div> -->
 
-            </li>
+            <!-- </li>
 
         </ul>
     </div>
-</div>
+</div> -->
+
+<section class="page-title-area aboout-2-head-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <div class="about-head-content">
+                    <h2>Elite4</h2>
+                    <p>We help configure and deploy Elite4, tailored to your production needs</p>
+                </div>
+                <div class="breadcrumbs text-center">
+                    <ul class="page-breadcrumbs">
+                        <li><a href="{{route('home')}}">home</a></li>
+                        <li><a href="#">About Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <div class="solution-area" style="background-color: #f5f5f5;">
     <!-- MAIN TITLE AREA -->

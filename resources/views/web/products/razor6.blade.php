@@ -1313,6 +1313,16 @@
          align-items: center;
          min-height: 60vh;
      }
+     .feature-2-right {
+        position: absolute;
+        left: 40%;
+        top: 0;
+        height: 100%;
+        width: 60%;
+        background: url('/dist/images/hyperloop2.png') no-repeat center center !important;
+        background-size: cover !important;
+        box-shadow: -8px 0px 8px rgba(0, 0, 0, 0.1);
+    }
 
      .product_demo .container {
          width: 100%;
@@ -1844,7 +1854,7 @@
 
 
      <section class="feature-area feature-2-area" style="background-color: #f5f5f5;">
-         <div class="feature-heading-area  wow zoomIn">
+         <div class="feature-heading-area  wow zoomIn" style="margin-top: 90px;">
              <div class="container">
                  <div class="row">
                      <div class="col-md-6">

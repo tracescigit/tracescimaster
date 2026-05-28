@@ -39,7 +39,8 @@
       <li data-index="rs-1" data-transition="parallaxtoright" data-delay="6500">
 
         <!-- MAIN IMAGE -->
-        <img src="{{asset('dist/images/slide1.png')}}"
+        <!-- <img src="{{asset('dist/images/slide1.png')}}" -->
+         <img src="{{asset('dist/images/index-wallpaper4.png')}}"
           class="rev-slidebg"
           data-bgposition="center center"
           data-bgfit="cover"
@@ -98,7 +99,8 @@
       <li data-index="rs-2" data-transition="parallaxtoright" data-delay="6500">
 
         <!-- MAIN IMAGE -->
-        <img src="{{asset('dist/images/slide2.png')}}"
+        <!-- <img src="{{asset('dist/images/slide2.png')}}" -->
+        <img src="{{asset('dist/images/index_wallpaper7.png')}}"
           class="rev-slidebg"
           data-bgposition="center center"
           data-bgfit="cover"
@@ -317,7 +319,7 @@
       <div class="row">
         <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 0.3s">
           <div class="thumbnail-game text-center">
-            <img height="150" src="{{asset('web/images/Picture1.jpg')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
+            <img height="150" src="{{asset('dist/images/apprels.png')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
           </div>
           <div class="desc text-center">
             <h3>Apparel</h3>
@@ -325,7 +327,7 @@
         </div>
         <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 0.6s">
           <div class="thumbnail-game text-center">
-            <img height="150" src="{{asset('web/images/Picture2.jpg')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
+            <img height="150" src="{{asset('dist/images/food.png')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
           </div>
           <div class="desc text-center">
             <h3>Food</h3>
@@ -333,7 +335,7 @@
         </div>
         <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 0.9s">
           <div class="thumbnail-game text-center">
-            <img height="150" src="{{asset('web/images/Picture3.jpg')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
+            <img height="150" src="{{asset('dist/images/automobile.png')}}"  class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
           </div>
           <div class="desc text-center">
             <h3>Automobile</h3>
@@ -341,7 +343,7 @@
         </div>
         <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 1.2s">
           <div class="thumbnail-game text-center">
-            <img height="150" src="{{asset('web/images/Picture4.jpg')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
+            <img height="150" src="{{asset('dist/images/tobacco.png')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
           </div>
           <div class="desc text-center">
             <h3>Tobacco</h3>
@@ -349,7 +351,7 @@
         </div>
         <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 0.9s">
           <div class="thumbnail-game text-center">
-            <img height="150" src="{{asset('web/images/Picture5.jpg')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
+            <img height="150" src="{{asset('dist/images/medicine.png')}}"  class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
           </div>
           <div class="desc text-center">
             <h3>Pharma</h3>
@@ -357,7 +359,7 @@
         </div>
         <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 1.2s">
           <div class="thumbnail-game text-center">
-            <img height="150" src="{{asset('web/images/Picture6.jpg')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
+            <img height="150" src="{{asset('dist/images/drink.png')}}"  class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
           </div>
           <div class="desc text-center">
             <h3>Beverages</h3>

@@ -123,8 +123,6 @@
     .product_demo .enterprise-btn:hover i {
         transform: translateX(7px);
     }
-
-
 </style>
 
 <div class="rev_slider_wrapper">
@@ -347,7 +345,7 @@
                 </div>
             </div>
             <div class="col-md-6 wow fadeInRight">
-                <img src="{{ asset('web/images/04/img-slider.png') }}" alt="Tracesci Enterprise Dashboard" style="width:100%; height:80%; border-radius:8px; box-shadow: 0 10px 40px rgba(122,13,125,0.15);">
+                <img src="{{ asset('dist/images/analytics2.png')}}" alt="Tracesci Enterprise Dashboard" style="width:100%; height:80%; border-radius:8px; box-shadow: 0 10px 40px rgba(122,13,125,0.15);">
             </div>
         </div>
     </div>
@@ -428,12 +426,13 @@
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-md-6 wow fadeInLeft">
-                            <img src="{{ asset('web/images/04/img-slider.png') }}" alt="Enterprise Serialization" style="width:100%; height:auto; border-radius:8px; box-shadow: 0 10px 40px rgba(122,13,125,0.15);">
+                            <img src="{{ asset('dist/images/enterprise.png') }}" alt="Enterprise Serialization"
+                                style="width:100%; height:auto; border-radius:8px; box-shadow: 0 10px 40px rgba(122,13,125,0.15);">
                         </div>
-                        <div class="col-md-6 wow fadeInRight" style="padding-left:40px;">
+                        <div class="col-md-6 wow fadeInRight" style="padding-left:40px; display:flex; align-items:center;">
                             <div class="main-title text-left">
                                 <h2>Serialization <span style="color:#7a0d7d;">at Enterprise Scale</span></h2>
-                                <p style="color:#555; font-size:16px; margin-top:15px;">
+                                <p style="color:#555; font-size:16px;">
                                     Assign a tamper-evident digital identity to every unit you produce — from a single carton
                                     to millions of SKUs across multiple brands and markets. The serialization module integrates
                                     directly with your label supplier and printing hardware, generates codes on demand and
@@ -444,14 +443,14 @@
                     </div>
                 </div>
             </div>
-
+            <!-- 
             <div class="row">
                 <div class="col-md-12">
                     <div class="all-link solution-btn text-center">
                         <a href="#">View All Features</a>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 

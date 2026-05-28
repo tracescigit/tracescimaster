@@ -29,14 +29,14 @@
 				<h4 style="color: #7a0d7d;font-weight: bold;">Cancellation and Refund Policy :</h4>
 				<strong></strong>
 				<br>
-				Monotech System Ltd. has not have any cancellation or refund policy. Once the payment has been made on the platform no refunds will be processed.
+				Tracesci Pvt Ltd. has not have any cancellation or refund policy. Once the payment has been made on the platform no refunds will be processed.
 			</li>
 
 			<li class="list-style-bullet px-6 p-3">
 				<h4 style="color: #7a0d7d;font-weight: bold;">What if I have any concerns related content / services ?</h4>
 	
 				<br>
-				You can always reach out to us through chat box or through mail  <a href="mailto:info@tracesci.in"> info@tracesci.in </a> and our team will resolve your issues.
+				You can always reach out to us through chat box or through mail  <a href="mailto:wecare@tracesci.in"> wecare@tracesci.in </a> and our team will resolve your issues.
 			</li>
 
 			

@@ -343,7 +343,7 @@
     }
 
     .solution-card:hover {
-        background: var(--teal-light);
+        background: #e9d6ea;
     }
 
     .solution-card:hover .sol-num {
@@ -363,7 +363,7 @@
     .sol-icon {
         width: 44px;
         height: 44px;
-        background: var(--teal-light);
+        background: #e9d6ea;
         border-radius: 10px;
         display: flex;
         align-items: center;
@@ -415,7 +415,7 @@
 
     .ancillary-item:hover {
         border-color: var(--teal);
-        background: var(--teal-light);
+        background: #e9d6ea;
     }
 
     .anc-icon {
@@ -549,13 +549,13 @@
 
     .env-card:hover {
         border-color: var(--teal);
-        background: var(--teal-light);
+        background: #e9d6ea;
     }
 
     .env-icon {
         width: 48px;
         height: 48px;
-        background: var(--teal-light);
+        background: #e9d6ea;
         border-radius: 12px;
         display: flex;
         align-items: center;
@@ -662,20 +662,31 @@
     }
 
     .product_demo {
-         background: #f5f5f5;
-         padding: 10px 0px 20px 0;
-         /* reduced top padding from 30px to 10px */
-         text-align: center;
-         position: relative;
-         overflow: hidden;
-         display: flex;
-         align-items: center;
-         min-height: 60vh;
-     }
+        background: #f5f5f5;
+        padding: 10px 0px 20px 0;
+        /* reduced top padding from 30px to 10px */
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        min-height: 60vh;
+    }
 
-     .product_demo .container {
-         width: 100%;
-     }
+    .feature-2-right {
+        position: absolute;
+        left: 40%;
+        top: 0;
+        height: 100%;
+        width: 60%;
+        background: url('/dist/images/hyperloop2.png') no-repeat center center !important;
+        background-size: cover !important;
+        box-shadow: -8px 0px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .product_demo .container {
+        width: 100%;
+    }
 
     .product_demo::before {
         content: "";
@@ -908,12 +919,12 @@
 </style>
 
 <!-- ── REVOLUTION SLIDER ── -->
-<div class="rev_slider_wrapper">
+<!-- <div class="rev_slider_wrapper">
     <div id="slider1" class="rev_slider" data-version="5.0">
-        <ul>
+        <ul> -->
 
             <!-- SLIDE 1 -->
-            <li data-index="rs-1" data-transition="parallaxtoright" data-delay="6500">
+            <!-- <li data-index="rs-1" data-transition="parallaxtoright" data-delay="6500">
                 <img src="{{asset('dist/images/hyperloop-slide1.png')}}"
                     class="rev-slidebg"
                     data-bgposition="center center"
@@ -957,10 +968,10 @@
                         <a href="{{ url(Auth::check() ? myDashboard() : '/register') }}">Register</a>
                     </div>
                 </div>
-            </li>
+            </li> -->
 
             <!-- SLIDE 2 -->
-            <li data-index="rs-2" data-transition="parallaxtoright" data-delay="6500">
+            <!-- <li data-index="rs-2" data-transition="parallaxtoright" data-delay="6500">
                 <img src="{{asset('dist/images/hyperloop-slide2.png')}}"
                     class="rev-slidebg"
                     data-bgposition="center center"
@@ -1004,10 +1015,10 @@
                         <a href="#">Get Started</a>
                     </div>
                 </div>
-            </li>
+            </li> -->
 
             <!-- SLIDE 3 -->
-            <li data-index="rs-3" data-transition="parallaxtoright" data-delay="6500">
+            <!-- <li data-index="rs-3" data-transition="parallaxtoright" data-delay="6500">
                 <img src="{{asset('dist/images/hyperloop-slide3.png')}}"
                     class="rev-slidebg"
                     data-bgposition="center center"
@@ -1051,11 +1062,30 @@
                         <a href="#">Get Started</a>
                     </div>
                 </div>
-            </li>
+            </li> -->
 
         </ul>
     </div>
 </div>
+
+<section class="page-title-area aboout-3-head-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <div class="about-head-content">
+                    <h2>Hyperloop</h2>
+                    <p>Slit. Inspect. Print. All in one loop.</p>
+                </div>
+                <div class="breadcrumbs text-center">
+                    <ul class="page-breadcrumbs">
+                        <li><a href="{{route('home')}}">home</a></li>
+                        <li><a href="#">About Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- ── CORE SOLUTIONS ── -->
 <div class="solution-area" style="background-color: #f5f5f5;">
@@ -1128,7 +1158,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="all-link solution-btn text-center">
-                        
+
                     </div>
                 </div>
             </div>
