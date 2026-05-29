@@ -60,7 +60,7 @@ margin-top: 20px;">
 
 			<div class="row form-div" style="margin-top: 50px;">
 				<div class="col-sm-12 px-3 text-center ">
-					<button class="btn btn-primary contact-btn" id="btn-get-otp" style="opacity:{{$auth_required==true?'':'0'}};">
+					<button class="btn btn-primary contact-btn" id="btn-get-otp" style="opacity:{{$auth_required==true?'':'0'}};"> 
 						Submit
 					</button>
 
