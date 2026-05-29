@@ -2,11 +2,15 @@
 @section('content')
 <style>
     .product_demo {
-        background: #ffffff;
-        padding: 120px 0;
+        background: #f5f5f5;
+        padding: 10px 0px 20px 0;
+        /* reduced top padding from 30px to 10px */
         text-align: center;
         position: relative;
         overflow: hidden;
+        display: flex;
+        align-items: center;
+        min-height: 60vh;
     }
 
     .product_demo::before {
@@ -56,7 +60,7 @@
     .product_demo h2 {
         color: #000000;
         font-weight: 800;
-        font-size: 52px;
+        font-size: 28px;
         line-height: 1.15;
         margin-bottom: 24px;
         position: relative;
@@ -66,7 +70,7 @@
 
     .product_demo p {
         color: #000000;
-        font-size: 18px;
+        font-size: 15px;
         line-height: 1.9;
         max-width: 760px;
         margin: 0 auto 45px;
@@ -356,7 +360,7 @@
 
 
 <!-- Core Capabilities & Features Section -->
-<div class="solution-area">
+<div class="solution-area" style="background: #f5f5f5;">
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
@@ -425,7 +429,11 @@
             </div>
 
             <!-- Serialization Feature Highlight -->
-            <div class="software-screen-section" style="padding: 60px 0;">
+            
+        </div>
+    </div>
+    <div class="solution-area" style="background:#fff;">
+    <div class="software-screen-section" style="padding: 150px 0 0 0;">
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-md-6 wow fadeInLeft">
@@ -435,7 +443,7 @@
                         <div class="col-md-6 wow fadeInRight" style="padding-left:40px; display:flex; align-items:center;">
                             <div class="main-title text-left">
                                 <h2>Serialization <span style="color:#7a0d7d;">at Enterprise Scale</span></h2>
-                                <p style="color:#555; font-size:16px;">
+                                <p style="color:#555; font-size:16px; margin-top: 5px">
                                     Assign a tamper-evident digital identity to every unit you produce — from a single carton
                                     to millions of SKUs across multiple brands and markets. The serialization module integrates
                                     directly with your label supplier and printing hardware, generates codes on demand and
@@ -446,27 +454,27 @@
                     </div>
                 </div>
             </div>
-        </div>
     </div>
 
 
     <!-- How It Works Section -->
 </div>
+
 <div class="product_demo">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
 
                 <!-- <div class="demo-badge">
-                    Tracesci Cloud Solution
+                    Elite4 High-Speed Inkjet System
                 </div> -->
 
                 <h2>
-                    Blockchain-Powered Product Traceability & Authentication
+                    Blockchain-Powered Product &amp; <span style="color: #7a0d7d;">Traceability & Authentication</span>
                 </h2>
 
                 <p>
-                    Tracesci Cloud Solution enables secure product serialization, anti-counterfeit
+                    Tracesci Enterprise Solution enables secure product serialization, anti-counterfeit
                     verification, mobile authentication, and end-to-end supply chain traceability
                     through a scalable blockchain-powered platform built for modern manufacturers,
                     regulators, and global distribution networks.
@@ -474,7 +482,7 @@
 
                 <div class="demo-actions">
                     <a href="{{route('demo-schedule-create')}}" class="enterprise-btn">
-                        Schedule Cloud Demo
+                        Schedule Enterprise Demo
                         <i class="fa fa-long-arrow-right"></i>
                     </a>
                 </div>
@@ -483,6 +491,7 @@
         </div>
     </div>
 </div>
+
 @endsection
 
 

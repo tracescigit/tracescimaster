@@ -1317,9 +1317,9 @@
         position: absolute;
         left: 40%;
         top: 0;
-        height: 100%;
+        height: 110%;
         width: 60%;
-        background: url('/dist/images/hyperloop2.png') no-repeat center center !important;
+        background: url('/dist/images/razor6.png') no-repeat center center !important;
         background-size: cover !important;
         box-shadow: -8px 0px 8px rgba(0, 0, 0, 0.1);
     }
@@ -1537,150 +1537,26 @@
          }
      }
  </style>
+ <section class="page-title-area aboout-4-head-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <div class="about-head-content">
+                    <h2>Razor6</h2>
+                    <p>Precision-engineered Piezo DOD technology delivering</p>
+                </div>
+                <div class="breadcrumbs text-center">
+                    <ul class="page-breadcrumbs">
+                        <li><a href="{{route('home')}}">home</a></li>
+                        <li><a href="#">About Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
- <div class="rev_slider_wrapper">
-     <div id="slider1" class="rev_slider" data-version="5.0">
-         <ul>
 
-             <!-- SLIDE 1 -->
-             <li data-index="rs-1" data-transition="parallaxtoright" data-delay="6500">
-
-                 <!-- MAIN IMAGE -->
-                 <img src="{{asset('dist/images/slide4.png')}}"
-                     class="rev-slidebg"
-                     data-bgposition="center center"
-                     data-bgfit="contain"
-                     data-bgrepeat="no-repeat"
-                     style="width:100%; max-width:900px; height:auto; margin:auto;">
-
-                 <!-- LAYER 1 -->
-                 <div class="tp-caption tp-resizeme"
-                     data-x="center"
-                     data-y="top"
-                     data-voffset="120"
-                     data-start="1200"
-                     data-transform_in="y:[100%];opacity:0;s:800;"
-                     data-transform_out="opacity:0;s:300" ;>
-                     <span class="sl-italic" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;">
-                         Industrial Inkjet for 24×7 Production Environments
-                     </span>
-                 </div>
-
-                 <!-- LAYER 2 -->
-                 <div class="tp-caption tp-resizeme"
-                     data-x="center" data-y="top" data-voffset="190"
-                     data-start="1800"
-                     data-transform_in="y:[100%];opacity:0;s:800;"
-                     data-transform_out="opacity:0;s:300" ;>
-                     <div class="text-center heading-rp-small" style="transition: none; line-height: 58px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 1px; font-weight: 800; font-size: 50px;">
-                         RAZOR6 HIGH SPEED INKJET SYSTEM
-                     </div>
-                 </div>
-
-                 <!-- LAYER 3 -->
-                 <div class="tp-caption tp-resizeme"
-                     data-x="center" data-y="top" data-voffset="300"
-                     data-start="2400" data-transform_in="y:[100%];opacity:0;s:800;"
-                     data-transform_out="opacity:0;s:300" ;>
-                     <div class="sl-italic sl-italic-2 text-center" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;">
-                         Precision-engineered Piezo DOD technology delivering<br>
-                         exceptional throughput and print quality at production speed.
-                     </div>
-                 </div>
-
-             </li>
-
-             <!-- SLIDE 2 -->
-
-             <li data-index="rs-2" data-transition="parallaxtoright" data-delay="6500">
-
-                 <!-- MAIN IMAGE -->
-                 <img src="{{asset('dist/images/slide2.png')}}"
-                     class="rev-slidebg"
-                     data-bgposition="center center"
-                     data-bgfit="cover"
-                     data-bgrepeat="no-repeat">
-
-                 <!-- LAYER 1 -->
-                 <div class="tp-caption tp-resizeme"
-                     data-x="center" data-y="top" data-voffset="120"
-                     data-start="1200"
-                     data-transform_in="y:[100%];opacity:0;s:800;"
-                     data-transform_out="opacity:0;s:300" ;>
-                     <span class="sl-italic" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;">
-                         Variable Data Printing at Full Production Speed
-                     </span>
-                 </div>
-
-                 <!-- LAYER 2 -->
-                 <div class="tp-caption tp-resizeme"
-                     data-x="center" data-y="top" data-voffset="190"
-                     data-start="1800" data-transform_in="y:[100%];opacity:0;s:800;"
-                     data-transform_out="opacity:0;s:300" ;>
-                     <div class="text-center heading-rp-small" style="transition: none; line-height: 58px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 1px; font-weight: 800; font-size: 50px;">
-                         TRACESCI RAPIDPRO SOFTWARE
-                     </div>
-                 </div>
-
-                 <!-- LAYER 3 -->
-                 <div class="tp-caption tp-resizeme"
-                     data-x="center" data-y="top" data-voffset="300"
-                     data-start="2400" data-transform_in="y:[100%];opacity:0;s:800;"
-                     data-transform_out="opacity:0;s:300" ;>
-                     <div class="sl-italic sl-italic-2 text-center" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;">
-                         Serialisation, QR codes, barcodes and complex variable data<br>
-                         printing without compromising throughput or performance.
-                     </div>
-                 </div>
-
-             </li>
-
-             <!-- SLIDE 3 -->
-             <li data-index="rs-3" data-transition="parallaxtoright" data-delay="6500">
-
-                 <!-- MAIN IMAGE -->
-                 <img src="{{asset('dist/images/slide3.png')}}"
-                     class="rev-slidebg"
-                     data-bgposition="center center"
-                     data-bgfit="cover"
-                     data-bgrepeat="no-repeat">
-
-                 <!-- LAYER 1 -->
-                 <div class="tp-caption tp-resizeme"
-                     data-x="center" data-y="top" data-voffset="120"
-                     data-start="1200" data-transform_in="y:[100%];opacity:0;s:800;"
-                     data-transform_out="opacity:0;s:300" ;>
-                     <span class="sl-italic" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;">
-                         UV Curable & Aqueous Ink Compatibility
-                     </span>
-                 </div>
-
-                 <!-- LAYER 2 -->
-                 <div class="tp-caption tp-resizeme"
-                     data-x="center" data-y="top" data-voffset="190"
-                     data-start="1800" data-transform_in="y:[100%];opacity:0;s:800;"
-                     data-transform_out="opacity:0;s:300" ;>
-                     <div class="text-center heading-rp-small" style="transition: none; line-height: 58px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 1px; font-weight: 800; font-size: 50px;">
-                         BUILT FOR SPEED & PRECISION
-                     </div>
-                 </div>
-
-                 <!-- LAYER 3 -->
-                 <div class="tp-caption tp-resizeme"
-                     data-x="center" data-y="top" data-voffset="300"
-                     data-start="2400" data-transform_in="y:[100%];opacity:0;s:800;"
-                     data-transform_out="opacity:0;s:300" ;>
-                     <div class="sl-italic sl-italic-2 text-center" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;">
-                         Engineered for continuous industrial production with<br>
-                         inline verification, fast ROI and complete ancillary integration.
-                     </div>
-                 </div>
-
-             </li>
-
-         </ul>
-     </div>
- </div>
 
  <div class="solution-area" style="background-color: #f5f5f5;">
      <!-- MAIN TITLE AREA -->

@@ -39,11 +39,15 @@
     }
 
     .product_demo {
-        background: #ffffff;
-        padding: 120px 0;
+        background: #f5f5f5;
+        padding: 10px 0px 20px 0;
+        /* reduced top padding from 30px to 10px */
         text-align: center;
         position: relative;
         overflow: hidden;
+        display: flex;
+        align-items: center;
+        min-height: 60vh;
     }
 
     .product_demo::before {
@@ -93,7 +97,7 @@
     .product_demo h2 {
         color: #000000;
         font-weight: 800;
-        font-size: 52px;
+        font-size: 28px;
         line-height: 1.15;
         margin-bottom: 24px;
         position: relative;
@@ -103,7 +107,7 @@
 
     .product_demo p {
         color: #000000;
-        font-size: 18px;
+        font-size: 15px;
         line-height: 1.9;
         max-width: 760px;
         margin: 0 auto 45px;
@@ -507,7 +511,6 @@
             <!-- Serialization Feature Highlight -->
 
 
-<<<<<<< HEAD
 
         </div>
     </div>
@@ -530,8 +533,6 @@
                     </p>
                 </div>
             </div>
-=======
->>>>>>> daf17bb5e56a95f65695accf62789df1f9d483de
         </div>
     </div>
 </div>
@@ -646,7 +647,6 @@
             </div>
         </div>-->
 
-<<<<<<< HEAD
         <!-- Video Section -->
 <div class="video-home" style="width: auto;">
     <div class="bg" style="background-image: url({{ asset('dist/images/logo_color.png') }}) !important; background-size: 10% !important; background-position: center !important; background-repeat: no-repeat !important; min-height: 500px !important; width: 100% !important; background:rgb(192, 192, 192);">
@@ -719,133 +719,7 @@
 
 
 <!-- Pricing Section -->
-<section id="pricing_table" class="pricing-table-section grey-bg">
-    <!-- MAIN TITLE AREA -->
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <div class="main-title wow zoomIn">
-                    <div class="main-shadow-heading">
-                        <h2>Join Our Successful Customers</h2>
-                    </div>
-                    <h2>Join Our Successful Customers</h2>
-                    <h3>Choose Your Plan</h3>
-=======
-    <div class="video-home" style="width: 100%;">
 
-        <div class="bg" style="
-        background-color: rgb(192, 192, 192);
-        min-height: 500px;
-        width: 100%;
-        text-align: center;
-    ">
-
-            <div class="riven-container container video-container" style="padding: 108px 0 104px;">
-                <div class="row">
-                    <div class="col-md-12 col-sm-12 col-xs-12">
-
-                        <!-- Watch Button -->
-                        <div class="wpb_text_column wpb_content_element">
-                            <div class="wpb_wrapper">
-                                <p>
-                                    <a class="fancybox btn-play"
-                                        title="Watch Tracesci in action"
-                                        href="{{ asset('web/videos/tracesci_storyboard.mp4') }}"
-                                        data-type="iframe">
-                                        Watch Now
-                                    </a>
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- Logo -->
-                        <div style="margin: 20px 0 90px;">
-                            <img src="{{ asset('dist/images/tracesci logo_black.png') }}"
-                                alt="TRACESCI Logo"
-                                style="
-                                max-width: 180px;
-                                width: 100%;
-                                height: auto;
-                            ">
-                        </div>
-
-                        <!-- Heading -->
-                        <div class="title-block">
-                            <div class="riven-heading text-center">
-                                <h2 style="
-                                color: #000;
-                                font-weight: 400;
-                                line-height: 1.4;
-                            ">
-                                    <span style="font-weight: 800;">
-                                        Make Every Consumer
-                                    </span>
-                                    a Brand Protector
-                                </h2>
-                            </div>
-                        </div>
-
-                        <!-- Description -->
-                        <div class="wpb_text_column wpb_content_element">
-                            <div class="wpb_wrapper">
-                                <p style="
-                                color: #000;
-                                font-weight: 300;
-                                max-width: 900px;
-                                margin: 20px auto 0;
-                                line-height: 1.8;
-                            ">
-                                    Counterfeiting costs global businesses over $4 trillion annually.
-                                    With TRACESCI, every consumer who scans a QR code becomes an active
-                                    participant in brand protection — verifying authenticity, reporting
-                                    fake products, and engaging directly with trusted brands.
-                                    Built for businesses of every scale, from startups to enterprises.
-                                </p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- Real-Time Tracking Screenshots -->
-    <div class="software-screen-section" style="padding: 60px 0;">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center wow zoomIn" style="margin-bottom:40px;">
-                    <h2>Real-Time <span style="color:#7a0d7d;">Supply Chain Visibility</span></h2>
-                    <p style="color:#555; font-size:16px; max-width:650px; margin:15px auto 0;">
-                        Know exactly where every product is at every moment. From the instant a QR code is
-                        activated on the production line to the moment a consumer or inspector scans it for
-                        verification — every event is geo-tagged, timestamped and tamper-proof on the blockchain.
-                        Accessible by all authorised stakeholders in real time.
-                    </p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4 wow fadeInLeft" style="margin-bottom:20px;">
-                    <img src="{{ asset('web/images/04/img-slider.png') }}" alt="Live GPS Tracking" style="width:100%; height:auto; border-radius:8px; box-shadow: 0 8px 30px rgba(0,0,0,0.1);">
-                    <p style="text-align:center; margin-top:12px; color:#000000; font-weight:600;">Live GPS Location Tracking</p>
-                </div>
-                <div class="col-md-4 wow fadeInUp" style="margin-bottom:20px;">
-                    <img src="{{ asset('web/images/04/img-slider.png') }}" alt="Scan History Timeline" style="width:100%; height:auto; border-radius:8px; box-shadow: 0 8px 30px rgba(0,0,0,0.1);">
-                    <p style="text-align:center; margin-top:12px; color:#000000; font-weight:600;">Full Scan History Timeline</p>
-                </div>
-                <div class="col-md-4 wow fadeInRight" style="margin-bottom:20px;">
-                    <img src="{{ asset('web/images/04/img-slider.png') }}" alt="Blockchain Verification Ledger" style="width:100%; height:auto; border-radius:8px; box-shadow: 0 8px 30px rgba(0,0,0,0.1);">
-                    <p style="text-align:center; margin-top:12px; color:#000000; font-weight:600;">Immutable Blockchain Ledger</p>
->>>>>>> daf17bb5e56a95f65695accf62789df1f9d483de
-                </div>
-            </div>
-        </div>
-    </div>
-<<<<<<< HEAD
-    <!-- END TITLE -->
-    <!-- <div class="container">
-=======
 
 
     <!-- Pricing Section -->
@@ -866,7 +740,6 @@
         </div>
         <!-- END TITLE -->
         <!-- <div class="container">
->>>>>>> daf17bb5e56a95f65695accf62789df1f9d483de
                 <div class="row">
                     <div class="col-md-12">
                         <div class="all-link pricinig-head-btn text-center">
@@ -876,40 +749,6 @@
                     </div>
                 </div>
             </div> -->
-<<<<<<< HEAD
-    <!-- PRICING TABLE CONTENT -->
-    @foreach(getPlan() as $plan)
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-6 col-md-4">
-                <div class="pricing-table-content text-center wow fadeInLeft">
-                    <div class="pricing-table-head">
-                        <div class="pricing-head-top">
-                            <span>{{$plan->title}}</span>
-                        </div>
-                        <div class="pricing-head-content">
-                            <span> @if ($country=='India')
-                                &#8377; {{$plan->price_inr}}/-
-                                @else
-                                $ {{$plan->price_usd}}
-                                @endif
-                                <br>
-                                <span>Monthly</span>
-                            </span>
-                        </div>
-
-                    </div>
-                    <div class="pricing-table-inner-content">
-                        <div class="pricing-table-title">
-                            <p>All plans are include Funnel Report, Cohort Report, Revenue Report, People Search, and A/B Testing Report.</p>
-                        </div>
-                        <div class="pricing-table-list">
-                            <ul>
-                                {!!$plan->description!!}
-                            </ul>
-                            <div class="all-link pricinig-bottom-btn text-center">
-                                <a href="{{route('register-view')}}">Sign Up Now <i class="fa fa-long-arrow-right"></i></a>
-=======
         <!-- PRICING TABLE CONTENT -->
         @foreach(getPlan() as $plan)
         <div class="container">
@@ -943,14 +782,12 @@
                                 <div class="all-link pricinig-bottom-btn text-center">
                                     <a href="{{route('register-view')}}">Sign Up Now <i class="fa fa-long-arrow-right"></i></a>
                                 </div>
->>>>>>> daf17bb5e56a95f65695accf62789df1f9d483de
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-<<<<<<< HEAD
     </div>
     @endforeach
     <div class="pricing-table-self">
@@ -976,41 +813,10 @@
             </div>
             <div class="col-md-6 wow fadeInRight">
                 <img src="{{ asset('dist/images/conterfied.png') }}" alt="Tracesci Analytics Dashboard" style="width:100%; height:auto; border-radius:8px; box-shadow: 0 10px 40px rgba(122,13,125,0.15);">
-=======
-        @endforeach
-        <div class="pricing-table-self">
-            <img src="{{asset('dist/images/pricing-table-self.png')}}">
-        </div>
-    </section>
-
-    <!-- Analytics & Reporting Section -->
-    <div class="software-screen-section" style="padding: 60px 0;">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6 wow fadeInLeft" style="padding-right:40px;">
-                    <div class="main-title text-left">
-                        <h2>Analytics & <span style="color:#7a0d7d;">Anti-Counterfeit Intelligence</span></h2>
-                        <p style="color:#555; font-size:16px; margin-top:15px;">
-                            Data is your most powerful weapon against counterfeiting. Tracesci's analytics engine
-                            surfaces geo-location heat maps, consumer scanning behaviour and behavior-based fraud
-                            signals — revealing exactly where fakes are entering your supply chain and which markets
-                            are most at risk, so brands, inspectors and governments can act fast.
-                        </p>
-
-                    </div>
-                </div>
-                <div class="col-md-6 wow fadeInRight">
-                    <img src="{{ asset('web/images/04/img-slider.png') }}" alt="Tracesci Analytics Dashboard" style="width:100%; height:auto; border-radius:8px; box-shadow: 0 10px 40px rgba(122,13,125,0.15);">
-                </div>
->>>>>>> daf17bb5e56a95f65695accf62789df1f9d483de
             </div>
         </div>
     </div>
 
-<<<<<<< HEAD
-
-=======
->>>>>>> daf17bb5e56a95f65695accf62789df1f9d483de
     <x-notification></x-notification>
     <!-- </div> -->
 </div>
@@ -1020,11 +826,11 @@
             <div class="col-md-12">
 
                 <!-- <div class="demo-badge">
-                    Tracesci Cloud Solution
+                    Elite4 High-Speed Inkjet System
                 </div> -->
 
                 <h2>
-                    Blockchain-Powered Product Traceability & Authentication
+                    Blockchain-Powered Product &amp; <span style="color: #7a0d7d;">Traceability & Authentication</span>
                 </h2>
 
                 <p>
@@ -1045,6 +851,7 @@
         </div>
     </div>
 </div>
+
 @endsection
 
 
