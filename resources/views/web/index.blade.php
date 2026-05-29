@@ -173,7 +173,7 @@
 
         <!-- MAIN IMAGE -->
         <!-- <img src="{{asset('dist/images/slide1.png')}}" -->
-         <img src="{{asset('dist/images/index-wallpaper4.png')}}"
+        <img src="{{asset('dist/images/index-wallpaper4.png')}}"
           class="rev-slidebg"
           data-bgposition="center center"
           data-bgfit="cover"
@@ -187,7 +187,7 @@
           data-start="1200"
           data-transform_in="y:[100%];opacity:0;s:800;"
           data-transform_out="opacity:0;s:300" ;>
-          <span class="sl-italic" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;">
+          <span class="sl-italic" style='transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px; font-family: "Lora", serif;'>
             Let us help you to authenticate and track your product
           </span>
         </div>
@@ -208,7 +208,7 @@
           data-x="center" data-y="top" data-voffset="300"
           data-start="2400" data-transform_in="y:[100%];opacity:0;s:800;"
           data-transform_out="opacity:0;s:300" ;>
-          <div class="sl-italic sl-italic-2 text-center" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;">
+          <div class="sl-italic sl-italic-2 text-center" style='transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px; font-family: "Lora", serif;'>
             Our strategists will help you set an objective and choose your tools,<br>
             developing a plan that is custom-built for your business.
           </div>
@@ -245,7 +245,7 @@
           data-start="1200"
           data-transform_in="y:[100%];opacity:0;s:800;"
           data-transform_out="opacity:0;s:300" ;>
-          <span class="sl-italic" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;">
+          <span class="sl-italic" style='transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;font-family: "Lora", serif;'>
             Informed decisions. Exceptional results
           </span>
         </div>
@@ -265,7 +265,7 @@
           data-x="center" data-y="top" data-voffset="300"
           data-start="2400" data-transform_in="y:[100%];opacity:0;s:800;"
           data-transform_out="opacity:0;s:300" ;>
-          <div class="sl-italic sl-italic-2 text-center" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;">
+          <div class="sl-italic sl-italic-2 text-center" style='transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;font-family: "Lora", serif;'>
             Our strategists will help you set an objective and choose your tools,<br>
             developing a plan that is custom-built for your business.
           </div>
@@ -299,7 +299,7 @@
           data-x="center" data-y="top" data-voffset="120"
           data-start="1200" data-transform_in="y:[100%];opacity:0;s:800;"
           data-transform_out="opacity:0;s:300" ;>
-          <span class="sl-italic" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;">
+          <span class="sl-italic" style='transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;font-family: "Lora", serif;'>
             Informed decisions. Exceptional results
           </span>
         </div>
@@ -319,7 +319,7 @@
           data-x="center" data-y="top" data-voffset="300"
           data-start="2400" data-transform_in="y:[100%];opacity:0;s:800;"
           data-transform_out="opacity:0;s:300" ;>
-          <div class="sl-italic sl-italic-2 text-center" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;">
+          <div class="sl-italic sl-italic-2 text-center" style='transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;font-family: "Lora", serif;'>
             Our strategists will help you set an objective and choose your tools,<br>
             developing a plan that is custom-built for your business.
           </div>
@@ -469,7 +469,7 @@
         </div>
         <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 0.9s">
           <div class="thumbnail-game text-center">
-            <img height="150" src="{{asset('dist/images/automobile.png')}}"  class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
+            <img height="150" src="{{asset('dist/images/automobile.png')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
           </div>
           <div class="desc text-center">
             <h3>Automobile</h3>
@@ -485,7 +485,7 @@
         </div>
         <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 0.9s">
           <div class="thumbnail-game text-center">
-            <img height="150" src="{{asset('dist/images/medicine.png')}}"  class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
+            <img height="150" src="{{asset('dist/images/medicine.png')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
           </div>
           <div class="desc text-center">
             <h3>Pharma</h3>
@@ -493,7 +493,7 @@
         </div>
         <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 1.2s">
           <div class="thumbnail-game text-center">
-            <img height="150" src="{{asset('dist/images/drink.png')}}"  class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
+            <img height="150" src="{{asset('dist/images/drink.png')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
           </div>
           <div class="desc text-center">
             <h3>Beverages</h3>

@@ -229,7 +229,7 @@
                     data-x="center" data-y="top" data-voffset="120"
                     data-start="1200" data-transform_in="y:[100%];opacity:0;s:800;"
                     data-transform_out="opacity:0;s:300" ;>
-                    <span style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 600; font-size: 17px;">
+                    <span style='transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 200; font-size: 17px; font-family: "Lora", serif;'>
                         One Platform. Every Stakeholder. Zero Counterfeits.
                     </span>
                 </div>
@@ -249,7 +249,7 @@
                     data-x="center" data-y="top" data-voffset="300"
                     data-start="2400" data-transform_in="y:[100%];opacity:0;s:800;"
                     data-transform_out="opacity:0;s:300" ;>
-                    <div class="text-center" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 600; font-size: 17px;">
+                    <div class="text-center" style='transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 200; font-size: 17px; font-family: "Lora", serif;'>
                         Serialize every product unit with a unique QR code. Track its complete journey<br>
                         from manufacturer to end consumer — accessible by brands, inspectors, and governments.
                     </div>
