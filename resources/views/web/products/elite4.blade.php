@@ -9,6 +9,16 @@
         padding: 0;
         box-sizing: border-box;
     }
+    .feature-2-right {
+    position: absolute;
+    left: 40%;
+    top: 0;
+    height: 100%;
+    width: 60%;
+    background: url('/dist/images/elite4_3.png') no-repeat center center !important;
+    background-size: cover !important;
+    box-shadow: -8px 0px 8px rgba(0, 0, 0, 0.1);
+}
 
     :root {
         --black: #0a0a0a;
@@ -124,7 +134,7 @@
 
     .contact-tagline {
         font-family: 'Lora', serif;
-        font-size: clamp(28px, 3vw, 44px);
+        font-size: clamp(28px, 3vw, 28px);
         font-weight: 800;
         color: var(--navy);
         line-height: 1.1;
@@ -438,7 +448,7 @@
     }
 
     .service-card:hover {
-        background: var(--teal-light);
+        background: #e9d6ea;
     }
 
     .service-title {
@@ -585,7 +595,7 @@
     }
 
     .solution-card:hover {
-        background: var(--teal-light);
+        background: #e9d6ea;
     }
 
     .solution-card:hover .sol-num {
@@ -605,7 +615,7 @@
     .sol-icon {
         width: 44px;
         height: 44px;
-        background: var(--teal-light);
+        background: #e9d6ea;
         border-radius: 10px;
         display: flex;
         align-items: center;
@@ -1305,11 +1315,19 @@
     }
 
     .product_demo {
-        background: #ffffff;
-        padding: 120px 0;
+        background: #f5f5f5;
+        padding: 10px 0px 20px 0;
+        /* reduced top padding from 30px to 10px */
         text-align: center;
         position: relative;
         overflow: hidden;
+        display: flex;
+        align-items: center;
+        min-height: 60vh;
+    }
+
+    .product_demo .container {
+        width: 100%;
     }
 
     .product_demo::before {
@@ -1359,7 +1377,7 @@
     .product_demo h2 {
         color: #000000;
         font-weight: 800;
-        font-size: 52px;
+        font-size: 28px;
         line-height: 1.15;
         margin-bottom: 24px;
         position: relative;
@@ -1369,7 +1387,7 @@
 
     .product_demo p {
         color: #000000;
-        font-size: 18px;
+        font-size: 15px;
         line-height: 1.9;
         max-width: 760px;
         margin: 0 auto 45px;
@@ -1426,6 +1444,7 @@
     .product_demo .enterprise-btn:hover i {
         transform: translateX(7px);
     }
+    
 
 
     /* ── MOBILE ── */
@@ -1493,19 +1512,19 @@
     }
 </style>
 
-<div class="rev_slider_wrapper">
+<!-- <div class="rev_slider_wrapper">
     <div id="slider1" class="rev_slider" data-version="5.0">
-        <ul>
+        <ul> -->
 
             <!-- SLIDE 1 -->
-            <li data-index="rs-1" data-transition="parallaxtoright" data-delay="6500">
+            <!-- <li data-index="rs-1" data-transition="parallaxtoright" data-delay="6500"> -->
 
                 <!-- MAIN IMAGE -->
-                <img src="{{asset('dist/images/slide1.png')}}"
+                <!-- <img src="{{asset('dist/images/slide1.png')}}"
                     class="rev-slidebg"
                     data-bgposition="center center"
                     data-bgfit="auto"
-                    data-bgrepeat="no-repeat">
+                    data-bgrepeat="no-repeat"> -->
                 <!-- <img src="{{asset('dist/images/elite4_machine.png')}}"
     class="rev-slidebg"
     data-bgposition="center center"
@@ -1513,7 +1532,7 @@
     data-bgrepeat="no-repeat"
     style="width:100%; max-width:900px; height:auto; margin:auto;"> -->
                 <!-- LAYER 1 -->
-                <div class="tp-caption tp-resizeme"
+                <!-- <div class="tp-caption tp-resizeme"
                     data-x="center"
                     data-y="top"
                     data-voffset="120"
@@ -1523,10 +1542,10 @@
                     <span class="sl-italic" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;">
                         Go from black to brilliant
                     </span>
-                </div>
+                </div> -->
 
                 <!-- LAYER 2 -->
-                <div class="tp-caption tp-resizeme"
+                <!-- <div class="tp-caption tp-resizeme"
                     data-x="center" data-y="top" data-voffset="190"
                     data-start="1800"
                     data-transform_in="y:[100%];opacity:0;s:800;"
@@ -1534,10 +1553,10 @@
                     <div class="text-center heading-rp-small" style="transition: none; line-height: 58px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 1px; font-weight: 800; font-size: 50px;">
                         ELITE4 <br>Multicolor Inkjet System
                     </div>
-                </div>
+                </div> -->
 
                 <!-- LAYER 3 -->
-                <div class="tp-caption tp-resizeme"
+                <!-- <div class="tp-caption tp-resizeme"
                     data-x="center" data-y="top" data-voffset="300"
                     data-start="2400" data-transform_in="y:[100%];opacity:0;s:800;"
                     data-transform_out="opacity:0;s:300" ;>
@@ -1545,10 +1564,10 @@
                         VDP • Track & Trace • Authentication <br>
                         Optimized for high-throughput color printing
                     </div>
-                </div>
+                </div> -->
 
                 <!-- LAYER 4 (Buttons) -->
-                <div class="tp-caption tp-resizeme"
+                <!-- <div class="tp-caption tp-resizeme"
                     data-x="center" data-y="top" data-voffset="430"
                     data-start="2800" data-transform_in="y:[100%];opacity:0;s:800;"
                     data-transform_out="opacity:0;s:300" ;>
@@ -1556,22 +1575,22 @@
                         <a a href="{{ url(Auth::check()?myDashboard():'/login') }}">Login</a>
                         <a a href="{{ url(Auth::check()?myDashboard():'/register') }}">Register</a>
                     </div>
-                </div>
+                </div> -->
 
-            </li>
+            <!-- </li> -->
 
             <!-- SLIDE 2 -->
-            <li data-index="rs-2" data-transition="parallaxtoright" data-delay="6500">
+            <!-- <li data-index="rs-2" data-transition="parallaxtoright" data-delay="6500"> -->
 
                 <!-- MAIN IMAGE -->
-                <img src="{{asset('dist/images/slide2.png')}}"
+                <!-- <img src="{{asset('dist/images/slide2.png')}}"
                     class="rev-slidebg"
                     data-bgposition="center center"
                     data-bgfit="cover"
-                    data-bgrepeat="no-repeat">
+                    data-bgrepeat="no-repeat"> -->
 
                 <!-- LAYER 1 -->
-                <div class="tp-caption tp-resizeme"
+                <!-- <div class="tp-caption tp-resizeme"
                     data-x="center" data-y="top" data-voffset="120"
                     data-start="1200"
                     data-transform_in="y:[100%];opacity:0;s:800;"
@@ -1579,30 +1598,30 @@
                     <span class="sl-italic" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;">
                         Decide smarter. Deliver better
                     </span>
-                </div>
+                </div> -->
 
                 <!-- LAYER 2 -->
-                <div class="tp-caption tp-resizeme"
+                <!-- <div class="tp-caption tp-resizeme"
                     data-x="center" data-y="top" data-voffset="190"
                     data-start="1800" data-transform_in="y:[100%];opacity:0;s:800;"
                     data-transform_out="opacity:0;s:300" ;>
                     <div class="text-center heading-rp-small" style="transition: none; line-height: 58px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 1px; font-weight: 800; font-size: 50px;">
                         track, trace & authentication
                     </div>
-                </div>
+                </div> -->
 
                 <!-- LAYER 3 -->
-                <div class="tp-caption tp-resizeme"
+                <!-- <div class="tp-caption tp-resizeme"
                     data-x="center" data-y="top" data-voffset="300"
                     data-start="2400" data-transform_in="y:[100%];opacity:0;s:800;"
                     data-transform_out="opacity:0;s:300" ;>
                     <div class="sl-italic sl-italic-2 text-center" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;">
                         We help configure and deploy Elite4,<br> tailored to your production needs
                     </div>
-                </div>
+                </div> -->
 
                 <!-- LAYER 4 (Buttons) -->
-                <div class="tp-caption tp-resizeme"
+                <!-- <div class="tp-caption tp-resizeme"
                     data-x="center" data-y="top" data-voffset="430"
                     data-start="2800" data-transform_in="y:[100%];opacity:0;s:800;"
                     data-transform_out="opacity:0;s:300" ;>
@@ -1610,42 +1629,42 @@
                         <a href="#">Read More</a>
                         <a href="#">Get Started</a>
                     </div>
-                </div>
+                </div> -->
 
-            </li>
+            <!-- </li> -->
 
             <!-- SLIDE 3 -->
-            <li data-index="rs-3" data-transition="parallaxtoright" data-delay="6500">
+            <!-- <li data-index="rs-3" data-transition="parallaxtoright" data-delay="6500"> -->
 
                 <!-- MAIN IMAGE -->
-                <img src="{{asset('dist/images/slide3.png')}}"
+                <!-- <img src="{{asset('dist/images/slide3.png')}}"
                     class="rev-slidebg"
                     data-bgposition="center center"
                     data-bgfit="cover"
-                    data-bgrepeat="no-repeat">
+                    data-bgrepeat="no-repeat"> -->
 
                 <!-- LAYER 1 -->
-                <div class="tp-caption tp-resizeme"
+                <!-- <div class="tp-caption tp-resizeme"
                     data-x="center" data-y="top" data-voffset="120"
                     data-start="1200" data-transform_in="y:[100%];opacity:0;s:800;"
                     data-transform_out="opacity:0;s:300" ;>
                     <span class="sl-italic" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;">
                         VDP • Authentication • Supply Chain Intelligence
                     </span>
-                </div>
+                </div> -->
 
                 <!-- LAYER 2 -->
-                <div class="tp-caption tp-resizeme"
+                <!-- <div class="tp-caption tp-resizeme"
                     data-x="center" data-y="top" data-voffset="190"
                     data-start="1800" data-transform_in="y:[100%];opacity:0;s:800;"
                     data-transform_out="opacity:0;s:300" ;>
                     <div class="text-center heading-rp-small" style="transition: none; line-height: 58px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 1px; font-weight: 800; font-size: 50px;">
                         High-Speed Multicolor Inkjet
                     </div>
-                </div>
+                </div> -->
 
                 <!-- LAYER 3 -->
-                <div class="tp-caption tp-resizeme"
+                <!-- <div class="tp-caption tp-resizeme"
                     data-x="center" data-y="top" data-voffset="300"
                     data-start="2400" data-transform_in="y:[100%];opacity:0;s:800;"
                     data-transform_out="opacity:0;s:300" ;>
@@ -1653,10 +1672,10 @@
                         Up to 60 m/min • 300–2400 DPI • CMYK UV/Aqueous <br>
                         Seamless Tracesci VDP integration for codes & serialisation
                     </div>
-                </div>
+                </div> -->
 
                 <!-- LAYER 4 (Buttons) -->
-                <div class="tp-caption tp-resizeme"
+                <!-- <div class="tp-caption tp-resizeme"
                     data-x="center" data-y="top" data-voffset="430"
                     data-start="2800" data-transform_in="y:[100%];opacity:0;s:800;"
                     data-transform_out="opacity:0;s:300" ;>
@@ -1664,13 +1683,32 @@
                         <a href="#">Read More</a>
                         <a href="#">Get Started</a>
                     </div>
-                </div>
+                </div> -->
 
-            </li>
+            <!-- </li>
 
         </ul>
     </div>
-</div>
+</div> -->
+
+<section class="page-title-area aboout-2-head-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <div class="about-head-content">
+                    <h2>Elite4</h2>
+                    <p>We help configure and deploy Elite4, tailored to your production needs</p>
+                </div>
+                <div class="breadcrumbs text-center">
+                    <ul class="page-breadcrumbs">
+                        <li><a href="{{route('home')}}">home</a></li>
+                        <li><a href="#">About Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <div class="solution-area" style="background-color: #f5f5f5;">
     <!-- MAIN TITLE AREA -->
@@ -1695,7 +1733,7 @@
                     <div class="solution-single-content solution-single-content-no-border wow fadeInLeft">
                         <h2>High Speed Multicolor Inkjet System</h2>
                         <p>Purpose-built for demanding production environments. Industrial piezoelectric printheads (normal service life of 3 years or more) deliver consistent, high-quality multicolor output at speeds up to 60 m/min with minimal downtime...</p>
-                        <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+                        <a href="#"></a>
                         <span><i class="icon icon-Chart"></i></span>
                     </div>
                 </div>
@@ -1703,7 +1741,7 @@
                     <div class="solution-single-content wow fadeInUp">
                         <h2>Variable Data Printing Software</h2>
                         <p>Powered by Tracesci VDP Software — print barcodes, QR codes, dates and times, work group numbers, counters, graphics, tables, and databases in real-time. Printheads can be combined arbitrarily with multiple documents printed simultaneously at full production speed...</p>
-                        <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+                        <a href="#"></a>
                         <span><i class="icon icon-Shield"></i></span>
                     </div>
                 </div>
@@ -1711,7 +1749,7 @@
                     <div class="solution-single-content wow fadeInRight">
                         <h2>Track and Trace</h2>
                         <p>Integrated real-time printing of serialised codes ensures every item is uniquely identified and trackable across the supply chain. Supports full product authentication, anti-counterfeiting, and compliance workflows with centrally controlled print management...</p>
-                        <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+                        <a href="#"></a>
                         <span><i class="icon icon-MessageLeft"></i></span>
                     </div>
                 </div>
@@ -1719,7 +1757,7 @@
                     <div class="solution-single-content solution-single-content-no-border wow fadeInLeft">
                         <h2>Product Authentication</h2>
                         <p>Leverage the Elite4's multicolor CMYK inkjet capability to print overt and covert security marks, QR codes, and unique identifiers directly onto packaging at full line speed — enabling end-to-end product authentication from factory to consumer...</p>
-                        <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+                        <a href="#"></a>
                         <span><i class="icon icon-Antenna2"></i></span>
                     </div>
                 </div>
@@ -1727,7 +1765,7 @@
                     <div class="solution-single-content wow fadeInUp">
                         <h2>CMYK UV &amp; Aqueous Inks</h2>
                         <p>Dual ink compatibility — CMYK UV curable and aqueous systems — with continuous ink supply delivering to up to 4 printheads simultaneously. Automatic ink type identification with low ink level alarm. Black, spot colour, and security ink options for pharma, packaging, labels, and security applications...</p>
-                        <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+                        <a href="#"></a>
                         <span><i class="icon icon-Tools"></i></span>
                     </div>
                 </div>
@@ -1735,7 +1773,7 @@
                     <div class="solution-single-content wow fadeInRight">
                         <h2>Easy Operation &amp; Quick ROI</h2>
                         <p>15-inch industrial-grade capacitive touchscreen (1280×800) running Windows for intuitive operation. PLC, RS485, RS232, WAN and LAN connectivity for seamless system integration. Designed for swift installation and rapid start-up, ensuring fast return on investment...</p>
-                        <a href="#">Learn More <i class="fa fa-long-arrow-right"></i></a>
+                        <a href="#"></a>
                         <span><i class="icon icon-Puzzle"></i></span>
                     </div>
                 </div>
@@ -1743,7 +1781,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="all-link solution-btn text-center">
-                        <a href="#">More Services</a>
+
                     </div>
                 </div>
             </div>
@@ -2142,7 +2180,7 @@
     </div>
     <div class="contact-form-wrap reveal" style="transition-delay:0.1s">
         <div class="section-eyebrow">Get In Touch</div>
-        <div class="contact-tagline">Ready to<br>shift into<br><span>production mode?</span></div>
+        <div class="contact-tagline">Ready to shift into<br><span>production mode?</span></div>
         <p class="contact-body">Tell us about your production requirements and we'll configure the ideal Elite4 system for your line — including any ancillary equipment needed for a complete multicolor inkjet solution.</p>
         <div class="contact-highlights">
             <div class="contact-highlight">
@@ -2179,7 +2217,7 @@
                 </div> -->
 
                 <h2>
-                    Multicolor Variable Data Printing &amp; Product Authentication
+                    Multicolor Variable Data Printing &amp; <span style="color: #7a0d7d;">Product Authentication</span>
                 </h2>
 
                 <p>

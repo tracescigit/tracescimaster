@@ -47,7 +47,7 @@
     /* Section spacing */
     .our-story-area {
         position: relative;
-        padding: 80px 0;
+        padding: 0px 0;
     }
 
     /* Left image */
@@ -59,20 +59,27 @@
         height: 100%;
     }
 
-    .story-img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
+   .story-img {
+    margin-top: 210px;
+    width: 90%;
+    height: 70%;
+    object-fit: cover;
+    margin-left: 60px;
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
 
     /* Content spacing */
     .our-story-2-head {
         margin-bottom: 30px;
+        text-align: center;
     }
 
     .our-story-inner {
         padding: 15px;
     }
+
+
 
     /* 🔥 Responsive Fix */
     @media (max-width: 991px) {
@@ -86,6 +93,7 @@
         .story-img {
             height: auto;
         }
+
     }
 </style>
 <section class="page-title-area aboout-1-head-area">
@@ -435,19 +443,21 @@
 
     <div class="container">
         <div class="row align-items-center">
+            <div class="our-story-2-head" style="margin-bottom: 60px;">
+                <h3>Our Story</h3>
+                <h2>How It All <span style="color: #7a0d7d;">Began!</span></h2>
+                
+            </div>
 
             <!-- Empty space for image on desktop -->
             <div class="col-md-6 d-none d-md-block"></div>
 
             <!-- Content -->
             <div class="col-md-6">
-                <div class="our-story-2-head">
-                    <h3>Our Story</h3>
-                    <h2>How It All <span style="color: #7a0d7d;">Began!</span></h2>
-                    <p>
-                        We're TRACESCI, a product authentication and track & trace technology company headquartered in Chennai with branches also on Gurugram and Mumbai,Established to combat the rising challenges of illicit trade and counterfeiting.
-                    </p>
-                </div>
+                <p>
+                    We're TRACESCI, a product authentication and track & trace technology company headquartered in Chennai with branches also on Gurugram and Mumbai,Established to combat the rising challenges of illicit trade and counterfeiting.
+                </p>
+
 
                 <!-- Inner Grid -->
                 <div class="row mt-4">
@@ -455,8 +465,7 @@
                     <div class="col-sm-6 mb-2">
                         <div class="our-story-inner">
                             <h2>Who We Are</h2>
-                            <p>Skilled team of technology and supply chain professionals focused on redefining product authentication,traceability,visibility through Smart digital solutions.
-                            </p>
+                            <p>A dynamic team of technology and supply chain experts dedicated to transforming how products are authenticated and tracked. </p>
                         </div>
                     </div>
 
@@ -488,7 +497,13 @@
     </div>
 
 </section>
+<!-- =========================
+      END OUR STORY 2 SECTION
+      ============================== -->
 
+<!-- =========================
+      START CLIENT 2 SECTION
+      ============================== -->
 <section class="client-2-area">
     <!-- MAIN TITLE AREA -->
     <div class="container">
@@ -509,74 +524,164 @@
         <div class="row">
             <div class="col-md-12">
                 <div id="client-bg-2-slider" class="owl-carousel all-carousel owl-theme">
-
                     <div class="client-2-slider">
                         <div class="client-2-slider-content">
                             <span><i class="fa fa-quote-left"></i></span>
-                            <h3>TRACESCI streamlined our product tracking process and improved visibility across the entire supply chain.
-
-                            </h3>
+                            <h3>TRACESCI's platform gave us complete visibility across our supply chain. Counterfeiting incidents dropped dramatically after we deployed their serialization system.</h3>
                             <img src="images/client/client-user-1.png" alt="">
                         </div>
-                        <h2>LyLy Parker</h2>
-                        <h3>MD, Label Printer</h3>
+                        <h2>Supply Chain Director</h2>
+                        <h3>FMCG Brand</h3>
                     </div>
-
                     <div class="client-2-slider">
                         <div class="client-2-slider-content">
                             <span><i class="fa fa-quote-left"></i></span>
-                            <h3>The blockchain-enabled traceability solution streamlined our compliance process and gave us accurate real-time product movement insights.</h3>
+                            <h3>The blockchain-based track & trace solution from TRACESCI has significantly improved our tax compliance monitoring and reduced revenue leakage across the region.</h3>
                             <img src="images/client/client-user-2.png" alt="">
                         </div>
-                        <h2>Vikas Sethi</h2>
-                        <h3>Product Manager, Agro Company</h3>
+                        <h2>Revenue Authority Official</h2>
+                        <h3>Government Body</h3>
                     </div>
-
                     <div class="client-2-slider">
                         <div class="client-2-slider-content">
                             <span><i class="fa fa-quote-left"></i></span>
-                            <h3>Customer engagement improved significantly after implementing TRACESCI’s QR authentication system for our retail products.</h3>
+                            <h3>We were impressed by how quickly customers adopted scanning. TRACESCI’s mobile app turned consumers into active participants in protecting our brand.</h3>
                             <img src="images/client/client-user-3.png" alt="">
                         </div>
-                        <h2>Varun Sehgal</h2>
-                        <h3>Sales Director, Retail Brand</h3>
+                        <h2>Brand Manager</h2>
+                        <h3>Pharmaceutical Company</h3>
                     </div>
-
                     <div class="client-2-slider">
                         <div class="client-2-slider-content">
                             <span><i class="fa fa-quote-left"></i></span>
-                            <h3>TRACESCI gave us end-to-end visibility from manufacturing to distribution, helping us strengthen brand protection and reduce counterfeit risks.</h3>
+                            <h3>TRACESCI's platform gave us complete visibility across our supply chain. Counterfeiting incidents dropped dramatically after we deployed their serialization system.</h3>
                             <img src="images/client/client-user-1.png" alt="">
                         </div>
-                        <h2>Rohan Malhotra</h2>
-                        <h3>Operations Head, FMCG Company</h3>
+                        <h2>Supply Chain Director</h2>
+                        <h3>FMCG Brand</h3>
                     </div>
-
                     <div class="client-2-slider">
                         <div class="client-2-slider-content">
                             <span><i class="fa fa-quote-left"></i></span>
-                            <h3>Their smart traceability platform made inventory monitoring faster and improved our warehouse efficiency with real-time scanning capabilities.</h3>
+                            <h3>The blockchain-based track & trace solution from TRACESCI has significantly improved our tax compliance monitoring and reduced revenue leakage across the region.</h3>
                             <img src="images/client/client-user-2.png" alt="">
                         </div>
-                        <h2>Ananya Kapoor</h2>
-                        <h3>Supply Chain Manager, Logistics Firm</h3>
+                        <h2>Revenue Authority Official</h2>
+                        <h3>Government Body</h3>
                     </div>
-
                     <div class="client-2-slider">
                         <div class="client-2-slider-content">
                             <span><i class="fa fa-quote-left"></i></span>
-                            <h3>Implementing TRACESCI’s digital authentication solution increased consumer confidence and gave us stronger control over product verification.</h3>
+                            <h3>We were impressed by how quickly customers adopted scanning. TRACESCI’s mobile app turned consumers into active participants in protecting our brand.</h3>
                             <img src="images/client/client-user-3.png" alt="">
                         </div>
-                        <h2>Karan Mehra</h2>
-                        <h3>Brand Protection Lead, Pharma Company</h3>
+                        <h2>Brand Manager</h2>
+                        <h3>Pharmaceutical Company</h3>
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
 </section>
+<!-- =========================
+      END CLIENT 2 SECTION
+      ============================== -->
+
+<!-- =========================
+      START SUBSCRIBE SECTION
+      ============================== -->
+{{--<div class="subscribe-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="join-team subscribe-content clearfix wow zoomIn">
+                    <div class="col-md-7">
+                        <p>
+                            <span><i class="icon icon-MessageLeft"></i></span> Metrics enterprise SEO and content marketing platform provides competitive insight and market analysis no one can duplicate.
+                        </p>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="all-link pricinig-head-btn subscribe-btn">
+                            <a href="#">Take The Tour</a>
+                            <a href="#">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>--}}
+<!-- =========================
+      END SUBSCRIBE SECTION
+      ============================== -->
+
+<!-- =========================
+        START CLIENT SECTION
+      ============================== -->
+{{--<section class="client-area">
+    <!-- MAIN TITLE AREA -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <div class="main-title wow zoomIn">
+                    <div class="main-shadow-heading">
+                        <h2>Our Partners Trust Us With Their Projects</h2>
+                    </div>
+                    <h2>Our Partners Trust Us With Their Projects</h2>
+                    <h3>Customer success always comes first.</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END TITLE -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div id="client-slider" class="owl-carousel all-carousel owl-theme">
+                    <div class="client-slider">
+                        <img src="images/client/client-1.png" alt="">
+                    </div>
+                    <div class="client-slider">
+                        <img src="images/client/client-2.png" alt="">
+                    </div>
+                    <div class="client-slider">
+                        <img src="images/client/client-3.png" alt="">
+                    </div>
+                    <div class="client-slider">
+                        <img src="images/client/client-4.png" alt="">
+                    </div>
+                    <div class="client-slider">
+                        <img src="images/client/client-5.png" alt="">
+                    </div>
+                    <div class="client-slider">
+                        <img src="images/client/client-6.png" alt="">
+                    </div>
+                    <div class="client-slider">
+                        <img src="images/client/client-1.png" alt="">
+                    </div>
+                    <div class="client-slider">
+                        <img src="images/client/client-2.png" alt="">
+                    </div>
+                    <div class="client-slider">
+                        <img src="images/client/client-3.png" alt="">
+                    </div>
+                    <div class="client-slider">
+                        <img src="images/client/client-4.png" alt="">
+                    </div>
+                    <div class="client-slider">
+                        <img src="images/client/client-5.png" alt="">
+                    </div>
+                    <div class="client-slider">
+                        <img src="images/client/client-6.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>--}}
+<!-- =========================
+        END CLIENT SECTION
+      ============================== -->
 
 
 @endsection
