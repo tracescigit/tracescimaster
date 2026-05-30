@@ -589,11 +589,7 @@
 
 <!-- features -->
 
-<<<<<<< HEAD
 <div class="solution-area" style="padding: 0px 0;background-color:#fff;">
-=======
-<div class="solution-area" style="padding-bottom: 0px;">
->>>>>>> d2b057b5a2623d9e71c56bd6bd4713dbc0c18840
   <!-- MAIN TITLE AREA -->
   <div class="container">
     <div class="row">
