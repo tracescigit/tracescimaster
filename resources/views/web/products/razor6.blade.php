@@ -1731,7 +1731,7 @@
 
 
      <section class="feature-area feature-2-area" style="background-color: #f5f5f5;">
-         <div class="feature-heading-area  wow zoomIn" style="margin-top: 90px;">
+         <div class="feature-heading-area  wow zoomIn" style="margin-top: 100px;">
              <div class="container">
                  <div class="row">
                      <div class="col-md-6">

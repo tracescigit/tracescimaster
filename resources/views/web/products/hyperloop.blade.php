@@ -32,7 +32,6 @@
         font-family: 'Lora', serif;
         font-size: 16px;
         color: var(--text);
-        background: var(--white);
         overflow-x: hidden;
     }
 
@@ -1291,8 +1290,8 @@
 
 <!-- ── SUITED BEST FOR ── -->
 <section class="feature-area feature-2-area" style="background-color: #f5f5f5;">
-    <div class="feature-heading-area wow zoomIn">
-        <div class="container">
+    <div class="feature-heading-area wow zoomIn" >
+        <div class="container" style="background-color: #f5f5f5; margin-top:80px">
             <div class="row">
                 <div class="col-md-6">
                     <div class="feature-heading-left">
