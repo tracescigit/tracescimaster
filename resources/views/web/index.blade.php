@@ -29,15 +29,11 @@
     min-height: 70px;
   }
 
-  /* =========================================
-     TRACE PROCESS SECTION
-  ========================================= */
-
   .trace-process-section {
     background: #f5f5f5;
     position: relative;
     overflow: hidden;
-    padding: 0px 0;
+    padding: 0;
   }
 
   .section-title {
@@ -81,7 +77,15 @@
     height: auto;
   }
 
-  .process-grid .mb-4 {
+  /* ---- Card grid: flex row so all cards in a row share equal height ---- */
+  .process-grid {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .process-grid>[class*="col-"] {
+    display: flex;
+    flex-direction: column;
     margin-bottom: 30px;
   }
 
@@ -90,9 +94,9 @@
     border-radius: 20px;
     padding: 35px;
     text-align: center;
-    height: 100%;
+    flex: 1;
     box-shadow: 0 10px 35px rgba(0, 0, 0, 0.05);
-    transition: 0.3s ease;
+    transition: all 0.3s ease;
     border-top: 4px solid #7a0d7d;
   }
 
@@ -128,60 +132,14 @@
     margin: 0;
   }
 
-  /* =========================================
-     TABLET RESPONSIVE
-  ========================================= */
-
-  @media(max-width:991px) {
+  @media (max-width: 991px) {
 
     .trace-process-section {
-      padding: 0px 0;
+      padding: 0;
     }
 
     .section-title h2 {
       font-size: 36px;
-    }
-
-    .center-image img {
-      width: 420px;
-    }
-
-    .process-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .process-grid .col-md-6,
-    .process-grid .col-sm-6 {
-      display: flex;
-    }
-
-    .process-card {
-      width: 100%;
-    }
-  }
-
-  /* =========================================
-     MOBILE RESPONSIVE
-  ========================================= */
-
-  @media(max-width:767px) {
-
-    .trace-process-section {
-      padding: 0px 0;
-    }
-
-    .section-title h2 {
-      font-size: 30px;
-    }
-
-    .process-card {
-      padding: 25px;
-    }
-
-    .process-card h3 {
-      font-size: 20px;
     }
 
     .center-image {
@@ -189,7 +147,99 @@
     }
 
     .center-image img {
+      width: 420px;
+      max-width: 100%;
+    }
+
+    .process-grid>[class*="col-"] {
+      margin-bottom: 30px;
+    }
+
+    .process-card {
+      padding: 30px 25px;
+    }
+
+    .process-card h3 {
+      font-size: 22px;
+    }
+
+    .process-card p {
+      font-size: 15px;
+      line-height: 1.7;
+    }
+  }
+
+  @media (max-width: 767px) {
+
+    .trace-process-section {
+      padding: 0;
+    }
+
+    .section-title h2 {
+      font-size: 30px;
+    }
+
+    .center-image {
+      margin-bottom: 40px;
+    }
+
+    .center-image img {
       width: 280px;
+      max-width: 100%;
+    }
+
+    .process-grid>[class*="col-"] {
+      width: 100%;
+      flex-direction: column;
+      margin-bottom: 20px;
+    }
+
+    .process-card {
+      padding: 25px 20px;
+    }
+
+    .process-card h3 {
+      font-size: 20px;
+    }
+
+    .process-card p {
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .step-badge {
+      width: 55px;
+      height: 55px;
+      font-size: 18px;
+    }
+  }
+
+  @media (max-width: 480px) {
+
+    .section-title h2 {
+      font-size: 26px;
+    }
+
+    .center-image img {
+      width: 220px;
+    }
+
+    .process-card {
+      padding: 20px 15px;
+    }
+
+    .process-card h3 {
+      font-size: 18px;
+    }
+
+    .process-card p {
+      font-size: 13px;
+    }
+
+    .step-badge {
+      width: 50px;
+      height: 50px;
+      font-size: 16px;
     }
   }
 </style>
@@ -539,7 +589,7 @@
 
 <!-- features -->
 
-<div class="solution-area" style="padding: 0px 0;">
+<div class="solution-area" style="padding-bottom: 0px;">
   <!-- MAIN TITLE AREA -->
   <div class="container">
     <div class="row">
@@ -624,9 +674,9 @@
       <div class="row">
         <div class="col-md-12 text-center">
           <div class="main-title wow zoomIn">
-             <div class="main-shadow-heading">
-            <h2>Secure Product Traceability Workflow</h2>
-          </div>
+            <div class="main-shadow-heading">
+              <h2>Secure Product Traceability Workflow</h2>
+            </div>
             <h2><span>Secure </span>Product <span style="color:#7a0d7d;">Traceability Workflow</span></h2>
             <h3> One connected platform for onboarding, serialization,
               authentication and real-time enforcement.</h3>
@@ -784,7 +834,7 @@
     <div class="row">
       <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="riven-heading text-center" data-sr="enter bottom wait 0.3s">
-          <h2><span>Event</span> Calendar</h2>
+          <h2>Events<span style="color:#7a0d7d";> Calendar</span></h2>
           <p class="text">Save the dates. We would love to see you..</p>
         </div>
       </div>
