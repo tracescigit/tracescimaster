@@ -4692,9 +4692,38 @@ input:focus {
 .aboout-4-head-area {
     background:
         linear-gradient(to bottom, transparent, rgba(255, 248, 200, 0.5)),
-        url(../images/razor6_banner.png);
+        url(../images/razor6_banner2.png);
+
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+/* Tablet */
+@media only screen and (max-width: 991px) {
+
+    .aboout-4-head-area {
+        background-size: cover;
+        background-position: center center;
+        padding: 100px 0 80px;
+        min-height: 350px;
+    }
+}
+
+
+/* Mobile */
+@media only screen and (max-width: 767px) {
+
+    .aboout-4-head-area {
+        background:
+        linear-gradient(to bottom, transparent, rgba(255, 248, 200, 0.6)),
+        url(../images/razor6_mobile.png);
+        background-size: cover;
+        background-position: center;
+        padding: 80px 0 60px;
+        min-height: 260px;
+    }
 }
 .page-title-area {
     position: relative;
@@ -4704,6 +4733,7 @@ input:focus {
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
+
 .page-title-area:before {
     background-color: rgba(255, 255, 255, 0.05);
     content: "";
@@ -4712,6 +4742,32 @@ input:focus {
     position: absolute;
     top: 0;
     width: 100%;
+}
+
+
+/* Tablet */
+@media only screen and (max-width: 991px) {
+
+    .page-title-area {
+        padding-top: 350px;
+        background-position: center top;
+        background-attachment: scroll;
+    }
+}
+
+
+/* Mobile */
+@media only screen and (max-width: 767px) {
+
+    .page-title-area {
+        padding-top: 240px;
+        background-position: center top;
+        background-attachment: scroll;
+    }
+
+    .page-title-area:before {
+        background-color: rgba(255, 255, 255, 0.08);
+    }
 }
 .about-head-content {
     padding-bottom: 130px;
