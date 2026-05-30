@@ -139,9 +139,9 @@
             </a>
           </li>
 
-          <li class="right_menu">
+          <!-- <li class="right_menu">
             <a href="#"><i class="fa fa-bars"></i></a>
-          </li>
+          </li> -->
         </ul>
         @endif
 

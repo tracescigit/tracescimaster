@@ -181,7 +181,7 @@
 
 
 <!-- Overview -->
-<div class="welcome-area">
+<div class="welcome-area" style="background-color:#fff">
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
