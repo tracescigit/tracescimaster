@@ -425,7 +425,7 @@
 
 
 <!-- the content -->
-<div class="welcome-area">
+<div class="welcome-area" style="background-color:#fff">
   <!-- MAIN TITLE AREA -->
   <div class="container">
     <div class="row">
@@ -589,7 +589,7 @@
 
 <!-- features -->
 
-<div class="solution-area" style="padding-bottom: 0px;">
+<div class="solution-area" style="padding: 0px 0;background-color:#fff;">
   <!-- MAIN TITLE AREA -->
   <div class="container">
     <div class="row">
@@ -829,7 +829,7 @@
 
 
 <!-- Event Calendar -->
-<div id="event_calendar" class="padding-content content-section">
+<div id="event_calendar" class="padding-content content-section" style="background-color:#fff">
   <div class="container">
     <div class="row">
       <div class="col-md-12 col-sm-12 col-xs-12">

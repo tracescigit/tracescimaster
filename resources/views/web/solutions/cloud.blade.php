@@ -552,7 +552,7 @@
 
 
 <!-- the content -->
-<div class="welcome-area">
+<div class="welcome-area" style="background-color:#fff">
     <!-- MAIN TITLE AREA -->
     <div class="container">
         <div class="row">
@@ -805,7 +805,7 @@
     </div>
 </div>
 
-<div class="software-screen-section" style="padding: 60px 0;">
+<div class="software-screen-section" style="padding: 60px 0; background-color:#fff;">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-md-6 wow fadeInLeft">
@@ -975,7 +975,7 @@
 </div>
 
 <!-- Real-Time Tracking Screenshots -->
-<div class="software-screen-section" style="padding: 60px 0;">
+<div class="software-screen-section" style="padding: 60px 0; background-color:#fff">
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center wow zoomIn" style="margin-bottom:40px;">
@@ -1084,7 +1084,7 @@
 </section>
 
 <!-- Analytics & Reporting Section -->
-<div class="software-screen-section" style="padding: 60px 0;">
+<div class="software-screen-section" style="padding: 60px 0; background-color:#fff">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-md-6 wow fadeInLeft" style="padding-right:40px;">
