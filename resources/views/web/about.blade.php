@@ -181,21 +181,21 @@
                         <div class="col-sm-4">
                             <div class="welcome-2-right-content-inner">
                                 <span><i class="icon icon-Chart"></i></span>
-                                <h2><span class="counter">100</span>%</h2>
+                                <h2>100%</h2>
                                 <p>End-to-End Solution</p>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="welcome-2-right-content-inner w-r-l-border">
                                 <span><i class="icon icon-Users"></i></span>
-                                <h2><span class="counter">24</span>/7</h2>
+                                <h2>24/7</h2>
                                 <p>Customer Support</p>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="welcome-2-right-content-inner w-r-l-border">
                                 <span><i class="icon icon-ChartUp"></i></span>
-                                <h2><span class="counter">6</span>+</h2>
+                                <h2>6+</h2>
                                 <p>Industry Verticals</p>
                             </div>
                         </div>

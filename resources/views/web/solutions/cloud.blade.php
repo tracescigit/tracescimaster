@@ -402,6 +402,86 @@
         }
     }
 
+    /* ---- Hero / Revolution slider ---- */
+    @media (max-width: 1199px) {
+        .heading-rp-small {
+            font-size: 36px !important;
+            line-height: 1.3 !important;
+        }
+    }
+
+    @media (max-width: 991px) {
+        .rev_slider_wrapper {
+            min-height: 400px;
+        }
+
+        .heading-rp-small {
+            font-size: 28px !important;
+            line-height: 1.3 !important;
+            letter-spacing: 0 !important;
+        }
+
+        .tp-caption span {
+            font-size: 14px !important;
+        }
+
+        .tp-caption div {
+            font-size: 14px !important;
+            line-height: 1.5 !important;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .rev_slider_wrapper {
+            min-height: 320px;
+        }
+
+        .heading-rp-small {
+            font-size: 50px !important;
+            line-height: 1.2 !important;
+            letter-spacing: 0 !important;
+        }
+
+        .tp-caption span {
+            font-size: 12px !important;
+            line-height: 1.4 !important;
+        }
+
+        .tp-caption div {
+            font-size: 12px !important;
+            line-height: 1.4 !important;
+        }
+
+        /* Force layers to not overflow horizontally */
+        .tp-caption {
+            width: 90vw !important;
+            left: 5vw !important;
+            white-space: normal !important;
+            text-align: center !important;
+        }
+
+        /* Hide the <br> so subtext wraps naturally on small screens */
+        .tp-caption br {
+            display: none;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .rev_slider_wrapper {
+            min-height: 260px;
+        }
+
+        .heading-rp-small {
+            font-size: 16px !important;
+            line-height: 1.2 !important;
+        }
+
+        .tp-caption span,
+        .tp-caption div {
+            font-size: 11px !important;
+        }
+    }
+
     /* ---- General: prevent horizontal overflow ---- */
     /* Scoped to content images — excludes .wp-post-image (industry icons) and slider images */
     .software-screen-section img,
@@ -418,7 +498,7 @@
     .row,
     [class*="col-"] {
         box-sizing: border-box;
-    }    
+    }
 </style>
 <div class="rev_slider_wrapper">
     <div id="slider1" class="rev_slider" data-version="5.0">
@@ -438,7 +518,7 @@
                     data-x="center" data-y="top" data-voffset="120"
                     data-start="1200" data-transform_in="y:[100%];opacity:0;s:800;"
                     data-transform_out="opacity:0;s:300" ;>
-                    <span style='transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 200; font-size: 17px; font-family: "Lora", serif;'>
+                    <span style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 600; font-size: 17px;">
                         One Platform. Every Stakeholder. Zero Counterfeits.
                     </span>
                 </div>
@@ -458,7 +538,7 @@
                     data-x="center" data-y="top" data-voffset="300"
                     data-start="2400" data-transform_in="y:[100%];opacity:0;s:800;"
                     data-transform_out="opacity:0;s:300" ;>
-                    <div class="text-center" style='transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 200; font-size: 17px; font-family: "Lora", serif;'>
+                    <div class="text-center" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 600; font-size: 17px;">
                         Serialize every product unit with a unique QR code. Track its complete journey<br>
                         from manufacturer to end consumer — accessible by brands, inspectors, and governments.
                     </div>
