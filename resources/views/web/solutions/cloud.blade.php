@@ -472,7 +472,7 @@
 
 
 <!-- the content -->
-<div class="welcome-area">
+<div class="welcome-area" style="background-color:#fff">
     <!-- MAIN TITLE AREA -->
     <div class="container">
         <div class="row">
