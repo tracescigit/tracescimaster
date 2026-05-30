@@ -140,3 +140,58 @@
     </div>
 </div>
 @endsection
+@section('script')
+<script type="text/javascript">
+  cash(function () {
+    async function contact() {
+      cash('.contact__input').removeClass('border-theme-6')
+      cash('.contact__input-error').html('')
+      cash('#contactError').addClass('hidden')
+
+      let name = cash('#name').val()
+      let email = cash('#email').val()
+      let mobile = cash('#mobile').val()
+      let message = cash('#message').val()
+
+      cash('#contactwait').removeClass('hidden')
+      axios.post("{{url('send_inquiry')}}", {
+        name : name , 
+        email : email ,
+        mobile : mobile,
+        message: message
+      }).then(res => {
+        cash('#contactSuccess').removeClass('hidden')
+        cash('#contactError').addClass('hidden')
+        cash('#contactwait').addClass('hidden')
+        // showNotification('success','Success!',res.data.message)
+        setTimeout(()=>{
+          window.location.reload()  
+        },3000)
+      }).catch(err => {
+        // showNotification('error','Error !',err.response.data.message)
+        cash('#contactError').removeClass('hidden')
+        cash('#contactSuccess').addClass('hidden')
+        cash('#contactwait').addClass('hidden')
+
+        cash('#btn-contact').html('Submit')
+
+        if (err.response.data.errors) {
+          for (const [key, val] of Object.entries(err.response.data.errors)) {
+            cash(`#${key}`).addClass('border-theme-6')
+            cash(`#error-${key}`).html(val)
+          }
+        }
+      })
+
+    }
+    cash('#contact_form').on('keyup', function(e) {
+      if (e.keyCode === 13) {
+        contact()
+      }
+    })
+    cash('#btn-contact').on('click', function() {
+      contact()
+    })
+  })
+</script>
+@endsection
