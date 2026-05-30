@@ -132,6 +132,22 @@
     margin: 0;
   }
 
+  .industries-text {
+    display: inline-block;
+    padding: 10px 30px;
+    font-size: 14px;
+    line-height: 1.4em;
+    text-transform: capitalize;
+    color: #fff !important;
+    background-color: #343434;
+    border: 1px solid #343434;
+    border-radius: 0.375rem;
+    margin: 0;
+    position: relative;
+    z-index: 15;
+    font-weight: 500;
+  }
+
   @media (max-width: 991px) {
 
     .trace-process-section {
@@ -523,7 +539,7 @@
             <div class="text-desc">
               <p class="text-center">The SaaS platform provides brand owners deep consumer and supply chain insights regarding their products like <br>real-time GPS location, scanning pattern and suspicious activity alerts.<br>It will help to get actionable product data for strategic decision-making and operational excellence.</p>
             </div>
-            <a class="btn btn-primary ubtn">Industries we cater</a>
+            <p class="industries-text">Industries we cater</p>
 
           </div>
           <div class="spacer-100"></div>
@@ -756,75 +772,7 @@
 
 
 <!-- Pricing Table -->
-{{--<section class="pricing-table-section grey-bg">
-      <!-- MAIN TITLE AREA -->
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 text-center">
-            <div class="main-title wow zoomIn">
-              <div class="main-shadow-heading">
-                <h2>Pricing <span>Plans</span></h2>
-              </div>
-              <h2>Pricing <span>Plans</span></h2>
-              <h3>Our pay as you go pricing plans are driven by usage of platform resources, premium features, support & service levels. Select which suits to you</h3>
-            </div>
-          </div>
-        </div>
-      </div>
 
-
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="all-link pricinig-head-btn text-center">
-              <a href="#">Monthly</a>
-              <a href="#">Yearly</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      @foreach(getPlan() as $plan)
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-6 col-md-4">
-            <div class="pricing-table-content text-center wow fadeInLeft">
-              <div class="pricing-table-head">
-                <div class="pricing-head-top">
-                  <span>{{$plan->title}}</span>
-</div>
-<div class="pricing-head-content">
-  <span>
-    @if ($country=='India')
-    &#8377; {{$plan->price_inr}}
-    @else
-    $ {{$plan->price_usd}}
-    @endif
-  </span>
-  <span>/ Monthly</span>
-</div>
-</div>
-<div class="pricing-table-inner-content">
-  <div class="pricing-table-title">
-    <p>All plans are include Funnel Report, Cohort Report, Revenue Report, People Search, and A/B Testing Report.</p>
-  </div>
-  <div class="pricing-table-list">
-    <ul>
-      {!!$plan->description!!}
-    </ul>
-    <div class="all-link pricinig-bottom-btn text-center">
-      <a class="btn btn-default" href="{{url('register')}}">Sign up</a>
-    </div>
-  </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-@endforeach
-<div class="pricing-table-self">
-  <img src="{{asset('dist/images/pricing-table-self.png')}}">
-</div>
-</section>--}}
 
 
 
@@ -834,7 +782,7 @@
     <div class="row">
       <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="riven-heading text-center" data-sr="enter bottom wait 0.3s">
-          <h2>Events<span style="color:#7a0d7d";> Calendar</span></h2>
+          <h2>Events<span style="color:#7a0d7d" ;> Calendar</span></h2>
           <p class="text">Save the dates. We would love to see you..</p>
         </div>
       </div>
@@ -848,14 +796,14 @@
               <div class="event-box-conner col-md-10 col-sm-10 col-xs-10">
                 <div class="event_post_content bg-gradient">
                   <div class="event-thumb">
-                    <img width="456" height="215" alt="event" src="{{asset('web/images/PAMEX2021.jpg')}}" class="event-img">
+                    <img width="800" height="100" alt="event" src="{{asset('web/images/labelexpo_2026.jpg')}}" class="event-img">
                   </div>
                   <div class="event-desc">
                     <h3 class="title-eventpost">
-                      <a href="event-lightbox.html" class="various fancybox.ajax">Pamex India 2022</a>
+                      <a href="event-lightbox.html" class="various fancybox.ajax">Labelexpo India 2026</a>
                     </h3>
                     <div class="event_post_desc">
-                      23 - 26 March 2022, Mumbai.
+                      29 October - 1 November, Greater Noida, Delhi NCR .
                     </div>
                   </div>
                 </div>
