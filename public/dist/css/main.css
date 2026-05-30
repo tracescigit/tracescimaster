@@ -31,7 +31,7 @@ body {
 p {
     font-size: 14px;
     color: #9b9b9b;
-    font-family: "Droid Serif", serif;
+    font-family: "Raleway", sans-serif;
 }
 a,
 a:focus {
@@ -1041,7 +1041,6 @@ input:focus {
     outline: 0;
     box-shadow: none;
     border-bottom: 2px solid #f2f2f2;
-    font-style: italic;
     margin-bottom: 20px;
 }
 .log-in-content form input[type="submit"] {
@@ -1085,7 +1084,6 @@ input:focus {
 .log-in-content form input::-webkit-input-placeholder {
     color: #474747;
     font-size: 14px;
-    font-style: italic;
 }
 .log-in-content form input::-moz-placeholder {
     color: #474747;
@@ -1093,12 +1091,10 @@ input:focus {
 .log-in-content form input:-ms-input-placeholder {
     color: #474747;
     font-size: 14px;
-    font-style: italic;
 } /* ie */
 .log-in-content form input:-moz-placeholder {
     color: #474747;
     font-size: 14px;
-    font-style: italic;
 }
 
 /*CONSULTATIOIN POPUP*/
@@ -1446,7 +1442,6 @@ input:focus {
 }
 
 .sl-italic {
-    font-style: italic;
     letter-spacing: 1px !important;
 }
 .all-link {
@@ -1526,7 +1521,6 @@ input:focus {
         display: none;
     }
     .sl-italic-2 {
-        font-style: italic;
         letter-spacing: 1px !important;
         white-space: normal;
         width: 300px;
@@ -1611,7 +1605,6 @@ input:focus {
     font-family: "Lora", serif;
 }
 .welcome-single-content p {
-    font-style: italic;
 }
 @media (max-width: 992px) {
     .main-shadow-heading {
@@ -1670,7 +1663,6 @@ input:focus {
     font-weight: 600;
 }
 .solution-single-content p {
-    font-style: italic;
 }
 .solution-single-content a {
     -webkit-transition: all 0.5s;
@@ -2043,7 +2035,7 @@ input:focus {
     margin-top: 45px;
 }
 .help-question p {
-    font-style: italic;
+
 }
 .help-question span {
     position: absolute;
@@ -2092,7 +2084,6 @@ input:focus {
 .help-slider-text p {
     font-size: 17px;
     color: #36454f;
-    font-style: italic;
     font-family: "Lora", serif;
     line-height: 27px;
     margin: 25px 0px;
@@ -3107,7 +3098,7 @@ input:focus {
     font-size: 16px;
     color: #282828;
     font-weight: bold;
-    padding-left: 125px;
+    padding-left: 25px;
     margin-top: 25px;
 }
 .client-2-slider > h3 {
@@ -3116,7 +3107,7 @@ input:focus {
     color: #9b9b9b;
     font-family: "Lora", serif;
     margin-top: 10px;
-    padding-left: 125px;
+    padding-left: 25px;
 }
 .client-2-slider {
 }
@@ -4701,9 +4692,38 @@ input:focus {
 .aboout-4-head-area {
     background:
         linear-gradient(to bottom, transparent, rgba(255, 248, 200, 0.5)),
-        url(../images/razor6_banner.png);
+        url(../images/razor6_banner2.png);
+
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+/* Tablet */
+@media only screen and (max-width: 991px) {
+
+    .aboout-4-head-area {
+        background-size: cover;
+        background-position: center center;
+        padding: 100px 0 80px;
+        min-height: 350px;
+    }
+}
+
+
+/* Mobile */
+@media only screen and (max-width: 767px) {
+
+    .aboout-4-head-area {
+        background:
+        linear-gradient(to bottom, transparent, rgba(255, 248, 200, 0.6)),
+        url(../images/razor6_mobile.png);
+        background-size: cover;
+        background-position: center;
+        padding: 80px 0 60px;
+        min-height: 260px;
+    }
 }
 .page-title-area {
     position: relative;
@@ -4713,6 +4733,7 @@ input:focus {
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
+
 .page-title-area:before {
     background-color: rgba(255, 255, 255, 0.05);
     content: "";
@@ -4721,6 +4742,32 @@ input:focus {
     position: absolute;
     top: 0;
     width: 100%;
+}
+
+
+/* Tablet */
+@media only screen and (max-width: 991px) {
+
+    .page-title-area {
+        padding-top: 350px;
+        background-position: center top;
+        background-attachment: scroll;
+    }
+}
+
+
+/* Mobile */
+@media only screen and (max-width: 767px) {
+
+    .page-title-area {
+        padding-top: 240px;
+        background-position: center top;
+        background-attachment: scroll;
+    }
+
+    .page-title-area:before {
+        background-color: rgba(255, 255, 255, 0.08);
+    }
 }
 .about-head-content {
     padding-bottom: 130px;
@@ -4733,7 +4780,6 @@ input:focus {
 .about-head-content p {
     font-size: 17px;
     color: #474747;
-    font-style: italic;
     font-family: "Lora", serif;
 }
 .page-breadcrumbs {
@@ -5810,7 +5856,7 @@ ul.page-breadcrumbs li + li:before {
 .single-case-diagram-text ol li {
     font-size: 13px;
     color: #7f7f7f;
-    font-family: "Droid Serif", serif;
+    font-family: "Raleway", sans-serif;
     display: block;
     padding: 5px 0px;
 }
@@ -7379,14 +7425,14 @@ ul.page-breadcrumbs li + li:before {
 .blog-single .full-intro-head p {
 }
 .blog-single .full-intro-content p {
-    font-family: "Droid Serif", serif;
+    font-family: "Raleway", sans-serif;
     text-transform: lowercase;
     font-weight: normal;
     color: #9b9b9b;
     font-size: 15px;
 }
 .blog-single .full-intro-content p:nth-of-type(2) {
-    font-family: "Droid Serif", serif;
+    font-family: "Raleway", sans-serif;
     text-transform: lowercase;
     font-weight: normal;
     color: #9b9b9b;
