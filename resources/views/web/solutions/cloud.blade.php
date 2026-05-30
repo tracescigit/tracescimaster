@@ -41,7 +41,6 @@
     .product_demo {
         background: #f5f5f5;
         padding: 10px 0px 20px 0;
-        /* reduced top padding from 30px to 10px */
         text-align: center;
         position: relative;
         overflow: hidden;
@@ -165,10 +164,6 @@
         transform: translateX(7px);
     }
 
-
-
-
-
     /* ================= RESPONSIVE ================= */
 
     /* Tablet */
@@ -210,6 +205,220 @@
             margin-top: 10px;
         }
     }
+
+    /* ================= ADDED: GLOBAL RESPONSIVE FIXES ================= */
+
+    /* Ensure containers don't overflow on small screens */
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+        box-sizing: border-box;
+    }
+
+    /* ---- Hero / Revolution slider ---- */
+    @media (max-width: 767px) {
+        .rev_slider_wrapper {
+            min-height: 300px;
+        }
+
+        .heading-rp-small {
+            font-size: 26px !important;
+            line-height: 1.3 !important;
+            letter-spacing: 0 !important;
+        }
+
+        .tp-caption span {
+            font-size: 13px !important;
+        }
+    }
+
+    /* ---- Welcome section – 4-column grid ---- */
+    @media (max-width: 991px) {
+        .welcome-single-content {
+            margin-bottom: 30px;
+        }
+
+        /* 2-up on tablet */
+        .welcome-content .col-sm-3 {
+            width: 50%;
+            float: left;
+        }
+    }
+
+    @media (max-width: 575px) {
+
+        /* 1-up on mobile */
+        .welcome-content .col-sm-3 {
+            width: 100%;
+            float: none;
+        }
+    }
+
+    /* ---- Industries grid – 6 columns ---- */
+    /* Bootstrap col-xs-6 already renders 2-per-row on mobile — no override needed */
+    /* Ensure industry images scale but respect the height="150" attribute */
+    #application .wp-post-image {
+        max-width: 100%;
+        width: auto !important;
+        height: 150px;
+        object-fit: contain;
+    }
+
+    @media (max-width: 480px) {
+        #application .wp-post-image {
+            height: 100px;
+        }
+    }
+
+    /* ---- Software screenshot rows (image + text side-by-side) ---- */
+    @media (max-width: 767px) {
+        .software-screen-section .row.align-items-center {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .software-screen-section .col-md-6 {
+            width: 100%;
+            padding-left: 15px !important;
+            padding-right: 15px !important;
+            margin-bottom: 25px;
+        }
+
+        .software-screen-section .col-md-6 img {
+            width: 100% !important;
+            height: auto !important;
+        }
+
+        .software-screen-section .row.align-items-center .col-md-6:first-child img {
+            margin-bottom: 0;
+        }
+    }
+
+    /* ---- Real-time tracking – 3-column screenshots ---- */
+    @media (max-width: 767px) {
+        .software-screen-section .col-md-4 {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+    }
+
+    /* ---- Solution / Features section – 3-column grid ---- */
+    @media (max-width: 767px) {
+        .solution-content .col-sm-6 {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+    }
+
+    /* ---- Pricing section – 3-column grid ---- */
+    @media (max-width: 767px) {
+
+        #pricing_table .col-sm-6,
+        #pricing_table .col-md-4 {
+            width: 100%;
+            margin-bottom: 25px;
+        }
+
+        .pricing-table-self {
+            display: none;
+        }
+    }
+
+    @media (max-width: 991px) and (min-width: 768px) {
+        #pricing_table .col-sm-6 {
+            width: 50%;
+        }
+    }
+
+    /* ---- Product demo section ---- */
+    @media (max-width: 767px) {
+        .product_demo {
+            min-height: auto;
+            padding: 40px 15px;
+        }
+
+        .product_demo h2 {
+            font-size: 22px !important;
+            letter-spacing: 0;
+        }
+
+        .product_demo p {
+            font-size: 14px;
+        }
+
+        .product_demo .enterprise-btn {
+            font-size: 14px;
+            padding: 14px 24px;
+        }
+    }
+
+    /* ---- Video section ---- */
+    @media (max-width: 767px) {
+        .video-home .bg {
+            background-size: 30% !important;
+            min-height: 360px !important;
+            padding: 0 15px;
+        }
+
+        .video-home .riven-heading h2 {
+            font-size: 20px !important;
+        }
+
+        .video-home .wpb_text_column p {
+            font-size: 14px !important;
+        }
+    }
+
+    /* ---- Help / How it works image – remove off-screen absolute on mobile ---- */
+    @media (max-width: 991px) {
+        .help-img {
+            position: relative !important;
+            right: auto !important;
+            display: block;
+            margin: 20px auto 0;
+            max-width: 90%;
+        }
+    }
+
+    /* ---- Analytics & Anti-counterfeit row ---- */
+    @media (max-width: 767px) {
+        .software-screen-section .col-md-6[style*="padding-right"] {
+            padding-right: 15px !important;
+        }
+    }
+
+    /* ---- Main titles ---- */
+    @media (max-width: 575px) {
+        .main-title h2 {
+            font-size: 22px !important;
+        }
+
+        .main-title h3 {
+            font-size: 15px !important;
+        }
+
+        .riven-heading h2 {
+            font-size: 20px !important;
+        }
+    }
+
+    /* ---- General: prevent horizontal overflow ---- */
+    /* Scoped to content images — excludes .wp-post-image (industry icons) and slider images */
+    .software-screen-section img,
+    .solution-area img,
+    .welcome-area img:not(.wp-post-image):not(.rev-slidebg),
+    .video-home img,
+    .product_demo img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* box-sizing scoped to layout elements only — avoids breaking Revolution Slider / plugins */
+    .container,
+    .row,
+    [class*="col-"] {
+        box-sizing: border-box;
+    }    
 </style>
 <div class="rev_slider_wrapper">
     <div id="slider1" class="rev_slider" data-version="5.0">
@@ -647,7 +856,7 @@
             </div>
         </div>-->
 
-        <!-- Video Section -->
+<!-- Video Section -->
 <div class="video-home" style="width: auto;">
     <div class="bg" style="background-image: url({{ asset('dist/images/logo_color.png') }}) !important; background-size: 10% !important; background-position: center !important; background-repeat: no-repeat !important; min-height: 500px !important; width: 100% !important; background:rgb(192, 192, 192);">
         <div class="riven-container container video-container">
@@ -722,24 +931,24 @@
 
 
 
-    <!-- Pricing Section -->
-    <section id="pricing_table" class="pricing-table-section grey-bg">
-        <!-- MAIN TITLE AREA -->
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <div class="main-title wow zoomIn">
-                        <div class="main-shadow-heading">
-                            <h2>Join Our Successful Customers</h2>
-                        </div>
+<!-- Pricing Section -->
+<section id="pricing_table" class="pricing-table-section grey-bg">
+    <!-- MAIN TITLE AREA -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <div class="main-title wow zoomIn">
+                    <div class="main-shadow-heading">
                         <h2>Join Our Successful Customers</h2>
-                        <h3>Choose Your Plan</h3>
                     </div>
+                    <h2>Join Our Successful Customers</h2>
+                    <h3>Choose Your Plan</h3>
                 </div>
             </div>
         </div>
-        <!-- END TITLE -->
-        <!-- <div class="container">
+    </div>
+    <!-- END TITLE -->
+    <!-- <div class="container">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="all-link pricinig-head-btn text-center">
@@ -749,45 +958,45 @@
                     </div>
                 </div>
             </div> -->
-        <!-- PRICING TABLE CONTENT -->
-        @foreach(getPlan() as $plan)
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6 col-md-4">
-                    <div class="pricing-table-content text-center wow fadeInLeft">
-                        <div class="pricing-table-head">
-                            <div class="pricing-head-top">
-                                <span>{{$plan->title}}</span>
-                            </div>
-                            <div class="pricing-head-content">
-                                <span> @if ($country=='India')
-                                    &#8377; {{$plan->price_inr}}/-
-                                    @else
-                                    $ {{$plan->price_usd}}
-                                    @endif
-                                    <br>
-                                    <span>Monthly</span>
-                                </span>
-                            </div>
-
+    <!-- PRICING TABLE CONTENT -->
+    @foreach(getPlan() as $plan)
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-md-4">
+                <div class="pricing-table-content text-center wow fadeInLeft">
+                    <div class="pricing-table-head">
+                        <div class="pricing-head-top">
+                            <span>{{$plan->title}}</span>
                         </div>
-                        <div class="pricing-table-inner-content">
-                            <div class="pricing-table-title">
-                                <p>All plans are include Funnel Report, Cohort Report, Revenue Report, People Search, and A/B Testing Report.</p>
-                            </div>
-                            <div class="pricing-table-list">
-                                <ul>
-                                    {!!$plan->description!!}
-                                </ul>
-                                <div class="all-link pricinig-bottom-btn text-center">
-                                    <a href="{{route('register-view')}}">Sign Up Now <i class="fa fa-long-arrow-right"></i></a>
-                                </div>
+                        <div class="pricing-head-content">
+                            <span> @if ($country=='India')
+                                &#8377; {{$plan->price_inr}}/-
+                                @else
+                                $ {{$plan->price_usd}}
+                                @endif
+                                <br>
+                                <span>Monthly</span>
+                            </span>
+                        </div>
+
+                    </div>
+                    <div class="pricing-table-inner-content">
+                        <div class="pricing-table-title">
+                            <p>All plans are include Funnel Report, Cohort Report, Revenue Report, People Search, and A/B Testing Report.</p>
+                        </div>
+                        <div class="pricing-table-list">
+                            <ul>
+                                {!!$plan->description!!}
+                            </ul>
+                            <div class="all-link pricinig-bottom-btn text-center">
+                                <a href="{{route('register-view')}}">Sign Up Now <i class="fa fa-long-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
     @endforeach
     <div class="pricing-table-self">

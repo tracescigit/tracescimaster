@@ -29,15 +29,15 @@
     min-height: 70px;
   }
 
+  /* =========================================
+     TRACE PROCESS SECTION
+  ========================================= */
+
   .trace-process-section {
     background: #f5f5f5;
     position: relative;
     overflow: hidden;
-  }
-
-  .trace-process-section {
-    background: #f5f5f5;
-    overflow: hidden;
+    padding: 0px 0;
   }
 
   .section-title {
@@ -72,11 +72,13 @@
 
   .center-image {
     margin-bottom: 70px;
+    text-align: center;
   }
 
   .center-image img {
     width: 650px;
     max-width: 100%;
+    height: auto;
   }
 
   .process-grid .mb-4 {
@@ -126,22 +128,48 @@
     margin: 0;
   }
 
+  /* =========================================
+     TABLET RESPONSIVE
+  ========================================= */
+
   @media(max-width:991px) {
+
+    .trace-process-section {
+      padding: 0px 0;
+    }
 
     .section-title h2 {
       font-size: 36px;
     }
 
     .center-image img {
-      width: 350px;
+      width: 420px;
     }
 
+    .process-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .process-grid .col-md-6,
+    .process-grid .col-sm-6 {
+      display: flex;
+    }
+
+    .process-card {
+      width: 100%;
+    }
   }
+
+  /* =========================================
+     MOBILE RESPONSIVE
+  ========================================= */
 
   @media(max-width:767px) {
 
     .trace-process-section {
-      padding: 70px 0;
+      padding: 0px 0;
     }
 
     .section-title h2 {
@@ -160,6 +188,9 @@
       margin-bottom: 50px;
     }
 
+    .center-image img {
+      width: 280px;
+    }
   }
 </style>
 <!-- slider -->
@@ -173,7 +204,7 @@
 
         <!-- MAIN IMAGE -->
         <!-- <img src="{{asset('dist/images/slide1.png')}}" -->
-         <img src="{{asset('dist/images/index-wallpaper4.png')}}"
+        <img src="{{asset('dist/images/index-wallpaper4.png')}}"
           class="rev-slidebg"
           data-bgposition="center center"
           data-bgfit="cover"
@@ -469,7 +500,7 @@
         </div>
         <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 0.9s">
           <div class="thumbnail-game text-center">
-            <img height="150" src="{{asset('dist/images/automobile.png')}}"  class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
+            <img height="150" src="{{asset('dist/images/automobile.png')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
           </div>
           <div class="desc text-center">
             <h3>Automobile</h3>
@@ -485,7 +516,7 @@
         </div>
         <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 0.9s">
           <div class="thumbnail-game text-center">
-            <img height="150" src="{{asset('dist/images/medicine.png')}}"  class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
+            <img height="150" src="{{asset('dist/images/medicine.png')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
           </div>
           <div class="desc text-center">
             <h3>Pharma</h3>
@@ -493,7 +524,7 @@
         </div>
         <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 1.2s">
           <div class="thumbnail-game text-center">
-            <img height="150" src="{{asset('dist/images/drink.png')}}"  class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
+            <img height="150" src="{{asset('dist/images/drink.png')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
           </div>
           <div class="desc text-center">
             <h3>Beverages</h3>
@@ -508,7 +539,7 @@
 
 <!-- features -->
 
-<div class="solution-area">
+<div class="solution-area" style="padding: 0px 0;">
   <!-- MAIN TITLE AREA -->
   <div class="container">
     <div class="row">
@@ -593,11 +624,12 @@
       <div class="row">
         <div class="col-md-12 text-center">
           <div class="main-title wow zoomIn">
-            <div class="main-shadow-heading">
-              <h2><span>How </span>it works??</h2>
-            </div>
-            <h2><span>How </span>it <span style="color:#7a0d7d;">works</span>??</h2>
-            <h3>Trusted By The Best Marketers</h3>
+             <div class="main-shadow-heading">
+            <h2>Secure Product Traceability Workflow</h2>
+          </div>
+            <h2><span>Secure </span>Product <span style="color:#7a0d7d;">Traceability Workflow</span></h2>
+            <h3> One connected platform for onboarding, serialization,
+              authentication and real-time enforcement.</h3>
           </div>
         </div>
       </div>
@@ -608,13 +640,6 @@
       <div class="container">
 
         <!-- SECTION TITLE -->
-        <div class="section-title text-center">
-          <h2>Secure Product Traceability Workflow</h2>
-          <p>
-            One connected platform for onboarding, serialization,
-            authentication and real-time enforcement.
-          </p>
-        </div>
 
         <!-- CENTER IMAGE -->
         <div class="center-image text-center">

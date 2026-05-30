@@ -59,15 +59,15 @@
         height: 100%;
     }
 
-   .story-img {
-    margin-top: 210px;
-    width: 90%;
-    height: 70%;
-    object-fit: cover;
-    margin-left: 60px;
+    .story-img {
+        margin-top: 210px;
+        width: 90%;
+        height: 70%;
+        object-fit: cover;
+        margin-left: 60px;
 
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-}
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
 
     /* Content spacing */
     .our-story-2-head {
@@ -92,8 +92,36 @@
 
         .story-img {
             height: auto;
+            margin-top: 0px;
+            margin-bottom: 60px;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .contact-photo {
+            width: 100%;
+            margin-bottom: 20px;
         }
 
+        .story-img {
+            width: 100%;
+            margin-top: 0px;
+            margin-left: 0px;
+            margin-bottom: 60px;
+            height: auto;
+        }
+    }
+
+    @media (max-width: 575px) {
+        .contact-photo {
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        .story-img {
+            width: 100%;
+            height: auto;
+        }
     }
 </style>
 <section class="page-title-area aboout-1-head-area">
@@ -435,18 +463,19 @@
 <section class="our-story-area our-story-2 grey-bg position-relative">
 
     <!-- Left Image -->
-    <div class="contact-photo reveal">
-        <img src="{{asset('web/images/how_started.jpg')}}"
-            alt="Man and woman working together"
-            class="story-img">
-    </div>
+
 
     <div class="container">
         <div class="row align-items-center">
             <div class="our-story-2-head" style="margin-bottom: 60px;">
                 <h3>Our Story</h3>
                 <h2>How It All <span style="color: #7a0d7d;">Began!</span></h2>
-                
+
+            </div>
+            <div class="contact-photo reveal">
+                <img src="{{asset('web/images/how_started.jpg')}}"
+                    alt="Man and woman working together"
+                    class="story-img">
             </div>
 
             <!-- Empty space for image on desktop -->
