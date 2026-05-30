@@ -164,6 +164,93 @@
         transform: translateX(7px);
     }
 
+
+    .pricing-row {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .pricing-col {
+        display: flex;
+        margin-bottom: 30px;
+    }
+
+    .pricing-card {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+    }
+
+    .pricing-card .pricing-table-inner-content {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+
+    .pricing-card .pricing-table-list {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+
+    .pricing-card .plan-description {
+        flex: 1;
+    }
+
+    .pricing-card .plan-description ul {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 5;
+        min-height: 120px;
+    }
+
+    .pricing-card .pricinig-bottom-btn {
+        margin-top: auto;
+    }
+
+    /* Desktop */
+    @media (min-width: 1200px) {
+        .pricing-card {
+            min-height: 500px;
+        }
+    }
+
+    /* Tablet */
+    @media (max-width: 991px) {
+        .pricing-card {
+            min-height: 650px;
+        }
+
+        .pricing-card .plan-description ul {
+            min-height: 100px;
+        }
+    }
+
+    /* Mobile */
+    @media (max-width: 767px) {
+        .pricing-card {
+            min-height: auto;
+        }
+
+        .pricing-card .plan-description ul {
+            min-height: auto;
+            -webkit-line-clamp: 4;
+        }
+
+        .pricing-card .pricinig-bottom-btn {
+            margin-top: 20px;
+        }
+    }
+
+    /* Small Mobile */
+    @media (max-width: 480px) {
+        .pricing-card {
+            padding: 15px;
+        }
+    }
+
     /* ================= RESPONSIVE ================= */
 
     /* Tablet */
@@ -206,9 +293,6 @@
         }
     }
 
-    /* ================= ADDED: GLOBAL RESPONSIVE FIXES ================= */
-
-    /* Ensure containers don't overflow on small screens */
     .container {
         padding-left: 15px;
         padding-right: 15px;
@@ -826,115 +910,6 @@
     </div>
 </div>
 
-
-
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <div class="main-title wow zoomIn">
-                        <div class="main-shadow-heading">
-                            <h2><span>How </span>It Works</h2>
-                        </div>
-                        <h2>How It <span style="color:#7a0d7d">Works</span></h2>
-                        <h3>From Registration to Full Supply Chain Control in 4 Steps</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="help-content-area" style="background-color: #f5f5f5;">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="help-accordion">
-                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading" role="tab" id="headingOne">
-                                        <h4 class="panel-title">
-                                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                Step 1 — Brand & Manufacturer Onboarding
-                                            </a>
-                                        </h4>
-                                    </div>
-                                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                                        <div class="panel-body">
-                                            Complete paperless onboarding for brand owners, manufacturers and supply chain partners.
-                                            Submit your company details, upload required documents and — once approved — gain full
-                                            access to the Tracesci cloud platform. A FREE plan is activated by default, giving you
-                                            all the essential tools to set up your solution and run a pilot at no cost, forever.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="panel panel-default">
-                                    <div class="panel-heading" role="tab" id="headingTwo">
-                                        <h4 class="panel-title">
-                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                                Step 2 — Configure Products, SKUs & Pricing Plan
-                                            </a>
-                                        </h4>
-                                    </div>
-                                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                                        <div class="panel-body">
-                                            Set up your product catalogue, define SKUs, packaging levels and batch parameters through
-                                            the intuitive manufacturer interface. Choose a subscription plan that fits your volume —
-                                            from the free tier for small businesses and startups all the way to enterprise plans
-                                            for high-volume manufacturers. Upgrade anytime as your production scales, with no lock-in.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="panel panel-default">
-                                    <div class="panel-heading" role="tab" id="headingThree">
-                                        <h4 class="panel-title">
-                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                                Step 3 — Serialize & Activate on the Production Line
-                                            </a>
-                                        </h4>
-                                    </div>
-                                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                                        <div class="panel-body">
-                                            Generate and print unique QR or barcode labels for every product unit directly through
-                                            the Tracesci platform — integrated with your label supplier and printing hardware.
-                                            Each code is activated the moment it's applied, creating an immutable blockchain record
-                                            tied to that specific product, batch, manufacturing location and timestamp.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="panel panel-default">
-                                    <div class="panel-heading" role="tab" id="headingFour">
-                                        <h4 class="panel-title">
-                                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                                Step 4 — Track, Verify, Report & Enforce
-                                            </a>
-                                        </h4>
-                                    </div>
-                                    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
-                                        <div class="panel-body">
-                                            As products move through the supply chain — from warehouse to distributor to retailer to
-                                            consumer — every scan is logged in real time with GPS location data. Governments and
-                                            inspectors can verify authenticity in the field using the mobile app. Consumers can
-                                            report counterfeits directly. The analytics dashboard surfaces fraud patterns and
-                                            generates enforcement reports instantly — making every stakeholder a line of defence.
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="help-question" style="margin-bottom: 50px;">
-                            <p>Have questions about implementing Tracesci in your production environment or connecting it to your existing systems? Our team will walk you through every step.</p>
-
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="help-slider-text">
-                            <img src="{{ asset('dist/images/bbchain.png') }}"
-                                alt="Blockchain Traceability Diagram"
-                                class="help-img">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>-->
-
 <!-- Video Section -->
 <div class="video-home" style="width: auto;">
     <div class="bg" style="background-image: url({{ asset('dist/images/logo_color.png') }}) !important; background-size: 10% !important; background-position: center !important; background-repeat: no-repeat !important; min-height: 500px !important; width: 100% !important; background:rgb(192, 192, 192);">
@@ -1020,64 +995,59 @@
                     <div class="main-shadow-heading">
                         <h2>Join Our Successful Customers</h2>
                     </div>
-                    <h2>Join Our Successful Customers</h2>
+                    <h2>Join Our<span style="color:#7a0d7d;"> Successful Customers</span></h2>
                     <h3>Choose Your Plan</h3>
                 </div>
             </div>
         </div>
     </div>
-    <!-- END TITLE -->
-    <!-- <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="all-link pricinig-head-btn text-center">
-                            <a href="#">Monthly</a>
-                            <a href="#">Yearly</a>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-    <!-- PRICING TABLE CONTENT -->
-    @foreach(getPlan() as $plan)
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-6 col-md-4">
-                <div class="pricing-table-content text-center wow fadeInLeft">
+    <div class="container pricing-section">
+        <div class="row pricing-row">
+            @foreach(getPlan() as $plan)
+            <div class="col-lg-4 col-md-6 col-sm-12 d-flex pricing-col">
+                <div class="pricing-table-content pricing-card text-center wow fadeInLeft w-100">
                     <div class="pricing-table-head">
                         <div class="pricing-head-top">
-                            <span>{{$plan->title}}</span>
+                            <span>{{ $plan->title }}</span>
                         </div>
+
                         <div class="pricing-head-content">
-                            <span> @if ($country=='India')
-                                &#8377; {{$plan->price_inr}}/-
+                            <span>
+                                @if ($country == 'India')
+                                &#8377; {{ $plan->price_inr }}/-
                                 @else
-                                $ {{$plan->price_usd}}
+                                $ {{ $plan->price_usd }}
                                 @endif
                                 <br>
                                 <span>Monthly</span>
                             </span>
                         </div>
-
                     </div>
+
                     <div class="pricing-table-inner-content">
                         <div class="pricing-table-title">
-                            <p>All plans are include Funnel Report, Cohort Report, Revenue Report, People Search, and A/B Testing Report.</p>
+                            <strong>Credits:</strong> {{ $plan->credits }}
                         </div>
+
                         <div class="pricing-table-list">
-                            <ul>
-                                {!!$plan->description!!}
-                            </ul>
-                            <div class="all-link pricinig-bottom-btn text-center">
-                                <a href="{{route('register-view')}}">Sign Up Now <i class="fa fa-long-arrow-right"></i></a>
+                            <div class="plan-description">
+                                <ul>
+                                    {!! $plan->description !!}
+                                </ul>
+                            </div>
+
+                            <div class="all-link pricinig-bottom-btn text-center mt-auto">
+                                <a href="{{ route('register-view') }}">
+                                    Sign Up Now <i class="fa fa-long-arrow-right"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            @endforeach
         </div>
     </div>
-    </div>
-    @endforeach
     <div class="pricing-table-self">
         <img src="{{asset('dist/images/pricing-table-self.png')}}">
     </div>

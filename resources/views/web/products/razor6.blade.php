@@ -1313,16 +1313,17 @@
          align-items: center;
          min-height: 60vh;
      }
+
      .feature-2-right {
-        position: absolute;
-        left: 40%;
-        top: 0;
-        height: 110%;
-        width: 60%;
-        background: url('/dist/images/razor6.png') no-repeat center center !important;
-        background-size: cover !important;
-        box-shadow: -8px 0px 8px rgba(0, 0, 0, 0.1);
-    }
+         position: absolute;
+         left: 40%;
+         top: 0;
+         height: 110%;
+         width: 60%;
+         background: url('/dist/images/razor6.png') no-repeat center center !important;
+         background-size: cover !important;
+         box-shadow: -8px 0px 8px rgba(0, 0, 0, 0.1);
+     }
 
      .product_demo .container {
          width: 100%;
@@ -1535,27 +1536,27 @@
          .join-badge {
              display: none;
          }
-         
+
      }
  </style>
  <section class="page-title-area aboout-4-head-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <div class="about-head-content">
-                    <h2>Razor6</h2>
-                    <p>Precision-engineered Piezo DOD technology delivering</p>
-                </div>
-                <div class="breadcrumbs text-center">
-                    <ul class="page-breadcrumbs">
-                        <!-- <li><a href="{{route('home')}}">Home</a></li>
+     <div class="container">
+         <div class="row">
+             <div class="col-md-12 text-center">
+                 <div class="about-head-content">
+                     <h2>Razor6</h2>
+                     <p>Precision-engineered Piezo DOD technology delivering</p>
+                 </div>
+                 <div class="breadcrumbs text-center">
+                     <ul class="page-breadcrumbs">
+                         <!-- <li><a href="{{route('home')}}">Home</a></li>
                         <li><a href="#">About Us</a></li> -->
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+                     </ul>
+                 </div>
+             </div>
+         </div>
+     </div>
+ </section>
 
 
 
@@ -1762,20 +1763,25 @@
                                  <h3 href="#"><span><i class="icon icon-FileBox"></i></span>Paper & Coated</h3>
                              </li>
                              <li>
-                                 <h3 href="#"><span><i class="icon icon-ClipboardChart"></i></span>Plastics & PVC</h3>
+                                 <h3 href="#"><span><i class="icon icon-Tools"></i></span>Plastics & PVC</h3>
 
                              </li>
                              <li>
-                                 <h3 href="#"><span><i class="icon icon-Settings"></i></span>Cartons</h3>
+                                 <h3 href="#"><span><i class="icon icon-File"></i></span>Cartons</h3>
 
                              </li>
                              <li>
-                                 <h3 href="#"><span><i class="icon icon-Settings"></i></span>Blister Packs</h3>
-
+                                 <h3>
+                                     <span><i class="icon icon-ClipboardChart"></i></span>
+                                     Blister Packs
+                                 </h3>
                              </li>
-                             <li>
-                                 <h3 href="#"><span><i class="icon icon-Settings"></i></span>Security Substrates</h3>
 
+                             <li>
+                                 <h3>
+                                     <span><i class="icon icon-Shield"></i></span>
+                                     Security Substrates
+                                 </h3>
                              </li>
                          </ul>
 
