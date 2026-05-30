@@ -9,16 +9,17 @@
         padding: 0;
         box-sizing: border-box;
     }
+
     .feature-2-right {
-    position: absolute;
-    left: 40%;
-    top: 0;
-    height: 100%;
-    width: 60%;
-    background: url('/dist/images/elite4_3.png') no-repeat center center !important;
-    background-size: cover !important;
-    box-shadow: -8px 0px 8px rgba(0, 0, 0, 0.1);
-}
+        position: absolute;
+        left: 40%;
+        top: 0;
+        height: 100%;
+        width: 60%;
+        background: url('/dist/images/elite4_3.png') no-repeat center center !important;
+        background-size: cover !important;
+        box-shadow: -8px 0px 8px rgba(0, 0, 0, 0.1);
+    }
 
     :root {
         --black: #0a0a0a;
@@ -1443,7 +1444,7 @@
     .product_demo .enterprise-btn:hover i {
         transform: translateX(7px);
     }
-    
+
 
 
     /* ── MOBILE ── */
@@ -1515,23 +1516,23 @@
     <div id="slider1" class="rev_slider" data-version="5.0">
         <ul> -->
 
-            <!-- SLIDE 1 -->
-            <!-- <li data-index="rs-1" data-transition="parallaxtoright" data-delay="6500"> -->
+<!-- SLIDE 1 -->
+<!-- <li data-index="rs-1" data-transition="parallaxtoright" data-delay="6500"> -->
 
-                <!-- MAIN IMAGE -->
-                <!-- <img src="{{asset('dist/images/slide1.png')}}"
+<!-- MAIN IMAGE -->
+<!-- <img src="{{asset('dist/images/slide1.png')}}"
                     class="rev-slidebg"
                     data-bgposition="center center"
                     data-bgfit="auto"
                     data-bgrepeat="no-repeat"> -->
-                <!-- <img src="{{asset('dist/images/elite4_machine.png')}}"
+<!-- <img src="{{asset('dist/images/elite4_machine.png')}}"
     class="rev-slidebg"
     data-bgposition="center center"
     data-bgfit="contain"
     data-bgrepeat="no-repeat"
     style="width:100%; max-width:900px; height:auto; margin:auto;"> -->
-                <!-- LAYER 1 -->
-                <!-- <div class="tp-caption tp-resizeme"
+<!-- LAYER 1 -->
+<!-- <div class="tp-caption tp-resizeme"
                     data-x="center"
                     data-y="top"
                     data-voffset="120"
@@ -1543,8 +1544,8 @@
                     </span>
                 </div> -->
 
-                <!-- LAYER 2 -->
-                <!-- <div class="tp-caption tp-resizeme"
+<!-- LAYER 2 -->
+<!-- <div class="tp-caption tp-resizeme"
                     data-x="center" data-y="top" data-voffset="190"
                     data-start="1800"
                     data-transform_in="y:[100%];opacity:0;s:800;"
@@ -1554,8 +1555,8 @@
                     </div>
                 </div> -->
 
-                <!-- LAYER 3 -->
-                <!-- <div class="tp-caption tp-resizeme"
+<!-- LAYER 3 -->
+<!-- <div class="tp-caption tp-resizeme"
                     data-x="center" data-y="top" data-voffset="300"
                     data-start="2400" data-transform_in="y:[100%];opacity:0;s:800;"
                     data-transform_out="opacity:0;s:300" ;>
@@ -1565,8 +1566,8 @@
                     </div>
                 </div> -->
 
-                <!-- LAYER 4 (Buttons) -->
-                <!-- <div class="tp-caption tp-resizeme"
+<!-- LAYER 4 (Buttons) -->
+<!-- <div class="tp-caption tp-resizeme"
                     data-x="center" data-y="top" data-voffset="430"
                     data-start="2800" data-transform_in="y:[100%];opacity:0;s:800;"
                     data-transform_out="opacity:0;s:300" ;>
@@ -1576,20 +1577,20 @@
                     </div>
                 </div> -->
 
-            <!-- </li> -->
+<!-- </li> -->
 
-            <!-- SLIDE 2 -->
-            <!-- <li data-index="rs-2" data-transition="parallaxtoright" data-delay="6500"> -->
+<!-- SLIDE 2 -->
+<!-- <li data-index="rs-2" data-transition="parallaxtoright" data-delay="6500"> -->
 
-                <!-- MAIN IMAGE -->
-                <!-- <img src="{{asset('dist/images/slide2.png')}}"
+<!-- MAIN IMAGE -->
+<!-- <img src="{{asset('dist/images/slide2.png')}}"
                     class="rev-slidebg"
                     data-bgposition="center center"
                     data-bgfit="cover"
                     data-bgrepeat="no-repeat"> -->
 
-                <!-- LAYER 1 -->
-                <!-- <div class="tp-caption tp-resizeme"
+<!-- LAYER 1 -->
+<!-- <div class="tp-caption tp-resizeme"
                     data-x="center" data-y="top" data-voffset="120"
                     data-start="1200"
                     data-transform_in="y:[100%];opacity:0;s:800;"
@@ -1599,8 +1600,8 @@
                     </span>
                 </div> -->
 
-                <!-- LAYER 2 -->
-                <!-- <div class="tp-caption tp-resizeme"
+<!-- LAYER 2 -->
+<!-- <div class="tp-caption tp-resizeme"
                     data-x="center" data-y="top" data-voffset="190"
                     data-start="1800" data-transform_in="y:[100%];opacity:0;s:800;"
                     data-transform_out="opacity:0;s:300" ;>
@@ -1609,8 +1610,8 @@
                     </div>
                 </div> -->
 
-                <!-- LAYER 3 -->
-                <!-- <div class="tp-caption tp-resizeme"
+<!-- LAYER 3 -->
+<!-- <div class="tp-caption tp-resizeme"
                     data-x="center" data-y="top" data-voffset="300"
                     data-start="2400" data-transform_in="y:[100%];opacity:0;s:800;"
                     data-transform_out="opacity:0;s:300" ;>
@@ -1619,8 +1620,8 @@
                     </div>
                 </div> -->
 
-                <!-- LAYER 4 (Buttons) -->
-                <!-- <div class="tp-caption tp-resizeme"
+<!-- LAYER 4 (Buttons) -->
+<!-- <div class="tp-caption tp-resizeme"
                     data-x="center" data-y="top" data-voffset="430"
                     data-start="2800" data-transform_in="y:[100%];opacity:0;s:800;"
                     data-transform_out="opacity:0;s:300" ;>
@@ -1630,20 +1631,20 @@
                     </div>
                 </div> -->
 
-            <!-- </li> -->
+<!-- </li> -->
 
-            <!-- SLIDE 3 -->
-            <!-- <li data-index="rs-3" data-transition="parallaxtoright" data-delay="6500"> -->
+<!-- SLIDE 3 -->
+<!-- <li data-index="rs-3" data-transition="parallaxtoright" data-delay="6500"> -->
 
-                <!-- MAIN IMAGE -->
-                <!-- <img src="{{asset('dist/images/slide3.png')}}"
+<!-- MAIN IMAGE -->
+<!-- <img src="{{asset('dist/images/slide3.png')}}"
                     class="rev-slidebg"
                     data-bgposition="center center"
                     data-bgfit="cover"
                     data-bgrepeat="no-repeat"> -->
 
-                <!-- LAYER 1 -->
-                <!-- <div class="tp-caption tp-resizeme"
+<!-- LAYER 1 -->
+<!-- <div class="tp-caption tp-resizeme"
                     data-x="center" data-y="top" data-voffset="120"
                     data-start="1200" data-transform_in="y:[100%];opacity:0;s:800;"
                     data-transform_out="opacity:0;s:300" ;>
@@ -1652,8 +1653,8 @@
                     </span>
                 </div> -->
 
-                <!-- LAYER 2 -->
-                <!-- <div class="tp-caption tp-resizeme"
+<!-- LAYER 2 -->
+<!-- <div class="tp-caption tp-resizeme"
                     data-x="center" data-y="top" data-voffset="190"
                     data-start="1800" data-transform_in="y:[100%];opacity:0;s:800;"
                     data-transform_out="opacity:0;s:300" ;>
@@ -1662,8 +1663,8 @@
                     </div>
                 </div> -->
 
-                <!-- LAYER 3 -->
-                <!-- <div class="tp-caption tp-resizeme"
+<!-- LAYER 3 -->
+<!-- <div class="tp-caption tp-resizeme"
                     data-x="center" data-y="top" data-voffset="300"
                     data-start="2400" data-transform_in="y:[100%];opacity:0;s:800;"
                     data-transform_out="opacity:0;s:300" ;>
@@ -1673,8 +1674,8 @@
                     </div>
                 </div> -->
 
-                <!-- LAYER 4 (Buttons) -->
-                <!-- <div class="tp-caption tp-resizeme"
+<!-- LAYER 4 (Buttons) -->
+<!-- <div class="tp-caption tp-resizeme"
                     data-x="center" data-y="top" data-voffset="430"
                     data-start="2800" data-transform_in="y:[100%];opacity:0;s:800;"
                     data-transform_out="opacity:0;s:300" ;>
@@ -1684,7 +1685,7 @@
                     </div>
                 </div> -->
 
-            <!-- </li>
+<!-- </li>
 
         </ul>
     </div>
@@ -1982,25 +1983,26 @@
                             <h2><span></span>Suited Best For :</h2>
                         </li>
                         <li>
-                            <h3 href="#"><span><i class="icon icon-FileBox"></i></span>Paper &amp; Coated</h3>
+                            <h3><span><i class="icon icon-Shield"></i></span>Paper &amp; Coated</h3>
+
                         </li>
                         <li>
                             <h3 href="#"><span><i class="icon icon-ClipboardChart"></i></span>Plastics &amp; PVC</h3>
                         </li>
                         <li>
-                            <h3 href="#"><span><i class="icon icon-Settings"></i></span>Cartons</h3>
+                            <h3 href="#"><span><i class="icon icon-FileBox"></i></span>Cartons</h3>
                         </li>
                         <li>
-                            <h3 href="#"><span><i class="icon icon-Settings"></i></span>Blister Packs</h3>
+                            <h3 href="#"><span><i class="icon icon-Layers"></i></span>Blister Packs</h3>
                         </li>
                         <li>
-                            <h3 href="#"><span><i class="icon icon-Settings"></i></span>Pharma &amp; Healthcare Packaging</h3>
+                            <h3 href="#"><span><i class="icon icon-Heart"></i></span>Pharma &amp; Healthcare Packaging</h3>
                         </li>
                         <li>
-                            <h3 href="#"><span><i class="icon icon-Settings"></i></span>Security &amp; Authentication Substrates</h3>
+                            <h3 href="#"><span><i class="icon icon-Key"></i></span>Secure Substrates</h3>
                         </li>
                         <li>
-                            <h3 href="#"><span><i class="icon icon-Settings"></i></span>Labels &amp; Flexible Packaging</h3>
+                            <h3 href="#"><span><i class="icon icon-Tag"></i></span>Labels &amp; Flexible Packaging</h3>
                         </li>
                     </ul>
 
