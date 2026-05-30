@@ -136,7 +136,7 @@
             <li data-index="rs-3" data-transition="parallaxtoright" data-delay="6500">
 
                 <!-- MAIN IMAGE -->
-                <img src="{{asset('dist/images/solution-bg.png')}}"
+                <img src="{{asset('dist/images/slide1.png')}}"
                     class="rev-slidebg"
                     data-bgposition="center center"
                     data-bgfit="cover"
