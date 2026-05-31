@@ -243,223 +243,7 @@
         </div>
     </div>
 </section>
-<!-- =========================
-      END OUR PHILOSOPHY SECTION
-      ============================== -->
 
-<!-- =========================
-        START TEAM SECTION
-      ============================== -->
-<!-- <section class="team-area team-no-bottom-padding">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <div class="main-title wow zoomIn">
-                    <div class="main-shadow-heading">
-                        <h2>Meet Metrics Core Team</h2>
-                    </div>
-                    <h2>Meet Metrics Core Team</h2>
-                    <h3>We Love It Here. You Will, Too.</h3>
-                </div>
-            </div>
-        </div>
-    </div>
-   
-    <div class="container wow zoomIn">
-        <div class="row">
-            <div class="col-sm-6 col-md-3">
-                <article class="entry-team">
-                    <div class="team-member">
-                        <div class="team-member-featured">
-                            <img src="images/team/team-1.jpg" class="img-responsive" alt="Ahmed Abd-Alhaleem">
-                        </div>
-                        <div class="team-member-main">
-                            <div class="team-member-info">
-                                <div class="team-member-header">
-                                    <h3 class="team-member-title"><a href="#" title="Ahmed Abd-Alhaleem">Ahmed Abd-Alhaleem</a></h3>
-                                    <p class="team-member-roles">Graphic Designer</p>
-                                    <ul class="cms-social">
-                                        <li class="facebook">
-                                            <a href="#"><i class="fa fa-facebook"></i></a>
-                                        </li>
-                                        <li class="twitter">
-                                            <a href="#"><i class="fa fa-twitter"></i></a>
-                                        </li>
-                                        <li class="google">
-                                            <a href="#"><i class="fa fa-google-plus"></i></a>
-                                        </li>
-                                        <li class="linkedin">
-                                            <a href="#"><i class="fa fa-linkedin"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="team-member-content">I am excited about helping companies make impactful decisions based on their data.</div>
-                            </div>
-                            <div class="team-member-brief">
-                                <h3 class="team-member-title">Ahmed Abd-Alhaleem</h3>
-                                <p class="team-member-roles font-alt-1">Graphic Designer</p>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-            </div>
-            <div class="col-sm-6 col-md-3">
-                <article class="entry-team">
-                    <div class="team-member">
-                        <div class="team-member-featured">
-                            <img src="images/team/team-2.png" class="img-responsive" alt="Ahmed Abd-Alhaleem">
-                        </div>
-                        <div class="team-member-main">
-                            <div class="team-member-info">
-                                <div class="team-member-header">
-                                    <h3 class="team-member-title"><a href="#" title="Ahmed Abd-Alhaleem">Ahmed Hassan</a></h3>
-                                    <p class="team-member-roles">Web Developer</p>
-                                    <ul class="cms-social">
-                                        <li class="facebook">
-                                            <a href="#"><i class="fa fa-facebook"></i></a>
-                                        </li>
-                                        <li class="twitter">
-                                            <a href="#"><i class="fa fa-twitter"></i></a>
-                                        </li>
-                                        <li class="google">
-                                            <a href="#"><i class="fa fa-google-plus"></i></a>
-                                        </li>
-                                        <li class="linkedin">
-                                            <a href="#"><i class="fa fa-linkedin"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="team-member-content">I am excited about helping companies make impactful decisions based on their data.</div>
-                            </div>
-                            <div class="team-member-brief">
-                                <h3 class="team-member-title">Ahmed Abd-Alhaleem</h3>
-                                <p class="team-member-roles font-alt-1">Web Developer</p>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-            </div>
-            <div class="col-sm-6 col-md-3">
-                <article class="entry-team">
-                    <div class="team-member">
-                        <div class="team-member-featured">
-                            <img src="images/team/team-3.png" class="img-responsive" alt="Ahmed Abd-Alhaleem">
-                        </div>
-                        <div class="team-member-main">
-                            <div class="team-member-info">
-                                <div class="team-member-header">
-                                    <h3 class="team-member-title"><a href="#" title="Ahmed Abd-Alhaleem">Mohamed Habaza</a></h3>
-                                    <p class="team-member-roles">Lead Dev Ops</p>
-                                    <ul class="cms-social">
-                                        <li class="facebook">
-                                            <a href="#"><i class="fa fa-facebook"></i></a>
-                                        </li>
-                                        <li class="twitter">
-                                            <a href="#"><i class="fa fa-twitter"></i></a>
-                                        </li>
-                                        <li class="google">
-                                            <a href="#"><i class="fa fa-google-plus"></i></a>
-                                        </li>
-                                        <li class="linkedin">
-                                            <a href="#"><i class="fa fa-linkedin"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="team-member-content">I am excited about helping companies make impactful decisions based on their data.</div>
-                            </div>
-                            <div class="team-member-brief">
-                                <h3 class="team-member-title">Mohamed Habaza</h3>
-                                <p class="team-member-roles font-alt-1">Lead Dev Ops</p>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-            </div>
-            <div class="col-sm-6 col-md-3">
-                <article class="entry-team">
-                    <div class="team-member">
-                        <div class="team-member-featured">
-                            <img src="images/team/team-4.png" class="img-responsive" alt="Ahmed Abd-Alhaleem">
-                        </div>
-                        <div class="team-member-main">
-                            <div class="team-member-info">
-                                <div class="team-member-header">
-                                    <h3 class="team-member-title"><a href="#" title="Ahmed Abd-Alhaleem">Amr Gamal Sadeq</a></h3>
-                                    <p class="team-member-roles">Design expert</p>
-                                    <ul class="cms-social">
-                                        <li class="facebook">
-                                            <a href="#"><i class="fa fa-facebook"></i></a>
-                                        </li>
-                                        <li class="twitter">
-                                            <a href="#"><i class="fa fa-twitter"></i></a>
-                                        </li>
-                                        <li class="google">
-                                            <a href="#"><i class="fa fa-google-plus"></i></a>
-                                        </li>
-                                        <li class="linkedin">
-                                            <a href="#"><i class="fa fa-linkedin"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="team-member-content">I am excited about helping companies make impactful decisions based on their data.</div>
-                            </div>
-                            <div class="team-member-brief">
-                                <h3 class="team-member-title">Amr Gamal Sadeq</h3>
-                                <p class="team-member-roles font-alt-1">Design expert</p>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </div>
-</section> -->
-<!-- <div class="progress-bar-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="progressbar">
-                    <div class="col-md-6">
-                        <div class="progress_cont">
-                            <div class="skill">Authentication<span class="pull-right"></span></div>
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100" style="width: 0%"><span class="sr-only">98% Complete (success)</span></div>
-                            </div>
-                        </div>
-                        <div class="progress_cont">
-                            <div class="skill">Consumer Engagement <span class="pull-right"></span></div>
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 0%"><span class="sr-only">85% Complete (success)</span></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="progress_cont">
-                            <div class="skill">Supply Chain Security <span class="pull-right"></span></div>
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 0%"><span class="sr-only">95% Complete (success)</span></div>
-                            </div>
-                        </div>
-                        <div class="progress_cont">
-                            <div class="skill">Data Analytics <span class="pull-right"></span></div>
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100" style="width: 0%"><span class="sr-only">92% Complete (success)</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
-
-<!-- =========================
-        END TEAM SECTION
-      ============================== -->
-
-<!-- =========================
-      START OUR STORY 2 SECTION
-      ============================== -->
 <section class="our-story-area our-story-2 grey-bg position-relative">
 
     <!-- Left Image -->
@@ -556,56 +340,61 @@
                     <div class="client-2-slider">
                         <div class="client-2-slider-content">
                             <span><i class="fa fa-quote-left"></i></span>
-                            <h3>TRACESCI's platform gave us complete visibility across our supply chain. Counterfeiting incidents dropped dramatically after we deployed their serialization system.</h3>
+                            <h3>TRACESCI helped us eliminate blind spots in our distribution network. With end-to-end traceability, we can now verify every product movement and quickly identify supply chain issues.</h3>
                             <img src="images/client/client-user-1.png" alt="">
                         </div>
-                        <h2>Supply Chain Director</h2>
-                        <h3>FMCG Brand</h3>
+                        <h2>Rajesh Sharma</h2>
+                        <h3>Supply Chain Director, FMCG Company</h3>
                     </div>
+
                     <div class="client-2-slider">
                         <div class="client-2-slider-content">
                             <span><i class="fa fa-quote-left"></i></span>
-                            <h3>The blockchain-based track & trace solution from TRACESCI has significantly improved our tax compliance monitoring and reduced revenue leakage across the region.</h3>
+                            <h3>The serialization and authentication platform has significantly strengthened our anti-counterfeiting efforts. Our customers can now verify products instantly using a simple scan.</h3>
                             <img src="images/client/client-user-2.png" alt="">
                         </div>
-                        <h2>Revenue Authority Official</h2>
-                        <h3>Government Body</h3>
+                        <h2>Priya Nair</h2>
+                        <h3>Brand Protection Manager, Pharmaceutical Company</h3>
                     </div>
+
                     <div class="client-2-slider">
                         <div class="client-2-slider-content">
                             <span><i class="fa fa-quote-left"></i></span>
-                            <h3>We were impressed by how quickly customers adopted scanning. TRACESCI’s mobile app turned consumers into active participants in protecting our brand.</h3>
+                            <h3>TRACESCI's tax stamp and track-and-trace solution has improved compliance monitoring and provided greater visibility into product movement across multiple regions.</h3>
                             <img src="images/client/client-user-3.png" alt="">
                         </div>
-                        <h2>Brand Manager</h2>
-                        <h3>Pharmaceutical Company</h3>
+                        <h2>Michael Anderson</h2>
+                        <h3>Compliance Officer, Government Revenue Authority</h3>
                     </div>
+
                     <div class="client-2-slider">
                         <div class="client-2-slider-content">
                             <span><i class="fa fa-quote-left"></i></span>
-                            <h3>TRACESCI's platform gave us complete visibility across our supply chain. Counterfeiting incidents dropped dramatically after we deployed their serialization system.</h3>
+                            <h3>The platform enabled us to monitor our agricultural products from production to retail shelves. This transparency has strengthened customer confidence in our brand.</h3>
                             <img src="images/client/client-user-1.png" alt="">
                         </div>
-                        <h2>Supply Chain Director</h2>
-                        <h3>FMCG Brand</h3>
+                        <h2>Sophia Williams</h2>
+                        <h3>Operations Head, Agro Company</h3>
                     </div>
+
                     <div class="client-2-slider">
                         <div class="client-2-slider-content">
                             <span><i class="fa fa-quote-left"></i></span>
-                            <h3>The blockchain-based track & trace solution from TRACESCI has significantly improved our tax compliance monitoring and reduced revenue leakage across the region.</h3>
+                            <h3>Implementing TRACESCI's blockchain-powered traceability system has improved product authentication and helped us build stronger trust with distributors and retailers.</h3>
                             <img src="images/client/client-user-2.png" alt="">
                         </div>
-                        <h2>Revenue Authority Official</h2>
-                        <h3>Government Body</h3>
+                        <h2>Neha Agarwal</h2>
+                        <h3>Quality Assurance Director, Cosmetics Company</h3>
                     </div>
+
                     <div class="client-2-slider">
                         <div class="client-2-slider-content">
                             <span><i class="fa fa-quote-left"></i></span>
-                            <h3>We were impressed by how quickly customers adopted scanning. TRACESCI’s mobile app turned consumers into active participants in protecting our brand.</h3>
+                            <h3>Our manufacturing and logistics teams now have access to real-time product tracking. The insights generated by TRACESCI have improved efficiency and reduced operational risks.</h3>
                             <img src="images/client/client-user-3.png" alt="">
                         </div>
-                        <h2>Brand Manager</h2>
-                        <h3>Pharmaceutical Company</h3>
+                        <h2>Vikram Reddy</h2>
+                        <h3>Logistics Manager, Consumer Electronics Company</h3>
                     </div>
                 </div>
             </div>
@@ -616,101 +405,7 @@
       END CLIENT 2 SECTION
       ============================== -->
 
-<!-- =========================
-      START SUBSCRIBE SECTION
-      ============================== -->
-{{--<div class="subscribe-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="join-team subscribe-content clearfix wow zoomIn">
-                    <div class="col-md-7">
-                        <p>
-                            <span><i class="icon icon-MessageLeft"></i></span> Metrics enterprise SEO and content marketing platform provides competitive insight and market analysis no one can duplicate.
-                        </p>
-                    </div>
-                    <div class="col-md-5">
-                        <div class="all-link pricinig-head-btn subscribe-btn">
-                            <a href="#">Take The Tour</a>
-                            <a href="#">Get Started</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>--}}
-<!-- =========================
-      END SUBSCRIBE SECTION
-      ============================== -->
 
-<!-- =========================
-        START CLIENT SECTION
-      ============================== -->
-{{--<section class="client-area">
-    <!-- MAIN TITLE AREA -->
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <div class="main-title wow zoomIn">
-                    <div class="main-shadow-heading">
-                        <h2>Our Partners Trust Us With Their Projects</h2>
-                    </div>
-                    <h2>Our Partners Trust Us With Their Projects</h2>
-                    <h3>Customer success always comes first.</h3>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- END TITLE -->
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div id="client-slider" class="owl-carousel all-carousel owl-theme">
-                    <div class="client-slider">
-                        <img src="images/client/client-1.png" alt="">
-                    </div>
-                    <div class="client-slider">
-                        <img src="images/client/client-2.png" alt="">
-                    </div>
-                    <div class="client-slider">
-                        <img src="images/client/client-3.png" alt="">
-                    </div>
-                    <div class="client-slider">
-                        <img src="images/client/client-4.png" alt="">
-                    </div>
-                    <div class="client-slider">
-                        <img src="images/client/client-5.png" alt="">
-                    </div>
-                    <div class="client-slider">
-                        <img src="images/client/client-6.png" alt="">
-                    </div>
-                    <div class="client-slider">
-                        <img src="images/client/client-1.png" alt="">
-                    </div>
-                    <div class="client-slider">
-                        <img src="images/client/client-2.png" alt="">
-                    </div>
-                    <div class="client-slider">
-                        <img src="images/client/client-3.png" alt="">
-                    </div>
-                    <div class="client-slider">
-                        <img src="images/client/client-4.png" alt="">
-                    </div>
-                    <div class="client-slider">
-                        <img src="images/client/client-5.png" alt="">
-                    </div>
-                    <div class="client-slider">
-                        <img src="images/client/client-6.png" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>--}}
-<!-- =========================
-        END CLIENT SECTION
-      ============================== -->
 
 
 @endsection

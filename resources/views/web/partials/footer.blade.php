@@ -5,54 +5,62 @@
 @endif
 <!--Footer-->
 <style>
-.newsletter-section {
+  .newsletter-section {
     background: #222222;
     padding: 40px 0;
-    text-align: center;
-}
+  }
 
-.newsletter-wrapper h2 {
+  .newsletter-wrapper {
+    width: 100%;
+  }
+
+  .newsletter-content {
+    text-align: left;
+  }
+
+  .newsletter-wrapper h2 {
     font-size: 28px;
     font-weight: bold;
     color: #ffffff;
-    margin-bottom: 15px;
-    font-family: 'Raleway', sans-serif;;
-}
-
-.newsletter-wrapper p {
-    font-size: 15px;
-    color: rgba(255,255,255,0.8);
-    margin-bottom: 50px;
+    margin-bottom: 10px;
     font-family: 'Raleway', sans-serif;
-}
+  }
 
-.newsletter-form {
+  .newsletter-wrapper p {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 0;
+    font-family: 'Raleway', sans-serif;
+  }
+
+  .newsletter-form {
     position: relative;
-    max-width: 400px;
-    margin: 0 auto;
-}
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: 0;
+  }
 
-.newsletter-input {
+  .newsletter-input {
     width: 100%;
     height: 60px;
     border: none;
-    border-radius: 0px;
-    padding: 0 60px 0 40px;
+    border-radius: 0;
+    padding: 0 60px 0 25px;
     font-size: 15px;
     color: #777;
     background: #f3f3f3;
     outline: none;
     box-shadow: none;
-}
+  }
 
-.newsletter-input::placeholder {
+  .newsletter-input::placeholder {
     color: #999;
-}
+  }
 
-.newsletter-btn {
+  .newsletter-btn {
     position: absolute;
     top: 50%;
-    right: 25px;
+    right: 15px;
     transform: translateY(-50%);
     width: 35px;
     height: 35px;
@@ -61,85 +69,111 @@
     background: transparent;
     color: #999;
     font-size: 15px;
-    transition: 0.3s;
-}
+    transition: all 0.3s ease;
+  }
 
-.newsletter-btn:hover {
+  .newsletter-btn:hover {
     background: #7a0d7d;
     border-color: #7a0d7d;
     color: #fff;
-}
+  }
 
-@media (max-width: 767px) {
+  #subsmessage {
+    text-align: right;
+  }
+
+  /* Mobile */
+  @media (max-width: 767px) {
 
     .newsletter-section {
-        padding: 70px 20px;
+      padding: 50px 20px;
+    }
+
+    .newsletter-content {
+      text-align: center;
+      margin-bottom: 25px;
     }
 
     .newsletter-wrapper h2 {
-        font-size: 38px;
+      font-size: 32px;
     }
 
     .newsletter-wrapper p {
-        font-size: 18px;
-        margin-bottom: 35px;
+      font-size: 16px;
+      margin-bottom: 0;
+    }
+
+    .newsletter-form {
+      max-width: 100%;
+      margin: 0 auto;
     }
 
     .newsletter-input {
-        height: 70px;
-        font-size: 18px;
-        padding: 0 90px 0 25px;
+      height: 60px;
+      font-size: 16px;
+      padding: 0 60px 0 20px;
     }
 
     .newsletter-btn {
-        width: 50px;
-        height: 50px;
-        right: 12px;
-        font-size: 26px;
+      width: 40px;
+      height: 40px;
+      right: 10px;
+      font-size: 18px;
     }
-}
 
-
+    #subsmessage {
+      text-align: center;
+    }
+  }
 </style>
 
 <div class="footer-area">
-  
-    <section class="newsletter-section">
+
+  <section class="newsletter-section">
     <div class="container">
-        <div class="row">
-            <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="newsletter-wrapper">
+            <div class="row align-items-center">
 
-                <div class="newsletter-wrapper text-center">
-
-                    <h2>Join Our <span style="color:#7a0d7d;">Newsletter</span></h2>
-                    <p>Get latest news and updates from us</p>
-
-                    @if (request()->route()->uri!='p/{code}')
-                    <form class="newsletter-form">
-                        <input type="email"
-                               placeholder="Enter your email"
-                               name="email"
-                               class="newsletter-input"
-                               id="email">
-
-                        <button type="submit" class="newsletter-btn">
-                            <i class="fa fa-angle-right"></i>
-                        </button>
-                    </form>
-
-                    <div id="subsmessage"
-                         class="text-center text-white"
-                         style="margin-top:20px;">
-                    </div>
-                    @endif
-
+              <!-- Left Content -->
+              <div class="col-lg-6 col-md-6">
+                <div class="newsletter-content">
+                  <h2>
+                    Join Our <span style="color:#7a0d7d;">Newsletter</span>
+                  </h2>
+                  <p>Get latest news and updates from us</p>
                 </div>
+              </div>
+
+              <!-- Right Form -->
+              <div class="col-lg-6 col-md-6">
+                @if (request()->route()->uri!='p/{code}')
+                <form class="newsletter-form">
+                  <input type="email"
+                    placeholder="Enter your email"
+                    name="email"
+                    class="newsletter-input"
+                    id="email">
+
+                  <button type="submit" class="newsletter-btn">
+                    <i class="fa fa-angle-right"></i>
+                  </button>
+                </form>
+
+                <div id="subsmessage"
+                  class="text-white mt-3">
+                </div>
+                @endif
+              </div>
 
             </div>
+          </div>
         </div>
+      </div>
     </div>
-</section>
-  
+  </section>
+
   <!-- <div class="footer-main-content">
     <div class="container">
       <div class="row">
@@ -210,7 +244,6 @@
           <div class="footer-bottom-content clearfix">
             <div class="col-sm-6 col-md-6 no-padding-left">
               <div class="footer-bottom-left">
-                <a class="text-white" href="{{ url('/about') }}">About Tracesci Global Pvt Ltd |</a>
                 <a class="text-white" href="{{ url('/privacy-policy') }}"> Privacy Policy |</a>
                 <a class="text-white" href="{{ url('/terms-of-use') }}"> Terms of Use |</a>
                 <a class="text-white" href="{{ url('/cancellation-or-refund-policy') }}"> Cancellation/Refund Policy </a>
