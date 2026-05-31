@@ -953,7 +953,7 @@
           <div class="main-shadow-heading">
             <h2>Our Blog</h2>
           </div>
-          <h2>Our Blog</h2>
+          <h2>Our <span style="color: #7a0d7d;">Blog</span></h2>
           <h3>A blog about analytics, marketing & testing</h3>
         </div>
       </div>
