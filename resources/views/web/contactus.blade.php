@@ -102,7 +102,7 @@
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-mobile">
                                     Mobile
                                 </label>
-                                <span class="your-mobile"><input type="text" id="mobile" class="contact__input" name="mobile" required></span>
+                                <span class="your-mobile"><input type="number" id="mobile" class="contact__input" name="mobile" required></span>
                             <div id="error-mobile" class="text-danger contact__input-error mb-3"></div>
                             </p>
 
@@ -114,7 +114,13 @@
                             <div id="error-message" class="text-danger contact__input-error mb-3"></div>
 
                             </p>
+                            <div class="mb-3">
+                                <div class="g-recaptcha"
+                                    data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}">
+                                </div>
 
+                                <div id="error-captcha" class="text-danger"></div>
+                            </div>
                             <p class="contact-submit"><button id="btn-contact" type="button" class="btn btn-default button" data-loading-text="Loading...">Submit</button></p>
                         </div>
                     </form>
@@ -166,54 +172,75 @@
 </div>
 @endsection
 @section('script')
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script type="text/javascript">
     cash(function() {
         async function contact() {
+
             cash('.contact__input').removeClass('border-theme-6')
             cash('.contact__input-error').html('')
             cash('#contactError').addClass('hidden')
+            cash('#error-captcha').html('') // captcha error reset
 
             let name = cash('#name').val()
             let email = cash('#email').val()
             let mobile = cash('#mobile').val()
             let message = cash('#message').val()
 
+            let captcha = grecaptcha.getResponse();
+
+            // 🚨 CAPTCHA VALIDATION (NEW)
+            if (!captcha) {
+                cash('#error-captcha').html('Please verify that you are not a robot.')
+                return false
+            }
+
             cash('#contactwait').removeClass('hidden')
+
             axios.post("{{url('send_inquiry')}}", {
                 name: name,
                 email: email,
                 mobile: mobile,
-                message: message
+                message: message,
+                'g-recaptcha-response': captcha
             }).then(res => {
+
+                // reset captcha after success
+                grecaptcha.reset()
+
                 cash('#contactSuccess').removeClass('hidden')
                 cash('#contactError').addClass('hidden')
                 cash('#contactwait').addClass('hidden')
-                // showNotification('success','Success!',res.data.message)
+
                 setTimeout(() => {
                     window.location.reload()
                 }, 3000)
+
             }).catch(err => {
-                // showNotification('error','Error !',err.response.data.message)
+
+                grecaptcha.reset()
+
                 cash('#contactError').removeClass('hidden')
                 cash('#contactSuccess').addClass('hidden')
                 cash('#contactwait').addClass('hidden')
 
                 cash('#btn-contact').html('Submit')
 
-                if (err.response.data.errors) {
+                if (err.response?.data?.errors) {
                     for (const [key, val] of Object.entries(err.response.data.errors)) {
                         cash(`#${key}`).addClass('border-theme-6')
                         cash(`#error-${key}`).html(val)
                     }
                 }
             })
-
         }
+
         cash('#contact_form').on('keyup', function(e) {
             if (e.keyCode === 13) {
                 contact()
             }
         })
+
         cash('#btn-contact').on('click', function() {
             contact()
         })

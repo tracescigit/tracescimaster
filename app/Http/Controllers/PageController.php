@@ -7,6 +7,7 @@ use App\Http\Requests\ContactUsRequest;
 use App\Http\Requests\SubscribeRequest;
 use App\Models\Blog;
 use App\Models\Subscriber;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 use Stevebauman\Location\Facades\Location;
 
@@ -78,7 +79,7 @@ class PageController extends Controller
     public function blog()
     {
         $blogs = Blog::where('is_allowed', 1)->get();
-        return view('web.blog.blogpage')->with('blogs',$blogs);
+        return view('web.blog.blogpage')->with('blogs', $blogs);
     }
 
     public function addSubscriber(SubscribeRequest $request)
@@ -752,6 +753,27 @@ class PageController extends Controller
     public function sendInquiry(ContactUsRequest $request)
     {
         // dd($request->all());
+        $captcha = Http::asForm()->post(
+            'https://www.google.com/recaptcha/api/siteverify',
+            [
+                'secret' => env('RECAPTCHA_SECRET_KEY'),
+                'response' => $request->{'g-recaptcha-response'},
+                'remoteip' => $request->ip()
+            ]
+        );
+
+        $result = $captcha->json();
+
+        if (!$result['success']) {
+
+            return response()->json([
+                'errors' => [
+                    'g-recaptcha-response' => [
+                        'Captcha verification failed.'
+                    ]
+                ]
+            ], 422);
+        }
         try {
             $input = $request->all();
 

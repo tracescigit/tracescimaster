@@ -826,6 +826,7 @@
         border-right: 1px solid var(--border);
         background: #fafafa;
     }
+
     .spec-key1 {
         padding: 17px 28px;
         font-size: 12px;
@@ -836,6 +837,7 @@
         border-right: 1px solid var(--border);
         background: #fafafa;
     }
+
     .spec-key2 {
         padding: 22px 28px;
         font-size: 12px;
@@ -893,7 +895,8 @@
         font-weight: 500;
         line-height: 1.5;
     }
-     .spec-val1 {
+
+    .spec-val1 {
         padding: 14px 28px;
         font-size: 13px;
         color: var(--navy);
@@ -1537,77 +1540,161 @@
             display: none;
         }
     }
-    @media (max-width: 767px) {
-    .tech-grid {
-        grid-template-columns: 1fr;
-    }
-    @media (max-width: 767px) {
 
-    .ancillary-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-    }
-
-    .ancillary-item {
-        width: 100%;
-    }
-
-}
-}
-@media (max-width: 767px) {
-
-    .env-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    .env-card {
-        width: 100%;
-    }
-
-}
-@media (max-width: 767px) {
-
-    .feature-2-right {
-        position: relative !important;
-        display: block !important;
-        left: 0 !important;
-        top: 0 !important;
-        width: 100% !important;
-        height: 300px !important;
-        margin: 40px 0 !important;
-
-        background-image: url('/dist/images/elite4_mobile.png') !important;
-        background-position: center center !important;
-        background-repeat: no-repeat !important;
-        background-size: contain !important;
-
-        z-index: 1;
-    }
-}
-
-@media (max-width: 767px) {
-    .aboout-2-head-area {
-        background-image: url('/dist/images/elite4_mobile_banner.png');
-        background-position: top center;
-        background-size: cover;
-        height: 100svh;        /* svh = small viewport height, best for mobile */
-    }
-}
-@media (max-width: 767px) {
-    .page-title-area.aboout-2-head-area {
+    /* ---- Rev Slider Buttons ---- */
+    .rev-slider-btn {
         display: flex;
-        align-items: flex-end;        /* pushes content to bottom */
+        align-items: center;
         justify-content: center;
-        padding-bottom: 50px;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 20px;
     }
 
-    .about-head-content {
-        padding: 15px 20px;
+    .rev-slider-btn a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 30px;
+        font-size: 15px;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        white-space: nowrap;
     }
-}
+
+    .rev-slider-btn a:first-child {
+        background: #000000;
+        color: #fff !important;
+        border: 2px solid #000000;
+    }
+
+    .rev-slider-btn a:first-child:hover {
+        background: transparent;
+        color: #000000 !important;
+    }
+
+    .rev-slider-btn a:last-child {
+        background: transparent;
+        color: #000000 !important;
+        border: 2px solid #fff;
+    }
+
+    .rev-slider-btn a:last-child:hover {
+        background: #fff;
+        color: #fff !important;
+    }
+
+    /* Tablet */
+    @media (max-width: 991px) {
+        .rev-slider-btn a {
+            padding: 11px 26px;
+            font-size: 14px;
+        }
+    }
+
+    /* Mobile */
+    @media (max-width: 767px) {
+        .rev-slider-btn {
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .rev-slider-btn a {
+            width: 100%;
+            max-width: 280px;
+            padding: 12px 20px;
+            font-size: 14px;
+        }
+    }
+
+    /* Small mobile */
+    @media (max-width: 480px) {
+        .rev-slider-btn a {
+            max-width: 240px;
+            padding: 10px 16px;
+            font-size: 13px;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .tech-grid {
+            grid-template-columns: 1fr;
+        }
+
+        @media (max-width: 767px) {
+
+            .ancillary-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .ancillary-item {
+                width: 100%;
+            }
+
+        }
+    }
+
+    @media (max-width: 767px) {
+
+        .env-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .env-card {
+            width: 100%;
+        }
+
+    }
+
+    @media (max-width: 767px) {
+
+        .feature-2-right {
+            position: relative !important;
+            display: block !important;
+            left: 0 !important;
+            top: 0 !important;
+            width: 100% !important;
+            height: 300px !important;
+            margin: 40px 0 !important;
+
+            background-image: url('/dist/images/elite4_mobile.png') !important;
+            background-position: center center !important;
+            background-repeat: no-repeat !important;
+            background-size: contain !important;
+
+            z-index: 1;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .aboout-2-head-area {
+            background-image: url('/dist/images/elite4_mobile_banner.png');
+            background-position: top center;
+            background-size: cover;
+            height: 100svh;
+            /* svh = small viewport height, best for mobile */
+        }
+    }
+
+    @media (max-width: 767px) {
+        .page-title-area.aboout-2-head-area {
+            display: flex;
+            align-items: flex-end;
+            /* pushes content to bottom */
+            justify-content: center;
+            padding-bottom: 50px;
+        }
+
+        .about-head-content {
+            padding: 15px 20px;
+        }
+    }
 </style>
 
 <!-- <div class="rev_slider_wrapper">
@@ -1796,12 +1883,12 @@
                 <div class="about-head-content">
                     <h2>Elite4</h2>
                     <p>We help configure and deploy Elite4, tailored to your production needs</p>
-                </div>
-                <div class="breadcrumbs text-center">
-                    <ul class="page-breadcrumbs">
-                        <!-- <li><a href="{{route('home')}}">home</a></li>
-                        <li><a href="#">About Us</a></li> -->
-                    </ul>
+                    <div class="rev-slider-btn text-center" style="margin-top: 20px;">
+                        <a href="#">Watch in Action</a>
+                        <a href="{{ asset('Brochure/Brochure creation - Elite 4.pdf') }}" download>
+                            Download Brochure
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
