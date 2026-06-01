@@ -973,15 +973,15 @@
         </div>
         <div class="row">
             <div class="col-md-4 wow fadeInLeft" style="margin-bottom:20px;">
-                <img src="{{ asset('dist/images/gps_tracking.png') }}" alt="Live GPS Tracking" style="width:100%; height:auto; border-radius:8px; box-shadow: 0 8px 30px rgba(0,0,0,0.1);">
+                <img src="{{ asset('dist/images/location_tracking.jpg') }}" alt="Live GPS Tracking" style="width:100%; height:auto; border-radius:8px; box-shadow: 0 8px 30px rgba(0,0,0,0.1);">
                 <p style="text-align:center; margin-top:12px; color:#000000; font-weight:600;">Live GPS Location Tracking</p>
             </div>
             <div class="col-md-4 wow fadeInUp" style="margin-bottom:20px;">
-                <img src="{{ asset('dist/images/supply_chain3.png') }}" alt="Scan History Timeline" style="width:100%; height:auto; border-radius:8px; box-shadow: 0 8px 30px rgba(0,0,0,0.1);">
+                <img src="{{ asset('dist/images/scan_history.jpg') }}" alt="Scan History Timeline" style="width:100%; height:auto; border-radius:8px; box-shadow: 0 8px 30px rgba(0,0,0,0.1);">
                 <p style="text-align:center; margin-top:12px; color:#000000; font-weight:600;">Full Scan History Timeline</p>
             </div>
             <div class="col-md-4 wow fadeInRight" style="margin-bottom:20px;">
-                <img src="{{ asset('dist/images/blockchain.png') }}" alt="Blockchain Verification Ledger" style="width:100%; height:auto; border-radius:8px; box-shadow: 0 8px 30px rgba(0,0,0,0.1);">
+                <img src="{{ asset('dist/images/blogchain.png') }}" alt="Blockchain Verification Ledger" style="width:100%; height:auto; border-radius:8px; box-shadow: 0 8px 30px rgba(0,0,0,0.1);">
                 <p style="text-align:center; margin-top:12px; color:#000000; font-weight:600;">Immutable Blockchain Ledger</p>
             </div>
         </div>

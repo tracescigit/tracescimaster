@@ -124,7 +124,7 @@
         }
     }
 </style>
-<section class="page-title-area aboout-1-head-area">
+<section class="page-title-area aboout-5-head-area">
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">

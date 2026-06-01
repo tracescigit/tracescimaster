@@ -22,9 +22,9 @@
             <a href="{{ url('/cloud-solution') }}">Solution</a>
           </li>
 
-          <li class="{{ request()->routeIs('blog') ? 'active' : '' }}">
+          <!-- <li class="{{ request()->routeIs('blog') ? 'active' : '' }}">
             <a href="{{ route('blog') }}">Blogs</a>
-          </li>
+          </li> -->
 
           <li class="{{ request()->routeIs('contact-us') ? 'active' : '' }}">
             <a href="{{ route('contact-us') }}">Get In Touch</a>
@@ -125,9 +125,9 @@
             </ul>
           </li>
 
-          <li class="{{ request()->is('blog') ? 'active' : '' }}">
+          <!-- <li class="{{ request()->is('blog') ? 'active' : '' }}">
             <a href="{{ route('blog') }}">Blogs</a>
-          </li>
+          </li> -->
 
           <li class="{{ request()->is('contact-us') ? 'active' : '' }}">
             <a href="{{ route('contact-us') }}">Get In Touch</a>

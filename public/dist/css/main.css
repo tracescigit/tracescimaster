@@ -4679,7 +4679,18 @@ input:focus {
 }
 .aboout-1-head-area {
     background: url(../images/about-us-bg.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
+.aboout-5-head-area {
+    background: url(../images/slide2.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
 .aboout-3-head-area {
     background-image:
         linear-gradient(to bottom, transparent, rgba(255, 248, 200, 0.2)),

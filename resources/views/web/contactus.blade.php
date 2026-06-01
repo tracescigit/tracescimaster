@@ -1,5 +1,28 @@
 @extends('web.layouts.app')
 @section('content')
+
+<style>
+    @media (max-width: 767px) {
+    .aboout-1-head-area {
+        background-image: url('/dist/images/contact_us_mobile.png');
+        background-position: top center;
+        background-size: cover;
+        height: 100svh;        /* svh = small viewport height, best for mobile */
+    }
+}
+@media (max-width: 767px) {
+    .page-title-area.aboout-1-head-area {
+        display: flex;
+        align-items: flex-end;        /* pushes content to bottom */
+        justify-content: center;
+        padding-bottom: 50px;
+    }
+
+    .about-head-content {
+        padding: 15px 20px;
+    }
+}
+</style>
 <section class="page-title-area aboout-1-head-area">
     <div class="container">
         <div class="row">
