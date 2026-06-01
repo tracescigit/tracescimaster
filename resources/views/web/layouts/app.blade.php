@@ -145,8 +145,6 @@
   <script type="text/javascript" src="{{asset('web/js/jquery.nav.js')}}"></script>
   <script type="text/javascript" src="{{asset('web/js/jquery.validate.js')}}"></script>
   <script type="text/javascript" src="{{asset('web/js/functions.js')}}"></script>
-  <script type="text/javascript" src="{{asset('dist/js/menuzord.js')}}"></script>
-  <script type="text/javascript" src="{{asset('dist/js/main.js')}}"></script>
   <script src="{{ asset('dist/js/bootstrap.min.js') }}"></script>
 
   <!-- Plugins -->
