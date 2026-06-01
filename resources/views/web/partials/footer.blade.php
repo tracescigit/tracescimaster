@@ -149,7 +149,7 @@
               <!-- Right Form -->
               <div class="col-lg-6 col-md-6">
                 @if (request()->route()->uri!='p/{code}')
-                <form class="newsletter-form">
+                <form class="newsletter-form" style="margin-top: 20px">
                   <input type="email"
                     placeholder="Enter your email"
                     name="email"

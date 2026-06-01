@@ -438,14 +438,14 @@
     }
 
     .anc-title {
-        font-size: 12px;
+        font-size: 14px;
         font-weight: 700;
         color: var(--navy);
         line-height: 1.4;
     }
 
     .anc-note {
-        font-size: 10px;
+        font-size: 12px;
         color: var(--muted);
         margin-top: 2px;
     }
@@ -490,23 +490,55 @@
     }
 
     .spec-key {
-        padding: 14px 28px;
-        font-size: 12px;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.06em;
-        color: var(--muted);
-        border-right: 1px solid var(--border);
-        background: #fafafa;
-    }
+    padding: 12px 28px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    border-right: 1px solid var(--border);
+    background: #fafafa;
 
+    display: flex;
+    align-items: center; /* vertical centering */
+}
+    .spec-key1 {
+    padding: 35px 28px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    border-right: 1px solid var(--border);
+    background: #fafafa;
+
+    display: flex;
+    align-items: center; /* vertical centering */
+}
+
+    .spec-key2 {
+    padding: 22px 28px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    border-right: 1px solid var(--border);
+    background: #fafafa;
+
+    display: flex;
+    align-items: center; /* vertical centering */
+}
     .spec-val {
-        padding: 14px 28px;
-        font-size: 13px;
-        color: var(--navy);
-        font-weight: 500;
-        line-height: 1.5;
-    }
+    padding: 14px 28px;
+    font-size: 13px;
+    color: var(--navy);
+    font-weight: 500;
+    line-height: 1.5;
+
+    display: flex;
+    align-items: center; /* vertical centering */
+}
 
     .spec-val .highlight {
         color: var(--teal);
@@ -678,7 +710,7 @@
         top: 0;
         height: 100%;
         width: 60%;
-        background: url('/dist/images/hyperloop2.png') no-repeat center center !important;
+        background: url('/dist/images/hyperloop_small.png') no-repeat center center !important;
         background-size: cover !important;
         box-shadow: -8px 0px 8px rgba(0, 0, 0, 0.1);
     }
@@ -1071,7 +1103,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
-                <div class="about-head-content">
+                <div class="about-head-content2">
                     <h2>Hyperloop</h2>
                     <p>Slit. Inspect. Print. All in one loop.</p>
                 </div>
@@ -1093,9 +1125,9 @@
             <div class="col-md-12 text-center">
                 <div class="main-title wow zoomIn">
                     <div class="main-shadow-heading">
-                        <h2>Core <span>Solutions</span></h2>
+                        <h2>High Speed Finishing <span>Solutions</span></h2>
                     </div>
-                    <h2>Core<span style="color:#7a0d7d"> Solutions</span></h2>
+                    <h2>High Speed Finishing<span style="color:#7a0d7d"> Solutions</span></h2>
                     <h3>Four integrated solutions for modern label and packaging production — from variable data printing and inspection to digital slitting and label transfer.</h3>
                 </div>
             </div>
@@ -1107,7 +1139,7 @@
             <div class="row">
                 <div class="col-sm-6 col-md-4">
                     <div class="solution-single-content solution-single-content-no-border wow fadeInLeft">
-                        <h2>Variable Data Printing</h2>
+                        <h2>Variable Data Printing Solution</h2>
                         <p>Powered by tracesci VDP software — print barcodes, QR codes, serial numbers, dates, counters, and custom graphics inline at full production speed. Printheads can be combined arbitrarily with multiple documents printed simultaneously for complete traceability...</p>
                         <a href="#"></a>
                         <span><i class="icon icon-Chart"></i></span>
@@ -1139,7 +1171,7 @@
                 </div>
                 <div class="col-sm-6 col-md-4">
                     <div class="solution-single-content wow fadeInUp">
-                        <h2>Label Transfer Device</h2>
+                        <h2>Label Transfer Device System</h2>
                         <p>Inline label transfer device enables seamless reel changeover and label repositioning without stopping production, maximising uptime across continuous manufacturing runs in pharma, packaging, and security applications...</p>
                         <a href="#"></a>
                         <span><i class="icon icon-Tools"></i></span>
@@ -1176,7 +1208,6 @@
                         <h2>Technical <span style="color:#7a0d7d">Specifications</span></h2>
                         <h3>Unwinder · Dual Rewinder · Automated Digital Slitting — 9-blade HMI positioning at up to 200 m/min.</h3>
                     </div>
-                    <h3 style="color: #0a0a0a;">Hyperloop 330 / 450 Spec Sheet</h3>
                 </div>
             </div>
         </div>
@@ -1227,23 +1258,23 @@
                 <div class="specs-table">
                     <div class="specs-table-header">Web Guide &amp; Mechanical</div>
                     <div class="spec-row">
-                        <div class="spec-key">Web Guide</div>
-                        <div class="spec-val"><span class="highlight">Dual</span> — 1 unit after unwinder, 1 unit before slitting to ensure perfect rewinding</div>
+                        <div class="spec-key1">Web Guide</div>
+                        <div class="spec-val">2 units</div>
                     </div>
                     <div class="spec-row">
-                        <div class="spec-key">Max Roll Weight</div>
+                        <div class="spec-key1">Max Roll Weight</div>
                         <div class="spec-val">Approx. <span class="highlight">120 kg</span></div>
                     </div>
                     <div class="spec-row">
-                        <div class="spec-key">Dimensions</div>
+                        <div class="spec-key1">Dimensions</div>
                         <div class="spec-val">2330 × 1300 × 1500 mm</div>
                     </div>
                     <div class="spec-row">
-                        <div class="spec-key">Electrical</div>
+                        <div class="spec-key1">Electrical</div>
                         <div class="spec-val"><span class="highlight">220–240 V</span>, 3 KW</div>
                     </div>
                     <div class="spec-row">
-                        <div class="spec-key">Control</div>
+                        <div class="spec-key1">Control</div>
                         <div class="spec-val">Touch Screen Panel</div>
                     </div>
                 </div>
@@ -1254,31 +1285,31 @@
                 <div class="specs-table">
                     <div class="specs-table-header">Vision System</div>
                     <div class="spec-row">
-                        <div class="spec-key">H. Resolution</div>
+                        <div class="spec-key2">H. Resolution</div>
                         <div class="spec-val"><span class="highlight">0.15 mm</span></div>
                     </div>
                     <div class="spec-row">
-                        <div class="spec-key">V. Resolution</div>
+                        <div class="spec-key2">V. Resolution</div>
                         <div class="spec-val"><span class="highlight">0.15 mm</span></div>
                     </div>
                     <div class="spec-row">
-                        <div class="spec-key">Detection Width</div>
+                        <div class="spec-key2">Detection Width</div>
                         <div class="spec-val"><span class="highlight">10 – 1500 mm</span></div>
                     </div>
                     <div class="spec-row">
-                        <div class="spec-key">Top Speed</div>
+                        <div class="spec-key2">Top Speed</div>
                         <div class="spec-val"><span class="highlight">250 m/min</span></div>
                     </div>
                     <div class="spec-row">
-                        <div class="spec-key">Point Defect</div>
+                        <div class="spec-key2">Point Defect</div>
                         <div class="spec-val">Area &gt; 0.2 mm²</div>
                     </div>
                     <div class="spec-row">
-                        <div class="spec-key">Streak Defect</div>
+                        <div class="spec-key2">Streak Defect</div>
                         <div class="spec-val">Area &gt; 0.1 mm · 5 mm</div>
                     </div>
                     <div class="spec-row">
-                        <div class="spec-key">Registration</div>
+                        <div class="spec-key2">Registration</div>
                         <div class="spec-val">H &gt; 0.15 mm | V &gt; 0.25 mm</div>
                     </div>
                 </div>
@@ -1577,7 +1608,7 @@
 
                 <div class="demo-actions">
                     <a href="{{route('demo-schedule-create')}}" class="enterprise-btn">
-                        Watch Hyperloop In Action
+                        Schedule a Demo
                         <i class="fa fa-long-arrow-right"></i>
                     </a>
                 </div>

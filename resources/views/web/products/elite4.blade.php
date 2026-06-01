@@ -695,14 +695,14 @@
     }
 
     .anc-title {
-        font-size: 12px;
+        font-size: 14px;
         font-weight: 700;
         color: var(--navy);
         line-height: 1.4;
     }
 
     .anc-note {
-        font-size: 10px;
+        font-size: 12px;
         color: var(--muted);
         margin-top: 2px;
     }
@@ -827,6 +827,27 @@
         border-right: 1px solid var(--border);
         background: #fafafa;
     }
+    .spec-key1 {
+        padding: 17px 28px;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--muted);
+        border-right: 1px solid var(--border);
+        background: #fafafa;
+    }
+    .spec-key2 {
+        padding: 22px 28px;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--muted);
+        border-right: 1px solid var(--border);
+        background: #fafafa;
+    }
+
 
     .spec-key-tech {
         padding: 23px 28px;
@@ -867,6 +888,13 @@
     }
 
     .spec-val {
+        padding: 14px 28px;
+        font-size: 13px;
+        color: var(--navy);
+        font-weight: 500;
+        line-height: 1.5;
+    }
+     .spec-val1 {
         padding: 14px 28px;
         font-size: 13px;
         color: var(--navy);
@@ -1797,9 +1825,8 @@
                             <h2>Technical Specifications</h2>
                         </div>
                         <h2>Technical <span style="color:#7a0d7d">Specifications</span></h2>
-                        <h3>Industrial piezoelectric printheads with CMYK UV &amp; aqueous inks for high-speed multicolor output at up to 2400 DPI.</h3>
+                        <h3>Industrial piezoelectric printheads with CMYK UV &amp; aqueous inks for high-speed multicolor output at up to 1200 DPI.</h3>
                     </div>
-                    <h3 style="color: #0a0a0a;">Elite4 Spec Sheet</h3>
                 </div>
             </div>
         </div>
@@ -1815,9 +1842,6 @@
                         <div class="spec-key">Printhead Type</div>
                         <div class="spec-val">
                             Industrial Piezoelectric Printheads<br>
-                            <span style="font-size:11px;color:var(--muted)">
-                                Normal service life of 3 years or more
-                            </span>
                         </div>
                     </div>
 
@@ -1859,41 +1883,41 @@
                     <div class="specs-table-header">Ink, Media &amp; Machine</div>
 
                     <div class="spec-row">
-                        <div class="spec-key">Consumable</div>
-                        <div class="spec-val">CMYK UV Ink / Aqueous</div>
+                        <div class="spec-key1">Consumable</div>
+                        <div class="spec-val1">CMYK UV Ink / Aqueous</div>
                     </div>
 
                     <div class="spec-row">
-                        <div class="spec-key">Ink Supply</div>
-                        <div class="spec-val">
+                        <div class="spec-key1">Ink Supply</div>
+                        <div class="spec-val1">
                             Continuous; supplies up to <span class="highlight">4 printheads</span> simultaneously.
                             Auto ink-type ID &amp; low-level alarm.
                         </div>
                     </div>
 
                     <div class="spec-row">
-                        <div class="spec-key">Feed Width</div>
-                        <div class="spec-val">45–300 mm</div>
+                        <div class="spec-key1">Feed Width</div>
+                        <div class="spec-val1">45–300 mm</div>
                     </div>
 
                     <div class="spec-row">
-                        <div class="spec-key">Feed Thickness</div>
-                        <div class="spec-val">Max <span class="highlight">5.0 mm</span></div>
+                        <div class="spec-key1">Feed Thickness</div>
+                        <div class="spec-val1">Max <span class="highlight">5.0 mm</span></div>
                     </div>
 
                     <div class="spec-row">
-                        <div class="spec-key">Dimension</div>
-                        <div class="spec-val">2503 × 750 × 805 mm</div>
+                        <div class="spec-key1">Dimension</div>
+                        <div class="spec-val1">2503 × 750 × 805 mm</div>
                     </div>
 
                     <div class="spec-row">
-                        <div class="spec-key">Weight</div>
-                        <div class="spec-val"><span class="highlight">870 kg</span></div>
+                        <div class="spec-key1">Weight</div>
+                        <div class="spec-val1"><span class="highlight">870 kg</span></div>
                     </div>
 
                     <div class="spec-row">
-                        <div class="spec-key">Power</div>
-                        <div class="spec-val">6 KW / 220V 50Hz/60Hz</div>
+                        <div class="spec-key1">Power</div>
+                        <div class="spec-val1">6 KW / 220V 50Hz/60Hz</div>
                     </div>
                 </div>
             </div>
@@ -1904,7 +1928,7 @@
                     <div class="specs-table-header">Software, Control &amp; Environment</div>
 
                     <div class="spec-row">
-                        <div class="spec-key">Controller</div>
+                        <div class="spec-key2">Controller</div>
                         <div class="spec-val">
                             <span class="highlight">15" Industrial Capacitive Touchscreen</span><br>
                             1280×800 resolution
@@ -1912,20 +1936,12 @@
                     </div>
 
                     <div class="spec-row">
-                        <div class="spec-key">Operating System</div>
+                        <div class="spec-key2">OS</div>
                         <div class="spec-val">Windows</div>
                     </div>
 
                     <div class="spec-row">
-                        <div class="spec-key">Control Method</div>
-                        <div class="spec-val">
-                            Printheads combined arbitrarily, centrally controlled;
-                            multiple documents printed simultaneously
-                        </div>
-                    </div>
-
-                    <div class="spec-row">
-                        <div class="spec-key">Connectivity</div>
+                        <div class="spec-key2">Connectivity</div>
                         <div class="spec-val">
                             PLC, RS485, RS232, WAN, LAN<br>
                             <span style="font-size:11px;color:var(--muted)">
@@ -1935,17 +1951,17 @@
                     </div>
 
                     <div class="spec-row">
-                        <div class="spec-key">USB Ports</div>
+                        <div class="spec-key2">USB Ports</div>
                         <div class="spec-val"><span class="highlight">4</span></div>
                     </div>
 
                     <div class="spec-row">
-                        <div class="spec-key">Language</div>
+                        <div class="spec-key2">Language</div>
                         <div class="spec-val">English</div>
                     </div>
 
                     <div class="spec-row">
-                        <div class="spec-key">Operating Temp.</div>
+                        <div class="spec-key2">Operating Temp.</div>
                         <div class="spec-val"><span class="highlight">15°C – 40°C</span></div>
                     </div>
                 </div>

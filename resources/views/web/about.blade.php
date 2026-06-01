@@ -358,9 +358,9 @@
                     </div>
 
                     <div class="client-2-slider">
-                        <div class="client-2-slider-content">
+                        <div class="client-2-slider-content"> 
                             <span><i class="fa fa-quote-left"></i></span>
-                            <h3>TRACESCI's tax stamp and track-and-trace solution has improved compliance monitoring and provided greater visibility into product movement across multiple regions.</h3>
+                            <h3>TRACESCI's tax stamp and track-and-trace solution has improved compliance monitoring and provided greater visibility into product movement across multiple regions and supply chains.</h3>
                             <img src="images/client/client-user-3.png" alt="">
                         </div>
                         <h2>Michael Anderson</h2>
@@ -370,7 +370,7 @@
                     <div class="client-2-slider">
                         <div class="client-2-slider-content">
                             <span><i class="fa fa-quote-left"></i></span>
-                            <h3>The platform enabled us to monitor our agricultural products from production to retail shelves. This transparency has strengthened customer confidence in our brand.</h3>
+                            <h3>The platform enabled us to monitor our agricultural products from production to retail shelves. This transparency has significantly strengthened customer confidence in our brand.</h3>
                             <img src="images/client/client-user-1.png" alt="">
                         </div>
                         <h2>Sophia Williams</h2>

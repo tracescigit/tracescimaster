@@ -732,7 +732,7 @@
             <div class="row">
                 <div class="col-md-12 text-center">
                     <div class="about-head-content">
-                        <h2>Demonstration</h2>
+                        <h2>Connect With Us</h2>
                         <p>Get insight of our product</p>
                     </div>
                     <div class="breadcrumbs text-center">

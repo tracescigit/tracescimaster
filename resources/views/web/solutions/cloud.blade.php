@@ -993,10 +993,10 @@
             <div class="col-md-12 text-center">
                 <div class="main-title wow zoomIn">
                     <div class="main-shadow-heading">
-                        <h2>Join Our Successful Customers</h2>
+                        <h2>Attractive Plan</h2>
                     </div>
-                    <h2>Join Our<span style="color:#7a0d7d;"> Successful Customers</span></h2>
-                    <h3>Choose Your Plan</h3>
+                    <h2>Attractive<span style="color:#7a0d7d;"> Plan</span></h2>
+                    <h3>Select from different plan.</h3>
                 </div>
             </div>
         </div>

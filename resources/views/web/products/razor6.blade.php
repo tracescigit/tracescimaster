@@ -688,14 +688,14 @@
      }
 
      .anc-title {
-         font-size: 12px;
+         font-size: 14px;
          font-weight: 700;
          color: var(--navy);
          line-height: 1.4;
      }
 
      .anc-note {
-         font-size: 10px;
+         font-size: 12px;
          color: var(--muted);
          margin-top: 2px;
      }
@@ -841,7 +841,7 @@
      }
 
      .spec-key-tech2 {
-         padding: 40px 28px;
+         padding: 34px 28px;
          font-size: 12px;
          font-weight: 600;
          text-transform: uppercase;
@@ -1320,7 +1320,7 @@
          top: 0;
          height: 110%;
          width: 60%;
-         background: url('/dist/images/razor6.png') no-repeat center center !important;
+         background: url('/dist/images/Razor6_small5.png') no-repeat center center !important;
          background-size: cover !important;
          box-shadow: -8px 0px 8px rgba(0, 0, 0, 0.1);
      }
@@ -1650,7 +1650,6 @@
                          <h3>Precision-engineered with Piezo DOD technology and UV curable aqueous inks for consistent high-performance output.</h3>
 
                      </div>
-                     <h3 style="color: #0a0a0a;">Razor6 Spec Sheet</h3>
 
                  </div>
              </div>
