@@ -122,7 +122,7 @@
 
                 showNotification('success', 'Success !', res.data.message)
                 setTimeout(() => {
-                    window.location.href = '{{ url(' / register / company - informations ') }}'
+                    window.location.href = "{{ url('/register/company-informations') }}"
                 }, 2000)
 
             }).catch(err => {
