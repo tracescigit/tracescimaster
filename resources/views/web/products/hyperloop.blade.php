@@ -979,7 +979,7 @@
         height: 300px !important;
         margin: 40px 0 !important;
 
-        background-image: url('/dist/images/elite4_mobile.png') !important;
+        background-image: url('/dist/images/hyperloop_mobile_small.png') !important;
         background-position: center center !important;
         background-repeat: no-repeat !important;
         background-size: contain !important;

@@ -4682,7 +4682,7 @@ input:focus {
 }
 .aboout-3-head-area {
     background-image:
-        linear-gradient(to bottom, transparent, rgba(255, 248, 200, 0.5)),
+        linear-gradient(to bottom, transparent, rgba(255, 248, 200, 0.2)),
         url(../images/hyperloop_banner2.png);
     background-size: 100%, auto; /* gradient fills, image stays original size */
     background-position: center top;
@@ -4691,7 +4691,7 @@ input:focus {
 }
 .aboout-4-head-area {
     background:
-        linear-gradient(to bottom, transparent, rgba(255, 248, 200, 0.5)),
+        linear-gradient(to bottom, transparent, rgba(255, 248, 200, 0.2)),
         url(../images/razor6_banner2.png);
 
     background-size: cover;
