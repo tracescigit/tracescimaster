@@ -164,11 +164,11 @@
   <script src="{{ asset('dist/js/main.js') }}"></script>
 
   <!-- INIT MENUZORD -->
-  <script>
+  <!-- <script>
     jQuery(document).ready(function($) {
       $("#menuzord").menuzord();
     });
-  </script>
+  </script> -->
   <script>
     cash('#subscribenow').on('submit', function(e) {
       e.preventDefault();
