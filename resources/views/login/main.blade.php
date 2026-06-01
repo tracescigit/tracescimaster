@@ -78,7 +78,7 @@
                 <img width="20%" alt="Tracesci" src="{{asset('dist/images/tracesci logo_white.png')}}" class=""></a>
             </a>
             <div class="my-auto">
-                <img alt="TRACESCI" class="-intro-x w-1/2 -mt-16" src="{{ asset('dist/images/illustration.svg') }}">
+                <img alt="TRACESCI" class="-intro-x w-1/2 -mt-16" src="{{ asset('dist/images/illustration.png') }}">
                 <div class="-intro-x text-white font-medium text-4xl leading-tight mt-10">A <span style="color: #7a0d7d;"> few</span> more clicks to <br> sign in to your<span style="color: #7a0d7d;"> account.</span></div>
                 <div class="-intro-x mt-5 text-lg text-white text-opacity-70 dark:text-gray-500"><span style="color: #7a0d7d;"> Track</span> your all invoices at one place</div>
             </div>

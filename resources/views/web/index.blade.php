@@ -379,8 +379,8 @@
           data-start="2800" data-transform_in="y:[100%];opacity:0;s:800;"
           data-transform_out="opacity:0;s:300" ;>
           <div class="rev-slider-btn text-center">
-            <a href="#">Read More</a>
-            <a href="/solutions/cloud#pricing_table">Get Started</a>
+            <a href="{{ url(Auth::check()?myDashboard():'/login') }}">Login</a>
+            <a href="{{ url(Auth::check()?myDashboard():'/register') }}">Register</a>
           </div>
         </div>
 
@@ -433,8 +433,8 @@
           data-start="2800" data-transform_in="y:[100%];opacity:0;s:800;"
           data-transform_out="opacity:0;s:300" ;>
           <div class="rev-slider-btn text-center">
-            <a href="#">Read More</a>
-            <a href="#">Get Started</a>
+            <a href="{{ url(Auth::check()?myDashboard():'/login') }}">Login</a>
+            <a href="{{ url(Auth::check()?myDashboard():'/register') }}">Register</a>
           </div>
         </div>
 
@@ -801,24 +801,45 @@
               <div class="event-box-conner col-md-10 col-sm-10 col-xs-10">
                 <div class="event_post_content bg-gradient">
                   <div class="event-thumb">
-                    <img width="800" height="100" alt="event" src="{{asset('web/images/labelexpo_2026.jpg')}}" class="event-img">
+                    <img width=100% height=100% alt="event" src="{{asset('web/images/loupe.png')}}" class="event-img">
                   </div>
                   <div class="event-desc">
                     <h3 class="title-eventpost">
-                      <a href="event-lightbox.html" class="various fancybox.ajax">Labelexpo India 2026</a>
+                      <a href="event-lightbox.html" class="various fancybox.ajax">Loupe India 2026</a>
                     </h3>
                     <div class="event_post_desc">
-                      29 October - 1 November, Greater Noida, Delhi NCR .
+                      29 October - 1 November,<br> Greater Noida, Delhi NCR, India
                     </div>
                   </div>
                 </div>
               </div>
               <div class="event-box-center col-md-2 col-sm-2 col-xs-2">
-                <div class="event_post_date">MAR 23</div>
+                <div class="event_post_date">OCT 29</div>
               </div>
             </div>
           </div>
-
+          <div class="event-content col-md-6 col-sm-12 col-xs-12">
+            <div class="row row-event">
+              <div class="event-box-conner col-md-10 col-sm-10 col-xs-10">
+                <div class="event_post_content bg-gradient">
+                  <div class="event-thumb">
+                    <img width="456" height="215" alt="event" src="{{asset('web/images/cphi2022.jpg')}}" class="event-img">
+                  </div>
+                  <div class="event-desc">
+                    <h3 class="title-eventpost">
+                      <a href="event-lightbox.html" class="various fancybox.ajax">CPHI India 2026</a>
+                    </h3>
+                    <div class="event_post_desc">
+                      23 Nov - 26 Nov <br> India Expo Centre and Mart, Greater Noida, India
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="event-box-center col-md-2 col-sm-2 col-xs-2">
+                <div class="event_post_date">23 NOV</div>
+              </div>
+            </div>
+          </div>
           <div class="event-content col-md-6 col-sm-12 col-xs-12" style="margin:0;">
             <div class="row row-event">
               <div class="event-box-conner col-md-10 col-sm-10 col-xs-10">
@@ -832,7 +853,7 @@
                       <a href="event-lightbox.html" class="various fancybox.ajax">Label Expo Europe 2022</a>
                     </h3>
                     <div class="event_post_desc">
-                      26 - 29 April 2022 <br> Brussels Expo
+                      23 Nov - 26 Nov, 2026 <br> India Expo Centre and Mart, Greater Noida, India
                     </div>
                   </div>
                 </div>
@@ -843,7 +864,7 @@
             </div>
           </div>
 
-          <div class="event-content col-md-6 col-sm-12 col-xs-12">
+          <!-- <div class="event-content col-md-6 col-sm-12 col-xs-12">
             <div class="row row-event">
               <div class="event-box-conner col-md-10 col-sm-10 col-xs-10">
                 <div class="event_post_content bg-gradient">
@@ -864,30 +885,9 @@
                 <div class="event_post_date">NOV 10</div>
               </div>
             </div>
-          </div>
+          </div> -->
 
-          <div class="event-content col-md-6 col-sm-12 col-xs-12">
-            <div class="row row-event">
-              <div class="event-box-conner col-md-10 col-sm-10 col-xs-10">
-                <div class="event_post_content bg-gradient">
-                  <div class="event-thumb">
-                    <img width="456" height="215" alt="event" src="{{asset('web/images/cphi2022.jpg')}}" class="event-img">
-                  </div>
-                  <div class="event-desc">
-                    <h3 class="title-eventpost">
-                      <a href="event-lightbox.html" class="various fancybox.ajax">PMEC India 2022</a>
-                    </h3>
-                    <div class="event_post_desc">
-                      29 Nov - 1 Dec 2022, India Expo Centre & Mart, Greater Noida, Delhi NCR
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="event-box-center col-md-2 col-sm-2 col-xs-2">
-                <div class="event_post_date">NOV 29</div>
-              </div>
-            </div>
-          </div>
+
 
         </div>
       </div>

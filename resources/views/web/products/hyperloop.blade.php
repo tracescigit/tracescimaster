@@ -489,55 +489,61 @@
     }
 
     .spec-key {
-    padding: 12px 28px;
-    font-size: 12px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--muted);
-    border-right: 1px solid var(--border);
-    background: #fafafa;
+        padding: 12px 28px;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--muted);
+        border-right: 1px solid var(--border);
+        background: #fafafa;
 
-    display: flex;
-    align-items: center; /* vertical centering */
-}
+        display: flex;
+        align-items: center;
+        /* vertical centering */
+    }
+
     .spec-key1 {
-    padding: 35px 28px;
-    font-size: 12px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--muted);
-    border-right: 1px solid var(--border);
-    background: #fafafa;
+        padding: 35px 28px;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--muted);
+        border-right: 1px solid var(--border);
+        background: #fafafa;
 
-    display: flex;
-    align-items: center; /* vertical centering */
-}
+        display: flex;
+        align-items: center;
+        /* vertical centering */
+    }
 
     .spec-key2 {
-    padding: 22px 28px;
-    font-size: 12px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--muted);
-    border-right: 1px solid var(--border);
-    background: #fafafa;
+        padding: 22px 28px;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--muted);
+        border-right: 1px solid var(--border);
+        background: #fafafa;
 
-    display: flex;
-    align-items: center; /* vertical centering */
-}
+        display: flex;
+        align-items: center;
+        /* vertical centering */
+    }
+
     .spec-val {
-    padding: 14px 28px;
-    font-size: 13px;
-    color: var(--navy);
-    font-weight: 500;
-    line-height: 1.5;
+        padding: 14px 28px;
+        font-size: 13px;
+        color: var(--navy);
+        font-weight: 500;
+        line-height: 1.5;
 
-    display: flex;
-    align-items: center; /* vertical centering */
-}
+        display: flex;
+        align-items: center;
+        /* vertical centering */
+    }
 
     .spec-val .highlight {
         color: var(--teal);
@@ -833,6 +839,83 @@
         transform: translateX(7px);
     }
 
+    /* ---- Rev Slider Buttons ---- */
+    .rev-slider-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 20px;
+    }
+
+    .rev-slider-btn a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 30px;
+        font-size: 15px;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        white-space: nowrap;
+    }
+
+    .rev-slider-btn a:first-child {
+        background: #000000;
+        color: #fff !important;
+        border: 2px solid #000000;
+    }
+
+    .rev-slider-btn a:first-child:hover {
+        background: transparent;
+        color: #000000 !important;
+    }
+
+    .rev-slider-btn a:last-child {
+        background: transparent;
+        color: #000000 !important;
+        border: 2px solid #fff;
+    }
+
+    .rev-slider-btn a:last-child:hover {
+        background: #fff;
+        color: #fff !important;
+    }
+
+    /* Tablet */
+    @media (max-width: 991px) {
+        .rev-slider-btn a {
+            padding: 11px 26px;
+            font-size: 14px;
+        }
+    }
+
+    /* Mobile */
+    @media (max-width: 767px) {
+        .rev-slider-btn {
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .rev-slider-btn a {
+            width: 100%;
+            max-width: 280px;
+            padding: 12px 20px;
+            font-size: 14px;
+        }
+    }
+
+    /* Small mobile */
+    @media (max-width: 480px) {
+        .rev-slider-btn a {
+            max-width: 240px;
+            padding: 10px 16px;
+            font-size: 13px;
+        }
+    }
+
 
     @keyframes floatGlow {
         0% {
@@ -948,45 +1031,46 @@
     }
 
     @media (max-width: 767px) {
-    .aboout-3-head-area {
-        background-image: url('/dist/images/hyperloop_mobile_banner.png');
-        background-position: top center;
-        background-size: cover;
-        height: 100svh;
-    }
-}
-
-@media (max-width: 767px) {
-    .page-title-area.aboout-3-head-area {
-        display: flex;
-        align-items: flex-end;
-        justify-content: center;
-        padding-bottom: 50px;
+        .aboout-3-head-area {
+            background-image: url('/dist/images/hyperloop_mobile_banner.png');
+            background-position: top center;
+            background-size: cover;
+            height: 100svh;
+        }
     }
 
-    .about-head-content {
-        padding: 15px 20px;
+    @media (max-width: 767px) {
+        .page-title-area.aboout-3-head-area {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding-bottom: 50px;
+        }
+
+        .about-head-content {
+            padding: 15px 20px;
+        }
     }
-}
-@media (max-width: 767px) {
 
-    .feature-2-right {
-        position: relative !important;
-        display: block !important;
-        left: 0 !important;
-        top: 0 !important;
-        width: 100% !important;
-        height: 300px !important;
-        margin: 40px 0 !important;
+    @media (max-width: 767px) {
 
-        background-image: url('/dist/images/hyperloop_mobile_small.png') !important;
-        background-position: center center !important;
-        background-repeat: no-repeat !important;
-        background-size: contain !important;
+        .feature-2-right {
+            position: relative !important;
+            display: block !important;
+            left: 0 !important;
+            top: 0 !important;
+            width: 100% !important;
+            height: 300px !important;
+            margin: 40px 0 !important;
 
-        z-index: 1;
+            background-image: url('/dist/images/hyperloop_mobile_small.png') !important;
+            background-position: center center !important;
+            background-repeat: no-repeat !important;
+            background-size: contain !important;
+
+            z-index: 1;
+        }
     }
-}
 </style>
 
 <!-- ── REVOLUTION SLIDER ── -->
@@ -994,8 +1078,8 @@
     <div id="slider1" class="rev_slider" data-version="5.0">
         <ul> -->
 
-            <!-- SLIDE 1 -->
-            <!-- <li data-index="rs-1" data-transition="parallaxtoright" data-delay="6500">
+<!-- SLIDE 1 -->
+<!-- <li data-index="rs-1" data-transition="parallaxtoright" data-delay="6500">
                 <img src="{{asset('dist/images/hyperloop-slide1.png')}}"
                     class="rev-slidebg"
                     data-bgposition="center center"
@@ -1041,8 +1125,8 @@
                 </div>
             </li> -->
 
-            <!-- SLIDE 2 -->
-            <!-- <li data-index="rs-2" data-transition="parallaxtoright" data-delay="6500">
+<!-- SLIDE 2 -->
+<!-- <li data-index="rs-2" data-transition="parallaxtoright" data-delay="6500">
                 <img src="{{asset('dist/images/hyperloop-slide2.png')}}"
                     class="rev-slidebg"
                     data-bgposition="center center"
@@ -1088,8 +1172,8 @@
                 </div>
             </li> -->
 
-            <!-- SLIDE 3 -->
-            <!-- <li data-index="rs-3" data-transition="parallaxtoright" data-delay="6500">
+<!-- SLIDE 3 -->
+<!-- <li data-index="rs-3" data-transition="parallaxtoright" data-delay="6500">
                 <img src="{{asset('dist/images/hyperloop-slide3.png')}}"
                     class="rev-slidebg"
                     data-bgposition="center center"
@@ -1135,8 +1219,8 @@
                 </div>
             </li> -->
 
-        </ul>
-    </div>
+</ul>
+</div>
 </div>
 
 <section class="page-title-area aboout-3-head-area">
@@ -1146,13 +1230,14 @@
                 <div class="about-head-content2">
                     <h2>Hyperloop</h2>
                     <p>Slit. Inspect. Print. All in one loop.</p>
+                    <div class="rev-slider-btn text-center" style="margin-top: 20px;">
+                        <a href="#">Watch in Action</a>
+                        <a href="{{ asset('Brochure/Hyperloop Brochure files_OP.pdf') }}" download>
+                            Download Brochure
+                        </a>
+                    </div>
                 </div>
-                <div class="breadcrumbs text-center">
-                    <ul class="page-breadcrumbs">
-                        <!-- <li><a href="{{route('home')}}">home</a></li>
-                        <li><a href="#">About Us</a></li> -->
-                    </ul>
-                </div>
+
             </div>
         </div>
     </div>
@@ -1361,7 +1446,7 @@
 
 <!-- ── SUITED BEST FOR ── -->
 <section class="feature-area feature-2-area" style="background-color: #f5f5f5;">
-    <div class="feature-heading-area wow zoomIn" >
+    <div class="feature-heading-area wow zoomIn">
         <div class="container" style="background-color: #f5f5f5; margin-top:80px">
             <div class="row">
                 <div class="col-md-6">

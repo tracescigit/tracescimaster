@@ -1474,6 +1474,7 @@
          transform: none;
      }
 
+
      /* ── MOBILE ── */
      @media (max-width: 960px) {
          nav {
@@ -1538,77 +1539,159 @@
          }
 
      }
+
+     /* ---- Rev Slider Buttons ---- */
+     .rev-slider-btn {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         flex-wrap: wrap;
+         gap: 12px;
+         margin-top: 20px;
+     }
+
+     .rev-slider-btn a {
+         display: inline-flex;
+         align-items: center;
+         justify-content: center;
+         padding: 12px 30px;
+         font-size: 15px;
+         font-weight: 500;
+         text-decoration: none;
+         transition: all 0.3s ease;
+         white-space: nowrap;
+     }
+
+     .rev-slider-btn a:first-child {
+         background: #000000;
+         color: #fff !important;
+         border: 2px solid #000000;
+     }
+
+     .rev-slider-btn a:first-child:hover {
+         background: transparent;
+         color: #000000 !important;
+     }
+
+     .rev-slider-btn a:last-child {
+         background: transparent;
+         color: #000000 !important;
+         border: 2px solid #fff;
+     }
+
+     .rev-slider-btn a:last-child:hover {
+         background: #fff;
+         color: #fff !important;
+     }
+
+     /* Tablet */
+     @media (max-width: 991px) {
+         .rev-slider-btn a {
+             padding: 11px 26px;
+             font-size: 14px;
+         }
+     }
+
+     /* Mobile */
+     @media (max-width: 767px) {
+         .rev-slider-btn {
+             flex-direction: column;
+             align-items: center;
+             gap: 10px;
+         }
+
+         .rev-slider-btn a {
+             width: 100%;
+             max-width: 280px;
+             padding: 12px 20px;
+             font-size: 14px;
+         }
+     }
+
+     /* Small mobile */
+     @media (max-width: 480px) {
+         .rev-slider-btn a {
+             max-width: 240px;
+             padding: 10px 16px;
+             font-size: 13px;
+         }
+     }
+
+     @media (max-width: 767px) {
+         .tech-grid {
+             grid-template-columns: 1fr;
+         }
+
          @media (max-width: 767px) {
-    .tech-grid {
-        grid-template-columns: 1fr;
-    }
-    @media (max-width: 767px) {
 
-    .ancillary-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-    }
+             .ancillary-grid {
+                 display: grid;
+                 grid-template-columns: repeat(2, 1fr);
+                 gap: 15px;
+             }
 
-    .ancillary-item {
-        width: 100%;
-    }
+             .ancillary-item {
+                 width: 100%;
+             }
 
-}
-}
-@media (max-width: 767px) {
+         }
+     }
 
-    .env-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
+     @media (max-width: 767px) {
 
-    .env-card {
-        width: 100%;
-    }
+         .env-grid {
+             display: grid;
+             grid-template-columns: 1fr;
+             gap: 20px;
+         }
 
-}
-@media (max-width: 767px) {
+         .env-card {
+             width: 100%;
+         }
 
-    .feature-2-right {
-        position: relative !important;
-        display: block !important;
-        left: 0 !important;
-        top: 0 !important;
-        width: 100% !important;
-        height: 300px !important;
-        margin: 40px 0 !important;
+     }
 
-        background-image: url('/dist/images/razor6_mobile_small.png') !important;
-        background-position: center center !important;
-        background-repeat: no-repeat !important;
-        background-size: contain !important;
+     @media (max-width: 767px) {
 
-        z-index: 1;
-    }
-}
-@media (max-width: 767px) {
-    .aboout-4-head-area {
-        background-image: url('/dist/images/razor_mobile_banner.png');
-        background-position: top center;
-        background-size: cover;
-        height: 100svh;
-    }
-}
+         .feature-2-right {
+             position: relative !important;
+             display: block !important;
+             left: 0 !important;
+             top: 0 !important;
+             width: 100% !important;
+             height: 300px !important;
+             margin: 40px 0 !important;
 
-@media (max-width: 767px) {
-    .page-title-area.aboout-4-head-area {
-        display: flex;
-        align-items: flex-end;
-        justify-content: center;
-        padding-bottom: 50px;
-    }
+             background-image: url('/dist/images/razor6_mobile_small.png') !important;
+             background-position: center center !important;
+             background-repeat: no-repeat !important;
+             background-size: contain !important;
 
-    .about-head-content {
-        padding: 15px 20px;
-    }
-}
+             z-index: 1;
+         }
+     }
+
+     @media (max-width: 767px) {
+         .aboout-4-head-area {
+             background-image: url('/dist/images/razor_mobile_banner.png');
+             background-position: top center;
+             background-size: cover;
+             height: 100svh;
+         }
+     }
+
+     @media (max-width: 767px) {
+         .page-title-area.aboout-4-head-area {
+             display: flex;
+             align-items: flex-end;
+             justify-content: center;
+             padding-bottom: 50px;
+         }
+
+         .about-head-content {
+             padding: 15px 20px;
+         }
+     }
  </style>
  <section class="page-title-area aboout-4-head-area">
      <div class="container">
@@ -1617,12 +1700,14 @@
                  <div class="about-head-content">
                      <h2>Razor6</h2>
                      <p>Precision-engineered Piezo DOD technology delivering</p>
-                 </div>
-                 <div class="breadcrumbs text-center">
-                     <ul class="page-breadcrumbs">
-                         <!-- <li><a href="{{route('home')}}">Home</a></li>
-                        <li><a href="#">About Us</a></li> -->
-                     </ul>
+
+
+                     <div class="rev-slider-btn text-center" style="margin-top: 20px;">
+                         <a href="#">Watch in Action</a>
+                         <a href="{{ asset('Brochure/Tracesci brochure_2025_OP.pdf') }}" download>
+                             Download Brochure
+                         </a>
+                     </div>
                  </div>
              </div>
          </div>
@@ -1747,7 +1832,7 @@
                          <div class="spec-key">Drop Volume</div>
                          <div class="spec-val">Binary: <span class="highlight">5pl</span> / Greyscale: 5–15pl</div>
                      </div>
-                     
+
                  </div>
              </div>
 
@@ -1793,7 +1878,7 @@
                          <div class="spec-key">Speed</div>
                          <div class="spec-val">Up to <span class="highlight">150 mtr/min</span> (resolution dependent)</div>
                      </div>
-                     
+
                  </div>
              </div>
          </div>
