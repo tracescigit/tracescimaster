@@ -16,6 +16,22 @@
         margin-bottom: 10px;
     }
 
+    .industries-text {
+        display: inline-block;
+        padding: 10px 30px;
+        font-size: 14px;
+        line-height: 1.4em;
+        text-transform: capitalize;
+        color: #fff !important;
+        background-color: #343434;
+        border: 1px solid #343434;
+        border-radius: 0.375rem;
+        margin: 0;
+        position: relative;
+        z-index: 15;
+        font-weight: 500;
+    }
+
     /* Improve readability */
     .panel-body {
         font-size: 14px;
@@ -502,15 +518,14 @@
         .heading-rp-small {
             font-size: 28px !important;
             line-height: 1.3 !important;
-            letter-spacing: 0 !important;
         }
 
         .tp-caption span {
-            font-size: 14px !important;
+            font-size: 24px !important;
         }
 
         .tp-caption div {
-            font-size: 14px !important;
+            font-size: 24px !important;
             line-height: 1.5 !important;
         }
     }
@@ -602,7 +617,7 @@
                     data-x="center" data-y="top" data-voffset="120"
                     data-start="1200" data-transform_in="y:[100%];opacity:0;s:800;"
                     data-transform_out="opacity:0;s:300" ;>
-                    <span style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 600; font-size: 17px;">
+                    <span style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 200; font-size: 17px;font-family: 'Lora', serif;">
                         One Platform. Every Stakeholder. Zero Counterfeits.
                     </span>
                 </div>
@@ -613,7 +628,7 @@
                     data-start="1800" data-transform_in="y:[100%];opacity:0;s:800;"
                     data-transform_out="opacity:0;s:300" ;>
                     <div class="text-center heading-rp-small" style="transition: none; line-height: 58px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 1px; font-weight: 800; font-size: 50px;">
-                        Cloud-Powered Track & Trace for Every Product.
+                        Cloud-Based Product Tracking
                     </div>
                 </div>
 
@@ -622,7 +637,7 @@
                     data-x="center" data-y="top" data-voffset="300"
                     data-start="2400" data-transform_in="y:[100%];opacity:0;s:800;"
                     data-transform_out="opacity:0;s:300" ;>
-                    <div class="text-center" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 600; font-size: 17px;">
+                    <div class="text-center" style="transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 200; font-size: 17px;font-family: 'Lora', serif;">
                         Serialize every product unit with a unique QR code. Track its complete journey<br>
                         from manufacturer to end consumer — accessible by brands, inspectors, and governments.
                     </div>
@@ -643,9 +658,10 @@
             <div class="col-md-12 text-center">
                 <div class="main-title wow zoomIn">
                     <div class="main-shadow-heading">
-                        <h2>Hello, We Are Tracesci</h2>
+                        <h2>Cloud-Powered Traceability</h2>
                     </div>
-                    <h2>Hello, We Are <span style="color:#7a0d7d">Tracesci</span></h2>
+
+                    <h2>Cloud-Powered <span style="color:#7a0d7d">Traceability Platform</span></h2>
                     <h3>Cloud-Based Product Serialization, Authentication & Supply Chain Traceability</h3>
                 </div>
             </div>
@@ -718,15 +734,10 @@
                     <div class="refresh-phone-content">
                         <div class="text-desc">
                             <p class="text-center">
-                                Tracesci's fully cloud-based Track &amp; Trace SaaS platform gives governments, brands, manufacturers,
-                                inspectors and consumers a single unified system to authenticate and monitor products across the entire
-                                supply chain. Every product unit is assigned a unique QR code at the point of manufacture —
-                                scan it at any point to instantly verify authenticity, view the complete product journey,
-                                and trigger real-time fraud alerts. Every event is logged on an immutable blockchain ledger,
-                                accessible from anywhere, by any authorised stakeholder.
+                                Tracesci's cloud-based Track & Trace platform provides end-to-end product authentication, real-time visibility, and blockchain-backed traceability. Unique QR codes enable instant verification and secure monitoring throughout the supply chain.
                             </p>
                         </div>
-                        <a class="btn btn-primary ubtn">Industries We Serve</a>
+                        <p class="industries-text">Industries We Serve</p>
                     </div>
                     <div class="spacer-100"></div>
                 </div>
@@ -912,39 +923,36 @@
 
 <!-- Video Section -->
 <div class="video-home" style="width: auto;">
-    <div class="bg" style="background-image: url({{ asset('dist/images/logo_color.png') }}) !important; background-size: 10% !important; background-position: center !important; background-repeat: no-repeat !important; min-height: 500px !important; width: 100% !important; background:rgb(192, 192, 192);">
-        <div class="riven-container container video-container">
-            <div class="row">
-                <div class="col-md-12 col-sm-12 col-xs-12" style="top: 72px;">
-                    <div class="wpb_text_column wpb_content_element">
-                        <div class="wpb_wrapper">
-                            <p>
-                                <a class="fancybox btn-play" title="Watch Tracesci in action" href="{{asset('web/videos/tracesci_storyboard.mp4')}}" data-type="iframe"
-                                    style="bottom: 132px;">
-                                    Watch Now
-                                </a>
-                            </p>
-                        </div>
+    <div class="riven-container container video-container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="wpb_text_column wpb_content_element">
+                    <div class="wpb_wrapper">
+                        <p>
+                            <a class="fancybox btn-play" title="Watch Tracesci in action" href="{{asset('web/videos/tracesci_storyboard.mp4')}}" data-type="iframe">
+                                Watch Now
+                            </a>
+                        </p>
                     </div>
-                    <div class="spacer-20"></div>
-                    <div class="title-block">
-                        <div class="riven-heading text-center">
-                            <h2 style="color: #000 !important; font-weight: 400 !important;">
-                                <span style="font-weight: 800 !important;">Make Every Consumer</span> a Brand Protector
-                            </h2>
-                        </div>
+                </div>
+                <div class="title-block">
+                    <div class="riven-heading text-center">
+                        <h2 style="color: #000 !important; font-weight: 400 !important;margin-top:0px !important">
+                            <span style="font-weight: 800 !important;">Make Every Consumer</span> a Brand Protector
+                        </h2>
                     </div>
-                    <div class="wpb_text_column wpb_content_element">
-                        <div class="wpb_wrapper">
-                            <p style="color: #000 !important; font-weight: 300 !important;">
-                                Counterfeiting costs global businesses over $4 trillion a year. With Tracesci, every consumer who scans
-                                a QR code becomes an active participant in brand protection — verifying authenticity, reporting fakes
-                                and connecting with the brands they trust. Affordable for manufacturers of every size, from startups to enterprises.
-                            </p>
-                        </div>
+                </div>
+                <div class="wpb_text_column wpb_content_element">
+                    <div class="wpb_wrapper">
+                        <p style="color: #000 !important; font-weight: 300 !important;">
+                            Counterfeiting costs global businesses over $4 trillion a year. With Tracesci, every consumer who scans
+                            a QR code becomes an active participant in brand protection — verifying authenticity, reporting fakes
+                            and connecting with the brands they trust. Affordable for manufacturers of every size, from startups to enterprises.
+                        </p>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
@@ -993,10 +1001,10 @@
             <div class="col-md-12 text-center">
                 <div class="main-title wow zoomIn">
                     <div class="main-shadow-heading">
-                        <h2>Attractive Plan</h2>
+                        <h2>Flexible Pricing Plans</h2>
                     </div>
-                    <h2>Attractive<span style="color:#7a0d7d;"> Plan</span></h2>
-                    <h3>Select from different plan.</h3>
+                    <h2>Flexible <span style="color:#7a0d7d;">Pricing Plan</span></h2>
+                    <h3>Explore plans designed to deliver maximum value and convenience for your business.</h3>
                 </div>
             </div>
         </div>

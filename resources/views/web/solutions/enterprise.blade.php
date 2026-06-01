@@ -57,6 +57,22 @@
         animation: fadeUp 0.8s ease;
     }
 
+    .industries-text {
+        display: inline-block;
+        padding: 10px 30px;
+        font-size: 14px;
+        line-height: 1.4em;
+        text-transform: capitalize;
+        color: #fff !important;
+        background-color: #343434;
+        border: 1px solid #343434;
+        border-radius: 0.375rem;
+        margin: 0;
+        position: relative;
+        z-index: 15;
+        font-weight: 500;
+    }
+
     .product_demo h2 {
         color: #000000;
         font-weight: 800;
@@ -158,7 +174,7 @@
                     data-start="1800" data-transform_in="y:[100%];opacity:0;s:800;"
                     data-transform_out="opacity:0;s:300" ;>
                     <div class="text-center heading-rp-small" style="transition: none; line-height: 58px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 1px; font-weight: 800; font-size: 50px;">
-                        Enterprise-Grade Track &amp; Trace — Built for You.
+                        Secure Enterprise Traceability
                     </div>
                 </div>
 
@@ -265,15 +281,10 @@
                     <div class="refresh-phone-content">
                         <div class="text-desc">
                             <p class="text-center">
-                                Tracesci's Enterprise Solution delivers a fully customized track &amp; trace platform for organizations
-                                that require deep control, security and integration at scale. Whether you are a government authority,
-                                a large brand or an enterprise manufacturer, we configure a dedicated system — complete with
-                                manufacturer, brand, authority and printer modules — tailored to your workflows, your infrastructure
-                                and your regulatory environment. Every product event is logged on an immutable blockchain ledger,
-                                accessible in real time by every authorised stakeholder.
+                                Tracesci Enterprise Solution provides a fully customizable track & trace platform with secure integrations, role-based access, and blockchain-backed traceability. Designed for governments, brands, and manufacturers, it delivers real-time visibility across the entire supply chain.
                             </p>
                         </div>
-                        <a class="btn btn-primary ubtn">Industries We Serve</a>
+                        <p class="industries-text">Industries We Serve</p>
                     </div>
                     <div class="spacer-100"></div>
                 </div>
@@ -429,33 +440,98 @@
             </div>
 
             <!-- Serialization Feature Highlight -->
-            
+
         </div>
     </div>
     <div class="solution-area" style="background:#fff;">
-    <div class="software-screen-section" style="padding: 150px 0 0 0;">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-md-6 wow fadeInLeft">
-                            <img src="{{ asset('dist/images/enterprise.png') }}" alt="Enterprise Serialization"
-                                style="width:100%; height:auto; border-radius:8px; box-shadow: 0 10px 40px rgba(122,13,125,0.15);">
-                        </div>
-                        <div class="col-md-6 wow fadeInRight" style="padding-left:40px; display:flex; align-items:center;">
-                            <div class="main-title text-left">
-                                <h2>Serialization <span style="color:#7a0d7d;">at Enterprise Scale</span></h2>
-                                <p style="color:#555; font-size:16px; margin-top: 5px">
-                                    Assign a tamper-evident digital identity to every unit you produce — from a single carton
-                                    to millions of SKUs across multiple brands and markets. The serialization module integrates
-                                    directly with your label supplier and printing hardware, generates codes on demand and
-                                    activates them in real time as products roll off the line. Unlimited capacity, zero production disruption.
-                                </p>
-                            </div>
+        <div class="software-screen-section" style="padding: 150px 0 0 0;">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6 wow fadeInLeft">
+                        <img src="{{ asset('dist/images/enterprise.png') }}" alt="Enterprise Serialization"
+                            style="width:100%; height:auto; border-radius:8px; box-shadow: 0 10px 40px rgba(122,13,125,0.15);">
+                    </div>
+                    <div class="col-md-6 wow fadeInRight" style="padding-left:40px; display:flex; align-items:center;">
+                        <div class="main-title text-left">
+                            <h2>Serialization <span style="color:#7a0d7d;">at Enterprise Scale</span></h2>
+                            <p style="color:#555; font-size:16px; margin-top: 5px">
+                                Assign a tamper-evident digital identity to every unit you produce — from a single carton
+                                to millions of SKUs across multiple brands and markets. The serialization module integrates
+                                directly with your label supplier and printing hardware, generates codes on demand and
+                                activates them in real time as products roll off the line. Unlimited capacity, zero production disruption.
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
     </div>
+    <!-- Enterprise Pricing Section -->
+    <div class="software-screen-section" style="padding: 20px 0; background: #f5f5f5;">
+        <div class="container">
+            <div class="row align-items-stretch">
+                <div class="col-md-6 wow fadeInRight" style="padding-left:15px;">
+                    <div class="main-title text-left" style="padding-top:10px;">
+                        <h2 style="color:#111;">Enterprise <span style="color:#7a0d7d;">Pricing</span></h2>
+                        <p style="color:#555; font-size:16px; margin-top:15px; font-family:'Raleway', sans-serif;">
+                            Enterprise pricing is tailored to your organisation's scale, infrastructure requirements and deployment model.
+                            There is no one-size-fits-all — every quote is scoped specifically around your volume, customisation needs
+                            and support tier, ensuring you only pay for exactly what you need.
+                        </p>
+                        <ul style="color:#555; font-size:15px; margin-top:20px; padding-left:25px; line-height:2; font-family:'Raleway', sans-serif;">
+                            <li style="list-style:disc;">Custom pricing based on your production volume &amp; SKU count</li>
+                            <li style="list-style:disc;">Flexible deployment options — cloud, on-premise or hybrid</li>
+                            <li style="list-style:disc;">Dedicated support plans with guaranteed SLA response times</li>
+                            <li style="list-style:disc;">No hidden fees — transparent, contract-based billing</li>
+                        </ul>
 
+                        <p style="color:#555; font-size:14px; margin:0 0 18px; line-height:1.7;">
+                            Reach out to our team directly for pricing details, volume discounts and deployment options.
+                        </p>
+                        <a href="mailto:wecare@tracesci.in" style="display:inline-flex; align-items:center; gap:10px; background:#7a0d7d; color:#fff !important; font-size:14px; font-weight:600; padding:12px 24px; border-radius:4px; text-decoration:none; margin-right:12px; margin-bottom:10px; transition:background 0.3s ease;">
+                            <i class="fa fa-envelope"></i> wecare@tracesci.in
+                        </a>
+
+                    </div>
+                </div>
+                <div class="col-md-6 wow fadeInLeft image" style="padding-top:95px;">
+                    <img src="{{ asset('dist/images/enterprise_pricing.jpg') }}"
+                        alt="Tracesci Enterprise Pricing"
+                        style="width:100%; height:auto !important;border-radius:8px; box-shadow:0 10px 40px rgba(122,13,125,0.15); display:flex;">
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Enterprise Dedicated Infrastructure Section -->
+    <div class="software-screen-section" style="padding: 40px 0; background: #fff;">
+        <div class="container">
+            <div class="row align-items-center">
+
+                <div class="col-md-6 wow fadeInRight" style="padding-top:85px;">
+                    <img src="{{ asset('dist/images/enterprise_infra.png') }}" alt="Tracesci Enterprise Infrastructure" style="width:100%; height:auto; border-radius:8px; box-shadow: 0 10px 40px rgba(122,13,125,0.15);">
+                </div>
+                <div class="col-md-6">
+                    <div class="main-title wow fadeInLeft">
+                        <h2 style="color:#000000;">Your Infrastructure. <span style="color:#7a0d7d;">Your Control.</span></h2>
+                        <p style="color:rgb(0, 0, 0); font-size:16px; margin-top:15px;font-family: 'Raleway', sans-serif;">
+                            Tracesci Enterprise is deployed exclusively on your own servers and database — fully isolated from shared infrastructure.
+                            Your data never leaves your environment. Every module is configured, branded and optimised specifically for your
+                            organisation's workflows, compliance requirements and scale — with zero compromise on performance or security.
+                        </p>
+                        <ul style="color:rgb(0, 0, 0); font-size:15px; margin-top:20px; padding-left:25px; line-height:2;font-family: 'Raleway', sans-serif;">
+                            <li style="list-style:disc;">Dedicated server &amp; database — your environment, your rules</li>
+                            <li style="list-style:disc;">Full source-level customisation for your business logic</li>
+                            <li style="list-style:disc;">Custom branding, domain and white-label configuration</li>
+                            <li style="list-style:disc;">Seamless integration with your existing ERP, WMS or CRM</li>
+                            <li style="list-style:disc;">Dedicated post-deployment support &amp; SLA-backed maintenance</li>
+                            <li style="list-style:disc;">On-site or remote onboarding training for your team</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- How It Works Section -->
 </div>

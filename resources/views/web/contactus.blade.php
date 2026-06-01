@@ -35,10 +35,19 @@
                             <div class="icon_list_icon">
                                 <h5><i class="fa fa-map-marker" aria-hidden="true"></i> Office </h5>
                             </div>
-                            Tracesci Global Pvt Ltd.,<br>
-                            8B, "Chaitanya Exotica", 24 venkatnarayana Road,<br>
-                            T. Nagar, Chennai, Tamil Nadu, India
+                            <b>Tracesci Global Pvt Ltd.,<br>
+                                8B, "Chaitanya Exotica", 24 venkatnarayana Road,<br>
+                                T. Nagar, Chennai, Tamil Nadu, India</b>
 
+                        </li>
+                        <li class="icon_list_item">
+                            <div class="icon_list_icon">
+                                <h5><i class="fa fa-building" aria-hidden="true"></i> Branch Offices</h5>
+                            </div>
+                            <ul style="margin:0; padding-left:20px;">
+                                <li><b>Gurugram</b></li>
+                                <li><b>Mumbai</b></li>
+                            </ul>
                         </li>
                         <li class="icon_list_item">
                             <div class="icon_list_icon">
@@ -133,8 +142,24 @@
     <div class="container-fluid no-padding">
         <div class="row">
             <div class="col-md-12 col-xs-12 col-sm-12">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3508.631880488345!2d77.01043561507808!3d28.430362582498017!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d181b33427c19%3A0x1d7f2dae6742eec3!2sJETSCI%C2%AE%20Global!5e0!3m2!1sen!2sin!4v1625823933261!5m2!1sen!2sin"
-                    height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                <iframe
+                    src="https://maps.google.com/maps?q=28.430362,77.010435&z=15&output=embed"
+                    width="100%"
+                    height="450"
+                    style="border:0;">
+                </iframe>
+
+                <div style="
+        position:absolute;
+        top:20px;
+        left:20px;
+        background:#fff;
+        padding:8px 12px;
+        border-radius:4px;
+        box-shadow:0 2px 5px rgba(0,0,0,.2);
+        font-weight:bold;">
+                    Tracesci Global Pvt Ltd
+                </div>
             </div>
         </div>
     </div>
@@ -142,56 +167,57 @@
 @endsection
 @section('script')
 <script type="text/javascript">
-  cash(function () {
-    async function contact() {
-      cash('.contact__input').removeClass('border-theme-6')
-      cash('.contact__input-error').html('')
-      cash('#contactError').addClass('hidden')
+    cash(function() {
+        async function contact() {
+            cash('.contact__input').removeClass('border-theme-6')
+            cash('.contact__input-error').html('')
+            cash('#contactError').addClass('hidden')
 
-      let name = cash('#name').val()
-      let email = cash('#email').val()
-      let mobile = cash('#mobile').val()
-      let message = cash('#message').val()
+            let name = cash('#name').val()
+            let email = cash('#email').val()
+            let mobile = cash('#mobile').val()
+            let message = cash('#message').val()
 
-      cash('#contactwait').removeClass('hidden')
-      axios.post("{{url('send_inquiry')}}", {
-        name : name , 
-        email : email ,
-        mobile : mobile,
-        message: message
-      }).then(res => {
-        cash('#contactSuccess').removeClass('hidden')
-        cash('#contactError').addClass('hidden')
-        cash('#contactwait').addClass('hidden')
-        // showNotification('success','Success!',res.data.message)
-        setTimeout(()=>{
-          window.location.reload()  
-        },3000)
-      }).catch(err => {
-        // showNotification('error','Error !',err.response.data.message)
-        cash('#contactError').removeClass('hidden')
-        cash('#contactSuccess').addClass('hidden')
-        cash('#contactwait').addClass('hidden')
+            cash('#contactwait').removeClass('hidden')
+            axios.post("{{url('send_inquiry')}}", {
+                name: name,
+                email: email,
+                mobile: mobile,
+                message: message
+            }).then(res => {
+                cash('#contactSuccess').removeClass('hidden')
+                cash('#contactError').addClass('hidden')
+                cash('#contactwait').addClass('hidden')
+                // showNotification('success','Success!',res.data.message)
+                setTimeout(() => {
+                    window.location.reload()
+                }, 3000)
+            }).catch(err => {
+                // showNotification('error','Error !',err.response.data.message)
+                cash('#contactError').removeClass('hidden')
+                cash('#contactSuccess').addClass('hidden')
+                cash('#contactwait').addClass('hidden')
 
-        cash('#btn-contact').html('Submit')
+                cash('#btn-contact').html('Submit')
 
-        if (err.response.data.errors) {
-          for (const [key, val] of Object.entries(err.response.data.errors)) {
-            cash(`#${key}`).addClass('border-theme-6')
-            cash(`#error-${key}`).html(val)
-          }
+                if (err.response.data.errors) {
+                    for (const [key, val] of Object.entries(err.response.data.errors)) {
+                        cash(`#${key}`).addClass('border-theme-6')
+                        cash(`#error-${key}`).html(val)
+                    }
+                }
+            })
+
         }
-      })
-
-    }
-    cash('#contact_form').on('keyup', function(e) {
-      if (e.keyCode === 13) {
-        contact()
-      }
+        cash('#contact_form').on('keyup', function(e) {
+            if (e.keyCode === 13) {
+                contact()
+            }
+        })
+        cash('#btn-contact').on('click', function() {
+            contact()
+        })
     })
-    cash('#btn-contact').on('click', function() {
-      contact()
-    })
-  })
 </script>
+
 @endsection
