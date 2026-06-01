@@ -156,9 +156,9 @@
             <div class="col-md-12 text-left">
                 <div class="main-title main-title-left wow fadeInLeft">
                     <div class="main-shadow-heading">
-                        <h2>Hello, Welcome To TRACESCI</h2>
+                        <h2>Welcome To TRACESCI</h2>
                     </div>
-                    <h2>Hello, Welcome To <span style="color: #7a0d7d;">TRACESCI</span></h2>
+                    <h2>Welcome To <span style="color: #7a0d7d;">TRACESCI</span></h2>
                     <h3>Get To Know About Us</h3>
                 </div>
             </div>
