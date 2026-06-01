@@ -795,105 +795,106 @@
     <div class="spacer-35"></div>
     <div class="event-container">
       <div class="event-contents row">
-        <div class="event event_post event-entries-wrap has-loadmore">
-          <div class="event-content col-md-6 col-sm-12 col-xs-12">
-            <div class="row row-event">
-              <div class="event-box-conner col-md-10 col-sm-10 col-xs-10">
-                <div class="event_post_content bg-gradient">
-                  <div class="event-thumb">
-                    <img width=100% height=100% alt="event" src="{{asset('web/images/loupe.png')}}" class="event-img">
+
+        <!-- 1st EVENT (LEFT) -->
+        <div class="event-content col-md-6 col-sm-12 col-xs-12">
+          <div class="row row-event">
+
+            <div class="event-box-conner col-md-10 col-sm-10 col-xs-10">
+              <div class="event_post_content bg-gradient">
+
+                <div class="event-thumb">
+                  <img src="{{asset('web/images/Gulf print pack logo.png')}}" class="event-img">
+                </div>
+
+                <div class="event-desc">
+                  <h3 class="title-eventpost">
+                    Gulf Print Pack
+                  </h3>
+                  <div class="event_post_desc">
+                    28 September - 30 September,<br>
+                    Dubai World Trade Centre, Dubai
                   </div>
-                  <div class="event-desc">
-                    <h3 class="title-eventpost">
-                      <a href="event-lightbox.html" class="various fancybox.ajax">Loupe India 2026</a>
-                    </h3>
-                    <div class="event_post_desc">
-                      29 October - 1 November,<br> Greater Noida, Delhi NCR, India
-                    </div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="event-box-center col-md-2 col-sm-2 col-xs-2">
+              <div class="event_post_date">SEP 28</div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- 2nd EVENT (RIGHT) -->
+        <div class="event-content col-md-6 col-sm-12 col-xs-12">
+          <div class="row row-event">
+
+            <div class="event-box-conner col-md-10 col-sm-10 col-xs-10">
+              <div class="event_post_content bg-gradient">
+
+                <div class="event-thumb">
+                  <img src="{{asset('web/images/loupe.png')}}" class="event-img">
+                </div>
+
+                <div class="event-desc">
+                  <h3 class="title-eventpost">
+                    Loupe India 2026
+                  </h3>
+                  <div class="event_post_desc">
+                    29 October - 1 November,<br>
+                    Greater Noida, Delhi NCR, India
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="event-box-center col-md-2 col-sm-2 col-xs-2">
+              <div class="event_post_date">OCT 29</div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- 3rd EVENT (LEFT again) -->
+
+        <div class="event-content col-md-6 col-sm-12 col-xs-12" style="margin:0;">
+          <div class="row row-event">
+            <div class="event-box-conner col-md-10 col-sm-10 col-xs-10">
+              <div class="event_post_content bg-gradient">
+
+                <div class="event-thumb">
+                  <iframe
+                    src="https://www.google.com/maps?q=28.4739,77.5023&z=16&output=embed"
+                    width="100%"
+                    height="215"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy">
+                  </iframe>
+                </div>
+                <div class="event-desc">
+                  <h3 class="title-eventpost">
+                    <a href="event-lightbox.html" class="various fancybox.ajax">PMEC 2026</a>
+                  </h3>
+                  <div class="event_post_desc">
+                    24 Nov - 26 Nov <br> India Expo Centre and Mart, Greater Noida, Delhi India
                   </div>
                 </div>
               </div>
-              <div class="event-box-center col-md-2 col-sm-2 col-xs-2">
-                <div class="event_post_date">OCT 29</div>
-              </div>
+            </div>
+            <div class="event-box-center col-md-2 col-sm-2 col-xs-2">
+              <div class="event_post_date">APR 26</div>
             </div>
           </div>
-          <div class="event-content col-md-6 col-sm-12 col-xs-12">
-            <div class="row row-event">
-              <div class="event-box-conner col-md-10 col-sm-10 col-xs-10">
-                <div class="event_post_content bg-gradient">
-                  <div class="event-thumb">
-                    <img width="456" height="215" alt="event" src="{{asset('web/images/cphi2022.jpg')}}" class="event-img">
-                  </div>
-                  <div class="event-desc">
-                    <h3 class="title-eventpost">
-                      <a href="event-lightbox.html" class="various fancybox.ajax">CPHI India 2026</a>
-                    </h3>
-                    <div class="event_post_desc">
-                      23 Nov - 26 Nov <br> India Expo Centre and Mart, Greater Noida, India
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="event-box-center col-md-2 col-sm-2 col-xs-2">
-                <div class="event_post_date">23 NOV</div>
-              </div>
-            </div>
-          </div>
-          <div class="event-content col-md-6 col-sm-12 col-xs-12" style="margin:0;">
-            <div class="row row-event">
-              <div class="event-box-conner col-md-10 col-sm-10 col-xs-10">
-                <div class="event_post_content bg-gradient">
-
-                  <div class="event-thumb">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10065.462847026438!2d4.3336038!3d50.8984489!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xde9326a4546954ab!2sBrussels%20Expo!5e0!3m2!1sen!2sin!4v1625808010325!5m2!1sen!2sin" width="455" height="215" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                  </div>
-                  <div class="event-desc">
-                    <h3 class="title-eventpost">
-                      <a href="event-lightbox.html" class="various fancybox.ajax">Label Expo Europe 2022</a>
-                    </h3>
-                    <div class="event_post_desc">
-                      23 Nov - 26 Nov, 2026 <br> India Expo Centre and Mart, Greater Noida, India
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="event-box-center col-md-2 col-sm-2 col-xs-2">
-                <div class="event_post_date">APR 26</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- <div class="event-content col-md-6 col-sm-12 col-xs-12">
-            <div class="row row-event">
-              <div class="event-box-conner col-md-10 col-sm-10 col-xs-10">
-                <div class="event_post_content bg-gradient">
-                  <div class="event-thumb">
-                    <img width="456" height="215" alt="event" src="{{asset('web/images/Labelexpo2022.jpg')}}" class="event-img">
-                  </div>
-                  <div class="event-desc">
-                    <h3 class="title-eventpost">
-                      <a href="event-lightbox.html" class="various fancybox.ajax">Label Expo India 2022</a>
-                    </h3>
-                    <div class="event_post_desc">
-                      10 - 13 November 2022, India Expo Centre & Mart, Greater Noida, Delhi NCR
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="event-box-center col-md-2 col-sm-2 col-xs-2">
-                <div class="event_post_date">NOV 10</div>
-              </div>
-            </div>
-          </div> -->
-
-
-
         </div>
       </div>
     </div>
-    <div class="spacer-100"></div>
   </div>
+  <div class="spacer-100"></div>
+</div>
 </div>
 @if(!empty($blogs) && count($blogs) > 0)
 
