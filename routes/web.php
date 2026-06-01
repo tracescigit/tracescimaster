@@ -51,6 +51,8 @@ Route::get('/solutions/cloud', [SolutionController::class, 'cloud'])->name('clou
 Route::get('/solutions/enterprise', [SolutionController::class, 'enterprise'])->name('enterprise-solution');
 // blog organisation
 Route::get('/blog', [PageController::class, 'blog'])->name('blog');
+Route::get('/blog/{id}', [PageController::class, 'blogdetails'])->name('blog-details');
+
 
 
 

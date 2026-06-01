@@ -80,6 +80,12 @@ class PageController extends Controller
         $blogs = Blog::where('is_allowed', 1)->get();
         return view('web.blog.blogpage')->with('blogs',$blogs);
     }
+     public function blogdetails($id)
+    {
+        $id=decrypt($id);
+        $blog = Blog::where('is_allowed', 1)->where('id',$id)->first();
+        return view('web.blog.blog-details')->with('blog',$blog);
+    }
 
     public function addSubscriber(SubscribeRequest $request)
     {
