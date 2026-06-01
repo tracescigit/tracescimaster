@@ -16,7 +16,7 @@
         top: 0;
         height: 100%;
         width: 60%;
-        background: url('/dist/images/elite4_3.png') no-repeat center center !important;
+        background: url('/dist/images/elite4_section.png') no-repeat center center !important;
         background-size: cover !important;
         box-shadow: -8px 0px 8px rgba(0, 0, 0, 0.1);
     }
@@ -43,7 +43,6 @@
         font-family: 'Lora', serif;
         font-size: 16px;
         color: var(--text);
-        overflow-x: hidden;
     }
 
     /* ── NAV ── */
@@ -1486,7 +1485,7 @@
         }
 
         section {
-            padding: 72px 24px;
+            padding: 30px 24px;
         }
 
         #hero {
@@ -1538,6 +1537,77 @@
             display: none;
         }
     }
+    @media (max-width: 767px) {
+    .tech-grid {
+        grid-template-columns: 1fr;
+    }
+    @media (max-width: 767px) {
+
+    .ancillary-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .ancillary-item {
+        width: 100%;
+    }
+
+}
+}
+@media (max-width: 767px) {
+
+    .env-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .env-card {
+        width: 100%;
+    }
+
+}
+@media (max-width: 767px) {
+
+    .feature-2-right {
+        position: relative !important;
+        display: block !important;
+        left: 0 !important;
+        top: 0 !important;
+        width: 100% !important;
+        height: 300px !important;
+        margin: 40px 0 !important;
+
+        background-image: url('/dist/images/elite4_mobile.png') !important;
+        background-position: center center !important;
+        background-repeat: no-repeat !important;
+        background-size: contain !important;
+
+        z-index: 1;
+    }
+}
+
+@media (max-width: 767px) {
+    .aboout-2-head-area {
+        background-image: url('/dist/images/elite4_mobile_banner.png');
+        background-position: top center;
+        background-size: cover;
+        height: 100svh;        /* svh = small viewport height, best for mobile */
+    }
+}
+@media (max-width: 767px) {
+    .page-title-area.aboout-2-head-area {
+        display: flex;
+        align-items: flex-end;        /* pushes content to bottom */
+        justify-content: center;
+        padding-bottom: 50px;
+    }
+
+    .about-head-content {
+        padding: 15px 20px;
+    }
+}
 </style>
 
 <!-- <div class="rev_slider_wrapper">
@@ -1775,7 +1845,7 @@
                 </div>
                 <div class="col-sm-6 col-md-4">
                     <div class="solution-single-content wow fadeInRight">
-                        <h2>Track and Trace</h2>
+                        <h2>Track and Trace Solution</h2>
                         <p>Integrated real-time printing of serialised codes ensures every item is uniquely identified and trackable across the supply chain. Supports full product authentication, anti-counterfeiting, and compliance workflows with centrally controlled print management...</p>
                         <a href="#"></a>
                         <span><i class="icon icon-MessageLeft"></i></span>
@@ -1783,7 +1853,7 @@
                 </div>
                 <div class="col-sm-6 col-md-4">
                     <div class="solution-single-content solution-single-content-no-border wow fadeInLeft">
-                        <h2>Product Authentication</h2>
+                        <h2>Authenticate Your Product</h2>
                         <p>Leverage the Elite4's multicolor CMYK inkjet capability to print overt and covert security marks, QR codes, and unique identifiers directly onto packaging at full line speed — enabling end-to-end product authentication from factory to consumer...</p>
                         <a href="#"></a>
                         <span><i class="icon icon-Antenna2"></i></span>
@@ -1836,7 +1906,7 @@
             <!-- Print Engine -->
             <div class="reveal">
                 <div class="specs-table reveal">
-                    <div class="specs-table-header">Print Engine</div>
+                    <div class="specs-table-header">Specifications</div>
 
                     <div class="spec-row">
                         <div class="spec-key">Printhead Type</div>
@@ -1880,7 +1950,7 @@
             <!-- Ink, Media & Machine -->
             <div class="reveal" style="transition-delay:0.1s">
                 <div class="specs-table">
-                    <div class="specs-table-header">Ink, Media &amp; Machine</div>
+                    <div class="specs-table-header">Specifications</div>
 
                     <div class="spec-row">
                         <div class="spec-key1">Consumable</div>
@@ -1925,7 +1995,7 @@
             <!-- Software, Control & Environment -->
             <div class="reveal" style="transition-delay:0.2s">
                 <div class="specs-table">
-                    <div class="specs-table-header">Software, Control &amp; Environment</div>
+                    <div class="specs-table-header">Specifications</div>
 
                     <div class="spec-row">
                         <div class="spec-key2">Controller</div>
@@ -1944,9 +2014,6 @@
                         <div class="spec-key2">Connectivity</div>
                         <div class="spec-val">
                             PLC, RS485, RS232, WAN, LAN<br>
-                            <span style="font-size:11px;color:var(--muted)">
-                                Meets system integration requirements
-                            </span>
                         </div>
                     </div>
 
@@ -2193,7 +2260,7 @@
 
 <section id="contact" style="padding:50px">
     <div class="contact-photo reveal">
-        <img src="https://cdn.prod.website-files.com/618bcfd8f178447ade4b3ba0/61bcb317af56b916bbd53472_modes-footer-1.png" alt="Man and woman working together" />
+        <img src="{{ asset('dist/images/elite4_meeting.jpg') }}" alt="Man and woman working together" />
     </div>
     <div class="contact-form-wrap reveal" style="transition-delay:0.1s">
         <div class="section-eyebrow">Get In Touch</div>

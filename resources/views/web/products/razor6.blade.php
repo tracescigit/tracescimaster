@@ -1485,7 +1485,7 @@
          }
 
          section {
-             padding: 72px 24px;
+             padding: 30px 24px;
          }
 
          #hero {
@@ -1538,6 +1538,77 @@
          }
 
      }
+         @media (max-width: 767px) {
+    .tech-grid {
+        grid-template-columns: 1fr;
+    }
+    @media (max-width: 767px) {
+
+    .ancillary-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .ancillary-item {
+        width: 100%;
+    }
+
+}
+}
+@media (max-width: 767px) {
+
+    .env-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .env-card {
+        width: 100%;
+    }
+
+}
+@media (max-width: 767px) {
+
+    .feature-2-right {
+        position: relative !important;
+        display: block !important;
+        left: 0 !important;
+        top: 0 !important;
+        width: 100% !important;
+        height: 300px !important;
+        margin: 40px 0 !important;
+
+        background-image: url('/dist/images/razor6_mobile_small.png') !important;
+        background-position: center center !important;
+        background-repeat: no-repeat !important;
+        background-size: contain !important;
+
+        z-index: 1;
+    }
+}
+@media (max-width: 767px) {
+    .aboout-4-head-area {
+        background-image: url('/dist/images/razor_mobile_banner.png');
+        background-position: top center;
+        background-size: cover;
+        height: 100svh;
+    }
+}
+
+@media (max-width: 767px) {
+    .page-title-area.aboout-4-head-area {
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        padding-bottom: 50px;
+    }
+
+    .about-head-content {
+        padding: 15px 20px;
+    }
+}
  </style>
  <section class="page-title-area aboout-4-head-area">
      <div class="container">
@@ -1659,7 +1730,7 @@
 
              <div class="reveal">
                  <div class="specs-table reveal">
-                     <div class="specs-table-header">Print Engine</div>
+                     <div class="specs-table-header">Specification</div>
                      <div class="spec-row">
                          <div class="spec-key">Print Heads</div>
                          <div class="spec-val">Piezo DOD Technology Industrial Printhead</div>
@@ -1682,7 +1753,7 @@
 
              <div class="reveal" style="transition-delay:0.1s">
                  <div class="specs-table">
-                     <div class="specs-table-header">Ink &amp; Substrates</div>
+                     <div class="specs-table-header">Specification</div>
                      <div class="spec-row">
                          <div class="spec-key-tech">Compatible Inks</div>
                          <div class="spec-val-tech">UV Curable, Aqueous</div>
@@ -1705,7 +1776,7 @@
              <div class="reveal" style="transition-delay:0.2s">
 
                  <div class="specs-table">
-                     <div class="specs-table-header">Software &amp; Environment</div>
+                     <div class="specs-table-header">Specification</div>
                      <div class="spec-row">
                          <div class="spec-key-tech2">VDP Software</div>
                          <div class="spec-val-tech2"><span class="highlight">Tarcesci RapidPro</span></div>
@@ -1960,7 +2031,7 @@
 
      <section id="contact" style="padding:50px">
          <div class="contact-photo reveal">
-             <img src="https://cdn.prod.website-files.com/618bcfd8f178447ade4b3ba0/61bcb317af56b916bbd53472_modes-footer-1.png" alt="Man and woman working together" />
+             <img src="{{ asset('dist/images/razor6_meeting.jpg') }}" alt="Man and woman working together" />
          </div>
          <div class="contact-form-wrap reveal" style="transition-delay:0.1s">
              <div class="section-eyebrow">Get In Touch</div>

@@ -32,7 +32,6 @@
         font-family: 'Lora', serif;
         font-size: 16px;
         color: var(--text);
-        overflow-x: hidden;
     }
 
     /* ── NAV ── */
@@ -640,7 +639,7 @@
     }
 
     .contact-photo img {
-        width: 100%;
+        width: 70%;
         display: block;
     }
 
@@ -905,7 +904,7 @@
         }
 
         section {
-            padding: 72px 24px;
+            padding: 30px 24px;
         }
 
         #hero {
@@ -947,6 +946,47 @@
             grid-template-columns: 1fr 1fr;
         }
     }
+
+    @media (max-width: 767px) {
+    .aboout-3-head-area {
+        background-image: url('/dist/images/hyperloop_mobile_banner.png');
+        background-position: top center;
+        background-size: cover;
+        height: 100svh;
+    }
+}
+
+@media (max-width: 767px) {
+    .page-title-area.aboout-3-head-area {
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        padding-bottom: 50px;
+    }
+
+    .about-head-content {
+        padding: 15px 20px;
+    }
+}
+@media (max-width: 767px) {
+
+    .feature-2-right {
+        position: relative !important;
+        display: block !important;
+        left: 0 !important;
+        top: 0 !important;
+        width: 100% !important;
+        height: 300px !important;
+        margin: 40px 0 !important;
+
+        background-image: url('/dist/images/elite4_mobile.png') !important;
+        background-position: center center !important;
+        background-repeat: no-repeat !important;
+        background-size: contain !important;
+
+        z-index: 1;
+    }
+}
 </style>
 
 <!-- ── REVOLUTION SLIDER ── -->
@@ -1554,7 +1594,7 @@
 <!-- ── CONTACT ── -->
 <section id="contact" style="padding:50px">
     <div class="contact-photo reveal">
-        <img src="https://cdn.prod.website-files.com/618bcfd8f178447ade4b3ba0/61bcb317af56b916bbd53472_modes-footer-1.png" alt="Team working on production line" />
+        <img src="{{ asset('dist/images/hyperloop_meeting.jpg') }}" alt="Man and woman working together" />
     </div>
     <div class="contact-info reveal" style="transition-delay:0.1s">
         <div class="section-eyebrow" style="margin-top: 5px;">Get In Touch</div>

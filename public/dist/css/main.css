@@ -4672,7 +4672,7 @@ input:focus {
 -----------------------------------------*/
 .aboout-2-head-area {
     background:
-        linear-gradient(to bottom, transparent, rgba(255, 248, 200, 0.5)),
+        linear-gradient(to bottom, transparent, rgba(255, 248, 200, 0.1)),
         url(../images/elite4_banner.png);
     background-size: cover;
     background-position: center;
@@ -4769,6 +4769,7 @@ input:focus {
         background-color: rgba(255, 255, 255, 0.08);
     }
 }
+
 .about-head-content {
     padding-bottom: 130px;
 }
@@ -4793,6 +4794,18 @@ input:focus {
     -webkit-mask-image: radial-gradient(ellipse 85% 80% at center, black 50%, transparent 100%);
     mask-image: radial-gradient(ellipse 85% 80% at center, black 50%, transparent 100%);
 }
+.about-head-content {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border-radius: 10px;
+    padding: 20px 40px;
+
+    -webkit-mask-image: radial-gradient(ellipse 85% 80% at center, black 50%, transparent 100%);
+    mask-image: radial-gradient(ellipse 85% 80% at center, black 50%, transparent 100%);
+}
+
 
 .about-head-content2 h2 {
     font-size: 45px;
