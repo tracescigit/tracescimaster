@@ -7390,6 +7390,11 @@ ul.page-breadcrumbs li + li:before {
     background-attachment: fixed;
     background-size: cover;
 }
+.blog-standard2-area {
+    background: url(../images/single-blog-5.png) no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
 
 /*****************************************
     BLOG-STANDARD RIGHT SIDEBAR PAGE   
