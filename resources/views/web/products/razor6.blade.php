@@ -822,7 +822,7 @@
      }
 
      .spec-key-tech {
-         padding: 23px 28px;
+         padding: 14px 28px;
          font-size: 12px;
          font-weight: 600;
          text-transform: uppercase;
@@ -841,7 +841,7 @@
      }
 
      .spec-key-tech2 {
-         padding: 34px 28px;
+         padding: 14px 28px;
          font-size: 12px;
          font-weight: 600;
          text-transform: uppercase;
@@ -852,7 +852,7 @@
      }
 
      .spec-val-tech2 {
-         padding: 32px 28px;
+         padding: 14px 28px;
          font-size: 13px;
          color: var(--navy);
          font-weight: 500;
@@ -1662,7 +1662,7 @@
                      <div class="specs-table-header">Print Engine</div>
                      <div class="spec-row">
                          <div class="spec-key">Print Heads</div>
-                         <div class="spec-val">Piezo DOD Technology</div>
+                         <div class="spec-val">Piezo DOD Technology Industrial Printhead</div>
                      </div>
                      <div class="spec-row">
                          <div class="spec-key">Print Width</div>
@@ -1676,10 +1676,7 @@
                          <div class="spec-key">Drop Volume</div>
                          <div class="spec-val">Binary: <span class="highlight">5pl</span> / Greyscale: 5–15pl</div>
                      </div>
-                     <div class="spec-row">
-                         <div class="spec-key">Speed</div>
-                         <div class="spec-val">Up to <span class="highlight">150 mtr/min</span> (resolution dependent)</div>
-                     </div>
+                     
                  </div>
              </div>
 
@@ -1721,6 +1718,11 @@
                          <div class="spec-key-tech2">Humidity</div>
                          <div class="spec-val-tech2">40–60%, Non-Condensing</div>
                      </div>
+                     <div class="spec-row">
+                         <div class="spec-key">Speed</div>
+                         <div class="spec-val">Up to <span class="highlight">150 mtr/min</span> (resolution dependent)</div>
+                     </div>
+                     
                  </div>
              </div>
          </div>
