@@ -16,6 +16,22 @@
         margin-bottom: 10px;
     }
 
+    .industries-text {
+        display: inline-block;
+        padding: 10px 30px;
+        font-size: 14px;
+        line-height: 1.4em;
+        text-transform: capitalize;
+        color: #fff !important;
+        background-color: #343434;
+        border: 1px solid #343434;
+        border-radius: 0.375rem;
+        margin: 0;
+        position: relative;
+        z-index: 15;
+        font-weight: 500;
+    }
+
     /* Improve readability */
     .panel-body {
         font-size: 14px;
@@ -643,9 +659,10 @@
             <div class="col-md-12 text-center">
                 <div class="main-title wow zoomIn">
                     <div class="main-shadow-heading">
-                        <h2>Hello, We Are Tracesci</h2>
+                        <h2>Cloud-Powered Traceability</h2>
                     </div>
-                    <h2>Hello, We Are <span style="color:#7a0d7d">Tracesci</span></h2>
+
+                    <h2>Cloud-Powered <span style="color:#7a0d7d">Traceability Platform</span></h2>
                     <h3>Cloud-Based Product Serialization, Authentication & Supply Chain Traceability</h3>
                 </div>
             </div>
@@ -718,15 +735,10 @@
                     <div class="refresh-phone-content">
                         <div class="text-desc">
                             <p class="text-center">
-                                Tracesci's fully cloud-based Track &amp; Trace SaaS platform gives governments, brands, manufacturers,
-                                inspectors and consumers a single unified system to authenticate and monitor products across the entire
-                                supply chain. Every product unit is assigned a unique QR code at the point of manufacture —
-                                scan it at any point to instantly verify authenticity, view the complete product journey,
-                                and trigger real-time fraud alerts. Every event is logged on an immutable blockchain ledger,
-                                accessible from anywhere, by any authorised stakeholder.
+                                Tracesci's cloud-based Track & Trace platform provides end-to-end product authentication, real-time visibility, and blockchain-backed traceability. Unique QR codes enable instant verification and secure monitoring throughout the supply chain.
                             </p>
                         </div>
-                        <a class="btn btn-primary ubtn">Industries We Serve</a>
+                        <p class="industries-text">Industries We Serve</p>
                     </div>
                     <div class="spacer-100"></div>
                 </div>
