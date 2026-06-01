@@ -232,7 +232,7 @@
                                 </div>
                             </div>
                         </div> -->
-                    <div class="col-md-12 matrics-pagination matrics-blog-pagination text-center clearfix">
+                    {{--<div class="col-md-12 matrics-pagination matrics-blog-pagination text-center clearfix">
                         <nav>
                             <ul class="pagination">
                                 <li><a href="#">1</a></li>
@@ -244,7 +244,7 @@
                                 </li>
                             </ul>
                         </nav>
-                    </div>
+                    </div>--}}
                 </div>
             </div>
         </div>
