@@ -867,12 +867,13 @@
 
                 <div class="event-thumb">
                   <iframe
-                    src="https://www.google.com/maps?q=28.4739,77.5023&z=16&output=embed"
+                    src="https://www.google.com/maps?q=India+Expo+Mart+Limited,+Knowledge+Park+II,+Greater+Noida&z=16&output=embed"
                     width="100%"
                     height="215"
                     style="border:0;"
                     allowfullscreen=""
-                    loading="lazy">
+                    loading="lazy"
+                    title="India Expo Mart Limited, Greater Noida">
                   </iframe>
                 </div>
                 <div class="event-desc">
