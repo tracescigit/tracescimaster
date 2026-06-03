@@ -102,7 +102,7 @@
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-mobile">
                                     Mobile
                                 </label>
-                                <span class="your-mobile"><input type="number" id="mobile" class="contact__input" name="mobile" required></span>
+                                <span class="your-mobile"><input type="number" id="mobile" max="10" class="contact__input" name="mobile" required></span>
                             <div id="error-mobile" class="text-danger contact__input-error mb-3"></div>
                             </p>
 
