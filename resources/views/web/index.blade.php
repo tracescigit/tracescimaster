@@ -258,6 +258,11 @@
       font-size: 16px;
     }
   }
+  @media (max-width: 767px) {
+    .uranus.tparrows {
+        display: none !important;
+    }
+}
 </style>
 <!-- slider -->
 
@@ -927,7 +932,7 @@
               <div class="solution-slider-text">
                 <div class="full-intro-head">
                   <p>
-                    {{$blog->publish_date ?? '--'}} <span><a href="#">Business</a></span>.
+                    <!-- {{$blog->publish_date ?? '--'}} <span><a href="#">Business</a></span>. -->
                   </p>
                 </div>
                 <p>{{ $blog->title ?? 'Blog Title' }}</p>

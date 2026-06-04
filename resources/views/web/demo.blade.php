@@ -727,7 +727,7 @@
 </head>
 
 <body>
-    <section class="page-title-area blog-standard-area">
+    <section class="page-title-area blog-standard2-area">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-center">
