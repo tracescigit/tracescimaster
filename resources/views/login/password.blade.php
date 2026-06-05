@@ -49,12 +49,12 @@
         <!-- BEGIN: Login Info -->
         <div class="hidden xl:flex flex-col min-h-screen">
             <a href="{{ url('/') }}" class="-intro-x flex items-center pt-5">
-                <img width="20%" alt="Tracesci" src="{{asset('web/images/logo.png')}}" class=""></a>
+                <img width="20%" alt="Tracesci" src="{{asset('dist/images/tracesci logo_white.png')}}" class=""></a>
             </a>
             <div class="my-auto">
-                <img alt="TRACESCI" class="-intro-x w-1/2 -mt-16" src="{{ asset('dist/images/illustration.svg') }}">
-                <div class="-intro-x text-white font-medium text-4xl leading-tight mt-10">Worrying about password? <br> We are here to set it up for you.</div>
-                <div class="-intro-x mt-5 text-lg text-white text-opacity-70 dark:text-gray-500">Track your all invoices at one place</div>
+                <img alt="TRACESCI" class="-intro-x w-1/2 -mt-16" src="{{ asset('dist/images/illustration.png') }}">
+                <div class="-intro-x text-white font-medium text-4xl leading-tight mt-10">Worrying about<span style="color: #7a0d7d;"> password?</span> <br> We are here to set it up for you.</div>
+                <div class="-intro-x mt-5 text-lg text-white text-opacity-70 dark:text-gray-500"><span style="color: #7a0d7d;">Track</span> your all invoices at one place</span></div>
             </div>
         </div>
         <!-- END: Login Info -->
@@ -69,7 +69,7 @@
                         <div id="error-email" class="login__input-error w-5/6 text-theme-6 mt-2"></div>
                     </form>
                 </div>
-                 <div class="auth-tabs mt-4" style="margin-top:50px;">
+                <div class="auth-tabs mt-4" style="margin-top:50px;">
                     <button id="btn-reset" class="tab active">Submit</button>
                     <a href="{{ url('/login') }}" class="tab">Login</a>
                 </div>
@@ -101,7 +101,7 @@
             }).then(res => {
                 showNotification('success', 'Success !', res.data.message)
                 setTimeout(() => {
-                    window.location.href = '{{ url(' / login ') }}'
+                    window.location.href = "{{ url('/login') }}"
                 }, 2000)
             }).catch(err => {
                 showNotification('error', 'Error !', err.response.data.message)

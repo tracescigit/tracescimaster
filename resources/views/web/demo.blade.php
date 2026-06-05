@@ -2,7 +2,7 @@
 @section('content')
 
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -119,7 +119,8 @@
             letter-spacing: 0.1em;
             text-transform: uppercase;
             color: #7a0d7d;
-            background: #d9a3db;;
+            background: #d9a3db;
+            ;
             padding: 4px 14px;
             margin-bottom: 14px;
         }
@@ -181,7 +182,7 @@
         .step-num {
             width: 26px;
             height: 26px;
-            
+
             display: flex;
             align-items: center;
             justify-content: center;
@@ -249,7 +250,7 @@
         .card {
             background: #ffffff;
             border: 1px solid #e4eaf0;
-          
+
             padding: 1.5rem;
             box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
         }
@@ -257,7 +258,7 @@
         .card-sm {
             background: #ffffff;
             border: 1px solid #e4eaf0;
-            
+
             padding: 1.25rem 1.5rem;
             box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
             margin-top: 1rem;
@@ -289,7 +290,7 @@
         .cal-nav-btn {
             background: none;
             border: 1px solid #e4eaf0;
-           
+
             width: 30px;
             height: 30px;
             cursor: pointer;
@@ -338,7 +339,7 @@
             align-items: center;
             justify-content: center;
             font-size: 13px;
-           
+
             cursor: pointer;
             color: #0d1b2a;
             position: relative;
@@ -453,7 +454,7 @@
             text-align: center;
             font-size: 12px;
             font-weight: 500;
-         
+
             border: 1px solid #e4eaf0;
             background: #ffffff;
             color: #0d1b2a;
@@ -486,7 +487,7 @@
         .booking-summary-box {
             background: #e3b8e5;
             border: 1px solid #b85bbb;
-     
+
             padding: 10px 14px;
             font-size: 12.5px;
             color: #7a0d7d;
@@ -544,7 +545,7 @@
         .form-textarea {
             font-size: 13.5px;
             border: 1px solid #d8e2ec;
-        
+
             padding: 9px 12px;
             background: #ffffff;
             color: #0d1b2a;
@@ -588,7 +589,7 @@
 
         .alert {
             padding: 11px 14px;
-         
+
             font-size: 13px;
             margin-bottom: 12px;
             display: none;
@@ -606,7 +607,7 @@
             background: #7a0d7d;
             color: white;
             border: none;
-    
+
             font-size: 14px;
             font-weight: 600;
             cursor: pointer;
@@ -697,7 +698,7 @@
             margin-top: 1.5rem;
             background: #e3b8e5;
             border: 1px solid #b85bbb;
-  
+
             padding: 14px 28px;
             font-size: 13px;
             color: #7a0d7d;
@@ -833,28 +834,51 @@
                     <div class="form-row">
                         <div class="form-group no-mb">
                             <label class="form-label" for="full_name">Full name <span class="req">*</span></label>
-                            <input class="form-input" type="text" id="full_name" name="full_name"
-                                placeholder="Please Provide your Name" autocomplete="name"
+                            <input
+                                class="form-input"
+                                type="text"
+                                id="full_name"
+                                name="full_name"
+                                placeholder="Please Provide your Name"
+                                autocomplete="name"
                                 value="{{ old('full_name') }}"
-                                aria-required="true" aria-describedby="err-full_name">
+                                aria-required="true"
+                                aria-describedby="err-full_name"
+                                oninput="this.value = this.value.replace(/[^a-zA-Z\s.'-]/g, '')">
                             <span class="field-error" id="err-full_name" role="alert"></span>
                         </div>
                         <div class="form-group no-mb">
                             <label class="form-label" for="phone">Phone number</label>
-                            <input class="form-input" type="tel" id="phone" name="phone"
-                                placeholder="+91 9876XXXXXX" autocomplete="tel"
+                            <input
+                                class="form-input"
+                                type="tel"
+                                id="phone"
+                                name="phone"
+                                placeholder="+91 9876XXXXXX"
+                                autocomplete="tel"
                                 value="{{ old('phone') }}"
-                                aria-describedby="err-phone">
+                                aria-describedby="err-phone"
+                                maxlength="10"
+                                inputmode="numeric"
+                                oninput="this.value = this.value.replace(/\D/g, '').slice(0,10)">
                             <span class="field-error" id="err-phone" role="alert"></span>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label" for="email">Email address <span class="req">*</span></label>
-                        <input class="form-input" type="email" id="email" name="email"
-                            placeholder="exapmle@company.com" autocomplete="email"
+                        <input
+                            class="form-input"
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="example@company.com"
+                            autocomplete="email"
                             value="{{ old('email') }}"
-                            aria-required="true" aria-describedby="err-email">
+                            aria-required="true"
+                            aria-describedby="err-email"
+                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                            oninput="this.value = this.value.replace(/\s/g, '')">
                         <span class="field-error" id="err-email" role="alert"></span>
                     </div>
 
@@ -871,10 +895,16 @@
                         </div>
                         <div class="form-group no-mb">
                             <label class="form-label" for="company_email">Company email</label>
-                            <input class="form-input" type="email" id="company_email" name="company_email"
+                            <input
+                                class="form-input"
+                                type="email"
+                                id="company_email"
+                                name="company_email"
                                 placeholder="organisation@example.com"
                                 value="{{ old('company_email') }}"
-                                aria-describedby="err-company_email">
+                                aria-describedby="err-company_email"
+                                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                                oninput="this.value = this.value.replace(/\s/g, '')">
                             <span class="field-error" id="err-company_email" role="alert"></span>
                         </div>
                     </div>
@@ -921,7 +951,7 @@
             /* Booked slots from controller — format: { 'YYYY-MM-DD': ['09:00','10:00'], ... } */
             const BOOKED_SLOTS = @json($bookedSlots ?? []);
 
-            const ALL_SLOTS = ['10:00', '11:00','12:00','13:00', '14:00', '15:00', '16:00', '17:00'];
+            const ALL_SLOTS = ['10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00'];
             const MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
                 'August', 'September', 'October', 'November', 'December'
             ];

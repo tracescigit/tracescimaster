@@ -10,7 +10,7 @@
     <!-- BEGIN: Side Menu -->
     <nav class="side-nav">
         <a href="{{ url('/vendor') }}" class="intro-x flex items-center pl-5 pt-4">
-            <img width="60%" alt="Tracesci" src="{{asset('web/images/logo.png')}}" class="hidden xl:block"></a>
+            <img width="60%" alt="Tracesci" src="{{asset('dist/images/tracesci logo_Black.png')}}" class="hidden xl:block"></a>
         </a>
         <div class="side-nav__devider my-6"></div>
         <ul>

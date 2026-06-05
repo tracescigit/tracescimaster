@@ -29,8 +29,8 @@ class RegisterRequest extends FormRequest
             'email'   => ['required', 'string', 'email', 'max:191',Rule::unique('users')->where(function ($query) use ($request) {
                 return $query->where('status','!=','2');
             })],
-            'name'    => 'required|max:100|regex:/(^[a-zA-Z ]+$)/u',
-            'mobile'  => ['required', 'string', 'max:12',Rule::unique('users','phone')->where(function ($query) use ($request) {
+            'name'    => 'required|max:100|regex:/^[A-Za-z\s]+$/',
+            'mobile'  => ['required', 'string', 'max:10',Rule::unique('users','phone')->where(function ($query) use ($request) {
                 return $query->where('status','!=','2');
             })]
         ];

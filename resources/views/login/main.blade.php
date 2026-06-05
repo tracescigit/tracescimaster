@@ -31,8 +31,7 @@
     .all-link a:nth-of-type(2) {
         margin-left: -2px;
     }
-</style>
-<style>
+
     .auth-tabs {
         display: flex;
         width: 300px;
@@ -69,6 +68,16 @@
         background: #333;
         color: #fff;
     }
+
+    .login__input-error {
+        color: #dc3545;
+        font-size: 13px;
+        margin-top: 5px;
+    }
+
+    .border-theme-6 {
+        border: 1px solid #dc3545 !important;
+    }
 </style>
 <div class="container sm:px-10">
     <div class="block xl:grid grid-cols-2 gap-4">
@@ -91,21 +100,21 @@
                 <div class="intro-x mt-2 text-gray-500 xl:hidden text-center">A few more clicks to sign in to your Manage all your e-commerce accounts in one place</div>
                 <div class="intro-x mt-8">
                     <form id="login-form">
-                        <input id="email_or_phone" type="text" class="intro-x login__input form-control py-3 px-4 border-gray-300 block" placeholder="Email or phone" value="">
+                        <input id="email_or_phone" name="email_or_phone" type="text" class="intro-x login__input form-control py-3 px-4 border-gray-300 block" placeholder="Email or phone" value="">
                         <div id="error-email_or_phone" class="login__input-error w-5/6 text-theme-6 mt-2"></div>
-                        <input id="password" type="password" class="intro-x login__input form-control py-3 px-4 border-gray-300 block mt-4" placeholder="Password" value="">
+                        <input id="password" name="password" type="password" class="intro-x login__input form-control py-3 px-4 border-gray-300 block mt-4" placeholder="Password" value="">
                         <div id="error-password" class="login__input-error w-5/6 text-theme-6 mt-2"></div>
                     </form>
                 </div>
                 <div class="intro-x flex text-gray-700 dark:text-gray-600 text-xs sm:text-sm mt-4">
                     <div class="flex items-center mr-auto">
-                        <input id="remember-me" type="checkbox" class="form-check-input border mr-2">
+                        <input id="remember-me" name="remember_me" type="checkbox" class="form-check-input border mr-2">
                         <label class="cursor-pointer select-none" for="remember-me">Remember me</label>
                     </div>
                     <a href="{{ url('forgot-password') }}">Forgot Password?</a>
                 </div>
                 <div class="auth-tabs mt-4" style="margin-top:50px;">
-                    <button id="btn-login" class="tab active">LOGIN</button>
+                    <button id="btn-login" type="button" class="tab active">LOGIN</button>
                     <a href="{{ url('/register') }}" class="tab">REGISTER</a>
                 </div>
             </div>
@@ -147,14 +156,37 @@
                     window.location.href = res.data.url
                 }, 2000)
             }).catch(err => {
-                submitted = false
-                showNotification('error', 'Error !', err.response.data.message)
-                cash('#btn-login').html('Login')
+                submitted = false;
 
-                if (err.response.data.errors) {
-                    for (const [key, val] of Object.entries(err.response.data.errors)) {
-                        cash(`#${key}`).addClass('border-theme-6')
-                        cash(`#error-${key}`).html(val)
+                cash('#btn-login').html('LOGIN');
+
+                let message = 'Something went wrong.';
+
+                if (err.response && err.response.data) {
+
+                    if (err.response.data.message) {
+                        message = err.response.data.message;
+                    }
+
+                    showNotification('error', 'Error!', message);
+
+                    // Validation errors
+                    if (err.response.data.errors) {
+                        for (const [key, val] of Object.entries(err.response.data.errors)) {
+
+                            cash(`#${key}`).addClass('border-theme-6');
+
+                            cash(`#error-${key}`).html(
+                                Array.isArray(val) ? val[0] : val
+                            );
+                        }
+                    }
+                    // Invalid login credentials
+                    else {
+                        // cash('#email_or_phone').addClass('border-theme-6');
+                        cash('#password').addClass('border-theme-6');
+
+                        cash('#error-password').html(message);
                     }
                 }
             })

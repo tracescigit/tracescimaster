@@ -20,7 +20,7 @@ class ContactUsRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:3|regex:/^[a-zA-Z0-9 ]+$/u',
+            'name' => ['required', 'regex:/^[A-Za-z\s.]+$/'],
 
             'email' => 'required|email|max:100',
 
