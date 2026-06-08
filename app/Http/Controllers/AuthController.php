@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\CustomClasses\EmailProvider;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CompanyRequest;
 use App\Http\Requests\ForgotPassword;
@@ -14,7 +15,6 @@ use App\Models\Document;
 use App\Models\Sms;
 use App\Models\User;
 use Carbon\Carbon;
-use EmailProvider;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;

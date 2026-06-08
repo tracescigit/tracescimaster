@@ -18,7 +18,7 @@
             <a href="{{ url('/product/razor6') }}">Products</a>
           </li>
 
-          <li class="{{ request()->is('cloud-solution') ? 'active' : '' }}">
+          <li class="{{ request()->is('solutions/cloud') ? 'active' : '' }}">
             <a href="{{ url('/cloud-solution') }}">Solution</a>
           </li>
 
@@ -48,7 +48,7 @@
           </li>
         </ul>
         <div class="footer-bottom-right right-menu-copyright">
-          <p>© {{$year}}. All Rights Reserved by 
+          <p>© {{$year}}. All Rights Reserved by
             <br>
             <a class="text-white" href="{{route('home')}}">tracesci.</a>
         </div>
@@ -76,7 +76,7 @@
         </a>
         <div class="header-contact">
           <ul>
-            <li class="consult-search"><a href="{{ route('demo-schedule-create') }}">Schedule Demo</a></li>
+            <li class="consult-search {{ request()->is('demo-scheduling') ? 'active' : '' }}"><a href="{{ route('demo-schedule-create') }}">Schedule Demo</a></li>
           </ul>
         </div>
         <!-- SEARCH + ICON -->
@@ -95,8 +95,8 @@
             <a href="{{ url('/about') }}">About</a>
           </li>
 
-          <li class="{{ request()->is('cloud-solution') || request()->is('enterprise-solution') ? 'active' : '' }}">
-            <a href="#howitworks">Solution</a>
+          <li class="{{ request()->is('solutions/cloud') || request()->is('solutions/enterprise') ? 'active' : '' }}">
+            <a href="{{ route('cloud-solution') }}">Solution</a>
             <ul class="dropdown">
               <li>
                 <a href="{{ route('cloud-solution') }}">Cloud</a>
@@ -129,7 +129,7 @@
             <a href="{{ route('blog') }}">Blogs</a>
           </li> -->
 
-          <li class="{{ request()->is('contact-us') ? 'active' : '' }}">
+          <li class="{{ request()->is('get_in_touch') ? 'active' : '' }}">
             <a href="{{ route('contact-us') }}">Get In Touch</a>
           </li>
 

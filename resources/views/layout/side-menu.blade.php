@@ -9,11 +9,8 @@
 <div class="flex">
     <!-- BEGIN: Side Menu -->
     <nav class="side-nav">
-        <a href="" class="intro-x flex items-center pl-5 pt-4">
-
-            <span class="hidden xl:block text-dark text-lg ml-3">
-               Tracesci.in
-            </span>
+        <a href="{{ url('/admin') }}" class="intro-x flex items-center pl-5 pt-4">
+            <img width="80%" alt="Tracesci" src="{{asset('dist/images/tracesci logo_Black.png')}}" class="hidden xl:block"></a>
         </a>
         <div class="side-nav__devider my-6"></div>
         <ul>
@@ -27,7 +24,7 @@
                         <i data-feather="{{ $menu['icon'] }}"></i>
                     </div>
                     <div class="side-menu__title">
-                    {{ $menu['title'] }}
+                        {{ $menu['title'] }}
                         @if (isset($menu['sub_menu']))
                         <div class="side-menu__sub-icon">
                             <i data-feather="chevron-down"></i>

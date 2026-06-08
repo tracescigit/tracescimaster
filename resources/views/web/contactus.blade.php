@@ -3,25 +3,28 @@
 
 <style>
     @media (max-width: 767px) {
-    .aboout-1-head-area {
-        background-image: url('/dist/images/contact_us_mobile.png');
-        background-position: top center;
-        background-size: cover;
-        height: 100svh;        /* svh = small viewport height, best for mobile */
-    }
-}
-@media (max-width: 767px) {
-    .page-title-area.aboout-1-head-area {
-        display: flex;
-        align-items: flex-end;        /* pushes content to bottom */
-        justify-content: center;
-        padding-bottom: 50px;
+        .aboout-1-head-area {
+            background-image: url('/dist/images/contact_us_mobile.png');
+            background-position: top center;
+            background-size: cover;
+            height: 100svh;
+            /* svh = small viewport height, best for mobile */
+        }
     }
 
-    .about-head-content {
-        padding: 15px 20px;
+    @media (max-width: 767px) {
+        .page-title-area.aboout-1-head-area {
+            display: flex;
+            align-items: flex-end;
+            /* pushes content to bottom */
+            justify-content: center;
+            padding-bottom: 50px;
+        }
+
+        .about-head-content {
+            padding: 15px 20px;
+        }
     }
-}
 </style>
 <section class="page-title-area aboout-1-head-area">
     <div class="container">
@@ -61,7 +64,6 @@
                             <b>Tracesci Global Pvt Ltd.,<br>
                                 8B, "Chaitanya Exotica", 24 venkatnarayana Road,<br>
                                 T. Nagar, Chennai, Tamil Nadu, India</b>
-
                         </li>
                         <li class="icon_list_item">
                             <div class="icon_list_icon">
@@ -107,7 +109,15 @@
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                                     Name
                                 </label>
-                                <span class="your-name"><input type="text" id="name" class="contact__input" name="name" required></span>
+                                <span class="your-name">
+                                    <input
+                                        type="text"
+                                        id="name"
+                                        class="contact__input"
+                                        name="name"
+                                        required
+                                        oninput="this.value = this.value.replace(/[^a-zA-Z\s.']/g, '')">
+                                </span>
                             <div id="error-name" class="text-danger contact__input-error mb-3"></div>
 
                             </p>
@@ -125,7 +135,15 @@
                                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-mobile">
                                     Mobile
                                 </label>
-                                <span class="your-mobile"><input type="number" id="mobile" class="contact__input" name="mobile" required></span>
+                                <span class="your-mobile">
+                                    <input
+                                        type="number"
+                                        id="mobile"
+                                        name="mobile"
+                                        class="contact__input"
+                                        required
+                                        oninput="if(this.value.length > 10) this.value = this.value.slice(0,10)">
+                                </span>
                             <div id="error-mobile" class="text-danger contact__input-error mb-3"></div>
                             </p>
 
@@ -139,7 +157,7 @@
                             </p>
                             <div class="mb-3">
                                 <div class="g-recaptcha"
-                                    data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}">
+                                    data-sitekey="{{ config('services.recaptcha.site_key') }}">
                                 </div>
 
                                 <div id="error-captcha" class="text-danger"></div>
@@ -198,8 +216,8 @@
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script type="text/javascript">
     cash(function() {
-        async function contact() {
 
+        async function contact() {
             cash('.contact__input').removeClass('border-theme-6')
             cash('.contact__input-error').html('')
             cash('#contactError').addClass('hidden')
@@ -268,6 +286,9 @@
             contact()
         })
     })
+    $('#mobile').on('input', function() {
+        this.value = this.value.replace(/\D/g, '').slice(0, 10);
+    });
 </script>
 
 @endsection

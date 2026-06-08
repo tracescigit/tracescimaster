@@ -84,14 +84,52 @@ class DemoController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'full_name'     => 'required|string|max:255',
-            'email'         => 'required|email|max:255',
-            'phone'         => 'nullable|string|max:20',
-            'company_name'  => 'required|string|max:255',
-            'company_email' => 'nullable|email|max:255',
-            'demo_date'     => 'required|date|after_or_equal:today',
-            'demo_time'     => 'required|in:09:00,10:00,11:00,14:00,15:00,16:00,17:00',
-            'message'       => 'nullable|string|max:1000',
+            'full_name' => [
+                'required',
+                'regex:/^[A-Za-z\s.\'-]+$/',
+                'max:255'
+            ],
+
+            'email' => [
+                'required',
+                'email:rfc,dns',
+                'max:255'
+            ],
+
+            'phone' => [
+                'required',
+                'digits:10'
+            ],
+
+            'company_name' => [
+                'required',
+                'string',
+                'max:255'
+            ],
+
+            'company_email' => [
+                'nullable',
+                'email:rfc,dns',
+                'max:255'
+            ],
+
+            'demo_date' => [
+                'required',
+                'date',
+                'after_or_equal:today'
+            ],
+
+            'demo_time' => [
+                'required',
+                'in:09:00,10:00,11:00,14:00,15:00,16:00,17:00'
+            ],
+
+            'message' => [
+                'nullable',
+                'string',
+                'max:1000'
+            ],
+
         ]);
 
         // Check slot isn't already taken (race condition guard)
