@@ -4670,12 +4670,12 @@ input:focus {
 /*---------------------------------------
         ABOUT 1 HEAD AREA     
 -----------------------------------------*/
-.aboout-2-head-area {
+.aboout-2-head-area { 
     background:
         linear-gradient(to bottom, transparent, rgba(255, 248, 200, 0.1)),
         url(../images/elite4_banner.png);
     background-size: cover;
-    background-position: center;
+    background-position: center; 
 }
 .aboout-1-head-area {
     background: url(../images/about-us-bg.png);
@@ -4737,6 +4737,18 @@ input:focus {
     }
 }
 .page-title-area {
+    position: relative;
+    min-height: 100vh;                /* ← 85% of screen height */
+    display: flex;
+    align-items: center;             /* ← vertical center */
+    justify-content: center;         /* ← horizontal center */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.page-title-area2 {
     position: relative;
     padding-top: 500px;
     background-size: cover;

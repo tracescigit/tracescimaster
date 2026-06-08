@@ -132,12 +132,7 @@
                     <h2>Who We Are</h2>
                     <p>We're a technology company dedicated to product authentication and anti-counterfeiting solutions.</p>
                 </div>
-                <div class="breadcrumbs text-center">
-                    <ul class="page-breadcrumbs">
-                        <li><a href="{{route('home')}}">home</a></li>
-                        <li><a href="#">About Us</a></li>
-                    </ul>
-                </div>
+             
             </div>
         </div>
     </div>

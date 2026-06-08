@@ -34,12 +34,6 @@
                     <h2>Contact Us</h2>
                     <p>Feel free to contact us any time, we wanna hear from you!</p>
                 </div>
-                <div class="breadcrumbs text-center">
-                    <ul class="page-breadcrumbs">
-                        <li><a href="{{ url('/') }}">home</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                    </ul>
-                </div>
             </div>
         </div>
     </div>
