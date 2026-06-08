@@ -4750,11 +4750,15 @@ input:focus {
 
 .page-title-area2 {
     position: relative;
-    padding-top: 500px;
+    min-height: 100vh;              /* ← replace padding-top */
+    display: flex;                 /* ← add this */
+    align-items: flex-end;         /* ← text at bottom */
+    justify-content: center;
     background-size: cover;
     background-position: top center;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    padding-bottom: 60px;          /* ← breathing room */
 }
 
 .page-title-area:before {
@@ -4777,6 +4781,14 @@ input:focus {
         background-attachment: scroll;
     }
 }
+@media only screen and (max-width: 991px) {
+    .page-title-area2 {
+        min-height: 90vh;
+        padding-bottom: 40px;
+        background-position: center top;
+        background-attachment: scroll;
+    }
+}
 
 
 /* Mobile */
@@ -4789,6 +4801,18 @@ input:focus {
     }
 
     .page-title-area:before {
+        background-color: rgba(255, 255, 255, 0.08);
+    }
+}
+@media only screen and (max-width: 767px) {
+    .page-title-area2 {
+        min-height: 100vh;
+        padding-bottom: 50px;
+        background-position: center top;
+        background-attachment: scroll;
+    }
+
+    .page-title-area2:before {
         background-color: rgba(255, 255, 255, 0.08);
     }
 }
@@ -4878,6 +4902,16 @@ ul.page-breadcrumbs li + li:before {
 }
 @media (max-width: 767px) {
     .page-title-area {
+        position: relative;
+        padding-top: 200px;
+        background-size: cover;
+        background-position: top center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+}
+@media (max-width: 767px) {
+    .page-title-area2 {
         position: relative;
         padding-top: 200px;
         background-size: cover;
