@@ -534,16 +534,16 @@
     }
 
     .spec-val {
-        padding: 14px 28px;
-        font-size: 13px;
-        color: var(--navy);
-        font-weight: 500;
-        line-height: 1.5;
-
-        display: flex;
-        align-items: center;
-        /* vertical centering */
-    }
+    padding: 14px 28px;
+    font-size: 13px;
+    color: var(--navy);
+    font-weight: 500;
+    line-height: 1.5;
+    display: flex;
+    flex-direction: column;  /* ← stacks lines vertically */
+    justify-content: center;
+    gap: 4px;                /* ← spacing between lines */
+}
 
     .spec-val .highlight {
         color: var(--teal);
@@ -1345,7 +1345,7 @@
                     <div class="specs-table-header">Slitting &amp; Web Handling</div>
                     <div class="spec-row">
                         <div class="spec-key">Model</div>
-                        <div class="spec-val">Hyperloop <span class="highlight">330 / 450</span></div>
+                        <div class="spec-val">Hyperloop 330/450</div>
                     </div>
                     <div class="spec-row">
                         <div class="spec-key">Model Type</div>
@@ -1353,11 +1353,11 @@
                     </div>
                     <div class="spec-row">
                         <div class="spec-key">Web Feed Width</div>
-                        <div class="spec-val">Max <span class="highlight">330 mm / 450 mm</span>, Min 20 mm</div>
+                        <div class="spec-val">Max 330 mm / 450 mm, Min 20 mm</div>
                     </div>
                     <div class="spec-row">
                         <div class="spec-key">Slitting Speed</div>
-                        <div class="spec-val">Up to <span class="highlight">150 m/min</span><br>
+                        <div class="spec-val">Up to 150 m/min <br>
                             <span style="font-size:11px;color:var(--muted)">Subject to substrate type — 9 pcs blade</span>
                         </div>
                     </div>
