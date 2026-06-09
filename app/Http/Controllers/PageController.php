@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\CustomClasses\SandEmail;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ContactUsRequest;
 use App\Http\Requests\SubscribeRequest;
 use App\Models\Blog;
 use App\Models\Subscriber;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Stevebauman\Location\Facades\Location;
 
@@ -81,11 +83,11 @@ class PageController extends Controller
         $blogs = Blog::where('is_allowed', 1)->get();
         return view('web.blog.blogpage')->with('blogs', $blogs);
     }
-     public function blogdetails($id)
+    public function blogdetails($id)
     {
-        $id=decrypt($id);
-        $blog = Blog::where('is_allowed', 1)->where('id',$id)->first();
-        return view('web.blog.blog-details')->with('blog',$blog);
+        $id = decrypt($id);
+        $blog = Blog::where('is_allowed', 1)->where('id', $id)->first();
+        return view('web.blog.blog-details')->with('blog', $blog);
     }
 
     public function addSubscriber(SubscribeRequest $request)
@@ -785,19 +787,45 @@ class PageController extends Controller
 
             $mail_array = [];
             $mail_array['email_subject'] = "TRACESCI got an Inquiry";
-            $mail_array['email'] = 'jetsciglobal@monotech.in';
+            $mail_array['email'] = 'wecare@tracesci.in';
             $mail_array['bcc']   = 'kunal.kothari@monotech.in';
-            $mail_array['email_body'] = '<p>Dear Admin, </p> <p> User ' . $input['name'] . ' has sent you an inquiry.
-            <p>Here are the details:</p>
-            <p>Email id : "' . $input['email'] . '".</p>
-            <p>Mobile no : "' . $input['mobile'] . '".</p>
-            <p>Message:</p>
-            <p>
-            ' . $input['message'] . '
-            </p>
-            <p>With thanks,</p> <p>TRACESCI . </p>';
+            $mail_array['email_body'] = '
+<p>Dear Admin,</p>
 
-            $send_email = sendFrontEmail($mail_array);
+<p>A new inquiry has been received through the <strong>TRACESCI</strong> website.</p>
+
+<div style="background:#f8f4f8;border-left:4px solid #7a0d7d;padding:15px;margin:20px 0;">
+    <h3 style="margin-top:0;color:#7a0d7d;">Inquiry Details</h3>
+
+    <table style="width:100%;border-collapse:collapse;">
+        <tr>
+            <td style="padding:8px 0;width:120px;"><strong>Name</strong></td>
+            <td style="padding:8px 0;">' . $input['name'] . '</td>
+        </tr>
+        <tr>
+            <td style="padding:8px 0;"><strong>Email</strong></td>
+            <td style="padding:8px 0;">' . $input['email'] . '</td>
+        </tr>
+        <tr>
+            <td style="padding:8px 0;"><strong>Mobile</strong></td>
+            <td style="padding:8px 0;">' . $input['mobile'] . '</td>
+        </tr>
+    </table>
+</div>
+
+<div style="background:#fafafa;border:1px solid #eeeeee;padding:15px;border-radius:5px;">
+    <strong>Message:</strong>
+    <p style="margin-top:10px;">' . $input['message'] . '</p>
+</div>
+
+<br>
+
+<p>
+Regards,<br><br>
+<strong>TRACESCI Website</strong>
+</p>';
+
+            $send_email = SandEmail::sendDirectMail($mail_array);
 
             $user_mail_array = [];
             $user_mail_array['email_subject'] = "Thanks for reaching out TRACESCI";
@@ -809,15 +837,24 @@ class PageController extends Controller
             <p>In case of any urgency, Please call to +91 124 422 6771.</p>
             <p>Cheers,</p> <p>Team Tracesci.</p>';
 
-            $send_email = sendFrontEmail($user_mail_array);
-
+            $send_email = SandEmail::sendDirectMail($user_mail_array);
             $message = 'Thank you for the inquiry. We will get back to you soon.';
             $status  = 'success';
             $status_code = 201;
 
             return response(['message' => $message, 'status' => $status], $status_code);
-        } catch (Exception $e) {
-            return response(['message' => 'Error', 'status' => 'failed'], 503);
+        } catch (\Exception $e) {
+
+            Log::error('Contact form error', [
+                'message' => $e->getMessage(),
+                'line' => $e->getLine(),
+                'file' => $e->getFile()
+            ]);
+
+            return response([
+                'message' => 'Error',
+                'status' => 'failed'
+            ], 503);
         }
     }
 }

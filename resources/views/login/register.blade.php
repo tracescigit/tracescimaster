@@ -42,8 +42,8 @@
             </a>
             <div class="my-auto">
                 <img alt="Midone Tailwind HTML Admin Template" class="-intro-x w-1/2 -mt-16" src="{{ asset('dist/images/illustration.png') }}">
-                <div class="-intro-x text-white font-medium text-4xl leading-tight mt-10">Just<span style="color: #7a0d7d;"> one step</span> to <br> create your account.</div>
-                <div class="-intro-x mt-5 text-lg text-white text-opacity-70 dark:text-gray-500"><span style="color: #7a0d7d;">Create< your account with us.</div>
+                <div class="-intro-x text-white font-medium text-4xl leading-tight mt-10">Just<span style="color: #7a0d7d;"> one step</span> to <br> create your <span style="color: #7a0d7d;">account.</span></div>
+                <div class="-intro-x mt-5 text-lg text-white text-opacity-70 dark:text-gray-500">Create your account with us.</div>
                 </div>
             </div>
             <!-- END: Login Info -->

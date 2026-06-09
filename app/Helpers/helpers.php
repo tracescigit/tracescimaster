@@ -25,6 +25,9 @@ use App\Models\SupplyChainAlert;
 use App\Models\User;
 use App\Models\Wallet;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
 if (! function_exists('getCreditAmount')) {
@@ -461,16 +464,33 @@ if (! function_exists('createOrUpdateUserAndAssignOtp')) {
 if (! function_exists('sendEmail')) {
 	function sendEmail($input)
 	{
-		$data['email_body'] 	= $input['email_body'];
-		$data['email_subject'] 	= $input['email_subject'];
-		$data['sender']        	= env('MAIL_FROM_ADDRESS', 'wecare@tracesci.in');
-		$data['receiver']      	= $input['email'];
-		$data['bcc']      	    = $input['bcc'] ?? '';
-		$data['appname']       	= env('APP_NAME', 'TRACESCI');
+		try {
 
-		$response = Http::post('https://www.vkreate.in/api/sendemail', $data);
+			Mail::send(
+				'emails.email',
+				[
+					'email_body' => $input['email_body']
+				],
+				function ($message) use ($input) {
 
-		return true;
+					$message->to($input['email'])
+						->subject($input['email_subject']);
+
+					if (!empty($input['bcc'])) {
+						$message->bcc($input['bcc']);
+					}
+				}
+			);
+
+			return true;
+		} catch (\Exception $e) {
+
+			Log::error('Mail Failed', [
+				'message' => $e->getMessage()
+			]);
+
+			return false;
+		}
 	}
 }
 
@@ -479,14 +499,20 @@ if (! function_exists('sendFrontEmail')) {
 	{
 		$data['email_body'] 	= $input['email_body'];
 		$data['email_subject'] 	= $input['email_subject'];
-		$data['sender']        	= 'jetsciglobal@monotech.in';
+		$data['sender']        	= 'wecare@tracesci.in';
 		$data['receiver']      	= $input['email'];
 		$data['bcc']      	    = $input['bcc'] ?? '';
 		$data['appname']       	= env('APP_NAME', 'TRACESCI');
 
-		$response = Http::post('https://www.vkreate.in/api/sendemail', $data);
+		$response = Http::get('https://www.vkreate.in/api/sendemail', $data);
 
-		return true;
+		if (!$response->successful()) {
+			Log::error('Email API failed', [
+				'response' => $response->body()
+			]);
+		}
+
+		return $response->successful();
 	}
 }
 

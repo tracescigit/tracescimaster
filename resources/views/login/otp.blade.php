@@ -10,11 +10,11 @@
         <!-- BEGIN: Login Info -->
         <div class="hidden xl:flex flex-col min-h-screen">
             <a href="{{ url('/') }}" class="-intro-x flex items-center pt-5">
-                <img width="20%"  alt="Tracesci" src="{{asset('web/images/logo.png')}}" class=""></a>
+                <img width="20%" alt="Tracesci" src="{{asset('dist/images/tracesci logo_white.png')}}" class=""></a>
             </a>
             <div class="my-auto">
-                <img alt="Midone Tailwind HTML Admin Template" class="-intro-x w-1/2 -mt-16" src="{{ asset('dist/images/illustration.svg') }}">
-                <div class="-intro-x text-white font-medium text-4xl leading-tight mt-10">Just one step to <br> create your account.</div>
+                <img alt="Midone Tailwind HTML Admin Template" class="-intro-x w-1/2 -mt-16" src="{{ asset('dist/images/illustration.png') }}">
+                <div class="-intro-x text-white font-medium text-4xl leading-tight mt-10">Just <span style="color: #7a0d7d;">one step </span>to <br> create your <span style="color: #7a0d7d;">account.</span></div>
                 <div class="-intro-x mt-5 text-lg text-white text-opacity-70 dark:text-gray-500">Create your account with us.</div>
             </div>
         </div>
@@ -26,7 +26,7 @@
                 <div class="intro-x mt-2 px-2 text-gray-500">Please verify otp sent to your email or mobile number.</div>
                 <div class="intro-x mt-4">
                     <form id="register-form">
-                        
+
                         <div class="grid grid-cols-12">
 
                             <div class="input-form col-span-12 px-2 mt-2">
@@ -37,7 +37,7 @@
                             <div class="input-form col-span-12 px-2 mt-2">
                                 <input type="text" name="_token" value="{{ csrf_token() }}" style="display:none;">
                             </div>
-                            
+
                         </div>
 
                     </form>
@@ -52,12 +52,12 @@
         <!-- END: Login Form -->
     </div>
     <x-notification></x-notification>
-</div>    
+</div>
 @endsection
 
 @section('script')
 <script>
-    cash(function () {
+    cash(function() {
         async function register() {
 
             cash('#register-form').find('.form__input').removeClass('border-theme-6')
@@ -70,17 +70,17 @@
 
             axios.post(`{{url('/register/otp')}}`, formData).then(res => {
 
-                showNotification('success','Success !',res.data.message)
-                setTimeout(()=>{
-                    window.location.href = '{{ url('/register/success') }}'
-                },2000)
+                showNotification('success', 'Success !', res.data.message)
+                setTimeout(() => {
+                    window.location.href = "{{ url('/register/success') }}"
+                }, 2000)
 
             }).catch(err => {
-                showNotification('error','Error !',err.response.data.message)
-                cash('#btn-signup').html('Next')                   
+                showNotification('error', 'Error !', err.response.data.message)
+                cash('#btn-signup').html('Next')
 
                 if (err.response.data.errors) {
-                    for (const [key, val] of Object.entries(err.response.data.errors)){
+                    for (const [key, val] of Object.entries(err.response.data.errors)) {
                         cash(`#${key}`).addClass('border-theme-6')
                         cash(`#error-${key}`).html(val)
                     }
