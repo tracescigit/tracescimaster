@@ -51,3 +51,4 @@ import Velocity from "velocity-animate";
             }
         });
 })(cash);
+
