@@ -70,15 +70,20 @@
         <a href="{{ url('/') }}" class="menuzord-brand">
           @if (request()->route()->uri!='p/{code}')
           <span>tracesci.</span>
-          @else
-          <span class="text-white">{{ $brand }}</span>
-          @endif
         </a>
+        @else
+        <a href="#" class="menuzord-brand">
+          <span class="text-white">{{ $brand }}</span>
+        </a>
+        @endif
+        @if (request()->route()->uri!='p/{code}')
         <div class="header-contact">
           <ul>
             <li class="consult-search {{ request()->is('demo-scheduling') ? 'active' : '' }}"><a href="{{ route('demo-schedule-create') }}">Schedule Demo</a></li>
           </ul>
         </div>
+        @endif
+
         <!-- SEARCH + ICON -->
 
 

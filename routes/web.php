@@ -58,7 +58,7 @@ Route::get('/blog/{id}', [PageController::class, 'blogdetails'])->name('blog-det
 
 
 //Scan codes
-Route::get('/p/{code}', [ScanController::class, 'show']);
+Route::get('/p/{code}', [ScanController::class, 'show'])->name('scan');
 
 Route::middleware('loggedin')->group(function () {
     Route::get('login', [AuthController::class, 'loginView'])->name('login-view');

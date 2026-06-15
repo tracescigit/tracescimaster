@@ -3,87 +3,323 @@
 @section('title',$brand)
 
 @section('content')
-<div class="main-slider" style="height: 150px; background: transparent linear-gradient( 
-	45deg , #700877 0%, #ff2759 100%, #ff2759 100%) repeat scroll 0 0;">
-</div>
-<div class="text-bg" style="font-size: 36px;
-color: rgb(209, 86, 136);
-padding: 6px 18px 7px;
-text-transform: uppercase;
-transition: none 0s ease 0s;
-line-height: 45px;
-border-width: 0px;
-margin: 0px auto;
-text-align: center;
-letter-spacing: 2px;
-font-weight: 900;
-margin-top: 20px;">
-	Details just a Few step away
-</div>
-<div id="main" class="wrapper">
-	<section class="bg-white border-b mx-auto py-4">
-		<div class="container mx-auto flex flex-wrap mb-4">
-			<div class="row" style="margin-top: 50px; padding: 0 15px;">
-				<div class="col-xs-4 col-sm-2 form-div">
-					<select name="country_code" class="form-control form__input" id="country_code" style="opacity:{{$auth_required==true?'':'0'}};">
-						@if (count(countries())>0)
-						@foreach (countries() as $country)
-						<option value="{{$country->phonecode}}" {{$country->phonecode=='91'?'selected':''}}>+{{$country->phonecode}}</option>
-						@endforeach
-						@else
-						<option value="91">+91</option>
-						@endif
-					</select>
-				</div>
 
-				<div class="col-xs-8 col-sm-10 form-div" style="opacity:{{$auth_required==true?'':'0'}};">
-					<input class="form-control form__input" type="tel" name="phone" id="phone" placeholder="Enter phone number" maxlength="10" minlength="10" value="{{$auth_required==true?'':'0000000000'}}">
-					<div id="error-phone" class="text-red-600 form__input-error w-5/6 text-theme-6 mt-0"></div>
-				</div>
+<style>
+	html,
+	body {
+		background: #F5F5F5;
+	}
 
-				<div class="col-xs-12 px-2 mt-4 form-div otp-div" style="display: none; margin-top: 25px;">
-					<input class="form-control form__input" type="tel" name="otp" id="otp" placeholder="Enter otp" maxlength="10" minlength="10">
-					<div id="error-otp" class="text-red-600 form__input-error w-5/6 text-theme-6 mt-0"></div>
-				</div>
-				<div class="col-xs-12 px-2 mt-4 form-div secret-code" style="display: none; margin-top: 25px;">
-					<p class="otp-verified-message" style="color: #155724; background-color: #d4edda; padding: 10px; border-radius: 5px;display:none;">
-						Otp Verified Successfully
-					</p>
-					<input class="form-control form__input" type="text" name="secret-code" id="secret-code" placeholder="Enter Secret Code" maxlength="10" minlength="10">
-					<input type="hidden" type="text" id="token" name="token" value="">
-					<div id="error-secret-code" class="text-red-600 form__input-error w-5/6 text-theme-6 mt-2" style="color:red"></div>
-				</div>
+	.scan-minimal {
+		min-height: 100vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 40px 20px;
+		position: relative;
+		overflow: hidden;
+	}
 
-				<div class="col-xs-12 px-2 mt-4 info-div text-black" style="display: none; margin:30px 0; padding:10px;">
-				</div>
-			</div>
+	/* Ambient scan-line backdrop — the signature element */
+	.scan-minimal::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background-image: repeating-linear-gradient(to bottom,
+				rgba(122, 13, 125, 0.05) 0px,
+				rgba(122, 13, 125, 0.05) 1px,
+				transparent 1px,
+				transparent 28px);
+		pointer-events: none;
+		animation: scanDrift 14s linear infinite;
+	}
 
-			<div class="row form-div" style="margin-top: 50px;">
-				<div class="col-sm-12 px-3 text-center ">
-					<button class="btn btn-primary contact-btn" id="btn-get-otp" style="opacity:{{$auth_required==true?'':'0'}};"> 
-						Submit
-					</button>
+	@keyframes scanDrift {
+		0% {
+			background-position: 0 0;
+		}
 
-					<button class="btn btn-primary contact-btn" id="btn-submit-otp" style="display: none;">
-						Submit otp
-					</button>
-				</div>
-			</div>
-			<div class="row secret-div" style="margin-top: 50px;display:none">
-				<div class="col-sm-12 px-3 text-center ">
-					<button class="btn btn-primary secret-btn" id="btn-verify-secret_code">
-						Verify Secret Code
-					</button>
-				</div>
-			</div>
+		100% {
+			background-position: 0 280px;
+		}
+	}
+
+	.scan-minimal::after {
+		content: '';
+		position: absolute;
+		left: 50%;
+		top: -120px;
+		width: 640px;
+		height: 640px;
+		transform: translateX(-50%);
+		background: radial-gradient(closest-side, rgba(122, 13, 125, 0.08), transparent 70%);
+		pointer-events: none;
+	}
+
+	.scan-minimal-box {
+		width: 100%;
+		max-width: 400px;
+		position: relative;
+		z-index: 1;
+		background: #FFFFFF;
+		border: 1px solid #7a0d7d;
+		border-radius: 18px;
+		padding: 36px 32px;
+		box-shadow: 0 24px 60px -24px rgba(122, 13, 125, 0.25);
+	}
+
+	.scan-minimal-icon {
+		width: 52px;
+		height: 52px;
+		border-radius: 14px;
+		background: #FFFFFF;
+		border: 2px solid #7a0d7d;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: #7a0d7d;
+		font-size: 22px;
+		margin: 0 auto 24px;
+	}
+
+	.scan-eyebrow {
+		font-family: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+		font-size: 11px;
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
+		color: #7a0d7d;
+		text-align: center;
+		margin: 0 0 10px;
+		font-weight: 600;
+	}
+
+	.text-bg {
+		font-family: 'Sora', 'Helvetica Neue', Arial, sans-serif !important;
+		font-size: 26px !important;
+		color: #000000 !important;
+		padding: 0 !important;
+		text-transform: none !important;
+		line-height: 1.3 !important;
+		border-width: 0 !important;
+		margin: 0 0 8px !important;
+		text-align: center !important;
+		letter-spacing: -0.01em !important;
+		font-weight: 700 !important;
+	}
+
+	.scan-minimal-sub {
+		color: #6B6B6B;
+		font-size: 14px;
+		text-align: center;
+		margin: 0 0 32px;
+		line-height: 1.6;
+		font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+	}
+
+	#main.wrapper {
+		padding-top: 0;
+	}
+
+	.scan-minimal-form .form-div {
+		margin-bottom: 16px;
+	}
+
+	.scan-minimal-form .form-control {
+		border: 1px solid #D8C2D9;
+		border-radius: 10px;
+		height: 50px;
+		font-size: 15px;
+		color: #000000;
+		background: #FFFFFF;
+		box-shadow: none;
+		text-align: center;
+		font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+		transition: border-color 0.2s ease, box-shadow 0.2s ease;
+	}
+
+	.scan-minimal-form .form-control:focus {
+		border-color: #7a0d7d;
+		outline: none;
+		box-shadow: 0 0 0 3px rgba(122, 13, 125, 0.12);
+	}
+
+	.scan-minimal-form select.form-control {
+		font-weight: 600;
+		color: #7a0d7d;
+	}
+
+	.scan-minimal-form input::placeholder {
+		text-align: center;
+		color: #B7A3B8;
+	}
+
+	.scan-field-error {
+		color: #C0392B;
+		font-size: 12px;
+		margin-top: 6px;
+		text-align: center;
+		font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+	}
+
+	.scan-otp-success {
+		color: #000000;
+		background-color: #FFFFFF;
+		border: 1px solid #7a0d7d;
+		padding: 12px 16px;
+		border-radius: 10px;
+		font-size: 13px;
+		text-align: center;
+		font-weight: 600;
+		margin-bottom: 16px;
+		font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+	}
+
+	.scan-minimal-form .contact-btn,
+	.scan-minimal-form .secret-btn {
+		width: 100%;
+		background: #000000 !important;
+		border: 1px solid #7a0d7d !important;
+		color: #FFFFFF !important;
+		border-radius: 10px;
+		height: 50px;
+		font-size: 15px;
+		font-weight: 700;
+		letter-spacing: 0.01em;
+		text-transform: none;
+		font-family: 'Sora', 'Helvetica Neue', Arial, sans-serif;
+		transition: filter 0.2s ease, transform 0.1s ease;
+	}
+
+	.scan-minimal-form .contact-btn:hover,
+	.scan-minimal-form .secret-btn:hover {
+		filter: brightness(1.3);
+	}
+
+	.scan-minimal-form .contact-btn:active,
+	.scan-minimal-form .secret-btn:active {
+		transform: scale(0.98);
+	}
+
+	.scan-minimal-hint {
+		font-size: 12px;
+		color: #A3A3A3;
+		text-align: center;
+		margin-top: 24px;
+		line-height: 1.6;
+		font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+	}
+
+	.row.form-div,
+	.row.secret-div {
+		margin: 0 !important;
+	}
+
+	.info-div {
+		margin-top: 0;
+	}
+
+	@media (max-width: 420px) {
+		.scan-minimal {
+			padding: 24px 16px;
+		}
+
+		.scan-minimal-box {
+			padding: 28px 22px;
+		}
+
+		.text-bg {
+			font-size: 21px !important;
+		}
+	}
+</style>
+
+<div class="scan-minimal">
+	<div class="scan-minimal-box">
+
+		<div class="scan-minimal-icon">
+			<i class="fa fa-qrcode"></i>
 		</div>
-		{{-- <x-notification></x-notification> --}}
-		<x-image-preview></x-image-preview>
-		<x-offer-preview></x-offer-preview>
-		<x-redeem-reward></x-redeem-reward>
-		<x-reward-address></x-reward-address>
-		<x-report-product></x-report-product>
-	</section>
+
+		<div class="scan-eyebrow">Authenticity check</div>
+
+		<div class="text-bg">
+			You're one step from the details
+		</div>
+		<div class="scan-minimal-sub">
+			Verify your phone number to view this product's journey.
+		</div>
+
+		<div id="main" class="wrapper">
+
+			<div class="scan-minimal-form">
+
+				<div class="row" style="margin: 0;">
+					<div class="col-xs-4 col-sm-3 form-div">
+						<select name="country_code" class="form-control form__input" id="country_code" style="opacity:{{$auth_required==true?'':'0'}};">
+							@if (count(countries())>0)
+							@foreach (countries() as $country)
+							<option value="{{$country->phonecode}}" {{$country->phonecode=='91'?'selected':''}}>+{{$country->phonecode}}</option>
+							@endforeach
+							@else
+							<option value="91">+91</option>
+							@endif
+						</select>
+					</div>
+
+					<div class="col-xs-8 col-sm-9 form-div" style="opacity:{{$auth_required==true?'':'0'}};">
+						<input class="form-control form__input" type="tel" name="phone" id="phone" placeholder="Phone number" maxlength="10" minlength="10" value="{{$auth_required==true?'':'0000000000'}}">
+						<div id="error-phone" class="text-red-600 form__input-error scan-field-error w-5/6 text-theme-6 mt-0"></div>
+					</div>
+
+					<div class="col-xs-12 form-div otp-div" style="display: none;">
+						<input class="form-control form__input" type="tel" name="otp" id="otp" placeholder="Enter OTP" maxlength="10" minlength="10">
+						<div id="error-otp" class="text-red-600 form__input-error scan-field-error w-5/6 text-theme-6 mt-0"></div>
+					</div>
+
+					<div class="col-xs-12 form-div secret-code" style="display: none;">
+						<p class="otp-verified-message scan-otp-success" style="display:none;">
+							OTP verified successfully
+						</p>
+						<input class="form-control form__input" type="text" name="secret-code" id="secret-code" placeholder="Enter Secret Code" maxlength="10" minlength="10">
+						<input type="hidden" type="text" id="token" name="token" value="">
+						<div id="error-secret-code" class="text-red-600 form__input-error scan-field-error w-5/6 text-theme-6 mt-2"></div>
+					</div>
+
+					<div class="col-xs-12 info-div text-black" style="display: none;">
+					</div>
+				</div>
+
+				<div class="row form-div">
+					<button class="btn contact-btn" id="btn-get-otp" style="opacity:{{$auth_required==true?'':'0'}};">
+						Continue
+					</button>
+
+					<button class="btn contact-btn" id="btn-submit-otp" style="display: none;">
+						Verify OTP
+					</button>
+				</div>
+
+				<div class="row secret-div" style="display:none">
+					<button class="btn secret-btn" id="btn-verify-secret_code">
+						Verify secret code
+					</button>
+				</div>
+
+				<div class="scan-minimal-hint">
+					Your location may be used to verify product journey and detect counterfeit activity.
+				</div>
+
+			</div>
+
+			{{-- <x-notification></x-notification> --}}
+			<x-image-preview></x-image-preview>
+			<x-offer-preview></x-offer-preview>
+			<x-redeem-reward></x-redeem-reward>
+			<x-reward-address></x-reward-address>
+			<x-report-product></x-report-product>
+		</div>
+
+	</div>
 </div>
 
 @endsection
@@ -116,7 +352,6 @@ margin-top: 20px;">
 		}
 	}
 
-	// Call it automatically OR on button click
 	getLocation();
 
 	cash(function() {
@@ -130,16 +365,10 @@ margin-top: 20px;">
 
 			cash('#btn-get-otp').html('Please wait...')
 
-			// await helper.delay(500)
-
 			axios.post("{{ url('api/get-otp')}}", {
 				country_code: country_code,
 				phone: phone
 			}).then(res => {
-				// showNotification('success','Success !',res.data.message)
-				// setTimeout(()=>{
-				// 	window.location.reload()
-				// },2000)
 
 				cash('#btn-get-otp').hide();
 				cash('#country_code').attr('disabled', true);
@@ -150,7 +379,6 @@ margin-top: 20px;">
 
 				console.log(res)
 			}).catch(err => {
-				// showNotification('error','Error !',err.response.data.message)
 				cash('#btn-get-otp').html('Submit')
 
 				if (err.response.data.errors) {
@@ -173,7 +401,6 @@ margin-top: 20px;">
 
 			cash('#btn-submit-otp').html('Please wait...')
 
-			// await helper.delay(500)
 			axios.post("{{ url('api/verify-otp')}}", {
 				country_code: country_code,
 				phone: phone,
@@ -252,8 +479,6 @@ margin-top: 20px;">
 				} else {
 					proceedtoProductPage2(res.data.token, res.data.token)
 				}
-
-
 
 			}).catch(err => {
 				console.log(err)
@@ -480,16 +705,11 @@ margin-top: 20px;">
 				code: code,
 				secret_code: secret_code
 			}).then(res => {
-				// showNotification('success','Success !',res.data.message)
-				// setTimeout(()=>{
-				// 	window.location.reload()
-				// },2000)
 				cash('.secret-code').hide();
 				cash('.secret-div').hide();
 				proceedtoProductPage(token, global_token);
 
 			}).catch(err => {
-				// showNotification('error','Error !',err.response.data.message)
 				if (err.response.data.errors) {
 					for (const [key, val] of Object.entries(err.response.data.errors)) {
 						cash(`#${key}`).addClass('border-red-600')
@@ -507,11 +727,19 @@ margin-top: 20px;">
 				}
 			}).then(res => {
 				console.log(res)
-				// showNotification('success','Success !',res.data.message)
 				cash('.info-div').show()
 				cash('.form-div').hide()
+				cash('.scan-minimal-icon').hide()
+				cash('.scan-minimal-sub').hide()
+				cash('.scan-minimal-hint').hide()
+				cash('.scan-eyebrow').hide()
+				cash('.scan-minimal').css({
+					'align-items': 'flex-start',
+					'padding-top': '40px'
+				})
+				cash('.scan-minimal-box').css('max-width', '600px')
 				cash('.info-div').html(res.data.view)
-				cash('.text-bg').text("Product Details")
+				cash('.text-bg').text("")
 
 				if (res.data.product.applied_offer) {
 					cash('#offer-modal-btn').trigger('click');
@@ -534,8 +762,17 @@ margin-top: 20px;">
 				}
 			}).then(res => {
 				cash('.info-div').show()
+				cash('.scan-minimal-icon').hide()
+				cash('.scan-minimal-sub').hide()
+				cash('.scan-minimal-hint').hide()
+				cash('.scan-eyebrow').hide()
+				cash('.scan-minimal').css({
+					'align-items': 'flex-start',
+					'padding-top': '40px'
+				})
+				cash('.scan-minimal-box').css('max-width', '600px')
 				cash('.info-div').html(res.data.view)
-				cash('.text-bg').text("Product Details")
+				cash('.text-bg').text("")
 
 				if (res.data.product.applied_offer) {
 					cash('#offer-modal-btn').trigger('click');

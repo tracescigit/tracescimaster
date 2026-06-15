@@ -115,7 +115,9 @@
   <div id="page" class="hfeed site">
     @include('web.partials.header')
     @yield('content')
+    @if (!request()->routeIs('scan'))
     @include('web.partials.footer')
+    @endif
   </div>
 
   <a class="scroll-to-top"><i class="fa fa-chevron-up"></i></a>
