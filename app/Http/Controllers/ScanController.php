@@ -23,7 +23,7 @@ class ScanController extends Controller
 			$auth_required = false;
 		}
 
-		$brand = $qr->getProduct->brand ?? 'TRACESCI';
+		$brand = $qr->getProduct->brand ?? 'TRACESCI';	
 		$brand_logo = $qr->getProduct->logo ?? '';
 
 

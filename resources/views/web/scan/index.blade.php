@@ -7,7 +7,7 @@
 <style>
 	html,
 	body {
-		background: #F5F5F5;
+		background: #f5f5f5;
 	}
 
 	.scan-minimal {
@@ -16,68 +16,30 @@
 		align-items: center;
 		justify-content: center;
 		padding: 40px 20px;
-		position: relative;
-		overflow: hidden;
-	}
-
-	/* Ambient scan-line backdrop — the signature element */
-	.scan-minimal::before {
-		content: '';
-		position: absolute;
-		inset: 0;
-		background-image: repeating-linear-gradient(to bottom,
-				rgba(122, 13, 125, 0.05) 0px,
-				rgba(122, 13, 125, 0.05) 1px,
-				transparent 1px,
-				transparent 28px);
-		pointer-events: none;
-		animation: scanDrift 14s linear infinite;
-	}
-
-	@keyframes scanDrift {
-		0% {
-			background-position: 0 0;
-		}
-
-		100% {
-			background-position: 0 280px;
-		}
-	}
-
-	.scan-minimal::after {
-		content: '';
-		position: absolute;
-		left: 50%;
-		top: -120px;
-		width: 640px;
-		height: 640px;
-		transform: translateX(-50%);
-		background: radial-gradient(closest-side, rgba(122, 13, 125, 0.08), transparent 70%);
-		pointer-events: none;
+		background: #f5f5f5;
 	}
 
 	.scan-minimal-box {
 		width: 100%;
 		max-width: 400px;
 		position: relative;
-		z-index: 1;
-		background: #FFFFFF;
-		border: 1px solid #7a0d7d;
-		border-radius: 18px;
+		background: #ffffff;
+		border: 1px solid #000;
+		border-radius: 12px;
 		padding: 36px 32px;
-		box-shadow: 0 24px 60px -24px rgba(122, 13, 125, 0.25);
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 	}
 
 	.scan-minimal-icon {
 		width: 52px;
 		height: 52px;
-		border-radius: 14px;
-		background: #FFFFFF;
-		border: 2px solid #7a0d7d;
+		border-radius: 12px;
+		background: #000;
+		border: 1px solid #000;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		color: #7a0d7d;
+		color: #fff;
 		font-size: 22px;
 		margin: 0 auto 24px;
 	}
@@ -87,7 +49,7 @@
 		font-size: 11px;
 		letter-spacing: 0.18em;
 		text-transform: uppercase;
-		color: #7a0d7d;
+		color: #000;
 		text-align: center;
 		margin: 0 0 10px;
 		font-weight: 600;
@@ -96,7 +58,7 @@
 	.text-bg {
 		font-family: 'Sora', 'Helvetica Neue', Arial, sans-serif !important;
 		font-size: 26px !important;
-		color: #000000 !important;
+		color: #000 !important;
 		padding: 0 !important;
 		text-transform: none !important;
 		line-height: 1.3 !important;
@@ -108,7 +70,7 @@
 	}
 
 	.scan-minimal-sub {
-		color: #6B6B6B;
+		color: #666;
 		font-size: 14px;
 		text-align: center;
 		margin: 0 0 32px;
@@ -125,36 +87,36 @@
 	}
 
 	.scan-minimal-form .form-control {
-		border: 1px solid #D8C2D9;
+		border: 1px solid #d9d9d9;
 		border-radius: 10px;
 		height: 50px;
 		font-size: 15px;
-		color: #000000;
-		background: #FFFFFF;
+		color: #000;
+		background: #fff;
 		box-shadow: none;
 		text-align: center;
 		font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
-		transition: border-color 0.2s ease, box-shadow 0.2s ease;
+		transition: all 0.2s ease;
 	}
 
 	.scan-minimal-form .form-control:focus {
-		border-color: #7a0d7d;
+		border-color: #000;
 		outline: none;
-		box-shadow: 0 0 0 3px rgba(122, 13, 125, 0.12);
+		box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
 	}
 
 	.scan-minimal-form select.form-control {
 		font-weight: 600;
-		color: #7a0d7d;
+		color: #000;
 	}
 
 	.scan-minimal-form input::placeholder {
 		text-align: center;
-		color: #B7A3B8;
+		color: #999;
 	}
 
 	.scan-field-error {
-		color: #C0392B;
+		color: #c0392b;
 		font-size: 12px;
 		margin-top: 6px;
 		text-align: center;
@@ -162,9 +124,9 @@
 	}
 
 	.scan-otp-success {
-		color: #000000;
-		background-color: #FFFFFF;
-		border: 1px solid #7a0d7d;
+		color: #000;
+		background: #fff;
+		border: 1px solid #000;
 		padding: 12px 16px;
 		border-radius: 10px;
 		font-size: 13px;
@@ -177,9 +139,9 @@
 	.scan-minimal-form .contact-btn,
 	.scan-minimal-form .secret-btn {
 		width: 100%;
-		background: #000000 !important;
-		border: 1px solid #7a0d7d !important;
-		color: #FFFFFF !important;
+		background: #000 !important;
+		border: 1px solid #000 !important;
+		color: #fff !important;
 		border-radius: 10px;
 		height: 50px;
 		font-size: 15px;
@@ -187,12 +149,13 @@
 		letter-spacing: 0.01em;
 		text-transform: none;
 		font-family: 'Sora', 'Helvetica Neue', Arial, sans-serif;
-		transition: filter 0.2s ease, transform 0.1s ease;
+		transition: all 0.2s ease;
 	}
 
 	.scan-minimal-form .contact-btn:hover,
 	.scan-minimal-form .secret-btn:hover {
-		filter: brightness(1.3);
+		background: #222 !important;
+		border-color: #222 !important;
 	}
 
 	.scan-minimal-form .contact-btn:active,
@@ -202,7 +165,7 @@
 
 	.scan-minimal-hint {
 		font-size: 12px;
-		color: #A3A3A3;
+		color: #888;
 		text-align: center;
 		margin-top: 24px;
 		line-height: 1.6;
@@ -335,9 +298,6 @@
 	function assignPosition(position) {
 		lat = position.coords.latitude;
 		long = position.coords.longitude;
-
-		console.log("Latitude:", lat);
-		console.log("Longitude:", long);
 	}
 
 	function showError(error) {
@@ -353,6 +313,43 @@
 	}
 
 	getLocation();
+
+	// ── Manual Modal Helpers (Bootstrap JS not available) ────────
+	function showModal(modalId) {
+		var modal = document.getElementById(modalId);
+		if (!modal) return;
+
+		var old = document.getElementById('pd-backdrop');
+		if (old) old.remove();
+
+		modal.style.display = 'block';
+		modal.classList.add('in');
+		modal.removeAttribute('aria-hidden');
+		document.body.classList.add('modal-open');
+
+		var backdrop = document.createElement('div');
+		backdrop.className = 'modal-backdrop fade in';
+		backdrop.id = 'pd-backdrop';
+		document.body.appendChild(backdrop);
+
+		backdrop.addEventListener('click', function() {
+			hideModal(modalId);
+		});
+	}
+
+	function hideModal(modalId) {
+		var modal = document.getElementById(modalId);
+		if (!modal) return;
+
+		modal.style.display = 'none';
+		modal.classList.remove('in');
+		modal.setAttribute('aria-hidden', 'true');
+		document.body.classList.remove('modal-open');
+		document.body.style.paddingRight = '';
+
+		var backdrop = document.getElementById('pd-backdrop');
+		if (backdrop) backdrop.remove();
+	}
 
 	cash(function() {
 		async function getOtp() {
@@ -413,6 +410,9 @@
 
 				cash('.otp-verified-message').show();
 
+				global_token = res.data.token;
+				console.log('global_token set after OTP:', global_token);
+
 				@if($secret_code_check_required)
 
 				cash('.secret-div').show();
@@ -423,7 +423,7 @@
 
 				@else
 
-				proceedtoProductPage(res.data.token, res.data.token);
+				proceedtoProductPage(res.data.token);
 
 				@endif
 
@@ -473,11 +473,14 @@
 				phone: phone
 			}).then(res => {
 				cash('#btn-get-otp').hide();
-				if (!empty($secret_code_check_required)) {
-					verifysecretCode(res.data.token, res.data.token);
 
+				global_token = res.data.token;
+				console.log('global_token set after without-auth:', global_token);
+
+				if (!empty($secret_code_check_required)) {
+					verifysecretCode(res.data.token);
 				} else {
-					proceedtoProductPage2(res.data.token, res.data.token)
+					proceedtoProductPage2(res.data.token)
 				}
 
 			}).catch(err => {
@@ -523,7 +526,7 @@
 				cash('#btn-report').removeAttr('disabled')
 				$('#report-message').html(res.data.message)
 				setTimeout(function() {
-					cash('.dismiss-modal').trigger('click')
+					hideModal('report-modal');
 				}, 3000)
 			}).catch(err => {
 				cash('#btn-report').html('Submit')
@@ -539,7 +542,6 @@
 				if (err.response.data.message) {
 					$('#report-message').html(err.response.data.message)
 				}
-
 			})
 		}
 
@@ -547,12 +549,11 @@
 			e.preventDefault()
 			report()
 		})
+
 		cash('#btn-verify-secret_code').on('click', function(e) {
 			e.preventDefault();
-
 			let token = cash('#token').val();
-
-			verifysecretCode(token, token);
+			verifysecretCode(token);
 		});
 
 		cash(document).on('click', '.redeem-points', function(event) {
@@ -619,7 +620,7 @@
 					cash('#wallet_balance').html(res.data.balance)
 				}
 				setTimeout(function() {
-					cash('.dismiss-modal').trigger('click')
+					hideModal('reward-modal');
 				}, 3000)
 			}).catch(err => {
 				cash('#btn-reward').html('Submit')
@@ -635,7 +636,6 @@
 				if (err.response.data.message) {
 					$('#reward-message').html(err.response.data.message)
 				}
-
 			})
 		}
 
@@ -674,7 +674,7 @@
 					cash('#wallet_balance').html(res.data.balance)
 				}
 				setTimeout(function() {
-					cash('.dismiss-modal').trigger('click')
+					hideModal('address-modal');
 				}, 3000)
 			}).catch(err => {
 				cash('#btn-address').html('Submit')
@@ -690,7 +690,6 @@
 				if (err.response.data.message) {
 					$('#address-message').html(err.response.data.message)
 				}
-
 			})
 		}
 
@@ -698,7 +697,9 @@
 			e.preventDefault()
 			address()
 		})
-		async function verifysecretCode(token, global_token) {
+
+		// ── second param removed to avoid shadowing outer global_token ──
+		async function verifysecretCode(token) {
 			let secret_code = cash('#secret-code').val()
 			let code = '{{$code}}';
 			axios.post("{{ url('api/verify-secret-code') }}", {
@@ -707,7 +708,9 @@
 			}).then(res => {
 				cash('.secret-code').hide();
 				cash('.secret-div').hide();
-				proceedtoProductPage(token, global_token);
+				global_token = token;
+				console.log('global_token set after secret code:', global_token);
+				proceedtoProductPage(token);
 
 			}).catch(err => {
 				if (err.response.data.errors) {
@@ -718,7 +721,12 @@
 				}
 			})
 		}
-		async function proceedtoProductPage(token, global_token) {
+
+		// ── second param removed to avoid shadowing outer global_token ──
+		async function proceedtoProductPage(token) {
+			global_token = token;
+			console.log('global_token set in proceedtoProductPage:', global_token);
+
 			axios.post("{{ url('api/p/'.$code) }}", {
 				token,
 				location: {
@@ -740,6 +748,7 @@
 				cash('.scan-minimal-box').css('max-width', '600px')
 				cash('.info-div').html(res.data.view)
 				cash('.text-bg').text("")
+				pdIdx = 0;
 
 				if (res.data.product.applied_offer) {
 					cash('#offer-modal-btn').trigger('click');
@@ -748,12 +757,16 @@
 				}
 
 			}).catch(err => {
-				console.log
 				alert(err.response.data.message)
 				window.location.reload()
 			})
 		}
-		async function proceedtoProductPage2(token, global_token) {
+
+		// ── second param removed to avoid shadowing outer global_token ──
+		async function proceedtoProductPage2(token) {
+			global_token = token;
+			console.log('global_token set in proceedtoProductPage2:', global_token);
+
 			axios.post("{{ url('api/p/'.$code)}}", {
 				token,
 				location: {
@@ -773,6 +786,7 @@
 				cash('.scan-minimal-box').css('max-width', '600px')
 				cash('.info-div').html(res.data.view)
 				cash('.text-bg').text("")
+				pdIdx = 0;
 
 				if (res.data.product.applied_offer) {
 					cash('#offer-modal-btn').trigger('click');
@@ -784,6 +798,70 @@
 				window.location.reload()
 			})
 		}
+
+		// ── Tab delegation ──────────────────────────────────────────
+		cash(document).on('click', '[data-pd-tab]', function() {
+			var tabId = cash(this).data('pd-tab');
+			var root = document.getElementById('pd-page-root');
+			if (!root) return;
+
+			cash(root).find('.pd-tab-link').removeClass('pd-on');
+			cash(root).find('.pd-tab-panel').removeClass('pd-on');
+
+			cash(this).addClass('pd-on');
+			cash('#pd-tab-' + tabId).addClass('pd-on');
+		});
+
+		// ── Report button ───────────────────────────────────────────
+		cash(document).on('click', '.pd-report-btn', function(e) {
+			e.preventDefault();
+			e.stopPropagation();
+			var product = cash(this).data('product');
+			var batch = cash(this).data('batch');
+			console.log('product:', product, 'batch:', batch, 'token:', global_token);
+			cash('.report-modal-product').val(product);
+			cash('.report-modal-batch').val(batch);
+			cash('.report-modal-token').val(global_token);
+			showModal('report-modal');
+		});
+
+		// ── Claim Reward button ─────────────────────────────────────
+		cash(document).on('click', '.pd-claim-btn', function(e) {
+			e.preventDefault();
+			e.stopPropagation();
+			cash('.reward-modal-token').val(global_token);
+			showModal('reward-modal');
+		});
+
+		// ── Dismiss modal buttons ───────────────────────────────────
+		cash(document).on('click', '.dismiss-modal, [data-dismiss="modal"]', function(e) {
+			e.preventDefault();
+			e.stopPropagation();
+			var modalEl = cash(this).closest('.modal');
+			if (modalEl.length) hideModal(modalEl.attr('id'));
+		});
+
+		// ── Carousel ────────────────────────────────────────────────
+		var pdIdx = 0;
+
+		window.pdCarGo = function(n) {
+			var slides = document.querySelectorAll('.pd-slide');
+			var dots = document.querySelectorAll('.pd-car-dot');
+			if (!slides.length) return;
+
+			slides[pdIdx].classList.remove('pd-on');
+			if (dots[pdIdx]) dots[pdIdx].classList.remove('pd-on');
+
+			pdIdx = ((n % slides.length) + slides.length) % slides.length;
+
+			slides[pdIdx].classList.add('pd-on');
+			if (dots[pdIdx]) dots[pdIdx].classList.add('pd-on');
+		};
+
+		window.pdCarMove = function(dir) {
+			pdCarGo(pdIdx + dir);
+		};
+
 	})
 </script>
 @endsection

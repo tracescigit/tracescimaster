@@ -24,7 +24,7 @@ class ReportController extends Controller
         $rules = [
             'token'       =>  'required',
             'product_id'  =>  'required',
-            'batch'       =>  'nullable|exists:batches,id',
+            'batch'       =>  'nullable|exists:batches,code',
             'issue_type'  =>  'required',
             'description' =>  'required'
         ];

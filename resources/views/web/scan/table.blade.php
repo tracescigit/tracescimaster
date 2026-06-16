@@ -1,690 +1,1033 @@
 @if (!empty($product))
+@php
+$fieldPermissions = json_decode($permissions['field_name']) ?? [];
+$isGenuine = !empty($product['genuine_product']);
+
+$carouselImages = [];
+if (!empty($fieldPermissions) && in_array('Product Image', $fieldPermissions) && !empty($product['image']))
+$carouselImages[] = $product['image'];
+if (!empty($fieldPermissions) && in_array('Label Image', $fieldPermissions) && !empty($product['label_image']))
+$carouselImages[] = $product['label_image'];
+if (!empty($product['gallery']) && is_array($product['gallery']))
+foreach ($product['gallery'] as $img)
+if (!empty($img)) $carouselImages[] = $img;
+
+$hasJourney = !empty($fieldPermissions) && in_array('Product Journey', $fieldPermissions) && !empty($journey);
+$hasDescription = !empty($fieldPermissions) && in_array('Description', $fieldPermissions);
+$hasMedia = !empty($fieldPermissions) && in_array('Media', $fieldPermissions);
+@endphp
+
 <style>
+	/* ── Reset inherited scan-minimal constraints ── */
+	.scan-minimal {
+		align-items: flex-start !important;
+		padding: 0 !important;
+		background: #f4f5f7 !important
+	}
+
+	.scan-minimal::before,
+	.scan-minimal::after {
+		display: none !important
+	}
+
+	.scan-minimal-box {
+		max-width: 100% !important;
+		width: 100% !important;
+		border: none !important;
+		border-radius: 0 !important;
+		padding: 0 !important;
+		box-shadow: none !important;
+		background: transparent !important
+	}
+
+	.scan-minimal-icon,
+	.scan-minimal-sub,
+	.scan-minimal-hint,
+	.scan-eyebrow,
+	.text-bg {
+		display: none !important
+	}
+
+	/* ── Tokens ── */
 	:root {
-		--primary: #111111;
-		--primary-light: #333333;
-		--bg: #f4f6f9;
-		--white: #ffffff;
-		--text: #222222;
-		--muted: #777777;
-		--success: #0f8a43;
-		--danger: #dc3545;
-		--accent: #7a0d7d;
+		--p: #7a0d7d;
+		--p-bg: #f5edf5;
+		--p-bdr: rgba(122, 13, 125, .20);
+		--ok: #1a7a4a;
+		--ok-bg: #eaf6f0;
+		--ok-bdr: rgba(26, 122, 74, .22);
+		--err: #c0392b;
+		--err-bg: #fdecea;
+		--err-bdr: rgba(192, 57, 43, .22);
+		--bg: #f4f5f7;
+		--surf: #ffffff;
+		--bdr: rgba(0, 0, 0, .07);
+		--bdr2: rgba(0, 0, 0, .13);
+		--tx: #111;
+		--tx2: #555;
+		--tx3: #999;
 	}
 
-	/* =========================
-   GLOBAL
-========================= */
-
-	body {
+	/* ── Page ── */
+	.pd-page {
+		font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
 		background: var(--bg);
-		font-family: 'Poppins', sans-serif;
-	}
-
-	#main {
-		background: linear-gradient(180deg, #f4f6f9 0%, #eef0f5 100%);
 		min-height: 100vh;
-		padding-bottom: 40px;
+		color: var(--tx)
 	}
 
-	/* =========================
-   HEADER
-========================= */
-
-	.pd-header {
+	/* ── Topbar ── */
+	.pd-topbar {
 		display: flex;
 		align-items: center;
-		padding: 18px 20px;
-		background: linear-gradient(135deg, #000, #2a2a2a);
+		gap: 14px;
+		padding: 0 32px;
+		height: 56px;
+		background: var(--surf);
+		border-bottom: 1px solid var(--bdr);
 		position: sticky;
 		top: 0;
-		z-index: 999;
-		box-shadow: 0 5px 20px rgba(0, 0, 0, .15);
+		z-index: 200
 	}
 
-	.pd-back {
-		color: #fff;
-		font-size: 20px;
-		margin-right: 15px;
-		width: 36px;
-		height: 36px;
+	.pd-back-btn {
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+		font-size: 13px;
+		font-weight: 500;
+		color: var(--tx2);
+		text-decoration: none;
+		padding: 6px 12px;
+		border-radius: 7px;
+		border: 1px solid var(--bdr2);
+		background: var(--surf);
+		cursor: pointer;
+		transition: background .15s
+	}
+
+	.pd-back-btn:hover {
+		background: var(--bg)
+	}
+
+	.pd-topbar-title {
+		font-size: 15px;
+		font-weight: 600;
+		color: var(--tx);
+		flex: 1
+	}
+
+	.pd-topbar-pill {
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+		font-size: 12px;
+		font-weight: 600;
+		padding: 5px 14px;
+		border-radius: 20px
+	}
+
+	.pd-topbar-pill.genuine {
+		background: var(--ok-bg);
+		color: var(--ok);
+		border: 1px solid var(--ok-bdr)
+	}
+
+	.pd-topbar-pill.suspect {
+		background: var(--err-bg);
+		color: var(--err);
+		border: 1px solid var(--err-bdr)
+	}
+
+	/* ── Wrap ── */
+	.pd-wrap {
+		max-width: 1100px;
+		margin: 0 auto;
+		padding: 28px 32px 60px
+	}
+
+	/* ── Hero ── */
+	.pd-hero {
+		display: grid;
+		grid-template-columns: 340px 1fr;
+		background: var(--surf);
+		border: 1px solid var(--bdr);
+		border-radius: 14px;
+		overflow: hidden;
+		margin-bottom: 24px
+	}
+
+	.pd-hero-img {
+		background: var(--p-bg);
+		border-right: 1px solid var(--bdr);
+		min-height: 300px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		border-radius: 50%;
-		background: rgba(255, 255, 255, .08);
-		transition: .25s;
+		overflow: hidden;
+		position: relative
 	}
 
-	.pd-back:hover {
-		background: rgba(255, 255, 255, .18);
-		transform: translateX(-2px);
+	.pd-hero-info {
+		padding: 28px 32px;
+		display: flex;
+		flex-direction: column
 	}
 
-	.pd-header-title {
-		color: #fff;
-		margin: 0;
+	.pd-hero-mfr {
+		font-size: 12px;
+		color: var(--tx3);
+		margin-bottom: 4px
+	}
+
+	.pd-hero-name {
 		font-size: 22px;
 		font-weight: 700;
+		color: var(--tx);
+		line-height: 1.3;
+		margin-bottom: 16px
 	}
 
-	/* =========================
-   CAROUSEL
-========================= */
-
-	.pd-carousel {
-		padding: 20px;
+	.pd-hero-price-row {
+		display: flex;
+		align-items: baseline;
+		gap: 8px;
+		margin-bottom: 4px
 	}
 
-	.pd-carousel .carousel-inner {
-		background: #fff;
-		border-radius: 22px;
-		overflow: hidden;
-		height: 340px;
-
-		box-shadow:
-			0 12px 35px rgba(0, 0, 0, .10);
+	.pd-hero-price {
+		font-size: 30px;
+		font-weight: 700;
+		color: var(--p)
 	}
 
-	.pd-carousel .item {
-		height: 340px;
+	.pd-hero-price-note {
+		font-size: 12px;
+		color: var(--tx3)
+	}
+
+	.pd-hero-div {
+		height: 1px;
+		background: var(--bdr);
+		margin: 20px 0
+	}
+
+	.pd-quick-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 10px;
+		margin-bottom: 20px
+	}
+
+	.pd-qcell {
+		background: var(--bg);
+		border-radius: 8px;
+		padding: 10px 14px;
+		border: 1px solid var(--bdr)
+	}
+
+	.pd-qlbl {
+		font-size: 11px;
+		color: var(--tx3);
+		margin-bottom: 3px
+	}
+
+	.pd-qval {
+		font-size: 13px;
+		font-weight: 600;
+		color: var(--tx)
+	}
+
+	.pd-status-row {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		padding: 12px 16px;
+		border-radius: 9px;
+		font-size: 13px;
+		font-weight: 600
+	}
+
+	.pd-status-row.genuine {
+		background: var(--ok-bg);
+		color: var(--ok);
+		border: 1px solid var(--ok-bdr)
+	}
+
+	.pd-status-row.suspect {
+		background: var(--err-bg);
+		color: var(--err);
+		border: 1px solid var(--err-bdr)
+	}
+
+	/* ── Carousel ── */
+	.pd-car-inner {
+		width: 100%;
+		height: 300px;
+		position: relative;
+		overflow: hidden
+	}
+
+	.pd-slide {
+		position: absolute;
+		inset: 0;
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		opacity: 0;
+		transition: opacity .3s;
+		pointer-events: none
 	}
 
-	.pd-carousel-image {
+	.pd-slide.pd-on {
+		opacity: 1;
+		pointer-events: auto
+	}
+
+	.pd-slide img {
 		max-width: 100%;
 		max-height: 100%;
-		object-fit: contain;
-		transition: .4s;
+		object-fit: contain
 	}
 
-	.pd-carousel-image:hover {
-		transform: scale(1.05);
+	.pd-no-img {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 8px;
+		color: var(--p);
+		opacity: .25
 	}
 
-	.pd-carousel .carousel-control {
-		width: 44px;
-		height: 44px;
+	.pd-no-img i {
+		font-size: 56px
+	}
+
+	.pd-no-img span {
+		font-size: 12px
+	}
+
+	.pd-car-nav {
+		position: absolute;
+		bottom: 12px;
+		left: 0;
+		right: 0;
+		display: flex;
+		justify-content: center;
+		gap: 6px;
+		z-index: 2
+	}
+
+	.pd-car-dot {
+		width: 7px;
+		height: 7px;
 		border-radius: 50%;
-		background: rgba(0, 0, 0, .65);
-		top: 50%;
-		transform: translateY(-50%);
+		background: rgba(122, 13, 125, .25);
+		border: none;
+		cursor: pointer;
+		padding: 0;
+		transition: background .2s
 	}
 
-	.pd-carousel .carousel-control.left {
-		left: 12px;
-	}
-
-	.pd-carousel .carousel-control.right {
-		right: 12px;
-	}
-
-	/* =========================
-   PRODUCT HERO
-========================= */
-
-	.pd-product-hero {
-		text-align: center;
-		padding: 10px 20px 20px;
-	}
-
-	.pd-product-hero h2 {
-		font-size: 28px;
-		font-weight: 700;
-		color: var(--text);
-		margin-bottom: 5px;
-	}
-
-	.pd-product-hero p {
-		color: var(--muted);
-	}
-
-	/* =========================
-   STATUS
-========================= */
-
-	.pd-status-wrap {
-		text-align: center;
-		margin-bottom: 22px;
-	}
-
-	.pd-status {
+	.pd-claim-btn {
 		display: inline-flex;
 		align-items: center;
 		gap: 8px;
-		padding: 10px 28px;
-		border-radius: 50px;
-		font-size: 14px;
-		font-weight: 700;
-	}
-
-	.pd-status-genuine {
-		background: #e8f8ef;
-		color: var(--success);
-		border: 1px solid #cbeed8;
-	}
-
-	.pd-status-suspicious {
-		background: #fff0f0;
-		color: var(--danger);
-		border: 1px solid #ffd0d5;
-	}
-
-	/* =========================
-   TABS
-========================= */
-
-	.pd-tabs {
-		display: flex;
-		justify-content: center;
-		gap: 12px;
-		border: none;
-		margin: 20px;
-	}
-
-	.pd-tabs>li {
-		float: none;
-	}
-
-	.pd-tabs>li>a {
-		border: none !important;
-		border-radius: 50px;
-		padding: 12px 26px;
-		background: #fff;
-		color: #555;
-		font-weight: 600;
-		transition: .3s;
-		box-shadow: 0 3px 10px rgba(0, 0, 0, .05);
-	}
-
-	.pd-tabs>li.active>a {
-		background: linear-gradient(135deg, #000, #2e2e2e) !important;
-		color: #fff !important;
-	}
-
-	.pd-tabs>li>a:hover {
-		background: #f1f1f1;
-	}
-
-	/* =========================
-   PRODUCT INFORMATION CARD
-========================= */
-
-	.pd-list {
-		padding: 0 15px 20px;
-	}
-
-	.pd-info-card {
-		background: #fff;
-		border-radius: 20px;
-		overflow: hidden;
-
-		box-shadow:
-			0 12px 35px rgba(0, 0, 0, .08);
-
-		border: 1px solid rgba(0, 0, 0, .05);
-
-		margin-bottom: 25px;
-	}
-
-	/* Card Header */
-
-	.pd-card-header {
-		padding: 18px 24px;
-		background: linear-gradient(135deg, #000, #2a2a2a);
-		color: #fff;
-	}
-
-	.pd-card-header h3 {
-		margin: 0;
-		font-size: 18px;
-		font-weight: 700;
-	}
-
-	.pd-card-header i {
-		margin-right: 10px;
-	}
-
-	/* Rows */
-
-	.pd-row {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-
-		padding: 18px 24px;
-
-		border-bottom: 1px solid #ececec;
-
-		transition: .25s ease;
-	}
-
-	.pd-row:last-child {
-		border-bottom: none;
-	}
-
-	.pd-row:nth-child(even) {
-		background: #fafafa;
-	}
-
-	.pd-row:hover {
-		background: #f7f7f7;
-	}
-
-	.pd-row-label {
-		width: 40%;
-		color: #666;
 		font-size: 14px;
 		font-weight: 600;
-		display: flex;
-		align-items: center;
+		padding: 10px 20px;
+		border-radius: 9px;
+		border: 1px solid var(--p-bdr);
+		background: var(--p-bg);
+		color: var(--p);
+		cursor: pointer;
+		font-family: inherit;
+		transition: opacity .15s;
 	}
 
-	.pd-row-label i {
-		width: 38px;
-		height: 38px;
-		line-height: 38px;
-		text-align: center;
-
-		border-radius: 10px;
-
-		background: #f3f3f3;
-		color: var(--accent);
-
-		margin-right: 12px;
-		transition: .25s;
+	.pd-claim-btn:hover {
+		opacity: .8
+	}
+					
+	.pd-car-dot.pd-on {
+		background: var(--p)
 	}
 
-	.pd-row:hover .pd-row-label i {
-		background: var(--accent);
-		color: #fff;
-	}
-
-	.pd-row-value {
-		width: 60%;
-		text-align: right;
-		color: #222;
-		font-weight: 700;
-		font-size: 15px;
-	}
-
-	.pd-row-price {
-		color: var(--accent);
-		font-size: 20px;
-		font-weight: 800;
-	}
-
-	/* =========================
-   BADGES
-========================= */
-
-	.pd-badge-success {
-		background: #e8f8ef;
-		color: var(--success);
-		border: 1px solid #cbeed8;
-		padding: 6px 14px;
-		border-radius: 30px;
-		font-size: 13px;
-		font-weight: 700;
-	}
-
-	.pd-badge-danger {
-		background: #fff0f0;
-		color: var(--danger);
-		border: 1px solid #ffd0d5;
-		padding: 6px 14px;
-		border-radius: 30px;
-		font-size: 13px;
-		font-weight: 700;
-	}
-
-	/* =========================
-   TIMELINE
-========================= */
-
-	.pd-timeline {
-		padding: 20px;
-	}
-
-	.pd-timeline-item {
-		display: flex;
-		margin-bottom: 20px;
-		position: relative;
-	}
-
-	.pd-timeline-dot {
-		width: 14px;
-		height: 14px;
-		background: #000;
+	.pd-car-arr {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 30px;
+		height: 30px;
 		border-radius: 50%;
-		margin-top: 12px;
-		flex-shrink: 0;
+		background: rgba(255, 255, 255, .9);
+		border: 1px solid var(--bdr2);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 13px;
+		color: var(--tx2);
+		cursor: pointer;
+		z-index: 2
 	}
 
-	.pd-timeline-content {
-		margin-left: 15px;
-		padding: 15px;
-		background: #fff;
+	.pd-car-arr.prev {
+		left: 10px
+	}
+
+	.pd-car-arr.next {
+		right: 10px
+	}
+
+	/* ── Stat bar ── */
+	.pd-statbar {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		background: var(--surf);
+		border: 1px solid var(--bdr);
 		border-radius: 14px;
-		width: 100%;
-
-		border-left: 4px solid var(--accent);
-
-		box-shadow:
-			0 4px 14px rgba(0, 0, 0, .05);
+		overflow: hidden;
+		margin-bottom: 24px
 	}
 
-	.pd-timeline-action {
+	.pd-topbar-title {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		font-size: 20px;
 		font-weight: 700;
 		color: #111;
 	}
 
-	.pd-timeline-meta {
-		color: #777;
+	.pd-brand-logo {
+		height: 40px;
+		width: auto;
+		max-width: 120px;
+		object-fit: contain;
+	}
+
+	.pd-statcell {
+		padding: 20px 24px;
+		text-align: center;
+		border-right: 1px solid var(--bdr)
+	}
+
+	.pd-statcell:last-child {
+		border-right: none
+	}
+
+	.pd-stat-num {
+		font-size: 26px;
+		font-weight: 700;
+		color: var(--p);
+		line-height: 1;
+		margin-bottom: 4px
+	}
+
+	.pd-stat-lbl {
 		font-size: 12px;
-		margin-top: 5px;
+		color: var(--tx3)
 	}
 
-	/* =========================
-   VIDEO
-========================= */
+	/* ── Tabs ── */
+	.pd-tabs-nav {
+		display: flex;
+		gap: 2px;
+		border-bottom: 1px solid var(--bdr);
+		margin-bottom: 24px;
+		background: var(--surf);
+		border-radius: 14px 14px 0 0;
+		padding: 0 8px;
+		overflow-x: auto
+	}
 
-	video {
+	.pd-tabs-nav::-webkit-scrollbar {
+		display: none
+	}
+
+	.pd-tab-link {
+		padding: 14px 22px;
+		font-size: 14px;
+		font-weight: 500;
+		color: var(--tx3);
+		border: none;
+		background: none;
+		cursor: pointer;
+		border-bottom: 2.5px solid transparent;
+		white-space: nowrap;
+		font-family: inherit;
+		transition: color .15s, border-color .15s;
+		margin-bottom: -1px
+	}
+
+	.pd-tab-link:focus {
+		outline: none
+	}
+
+	.pd-tab-link:hover {
+		color: var(--tx2)
+	}
+
+	.pd-tab-link.pd-on {
+		color: var(--p);
+		border-bottom-color: var(--p);
+		font-weight: 600
+	}
+
+	.pd-tab-panel {
+		display: none
+	}
+
+	.pd-tab-panel.pd-on {
+		display: block
+	}
+
+	/* ── Section title ── */
+	.pd-sec-title {
+		font-size: 11px;
+		font-weight: 600;
+		letter-spacing: .08em;
+		text-transform: uppercase;
+		color: var(--tx3);
+		margin-bottom: 12px;
+		padding-bottom: 10px;
+		border-bottom: 1px solid var(--bdr)
+	}
+
+	/* ── Field grid ── */
+	.pd-field-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1px;
+		background: var(--bdr);
+		border: 1px solid var(--bdr);
+		border-radius: 12px;
+		overflow: hidden;
+		margin-bottom: 24px
+	}
+
+	.pd-fcell {
+		background: var(--surf);
+		padding: 16px 20px
+	}
+
+	.pd-flbl {
+		display: flex;
+		align-items: center;
+		gap: 6px;
+		font-size: 11px;
+		color: var(--tx3);
+		margin-bottom: 5px
+	}
+
+	.pd-flbl i {
+		font-size: 13px;
+		color: var(--p);
+		opacity: .65
+	}
+
+	.pd-fval {
+		font-size: 14px;
+		font-weight: 600;
+		color: var(--tx)
+	}
+
+	.pd-fval.price {
+		font-size: 17px;
+		color: var(--p)
+	}
+
+	.pd-fval.ok {
+		color: var(--ok)
+	}
+
+	.pd-fval.err {
+		color: var(--err)
+	}
+
+	/* ── Journey ── */
+	.pd-journey-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+		gap: 14px;
+		margin-bottom: 24px
+	}
+
+	.pd-jcard {
+		background: var(--surf);
+		border: 1px solid var(--bdr);
+		border-radius: 12px;
+		padding: 18px 20px;
+		border-left: 3px solid var(--p)
+	}
+
+	.pd-jstep {
+		display: inline-block;
+		font-size: 10px;
+		font-weight: 700;
+		letter-spacing: .06em;
+		color: var(--p);
+		background: var(--p-bg);
+		border-radius: 20px;
+		padding: 3px 10px;
+		margin-bottom: 10px
+	}
+
+	.pd-jaction {
+		font-size: 14px;
+		font-weight: 700;
+		color: var(--tx);
+		margin-bottom: 8px
+	}
+
+	.pd-jmeta {
+		font-size: 12px;
+		color: var(--tx3);
+		line-height: 1.75
+	}
+
+	/* ── Description ── */
+	.pd-desc-card {
+		background: var(--surf);
+		border: 1px solid var(--bdr);
+		border-radius: 12px;
+		padding: 24px;
+		font-size: 14px;
+		color: var(--tx2);
+		line-height: 1.85;
+		margin-bottom: 20px
+	}
+
+	.pd-media-wrap {
+		background: var(--p-bg);
+		border: 1px solid var(--p-bdr);
+		border-radius: 12px;
+		overflow: hidden;
+		margin-bottom: 20px
+	}
+
+	.pd-media-wrap video {
 		width: 100%;
-		border-radius: 15px;
+		display: block
 	}
 
-	/* =========================
-   MOBILE
-========================= */
+	.pd-media-empty {
+		height: 90px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 8px;
+		font-size: 13px;
+		color: var(--p);
+		opacity: .5
+	}
 
-	@media(max-width:768px) {
+	/* ── Wallet ── */
+	.pd-wallet-card {
+		background: var(--surf);
+		border: 1px solid var(--bdr);
+		border-radius: 14px;
+		padding: 26px 30px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		max-width: 520px
+	}
 
-		.pd-header-title {
-			font-size: 18px;
+	.pd-wallet-lbl {
+		font-size: 12px;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 1.2px;
+		color: var(--tx3);
+		margin-bottom: 10px
+	}
+
+	.pd-wallet-amt {
+		font-size: 42px;
+		font-weight: 800;
+		line-height: 1;
+		letter-spacing: -1px;
+		color: var(--tx)
+	}
+
+	/* ── Footer ── */
+	.pd-foot-hint {
+		text-align: center;
+		font-size: 12px;
+		color: var(--tx3);
+		margin-top: 40px;
+		padding-top: 20px;
+		border-top: 1px solid var(--bdr);
+		line-height: 1.7
+	}
+
+	/* ── Responsive ── */
+	@media(max-width:900px) {
+		.pd-hero {
+			grid-template-columns: 1fr
 		}
 
-		.pd-carousel .carousel-inner,
-		.pd-carousel .item {
-			height: 260px;
+		.pd-hero-img {
+			border-right: none;
+			border-bottom: 1px solid var(--bdr)
 		}
 
-		.pd-tabs {
-			gap: 8px;
-			overflow: auto;
-			white-space: nowrap;
+		.pd-hero-info {
+			padding: 20px
 		}
 
-		.pd-tabs>li>a {
-			padding: 10px 16px;
-			font-size: 13px;
+		.pd-field-grid {
+			grid-template-columns: repeat(2, 1fr)
 		}
 
-		.pd-row {
-			flex-direction: column;
-			align-items: flex-start;
-			padding: 15px;
+		.pd-wrap {
+			padding: 20px 20px 40px
 		}
 
-		.pd-row-label {
-			width: 100%;
-			margin-bottom: 8px;
+		.pd-topbar {
+			padding: 0 20px
+		}
+	}
+
+	@media(max-width:600px) {
+		.pd-field-grid {
+			grid-template-columns: 1fr
 		}
 
-		.pd-row-value {
-			width: 100%;
-			text-align: left;
+		.pd-statbar {
+			grid-template-columns: 1fr
 		}
 
-		.pd-product-hero h2 {
-			font-size: 22px;
+		.pd-statcell {
+			border-right: none;
+			border-bottom: 1px solid var(--bdr)
+		}
+
+		.pd-statcell:last-child {
+			border-bottom: none
+		}
+
+		.pd-wallet-card {
+			padding: 22px 20px;
+			max-width: 100%
+		}
+
+		.pd-wallet-amt {
+			font-size: 34px
+		}
+
+		.pd-tabs-nav {
+			border-radius: 0
 		}
 	}
 </style>
-@php
-$fieldPermissions = json_decode($permissions['field_name']) ?? [];
-@endphp
 
-<!-- TOP BAR -->
-<div class="pd-header">
-	<a href="javascript:history.back()" class="pd-back"><i class="fa fa-arrow-left"></i></a>
-	<h2 class="pd-header-title">Product Details</h2>
-</div>
+<div class="pd-page" id="pd-page-root">
 
-<!-- IMAGE CAROUSEL -->
-@php
-$carouselImages = [];
+	{{-- TOPBAR --}}
+	<div class="pd-topbar">
 
-if(!empty($fieldPermissions) && in_array('Product Image', $fieldPermissions) && !empty($product['image'])) {
-$carouselImages[] = $product['image'];
-}
-
-if(!empty($fieldPermissions) && in_array('Label Image', $fieldPermissions) && !empty($product['label_image'])) {
-$carouselImages[] = $product['label_image'];
-}
-
-if(!empty($product['gallery']) && is_array($product['gallery'])) {
-foreach($product['gallery'] as $img) {
-if(!empty($img)) {
-$carouselImages[] = $img;
-}
-}
-}
-@endphp
-
-@if(!empty($carouselImages))
-<div id="pd-carousel" class="carousel slide pd-carousel" data-ride="carousel">
-	<div class="carousel-inner">
-		@foreach($carouselImages as $index => $img)
-		<div class="item @if($index == 0) active @endif">
-			<a href="javascript:void(0)" class="image-link" data-src="{{ $img }}">
-				<img
-					src="{{ $img }}"
-					class="pd-carousel-image"
-					onerror="this.onerror=null;this.src='{{ asset('web/images/no-image.png') }}';">
-			</a>
-		</div>
-		@endforeach
-	</div>
-
-	@if(count($carouselImages) > 1)
-	<a class="left carousel-control" href="#pd-carousel" data-slide="prev">
-		<i class="fa fa-chevron-left"></i>
-	</a>
-	<a class="right carousel-control" href="#pd-carousel" data-slide="next">
-		<i class="fa fa-chevron-right"></i>
-	</a>
-
-	<ol class="carousel-indicators">
-		@foreach($carouselImages as $index => $img)
-		<li data-target="#pd-carousel" data-slide-to="{{ $index }}" @if($index==0) class="active" @endif></li>
-		@endforeach
-	</ol>
-	@endif
-</div>
-@endif
-
-<!-- STATUS BADGE -->
-<div class="pd-status-wrap">
-	<span class="pd-status @if($product['genuine_product'] == true) pd-status-genuine @else pd-status-suspicious @endif">
-		@if ($product['genuine_product'] == true)
-		Genuine
-		@else
-		Suspicious
-		@endif
-	</span>
-</div>
-
-<!-- TABS -->
-<ul class="nav nav-tabs pd-tabs">
-	<li class="active"><a data-toggle="tab" href="#details">Details</a></li>
-	<li><a data-toggle="tab" href="#description">Description</a></li>
-	<li><a data-toggle="tab" href="#wallet">Wallet</a></li>
-</ul>
-
-<div class="tab-content">
-
-	<!-- DETAILS TAB -->
-	<div id="details" class="tab-pane fade in active">
-		<div class="pd-list">
-			<div class="pd-info-card">
-
-				<div class="pd-card-header">
-					<h3>
-						<i class="fa fa-cube"></i>
-						Product Information
-					</h3>
-				</div>
-				@if(!empty($fieldPermissions) && in_array('Product Name', $fieldPermissions))
-				<div class="pd-row">
-					<div class="pd-row-label"><i class="fa fa-tag"></i> Product Name</div>
-					<div class="pd-row-value">{{ $product['name'] ?? '' }}</div>
-				</div>
-				@endif
-
-				@if(!empty($fieldPermissions) && in_array('Brand', $fieldPermissions))
-				<div class="pd-row">
-					<div class="pd-row-label"><i class="fa fa-building"></i> Brand</div>
-					<div class="pd-row-value">{{ $product['brand'] ?? '' }}</div>
-				</div>
-				@endif
-
-				@if(!empty($fieldPermissions) && in_array('Manufacturer', $fieldPermissions))
-				<div class="pd-row">
-					<div class="pd-row-label"><i class="fa fa-briefcase"></i> Manufacturer</div>
-					<div class="pd-row-value">{{ $product['manufacturer'] ?? '' }}</div>
-				</div>
-				@endif
-
-				@if(!empty($fieldPermissions) && in_array('Price', $fieldPermissions))
-				<div class="pd-row">
-					<div class="pd-row-label"><i class="fa fa-dollar"></i> Price</div>
-					<div class="pd-row-value pd-row-price">{{ $product['price'] ?? '' }}</div>
-				</div>
-				@endif
-
-				@if(!empty($fieldPermissions) && in_array('Tax Class', $fieldPermissions))
-				<div class="pd-row">
-					<div class="pd-row-label"><i class="fa fa-credit-card"></i> Tax Class</div>
-					<div class="pd-row-value">{{ $product['tax_class'] ?? '' }}</div>
-				</div>
-				@endif
-
-				@if(!empty($fieldPermissions) && in_array('Batch Code', $fieldPermissions))
-				<div class="pd-row">
-					<div class="pd-row-label"><i class="fa fa-barcode"></i> Batch Code</div>
-					<div class="pd-row-value">{{ $product['batch_code'] ?? '' }}</div>
-				</div>
-				@endif
-
-				@if(!empty($fieldPermissions) && in_array('Manufactured on', $fieldPermissions))
-				<div class="pd-row">
-					<div class="pd-row-label"><i class="fa fa-calendar"></i> Manufactured on</div>
-					<div class="pd-row-value">{{ $product['manufactured_on'] ?? '' }}</div>
-				</div>
-				@endif
-
-				@if(!empty($fieldPermissions) && in_array('Expiry on', $fieldPermissions))
-				<div class="pd-row">
-					<div class="pd-row-label"><i class="fa fa-calendar-times-o"></i> Expiry on</div>
-					<div class="pd-row-value">{{ $product['expiry_on'] ?? '' }}</div>
-				</div>
-				@endif
-
-				@if(!empty($fieldPermissions) && in_array('Genuine Product', $fieldPermissions))
-				<div class="pd-row">
-					<div class="pd-row-label"><i class="fa fa-check-circle"></i> Genuine Product</div>
-					<div class="pd-row-value">{{ $product['genuine_product'] ? 'Yes' : 'No' }}</div>
-				</div>
-				@endif
-
-				@if(!empty($fieldPermissions) && in_array('Scan Counts', $fieldPermissions))
-				<div class="pd-row">
-					<div class="pd-row-label"><i class="fa fa-qrcode"></i> Scan Counts</div>
-					<div class="pd-row-value">{{ $product['scan_count'] ?? '' }}</div>
-				</div>
-				@endif
-
-				@if(!empty($fieldPermissions) && in_array('Last Scanned', $fieldPermissions))
-				<div class="pd-row">
-					<div class="pd-row-label"><i class="fa fa-clock-o"></i> Last Scanned</div>
-					<div class="pd-row-value">{{ $product['last_scanned'] ?? '' }}</div>
-				</div>
-				@endif
-
-				@if(!empty($fieldPermissions) && in_array('Product Journey', $fieldPermissions))
-				@if(!empty($journey))
-				<div class="pd-row pd-row-block">
-					<div class="pd-row-label"><i class="fa fa-history"></i> Product Journey</div>
-					<div class="pd-row-value-block">
-						<div class="pd-timeline">
-							@foreach($journey as $detail)
-							<div class="pd-timeline-item">
-								<div class="pd-timeline-dot"></div>
-								<div class="pd-timeline-content">
-									<div class="pd-timeline-action">{{ ucfirst($detail['action'] ?? '-') }}</div>
-									<div class="pd-timeline-meta">Scanned at: {{ $detail['scanned_at'] ?? '' }}</div>
-									<div class="pd-timeline-meta">Scanned by: {{ $detail['scanned_by'] ?? '' }}</div>
-								</div>
-							</div>
-							@endforeach
-						</div>
-					</div>
-				</div>
-				@endif
-				@endif
-
-			</div>
-		</div>
-	</div>
-
-	<!-- DESCRIPTION TAB -->
-	<div id="description" class="tab-pane fade">
-		<div class="pd-list">
-
-			@if(!empty($fieldPermissions) && in_array('Description', $fieldPermissions))
-			<div class="pd-row pd-row-block">
-				<div class="pd-row-label"><i class="fa fa-align-left"></i> Description</div>
-				<div class="pd-row-value-block">{!! $product['html_description'] ?? '' !!}</div>
-			</div>
+		<div class="pd-topbar-title">
+			@if(!empty($product['logo']))
+			<img src="{{ $product['logo'] }}" alt="" class="pd-brand-logo">
 			@endif
 
-			@if(!empty($fieldPermissions) && in_array('Media', $fieldPermissions))
-			<div class="pd-row pd-row-block">
-				<div class="pd-row-label"><i class="fa fa-video-camera"></i> Media</div>
-				<div class="pd-row-value-block">
-					@if ($product['media'])
-					<video width="100%" height="200" controls style="max-width:300px; border-radius:8px;">
-						<source src="{{ $product['media'] }}" type="video/mp4">
-					</video>
-					@else
-					NA
+			<span>{{ $product['brand'] ?? '--' }}</span>
+		</div>
+		<div class="pd-topbar-pill {{ $isGenuine ? 'genuine' : 'suspect' }}">
+			<i class="fa fa-{{ $isGenuine ? 'shield' : 'exclamation-triangle' }}"></i>
+			{{ $isGenuine ? 'Genuine Product' : 'Suspicious' }}
+		</div>
+	</div>
+
+	<div class="pd-wrap">
+
+		{{-- ═══ HERO ═══ --}}
+		<div class="pd-hero">
+
+			{{-- Image / Carousel --}}
+			<div class="pd-hero-img">
+				@if(count($carouselImages) > 0)
+				<div class="pd-car-inner" id="pd-car">
+					@foreach($carouselImages as $i => $img)
+					<div class="pd-slide {{ $i === 0 ? 'pd-on' : '' }}">
+						<img src="{{ $img }}"
+							alt="Product image {{ $i + 1 }}"
+							onerror="this.onerror=null;this.src='{{ asset('web/images/no-image.png') }}';">
+					</div>
+					@endforeach
+				</div>
+				@if(count($carouselImages) > 1)
+				<button class="pd-car-arr prev" onclick="pdCarMove(-1)" aria-label="Previous">
+					<i class="fa fa-chevron-left"></i>
+				</button>
+				<button class="pd-car-arr next" onclick="pdCarMove(1)" aria-label="Next">
+					<i class="fa fa-chevron-right"></i>
+				</button>
+				<div class="pd-car-nav">
+					@foreach($carouselImages as $i => $img)
+					<button class="pd-car-dot {{ $i === 0 ? 'pd-on' : '' }}"
+						onclick="pdCarGo({{ $i }})"
+						aria-label="Image {{ $i + 1 }}"></button>
+					@endforeach
+				</div>
+				@endif
+				@else
+				<div class="pd-no-img">
+					<i class="fa fa-image"></i>
+					<span>No image</span>
+				</div>
+				@endif
+			</div>
+
+			{{-- Info --}}
+			<div class="pd-hero-info">
+				@if(!empty($fieldPermissions) && in_array('Manufacturer', $fieldPermissions) && !empty($product['manufacturer']))
+				<div class="pd-hero-mfr">{{ $product['manufacturer'] }}</div>
+				@endif
+
+				@if(!empty($fieldPermissions) && in_array('Product Name', $fieldPermissions) && !empty($product['name']))
+				<div class="pd-hero-name">{{ $product['name'] }}</div>
+				@endif
+
+				@if(!empty($fieldPermissions) && in_array('Price', $fieldPermissions) && !empty($product['price']))
+				<div class="pd-hero-price-row">
+					<div class="pd-hero-price">{{ $product['price'] }}</div>
+					<div class="pd-hero-price-note">MRP incl. taxes</div>
+				</div>
+				@endif
+
+				<div class="pd-hero-div"></div>
+
+				<div class="pd-quick-grid">
+					@if(!empty($fieldPermissions) && in_array('Brand', $fieldPermissions))
+					<div class="pd-qcell">
+						<div class="pd-qlbl">Brand</div>
+						<div class="pd-qval">{{ $product['brand'] ?? '—' }}</div>
+					</div>
+					@endif
+					@if(!empty($fieldPermissions) && in_array('Batch Code', $fieldPermissions))
+					<div class="pd-qcell">
+						<div class="pd-qlbl">Batch Code</div>
+						<div class="pd-qval">{{ $product['batch_code'] ?? '—' }}</div>
+					</div>
+					@endif
+					@if(!empty($fieldPermissions) && in_array('Manufactured on', $fieldPermissions))
+					<div class="pd-qcell">
+						<div class="pd-qlbl">Manufactured</div>
+						<div class="pd-qval">{{ $product['manufactured_on'] ?? '—' }}</div>
+					</div>
+					@endif
+					@if(!empty($fieldPermissions) && in_array('Expiry on', $fieldPermissions))
+					<div class="pd-qcell">
+						<div class="pd-qlbl">Expires</div>
+						<div class="pd-qval">{{ $product['expiry_on'] ?? '—' }}</div>
+					</div>
 					@endif
 				</div>
-			</div>
-			@endif
 
-			@if(empty($fieldPermissions) || (!in_array('Description', $fieldPermissions) && !in_array('Media', $fieldPermissions)))
-			<div class="pd-row">
-				<div class="pd-row-value">NA</div>
-			</div>
-			@endif
-
-		</div>
-	</div>
-
-	<!-- WALLET TAB -->
-	<div id="wallet" class="tab-pane fade">
-		<div class="pd-list">
-			<div class="pd-row">
-				<div class="pd-row-label"><i class="fa fa-wallet"></i> Wallet Balance</div>
-				<div class="pd-row-value">{{ $wallet_balance ?? '0' }}</div>
+				<div class="pd-status-row {{ $isGenuine ? 'genuine' : 'suspect' }}">
+					<i class="fa fa-{{ $isGenuine ? 'check-circle' : 'times-circle' }}"></i>
+					{{ $isGenuine ? 'This product is verified genuine.' : 'This product appears suspicious. Please report it.' }}
+				</div>
 			</div>
 		</div>
-	</div>
 
-</div>
+		{{-- ═══ STAT BAR ═══ --}}
+		@php
+		$showStatBar = !empty($fieldPermissions) && (
+		in_array('Scan Counts', $fieldPermissions) ||
+		in_array('Last Scanned', $fieldPermissions) ||
+		in_array('Genuine Product', $fieldPermissions)
+		);
+		@endphp
+		@if($showStatBar)
+		<div class="pd-statbar">
+			@if(in_array('Scan Counts', $fieldPermissions))
+			<div class="pd-statcell">
+				<div class="pd-stat-num">{{ $product['scan_count'] ?? '0' }}</div>
+				<div class="pd-stat-lbl">Total Scans</div>
+			</div>
+			@endif
+			@if(in_array('Last Scanned', $fieldPermissions))
+			<div class="pd-statcell">
+				<div class="pd-stat-num" style="font-size:15px;padding-top:6px">{{ $product['last_scanned'] ?? '—' }}</div>
+				<div class="pd-stat-lbl">Last Scanned</div>
+			</div>
+			@endif
+			@if(in_array('Genuine Product', $fieldPermissions))
+			<div class="pd-statcell">
+				<div class="pd-stat-num" style="font-size:15px;padding-top:6px;color:{{ $isGenuine ? 'var(--ok)' : 'var(--err)' }}">
+					{{ $isGenuine ? 'Genuine' : 'Suspicious' }}
+				</div>
+				<div class="pd-stat-lbl">Authenticity</div>
+			</div>
+			@endif
+		</div>
+		@endif
+		{{-- ═══ TABS NAV ═══ --}}
+		<div class="pd-tabs-nav" id="pd-tabs-nav">
+			<button class="pd-tab-link pd-on" data-pd-tab="details">
+				<i class="fa fa-cube"></i> Details
+			</button>
+			@if($hasJourney)
+			<button class="pd-tab-link" data-pd-tab="journey">
+				<i class="fa fa-history"></i> Journey
+			</button>
+			@endif
+			<button class="pd-tab-link" data-pd-tab="description">
+				<i class="fa fa-align-left"></i> Description
+			</button>
+			<button class="pd-tab-link" data-pd-tab="wallet">
+				<i class="fa fa-wallet"></i> Wallet
+			</button>
+
+			{{-- Report button sits at the end of the tab bar --}}
+			<button class="pd-tab-link pd-report-btn" style="margin-left:auto;color:var(--err);"
+				data-product="{{ $product['id'] ?? '' }}"
+				data-batch="{{ $product['batch_code'] ?? '' }}">
+				<i class="fa fa-flag"></i> Report
+			</button>
+		</div>
+
+		{{-- ═══ DETAILS PANEL ═══ --}}
+		<div id="pd-tab-details" class="pd-tab-panel pd-on">
+			<div class="pd-sec-title">Product Information</div>
+			<div class="pd-field-grid">
+				@if(!empty($fieldPermissions) && in_array('Product Name', $fieldPermissions))
+				<div class="pd-fcell">
+					<div class="pd-flbl"><i class="fa fa-tag"></i> Product Name</div>
+					<div class="pd-fval">{{ $product['name'] ?? '—' }}</div>
+				</div>
+				@endif
+				@if(!empty($fieldPermissions) && in_array('Brand', $fieldPermissions))
+				<div class="pd-fcell">
+					<div class="pd-flbl"><i class="fa fa-building"></i> Brand</div>
+					<div class="pd-fval">{{ $product['brand'] ?? '—' }}</div>
+				</div>
+				@endif
+				@if(!empty($fieldPermissions) && in_array('Manufacturer', $fieldPermissions))
+				<div class="pd-fcell">
+					<div class="pd-flbl"><i class="fa fa-briefcase"></i> Manufacturer</div>
+					<div class="pd-fval">{{ $product['manufacturer'] ?? '—' }}</div>
+				</div>
+				@endif
+				@if(!empty($fieldPermissions) && in_array('Price', $fieldPermissions))
+				<div class="pd-fcell">
+					<div class="pd-flbl"><i class="fa fa-dollar"></i> Price</div>
+					<div class="pd-fval price">{{ $product['price'] ?? '—' }}</div>
+				</div>
+				@endif
+				@if(!empty($fieldPermissions) && in_array('Tax Class', $fieldPermissions))
+				<div class="pd-fcell">
+					<div class="pd-flbl"><i class="fa fa-credit-card"></i> Tax Class</div>
+					<div class="pd-fval">{{ $product['tax_class'] ?? '—' }}</div>
+				</div>
+				@endif
+				@if(!empty($fieldPermissions) && in_array('Batch Code', $fieldPermissions))
+				<div class="pd-fcell">
+					<div class="pd-flbl"><i class="fa fa-barcode"></i> Batch Code</div>
+					<div class="pd-fval">{{ $product['batch_code'] ?? '—' }}</div>
+				</div>
+				@endif
+				@if(!empty($fieldPermissions) && in_array('Manufactured on', $fieldPermissions))
+				<div class="pd-fcell">
+					<div class="pd-flbl"><i class="fa fa-calendar"></i> Manufactured On</div>
+					<div class="pd-fval">{{ $product['manufactured_on'] ?? '—' }}</div>
+				</div>
+				@endif
+				@if(!empty($fieldPermissions) && in_array('Expiry on', $fieldPermissions))
+				<div class="pd-fcell">
+					<div class="pd-flbl"><i class="fa fa-calendar-times-o"></i> Expiry On</div>
+					<div class="pd-fval">{{ $product['expiry_on'] ?? '—' }}</div>
+				</div>
+				@endif
+				@if(!empty($fieldPermissions) && in_array('Genuine Product', $fieldPermissions))
+				<div class="pd-fcell">
+					<div class="pd-flbl"><i class="fa fa-check-circle"></i> Genuine Product</div>
+					<div class="pd-fval {{ $isGenuine ? 'ok' : 'err' }}">{{ $isGenuine ? 'Yes' : 'No' }}</div>
+				</div>
+				@endif
+				@if(!empty($fieldPermissions) && in_array('Scan Counts', $fieldPermissions))
+				<div class="pd-fcell">
+					<div class="pd-flbl"><i class="fa fa-qrcode"></i> Scan Count</div>
+					<div class="pd-fval">{{ $product['scan_count'] ?? '—' }}</div>
+				</div>
+				@endif
+				@if(!empty($fieldPermissions) && in_array('Last Scanned', $fieldPermissions))
+				<div class="pd-fcell">
+					<div class="pd-flbl"><i class="fa fa-clock-o"></i> Last Scanned</div>
+					<div class="pd-fval">{{ $product['last_scanned'] ?? '—' }}</div>
+				</div>
+				@endif
+			</div>
+		</div>
+
+		{{-- ═══ JOURNEY PANEL ═══ --}}
+		@if($hasJourney)
+		<div id="pd-tab-journey" class="pd-tab-panel">
+			<div class="pd-sec-title">Product Journey</div>
+			<div class="pd-journey-grid">
+				@foreach($journey as $idx => $detail)
+				<div class="pd-jcard">
+					<div class="pd-jstep">Step {{ $idx + 1 }}</div>
+					<div class="pd-jaction">{{ ucfirst($detail['action'] ?? '—') }}</div>
+					<div class="pd-jmeta">
+						<i class="fa fa-clock-o"></i> {{ $detail['scanned_at'] ?? '—' }}<br>
+						<i class="fa fa-user"></i> {{ $detail['scanned_by'] ?? '—' }}
+					</div>
+				</div>
+				@endforeach
+			</div>
+		</div>
+		@endif
+
+		{{-- ═══ DESCRIPTION PANEL ═══ --}}
+		<div id="pd-tab-description" class="pd-tab-panel">
+			@if($hasDescription)
+			<div class="pd-sec-title">Description</div>
+			<div class="pd-desc-card">{!! $product['html_description'] ?? '<em>No description available.</em>' !!}</div>
+			@endif
+			@if($hasMedia)
+			<div class="pd-sec-title">Media</div>
+			<div class="pd-media-wrap">
+				@if(!empty($product['media']))
+				<video controls>
+					<source src="{{ $product['media'] }}" type="video/mp4">
+					Your browser does not support video playback.
+				</video>
+				@else
+				<div class="pd-media-empty">
+					<i class="fa fa-video-camera"></i> No media attached
+				</div>
+				@endif
+			</div>
+			@endif
+			@if(!$hasDescription && !$hasMedia)
+			<p style="color:var(--tx3);font-size:14px;text-align:center;padding:40px 0">No description available.</p>
+			@endif
+		</div>
+
+		{{-- ═══ WALLET PANEL ═══ --}}
+		<div id="pd-tab-wallet" class="pd-tab-panel">
+			<div class="pd-sec-title">Wallet</div>
+			<div class="pd-wallet-card">
+				<div>
+					<div class="pd-wallet-lbl">AVAILABLE BALANCE</div>
+					<div class="pd-wallet-amt" id="wallet_balance">{{ $wallet_balance ?? '0' }}</div>
+				</div>
+			</div>
+			<button class="pd-claim-btn" style="margin-top:16px;">
+				<i class="fa fa-gift"></i> Claim Reward
+			</button>
+		</div>
+
+		<div class="pd-foot-hint">
+			Your location may be used to verify product journey and detect counterfeit activity.
+		</div>
+
+	</div>{{-- /.pd-wrap --}}
+</div>{{-- /.pd-page --}}
 
 @endif

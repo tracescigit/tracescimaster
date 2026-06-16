@@ -185,6 +185,27 @@
       });
     });
   </script>
+  <script>
+    document.addEventListener('click', function(e) {
+      var tab = e.target.closest('[data-pd-tab]');
+      if (!tab) return;
+
+      var root = document.getElementById('pd-page-root');
+      if (!root) return;
+
+      root.querySelectorAll('.pd-tab-link').forEach(function(t) {
+        t.classList.remove('pd-on');
+      });
+      root.querySelectorAll('.pd-tab-panel').forEach(function(p) {
+        p.classList.remove('pd-on');
+      });
+
+      tab.classList.add('pd-on');
+
+      var panel = document.getElementById('pd-tab-' + tab.getAttribute('data-pd-tab'));
+      if (panel) panel.classList.add('pd-on');
+    });
+  </script>
   @yield('script')
 </body>
 

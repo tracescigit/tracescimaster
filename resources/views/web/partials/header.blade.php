@@ -72,7 +72,7 @@
           <span>tracesci.</span>
         </a>
         @else
-        <a href="#" class="menuzord-brand">
+        <a href="#" class="menuzord-brand" style="display: none;">
           <span class="text-white">{{ $brand }}</span>
         </a>
         @endif
