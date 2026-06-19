@@ -21,6 +21,18 @@
         outline: none;
     }
 
+    #notification-content {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 99999;
+        background: #fff;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, .15);
+        min-width: 320px;
+    }
+
     /* Active (LOGIN) */
     .auth-tabs .active {
         background: #1e1e1e;
@@ -84,47 +96,118 @@
 @section('script')
 <script>
     cash(function() {
-        async function reset() {
-            // Reset state
-            cash('#reset-form').find('.login__input').removeClass('border-theme-6')
-            cash('#reset-form').find('.login__input-error').html('')
 
-            // Post form
-            let email = cash('#email').val()
+        async function reset() {
+
+            // Reset validation state
+            cash('#reset-form').find('.login__input').removeClass('border-theme-6');
+            cash('#reset-form').find('.login__input-error').html('');
+
+            let email = cash('#email').val();
 
             // Loading state
-            cash('#btn-reset').html('<i data-loading-icon="oval" data-color="white" class="w-5 h-5 mx-auto"></i>').svgLoader()
-            await helper.delay(500)
+            cash('#btn-reset')
+                .html('<i data-loading-icon="oval" data-color="white" class="w-5 h-5 mx-auto"></i>')
+                .svgLoader();
 
-            axios.post(`forgot-password`, {
-                email: email
-            }).then(res => {
-                showNotification('success', 'Success !', res.data.message)
-                setTimeout(() => {
-                    window.location.href = "{{ url('/login') }}"
-                }, 2000)
-            }).catch(err => {
-                showNotification('error', 'Error !', err.response.data.message)
-                cash('#btn-reset').html('Submit')
+            await helper.delay(500);
 
-                if (err.response.data.errors) {
-                    for (const [key, val] of Object.entries(err.response.data.errors)) {
-                        cash(`#${key}`).addClass('border-theme-6')
-                        cash(`#error-${key}`).html(val)
+            axios.post('forgot-password', {
+                    email: email
+                })
+                .then(function(res) {
+
+                    cash('#btn-reset').html('Submit');
+
+                    // Show success notification
+                    showCustomNotification(
+                        'success',
+                        'Success!',
+                        res.data.message || 'Password reset link sent successfully.'
+                    );
+
+                    setTimeout(function() {
+                        window.location.href = "{{ url('/login') }}";
+                    }, 2000);
+
+                })
+                .catch(function(err) {
+
+                    cash('#btn-reset').html('Submit');
+
+                    let message = 'Something went wrong';
+
+                    if (err.response && err.response.data) {
+                        message = err.response.data.message || message;
                     }
-                }
-            })
+
+                    // Show error notification
+                    showCustomNotification(
+                        'error',
+                        'Error!',
+                        message
+                    );
+
+                    // Validation errors
+                    if (err.response &&
+                        err.response.data &&
+                        err.response.data.errors) {
+
+                        Object.entries(err.response.data.errors).forEach(([key, val]) => {
+
+                            cash(`#${key}`).addClass('border-theme-6');
+
+                            cash(`#error-${key}`).html(
+                                Array.isArray(val) ? val[0] : val
+                            );
+                        });
+                    }
+                });
+        }
+
+        function showCustomNotification(type, title, message) {
+
+            if (type === 'success') {
+                cash('.notification-icon').html(
+                    '<i class="text-theme-9" data-feather="check-circle"></i>'
+                );
+            } else {
+                cash('.notification-icon').html(
+                    '<i class="text-theme-6" data-feather="x-circle"></i>'
+                );
+            }
+
+            cash('.notification-message').html(title);
+            cash('.notification-content').html(message);
+
+            if (typeof feather !== 'undefined') {
+                feather.replace();
+            }
+
+            // Show notification
+            cash('#notification-content')
+                .removeClass('hidden')
+                .addClass('flex');
+
+            // Hide after 4 seconds
+            setTimeout(function() {
+                cash('#notification-content')
+                    .addClass('hidden')
+                    .removeClass('flex');
+            }, 4000);
         }
 
         cash('#reset-form').on('keyup', function(e) {
             if (e.keyCode === 13) {
-                reset()
+                reset();
             }
-        })
+        });
 
-        cash('#btn-reset').on('click', function() {
-            reset()
-        })
-    })
+        cash('#btn-reset').on('click', function(e) {
+            e.preventDefault();
+            reset();
+        });
+
+    });
 </script>
 @endsection

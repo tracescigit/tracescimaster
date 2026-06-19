@@ -89,6 +89,7 @@
                                         class="form-control form__input"
                                         placeholder="Mobile"
                                         value=""
+                                        minlength="10"
                                         maxlength="10"
                                         inputmode="numeric"
                                         oninput="this.value = this.value.replace(/\D/g, '').slice(0,10)">

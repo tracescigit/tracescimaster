@@ -78,6 +78,17 @@
     .border-theme-6 {
         border: 1px solid #dc3545 !important;
     }
+
+    .forgot-password-link {
+        color: #555;
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+
+    .forgot-password-link:hover {
+        color: #000;
+        text-decoration: underline;
+    }
 </style>
 <div class="container sm:px-10">
     <div class="block xl:grid grid-cols-2 gap-4">
@@ -111,7 +122,7 @@
                         <input id="remember-me" name="remember_me" type="checkbox" class="form-check-input border mr-2">
                         <label class="cursor-pointer select-none" for="remember-me">Remember me</label>
                     </div>
-                    <a href="{{ url('forgot-password') }}">Forgot Password?</a>
+                    <a href="{{ url('forgot-password') }}" class="forgot-password-link">Forgot Password?</a>
                 </div>
                 <div class="auth-tabs mt-4" style="margin-top:50px;">
                     <button id="btn-login" type="button" class="tab active">LOGIN</button>
