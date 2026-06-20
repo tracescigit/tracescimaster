@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\CustomClasses\SandEmail;
 use App\Models\DemoSchedule;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class DemoController extends Controller
 {
@@ -144,6 +147,129 @@ class DemoController extends Controller
         }
 
         $demo = DemoSchedule::create($validated);
+        
+        /*
+|--------------------------------------------------------------------------
+| Mail To Customer
+|--------------------------------------------------------------------------
+*/
+
+        try {
+
+            $user_mail_array = [];
+            $user_mail_array['email_subject'] = 'Demo Booking Confirmation';
+            $user_mail_array['email'] = $request->email;
+
+            // Remove CC for now while debugging
+            // if (!empty($request->company_email)) {
+            //     $user_mail_array['cc'] = $request->company_email;
+            // }
+
+            $user_mail_array['email_body'] = '
+    <p>Dear ' . $request->full_name . ',</p>
+
+    <p>Thank you for scheduling a demo with <strong>TRACESCI</strong>.</p>
+
+    <p>Your demo has been successfully booked.</p>
+
+    <p>
+        <strong>Date:</strong> ' . $request->demo_date . '<br>
+        <strong>Time:</strong> ' . $request->demo_time . '
+    </p>
+
+    <p>Our team will contact you shortly.</p>
+
+    <p>
+        Regards,<br>
+        <strong>Team TRACESCI</strong>
+    </p>';
+
+            Log::info('Customer Mail Data', $user_mail_array);
+
+            $customerMailResult = SandEmail::sendDirectMail($user_mail_array);
+
+            Log::info('Customer Mail Result', [
+                'result' => $customerMailResult
+            ]);
+        } catch (\Throwable $e) {
+
+            Log::error('Customer Mail Failed', [
+                'message' => $e->getMessage(),
+                'line'    => $e->getLine(),
+                'file'    => $e->getFile(),
+            ]);
+        }
+
+
+        /*
+|--------------------------------------------------------------------------
+| Mail To Admin
+|--------------------------------------------------------------------------
+*/
+
+        try {
+
+            $mail_array = [];
+            $mail_array['email_subject'] = 'New Demo Request Generated';
+            $mail_array['email'] = 'wecare@tracesci.in';
+            $mail_array['bcc'] = 'kunal.kothari@monotech.in';
+
+            $mail_array['email_body'] = '
+    <p>Dear Team,</p>
+
+    <p>A new demo request has been generated through the <strong>TRACESCI</strong> website.</p>
+
+    <table border="0" cellpadding="5">
+        <tr>
+            <td><strong>Name</strong></td>
+            <td>' . $request->full_name . '</td>
+        </tr>
+        <tr>
+            <td><strong>Company</strong></td>
+            <td>' . $request->company_name . '</td>
+        </tr>
+        <tr>
+            <td><strong>Email</strong></td>
+            <td>' . $request->email . '</td>
+        </tr>
+        <tr>
+            <td><strong>Phone</strong></td>
+            <td>' . $request->phone . '</td>
+        </tr>
+        <tr>
+            <td><strong>Demo Date</strong></td>
+            <td>' . $request->demo_date . '</td>
+        </tr>
+        <tr>
+            <td><strong>Demo Time</strong></td>
+            <td>' . $request->demo_time . '</td>
+        </tr>
+    </table>';
+
+            if (!empty($request->message)) {
+                $mail_array['email_body'] .= '
+        <p>
+            <strong>Message:</strong><br>
+            ' . $request->message . '
+        </p>';
+            }
+
+            Log::info('Admin Mail Data', $mail_array);
+
+            $adminMailResult = SandEmail::sendDirectMail($mail_array);
+
+            Log::info('Admin Mail Result', [
+                'result' => $adminMailResult
+            ]);
+        } catch (\Throwable $e) {
+
+            Log::error('Admin Mail Failed', [
+                'message' => $e->getMessage(),
+                'line'    => $e->getLine(),
+                'file'    => $e->getFile(),
+            ]);
+        }
+
 
         return response()->json(['message' => 'Demo booked successfully.']);
     }

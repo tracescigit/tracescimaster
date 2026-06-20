@@ -52,10 +52,9 @@
         }
 
         body {
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-family: 'Raleway', system-ui, -apple-system, sans-serif;
             background: #f8f9fb;
             color: #1a1a2e;
-            min-height: 100vh;
         }
 
         /* ── Navbar ── */
@@ -951,11 +950,11 @@
             /* Booked slots from controller — format: { 'YYYY-MM-DD': ['09:00','10:00'], ... } */
             const BOOKED_SLOTS = @json($bookedSlots ?? []);
 
-            const ALL_SLOTS = ['10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00'];
+            const ALL_SLOTS = ['10:00', '11:00', '13:00', '14:00', '15:00', '16:00', '17:00'];
             const MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
                 'August', 'September', 'October', 'November', 'December'
             ];
-            const WEEKENDS = [0, 6];
+            const WEEKENDS = [0, 5];
 
             let viewYear, viewMonth;
             let selectedDate = null;
