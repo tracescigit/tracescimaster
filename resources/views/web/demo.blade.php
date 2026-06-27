@@ -55,6 +55,7 @@
             font-family: 'Raleway', system-ui, -apple-system, sans-serif;
             background: #f8f9fb;
             color: #1a1a2e;
+            min-height: 100vh;
         }
 
         /* ── Navbar ── */

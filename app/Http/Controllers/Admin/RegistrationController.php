@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\CustomClasses\SandEmail;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\RegistrationCreateRequest;
 use App\Http\Requests\Admin\RegistrationUpdateRequest;
@@ -16,66 +17,66 @@ use Carbon\Carbon;
 use EmailProvider;
 use File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Str;
 
 class RegistrationController extends Controller
 {
-    public function status($status){
-        switch($status){
+    public function status($status)
+    {
+        switch ($status) {
             case '1':
-            $result = 'Active';
-            break;
+                $result = 'Active';
+                break;
             case '0':
-            $result = 'Inactive';
-            break;
+                $result = 'Inactive';
+                break;
             default:
-            $result = 'Pending';
+                $result = 'Pending';
         }
 
         return $result;
-
     }
 
-    public function assertion($assert){
-        switch($assert){
+    public function assertion($assert)
+    {
+        switch ($assert) {
             case '1':
-            $result = 'Yes';
-            break;
+                $result = 'Yes';
+                break;
             case '0':
-            $result = 'No';
-            break;
+                $result = 'No';
+                break;
             default:
-            $result = 'No';
+                $result = 'No';
         }
 
         return $result;
     }
 
     public function index(Request $request)
-    {   
-        if($request->ajax())
-        {   
+    {
+        if ($request->ajax()) {
             $limit          = $request->input('size');
             $page           = $request->input('page');
-            $search_field   = $request['filters']?$request['filters']['0']['field']:'';
-            $search_type    = $request['filters']?$request['filters']['0']['type']:'';
-            $search_value   = $request['filters']?$request['filters']['0']['value']:'';
-            $orderby        = $request['sorters']?$request['sorters']['0']['field']:'';         
+            $search_field   = $request['filters'] ? $request['filters']['0']['field'] : '';
+            $search_type    = $request['filters'] ? $request['filters']['0']['type'] : '';
+            $search_value   = $request['filters'] ? $request['filters']['0']['value'] : '';
+            $orderby        = $request['sorters'] ? $request['sorters']['0']['field'] : '';
             $order          = $orderby != "" ? $request['sorters']['0']['dir'] : "";
 
-            $start_date = $request['filters']?$request['filters']['1']['value']:'';
-            $end_date = $request['filters']?$request['filters']['2']['value']:'';
+            $start_date = $request['filters'] ? $request['filters']['1']['value'] : '';
+            $end_date = $request['filters'] ? $request['filters']['2']['value'] : '';
 
-            $response       = User::getManufacturerModel($limit, $page, $orderby, $order, $search_field , $search_type, $search_value,$start_date,$end_date);
+            $response       = User::getManufacturerModel($limit, $page, $orderby, $order, $search_field, $search_type, $search_value, $start_date, $end_date);
 
-            if(!$response){
+            if (!$response) {
                 $users      = [];
                 $last_page  = 0;
                 $total = 0;
-            }
-            else{
+            } else {
                 $users      = $response['response'];
                 $last_page  = $response['last_page'];
                 $total  = $response['total'];
@@ -87,20 +88,20 @@ class RegistrationController extends Controller
             foreach ($users as $user) {
 
                 $u['name']          = $user->name;
-                $u['email']         = $user->email??'-';
-                $u['phone']         = $user->phone??'-';
+                $u['email']         = $user->email ?? '-';
+                $u['phone']         = $user->phone ?? '-';
                 $u['status']        = $this->status($user->status);
                 $u['active']        = $this->assertion($user->active);
-                $u['company']       = $user->getCompany?$user->getCompany->name:'';
+                $u['company']       = $user->getCompany ? $user->getCompany->name : '';
 
-                $actions            = view('admin.registrations.actions',['user' => $user]);
-                $u['actions']       = $actions->render(); 
+                $actions            = view('admin.registrations.actions', ['user' => $user]);
+                $u['actions']       = $actions->render();
 
-                $u['company']       = $user->getCompany?$user->getCompany->name:'';
-                $u['tax_number']    = $user->getCompany?$user->getCompany->gst:'';
-                $u['city']          = $user->getCompany?$user->getCompany->city:'';
-                $u['country']       = $user->getCompany?$user->getCompany->country:'';
-                $u['created_at']    = date('M d, Y',strtotime($user->created_at));
+                $u['company']       = $user->getCompany ? $user->getCompany->name : '';
+                $u['tax_number']    = $user->getCompany ? $user->getCompany->gst : '';
+                $u['city']          = $user->getCompany ? $user->getCompany->city : '';
+                $u['country']       = $user->getCompany ? $user->getCompany->country : '';
+                $u['created_at']    = date('M d, Y', strtotime($user->created_at));
 
                 $userData[] = $u;
                 $i++;
@@ -112,30 +113,30 @@ class RegistrationController extends Controller
                 "data"              =>  $userData,
                 "total"             =>  $total
             ];
-            
+
             return $return;
         }
-        
+
         return view('admin.registrations.index');
     }
 
     public function create()
     {
-        $plans = Plan::where('parent_id',null)->get();
-        return view('admin.registrations.create')->with('plans',$plans); 
+        $plans = Plan::where('parent_id', null)->get();
+        return view('admin.registrations.create')->with('plans', $plans);
     }
 
     public function edit($id)
-    {   
+    {
         $id = decrypt($id);
         $user = User::find($id);
-        $plans = Plan::where('parent_id',null)->get();
-        return view('admin.registrations.edit')->with('plans',$plans)->with('user',$user)->with('page_name', 'admin-users');
+        $plans = Plan::where('parent_id', null)->get();
+        return view('admin.registrations.edit')->with('plans', $plans)->with('user', $user)->with('page_name', 'admin-users');
     }
 
     public function store(RegistrationCreateRequest $request)
     {
-        try{
+        try {
             $input = $request->all();
 
             $user = new User;
@@ -146,7 +147,7 @@ class RegistrationController extends Controller
             $user->type  = '2';
             $user->name  = $input['name'];
             $user->status  = $input['allow_login'];
-            $user->phone_code  = $input['phone_code']??'91';
+            $user->phone_code  = $input['phone_code'] ?? '91';
             $user->phone  = $input['mobile'];
             $user->address_one  = $input['company_address'];
             $user->created_at = Carbon::now();
@@ -154,7 +155,7 @@ class RegistrationController extends Controller
 
             $user->save();
 
-            if($user){
+            if ($user) {
                 $company = new Company;
                 $company->user_id = $user->id;
                 $company->name    = $input['company_name'];
@@ -166,33 +167,32 @@ class RegistrationController extends Controller
 
                 if ($request->hasFile('company_gst')) {
                     $file = $request->file('company_gst');
-                    $add_doc = $this->attachDocument('Company GST','company_gst',$user->id,$file);
+                    $add_doc = $this->attachDocument('Company GST', 'company_gst', $user->id, $file);
                 }
 
                 if ($request->hasFile('self_kyc')) {
                     $file = $request->file('self_kyc');
-                    $add_doc = $this->attachDocument('Self KYC','self_kyc',$user->id,$file);
+                    $add_doc = $this->attachDocument('Self KYC', 'self_kyc', $user->id, $file);
                 }
 
                 if ($request->hasFile('company_roc')) {
                     $file = $request->file('company_roc');
-                    $add_doc = $this->attachDocument('Company ROC','company_roc',$user->id,$file);
+                    $add_doc = $this->attachDocument('Company ROC', 'company_roc', $user->id, $file);
                 }
 
 
-                if(isset($input['default_approve']) && $input['default_approve']=='on'){
+                if (isset($input['default_approve']) && $input['default_approve'] == 'on') {
                     $user->active = '1';
                     $user->save();
 
-                    $approve_docs = Document::where('user_id',$user->id)->update(['status'=>'1']);
+                    $approve_docs = Document::where('user_id', $user->id)->update(['status' => '1']);
                 }
-
             }
 
-            if (isset($input['default_plan']) && $input['default_plan']!='') {
-                $find_in_subscription = Subscription::where('user_id',$user->id)->where('plan_id',$input['default_plan'])->first();
+            if (isset($input['default_plan']) && $input['default_plan'] != '') {
+                $find_in_subscription = Subscription::where('user_id', $user->id)->where('plan_id', $input['default_plan'])->first();
 
-                if(!$find_in_subscription){
+                if (!$find_in_subscription) {
                     $plan = Plan::find($input['default_plan']);
                     $subscribe = new Subscription;
                     $subscribe->user_id = $user->id;
@@ -212,49 +212,89 @@ class RegistrationController extends Controller
                     $credit->plan_name = $plan->title;
                     $credit->status = '1';
                     $credit->save();
-
                 }
             }
 
-            if($user->phone){
-                Sms::sendSms('TRCLogin', 
-                    [   
-                        'username' => $user->name??'User',
+            if ($user->phone) {
+                Sms::sendSms(
+                    'TRCLogin',
+                    [
+                        'username' => $user->name ?? 'User',
                         'phone' => $user->phone,
-                        'code' => $user->phone_code??'91',
+                        'code' => $user->phone_code ?? '91',
                         'email' => $user->email,
                         'password' => $password
                     ]
                 );
             }
 
-            if($user->email){
+            if ($user->email) {
 
-                EmailProvider::sendMail('user-credential-email',
-                    [   
-                        'username' => $user->name,
-                        'email' => $user->email,
-                        'phone' => $user->phone,
-                        'password' => $password
-                    ]
-                );
+                try {
 
+                    $mail_array = [];
+                    $mail_array['email_subject'] = 'Your Tracesci Login Credentials';
+                    $mail_array['email'] = $user->email;
+
+                    $mail_array['email_body'] = '
+            <p>Dear <strong>' . $user->name . '</strong>,</p>
+
+            <p>Your Tracesci account has been created successfully. Please find your login credentials below:</p>
+
+            <table border="0" cellpadding="5">
+                <tr>
+                    <td><strong>Name</strong></td>
+                    <td>' . $user->name . '</td>
+                </tr>
+                <tr>
+                    <td><strong>Email</strong></td>
+                    <td>' . $user->email . '</td>
+                </tr>
+                <tr>
+                    <td><strong>Phone</strong></td>
+                    <td>' . ($user->phone ?? '-') . '</td>
+                </tr>
+                <tr>
+                    <td><strong>Password</strong></td>
+                    <td>' . $password . '</td>
+                </tr>
+            </table>
+
+            <p>For security reasons, we recommend changing your password after your first login.</p>
+
+            <p>Regards,<br>
+            <strong>Tracesci Team</strong></p>';
+
+                    Log::info('User Credential Mail Data', $mail_array);
+
+                    $result = SandEmail::sendDirectMail($mail_array);
+
+                    Log::info('User Credential Mail Result', [
+                        'result' => $result
+                    ]);
+                } catch (\Throwable $e) {
+
+                    Log::error('User Credential Mail Failed', [
+                        'message' => $e->getMessage(),
+                        'line'    => $e->getLine(),
+                        'file'    => $e->getFile(),
+                    ]);
+                }
             }
 
-            return response(['message'=>'Registration created successfully.'], 201);
-
-        }catch(Exception $e){
-            return response(['message'=>'Something went wrong.'], 503);
+            return response(['message' => 'Registration created successfully.'], 201);
+        } catch (Exception $e) {
+            return response(['message' => 'Something went wrong.'], 503);
         }
     }
 
-    public function attachDocument($docname,$type,$user_id,$file)
+    public function attachDocument($docname, $type, $user_id, $file)
     {
         $timestamp = str_replace([' ', ':'], '-', Carbon::now()->toDateTimeString());
         $name = $timestamp . '-' . uniqid() . '-' . str_replace([' ', ':'], '-', $file->getClientOriginalName());
 
         Storage::putFileAs('public/documents', $file, $name);
-        $path = Storage::url('documents/'.$name);
+        $path = Storage::url('documents/' . $name);
 
         $document = new Document;
         $document->name = $docname;
@@ -264,12 +304,11 @@ class RegistrationController extends Controller
         $document->save();
 
         return true;
-
     }
 
     public function update(RegistrationUpdateRequest $request, $id)
     {
-        try{
+        try {
             $id = decrypt($id);
             $input = $request->all();
 
@@ -277,12 +316,12 @@ class RegistrationController extends Controller
 
             $oldactive = $user->status;
 
-            if($user){
+            if ($user) {
                 $user->email = $input['email'];
                 $user->username = $input['email'];
                 $user->name  = $input['name'];
                 $user->status  = $input['allow_login'];
-                $user->phone_code  = $input['phone_code']??'91';
+                $user->phone_code  = $input['phone_code'] ?? '91';
                 $user->phone  = $input['mobile'];
                 $user->address_one  = $input['company_address'];
                 $user->updated_at = Carbon::now();
@@ -290,9 +329,9 @@ class RegistrationController extends Controller
                 $user->save();
             }
 
-            $company = Company::where('user_id',$id)->first();
+            $company = Company::where('user_id', $id)->first();
 
-            if($company){
+            if ($company) {
                 $company->name    = $input['company_name'];
                 $company->address = $input['company_address'];
                 $company->city = $input['city'];
@@ -304,77 +343,77 @@ class RegistrationController extends Controller
             if ($request->hasFile('company_gst')) {
                 $file = $request->file('company_gst');
 
-                $doc = Document::where('user_id',$id)->where('type','company_gst')->first();
+                $doc = Document::where('user_id', $id)->where('type', 'company_gst')->first();
 
-                if($doc){
-                    File::delete(public_path() .$doc->doc_url);
+                if ($doc) {
+                    File::delete(public_path() . $doc->doc_url);
                     $doc->delete();
                 }
 
-                $add_doc = $this->attachDocument('Company GST','company_gst',$user->id,$file);
+                $add_doc = $this->attachDocument('Company GST', 'company_gst', $user->id, $file);
             }
 
             if ($request->hasFile('self_kyc')) {
                 $file = $request->file('self_kyc');
 
-                $doc = Document::where('user_id',$id)->where('type','self_kyc')->first();
+                $doc = Document::where('user_id', $id)->where('type', 'self_kyc')->first();
 
-                if($doc){
-                    File::delete(public_path() .$doc->doc_url);
+                if ($doc) {
+                    File::delete(public_path() . $doc->doc_url);
                     $doc->delete();
                 }
 
-                $add_doc = $this->attachDocument('Self KYC','self_kyc',$user->id,$file);
+                $add_doc = $this->attachDocument('Self KYC', 'self_kyc', $user->id, $file);
             }
 
             if ($request->hasFile('company_roc')) {
                 $file = $request->file('company_roc');
-                $doc = Document::where('user_id',$id)->where('type','company_roc')->first();
+                $doc = Document::where('user_id', $id)->where('type', 'company_roc')->first();
 
-                if($doc){
-                    File::delete(public_path() .$doc->doc_url);
+                if ($doc) {
+                    File::delete(public_path() . $doc->doc_url);
                     $doc->delete();
                 }
-                
-                $add_doc = $this->attachDocument('Company ROC','company_roc',$user->id,$file);
+
+                $add_doc = $this->attachDocument('Company ROC', 'company_roc', $user->id, $file);
             }
 
-            if(isset($input['approve_company_gst']) && $input['approve_company_gst']=='on'){
-                $status = Document::where('user_id',$id)->where('type','company_gst')->update(['status'=>'1']);
-            }else{
-                $status = Document::where('user_id',$id)->where('type','company_gst')->update(['status'=>'0']);
+            if (isset($input['approve_company_gst']) && $input['approve_company_gst'] == 'on') {
+                $status = Document::where('user_id', $id)->where('type', 'company_gst')->update(['status' => '1']);
+            } else {
+                $status = Document::where('user_id', $id)->where('type', 'company_gst')->update(['status' => '0']);
             }
 
-            if(isset($input['approve_company_roc']) && $input['approve_company_roc']=='on'){
-                $status = Document::where('user_id',$id)->where('type','company_roc')->update(['status'=>'1']);
-            }else{
-                $status = Document::where('user_id',$id)->where('type','company_roc')->update(['status'=>'0']);
+            if (isset($input['approve_company_roc']) && $input['approve_company_roc'] == 'on') {
+                $status = Document::where('user_id', $id)->where('type', 'company_roc')->update(['status' => '1']);
+            } else {
+                $status = Document::where('user_id', $id)->where('type', 'company_roc')->update(['status' => '0']);
             }
 
-            if(isset($input['approve_self_kyc']) && $input['approve_self_kyc']=='on'){
-                $status = Document::where('user_id',$id)->where('type','self_kyc')->update(['status'=>'1']);
-            }else{
-                $status = Document::where('user_id',$id)->where('type','self_kyc')->update(['status'=>'0']);
+            if (isset($input['approve_self_kyc']) && $input['approve_self_kyc'] == 'on') {
+                $status = Document::where('user_id', $id)->where('type', 'self_kyc')->update(['status' => '1']);
+            } else {
+                $status = Document::where('user_id', $id)->where('type', 'self_kyc')->update(['status' => '0']);
             }
 
             $user->active = '1';
 
-            $docs  = Document::where('user_id',$id);
+            $docs  = Document::where('user_id', $id);
 
             $count = $docs->count();
-            $inactive_doc = $docs->where('status','0')->first();
+            $inactive_doc = $docs->where('status', '0')->first();
 
-            if($count<=0 || $inactive_doc){
+            if ($count <= 0 || $inactive_doc) {
                 $user->active = '0';
             }
 
             $user->save();
 
-            if (isset($input['default_plan']) && $input['default_plan']!='') {
-                $find_in_subscription = Subscription::where('user_id',$user->id)->where('plan_id',$input['default_plan'])->first();
+            if (isset($input['default_plan']) && $input['default_plan'] != '') {
+                $find_in_subscription = Subscription::where('user_id', $user->id)->where('plan_id', $input['default_plan'])->first();
 
-                if(!$find_in_subscription){
-                    $delete_other_subscription = Subscription::where('user_id',$user->id)->delete();
+                if (!$find_in_subscription) {
+                    $delete_other_subscription = Subscription::where('user_id', $user->id)->delete();
 
                     $plan = Plan::find($input['default_plan']);
                     $subscribe = new Subscription;
@@ -398,31 +437,85 @@ class RegistrationController extends Controller
                 }
             }
 
-            if($oldactive=='0' && $user->status=='1'){
-                EmailProvider::sendMail('user-profile-approval', 
-                    [   
-                        'username' => $user->name,
-                        'email' => $user->email
-                    ]
-                );
+            if ($oldactive == '0' && $user->status == '1') {
+
+                try {
+
+                    $mail_array = [];
+                    $mail_array['email_subject'] = 'Your Tracesci Profile Has Been Approved';
+                    $mail_array['email'] = $user->email;
+
+                    $mail_array['email_body'] = '
+            <p>Dear <strong>' . $user->name . '</strong>,</p>
+
+            <p>We are pleased to inform you that your <strong>Tracesci</strong> account has been successfully approved.</p>
+
+            <p>You can now log in and access all the features available on the Tracesci platform.</p>
+
+            <p>If you have any questions or require assistance, please feel free to contact our support team.</p>
+
+            <p>Regards,<br>
+            <strong>Tracesci Team</strong></p>';
+
+                    Log::info('User Profile Approval Mail Data', $mail_array);
+
+                    $result = SandEmail::sendDirectMail($mail_array);
+
+                    Log::info('User Profile Approval Mail Result', [
+                        'result' => $result
+                    ]);
+                } catch (\Throwable $e) {
+
+                    Log::error('User Profile Approval Mail Failed', [
+                        'message' => $e->getMessage(),
+                        'line'    => $e->getLine(),
+                        'file'    => $e->getFile(),
+                    ]);
+                }
             }
 
-            if($oldactive=='0' && $user->status=='0'){
-                EmailProvider::sendMail('user-profile-rejection', 
-                    [   
-                        'username' => $user->name,
-                        'email' => $user->email
-                    ]
-                );
+            if ($oldactive == '0' && $user->status == '0') {
+
+                try {
+
+                    $mail_array = [];
+                    $mail_array['email_subject'] = 'Tracesci Profile Verification Update';
+                    $mail_array['email'] = $user->email;
+
+                    $mail_array['email_body'] = '
+            <p>Dear <strong>' . $user->name . '</strong>,</p>
+
+            <p>Thank you for registering with <strong>Tracesci</strong>.</p>
+
+            <p>After reviewing your profile, we regret to inform you that your account could not be approved at this time.</p>
+
+            <p>If you believe this was an error or would like additional information, please contact our support team.</p>
+
+            <p>Regards,<br>
+            <strong>Tracesci Team</strong></p>';
+
+                    Log::info('User Profile Rejection Mail Data', $mail_array);
+
+                    $result = SandEmail::sendDirectMail($mail_array);
+
+                    Log::info('User Profile Rejection Mail Result', [
+                        'result' => $result
+                    ]);
+                } catch (\Throwable $e) {
+
+                    Log::error('User Profile Rejection Mail Failed', [
+                        'message' => $e->getMessage(),
+                        'line'    => $e->getLine(),
+                        'file'    => $e->getFile(),
+                    ]);
+                }
             }
 
 
 
-            return response(['message'=>'Company registration has been updated successfully.'], 200);
-
-        }catch(Exception $e){
-            return response(['message'=>'Something went wrong.'], 503);
+            return response(['message' => 'Company registration has been updated successfully.'], 200);
+        } catch (Exception $e) {
+            return response(['message' => 'Something went wrong.'], 503);
         }
     }
-
 }

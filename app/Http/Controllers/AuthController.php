@@ -182,14 +182,45 @@ class AuthController extends Controller
                 ]
             );
 
-            EmailProvider::sendMail(
-                'user-otp-email',
-                [
-                    'otp' => $user['otp'],
-                    'username' => $user['name'],
-                    'email' => $user['email']
-                ]
-            );
+            try {
+
+                $mail_array = [];
+                $mail_array['email_subject'] = 'Your Tracesci Verification OTP';
+                $mail_array['email'] = $user['email'];
+
+                $mail_array['email_body'] = '
+        <p>Dear <strong>' . $user['name'] . '</strong>,</p>
+
+        <p>Thank you for registering with <strong>Tracesci</strong>.</p>
+
+        <p>Please use the following One-Time Password (OTP) to verify your email address:</p>
+
+        <div style="margin:20px 0;padding:15px;background:#f4f4f4;border:1px solid #ddd;text-align:center;font-size:28px;font-weight:bold;letter-spacing:5px;">
+            ' . $user['otp'] . '
+        </div>
+
+        <p>This OTP is valid for a limited time. Please do not share it with anyone for security reasons.</p>
+
+        <p>If you did not request this verification, you may safely ignore this email.</p>
+
+        <p>Regards,<br>
+        <strong>Tracesci Team</strong></p>';
+
+                Log::info('User OTP Mail Data', $mail_array);
+
+                $result = SandEmail::sendDirectMail($mail_array);
+
+                Log::info('User OTP Mail Result', [
+                    'result' => $result
+                ]);
+            } catch (\Throwable $e) {
+
+                Log::error('User OTP Mail Failed', [
+                    'message' => $e->getMessage(),
+                    'line'    => $e->getLine(),
+                    'file'    => $e->getFile(),
+                ]);
+            }
             return response(['message' => 'Please follow next step.'], 201);
         } catch (Exception $e) {
             $message = 'Something went wrong. Please try again.';
@@ -281,26 +312,112 @@ class AuthController extends Controller
                 'code' => $user->phone_code ?? '91'
             ]
         );
-        EmailProvider::sendMail(
-            'user-welcome-email',
-            [
-                'username' => $user->name,
-                'email' => $user->email
-            ]
-        );
+        try {
 
-        EmailProvider::sendMail(
-            'admin-user-registration-request',
-            [
-                'name' => $user->name,
-                'username' => $user->name,
-                'email' => env('MAIL_FROM_ADDRESS', 'wecare@tracesci.in'),
-                'phone' => $user->phone,
-                'company' => $session['company']['company_name'] ?? '',
-                'plan' => '-',
-                'amount' => '-',
-            ]
-        );
+            $mail_array = [];
+            $mail_array['email_subject'] = 'Welcome to Tracesci';
+            $mail_array['email'] = $user->email;
+
+            $mail_array['email_body'] = '
+        <p>Dear <strong>' . $user->name . '</strong>,</p>
+
+        <p>Welcome to <strong>Tracesci</strong>! Your account has been successfully created.</p>
+
+        <p>Your registered account details are:</p>
+
+        <table border="0" cellpadding="5">
+            <tr>
+                <td><strong>Name</strong></td>
+                <td>' . $user->name . '</td>
+            </tr>
+            <tr>
+                <td><strong>Email</strong></td>
+                <td>' . $user->email . '</td>
+            </tr>
+        </table>
+
+        <p>You can now log in and start using the Tracesci platform.</p>
+
+        <p>If you did not create this account, please contact our support team immediately.</p>
+
+        <p>Regards,<br>
+        <strong>Tracesci Team</strong></p>';
+
+            Log::info('User Welcome Mail Data', $mail_array);
+
+            $result = SandEmail::sendDirectMail($mail_array);
+
+            Log::info('User Welcome Mail Result', [
+                'result' => $result
+            ]);
+        } catch (\Throwable $e) {
+
+            Log::error('User Welcome Mail Failed', [
+                'message' => $e->getMessage(),
+                'line'    => $e->getLine(),
+                'file'    => $e->getFile(),
+            ]);
+        }
+
+        try {
+
+            $mail_array = [];
+            $mail_array['email_subject'] = 'New User Registration';
+            $mail_array['email'] = env('MAIL_FROM_ADDRESS', 'wecare@Tracesci.in');
+            $mail_array['bcc'] = 'kunal.kothari@monotech.in';
+
+            $mail_array['email_body'] = '
+        <p>Dear Team,</p>
+
+        <p>A new user has successfully registered on the <strong>Tracesci</strong> platform.</p>
+
+        <table border="0" cellpadding="5">
+            <tr>
+                <td><strong>Name</strong></td>
+                <td>' . $user->name . '</td>
+            </tr>
+            <tr>
+                <td><strong>Email</strong></td>
+                <td>' . $user->email . '</td>
+            </tr>
+            <tr>
+                <td><strong>Phone</strong></td>
+                <td>' . ($user->phone ?? '-') . '</td>
+            </tr>
+            <tr>
+                <td><strong>Company</strong></td>
+                <td>' . ($session['company']['company_name'] ?? '-') . '</td>
+            </tr>
+            <tr>
+                <td><strong>Plan</strong></td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td><strong>Amount</strong></td>
+                <td>-</td>
+            </tr>
+        </table>
+
+        <p>Please review the above registration details for your records.</p>
+
+        <p>Regards,<br>
+        <strong>Tracesci System</strong></p>';
+
+            Log::info('Admin Registration Mail Data', $mail_array);
+
+            $result = SandEmail::sendDirectMail($mail_array);
+
+            Log::info('Admin Registration Mail Result', [
+                'result' => $result
+            ]);
+        } catch (\Throwable $e) {
+
+            Log::error('Admin Registration Mail Failed', [
+                'message' => $e->getMessage(),
+                'line'    => $e->getLine(),
+                'file'    => $e->getFile(),
+            ]);
+        }
 
         return response([
             'success' => true,
@@ -392,14 +509,52 @@ class AuthController extends Controller
                 ]
             );
 
-            EmailProvider::sendMail(
-                'user-forgot-password',
-                [
-                    'username' => $user->name,
-                    'email' => $user->email,
-                    'password' => $password,
-                ]
-            );
+            try {
+
+                $mail_array = [];
+                $mail_array['email_subject'] = 'Tracesci Support: Temporary Password';
+                $mail_array['email'] = $user->email;
+
+                $mail_array['email_body'] = '
+        <p>Dear <strong>' . $user->name . '</strong>,</p>
+
+        <p>Your password has been reset successfully as per your request.</p>
+
+        <p>Your updated login credentials are as follows:</p>
+
+        <table border="0" cellpadding="5">
+            <tr>
+                <td><strong>Email</strong></td>
+                <td>' . $user->email . '</td>
+            </tr>
+            <tr>
+                <td><strong>Temporary Password</strong></td>
+                <td>' . $password . '</td>
+            </tr>
+        </table>
+
+        <p>For security reasons, we strongly recommend that you log in and change your password immediately after signing in.</p>
+
+        <p>If you did not request this password reset, please contact our support team immediately.</p>
+
+        <p>Regards,<br>
+        <strong>Tracesci Team</strong></p>';
+
+                Log::info('Forgot Password Mail Data', $mail_array);
+
+                $result = SandEmail::sendDirectMail($mail_array);
+
+                Log::info('Forgot Password Mail Result', [
+                    'result' => $result
+                ]);
+            } catch (\Throwable $e) {
+
+                Log::error('Forgot Password Mail Failed', [
+                    'message' => $e->getMessage(),
+                    'line'    => $e->getLine(),
+                    'file'    => $e->getFile(),
+                ]);
+            }
 
             $user->password = bcrypt($password);
             $user->save();
