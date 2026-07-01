@@ -36,26 +36,7 @@
 							<div id="error-brand" class="login__input-error w-5/6 text-theme-6"></div>
 						</div>
 
-						<div class="input-form col-span-2 lg:col-span-2 px-2 py-1 mt-2">
-							<label for="status" class="form-label w-full flex flex-col sm:flex-row">
-								Currency
-							</label>
-							<select id="currency" name="currency" class="form-select form__input">
-								@if (count(currencies())>0)
-								@foreach (currencies() as $currency)
-								<option value="{{$currency->currency}}" {{$currency->currency==$product->currency?'selected':''}}>{{$currency->currency}}</option>
-								@endforeach
-								@endif
-							</select>
-						</div>
-
-						<div class="input-form col-span-10 lg:col-span-10 px-2 py-1 mt-2">
-							<label for="price" class="form-label w-full flex flex-col sm:flex-row">
-								Price
-							</label>
-							<input id="price" type="number" name="price" class="form-control form__input" value="{{number_format((float)$product->price,2,'.','')}}" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" min="0" step="0.01" maxlength="10" placeholder="Enter price" minlength="2">
-							<div id="error-price" class="login__input-error w-5/6 text-theme-6"></div>
-						</div>
+						
 						<div class="input-form col-span-6 lg:col-span-6 px-2 py-1 mt-2">
 							<label for="template" class="form-label w-full flex flex-col sm:flex-row">
 								Select Template

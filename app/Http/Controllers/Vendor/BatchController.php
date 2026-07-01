@@ -49,6 +49,7 @@ class BatchController extends Controller
             foreach ($batches as $batch) {
                 $u['name']          = $batch->name??'-';
                 $u['code']          = $batch->code??'-';
+                $u['price']         = $batch->price && $batch->currency ? ($batch->currency . ' ' . number_format($batch->price, 2, '.', '')) : '-';
                 $u['status']        = $batch->status??'-';
                 $u['active']        = $batch->active??'-';
                 $u['created_at']    = date('M d, Y',strtotime($batch->created_at))??'-';
@@ -84,6 +85,8 @@ class BatchController extends Controller
             $input   = $request->all();
             $batch = new Batch;
             $batch->code = $input['code'];
+            $batch->currency = $input['currency'];
+            $batch->price = $input['price'];
             $batch->product_id = $input['product'];
             $batch->gs1_code = $input['gs1_code'];
             $batch->mfg_date = $input['mfg_date'];
@@ -117,6 +120,8 @@ class BatchController extends Controller
             $input   = $request->all();
             $batch = Batch::find($id);
             $batch->code = $input['code'];
+            $batch->currency = $input['currency'];
+            $batch->price = $input['price'];
             $batch->product_id = $input['product'];
             $batch->gs1_code = $input['gs1_code'];
             $batch->mfg_date = $input['mfg_date'];

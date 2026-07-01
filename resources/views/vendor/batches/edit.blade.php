@@ -40,7 +40,7 @@
 							<label for="code" class="form-label w-full flex flex-col sm:flex-row">
 								Batch code
 							</label>
-							<input id="code" type="text" name="code" class="form-control form__input" value="{{$batch->code}}" placeholder="Enter batch code" >
+							<input id="code" type="text" name="code" class="form-control form__input" value="{{$batch->code}}" placeholder="Enter batch code">
 							<div id="error-code" class="login__input-error w-5/6 text-theme-6"></div>
 						</div>
 
@@ -48,8 +48,34 @@
 							<label for="gs1_code" class="form-label w-full flex flex-col sm:flex-row">
 								GS1 code
 							</label>
-							<input id="gs1_code" type="text" name="gs1_code" class="form-control form__input" value="{{$batch->gs1_code}}" placeholder="Enter GS1 code" >
+							<input id="gs1_code" type="text" name="gs1_code" class="form-control form__input" value="{{$batch->gs1_code}}" placeholder="Enter GS1 code">
 							<div id="error-gs1_code" class="login__input-error w-5/6 text-theme-6"></div>
+						</div>
+
+						<div class="input-form col-span-3 lg:col-span-1 px-2 py-1 mt-2">
+							<label for="currency" class="form-label w-full flex flex-col sm:flex-row">
+								Currency
+							</label>
+							<select id="currency" name="currency" class="form-select form__input">
+								@if (count(currencies()) > 0)
+								@foreach (currencies() as $currency)
+								<option value="{{$currency->currency}}" {{$currency->currency == $product->currency ? 'selected' : ''}}>
+									{{$currency->currency}}
+								</option>
+								@endforeach
+								@endif
+							</select>
+						</div>
+
+						<div class="input-form col-span-9 lg:col-span-5 px-2 py-1 mt-2">
+							<label for="price" class="form-label w-full flex flex-col sm:flex-row">
+								Price
+							</label>
+							<input id="price" type="number" name="price" class="form-control form__input"
+								value="{{ number_format((float)$product->price, 2, '.', '') }}"
+								oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+								min="0" step="0.01" maxlength="10" placeholder="Enter price" minlength="2">
+							<div id="error-price" class="login__input-error w-5/6 text-theme-6"></div>
 						</div>
 
 						<div class="input-form col-span-12 lg:col-span-6 px-2 py-1 mt-2">
@@ -96,12 +122,12 @@
 		</form>
 	</div>
 	<x-notification></x-notification>
-</div> 
+</div>
 @endsection
 
 @section('script')
 <script>
-	cash(function () {
+	cash(function() {
 		async function add() {
 
 			cash('#edit-form').find('.form__input').removeClass('border-theme-6')
@@ -110,25 +136,25 @@
 			var formData = new FormData(document.querySelector('#edit-form'))
 
 			cash('#btn-submit').html('<i data-loading-icon="oval" data-color="white" class="w-5 h-5 mx-auto"></i>').svgLoader()
-			cash('#btn-submit').attr('disabled', 'true');  
+			cash('#btn-submit').attr('disabled', 'true');
 
-			
 
-			axios.post('{{ url('/vendor/batches/'.encrypt($batch->id).'/edit') }}', formData).then(res => {
-				
-				showNotification('success','Success !',res.data.message)
-				setTimeout(()=>{
-					window.location.href = '{{ url('/vendor/batches') }}'
-				},1000)
+
+			axios.post("{{ url('/vendor/batches/'.encrypt($batch->id).'/edit') }}", formData).then(res => {
+
+				showNotification('success', 'Success !', res.data.message)
+				setTimeout(() => {
+					window.location.href = '{{ url("/vendor/batches") }}'
+				}, 1000)
 
 			}).catch(err => {
-				showNotification('error','Error !',err.response.data.message)
-				cash('#btn-submit').html('Submit')   
-				
-				cash('#btn-submit').removeAttr('disabled');              
+				showNotification('error', 'Error !', err.response.data.message)
+				cash('#btn-submit').html('Submit')
+
+				cash('#btn-submit').removeAttr('disabled');
 
 				if (err.response.data.errors) {
-					for (const [key, val] of Object.entries(err.response.data.errors)){
+					for (const [key, val] of Object.entries(err.response.data.errors)) {
 						cash(`#${key}`).addClass('border-theme-6')
 						cash(`#error-${key}`).html(val)
 					}

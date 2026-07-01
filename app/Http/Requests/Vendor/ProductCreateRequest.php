@@ -26,7 +26,6 @@ class ProductCreateRequest extends FormRequest
         return [
             'name'          => 'required|max:100|regex:/(^[a-zA-Z0-9-()_ ]+$)/u',
             'brand'         => 'required|max:100|regex:/(^[a-zA-Z0-9-()_ ]+$)/u',
-            'price'         => 'required|numeric|max:99999999.99|regex:/^[0-9.]+$/',
             'status'        => 'required',
             'file'          => 'required|mimes:png,jpg,jpeg|image|max:500000',
             'product_label' => 'required|mimes:png,jpg,jpeg|image|max:500000',

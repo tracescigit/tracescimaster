@@ -47,7 +47,6 @@ class ProductController extends Controller
 			foreach ($products as $product) {
 
 				$u['product_name']  = $product->name ?? '-';
-				$u['price']         = $product->currency . ' ' . number_format((float)$product->price, 2, '.', '') ?? '-';
 				$u['status']        = $product->status ?? '-';
 				$u['active']        = $product->active ?? '-';
 				$u['created_at']    = date('M d, Y', strtotime($product->created_at)) ?? '-';
@@ -98,8 +97,6 @@ class ProductController extends Controller
 			$product->name = $input['name'];
 			$product->slug = Str::slug($input['name']);
 			$product->brand = $input['brand'];
-			$product->price = $input['price'];
-			$product->currency = $input['currency'];
 			$product->status = $input['status'];
 			$product->auth_required = $input['auth_required'];
 			$product->pin_required = $input['pin_required'];
@@ -184,8 +181,6 @@ class ProductController extends Controller
 			$product->name = $input['name'];
 			$product->slug = Str::slug($input['name']);
 			$product->brand = $input['brand'];
-			$product->currency = $input['currency'];
-			$product->price = $input['price'];
 			$product->status = $input['status'];
 			$product->auth_required = $input['auth_required'];
 			$product->pin_required = $input['pin_required'];

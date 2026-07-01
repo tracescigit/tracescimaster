@@ -124,18 +124,20 @@
 		formatter: function formatter(cell, formatterParams) {
 			return "<div>\n                            <div class=\"font-medium whitespace-nowrap\">".concat(cell.getData().product_name, "</div>");
 		}
-	}, {
-		title: "PRICE",
-		minWidth: 200,
-		field: "price",
-		hozAlign: "center",
-		vertAlign: "middle",
-		print: false,
-		download: false,
-		formatter: function formatter(cell, formatterParams) {
-			return "<div>\n                            <div class=\"font-medium whitespace-nowrap\">".concat(cell.getData().price, "</div>\n                            ");
-		}
-	},  {
+	}, 
+	// {
+	// 	title: "PRICE",
+	// 	minWidth: 200,
+	// 	field: "price",
+	// 	hozAlign: "center",
+	// 	vertAlign: "middle",
+	// 	print: false,
+	// 	download: false,
+	// 	formatter: function formatter(cell, formatterParams) {
+	// 		return "<div>\n                            <div class=\"font-medium whitespace-nowrap\">".concat(cell.getData().price, "</div>\n                            ");
+	// 	}
+	// }
+	,{
 		title: "CREATED ON",
 		minWidth: 200,
 		field: "created_at",

@@ -1000,11 +1000,14 @@ if (! function_exists('countries')) {
 	}
 }
 
-if (! function_exists('currencies')) {
+if (!function_exists('currencies')) {
 	function currencies()
 	{
-		$currencies = Country::where('currency', '!=', NULL)->get();
-		return $currencies;
+		return Country::whereNotNull('currency')
+			->select('currency')
+			->distinct()
+			->orderBy('currency')
+			->get();
 	}
 }
 

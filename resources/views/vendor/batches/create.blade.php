@@ -40,7 +40,7 @@
 							<label for="code" class="form-label w-full flex flex-col sm:flex-row">
 								Batch code
 							</label>
-							<input id="code" type="text" name="code" class="form-control form__input" placeholder="Enter batch code" >
+							<input id="code" type="text" name="code" class="form-control form__input" placeholder="Enter batch code">
 							<div id="error-code" class="login__input-error w-5/6 text-theme-6"></div>
 						</div>
 
@@ -48,8 +48,33 @@
 							<label for="gs1_code" class="form-label w-full flex flex-col sm:flex-row">
 								GS1 code
 							</label>
-							<input id="gs1_code" type="text" name="gs1_code" class="form-control form__input" placeholder="Enter GS1 code" >
+							<input id="gs1_code" type="text" name="gs1_code" class="form-control form__input" placeholder="Enter GS1 code">
 							<div id="error-gs1_code" class="login__input-error w-5/6 text-theme-6"></div>
+						</div>
+
+						<div class="input-form col-span-4 lg:col-span-2 px-2 py-1 mt-2">
+							<label for="currency" class="form-label w-full flex flex-col sm:flex-row">
+								Currency
+							</label>
+							<select id="currency" name="currency" class="form-select form__input">
+								@if (count(currencies()) > 0)
+								@foreach (currencies() as $currency)
+								<option value="{{$currency->currency}}" {{ strtolower($currency->currency) == 'inr' ? 'selected' : '' }}>
+									{{$currency->currency}}
+								</option>
+								@endforeach
+								@endif
+							</select>
+						</div>
+
+						<div class="input-form col-span-8 lg:col-span-4 px-2 py-1 mt-2">
+							<label for="price" class="form-label w-full flex flex-col sm:flex-row">
+								Price
+							</label>
+							<input id="price" type="number" name="price" class="form-control form__input"
+								oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+								min="0" step="0.01" maxlength="10" placeholder="Enter price" minlength="2">
+							<div id="error-price" class="login__input-error w-5/6 text-theme-6"></div>
 						</div>
 
 						<div class="input-form col-span-12 lg:col-span-6 px-2 py-1 mt-2">
@@ -96,12 +121,12 @@
 		</form>
 	</div>
 	<x-notification></x-notification>
-</div> 
+</div>
 @endsection
 
 @section('script')
 <script>
-	cash(function () {
+	cash(function() {
 		async function add() {
 
 			cash('#add-form').find('.form__input').removeClass('border-theme-6')
@@ -110,21 +135,21 @@
 			var formData = new FormData(document.querySelector('#add-form'))
 
 			cash('#btn-add').html('<i data-loading-icon="oval" data-color="white" class="w-5 h-5 mx-auto"></i>').svgLoader()
-			cash('#btn-add').attr('disabled', 'true'); 
+			cash('#btn-add').attr('disabled', 'true');
 
-			axios.post('{{ url('/vendor/batches/create') }}', formData).then(res => {
-				showNotification('success','Success !',res.data.message)
-				setTimeout(()=>{
-					window.location.href = '{{ url('/vendor/batches') }}'
-				},1000)
+			axios.post('{{ url("/vendor/batches/create") }}', formData).then(res => {
+				showNotification('success', 'Success !', res.data.message)
+				setTimeout(() => {
+					window.location.href = '{{ url("/vendor/batches") }}'
+				}, 1000)
 
 			}).catch(err => {
-				showNotification('error','Error !',err.response.data.message)
-				cash('#btn-add').html('Add batch')   
-				cash('#btn-add').removeAttr('disabled');               
+				showNotification('error', 'Error !', err.response.data.message)
+				cash('#btn-add').html('Add batch')
+				cash('#btn-add').removeAttr('disabled');
 
 				if (err.response.data.errors) {
-					for (const [key, val] of Object.entries(err.response.data.errors)){
+					for (const [key, val] of Object.entries(err.response.data.errors)) {
 						cash(`#${key}`).addClass('border-theme-6')
 						cash(`#error-${key}`).html(val)
 					}

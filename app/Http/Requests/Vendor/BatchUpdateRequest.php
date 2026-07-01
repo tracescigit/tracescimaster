@@ -24,11 +24,13 @@ class BatchUpdateRequest extends FormRequest
     public function rules()
     {
         $id = $this->route('id');
-        $id = decrypt($id); 
+        $id = decrypt($id);
 
         return [
-            'code'          => 'required|max:50|regex:/(^[a-zA-Z0-9-()_ ]+$)/u|unique:batches,code,'.$id,
+            'code'          => 'required|max:50|regex:/(^[a-zA-Z0-9-()_ ]+$)/u|unique:batches,code,' . $id,
             'gs1_code'      => 'max:50',
+            'currency' => 'required',
+            'price'         => 'required|numeric|max:99999999.99|regex:/^[0-9.]+$/',
             'mfg_date'      => 'required|date',
             'exp_date'      => 'nullable|date',
             'product'       => 'required',

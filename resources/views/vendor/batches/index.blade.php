@@ -21,7 +21,7 @@
 
 <div class="intro-y box p-5 mt-5">
 	<div class="flex flex-col sm:flex-row sm:items-end xl:items-start">
-		<form id="tabulator-html-filter-form" class="xl:flex sm:mr-auto" >
+		<form id="tabulator-html-filter-form" class="xl:flex sm:mr-auto">
 			<div class="sm:flex items-center sm:mr-4">
 				<label class="w-12 flex-none xl:w-auto xl:flex-initial mr-2">Field</label>
 				<select id="tabulator-html-filter-field" class="form-select w-full sm:w-32 xxl:w-full mt-2 sm:mt-0 sm:w-auto">
@@ -32,7 +32,7 @@
 			</div>
 			<div class="sm:flex items-center sm:mr-4 mt-2 xl:mt-0">
 				<label class="w-12 flex-none xl:w-auto xl:flex-initial mr-2">Type</label>
-				<select id="tabulator-html-filter-type" class="form-select w-full mt-2 sm:mt-0 sm:w-auto" >
+				<select id="tabulator-html-filter-type" class="form-select w-full mt-2 sm:mt-0 sm:w-auto">
 					<option value="like" selected>like</option>
 					<option value="=">=</option>
 					<option value="<">&lt;</option>
@@ -44,11 +44,11 @@
 			</div>
 			<div class="sm:flex items-center sm:mr-4 mt-2 xl:mt-0">
 				<label class="w-12 flex-none xl:w-auto xl:flex-initial mr-2">Value</label>
-				<input id="tabulator-html-filter-value" type="text" class="form-control sm:w-40 xxl:w-full mt-2 sm:mt-0"  placeholder="Search...">
+				<input id="tabulator-html-filter-value" type="text" class="form-control sm:w-40 xxl:w-full mt-2 sm:mt-0" placeholder="Search...">
 			</div>
 			<div class="mt-2 xl:mt-0">
-				<button id="tabulator-html-filter-go" type="button" class="btn btn-primary w-full sm:w-16" >Go</button>
-				<button id="tabulator-html-filter-reset" type="button" class="btn btn-secondary w-full sm:w-16 mt-2 sm:mt-0 sm:ml-1" >Reset</button>
+				<button id="tabulator-html-filter-go" type="button" class="btn btn-primary w-full sm:w-16">Go</button>
+				<button id="tabulator-html-filter-reset" type="button" class="btn btn-secondary w-full sm:w-16 mt-2 sm:mt-0 sm:ml-1">Reset</button>
 			</div>
 		</form>
 		<div class="flex mt-5 sm:mt-0">
@@ -87,117 +87,135 @@
 
 @section('global_script')
 <script>
-	var tabulatorUrl =  '{{ route('vendor-batches') }}';
-	var tabulatorColumns = [
-	{	
-		formatter: "responsiveCollapse",
-		width: 40,
-		minWidth: 30,
-		align: "center",
-		resizable: false,
-		headerSort: false,
-		print: false,
-		download: false,
-		collapsed:true,
-	},{
-		title: "ACTIONS",
-		minWidth: 200,
-		field: "actions",
-		responsive: 0,
-		vertAlign: "middle",
-		headerSort: false,
-		print: false,
-		download: false,
-		formatter: function formatter(cell, formatterParams) {
-			return cell.getData().actions;
-		}
-	},{
-		title: "PRODUCT NAME",
-		minWidth: 200,
-		responsive: 0,
-		field: "name",
-		hozAlign: "center",
-		vertAlign: "middle",
-		print: false,
-		download: false,
-		formatter: function formatter(cell, formatterParams) {
-			return "<div>\n                            <div class=\"font-medium whitespace-nowrap\">".concat(cell.getData().name, "</div>");
-		}
-	}, {
-		title: "BATCH CODE",
-		minWidth: 200,
-		field: "code",
-		hozAlign: "center",
-		vertAlign: "middle",
-		print: false,
-		download: false,
-		formatter: function formatter(cell, formatterParams) {
-			return "<div>\n                            <div class=\"font-medium whitespace-nowrap\">".concat(cell.getData().code, "</div>\n                            ");
-		}
-	},{
-		title: "CREATED ON",
-		minWidth: 200,
-		field: "created_at",
-		hozAlign: "center",
-		vertAlign: "middle",
-		print: false,
-		download: false,
-		formatter: function formatter(cell, formatterParams) {
-			return "<div>\n                            <div class=\"font-medium whitespace-nowrap\">".concat(cell.getData().created_at, "</div>\n                            ");
-		}
-	}, {
-		title: "STATUS",
-		minWidth: 200,
-		field: "status",
-		hozAlign: "center",
-		vertAlign: "middle",
-		print: false,
-		download: false,
-		formatter: function formatter(cell, formatterParams) {
-			return "<div class=\"flex items-center lg:justify-center ".concat(cell.getData().status=='1' ? "text-theme-9" : "text-theme-6", "\">\n                            <i data-feather=\"check-square\" class=\"w-4 h-4 mr-2\"></i> ").concat(cell.getData().status=='1' ? "Active" : "Inactive", "\n                        </div>");
-		}
-	}, 
-	
-	{
-		title: "PRODUCT NAME",
-		field: "name",
-		visible: false,
-		print: true,
-		download: true
-	}, {
-		title: "BATCH CODE",
-		field: "code",
-		visible: false,
-		print: true,
-		download: true
-	}, {
-		title: "CREATED ON",
-		field: "created_at",
-		visible: false,
-		print: true,
-		download: true
-	},  {
-		title: "STATUS",
-		field: "status",
-		visible: false,
-		print: true,
-		download: true,
-		formatterPrint: function formatterPrint(cell) {
-			return cell.getValue()=='1' ? "Active" : "Inactive";
-		}
-	},
+	var tabulatorUrl = '{{route("vendor-batches")}}';
+	var tabulatorColumns = [{
+			formatter: "responsiveCollapse",
+			width: 40,
+			minWidth: 30,
+			align: "center",
+			resizable: false,
+			headerSort: false,
+			print: false,
+			download: false,
+			collapsed: true,
+		}, {
+			title: "ACTIONS",
+			minWidth: 200,
+			field: "actions",
+			responsive: 0,
+			vertAlign: "middle",
+			headerSort: false,
+			print: false,
+			download: false,
+			formatter: function formatter(cell, formatterParams) {
+				return cell.getData().actions;
+			}
+		}, {
+			title: "PRODUCT NAME",
+			minWidth: 200,
+			responsive: 0,
+			field: "name",
+			hozAlign: "center",
+			vertAlign: "middle",
+			print: false,
+			download: false,
+			formatter: function formatter(cell, formatterParams) {
+				return "<div>\n                            <div class=\"font-medium whitespace-nowrap\">".concat(cell.getData().name, "</div>");
+			}
+		}, {
+			title: "BATCH CODE",
+			minWidth: 200,
+			field: "code",
+			hozAlign: "center",
+			vertAlign: "middle",
+			print: false,
+			download: false,
+			formatter: function formatter(cell, formatterParams) {
+				return "<div>\n                            <div class=\"font-medium whitespace-nowrap\">".concat(cell.getData().code, "</div>\n                            ");
+			}
+		},
+		{
+			title: "PRICE",
+			minWidth: 200,
+			field: "price",
+			hozAlign: "center",
+			vertAlign: "middle",
+			print: false,
+			download: false,
+			formatter: function formatter(cell, formatterParams) {
+				return "<div>\n                            <div class=\"font-medium whitespace-nowrap\">".concat(cell.getData().price, "</div>\n                            ");
+			}
+		},
+		{
+			title: "CREATED ON",
+			minWidth: 200,
+			field: "created_at",
+			hozAlign: "center",
+			vertAlign: "middle",
+			print: false,
+			download: false,
+			formatter: function formatter(cell, formatterParams) {
+				return "<div>\n                            <div class=\"font-medium whitespace-nowrap\">".concat(cell.getData().created_at, "</div>\n                            ");
+			}
+		}, {
+			title: "STATUS",
+			minWidth: 200,
+			field: "status",
+			hozAlign: "center",
+			vertAlign: "middle",
+			print: false,
+			download: false,
+			formatter: function formatter(cell, formatterParams) {
+				return "<div class=\"flex items-center lg:justify-center ".concat(cell.getData().status == '1' ? "text-theme-9" : "text-theme-6", "\">\n                            <i data-feather=\"check-square\" class=\"w-4 h-4 mr-2\"></i> ").concat(cell.getData().status == '1' ? "Active" : "Inactive", "\n                        </div>");
+			}
+		},
+
+		{
+			title: "PRODUCT NAME",
+			field: "name",
+			visible: false,
+			print: true,
+			download: true
+		}, 		{
+			title: "PRICE",
+			field: "price",
+			visible: false,
+			print: true,
+			download: true
+		}, {
+			title: "BATCH CODE",
+			field: "code",
+			visible: false,
+			print: true,
+			download: true
+		}, {
+			title: "CREATED ON",
+			field: "created_at",
+			visible: false,
+			print: true,
+			download: true
+		}, {
+			title: "STATUS",
+			field: "status",
+			visible: false,
+			print: true,
+			download: true,
+			formatterPrint: function formatterPrint(cell) {
+				return cell.getValue() == '1' ? "Active" : "Inactive";
+			}
+		},
 	];
 </script>
 @endsection
 
 @section('script')
 <script>
-	cash(function () {
+	cash(function() {
 		async function del() {
 
 			let url = cash('#target').val()
 
-			if(!url){
+			if (!url) {
 				return false;
 			}
 
@@ -209,13 +227,13 @@
 
 			axios.post(url, formData).then(res => {
 				cash('#dismiss-modal').trigger('click')
-				showNotification('success','Success !',res.data.message)
-				setTimeout(()=>{
+				showNotification('success', 'Success !', res.data.message)
+				setTimeout(() => {
 					window.location.reload()
-				},1000)
+				}, 1000)
 			}).catch(err => {
 				cash('#dismiss-modal').trigger('click')
-				showNotification('error','Error !',err.response.data.message)
+				showNotification('error', 'Error !', err.response.data.message)
 				cash('#del-button').html('Delete')
 			})
 		}
@@ -226,4 +244,3 @@
 	})
 </script>
 @endsection
-
