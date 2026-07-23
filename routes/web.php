@@ -247,7 +247,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin', 'auth']], function 
 
     //Demo routes
     Route::get('/demo-schedule-details', [App\Http\Controllers\DemoController::class, 'index'])->name('admin-demo-schedule');
-    Route::get('/demo-schedule-details/{id}/edit', [App\Http\Controllers\DemoController::class, 'edit'])->name('admin-demo-schedule-edit');
+    Route::get('/demo-schedule-details/{id}/details', [App\Http\Controllers\DemoController::class, 'show'])->name('admin-demo-schedule-show');
+    Route::post('/demo-schedule-details/{id}/mark-done', [App\Http\Controllers\DemoController::class, 'markDone'])->name('admin-demo-schedule-mark-done');
 });
 
 Route::group(['prefix' => 'vendor', 'middleware' => ['vendor', 'auth']], function () {

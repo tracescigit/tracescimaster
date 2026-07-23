@@ -42,14 +42,14 @@ class DemoController extends Controller
             foreach ($demos as $demo) {
                 $u['full_name']          = $demo->full_name ?? '--';
                 $u['demo_date']         = date('M d, Y', strtotime($demo->demo_date)) ?? '-';
-                $u['demo_time']         =  date('h:i A', strtotime($demo->demo_date)) ?? '-';
+                $u['demo_time']         =  date('h:i A', strtotime($demo->demo_time)) ?? '-';
                 $u['created_by']         = $demo->created_by ?? '--';
                 $u['email']         = $demo->email ?? '--';
                 $u['phone']        = $demo->phone ?? '--';
                 $u['company_name']   =            $demo->company_name ?? '--';
                 $u['company_email']   =            $demo->company_email ?? '--';
                 $u['message']   =            $demo->message ?? '--';
-                $u['status']   = $demo->status == 1 ? 'Active' : 'Inactive';
+                $u['status']   = $demo->status ?? '--';
                 $u['created_at']   =     date('M d, Y', strtotime($demo->created_at)) ?? '-';;
 
                 $actions            = view('admin.demo.actions', ['id' => $demo->id]);
@@ -86,6 +86,7 @@ class DemoController extends Controller
 
     public function store(Request $request)
     {
+
         $validated = $request->validate([
             'full_name' => [
                 'required',
@@ -147,7 +148,7 @@ class DemoController extends Controller
         }
 
         $demo = DemoSchedule::create($validated);
-        
+
         /*
 |--------------------------------------------------------------------------
 | Mail To Customer
@@ -272,5 +273,19 @@ class DemoController extends Controller
 
 
         return response()->json(['message' => 'Demo booked successfully.']);
+    }
+
+    public function show($id)
+    {
+        $demo = DemoSchedule::findOrFail(decrypt($id));
+        return view('admin.demo.show', compact('demo'));
+    }
+    public function markDone(Request $request, $id)
+    {
+        $demo = DemoSchedule::findOrFail($id);
+        $demo->status = $request->input('status', 1); // will receive 1 from this button
+        $demo->save();
+
+        return response()->json(['status' => true, 'message' => 'Marked as done']);
     }
 }

@@ -17,6 +17,7 @@ use App\Models\Wallet;
 use Exception;
 use Http;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
 class ScanController extends Controller
@@ -26,6 +27,12 @@ class ScanController extends Controller
 
 		$input = $request->all();
 
+		Log::info('scan.show: entry', [
+			'scan_code' => $scan_code,
+			'input'     => $input,
+			'ip'        => $request->ip(),
+		]);
+
 		$rules = [
 			'token'       =>  'required'
 		];
@@ -34,6 +41,12 @@ class ScanController extends Controller
 
 		if ($validator->fails()) {
 			$errors = $validator->errors();
+
+			Log::warning('scan.show: validation failed', [
+				'scan_code' => $scan_code,
+				'errors'    => $errors,
+			]);
+
 			return response([
 				'success' => false,
 				'message' => 'Invalid request',
@@ -42,9 +55,22 @@ class ScanController extends Controller
 		} else {
 			$token = $input['token'];
 
+			Log::info('scan.show: validation passed, attempting token decrypt', [
+				'scan_code' => $scan_code,
+			]);
+
 			try {
 				$id = decrypt($token);
+				Log::info('scan.show: token decrypted successfully', [
+					'scan_code'  => $scan_code,
+					'decrypted_id' => $id,
+				]);
 			} catch (Exception $e) {
+				Log::error('scan.show: token decryption failed', [
+					'scan_code' => $scan_code,
+					'message'   => $e->getMessage(),
+				]);
+
 				return response([
 					'success' => false,
 					'message' => 'Invalid token',
@@ -53,7 +79,15 @@ class ScanController extends Controller
 			}
 
 			$user = User::find($id);
-			$code = Code::where('qr_code', $scan_code)->first();
+			$code = Code::where('code_data', $scan_code)->first();
+
+			Log::info('scan.show: user and code lookup', [
+				'scan_code'   => $scan_code,
+				'user_id'     => $id,
+				'user_found'  => (bool) $user,
+				'code_found'  => (bool) $code,
+				'code_id'     => $code->id ?? null,
+			]);
 
 			$alert = array(
 				'alert_message' => 'Suspicious Product',
@@ -62,6 +96,11 @@ class ScanController extends Controller
 
 
 			if (!$user) {
+				Log::warning('scan.show: user not found, aborting', [
+					'scan_code' => $scan_code,
+					'user_id'   => $id,
+				]);
+
 				return response([
 					'success' => false,
 					'message' => 'Invalid token',
@@ -72,6 +111,11 @@ class ScanController extends Controller
 
 			if (!$code) {
 
+				Log::warning('scan.show: code not found for code_data, raising alert', [
+					'scan_code' => $scan_code,
+					'user_id'   => $user->id,
+				]);
+
 				$alert['scanned_by'] = $user->id;
 				$alert['alert_message'] = "Fake product detected with below code data - '" . $scan_code . "'";
 
@@ -81,6 +125,11 @@ class ScanController extends Controller
 
 				$add_alert = addAlerts($alert);
 
+				Log::info('scan.show: alert added for missing code', [
+					'scan_code' => $scan_code,
+					'alert_result' => $add_alert,
+				]);
+
 				return response([
 					'success' => false,
 					'message' => 'Product details not found. It may be suspicious product.',
@@ -89,6 +138,13 @@ class ScanController extends Controller
 			}
 
 			if ($code->batch_id == '') {
+
+				Log::warning('scan.show: code has no batch_id (deactivated product), raising alert', [
+					'scan_code' => $scan_code,
+					'code_id'   => $code->id,
+					'user_id'   => $user->id,
+				]);
+
 				$alert['scanned_by'] = $user->id;
 				$alert['code_id'] = $code->id;
 				$alert['alert_message'] = "Deactivated product scanned";
@@ -99,6 +155,11 @@ class ScanController extends Controller
 
 				$add_alert = addAlerts($alert);
 
+				Log::info('scan.show: alert added for deactivated product', [
+					'scan_code' => $scan_code,
+					'alert_result' => $add_alert,
+				]);
+
 				return response([
 					'success' => false,
 					'message' => 'Product details not found. It may be suspicious product.',
@@ -107,6 +168,12 @@ class ScanController extends Controller
 			}
 
 			$response = [];
+
+			Log::info('scan.show: proceeding to build product response', [
+				'scan_code'    => $scan_code,
+				'code_id'      => $code->id,
+				'has_product'  => (bool) $code->getProduct,
+			]);
 
 			if ($code->getProduct) {
 				$response['id'] = $code->getProduct->id ?? '';
@@ -117,7 +184,19 @@ class ScanController extends Controller
 				$response['html_description'] = $code->getProduct->description ? $code->getProduct->description : '';
 				$response['price'] = $code->getProduct->price ? ($code->getProduct->currency . ' ' . $code->getProduct->price) : '';
 
+				Log::info('scan.show: base product fields populated', [
+					'scan_code'    => $scan_code,
+					'product_id'   => $response['id'],
+					'product_name' => $response['name'],
+				]);
+
 				$duplicate_scan = ScanHistory::where('code_id', $code->id)->where('ip_address', '!=', $request->ip())->first();
+
+				Log::info('scan.show: duplicate scan (different IP) check', [
+					'code_id'         => $code->id,
+					'current_ip'      => $request->ip(),
+					'duplicate_found' => (bool) $duplicate_scan,
+				]);
 
 				if ($duplicate_scan) {
 					$alert['product_id'] = $code->getBatch ? $code->getProduct->id : '';
@@ -131,12 +210,23 @@ class ScanController extends Controller
 					}
 
 					$add_alert = addAlerts($alert);
+
+					Log::info('scan.show: alert added for different IP scan', [
+						'scan_code' => $scan_code,
+						'alert_result' => $add_alert,
+					]);
 				}
 
 				$applied_offer = null;
 				$find_with_same_ip = ScanHistory::where('code_id', $code->id)->where('ip_address', $request->ip())->where('scan_count', '1')->first();
 
 				$cashback_offers = Cashback::where('status', 'Active')->where('from', '<=', date('Y-m-d'))->where('to', '>=', date('Y-m-d'))->get();
+
+				Log::info('scan.show: evaluating cashback offers', [
+					'code_id'              => $code->id,
+					'active_offers_count'  => $cashback_offers->count(),
+					'find_with_same_ip'    => (bool) $find_with_same_ip,
+				]);
 
 				foreach ($cashback_offers as $key => $cashback_offer) {
 
@@ -162,6 +252,12 @@ class ScanController extends Controller
 
 					if (in_array($code->id, $codes_in_cashback)) {
 						$applied_offer = $cashback_offer;
+
+						Log::info('scan.show: cashback offer matched', [
+							'code_id'   => $code->id,
+							'offer_id'  => $cashback_offer->id,
+							'offer_title' => $cashback_offer->title ?? null,
+						]);
 					}
 				}
 
@@ -192,6 +288,13 @@ class ScanController extends Controller
 				$response['scan_count'] = ScanHistory::where('code_id', $code->id)->where('scan_count', '1')->count();
 				$scan_history->genuine = '1';
 
+				Log::info('scan.show: scan_history prepared (pre-save)', [
+					'code_id'         => $code->id,
+					'user_id'         => $user->id,
+					'computed_scan_count_flag' => $scan_history->scan_count,
+					'response_scan_count'      => $response['scan_count'],
+				]);
+
 				if ($response['scan_count'] >= 1) {
 					$second_last = ScanHistory::orderBy('created_at', 'DESC')->first();
 					$response['last_scanned'] = date('M d, Y H:i:s', strtotime($second_last->created_at));
@@ -203,16 +306,41 @@ class ScanController extends Controller
 
 				$more_than_ip =  ScanHistory::where('code_id', $code->id)->where('ip_address', '!=', '')->where('scan_count', '1')->distinct('ip_address')->count();
 
+				Log::info('scan.show: genuineness checks', [
+					'code_id'              => $code->id,
+					'other_than_me_scans'  => $other_than_me_scans,
+					'more_than_ip_count'   => $more_than_ip,
+					'code_status'          => $code->status,
+					'applied_offer'        => (bool) $applied_offer,
+				]);
+
 				if (($other_than_me_scans || $more_than_ip > 15 || $code->status == '0') && !$applied_offer) {
 					$scan_history->genuine = '0';
+
+					Log::info('scan.show: marking scan_history as NOT genuine', [
+						'code_id' => $code->id,
+					]);
 				}
 
-				$scan_history->save();
+				try {
+					$scan_history->save();
+					Log::info('scan.show: scan_history saved successfully', [
+						'scan_history_id' => $scan_history->id,
+						'code_id'         => $code->id,
+					]);
+				} catch (\Throwable $e) {
+					Log::error('scan.show: scan_history save failed', [
+						'code_id' => $code->id,
+						'message' => $e->getMessage(),
+						'file'    => $e->getFile(),
+						'line'    => $e->getLine(),
+					]);
+				}
 
 				$response['batch'] = $code->getBatch ? $code->getBatch->id : '';
 				$response['batch_code'] = $code->getBatch ? $code->getBatch->code : '';
 				$response['code_data'] = $code->code_data ?? '';
-				$response['qr_code'] = $code->qr_code ?? '';
+				$response['code_data'] = $code->code_data ?? '';
 				$response['manufacturer'] = $code->getUser->getCompany->name ?? '';
 				$response['manufactured_on'] = $code->getBatch ? date('M d, Y H:i:s', strtotime($code->getBatch->mfg_date)) : '';
 				$response['expiry_on'] = $code->getBatch ? date('M d, Y H:i:s', strtotime($code->getBatch->exp_date)) : '';
@@ -221,9 +349,30 @@ class ScanController extends Controller
 				$response['media'] = $code->getProduct ? ($code->getProduct->media ? asset($code->getProduct->media) : '') : '';
 				$response['genuine_product'] = $scan_history->genuine == '1' ? true : false;
 				$response['scan_id'] = $scan_history->id;
+
+				Log::info('scan.show: full product response assembled', [
+					'code_id'  => $code->id,
+					'response' => $response,
+				]);
+			} else {
+				Log::warning('scan.show: code has no related product (getProduct is null)', [
+					'code_id' => $code->id,
+				]);
+			}
+
+			if (!$code->getBatch) {
+				Log::warning('scan.show: code has no related batch, expiry/mfg date checks below may fail', [
+					'code_id' => $code->id,
+				]);
 			}
 
 			if (strtotime('now') > strtotime($code->getBatch->exp_date)) {
+
+				Log::warning('scan.show: expired product detected, raising alert', [
+					'code_id' => $code->id,
+					'exp_date' => $code->getBatch->exp_date ?? null,
+				]);
+
 				$alert['product_id'] = $code->getBatch ? $code->getProduct->id : '';
 				$alert['code_id'] = $code->id;
 				$alert['batch_id'] = $code->getBatch ? $code->getBatch->id : '';
@@ -235,9 +384,20 @@ class ScanController extends Controller
 				}
 
 				$add_alert = addAlerts($alert);
+
+				Log::info('scan.show: alert added for expired product', [
+					'scan_code' => $scan_code,
+					'alert_result' => $add_alert,
+				]);
 			}
 
 			if (strtotime('now') < strtotime($code->getBatch->mfg_date)) {
+
+				Log::warning('scan.show: manufacturing date mismatch detected, raising alert', [
+					'code_id' => $code->id,
+					'mfg_date' => $code->getBatch->mfg_date ?? null,
+				]);
+
 				$alert['product_id'] = $code->getBatch ? $code->getProduct->id : '';
 				$alert['code_id'] = $code->id;
 				$alert['batch_id'] = $code->getBatch ? $code->getBatch->id : '';
@@ -249,9 +409,20 @@ class ScanController extends Controller
 				}
 
 				$add_alert = addAlerts($alert);
+
+				Log::info('scan.show: alert added for mfg date mismatch', [
+					'scan_code' => $scan_code,
+					'alert_result' => $add_alert,
+				]);
 			}
 
 			if ($code->getUser->active == '0') {
+
+				Log::warning('scan.show: manufacturer is banned, raising alert', [
+					'code_id' => $code->id,
+					'manufacturer_id' => $code->getUser->id ?? null,
+				]);
+
 				$alert['product_id'] = $code->getBatch ? $code->getProduct->id : '';
 				$alert['code_id'] = $code->id;
 				$alert['batch_id'] = $code->getBatch ? $code->getBatch->id : '';
@@ -263,9 +434,18 @@ class ScanController extends Controller
 				}
 
 				$add_alert = addAlerts($alert);
+
+				Log::info('scan.show: alert added for banned manufacturer', [
+					'scan_code' => $scan_code,
+					'alert_result' => $add_alert,
+				]);
 			}
 
 			if ($code->status == '0') {
+
+				Log::warning('scan.show: code status is inactive/fake, raising alert and aborting', [
+					'code_id' => $code->id,
+				]);
 
 				$alert['scanned_by'] = $user->id;
 				$alert['alert_message'] = "Fake product detected";
@@ -279,6 +459,11 @@ class ScanController extends Controller
 
 				$add_alert = addAlerts($alert);
 
+				Log::info('scan.show: alert added for fake product, returning 400', [
+					'scan_code' => $scan_code,
+					'alert_result' => $add_alert,
+				]);
+
 				return response([
 					'success' => false,
 					'message' => 'Product details not found. It may be suspicious product.',
@@ -288,16 +473,67 @@ class ScanController extends Controller
 
 			$journey = null;
 
+			Log::info('scan.show: checking aggregation for supply chain journey', [
+				'code_id' => $code->id,
+				'has_aggregation' => (bool) $code->getAggregation,
+			]);
+
 			if ($code->getAggregation) {
 				$aggregation = Aggregation::find($code->getAggregation->id);
 				if ($aggregation) {
 					$journey = prepareSupplyChainScanHistory($aggregation->unique_id, $aggregation->user_id);
+
+					Log::info('scan.show: journey prepared from aggregation', [
+						'code_id'        => $code->id,
+						'aggregation_id' => $aggregation->id,
+						'journey_empty'  => empty($journey),
+					]);
+				} else {
+					Log::warning('scan.show: aggregation id present but Aggregation::find returned null', [
+						'code_id' => $code->id,
+						'aggregation_id' => $code->getAggregation->id ?? null,
+					]);
 				}
 			}
 
+			if (!$code->getProduct || !$code->getProduct->getTemplate) {
+				Log::error('scan.show: missing product or product template, permissions lookup will likely fail', [
+					'code_id'          => $code->id,
+					'has_product'      => (bool) $code->getProduct,
+					'has_template_rel' => $code->getProduct ? (bool) $code->getProduct->getTemplate : null,
+				]);
+			}
+
 			$permissions = ProductTemplate::where('id', $code->getProduct->getTemplate->id)->first();
-			$renderfile = view('web.scan.table', ['product' => $response, 'journey' => $journey, 'user' => $user, 'permissions' => $permissions]);
-			$view = $renderfile->render();
+
+			Log::info('scan.show: permissions/template lookup result', [
+				'code_id'         => $code->id,
+				'template_id'     => $code->getProduct->getTemplate->id ?? null,
+				'permissions_found' => (bool) $permissions,
+			]);
+
+			try {
+				$renderfile = view('web.scan.table', ['product' => $response, 'journey' => $journey, 'user' => $user, 'permissions' => $permissions]);
+				$view = $renderfile->render();
+
+				Log::info('scan.show: view rendered successfully', [
+					'code_id' => $code->id,
+				]);
+			} catch (\Throwable $e) {
+				Log::error('scan.show: view rendering failed', [
+					'code_id' => $code->id,
+					'message' => $e->getMessage(),
+					'file'    => $e->getFile(),
+					'line'    => $e->getLine(),
+				]);
+
+				throw $e;
+			}
+
+			Log::info('scan.show: returning success response', [
+				'code_id' => $code->id,
+				'scan_code' => $scan_code,
+			]);
 
 			return response([
 				'success' => true,
@@ -351,11 +587,11 @@ class ScanController extends Controller
 				], 400);
 			}
 
-			$response = ScanHistory::where('scan_histories.scanned_by', $user->id)->leftJoin('codes', 'codes.id', '=', 'scan_histories.code_id')->leftJoin('products', 'products.id', '=', 'codes.product_id')->orderBy('scan_histories.created_at', 'DESC')->select(['scan_histories.id as scan_id', 'scan_histories.created_at as date', 'products.name as product', 'codes.qr_code', 'scan_histories.code_id', 'scan_histories.genuine'])->get();
+			$response = ScanHistory::where('scan_histories.scanned_by', $user->id)->leftJoin('codes', 'codes.id', '=', 'scan_histories.code_id')->leftJoin('products', 'products.id', '=', 'codes.product_id')->orderBy('scan_histories.created_at', 'DESC')->select(['scan_histories.id as scan_id', 'scan_histories.created_at as date', 'products.name as product', 'codes.code_data', 'scan_histories.code_id', 'scan_histories.genuine'])->get();
 
 			if (count($response) > 0) {
 				foreach ($response as $key => $scan_code) {
-					$scan_code['url'] = url('api/scan-details/' . $scan_code->qr_code);
+					$scan_code['url'] = url('api/scan-details/' . $scan_code->code_data);
 					$scan_code['genuine_product'] = $scan_code->genuine == '1' ? true : false;
 				}
 			}
@@ -413,7 +649,7 @@ class ScanController extends Controller
 			}
 
 
-			$code = Code::where('qr_code', $scan_code)->first();
+			$code = Code::where('code_data', $scan_code)->first();
 
 			if (!$code) {
 				return response([
@@ -446,7 +682,7 @@ class ScanController extends Controller
 
 				$response['manufacturer'] = $code->getUser->getCompany->name ?? '';
 				$response['code_data'] = $code->code_data ?? '';
-				$response['qr_code'] = $code->qr_code ?? '';
+				$response['code_data'] = $code->code_data ?? '';
 				$response['batch'] = $code->getBatch ? $code->getBatch->id : '';
 				$response['batch_code'] = $code->getBatch ? $code->getBatch->code : '';
 				$response['manufactured_on'] = $code->getBatch ? date('M d, Y H:i:s', strtotime($code->getBatch->mfg_date)) : '';
