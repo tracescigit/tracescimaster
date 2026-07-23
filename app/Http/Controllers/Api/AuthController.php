@@ -9,86 +9,221 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Str;
 use Hash;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str as SupportStr;
+use App\Mail\SendOtpMail;
+use App\CustomClasses\EmailProvider as CustomClassesEmailProvider;
 
 class AuthController extends Controller
 {
+
+	// public function forgotPassword(ForgotPassword $request)
+	// {
+
+	// 	$message = __('forgot_password.success_message');
+	// 	$status  = 'success';
+	// 	$status_code = 200;
+
+	// 	$user = User::where('email', $request->email)->first();
+
+	// 	if ($user->status != '1' || $user->active != '1') {
+	// 		$message = __('login.approval_message');
+	// 		$status  = 'failed';
+	// 		$status_code = 400;
+	// 	} else {
+	// 		$password = SupportStr::random(6);
+
+	// 		CustomClassesEmailProvider::sendMail(
+	// 			'user-forgot-password-mail',
+	// 			[
+	// 				'user_id' => $user->id,
+	// 				'name' => $user->first_name,
+	// 				'phone' => $user->phone_code . $user->phone,
+	// 				'password' => $password,
+	// 				'email' => $user->email
+	// 			]
+	// 		);
+
+	// 		$user->password = bcrypt($password);
+	// 		$user->save();
+	// 	}
+
+	// 	return response(['message' => $message, 'status' => $status], $status_code);
+	// }
 	public function getOtp(Request $request)
 	{
-		$input = $request->all();
+		try {
 
-		$rules = [
-			'country_code' =>  'required|regex:/^[0-9-]+$/',
-			'phone'       =>  'required|min:10|max:10|regex:/^[0-9-]+$/',
-		];
+			$input = $request->all();
 
-		$validator = Validator::make($input, $rules);
+			// Validation rules
+			$rules = [
+				'phone_code' => 'nullable|string|regex:/^[0-9-]+$/',
+				'phone' => 'nullable|string|max:15',
+				'email' => 'nullable|string|email',
+				'password' => 'required|string',
+			];
 
-		if ($validator->fails()) {
-			$errors = $validator->errors();
+			// Validate input data
+			$validator = Validator::make($input, $rules);
+
+			if ($validator->fails()) {
+				$errors = $validator->errors();
+				return response([
+					'error' => true,
+					'message' => $errors->first(),
+					'status' => 400
+				], 400);
+			}
+
+
+			// Process login and OTP assignment
+			$userResponse = loginUserAndAssignOtp(
+				$input['password'],
+				$input['phone_code'] ?? null,
+				$input['phone'] ?? null,
+				$input['email'] ?? null
+
+			);
+			// Handle user response
+			if ($userResponse instanceof \Illuminate\Http\Response) {
+				return $userResponse;
+			}
+
+			if ($userResponse instanceof \App\Models\User) {
+
+				if (!empty($userResponse->email)) {
+					try {
+						Mail::to($userResponse->email)->send(new SendOtpMail($userResponse->otp));
+						Log::info('OTP email sent successfully', ['email' => $userResponse->email]);
+					} catch (\Exception $e) {
+						Log::error('Failed to send OTP email', [
+							'email' => $userResponse->email,
+							'error' => $e->getMessage()
+						]);
+					}
+				}
+
+
+				return response([
+					'error' => false,
+					'message' => 'OTP sent successfully',
+					'status' => 200,
+					'data' => [
+						'otp' => $userResponse->otp,
+					],
+				], 200);
+			}
+
 			return response([
-				'success' => false,
-				'message' => 'Invalid request',
-				'errors' => $errors
-			], 400);
-		} else {
-			$user = createOrUpdateUserAndAssignOtp($input['country_code'], $input['phone']);
-
+				'error' => true,
+				'message' => 'Unable to process the request. Please try again.',
+				'status' => 500
+			], 500);
+		} catch (\Exception $e) {
 			return response([
-				'success' => true,
-				'message' => 'OTP sent successfully',
-				'otp' => $user->otp
-			], 200);
+				'error' => true,
+				'message' => 'An unexpected error occurred: ' . $e->getMessage(),
+				'status' => 500
+			], 500);
 		}
 	}
 
 	public function verifyOtp(Request $request)
 	{
 		$input = $request->all();
-		$rules = [
-			'country_code' =>  'required|regex:/^[0-9-]+$/',
-			'otp'         =>  'required|min:4|max:4|regex:/^[0-9-]+$/',
-			'phone'       =>  'required|min:10|max:10|regex:/^[0-9-]+$/',
 
+		// Validation rules for phone or email
+		$rules = [
+			'country_code' => 'nullable|regex:/^[0-9-]+$/', // Optional for email login
+			'otp'          => 'required|min:4|max:4|regex:/^[0-9-]+$/',
+			'phone'        => 'nullable|min:10|max:10|regex:/^[0-9-]+$/', // Nullable for email login
+			'email'        => 'nullable|email', // Nullable if using phone
 		];
 
+		// Validate the input
 		$validator = Validator::make($input, $rules);
 
 		if ($validator->fails()) {
-			$errors = $validator->errors();
+			// Return the first validation error
 			return response([
-				'success' => false,
+				'error' => true,
 				'message' => 'Invalid request',
-				'errors' => $errors
-			], 400);
-		} else {
-			$user = User::where('phone', $input['phone'])->where('otp', $input['otp'])->first();
-
-			if (!$user) {
-				return response([
-					'success' => false,
-					'message' => 'Invalid otp',
-					'errors' => ['otp' => ['Invalid otp']]
-				], 400);
-			}
-
-			$profile = [];
-
-			$profile['first_name'] = $user->first_name;
-			$profile['middle_name'] = $user->middle_name;
-			$profile['last_name'] = $user->last_name;
-			$profile['phone_code'] = $user->phone_code;
-			$profile['phone'] = $user->phone;
-			$profile['email'] = $user->email;
-			$profile['role']  = getAppUsersRoles($user->id);
-			// $profile['type']  = getDesignation($user->id);
-			return response([
-				'success' => true,
-				'message' => 'Logged in successfully',
-				'token'  => encrypt($user->id),
-				'profile' => $profile,
+				'status'  => $validator->errors()->first(),
 			], 200);
 		}
+		// Ensure either phone or email is provided
+		if (empty($input['phone']) && empty($input['email'])) {
+			return response([
+				'errors' => true,
+				'status' => 200,
+				'message' => 'Please provide a valid phone number or email address',
+			]);
+		}
+
+		// Check if 'phone' or 'email' exists in the input array and process accordingly
+
+		// Search for user by phone and OTP if phone is provided
+		$user = null;
+		if (!empty($input['phone'])) {
+			$user = User::where('phone', $input['phone'])
+				->where('otp', $input['otp'])
+				->first();
+		}
+
+		// Search for user by email and OTP if email is provided
+		if (!$user && !empty($input['email'])) {
+			$user = User::where('email', $input['email'])
+				->where('otp', $input['otp'])
+				->first();
+		}
+
+		// If user is not found with provided phone/email and OTP, return error
+		if (!$user) {
+			return response([
+				'error' => true,
+				'status' => 200,
+				'message' => 'Invalid OTP or credentials',
+			]);
+		}
+
+		// Prepare user profile information
+
+		$scannable = 0;
+		$allowedRoles = ['BIR LTS ACIR', 'BIR LTS HREA Excise', 'BIR LTS ELTFOD Division Chief', 'BIR LTS ELTFOD Assistant Division Chief', 'BIR LTS ELTFOD Section Chief Tobacco', 'BIR LTS ELTFOD Revenue Officer', 'BIR LTS ELTFOD ROOP(Zone in charge)', 'BIR LTS ELTFOD ROOP APO', 'BIR LTS ELTRD Assistant Division Chief', 'BIR LTS ELTRD Division Chief', 'BIR LTS ELTRD Section Chief Tobacco'];
+
+		if (in_array($user->who_you_are, $allowedRoles)) {
+			$scannable = 1;
+		} else {
+			$scannable = 0;
+		}
+
+
+
+		$profile = [
+			'first_name'  => $user->first_name,
+			'middle_name' => $user->middle_name,
+			'last_name'   => $user->last_name,
+			'phone_code'  => $user->phone_code,
+			'phone'       => $user->phone,
+			'email'       => $user->email,
+			'type'        => $user->type,
+			'role'        => $user->who_you_are,
+			'scannable'        => $scannable
+		];
+		// Successful response with token and profile details
+		return response([
+			'error' => false,
+			'message' => 'Success',
+			'status' => 200,
+			'data'    => [
+				'token'   => encrypt($user->id),
+				'profile' => $profile,
+			],
+		], 200);
 	}
+
 	public function verifySecretCode(Request $request)
 	{
 		$input = $request->all();

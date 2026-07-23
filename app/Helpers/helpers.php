@@ -25,6 +25,7 @@ use App\Models\SupplyChainAlert;
 use App\Models\User;
 use App\Models\Wallet;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
@@ -1017,6 +1018,72 @@ if (! function_exists('prepareInvoiceId')) {
 		//IN2200001
 		$id = 'IN' . date('y') . '0000' . $invoiceId;
 		return $id;
+	}
+}
+
+if (!function_exists('loginUserAndAssignOtp')) {
+	function loginUserAndAssignOtp($password, $phone_code = null, $phone = null, $email = null)
+	{
+		// Validate the login option (phone or email)
+		if (!$password || ((!$phone_code || !$phone) && !$email)) {
+			return response([
+				'error' => true,
+				'message' => 'Phone number with country code or email, and password are required',
+				'status' => 400
+			]);
+		}
+
+		// Generate OTP (replace with actual logic in production)
+		$otp = rand(1000, 9999);
+		$user = null;
+
+		// If the user is logging in using a phone number
+		if ($phone_code && $phone) {
+			$user = User::where('phone_code', $phone_code)
+				->where('phone', $phone)
+				->first();
+
+			if (!$user) {
+				return response([
+					'error' => true,
+					'message' => 'Phone number not found',
+					'status' => 404
+				]);
+			}
+		}
+		// If the user is logging in using email
+		elseif ($email) {
+			$user = User::where('email', $email)->first();
+
+			if (!$user) {
+				return response([
+					'error' => true,
+					'message' => 'Email not found',
+					'status' => 404
+				]);
+			}
+		}
+
+		// Verify the hashed password
+		if ($user && !Hash::check($password, $user->password)) {
+			return response([
+				'error' => true,
+				'message' => 'Incorrect password',
+				'status' => 401
+			]);
+		}
+
+		// Assign OTP
+		$user->otp = $otp;
+		$user->save();
+
+		// Optionally, send OTP via SMS if using phone
+		// Uncomment the below line to send SMS if implemented
+		// $smsphone = $phone_code . $phone;
+		// $message = 'Your login OTP is ' . $otp;
+		// $sms = sendSms($smsphone, $message);
+
+		return $user;
 	}
 }
 
