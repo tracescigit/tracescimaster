@@ -62,7 +62,7 @@ class AuthController extends Controller
 				'phone_code' => 'nullable|string|regex:/^[0-9-]+$/',
 				'phone' => 'nullable|string|max:15',
 				'email' => 'nullable|string|email',
-				'password' => 'required|string',
+				'password' => 'nullable|string',
 			];
 
 			// Validate input data
@@ -80,7 +80,7 @@ class AuthController extends Controller
 
 			// Process login and OTP assignment
 			$userResponse = loginUserAndAssignOtp(
-				$input['password'],
+				$input['password'] ?? null,
 				$input['phone_code'] ?? null,
 				$input['phone'] ?? null,
 				$input['email'] ?? null
@@ -136,37 +136,49 @@ class AuthController extends Controller
 
 		// Validation rules for phone or email
 		$rules = [
-			'country_code' => 'nullable|regex:/^[0-9-]+$/', // Optional for email login
+			'country_code' => 'nullable|regex:/^[0-9-]+$/',
 			'otp'          => 'required|min:4|max:4|regex:/^[0-9-]+$/',
-			'phone'        => 'nullable|min:10|max:10|regex:/^[0-9-]+$/', // Nullable for email login
-			'email'        => 'nullable|email', // Nullable if using phone
+			'phone'        => 'nullable|min:10|max:10|regex:/^[0-9-]+$/',
+			'email'        => 'nullable|email',
 		];
 
-		// Validate the input
-		$validator = Validator::make($input, $rules);
+		$messages = [
+			'country_code.regex' => 'Please enter a valid country code.',
+
+			'otp.required' => 'OTP is required.',
+			'otp.min'      => 'OTP must be exactly 4 digits.',
+			'otp.max'      => 'OTP must be exactly 4 digits.',
+			'otp.regex'    => 'OTP must contain only numbers.',
+
+			'phone.min'    => 'Phone number must be exactly 10 digits.',
+			'phone.max'    => 'Phone number must be exactly 10 digits.',
+			'phone.regex'  => 'Phone number must contain only numbers.',
+
+			'email.email'  => 'Please enter a valid email address.',
+		];
+
+		$validator = Validator::make($input, $rules, $messages);
+
 
 		if ($validator->fails()) {
 			// Return the first validation error
 			return response([
-				'error' => true,
-				'message' => 'Invalid request',
-				'status'  => $validator->errors()->first(),
-			], 200);
+				'error'   => true,
+				'message' => $validator->errors()->first(),
+			], 400);
 		}
 		// Ensure either phone or email is provided
 		if (empty($input['phone']) && empty($input['email'])) {
 			return response([
-				'errors' => true,
-				'status' => 200,
+				'error' => true,
+				'status' => 400,
 				'message' => 'Please provide a valid phone number or email address',
-			]);
+			], 400);
 		}
-
-		// Check if 'phone' or 'email' exists in the input array and process accordingly
 
 		// Search for user by phone and OTP if phone is provided
 		$user = null;
-		if (!empty($input['phone'])) {
+		if (!$user && !empty($input['phone'])) {
 			$user = User::where('phone', $input['phone'])
 				->where('otp', $input['otp'])
 				->first();
@@ -183,21 +195,20 @@ class AuthController extends Controller
 		if (!$user) {
 			return response([
 				'error' => true,
-				'status' => 200,
-				'message' => 'Invalid OTP or credentials',
-			]);
+				'message' => 'Invalid OTP or credentials'
+			], 400);
 		}
 
 		// Prepare user profile information
 
-		$scannable = 0;
-		$allowedRoles = ['BIR LTS ACIR', 'BIR LTS HREA Excise', 'BIR LTS ELTFOD Division Chief', 'BIR LTS ELTFOD Assistant Division Chief', 'BIR LTS ELTFOD Section Chief Tobacco', 'BIR LTS ELTFOD Revenue Officer', 'BIR LTS ELTFOD ROOP(Zone in charge)', 'BIR LTS ELTFOD ROOP APO', 'BIR LTS ELTRD Assistant Division Chief', 'BIR LTS ELTRD Division Chief', 'BIR LTS ELTRD Section Chief Tobacco'];
+		// $scannable = 0;
+		// $allowedRoles = ['BIR LTS ACIR', 'BIR LTS HREA Excise', 'BIR LTS ELTFOD Division Chief', 'BIR LTS ELTFOD Assistant Division Chief', 'BIR LTS ELTFOD Section Chief Tobacco', 'BIR LTS ELTFOD Revenue Officer', 'BIR LTS ELTFOD ROOP(Zone in charge)', 'BIR LTS ELTFOD ROOP APO', 'BIR LTS ELTRD Assistant Division Chief', 'BIR LTS ELTRD Division Chief', 'BIR LTS ELTRD Section Chief Tobacco'];
 
-		if (in_array($user->who_you_are, $allowedRoles)) {
-			$scannable = 1;
-		} else {
-			$scannable = 0;
-		}
+		// if (in_array($user->who_you_are, $allowedRoles)) {
+		// 	$scannable = 1;
+		// } else {
+		// 	$scannable = 0;
+		// }
 
 
 
@@ -210,7 +221,6 @@ class AuthController extends Controller
 			'email'       => $user->email,
 			'type'        => $user->type,
 			'role'        => $user->who_you_are,
-			'scannable'        => $scannable
 		];
 		// Successful response with token and profile details
 		return response([
@@ -228,21 +238,24 @@ class AuthController extends Controller
 	{
 		$input = $request->all();
 		$rules = [
-			'code' =>  'required|regex:/^[A-Za-z0-9]+$/',
-			'secret_code' =>  'required|regex:/^[A-Za-z0-9]+$/',
-
+			'code' => 'required|regex:/^[A-Za-z0-9]+$/',
+			'secret_code' => 'required|regex:/^[A-Za-z0-9]+$/',
 		];
 
-		$validator = Validator::make($input, $rules);
+		$messages = [
+			'secret_code.required' => 'Secret Code is required.',
+			'secret_code.regex'    => 'Please enter a valid Secret Code.',
+		];
+
+		$validator = Validator::make($input, $rules, $messages);
 
 		if ($validator->fails()) {
-			$errors = $validator->errors();
 			return response([
 				'success' => false,
-				'message' => 'Invalid request',
-				'errors' => $errors
+				'message' => $validator->errors()->first(),
+				'errors'  => $validator->errors(),
 			], 400);
-		} else {
+		}else {
 			$verify = Code::where('qr_code', $input['code'])->where('secret_code', $input['secret_code'])->exists();
 
 			if (!$verify) {
@@ -252,7 +265,7 @@ class AuthController extends Controller
 					'errors' => ['secret-code' => ['Invalid Secret Code']]
 				], 400);
 			}
-			
+
 			return response([
 				'success' => true,
 				'message' => 'Logged in successfully',

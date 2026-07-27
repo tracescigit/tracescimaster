@@ -12,7 +12,7 @@
 
 <div class="intro-y box p-5 mt-5">
 	<div class="flex flex-col sm:flex-row sm:items-end xl:items-start">
-		<form id="tabulator-html-filter-form" class="xl:flex sm:mr-auto" >
+		<form id="tabulator-html-filter-form" class="xl:flex sm:mr-auto">
 			<div class="sm:flex items-center sm:mr-4">
 				<label class="w-12 flex-none xl:w-auto xl:flex-initial mr-2">Field</label>
 				<select id="tabulator-html-filter-field" class="form-select w-full sm:w-32 xxl:w-full mt-2 sm:mt-0 sm:w-auto">
@@ -25,17 +25,17 @@
 			</div>
 			<div class="sm:flex items-center sm:mr-4 mt-2 xl:mt-0">
 				<label class="w-12 flex-none xl:w-auto xl:flex-initial mr-2">Type</label>
-				<select id="tabulator-html-filter-type" class="form-select w-full mt-2 sm:mt-0 sm:w-auto" >
+				<select id="tabulator-html-filter-type" class="form-select w-full mt-2 sm:mt-0 sm:w-auto">
 					<option value="like" selected>like</option>
 				</select>
 			</div>
 			<div class="sm:flex items-center sm:mr-4 mt-2 xl:mt-0">
 				<label class="w-12 flex-none xl:w-auto xl:flex-initial mr-2">Value</label>
-				<input id="tabulator-html-filter-value" type="text" class="form-control sm:w-40 xxl:w-full mt-2 sm:mt-0"  placeholder="Search...">
+				<input id="tabulator-html-filter-value" type="text" class="form-control sm:w-40 xxl:w-full mt-2 sm:mt-0" placeholder="Search...">
 			</div>
 			<div class="mt-2 xl:mt-0">
-				<button id="tabulator-html-filter-go" type="button" class="btn btn-primary w-full sm:w-16" >Go</button>
-				<button id="tabulator-html-filter-reset" type="button" class="btn btn-secondary w-full sm:w-16 mt-2 sm:mt-0 sm:ml-1" >Reset</button>
+				<button id="tabulator-html-filter-go" type="button" class="btn btn-primary w-full sm:w-16">Go</button>
+				<button id="tabulator-html-filter-reset" type="button" class="btn btn-secondary w-full sm:w-16 mt-2 sm:mt-0 sm:ml-1">Reset</button>
 			</div>
 		</form>
 		<div class="flex mt-5 sm:mt-0">
@@ -73,116 +73,120 @@
 
 @section('global_script')
 <script>
-	var tabulatorUrl =  '{{ route('admin-invoices') }}';
-	var tabulatorColumns = [
-	{	
-		formatter: "responsiveCollapse",
-		width: 40,
-		minWidth: 30,
-		align: "center",
-		resizable: false,
-		headerSort: false,
-		print: false,
-		download: false,
-		collapsed:true,
-	},{
-		title: "INVOICE ID",
-		minWidth: 100,
-		responsive: 0,
-		field: "id",
-		vertAlign: "middle",
-		print: false,
-		download: false,
-		formatter: function formatter(cell, formatterParams) {
-			return "<div>\n                            <div class=\"font-medium whitespace-nowrap\">".concat(cell.getData().id, "</div>");
-		}
-	},  {
-		title: "DATE",
-		minWidth: 200,
-		field: "created_at",
-		hozAlign: "center",
-		vertAlign: "middle",
-		print: false,
-		download: false,
-		formatter: function formatter(cell, formatterParams) {
-			return "<div>\n                            <div class=\"font-medium whitespace-nowrap\">".concat(cell.getData().created_at, "</div>\n                            ");
-		}
-	},{
-		title: "Amount",
-		minWidth: 200,
-		field: "amount_inr",
-		hozAlign: "center",
-		vertAlign: "middle",
-		print: false,
-		download: false,
-		formatter: function formatter(cell, formatterParams) {
-			return "<div>\n                            <div class=\"font-medium whitespace-nowrap\">".concat(cell.getData().amount_inr, "</div>\n                            ");
-		}
-	}, {
-		title: "PAYMENT ID",
-		minWidth: 200,
-		field: "payment_id",
-		hozAlign: "center",
-		vertAlign: "middle",
-		print: false,
-		download: false
-	},
-	 {
-		title: "STATUS",
-		minWidth: 200,
-		field: "status",
-		hozAlign: "center",
-		vertAlign: "middle",
-		print: false,
-		download: false,
-		formatter: function formatter(cell, formatterParams) {
-			return "<div class=\"flex items-center lg:justify-center ".concat(cell.getData().status=='1' ? "text-theme-9" : "text-theme-6", "\">\n                            <i data-feather=\"check-square\" class=\"w-4 h-4 mr-2\"></i> ").concat(cell.getData().status=='1' ? "Success" : "Pending", "\n                        </div>");
-		}
-	}, 
-	{
-		title: "ACTIONS",
-		minWidth: 200,
-		field: "actions",
-		responsive: 1,
-		hozAlign: "center",
-		vertAlign: "middle",
-		print: false,
-		headerSort:false,
-		download: false,
-		formatter: function formatter(cell, formatterParams) {
-			return cell.getData().actions;
-		}
-	},
-	{
-		title: "INVOICE ID",
-		field: "id",
-		visible: false,
-		print: true,
-		download: true
-	}, {
-		title: "DATE",
-		field: "created_at",
-		visible: false,
-		print: true,
-		download: true
-	}, {
-		title: "PAYMENT ID",
-		field: "payment_id",
-		visible: false,
-		print: true,
-		download: true
-	}, {
-		title: "STATUS",
-		field: "status",
-		visible: false,
-		print: true,
-		download: true,
-		formatterPrint: function formatterPrint(cell) {
-			return cell.getValue()=='1' ? "Success" : "Pending";
-		}
-	},
+	var tabulatorUrl = "{{ route('admin-invoices') }}";
+	var tabulatorColumns = [{
+			formatter: "responsiveCollapse",
+			width: 40,
+			minWidth: 30,
+			align: "center",
+			resizable: false,
+			headerSort: false,
+			print: false,
+			download: false,
+			collapsed: true,
+		}, {
+			title: "INVOICE ID",
+			minWidth: 100,
+			responsive: 0,
+			field: "id",
+			vertAlign: "left",
+			headerHozAlign: "left",
+			hozAlign: "left",
+			print: false,
+			download: false,
+			formatter: function formatter(cell, formatterParams) {
+				return "<div>\n                            <div class=\"font-medium whitespace-nowrap\">".concat(cell.getData().id, "</div>");
+			}
+		}, {
+			title: "DATE",
+			minWidth: 200,
+			field: "created_at",
+			hozAlign: "center",
+			vertAlign: "middle",
+			headerHozAlign: "center",
+			print: false,
+			download: false,
+			formatter: function formatter(cell, formatterParams) {
+				return "<div>\n                            <div class=\"font-medium whitespace-nowrap\">".concat(cell.getData().created_at, "</div>\n                            ");
+			}
+		}, {
+			title: "Amount",
+			minWidth: 200,
+			field: "amount_inr",
+			hozAlign: "left",
+			vertAlign: "left",
+			headerHozAlign: "left",
+			print: false,
+			download: false,
+			formatter: function formatter(cell, formatterParams) {
+				return "<div>\n                            <div class=\"font-medium whitespace-nowrap\">".concat(cell.getData().amount_inr, "</div>\n                            ");
+			}
+		}, {
+			title: "PAYMENT ID",
+			minWidth: 200,
+			field: "payment_id",
+			hozAlign: "left",
+			headerHozAlign: "left",
+			vertAlign: "left",
+			print: false,
+			download: false
+		},
+		{
+			title: "STATUS",
+			minWidth: 200,
+			field: "status",
+			hozAlign: "center",
+			headerHozAlign: "center",
+			vertAlign: "middle",
+			print: false,
+			download: false,
+			formatter: function formatter(cell, formatterParams) {
+				return "<div class=\"flex items-center lg:justify-center ".concat(cell.getData().status == '1' ? "text-theme-9" : "text-theme-6", "\">\n                            <i data-feather=\"check-square\" class=\"w-4 h-4 mr-2\"></i> ").concat(cell.getData().status == '1' ? "Success" : "Pending", "\n                        </div>");
+			}
+		},
+		{
+			title: "ACTIONS",
+			minWidth: 200,
+			field: "actions",
+			responsive: 1,
+			hozAlign: "center",
+			headerHozAlign: "center",
+			vertAlign: "middle",
+			print: false,
+			headerSort: false,
+			download: false,
+			formatter: function formatter(cell, formatterParams) {
+				return cell.getData().actions;
+			}
+		},
+		{
+			title: "INVOICE ID",
+			field: "id",
+			visible: false,
+			print: true,
+			download: true
+		}, {
+			title: "DATE",
+			field: "created_at",
+			visible: false,
+			print: true,
+			download: true
+		}, {
+			title: "PAYMENT ID",
+			field: "payment_id",
+			visible: false,
+			print: true,
+			download: true
+		}, {
+			title: "STATUS",
+			field: "status",
+			visible: false,
+			print: true,
+			download: true,
+			formatterPrint: function formatterPrint(cell) {
+				return cell.getValue() == '1' ? "Success" : "Pending";
+			}
+		},
 	];
 </script>
 @endsection
-
-

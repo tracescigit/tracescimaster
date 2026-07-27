@@ -15,7 +15,7 @@ return [
     "scanned_by" => "Scanned By",
     "scan_date" => "Scan Date",
     "scan_time" => "Scan Time",
-    "scan_location" => "Scan Loaction",
+    "scan_location" => "Scan Location",
     "scan_history_details" => "Scan History Details",
     "view_location" => "View Location",
     "location_not_found"=> "Location Not Found",

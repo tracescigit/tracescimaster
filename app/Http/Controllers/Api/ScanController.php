@@ -17,6 +17,7 @@ use App\Models\Wallet;
 use Exception;
 use Http;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http as FacadesHttp;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
@@ -24,7 +25,6 @@ class ScanController extends Controller
 {
 	public function show(Request $request, $scan_code)
 	{
-
 		$input = $request->all();
 
 		Log::info('scan.show: entry', [
@@ -54,6 +54,47 @@ class ScanController extends Controller
 			], 400);
 		} else {
 			$token = $input['token'];
+			$latitude = data_get($input, 'location.lat');
+			$longitude = data_get($input, 'location.long');
+
+			$hasGpsLocation = is_numeric($latitude) && is_numeric($longitude);
+
+			$location = null;
+
+			if ($hasGpsLocation) {
+
+				$location = [
+					'source' => 'gps',
+					'lat'    => $latitude,
+					'lng'    => $longitude,
+				];
+			} else {
+
+				$ip = $request->ip();
+
+				$response = FacadesHttp::timeout(5)->get("http://ip-api.com/json/{$ip}");
+
+				if ($response->successful()) {
+
+					$data = $response->json();
+
+					$location = [
+						'source'  => 'ip',
+						'ip'      => $ip,
+						'lat'     => $data['lat'] ?? null,
+						'lng'     => $data['lon'] ?? null,
+						'city'    => $data['city'] ?? null,
+						'region'  => $data['regionName'] ?? null,
+						'country' => $data['country'] ?? null,
+					];
+				} else {
+
+					$location = [
+						'source' => 'ip',
+						'ip' => $ip,
+					];
+				}
+			}
 
 			Log::info('scan.show: validation passed, attempting token decrypt', [
 				'scan_code' => $scan_code,
@@ -119,8 +160,8 @@ class ScanController extends Controller
 				$alert['scanned_by'] = $user->id;
 				$alert['alert_message'] = "Fake product detected with below code data - '" . $scan_code . "'";
 
-				if (isset($input['location'])) {
-					$alert['location'] = json_encode($input['location']);
+				if ($location) {
+					$alert['location'] = json_encode($location);
 				}
 
 				$add_alert = addAlerts($alert);
@@ -149,8 +190,8 @@ class ScanController extends Controller
 				$alert['code_id'] = $code->id;
 				$alert['alert_message'] = "Deactivated product scanned";
 
-				if (isset($input['location'])) {
-					$alert['location'] = json_encode($input['location']);
+				if ($location) {
+					$alert['location'] = json_encode($location);
 				}
 
 				$add_alert = addAlerts($alert);
@@ -205,8 +246,8 @@ class ScanController extends Controller
 					$alert['scanned_by'] = $user->id;
 					$alert['alert_message'] = "Scanned from Different IP";
 
-					if (isset($input['location'])) {
-						$alert['location'] = json_encode($input['location']);
+					if ($location) {
+						$alert['location'] = json_encode($location);
 					}
 
 					$add_alert = addAlerts($alert);
@@ -277,8 +318,8 @@ class ScanController extends Controller
 				$scan_history->scanned_by = $user->id;
 				$scan_history->scan_count = ($user->type != '0' || $find_with_same_ip || $applied_offer) ? '0' : '1';
 
-				if (isset($input['location'])) {
-					$scan_history->location = json_encode($input['location']);
+				if ($location) {
+					$scan_history->location = json_encode($location);
 				}
 
 				if ($request->ip()) {
@@ -379,8 +420,8 @@ class ScanController extends Controller
 				$alert['scanned_by'] = $user->id;
 				$alert['alert_message'] = "Expired product found";
 
-				if (isset($input['location'])) {
-					$alert['location'] = json_encode($input['location']);
+				if ($location) {
+					$alert['location'] = json_encode($location);
 				}
 
 				$add_alert = addAlerts($alert);
@@ -404,8 +445,8 @@ class ScanController extends Controller
 				$alert['scanned_by'] = $user->id;
 				$alert['alert_message'] = "Suspicious Product, Manufactring Date mismatch.";
 
-				if (isset($input['location'])) {
-					$alert['location'] = json_encode($input['location']);
+				if ($location) {
+					$alert['location'] = json_encode($location);
 				}
 
 				$add_alert = addAlerts($alert);
@@ -429,8 +470,8 @@ class ScanController extends Controller
 				$alert['scanned_by'] = $user->id;
 				$alert['alert_message'] = "Product from banned manufacturer.";
 
-				if (isset($input['location'])) {
-					$alert['location'] = json_encode($input['location']);
+				if ($location) {
+					$alert['location'] = json_encode($location);
 				}
 
 				$add_alert = addAlerts($alert);
@@ -453,8 +494,8 @@ class ScanController extends Controller
 				$alert['code_id'] = $code->id;
 				$alert['batch_id'] = $code->getBatch ? $code->getBatch->id : '';
 
-				if (isset($input['location'])) {
-					$alert['location'] = json_encode($input['location']);
+				if ($location) {
+					$alert['location'] = json_encode($location);
 				}
 
 				$add_alert = addAlerts($alert);
@@ -566,6 +607,9 @@ class ScanController extends Controller
 			], 400);
 		} else {
 			$token = $input['token'];
+
+
+
 
 			try {
 				$id = decrypt($token);

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\ScanHistory;
 use Illuminate\Support\Facades\Auth;
 use Http;
+use Illuminate\Support\Facades\Http as FacadesHttp;
 
 class ScanController extends Controller
 {
@@ -83,7 +84,7 @@ class ScanController extends Controller
             $location = json_decode($scandetail->location,true);
 
             if(isset($location['lat']) && isset($location['long'])){
-                $response = Http::get('https://maps.googleapis.com/maps/api/geocode/json?latlng='.$location['lat'].','.$location['long'].'&key=AIzaSyDkYcFk5rZMvW2Sf0JnCZm9YGvG-Zwgb2U');
+                $response = FacadesHttp::get('https://maps.googleapis.com/maps/api/geocode/json?latlng='.$location['lat'].','.$location['long'].'&key=AIzaSyDkYcFk5rZMvW2Sf0JnCZm9YGvG-Zwgb2U');
 
                 if($response->body())
                 {

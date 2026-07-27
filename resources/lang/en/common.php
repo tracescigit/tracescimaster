@@ -141,6 +141,8 @@ return [
     "update_manufacturer" => "Update manufacturer",
     "user_updated_successfully"=> "User Updated Successfully",
     "name"=> "Name",
+   
+   "upload" => "Upload",
     "price" => "Price",
     "brand" => "Brand",
     "category_name"=> "Category name",

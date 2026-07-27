@@ -163,6 +163,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin', 'auth']], function 
     //Invoice routes
     Route::get('/invoices', [App\Http\Controllers\Admin\InvoiceController::class, 'index'])->name('admin-invoices');
     Route::get('/invoices/{id}', [App\Http\Controllers\Admin\InvoiceController::class, 'show'])->name('admin-show-invoices');
+    Route::post('/admin/invoice/{id}/upload-payment-proof', [App\Http\Controllers\Admin\InvoiceController::class, 'uploadPaymentDocument'])->name('admin.invoice.upload-document');
     Route::post('/invoice-transaction', [App\Http\Controllers\Admin\InvoiceController::class, 'transaction'])->name('admin-invoice-transaction');
     Route::post('/invoice-remove', [App\Http\Controllers\Admin\InvoiceController::class, 'remove'])->name('admin-invoice-remove');
     Route::get('/download-invoice/{id}', [App\Http\Controllers\Admin\InvoiceController::class, 'downloadInvoice'])->name('admin-download-invoice');

@@ -292,21 +292,34 @@
 <script type="text/javascript">
 	var lat = 0
 	var long = 0
+	var locationSource = "ip";
 	var global_token = ''
 	let otpVerified = 0;
 
 	function assignPosition(position) {
 		lat = position.coords.latitude;
 		long = position.coords.longitude;
+		locationSource = "gps";
 	}
 
 	function showError(error) {
+
+		lat = null;
+		long = null;
+		locationSource = "ip";
 		console.log("Error getting location:", error.message);
 	}
 
 	function getLocation() {
 		if (navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition(assignPosition, showError);
+			navigator.geolocation.getCurrentPosition(
+				assignPosition,
+				showError, {
+					enableHighAccuracy: true,
+					timeout: 8000,
+					maximumAge: 0
+				}
+			);
 		} else {
 			alert("Geolocation is not supported by this browser.");
 		}
@@ -409,7 +422,6 @@
 				cash('.otp-div').hide();
 
 				cash('.otp-verified-message').show();
-
 				global_token = res.data.token;
 				console.log('global_token set after OTP:', global_token);
 
@@ -419,11 +431,11 @@
 				cash('#btn-verify-secret_code').show();
 				cash('.secret-code').show();
 
-				cash('#token').val(res.data.token);
+				cash('#token').val(res.data.data.token);
 
 				@else
 
-				proceedtoProductPage(res.data.token);
+				proceedtoProductPage(res.data.data.token);
 
 				@endif
 
@@ -431,11 +443,29 @@
 
 				cash('#btn-submit-otp').show().html('Submit OTP');
 
-				if (err.response && err.response.data && err.response.data.errors) {
-					for (const [key, val] of Object.entries(err.response.data.errors)) {
-						cash(`#${key}`).addClass('border-red-600');
-						cash(`#error-${key}`).html(val);
+				// Clear previous errors
+				cash('.form__input-error').html('');
+				cash('.form__input').removeClass('border-red-600');
+
+				if (err.response && err.response.data) {
+
+					// Show API message (e.g. Invalid OTP or credentials)
+					if (err.response.data.message) {
+						cash('#otp').addClass('border-red-600');
+						cash('#error-otp').html(err.response.data.message);
 					}
+
+					// Show validation errors if present
+					if (err.response.data.errors) {
+						for (const [key, val] of Object.entries(err.response.data.errors)) {
+							cash(`#${key}`).addClass('border-red-600');
+							cash(`#error-${key}`).html(
+								Array.isArray(val) ? val[0] : val
+							);
+						}
+					}
+				} else {
+					cash('#error-otp').html('Something went wrong. Please try again.');
 				}
 			});
 		}
@@ -473,8 +503,8 @@
 				phone: phone
 			}).then(res => {
 				cash('#btn-get-otp').hide();
-
-				global_token = res.data.token;
+				console.log("Verify OTP response:", res.data);
+				global_token = res.data.data.token;
 				console.log('global_token set after without-auth:', global_token);
 
 				if (!empty($secret_code_check_required)) {
@@ -700,26 +730,57 @@
 
 		// ── second param removed to avoid shadowing outer global_token ──
 		async function verifysecretCode(token) {
-			let secret_code = cash('#secret-code').val()
+
+			console.log("verifysecretCode() received token:", token);
+
+			// Clear previous errors
+			cash('#secret-code').removeClass('border-red-600');
+			cash('#error-secret-code').html('');
+
+			let secret_code = cash('#secret-code').val();
 			let code = '{{$code}}';
+
 			axios.post("{{ url('api/verify-secret-code') }}", {
 				code: code,
 				secret_code: secret_code
 			}).then(res => {
+
+				console.log("Token before proceed:", token);
+
 				cash('.secret-code').hide();
 				cash('.secret-div').hide();
+
 				global_token = token;
-				console.log('global_token set after secret code:', global_token);
+				console.log("global_token:", global_token);
+
 				proceedtoProductPage(token);
 
 			}).catch(err => {
-				if (err.response.data.errors) {
-					for (const [key, val] of Object.entries(err.response.data.errors)) {
-						cash(`#${key}`).addClass('border-red-600')
-						cash(`#error-${key}`).html(val)
+
+				console.log(err.response.data);
+
+				if (err.response && err.response.data) {
+
+					// Show general message
+					if (err.response.data.message) {
+						cash('#error-secret-code').html(err.response.data.message);
 					}
+
+					// Show field validation errors
+					if (err.response.data.errors) {
+						for (const [key, val] of Object.entries(err.response.data.errors)) {
+
+							cash(`#${key}`).addClass('border-red-600');
+
+							cash(`#error-${key}`).html(
+								Array.isArray(val) ? val[0] : val
+							);
+						}
+					}
+				} else {
+					cash('#error-secret-code').html('Something went wrong. Please try again.');
 				}
-			})
+			});
 		}
 
 		// ── second param removed to avoid shadowing outer global_token ──
@@ -730,8 +791,9 @@
 			axios.post("{{ url('api/p/'.$code) }}", {
 				token,
 				location: {
-					lat,
-					long
+					lat: lat,
+					long: long,
+					source: locationSource
 				}
 			}).then(res => {
 				console.log(res)
@@ -770,8 +832,9 @@
 			axios.post("{{ url('api/p/'.$code)}}", {
 				token,
 				location: {
-					lat,
-					long
+					lat: lat,
+					long: long,
+					source: locationSource
 				}
 			}).then(res => {
 				cash('.info-div').show()

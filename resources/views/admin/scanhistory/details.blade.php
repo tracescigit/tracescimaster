@@ -7,8 +7,19 @@
 @section('subcontent')
 @php
 $location = json_decode($scandetail->location);
-$lat=null;
-$long=null;
+
+$lat = null;
+$long = null;
+$source = null;
+
+if($location){
+$lat = $location->lat ?? null;
+
+// Support both old and new data
+$long = $location->lng ?? $location->long ?? null;
+
+$source = $location->source ?? 'gps';
+}
 @endphp
 
 <div class="grid grid-cols-12 gap-6 mt-5">
@@ -53,23 +64,57 @@ $long=null;
 			</div>
 			<div class="p-5">
 				<div class="grid grid-cols-12">
-					@if($location && $location->lat && $location->long)
-					@php
-					$lat = $location->lat;
-					$long = $location->long; 
-					@endphp
-					<div class="col-span-12  lg:col-span-12 px-2 py-1 mt-2">
+
+					@if($lat !== null && $long !== null)
+
+					<div class="col-span-12 px-2 py-2">
+						@if($source == 'ip')
+						<span class="text-yellow-600 font-medium">
+							📍 Approximate Location (Based on IP Address)
+						</span>
+						@else
+						<span class="text-green-600 font-medium">
+							📍 Exact GPS Location
+						</span>
+						@endif
+					</div>
+
+					<div class="col-span-12 lg:col-span-12 px-2 py-1 mt-2">
 						<div id="map" style="height:400px;"></div>
 					</div>
 
-					@if ($full_address!=null)
-					<div class="col-span-12 mt-3 px-2">Complete address : {{$full_address}}</div>
-					@endif
-					@else
-					<div class="col-span-12 lg:col-span-12 px-2 py-1 mt-2 text-red-500">
-						{{__('scanhistory.location_not_found')}}!
+					@if($source == 'ip')
+					<div class="col-span-12 mt-3 px-2">
+						<strong>City :</strong> {{ $location->city ?? 'N/A' }}
+					</div>
+
+					<div class="col-span-12 px-2 mt-1">
+						<strong>Region :</strong> {{ $location->region ?? 'N/A' }}
+					</div>
+
+					<div class="col-span-12 px-2 mt-1">
+						<strong>Country :</strong> {{ $location->country ?? 'N/A' }}
+					</div>
+
+					<div class="col-span-12 px-2 mt-1">
+						<strong>IP :</strong> {{ $location->ip ?? $scandetail->ip_address ?? 'N/A' }}
 					</div>
 					@endif
+
+					@if($full_address)
+					<div class="col-span-12 mt-3 px-2">
+						<strong>Complete Address :</strong> {{ $full_address }}
+					</div>
+					@endif
+
+					@else
+
+					<div class="col-span-12 lg:col-span-12 px-2 py-1 mt-2 text-red-500">
+						{{ __('scanhistory.location_not_found') }}!
+					</div>
+
+					@endif
+
 				</div>
 			</div>
 		</div>
@@ -85,32 +130,47 @@ $long=null;
 
 	function initMap() {
 
-		const mapOptions = {
-			zoom: 4,
-			center: { lat: 20.5937, lng: 78.9629 },
-		};
-		map = new google.maps.Map(document.getElementById("map"), mapOptions);
-		const marker = new google.maps.Marker({
-    // The below line is equivalent to writing:
-    // position: new google.maps.LatLng(-34.397, 150.644)
-    position: { lat:parseFloat('{{$lat}}') , lng: parseFloat('{{$long}}') },
-    map: map,
-});
-  // You can use a LatLng literal in place of a google.maps.LatLng object when
-  // creating the Marker object. Once the Marker object is instantiated, its
-  // position will be available as a google.maps.LatLng object. In this case,
-  // we retrieve the marker's position using the
-  // google.maps.LatLng.getPosition() method.
-  const infowindow = new google.maps.InfoWindow({
-  	content: "<p>Marker Location:" + marker.getPosition() + "</p>",
-  });
-  google.maps.event.addListener(marker, "click", () => {
-  	infowindow.open(map, marker);
-  });
-}
+		const latitude = parseFloat('{{ $lat }}');
+		const longitude = parseFloat('{{ $long }}');
 
-cash(document).ready(function(){
-	initMap();
-});
+		const mapOptions = {
+			zoom: {
+				{
+					$source == 'ip' ? 12 : 16
+				}
+			},
+			center: {
+				lat: latitude,
+				lng: longitude
+			},
+		};
+
+		map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+		const marker = new google.maps.Marker({
+			position: {
+				lat: latitude,
+				lng: longitude
+			},
+			map: map,
+		});
+
+		const infoWindow = new google.maps.InfoWindow({
+			content: `{!! $source == 'ip'
+                ? '<strong>Approximate Location (IP Based)</strong>'
+                : '<strong>Exact GPS Location</strong>' !!}`
+		});
+
+		marker.addListener("click", function() {
+			infoWindow.open(map, marker);
+		});
+
+		// Optional: Open the info window automatically
+		infoWindow.open(map, marker);
+	}
+
+	cash(document).ready(function() {
+		initMap();
+	});
 </script>
 @endsection
