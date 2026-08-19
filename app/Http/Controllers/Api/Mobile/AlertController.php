@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\Mobile;
 
 use App\Http\Controllers\Api\ApiController;
 use App\Models\Alert;
+use App\Models\Code;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -56,6 +57,17 @@ class AlertController extends ApiController
             $query->where('status', $request->input('status'));
         }
 
+        if ($request->filled('search')) {
+            $search = $request->input('search');
+
+            $query->where(function ($q) use ($search) {
+                $q->where('product_name', 'like', '%' . $search . '%')
+                  ->orWhere('batch', 'like', '%' . $search . '%')
+                  ->orWhere('alert_message', 'like', '%' . $search . '%')
+                  ->orWhere('issue_type', 'like', '%' . $search . '%');
+            });
+        }
+
         $self = $this;
         $me   = $user;
 
@@ -84,9 +96,11 @@ class AlertController extends ApiController
         $isReport  = (string) $alert->type === '1';
         $raisedByMe = (string) $alert->scanned_by === (string) $me->id;
         $scanner   = $alert->scanned_by ? User::find($alert->scanned_by) : null;
+        $code      = $alert->code_id ? Code::find($alert->code_id) : null;
 
         return [
             'id'           => $alert->id,
+            'code'         => $code ? $code->code_data : null,
             'reference'    => ($isReport ? 'RPT-' : 'ALT-') . str_pad($alert->id, 6, '0', STR_PAD_LEFT),
             'kind'         => $isReport ? 'Report' : 'Automatic alert',
             'title'        => $this->friendlyTitle($alert),

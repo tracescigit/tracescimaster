@@ -69,6 +69,36 @@ class ScanController extends Controller
             }
 
             $codes = $this->getCodesInside($input['code'],$user->parent_id??$user->id);
+
+            // A pack the brand has withdrawn must not keep moving through the chain.
+            // $codes already holds Code models, so no extra query is needed.
+            $deactivated = collect($codes)->filter(function ($item) {
+                return (string) $item->status === '0';
+            })->values();
+
+            if ($deactivated->count() > 0) {
+                $withReason = $deactivated->first(function ($item) {
+                    return trim((string) $item->deactivate_reason) !== '';
+                });
+
+                return response([
+                    'success' => false,
+                    'message' => 'This shipment has been deactivated and cannot be moved.',
+                    'errors'  => ['code' => ['Deactivated shipment']],
+                    'data'    => [
+                        'status'          => 'deactivated',
+                        'title'           => 'Withdrawn by the brand',
+                        'affected'        => $deactivated->count(),
+                        'total_inside'    => count($codes),
+                        'reason'          => $withReason ? $withReason->deactivate_reason : null,
+                        'deactivated_on'  => $withReason && !empty($withReason->deactivated_at)
+                            ? date('M d, Y', strtotime($withReason->deactivated_at))
+                            : null,
+                        'scanned_code'    => $input['code'],
+                    ],
+                ], 400);
+            }
+
             $response = [];
             $action  = [];
 

@@ -48,14 +48,21 @@ class VerifyController extends ApiController
         }
 
         if ((string) $code->status === '0') {
-            $blocked = !empty($code->seized_by);
+            $byBrand = !empty($code->deactivated_at) || !empty($code->deactivated_by);
+            $reason  = trim((string) $code->deactivate_reason);
+
+            $message = $byBrand
+                ? 'The brand has withdrawn this pack from sale. Do not use it.'
+                : 'This pack was withdrawn from sale by an official. Do not use it.';
+
+            if ($reason !== '') {
+                $message .= ' Reason given: ' . $reason;
+            }
 
             return $this->verdict(
-                $blocked ? 'blocked' : 'deactivated',
-                $blocked ? 'Blocked by an inspector' : 'Deactivated pack',
-                $blocked
-                    ? 'This pack was withdrawn from sale by an official. Do not use it.'
-                    : 'This pack has been deactivated by the brand and should no longer be on sale.',
+                $byBrand ? 'deactivated' : 'blocked',
+                $byBrand ? 'Withdrawn by the brand' : 'Blocked by an inspector',
+                $message,
                 $raw,
                 $code,
                 true
@@ -73,7 +80,7 @@ class VerifyController extends ApiController
             );
         }
 
-        $scanCount = ScanHistory::where('code_id', $code->id)->count();
+        $scanCount = $this->consumerScanCount($code->id);
 
         if ($scanCount > 15) {
             return $this->verdict(
@@ -109,6 +116,7 @@ class VerifyController extends ApiController
             'can_report'  => true,
             'scanned_code' => $raw,
             'code_data'   => $code ? $code->code_data : $raw,
+            'serial_number' => $code ? $code->code_data : $raw,
             'product'     => $product ? [
                 'id'              => $product->id,
                 'name'            => $product->name,
@@ -121,6 +129,12 @@ class VerifyController extends ApiController
                 'manufactured_on' => $batch ? $this->date($batch->mfg_date, 'M d, Y') : null,
                 'expiry_on'       => $batch ? $this->date($batch->exp_date, 'M d, Y') : null,
             ] : null,
+            'reason'      => $code && trim((string) $code->deactivate_reason) !== ''
+                ? $code->deactivate_reason
+                : null,
+            'deactivated_on' => $code && !empty($code->deactivated_at)
+                ? $this->date($code->deactivated_at, 'M d, Y')
+                : null,
             'already_reported' => $code
                 ? Alert::where('code_id', $code->id)->where('type', '1')->exists()
                 : false,

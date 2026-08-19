@@ -8,6 +8,7 @@ use App\Models\Batch;
 use App\Models\Blog;
 use App\Models\Code;
 use App\Models\Product;
+use App\Models\RewardScheme;
 use App\Models\ScanHistory;
 use App\Models\Wallet;
 use Illuminate\Http\Request;
@@ -65,16 +66,14 @@ class ConsumerController extends ApiController
                     'icon'  => 'flag',
                 ],
             ],
-            'wallet' => [
-                'total_points' => (float) getWalletBalance($user->id),
-                'brands'       => $this->brandBalances($user->id),
-            ],
+            'top_reward' => $this->topReward($user->id),
             'recent_scans' => $recentItems,
             'open_reports' => Alert::where('scanned_by', $user->id)
                 ->where('type', '1')
                 ->where('status', '0')
                 ->count(),
             'highlights' => $this->highlights(),
+            'offers'     => $this->liveOffers(),
         ]);
     }
 
@@ -395,8 +394,29 @@ class ConsumerController extends ApiController
             'label_image'     => $this->assetUrl($product->label_image_url),
             'media'           => $this->assetUrl($product->media),
             'logo'            => $this->assetUrl($product->logo),
-            'scan_count'      => ScanHistory::where('code_id', $code->id)->count(),
+            'serial_number'   => $code->code_data,
+            'gallery'         => $this->productGallery($product),
+            'scan_count'      => $this->consumerScanCount($code->id),
         ];
+    }
+
+    protected function productGallery($product)
+    {
+        $images = [];
+
+        foreach (['image_url', 'label_image_url', 'logo'] as $field) {
+            $value = isset($product->{$field}) ? $product->{$field} : null;
+
+            if (!empty($value)) {
+                $url = $this->assetUrl($value);
+
+                if ($url !== '' && !in_array($url, $images, true)) {
+                    $images[] = $url;
+                }
+            }
+        }
+
+        return $images;
     }
 
     protected function brandBalances($user_id)
@@ -417,6 +437,115 @@ class ConsumerController extends ApiController
         }
 
         return $result;
+    }
+
+    /**
+     * Points live inside one reward scheme and cannot be pooled, so the home
+     * screen leads with the shopper's strongest single reward instead of a
+     * combined total they could never spend.
+     */
+    protected function topReward($userId)
+    {
+        try {
+            $schemeIds = Wallet::where('user_id', $userId)
+                ->where('status', 'Success')
+                ->whereNotNull('reward_id')
+                ->distinct()
+                ->pluck('reward_id')
+                ->toArray();
+        } catch (\Exception $e) {
+            return null;
+        }
+
+        $best = null;
+
+        foreach ($schemeIds as $schemeId) {
+            $credit = (float) Wallet::where('user_id', $userId)
+                ->where('reward_id', $schemeId)
+                ->where('type', 'credit')
+                ->where('status', 'Success')
+                ->sum('points');
+
+            $debit = (float) Wallet::where('user_id', $userId)
+                ->where('reward_id', $schemeId)
+                ->where('type', 'debit')
+                ->where('status', 'Success')
+                ->sum('points');
+
+            $points = $credit - $debit;
+
+            if ($points <= 0) {
+                continue;
+            }
+
+            if ($best === null || $points > $best['points']) {
+                $scheme = RewardScheme::find($schemeId);
+
+                $best = [
+                    'scheme_id' => $schemeId,
+                    'title'     => $scheme && $scheme->title ? $scheme->title : 'Reward',
+                    'points'    => $points,
+                ];
+            }
+        }
+
+        if ($best === null) {
+            return null;
+        }
+
+        $best['reward_count'] = count($schemeIds);
+
+        return $best;
+    }
+
+    /**
+     * Reward schemes running right now. This is the hook that gets a shopper
+     * to scan, so it sits at the top of the home screen.
+     */
+    protected function liveOffers()
+    {
+        $today = date('Y-m-d');
+
+        try {
+            $schemes = RewardScheme::where('status', 'Active')
+                ->where(function ($q) use ($today) {
+                    $q->whereNull('from')->orWhereDate('from', '<=', $today);
+                })
+                ->where(function ($q) use ($today) {
+                    $q->whereNull('to')->orWhereDate('to', '>=', $today);
+                })
+                ->orderBy('created_at', 'DESC')
+                ->limit(8)
+                ->get();
+        } catch (\Exception $e) {
+            return [];
+        }
+
+        $offers = [];
+
+        foreach ($schemes as $scheme) {
+            $product = $scheme->product_id ? Product::find($scheme->product_id) : null;
+
+            $endsIn = null;
+
+            if (!empty($scheme->to)) {
+                $days = (int) floor((strtotime($scheme->to) - strtotime($today)) / 86400);
+                $endsIn = $days < 0 ? 0 : $days;
+            }
+
+            $offers[] = [
+                'scheme_id'    => $scheme->id,
+                'title'        => $scheme->title ?: 'Scan and win',
+                'points'       => (float) $scheme->points,
+                'product_name' => $product ? $product->name : null,
+                'brand'        => $product ? $product->brand : null,
+                'image'        => $product ? $this->assetUrl($product->image_url) : '',
+                'valid_to'     => !empty($scheme->to) ? $this->date($scheme->to, 'M d, Y') : null,
+                'ends_in_days' => $endsIn,
+            ];
+        }
+
+        return $offers;
     }
 
     protected function highlights()

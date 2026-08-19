@@ -9,7 +9,7 @@ class Code extends Model
 {
 	use HasFactory;
 
-	protected $fillable = ['product_id','batch','batch_id','qr_code','url','user_id','status','code_data','exported','aggregation_id','order_id','secret_code'];
+	protected $fillable = ['product_id','batch','batch_id','qr_code','url','user_id','status','code_data','exported','aggregation_id','order_id','secret_code','deactivate_reason','deactivated_at','deactivated_by'];
 
 	public static function getCodeModel($limit, $page, $orderby, $order , $search_field , $search_type, $search_value,$user_id=null,$start_date=null,$end_date=null)
 	{

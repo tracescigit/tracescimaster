@@ -94,6 +94,8 @@ Route::group(['prefix' => 'rewards'], function () {
     Route::post('redeem-cash',    [RewardController::class, 'redeemCash']);
     Route::post('order',          [RewardController::class, 'placeOrder']);
     Route::post('orders',         [RewardController::class, 'orders']);
+    Route::post('scan-to-redeem', [RewardController::class, 'scanToRedeem']);
+    Route::post('transactions',   [RewardController::class, 'transactions']);
 });
 
 Route::group(['prefix' => 'supply-chain'], function () {
@@ -103,8 +105,8 @@ Route::group(['prefix' => 'supply-chain'], function () {
     Route::post('timeline/{unique_id}',     [SupplyChainController::class, 'timeline']);
     Route::post('counterparties',           [SupplyChainController::class, 'counterpartyList']);
     Route::post('statuses',                 [SupplyChainController::class, 'statuses']);
-    Route::post('alerts',                   [SupplyChainController::class, 'alerts']);
     Route::post('my-activity',              [SupplyChainController::class, 'myActivity']);
+    Route::post('team-activity',            [SupplyChainController::class, 'teamActivity']);
 });
 
 Route::group(['prefix' => 'inspector'], function () {
@@ -113,17 +115,18 @@ Route::group(['prefix' => 'inspector'], function () {
     Route::post('case/{id}',        [InspectorController::class, 'caseDetail']);
     Route::post('case/{id}/update', [InspectorController::class, 'updateCase']);
     Route::post('seize',            [InspectorController::class, 'seize']);
-    Route::post('map',              [InspectorController::class, 'map']);
 });
 
 Route::group(['prefix' => 'brand'], function () {
     Route::post('dashboard',    [BrandController::class, 'dashboard']);
     Route::post('products',     [BrandController::class, 'products']);
     Route::post('product/{id}', [BrandController::class, 'product']);
+    Route::post('product/{id}/journey', [BrandController::class, 'journey']);
     Route::post('scans',        [BrandController::class, 'scans']);
     Route::post('alerts',       [BrandController::class, 'alerts']);
     Route::post('network',      [BrandController::class, 'network']);
-    Route::post('scan-map',     [BrandController::class, 'scanMap']);
+    Route::post('lookup',       [BrandController::class, 'lookup']);
+    Route::post('deactivate',   [BrandController::class, 'deactivate']);
 });
 
 //Redirect for browser

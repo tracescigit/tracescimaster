@@ -54,8 +54,8 @@ class ScanController extends Controller
 			], 400);
 		} else {
 			$token = $input['token'];
-			$latitude = data_get($input, 'location.lat');
-			$longitude = data_get($input, 'location.long');
+			$latitude = data_get($input, 'location.lat', data_get($input, 'location.latitude'));
+			$longitude = data_get($input, 'location.long', data_get($input, 'location.longitude'));
 
 			$hasGpsLocation = is_numeric($latitude) && is_numeric($longitude);
 
@@ -68,6 +68,13 @@ class ScanController extends Controller
 					'lat'    => $latitude,
 					'lng'    => $longitude,
 				];
+
+				foreach (['address', 'area', 'city', 'state', 'postal_code', 'country'] as $part) {
+					$value = data_get($input, 'location.' . $part);
+					if (!empty($value)) {
+						$location[$part] = $value;
+					}
+				}
 			} else {
 
 				// $ip = app()->environment('local')

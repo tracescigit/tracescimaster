@@ -201,34 +201,60 @@ class SupplyChainController extends ApiController
         return $this->okList('Statuses fetched successfully', 'statuses', $items);
     }
 
-    public function alerts(Request $request)
+
+    public function teamActivity(Request $request)
     {
         $user  = $this->requireUser($request);
         $this->requireRole($user, [self::ROLE_SUPPLY_CHAIN, self::ROLE_BRAND, self::ROLE_ADMIN]);
 
         $owner = $this->ownerId($user);
 
-        $query = SupplyChainAlert::where('user_id', $owner)->orderBy('created_at', 'DESC');
+        $childIds = SupplyChain::where('supply_chain_parent_id', $user->id)
+            ->pluck('user_id')
+            ->toArray();
+
+        if (empty($childIds)) {
+            return $this->ok('No one reports to you yet', [
+                'activity' => [],
+                'team'     => [],
+            ], ['meta' => [
+                'page' => 1, 'limit' => 20, 'total' => 0,
+                'last_page' => 1, 'has_more' => false,
+            ]]);
+        }
+
+        $query = SupplyChainAction::where('user_id', $owner)
+            ->where(function ($q) use ($childIds) {
+                $q->whereIn('action_by', $childIds)
+                  ->orWhereIn('action_for', $childIds);
+            })
+            ->orderBy('created_at', 'DESC');
+
+        if ($request->filled('search')) {
+            $query->where('aggregation_unique_id', 'like', '%' . $request->input('search') . '%');
+        }
 
         $self = $this;
+        $me   = $user;
 
-        list($items, $meta) = $this->paginate($query, $request, function ($alert) use ($self) {
-            $aggregation = $alert->aggregation_id ? Aggregation::find($alert->aggregation_id) : null;
-            $scannedBy   = $alert->scanned_by ? User::find($alert->scanned_by) : null;
-
-            return [
-                'id'          => $alert->id,
-                'message'     => $alert->alert_message,
-                'code'        => $aggregation ? $aggregation->unique_id : null,
-                'level'       => $aggregation ? ucfirst($aggregation->level) : null,
-                'scanned_by'  => $scannedBy ? $scannedBy->name : null,
-                'created_at'  => $self->publicDate($alert->created_at),
-                'created_ago' => $self->publicAgo($alert->created_at),
-            ];
+        list($items, $meta) = $this->paginate($query, $request, function ($action) use ($self, $me) {
+            return $self->publicActivityRow($action, $me);
         });
 
-        return $this->ok('Alerts fetched successfully', [
-            'alerts' => $items,
+        $team = [];
+
+        foreach (User::whereIn('id', $childIds)->get() as $member) {
+            $team[] = [
+                'id'    => $member->id,
+                'name'  => $member->name,
+                'role'  => $member->who_you_are,
+                'phone' => $this->maskPhone($member),
+            ];
+        }
+
+        return $this->ok('Team tracking history fetched successfully', [
+            'activity' => $items,
+            'team'     => $team,
         ], ['meta' => $meta]);
     }
 
@@ -242,6 +268,10 @@ class SupplyChainController extends ApiController
                 $q->where('action_by', $user->id)->orWhere('action_for', $user->id);
             })
             ->orderBy('created_at', 'DESC');
+
+        if ($request->filled('search')) {
+            $query->where('aggregation_unique_id', 'like', '%' . $request->input('search') . '%');
+        }
 
         $self = $this;
         $me   = $user;
@@ -334,6 +364,8 @@ class SupplyChainController extends ApiController
             'code'        => $action->aggregation_unique_id,
             'action'      => ucfirst($action->action),
             'title'       => $title,
+            'by_phone'    => $this->maskPhone($by),
+            'for_phone'   => $this->maskPhone($for),
             'status'      => $action->status,
             'comment'     => $action->comment,
             'by'          => $by ? $by->name : null,

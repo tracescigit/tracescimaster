@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\Api\Mobile;
 
 use App\Http\Controllers\Api\ApiController;
+use App\Models\Aggregation;
 use App\Models\Alert;
 use App\Models\Batch;
 use App\Models\Code;
 use App\Models\Product;
 use App\Models\ScanHistory;
 use App\Models\SupplyChain;
+use App\Models\SupplyChainAction;
 use App\Models\SupplyChainAlert;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -165,6 +167,14 @@ class BrandController extends ApiController
             $query->where('codes.product_id', $request->input('product_id'));
         }
 
+        if ($request->filled('search')) {
+            $search = $request->input('search');
+            $query->where(function ($q) use ($search) {
+                $q->where('products.name', 'like', '%' . $search . '%')
+                  ->orWhere('codes.code_data', 'like', '%' . $search . '%');
+            });
+        }
+
         if ($request->filled('genuine')) {
             $query->where('scan_histories.genuine', $request->input('genuine'));
         }
@@ -229,6 +239,12 @@ class BrandController extends ApiController
                 'description'  => $alert->alert_message,
                 'status'       => $alert->status === '1' ? 'Closed' : 'Open',
                 'location'     => $self->publicJson($alert->location),
+                'image'        => $self->publicAsset($alert->image),
+                'code'         => $self->alertCode($alert),
+                'raised_by'    => $self->alertRaiser($alert),
+                'resolution'   => (string) $alert->status === '1'
+                    ? ($alert->manufacturer_comment ?: $alert->admin_comment)
+                    : null,
                 'created_at'   => $self->publicDate($alert->created_at),
                 'created_ago'  => $self->publicAgo($alert->created_at),
             ];
@@ -237,6 +253,127 @@ class BrandController extends ApiController
         return $this->ok('Alerts fetched successfully', [
             'alerts' => $items,
         ], ['meta' => $meta]);
+    }
+
+    public function lookup(Request $request)
+    {
+        $user  = $this->requireUser($request);
+        $this->requireRole($user, [self::ROLE_BRAND, self::ROLE_ADMIN, self::ROLE_AUTHORITY]);
+
+        $owner = $this->ownerId($user);
+
+        $this->validateInput($request, ['code' => 'required|string|max:255']);
+
+        $raw = trim($request->input('code'));
+
+        $code = Code::where('user_id', $owner)
+            ->where(function ($q) use ($raw) {
+                $q->where('code_data', $raw)->orWhere('qr_code', $raw);
+            })
+            ->first();
+
+        if (!$code) {
+            return $this->fail('That code does not belong to your products.', ['code' => ['Not found']], 404);
+        }
+
+        $product = $code->getProduct;
+        $batch   = $code->getBatch;
+
+        return $this->ok('Code found', [
+            'serial_number' => $code->code_data,
+            'is_active'     => (string) $code->status === '1',
+            'status_label'  => (string) $code->status === '1' ? 'Active' : 'Deactivated',
+            'deactivate_reason' => $code->deactivate_reason,
+            'product_name'  => $product ? $product->name : 'Unknown product',
+            'product_id'    => $product ? $product->id : null,
+            'brand'         => $product ? $product->brand : null,
+            'image'         => $product ? $this->assetUrl($product->image_url) : '',
+            'batch_code'    => $batch ? $batch->code : null,
+            'batch_id'      => $batch ? $batch->id : null,
+            'batch_total'   => $batch ? Code::where('batch_id', $batch->id)->count() : 0,
+            'batch_active'  => $batch
+                ? Code::where('batch_id', $batch->id)->where('status', '1')->count()
+                : 0,
+        ]);
+    }
+
+    public function deactivate(Request $request)
+    {
+        $user  = $this->requireUser($request);
+        $this->requireRole($user, [self::ROLE_BRAND, self::ROLE_ADMIN, self::ROLE_AUTHORITY]);
+
+        $owner = $this->ownerId($user);
+
+        $this->validateInput($request, [
+            'scope'  => 'required|in:serial,batch',
+            'code'   => 'required|string|max:255',
+            'reason' => 'nullable|string|max:200',
+        ]);
+
+        $raw   = trim($request->input('code'));
+        $scope = $request->input('scope');
+
+        if ($scope === 'serial') {
+            $code = Code::where('user_id', $owner)
+                ->where(function ($q) use ($raw) {
+                    $q->where('code_data', $raw)->orWhere('qr_code', $raw);
+                })
+                ->first();
+
+            if (!$code) {
+                return $this->fail('That code does not belong to your products.', ['code' => ['Not found']], 404);
+            }
+
+            if ((string) $code->status === '0') {
+                return $this->fail('This serial is already deactivated.', ['code' => ['Already blocked']], 422);
+            }
+
+            $code->status            = '0';
+            $code->deactivate_reason = $request->input('reason');
+            $code->deactivated_at    = now();
+            $code->deactivated_by    = $user->id;
+            $code->save();
+
+            return $this->ok('This serial has been deactivated. Anyone who scans it will be warned.', [
+                'scope'    => 'serial',
+                'affected' => 1,
+                'serial_number' => $code->code_data,
+            ]);
+        }
+
+        $code = Code::where('user_id', $owner)
+            ->where(function ($q) use ($raw) {
+                $q->where('code_data', $raw)->orWhere('qr_code', $raw);
+            })
+            ->first();
+
+        $batch = $code && $code->getBatch
+            ? $code->getBatch
+            : Batch::where('code', $raw)->first();
+
+        if (!$batch) {
+            return $this->fail('We could not find that batch.', ['code' => ['Batch not found']], 404);
+        }
+
+        $affected = Code::where('batch_id', $batch->id)
+            ->where('user_id', $owner)
+            ->where('status', '1')
+            ->update([
+                'status'            => '0',
+                'deactivate_reason' => $request->input('reason'),
+                'deactivated_at'    => now(),
+                'deactivated_by'    => $user->id,
+            ]);
+
+        if ($affected === 0) {
+            return $this->fail('Every pack in this batch is already deactivated.', ['code' => ['Already blocked']], 422);
+        }
+
+        return $this->ok($affected . ' packs in batch ' . $batch->code . ' have been deactivated.', [
+            'scope'      => 'batch',
+            'affected'   => $affected,
+            'batch_code' => $batch->code,
+        ]);
     }
 
     public function network(Request $request)
@@ -268,49 +405,6 @@ class BrandController extends ApiController
         return $this->okList('Network fetched successfully', 'nodes', $nodes);
     }
 
-    public function scanMap(Request $request)
-    {
-        $user  = $this->requireUser($request);
-        $this->requireRole($user, [self::ROLE_BRAND, self::ROLE_ADMIN, self::ROLE_AUTHORITY]);
-
-        $owner = $this->ownerId($user);
-
-        $scans = ScanHistory::leftJoin('codes', 'codes.id', '=', 'scan_histories.code_id')
-            ->leftJoin('products', 'products.id', '=', 'codes.product_id')
-            ->where('codes.user_id', $owner)
-            ->whereNotNull('scan_histories.location')
-            ->select(['scan_histories.location', 'scan_histories.created_at', 'scan_histories.genuine', 'products.name as product_name'])
-            ->orderBy('scan_histories.created_at', 'DESC')
-            ->limit(500)
-            ->get();
-
-        $points = [];
-
-        foreach ($scans as $scan) {
-            $location = $this->json($scan->location, null);
-
-            if (!is_array($location)) {
-                continue;
-            }
-
-            $lat = isset($location['latitude']) ? $location['latitude'] : (isset($location['lat']) ? $location['lat'] : null);
-            $lng = isset($location['longitude']) ? $location['longitude'] : (isset($location['lng']) ? $location['lng'] : null);
-
-            if ($lat === null || $lng === null) {
-                continue;
-            }
-
-            $points[] = [
-                'latitude'  => (float) $lat,
-                'longitude' => (float) $lng,
-                'title'     => $scan->product_name,
-                'genuine'   => $scan->genuine == '1',
-                'date'      => $this->date($scan->created_at, 'M d, Y'),
-            ];
-        }
-
-        return $this->okList('Scan map fetched successfully', 'points', $points);
-    }
 
     public function productCard($product)
     {
@@ -430,4 +524,337 @@ class BrandController extends ApiController
     {
         return $this->json($value, null);
     }
+
+    public function alertCode($alert)
+    {
+        if (!$alert->code_id) {
+            return null;
+        }
+
+        $code = Code::find($alert->code_id);
+
+        return $code ? $code->code_data : null;
+    }
+
+    public function alertRaiser($alert)
+    {
+        if (!$alert->scanned_by) {
+            return 'System';
+        }
+
+        $person = User::find($alert->scanned_by);
+
+        if (!$person) {
+            return 'Unknown';
+        }
+
+        return $person->name ?: $this->maskPhone($person);
+    }
+
+    /**
+     * Where a product's stock physically is.
+     *
+     * Packs live on primary aggregations, but a movement can be recorded on
+     * any level above them (pallet, tertiary...). So we resolve each primary
+     * group ONCE against the newest action anywhere in its ancestor chain.
+     * Counting per aggregation instead would count the same packs again for
+     * every level that was scanned.
+     */
+    public function journey(Request $request, $id)
+    {
+        $user = $this->requireUser($request);
+        $this->requireRole($user, [self::ROLE_BRAND, self::ROLE_ADMIN]);
+
+        $owner = $this->ownerId($user);
+
+        $product = Product::where('id', $id)->where('user_id', $owner)->first();
+
+        if (!$product) {
+            return $this->fail('Product not found.', ['product' => ['Not found']], 404);
+        }
+
+        $totalCodes  = Code::where('product_id', $product->id)->count();
+        $activeCodes = Code::where('product_id', $product->id)->where('status', '1')->count();
+
+        $reachedBuyers = ScanHistory::join('codes', 'codes.id', '=', 'scan_histories.code_id')
+            ->join('users', 'users.id', '=', 'scan_histories.scanned_by')
+            ->where('codes.product_id', $product->id)
+            ->where('users.type', '0')
+            ->distinct()
+            ->count('codes.id');
+
+        $packsPerAggregation = Code::where('product_id', $product->id)
+            ->whereNotNull('aggregation_id')
+            ->groupBy('aggregation_id')
+            ->selectRaw('aggregation_id, COUNT(*) as total')
+            ->pluck('total', 'aggregation_id')
+            ->toArray();
+
+        $packed = array_sum($packsPerAggregation);
+
+        if (empty($packsPerAggregation)) {
+            return $this->ok('Journey loaded successfully', $this->emptyJourney($product, $totalCodes, $activeCodes, $packed, $reachedBuyers));
+        }
+
+        // Load every aggregation we care about plus all its ancestors.
+        $map   = [];
+        $queue = array_keys($packsPerAggregation);
+
+        while (!empty($queue)) {
+            $rows  = Aggregation::whereIn('id', $queue)->get();
+            $queue = [];
+
+            foreach ($rows as $row) {
+                $map[$row->id] = $row;
+
+                if ($row->parent_id && !isset($map[$row->parent_id])) {
+                    $queue[] = $row->parent_id;
+                }
+            }
+
+            $queue = array_values(array_unique($queue));
+        }
+
+        // Ancestor chain of unique ids for each pack-holding aggregation.
+        $chains     = [];
+        $everyUnique = [];
+
+        foreach (array_keys($packsPerAggregation) as $aggregationId) {
+            $chain   = [];
+            $current = isset($map[$aggregationId]) ? $map[$aggregationId] : null;
+            $guard   = 0;
+
+            while ($current && $guard < 12) {
+                $chain[]       = $current->unique_id;
+                $everyUnique[] = $current->unique_id;
+                $current = $current->parent_id && isset($map[$current->parent_id])
+                    ? $map[$current->parent_id]
+                    : null;
+                $guard++;
+            }
+
+            $chains[$aggregationId] = $chain;
+        }
+
+        $actions = SupplyChainAction::where('user_id', $owner)
+            ->whereIn('aggregation_unique_id', array_values(array_unique($everyUnique)))
+            ->orderBy('id', 'ASC')
+            ->get();
+
+        $byUnique = [];
+
+        foreach ($actions as $action) {
+            $byUnique[$action->aggregation_unique_id][] = $action;
+        }
+
+        $names = $this->nodeNames($actions);
+
+        $factory   = $product->getUser && $product->getUser->name
+            ? $product->getUser->name
+            : 'Factory';
+
+        $inTransit = 0;
+        $delivered = 0;
+        $atFactory = 0;
+        $holders   = [];
+        $paths     = [];
+
+        foreach ($chains as $aggregationId => $chain) {
+            $packs = isset($packsPerAggregation[$aggregationId]) ? $packsPerAggregation[$aggregationId] : 0;
+
+            $timeline = [];
+
+            foreach ($chain as $uniqueId) {
+                if (!isset($byUnique[$uniqueId])) {
+                    continue;
+                }
+
+                foreach ($byUnique[$uniqueId] as $action) {
+                    $timeline[] = $action;
+                }
+            }
+
+            if (empty($timeline)) {
+                $atFactory += $packs;
+                continue;
+            }
+
+            usort($timeline, function ($a, $b) {
+                return $a->id - $b->id;
+            });
+
+            // Walk the timeline once to build the human-readable hop list.
+            $hops = [$factory];
+
+            foreach ($timeline as $action) {
+                $who = (string) $action->action === 'checkout'
+                    ? $action->action_for
+                    : $action->action_by;
+
+                if (!$who) {
+                    continue;
+                }
+
+                $label = isset($names[$who]) ? $names[$who] : 'Unknown';
+
+                if (end($hops) !== $label) {
+                    $hops[] = $label;
+                }
+            }
+
+            $last     = end($timeline);
+            $isMoving = (string) $last->action === 'checkout';
+            $holderId = $isMoving ? $last->action_for : $last->action_by;
+
+            if ($isMoving) {
+                $inTransit += $packs;
+            } else {
+                $delivered += $packs;
+            }
+
+            if ($holderId) {
+                if (!isset($holders[$holderId])) {
+                    $holders[$holderId] = [
+                        'name'       => isset($names[$holderId]) ? $names[$holderId] : 'Unknown',
+                        'role'       => isset($names['role_' . $holderId]) ? $names['role_' . $holderId] : null,
+                        'packs'      => 0,
+                        'shipments'  => 0,
+                        'in_transit' => 0,
+                        'last_at'    => null,
+                    ];
+                }
+
+                $holders[$holderId]['packs']     += $packs;
+                $holders[$holderId]['shipments'] += 1;
+                $holders[$holderId]['last_at']    = $last->created_at;
+
+                if ($isMoving) {
+                    $holders[$holderId]['in_transit'] += $packs;
+                }
+            }
+
+            $key = implode(' > ', $hops);
+
+            if (!isset($paths[$key])) {
+                $paths[$key] = [
+                    'hops'      => $hops,
+                    'packs'     => 0,
+                    'shipments' => 0,
+                    'moving'    => false,
+                    'last_at'   => null,
+                ];
+            }
+
+            $paths[$key]['packs']     += $packs;
+            $paths[$key]['shipments'] += 1;
+            $paths[$key]['last_at']    = $last->created_at;
+
+            if ($isMoving) {
+                $paths[$key]['moving'] = true;
+            }
+        }
+
+        $self = $this;
+
+        $holderRows = array_values(array_map(function ($row) use ($self) {
+            return [
+                'name'       => $row['name'],
+                'role'       => $row['role'],
+                'packs'      => $row['packs'],
+                'shipments'  => $row['shipments'],
+                'in_transit' => $row['in_transit'],
+                'state'      => $row['in_transit'] > 0 ? 'On the way' : 'Holding',
+                'last_ago'   => $self->publicAgo($row['last_at']),
+            ];
+        }, $holders));
+
+        usort($holderRows, function ($a, $b) {
+            return $b['packs'] - $a['packs'];
+        });
+
+        $pathRows = array_values(array_map(function ($row) use ($self) {
+            return [
+                'hops'      => $row['hops'],
+                'packs'     => $row['packs'],
+                'shipments' => $row['shipments'],
+                'moving'    => $row['moving'],
+                'last_ago'  => $self->publicAgo($row['last_at']),
+            ];
+        }, $paths));
+
+        usort($pathRows, function ($a, $b) {
+            return $b['packs'] - $a['packs'];
+        });
+
+        return $this->ok('Journey loaded successfully', [
+            'product' => [
+                'id'    => $product->id,
+                'name'  => $product->name,
+                'brand' => $product->brand,
+                'image' => $this->assetUrl($product->image_url),
+            ],
+            'stages' => [
+                ['key' => 'made',      'label' => 'Made',       'value' => $totalCodes,     'icon' => 'factory'],
+                ['key' => 'packed',    'label' => 'Packed',     'value' => $packed,         'icon' => 'package'],
+                ['key' => 'moving',    'label' => 'On the way', 'value' => $inTransit,      'icon' => 'truck'],
+                ['key' => 'delivered', 'label' => 'Received',   'value' => $delivered,      'icon' => 'download'],
+                ['key' => 'buyers',    'label' => 'Bought',     'value' => $reachedBuyers,  'icon' => 'people'],
+            ],
+            'at_factory'    => $atFactory,
+            'holders'       => $holderRows,
+            'paths'         => $pathRows,
+            'active_codes'  => $activeCodes,
+            'blocked_codes' => $totalCodes - $activeCodes,
+        ]);
+    }
+
+    protected function emptyJourney($product, $totalCodes, $activeCodes, $packed = 0, $reachedBuyers = 0)
+    {
+        return [
+            'product' => [
+                'id'    => $product->id,
+                'name'  => $product->name,
+                'brand' => $product->brand,
+                'image' => $this->assetUrl($product->image_url),
+            ],
+            'stages' => [
+                ['key' => 'made',      'label' => 'Made',       'value' => $totalCodes,    'icon' => 'factory'],
+                ['key' => 'packed',    'label' => 'Packed',     'value' => $packed,        'icon' => 'package'],
+                ['key' => 'moving',    'label' => 'On the way', 'value' => 0,              'icon' => 'truck'],
+                ['key' => 'delivered', 'label' => 'Received',   'value' => 0,              'icon' => 'download'],
+                ['key' => 'buyers',    'label' => 'Bought',     'value' => $reachedBuyers, 'icon' => 'people'],
+            ],
+            'at_factory'    => $packed,
+            'holders'       => [],
+            'paths'         => [],
+            'active_codes'  => $activeCodes,
+            'blocked_codes' => $totalCodes - $activeCodes,
+        ];
+    }
+
+    protected function nodeNames($actions)
+    {
+        $ids = [];
+
+        foreach ($actions as $action) {
+            if ($action->action_by)  $ids[] = $action->action_by;
+            if ($action->action_for) $ids[] = $action->action_for;
+        }
+
+        $names = [];
+
+        if (empty($ids)) {
+            return $names;
+        }
+
+        $users = User::whereIn('id', array_unique($ids))->get();
+
+        foreach ($users as $person) {
+            $names[$person->id] = $person->name ?: 'Unknown';
+            $names['role_' . $person->id] = $person->who_you_are;
+        }
+
+        return $names;
+    }
+
 }

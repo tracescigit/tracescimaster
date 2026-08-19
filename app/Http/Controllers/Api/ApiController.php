@@ -8,9 +8,12 @@ use Exception;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Controllers\Api\Mobile\ApiHelpersTrait;
 
 class ApiController extends Controller
 {
+    use ApiHelpersTrait;
+
     protected $apiUser = null;
 
     const ROLE_CONSUMER     = 'consumer';

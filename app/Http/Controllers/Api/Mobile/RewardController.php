@@ -14,36 +14,161 @@ use Illuminate\Http\Request;
 
 class RewardController extends ApiController
 {
+    /**
+     * Points are earned per reward scheme and can only be spent inside that
+     * scheme, so there is deliberately no combined balance here — adding
+     * "10 Diwali points" to "10 Summer points" would be a number the shopper
+     * can never actually spend.
+     */
     public function summary(Request $request)
     {
         $user = $this->requireUser($request);
 
-        $earned = Wallet::where('user_id', $user->id)
+        $today = date('Y-m-d');
+
+        // Every scheme this shopper has ever earned in.
+        $schemeIds = Wallet::where('user_id', $user->id)
+            ->where('status', 'Success')
+            ->whereNotNull('reward_id')
+            ->distinct()
+            ->pluck('reward_id')
+            ->toArray();
+
+        $rewards = [];
+
+        foreach ($schemeIds as $schemeId) {
+            $scheme = RewardScheme::find($schemeId);
+
+            if (!$scheme) {
+                continue;
+            }
+
+            $points = $this->schemePoints($user->id, $schemeId);
+            $earned = $this->schemeEarned($user->id, $schemeId);
+
+            if ($earned <= 0) {
+                continue;
+            }
+
+            $rewards[] = $this->rewardCard($scheme, $points, $earned, $today);
+        }
+
+        usort($rewards, function ($a, $b) {
+            if ($a['my_points'] === $b['my_points']) {
+                return 0;
+            }
+            return $a['my_points'] < $b['my_points'] ? 1 : -1;
+        });
+
+        $pending = RewardOrder::where('customer_id', $user->id)
+            ->where('dispatch_status', '!=', 'Delivered')
+            ->count();
+
+        return $this->ok('Rewards summary fetched successfully', [
+            'rewards'        => $rewards,
+            'pending_orders' => $pending,
+            'scans_rewarded' => Wallet::where('user_id', $user->id)
+                ->where('type', 'credit')
+                ->where('status', 'Success')
+                ->count(),
+        ]);
+    }
+
+    /**
+     * Spendable points inside one scheme. Scanning a second Diwali pack adds
+     * to the same figure rather than creating a second pot.
+     */
+    protected function schemePoints($userId, $schemeId)
+    {
+        $credit = Wallet::where('user_id', $userId)
+            ->where('reward_id', $schemeId)
             ->where('type', 'credit')
             ->where('status', 'Success')
             ->sum('points');
 
-        $spent = Wallet::where('user_id', $user->id)
+        $debit = Wallet::where('user_id', $userId)
+            ->where('reward_id', $schemeId)
             ->where('type', 'debit')
             ->where('status', 'Success')
             ->sum('points');
 
-        $cashOut = Wallet::where('user_id', $user->id)
-            ->where('type', 'debit')
-            ->where('status', 'Success')
-            ->sum('amount');
+        $balance = (float) $credit - (float) $debit;
 
-        return $this->ok('Rewards summary fetched successfully', [
-            'balance'          => (float) getWalletBalance($user->id),
-            'lifetime_earned'  => (float) $earned,
-            'lifetime_spent'   => (float) $spent,
-            'cash_redeemed'    => (float) $cashOut,
-            'brands'           => $this->brandBalances($user->id),
-            'pending_orders'   => RewardOrder::where('customer_id', $user->id)
-                ->where('dispatch_status', '!=', 'Delivered')
-                ->count(),
-            'recent'           => $this->recentLedger($user->id, 5),
-        ]);
+        return $balance > 0 ? $balance : 0;
+    }
+
+    protected function schemeEarned($userId, $schemeId)
+    {
+        return (float) Wallet::where('user_id', $userId)
+            ->where('reward_id', $schemeId)
+            ->where('type', 'credit')
+            ->where('status', 'Success')
+            ->sum('points');
+    }
+
+    protected function rewardCard($scheme, $points, $earned, $today)
+    {
+        $product = $scheme->product_id ? Product::find($scheme->product_id) : null;
+
+        $items    = [];
+        $ready    = null;
+        $next     = null;
+
+        foreach ((array) $this->json($scheme->items, []) as $item) {
+            $cost = isset($item['points']) ? (float) $item['points'] : 0;
+
+            if ($cost <= 0) {
+                continue;
+            }
+
+            $canGet = $points >= $cost;
+
+            $row = [
+                'label'      => $this->itemLabel($item),
+                'type'       => isset($item['type']) ? $item['type'] : 'product',
+                'points'     => $cost,
+                'can_redeem' => $canGet,
+                'short_by'   => $canGet ? 0 : round($cost - $points, 2),
+            ];
+
+            $items[] = $row;
+
+            if ($canGet && ($ready === null || $cost > $ready['points'])) {
+                $ready = $row;
+            }
+
+            if (!$canGet && ($next === null || $cost < $next['points'])) {
+                $next = $row;
+            }
+        }
+
+        usort($items, function ($a, $b) {
+            if ($a['points'] === $b['points']) {
+                return 0;
+            }
+            return $a['points'] < $b['points'] ? -1 : 1;
+        });
+
+        $isLive = (string) $scheme->status === 'Active'
+            && (empty($scheme->to) || $scheme->to >= $today);
+
+        $target = $next !== null ? $next['points'] : ($ready !== null ? $ready['points'] : 0);
+
+        return [
+            'scheme_id'     => $scheme->id,
+            'title'         => $scheme->title ?: 'Reward',
+            'brand'         => $product ? $product->brand : null,
+            'product_name'  => $product ? $product->name : null,
+            'image'         => $product ? $this->assetUrl($product->image_url) : '',
+            'my_points'     => (float) $points,
+            'earned_points' => (float) $earned,
+            'is_live'       => $isLive,
+            'valid_to'      => !empty($scheme->to) ? $this->date($scheme->to, 'M d, Y') : null,
+            'items'         => $items,
+            'ready'         => $ready,
+            'next'          => $next,
+            'progress'      => $target > 0 ? min(1, round($points / $target, 3)) : ($ready ? 1 : 0),
+        ];
     }
 
     public function ledger(Request $request)
@@ -94,7 +219,7 @@ class RewardController extends ApiController
 
         foreach ($schemes as $scheme) {
             $brand   = $this->schemeBrand($scheme);
-            $balance = (float) getWalletBalance($user->id, $brand);
+            $balance = $this->schemePoints($user->id, $scheme->id);
 
             $items = [];
 
@@ -195,8 +320,93 @@ class RewardController extends ApiController
         return $this->ok('Coupon redeemed — ' . (float) $scheme->points . ' points added to your wallet.', [
             'points_added' => (float) $scheme->points,
             'brand'        => $brand,
-            'balance'      => (float) getWalletBalance($user->id, $brand),
-            'total_balance' => (float) getWalletBalance($user->id),
+            'balance'      => (float) $this->schemePoints($user->id, $scheme->id),
+            'total_balance' => (float) $this->schemePoints($user->id, $scheme->id),
+        ]);
+    }
+
+    public function scanToRedeem(Request $request)
+    {
+        $user = $this->requireUser($request);
+
+        $this->validateInput($request, ['code' => 'required|string|max:255']);
+
+        $raw = trim($request->input('code'));
+
+        $code = Code::where('qr_code', $raw)->orWhere('code_data', $raw)->first();
+
+        if (!$code) {
+            return $this->fail('We do not recognise that code.', ['code' => ['Unknown code']], 404);
+        }
+
+        $coupon = CouponCode::where('code_id', $code->id)->first();
+
+        if (!$coupon) {
+            return $this->fail(
+                'This pack does not carry a reward.',
+                ['code' => ['No reward on this pack']],
+                404
+            );
+        }
+
+        if ($coupon->status === 'Redeemed') {
+            return $this->fail(
+                'This reward has already been claimed.',
+                ['code' => ['Already claimed']],
+                422
+            );
+        }
+
+        $scheme = RewardScheme::where('id', $coupon->reward_id)
+            ->where('status', 'Active')
+            ->first();
+
+        if (!$scheme) {
+            return $this->fail(
+                'The reward on this pack is no longer running.',
+                ['code' => ['Scheme inactive']],
+                422
+            );
+        }
+
+        $scan = ScanHistory::where('code_id', $code->id)
+            ->where('scanned_by', $user->id)
+            ->orderBy('created_at', 'DESC')
+            ->first();
+
+        if (!$scan) {
+            $scan = new ScanHistory;
+            $scan->code_id    = $code->id;
+            $scan->scanned_by = $user->id;
+            $scan->genuine    = (string) $code->status === '1' ? '1' : '0';
+            $scan->save();
+        }
+
+        $product = $code->getProduct;
+        $brand   = $product ? $product->brand : null;
+
+        $credit = new Wallet;
+        $credit->type      = 'credit';
+        $credit->user_id   = $user->id;
+        $credit->scan_id   = $scan->id;
+        $credit->reward_id = $scheme->id;
+        $credit->points    = $scheme->points;
+        $credit->brand     = $brand;
+        $credit->status    = 'Success';
+        $credit->save();
+
+        $coupon->status  = 'Redeemed';
+        $coupon->user_id = $user->id;
+        $coupon->save();
+
+        return $this->ok('You won ' . (float) $scheme->points . ' points!', [
+            'points_added'  => (float) $scheme->points,
+            'scheme_title'  => $scheme->title,
+            'brand'         => $brand,
+            'product_name'  => $product ? $product->name : null,
+            'product_image' => $product ? $this->assetUrl($product->image_url) : '',
+            'balance'       => (float) $this->schemePoints($user->id, $scheme->id),
+            'total_balance' => (float) $this->schemePoints($user->id, $scheme->id),
         ]);
     }
 
@@ -211,22 +421,23 @@ class RewardController extends ApiController
             'brand'     => 'nullable|string|max:150',
         ]);
 
-        $brand   = $request->input('brand');
-        $points  = (float) $request->input('points');
-        $balance = (float) getWalletBalance($user->id, $brand);
-
-        if ($balance < $points) {
-            return $this->fail(
-                'You need ' . round($points - $balance, 2) . ' more points to redeem this.',
-                ['points' => ['Insufficient balance']],
-                422
-            );
-        }
+        $brand  = $request->input('brand');
+        $points = (float) $request->input('points');
 
         $scheme = RewardScheme::where('id', $request->input('scheme_id'))->where('status', 'Active')->first();
 
         if (!$scheme) {
             return $this->fail('This scheme is no longer available.', ['scheme_id' => ['Scheme inactive']], 422);
+        }
+
+        $balance = $this->schemePoints($user->id, $scheme->id);
+
+        if ($balance < $points) {
+            return $this->fail(
+                'You need ' . round($points - $balance, 2) . ' more points in this reward to claim that.',
+                ['points' => ['Insufficient balance']],
+                422
+            );
         }
 
         $amount = $this->itemValue($scheme, $points, 'amount');
@@ -260,7 +471,7 @@ class RewardController extends ApiController
         return $this->ok('Payout of ' . $amount . ' initiated successfully.', [
             'amount'  => (float) $amount,
             'points'  => $points,
-            'balance' => (float) getWalletBalance($user->id, $brand),
+            'balance' => (float) $this->schemePoints($user->id, $scheme->id),
         ]);
     }
 
@@ -279,22 +490,24 @@ class RewardController extends ApiController
             'brand'     => 'nullable|string|max:150',
         ]);
 
-        $brand   = $request->input('brand');
-        $points  = (float) $request->input('points');
-        $balance = (float) getWalletBalance($user->id, $brand);
-
-        if ($balance < $points) {
-            return $this->fail(
-                'You need ' . round($points - $balance, 2) . ' more points to redeem this.',
-                ['points' => ['Insufficient balance']],
-                422
-            );
-        }
+        $brand  = $request->input('brand');
+        $points = (float) $request->input('points');
 
         $scheme = RewardScheme::where('id', $request->input('scheme_id'))->where('status', 'Active')->first();
 
         if (!$scheme) {
             return $this->fail('This scheme is no longer available.', ['scheme_id' => ['Scheme inactive']], 422);
+        }
+
+        // Points only spend inside the scheme that granted them.
+        $balance = $this->schemePoints($user->id, $scheme->id);
+
+        if ($balance < $points) {
+            return $this->fail(
+                'You need ' . round($points - $balance, 2) . ' more points in this reward to claim that.',
+                ['points' => ['Insufficient balance']],
+                422
+            );
         }
 
         $product = $this->itemValue($scheme, $points, 'product');
@@ -341,7 +554,7 @@ class RewardController extends ApiController
                 'points'    => (float) $order->points,
                 'status'    => $order->dispatch_status,
             ],
-            'balance' => (float) getWalletBalance($user->id, $brand),
+            'balance' => (float) $this->schemePoints($user->id, $scheme->id),
         ]);
     }
 
@@ -480,4 +693,125 @@ class RewardController extends ApiController
 
         return $owner ? $owner->brand : null;
     }
+
+    /**
+     * Everything the shopper has put in motion to claim a reward — gift
+     * orders and cash payouts in one list, newest first, each with the stage
+     * it has reached.
+     */
+    public function transactions(Request $request)
+    {
+        $user = $this->requireUser($request);
+
+        $rows = [];
+
+        $orders = RewardOrder::where('customer_id', $user->id)
+            ->orderBy('created_at', 'DESC')
+            ->limit(60)
+            ->get();
+
+        foreach ($orders as $order) {
+            $status = $order->dispatch_status ? $order->dispatch_status : 'Pending';
+            $scheme = $order->reward_id ? RewardScheme::find($order->reward_id) : null;
+
+            $timeline = [];
+
+            foreach ((array) $this->json($order->history, []) as $log) {
+                $timeline[] = [
+                    'message' => isset($log['message']) ? $log['message'] : '',
+                    'date'    => isset($log['date']) ? $log['date'] : '',
+                ];
+            }
+
+            $rows[] = [
+                'id'         => 'order-' . $order->id,
+                'kind'       => 'gift',
+                'reference'  => 'ORD-' . str_pad($order->id, 6, '0', STR_PAD_LEFT),
+                'title'      => $order->product ?: 'Reward item',
+                'scheme'     => $scheme ? $scheme->title : null,
+                'points'     => (float) $order->points,
+                'amount'     => null,
+                'status'     => $status,
+                'stage'      => $this->orderStage($status),
+                'is_open'    => strtolower($status) !== 'delivered'
+                    && strtolower($status) !== 'cancelled',
+                'address'    => trim(
+                    $order->address . ', ' . $order->city . ', ' . $order->state . ' - ' . $order->pin_code,
+                    ', '
+                ),
+                'timeline'   => $timeline,
+                'created_at' => $this->date($order->created_at),
+                'created_ago' => $this->ago($order->created_at),
+                'sort'       => strtotime($order->created_at),
+            ];
+        }
+
+        $payouts = Wallet::where('user_id', $user->id)
+            ->where('type', 'debit')
+            ->whereNotNull('amount')
+            ->where('amount', '>', 0)
+            ->orderBy('created_at', 'DESC')
+            ->limit(60)
+            ->get();
+
+        foreach ($payouts as $payout) {
+            $status = $payout->status ? $payout->status : 'Pending';
+            $scheme = $payout->reward_id ? RewardScheme::find($payout->reward_id) : null;
+
+            $rows[] = [
+                'id'         => 'cash-' . $payout->id,
+                'kind'       => 'cash',
+                'reference'  => 'PAY-' . str_pad($payout->id, 6, '0', STR_PAD_LEFT),
+                'title'      => 'Cash to UPI',
+                'scheme'     => $scheme ? $scheme->title : null,
+                'points'     => (float) $payout->points,
+                'amount'     => (float) $payout->amount,
+                'status'     => $status,
+                'stage'      => strtolower($status) === 'success' ? 3 : 1,
+                'is_open'    => strtolower($status) !== 'success'
+                    && strtolower($status) !== 'failed',
+                'address'    => null,
+                'timeline'   => [],
+                'created_at' => $this->date($payout->created_at),
+                'created_ago' => $this->ago($payout->created_at),
+                'sort'       => strtotime($payout->created_at),
+            ];
+        }
+
+        usort($rows, function ($a, $b) {
+            return $b['sort'] - $a['sort'];
+        });
+
+        $open = 0;
+
+        foreach ($rows as $row) {
+            if ($row['is_open']) {
+                $open++;
+            }
+        }
+
+        return $this->ok('Transactions fetched successfully', [
+            'transactions' => $rows,
+            'open_count'   => $open,
+            'stages'       => ['Placed', 'Packed', 'On the way', 'Delivered'],
+        ]);
+    }
+
+    protected function orderStage($status)
+    {
+        switch (strtolower($status)) {
+            case 'delivered':
+                return 3;
+            case 'shipped':
+            case 'dispatched':
+            case 'on the way':
+                return 2;
+            case 'packed':
+            case 'processing':
+                return 1;
+            default:
+                return 0;
+        }
+    }
+
 }

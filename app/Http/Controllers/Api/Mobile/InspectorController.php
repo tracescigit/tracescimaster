@@ -239,64 +239,6 @@ class InspectorController extends ApiController
         ]);
     }
 
-    public function map(Request $request)
-    {
-        $user = $this->requireUser($request);
-        $this->requireRole($user, [self::ROLE_INSPECTOR, self::ROLE_AUTHORITY, self::ROLE_ADMIN, self::ROLE_BRAND]);
-
-        $query = $this->scopedCases($user)->whereNotNull('location');
-
-        if ($request->filled('status')) {
-            $query->where('status', $request->input('status'));
-        }
-
-        $points = [];
-
-        foreach ($query->orderBy('created_at', 'DESC')->limit(300)->get() as $case) {
-            $location = $this->json($case->location, null);
-
-            if (!is_array($location)) {
-                continue;
-            }
-
-            $lat = isset($location['latitude']) ? $location['latitude'] : (isset($location['lat']) ? $location['lat'] : null);
-            $lng = isset($location['longitude']) ? $location['longitude'] : (isset($location['lng']) ? $location['lng'] : null);
-
-            if ($lat === null || $lng === null) {
-                continue;
-            }
-
-            $points[] = [
-                'id'        => $case->id,
-                'latitude'  => (float) $lat,
-                'longitude' => (float) $lng,
-                'title'     => $case->product_name,
-                'subtitle'  => $case->alert_message,
-                'status'    => $case->status === '1' ? 'Closed' : 'Open',
-                'date'      => $this->date($case->created_at, 'M d, Y'),
-            ];
-        }
-
-        return $this->okList('Map data fetched successfully', 'points', $points);
-    }
-
-    protected function scopedCases($user)
-    {
-        $query = Alert::query();
-
-        if ((string) $user->type === '1') {
-            $query->where('admin_assigned_to', $user->id);
-        }
-
-        if ((string) $user->type === '2') {
-            $query->where(function ($q) use ($user) {
-                $q->where('manufacturer_assigned_to', $user->id)
-                  ->orWhere('vendor_assigned_to', $this->ownerId($user));
-            });
-        }
-
-        return $query;
-    }
 
     public function caseCard($case)
     {

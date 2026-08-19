@@ -221,15 +221,16 @@ class SessionController extends ApiController
 
             case self::ROLE_SUPPLY_CHAIN:
                 $base['scan_supply_chain']  = true;
+                $base['scan_product']       = true;
                 $base['supply_chain_board'] = true;
-                $base['alerts']             = true;
+                $base['alerts']             = false;
                 break;
 
             case self::ROLE_INSPECTOR:
             case self::ROLE_AUTHORITY:
                 $base['scan_product']   = true;
                 $base['cases']          = true;
-                $base['alerts']         = true;
+                $base['alerts']         = false;
                 $base['report_product'] = true;
                 break;
 
@@ -238,6 +239,7 @@ class SessionController extends ApiController
                 $base['scan_product']       = true;
                 $base['brand_dashboard']    = true;
                 $base['alerts']             = true;
+                $base['scan_supply_chain']  = SupplyChain::where('user_id', $user->id)->exists();
                 $base['cases']              = true;
                 $base['supply_chain_board'] = true;
                 break;
@@ -252,17 +254,16 @@ class SessionController extends ApiController
 
         $definitions = [
             self::ROLE_CONSUMER => [
-                ['key' => 'home',     'label' => 'Home',    'icon' => 'home',       'endpoint' => 'consumer/home'],
-                ['key' => 'scan',     'label' => 'Scan',    'icon' => 'qr_scanner', 'endpoint' => 'p/{code}'],
-                ['key' => 'rewards',  'label' => 'Rewards', 'icon' => 'gift',       'endpoint' => 'rewards/summary'],
-                ['key' => 'history',  'label' => 'My scans', 'icon' => 'history',   'endpoint' => 'consumer/scans'],
-                ['key' => 'profile',  'label' => 'Profile', 'icon' => 'user',       'endpoint' => 'app/me'],
+                ['key' => 'home',          'label' => 'Home',    'icon' => 'home',       'endpoint' => 'consumer/home'],
+                ['key' => 'rewards',       'label' => 'Rewards', 'icon' => 'gift',       'endpoint' => 'rewards/summary'],
+                ['key' => 'scan',          'label' => 'Scan',    'icon' => 'qr_scanner', 'endpoint' => 'p/{code}'],
+                ['key' => 'notifications', 'label' => 'Alerts',  'icon' => 'bell',       'endpoint' => 'consumer/notifications'],
+                ['key' => 'profile',       'label' => 'Profile', 'icon' => 'user',       'endpoint' => 'app/me'],
             ],
             self::ROLE_SUPPLY_CHAIN => [
                 ['key' => 'home',        'label' => 'Home',       'icon' => 'dashboard',  'endpoint' => 'supply-chain/dashboard'],
                 ['key' => 'scan',        'label' => 'Scan',       'icon' => 'qr_scanner', 'endpoint' => 'supply-chain/scan'],
                 ['key' => 'consignments','label' => 'Shipments', 'icon' => 'package',    'endpoint' => 'supply-chain/consignments'],
-                ['key' => 'alerts',      'label' => 'Alerts',     'icon' => 'bell',       'endpoint' => 'supply-chain/alerts'],
                 ['key' => 'profile',     'label' => 'Profile',    'icon' => 'user',       'endpoint' => 'app/me'],
             ],
             self::ROLE_INSPECTOR => [
@@ -274,8 +275,8 @@ class SessionController extends ApiController
             self::ROLE_BRAND => [
                 ['key' => 'home',      'label' => 'Home',     'icon' => 'dashboard', 'endpoint' => 'brand/dashboard'],
                 ['key' => 'products',  'label' => 'Products', 'icon' => 'box',       'endpoint' => 'brand/products'],
-                ['key' => 'scans',     'label' => 'Scans',    'icon' => 'activity',  'endpoint' => 'brand/scans'],
-                ['key' => 'alerts',    'label' => 'Alerts',   'icon' => 'bell',      'endpoint' => 'brand/alerts'],
+                ['key' => 'scan',      'label' => 'Scan',     'icon' => 'qr_scanner','endpoint' => 'p/{code}'],
+                ['key' => 'alerts',    'label' => 'Reports',  'icon' => 'bell',      'endpoint' => 'brand/alerts'],
                 ['key' => 'profile',   'label' => 'Profile',  'icon' => 'user',      'endpoint' => 'app/me'],
             ],
         ];
