@@ -28,7 +28,7 @@ class SupplyChainUserCreateRequest extends FormRequest
 
         $input = $request->all();
 
-        $user  = null; 
+        $user  = null;
 
         $rules =  [
             'email'     => 'required|email|regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix|unique:users',
@@ -36,13 +36,14 @@ class SupplyChainUserCreateRequest extends FormRequest
             'full_name' => 'required',
             'role'      => 'required',
             'address'   => 'required',
+            'user_image' => 'nullable|image|mimes:png,jpg,jpeg|max:2048',
         ];
 
         if (isset($input['mobile']) || isset($input['email'])) {
-            $user = User::where('email',$input['email'])->orWhere('phone',$input['mobile'])->first();
+            $user = User::where('email', $input['email'])->orWhere('phone', $input['mobile'])->first();
         }
 
-        if ($user && $user->type=='0') {
+        if ($user && $user->type == '0') {
             $rules['email']  = 'required|email|regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix';
             $rules['mobile'] = 'required';
         }

@@ -5,6 +5,22 @@
 @endsection
 
 @section('subcontent')
+@php
+$location = json_decode($report->location);
+
+$lat = null;
+$long = null;
+$source = null;
+
+if($location){
+$lat = $location->lat ?? null;
+
+// Support both old and new data
+$long = $location->lng ?? $location->long ?? null;
+
+$source = $location->source ?? 'gps';
+}
+@endphp
 
 <div class="grid grid-cols-12 gap-6 mt-5">
 
@@ -128,13 +144,114 @@
 			@endif
 		</div>
 
-		
+		<div class="intro-y box mt-5">
+			<div class="flex flex-col sm:flex-row items-center px-7 py-5 border-b border-gray-200 dark:border-dark-5">
+				<h2 class="font-medium text-base mr-auto">{{__('Scanned Location') }}</h2>
+			</div>
+			<div class="p-5">
+				<div class="grid grid-cols-12">
+
+					@if($lat !== null && $long !== null)
+
+					<div class="col-span-12 px-2 py-2">
+						@if($source == 'ip')
+						<span class="text-yellow-600 font-medium">
+							📍 Approximate Location (Based on IP Address)
+						</span>
+						@else
+						<span class="text-green-600 font-medium">
+							📍 Exact GPS Location
+						</span>
+						@endif
+					</div>
+
+					<div class="col-span-12 lg:col-span-12 px-2 py-1 mt-2">
+						<div id="map" style="height:400px;"></div>
+					</div>
+
+					@if($source == 'ip')
+					<div class="col-span-12 mt-3 px-2">
+						<strong>City :</strong> {{ $location->city ?? 'N/A' }}
+					</div>
+
+					<div class="col-span-12 px-2 mt-1">
+						<strong>Region :</strong> {{ $location->region ?? 'N/A' }}
+					</div>
+
+					<div class="col-span-12 px-2 mt-1">
+						<strong>Country :</strong> {{ $location->country ?? 'N/A' }}
+					</div>
+
+					<div class="col-span-12 px-2 mt-1">
+						<strong>IP :</strong> {{ $location->ip ?? 'N/A' }}
+					</div>
+					@endif
+
+					@else
+
+					<div class="col-span-12 lg:col-span-12 px-2 py-1 mt-2 text-red-500">
+						{{ __('scanhistory.location_not_found') }}!
+					</div>
+
+					@endif
+
+				</div>
+			</div>
+		</div>
+
 	</div>
 </div>
 
 @endsection
 
 @section('script')
+
+<script>
+	let map;
+
+	function initMap() {
+
+		const latitude = parseFloat('{{ $lat }}');
+		const longitude = parseFloat('{{ $long }}');
+
+		const mapOptions = {
+			zoom: {{ $source == 'ip' ? 12 : 16 }},
+			center: {
+				lat: latitude,
+				lng: longitude
+			},
+		};
+
+		map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+		const marker = new google.maps.Marker({
+			position: {
+				lat: latitude,
+				lng: longitude
+			},
+			map: map,
+		});
+
+		const infoWindow = new google.maps.InfoWindow({
+			content: `{!! $source == 'ip'
+                ? '<strong>Approximate Location (IP Based)</strong>'
+                : '<strong>Exact GPS Location</strong>' !!}`
+		});
+
+		marker.addListener("click", function() {
+			infoWindow.open(map, marker);
+		});
+
+		infoWindow.open(map, marker);
+	}
+
+	cash(document).ready(function() {
+		@if($lat !== null && $long !== null)
+		initMap();
+		@endif
+	});
+</script>
+
 <script>
 	cash(function () {
 		async function add() {
@@ -149,14 +266,14 @@
 
 			axios.post('{{ url('/admin/reports/assign/'.$report->id) }}', formData).then(res => {
 				cash('#submit').attr('disabled', 'true');
-				showNotification('success','{{__('common.success')}} !',res.data.message)
+				showNotification('success','{{__("common.success")}} !',res.data.message)
 				setTimeout(()=>{
-					window.location.href = '{{ url('/admin/reports') }}'
+					window.location.href = '{{ url("/admin/reports") }}'
 				},2000)
 
 			}).catch(err => {
-				showNotification('error','{{__('common.error')}} !',err.response.data.message)
-				cash('#submit').html('{{__('common.submit')}}')                   
+				showNotification('error','{{__("common.error")}} !',err.response.data.message)
+				cash('#submit').html('{{__("common.submit")}}')                   
 
 				if (err.response.data.errors) {
 					for (const [key, val] of Object.entries(err.response.data.errors)){

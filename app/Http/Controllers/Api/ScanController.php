@@ -70,11 +70,11 @@ class ScanController extends Controller
 				];
 			} else {
 
-				// $ip = app()->environment('local')
-				// 	? '8.8.8.8'
-				// 	: $request->ip();
+				$ip = app()->environment('local')
+					? '8.8.8.8'
+					: $request->ip();
 
-				$ip = $request->ip();
+				
 				$response = FacadesHttp::timeout(5)->get("http://ip-api.com/json/{$ip}");
 
 				if ($response->successful()) {
