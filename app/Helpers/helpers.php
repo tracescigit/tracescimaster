@@ -900,13 +900,20 @@ if (! function_exists('scanLocations')) {
 		if (count($scans) > 0) {
 
 			foreach ($scans as $key => $scan) {
+				// 1. Decode safely (returns null if $scan->location is empty or invalid JSON)
+				$location = json_decode($scan->location ?? '', true);
 
-				$location = json_decode($scan->location, true);
+				// 2. Extract coordinates with safe fallbacks
+				$lat  = $location['lat'] ?? null;
+				$long = $location['long'] ?? $location['lng'] ?? null;
 
-				if ($location['lat'] && $location['long']) {
-					$result[$key]['user'] = $scan->phone ?? 'User';
-					$result[$key]['lat']  = $location['lat'];
-					$result[$key]['long'] = $location['long'];
+				// 3. Only push to results if both values are valid
+				if ($lat && $long) {
+					$result[$key] = [
+						'user' => $scan->phone ?? 'User',
+						'lat'  => $lat,
+						'long' => $long,
+					];
 				}
 			}
 		}
