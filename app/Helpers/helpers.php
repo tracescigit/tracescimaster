@@ -875,16 +875,12 @@ if (! function_exists('getReportAndAlertCount')) {
 	}
 }
 
-if (!function_exists('scanLocations')) {
-
+if (! function_exists('scanLocations')) {
 	function scanLocations($user_id = null)
 	{
 		$result = [];
 
-		$scans = ScanHistory::leftJoin('codes', 'codes.id', '=', 'scan_histories.code_id')
-			->whereNotNull('scan_histories.location')
-			->where('scan_histories.location', '!=', '')
-			->whereMonth('scan_histories.created_at', Carbon::today()->month);
+		$scans = ScanHistory::leftJoin('codes', 'codes.id', 'scan_histories.code_id')->where('scan_histories.location', '!=', '')->whereMonth('scan_histories.created_at', Carbon::today()->month);
 
 		if ($user_id != null) {
 			$scans->where('codes.user_id', $user_id);
@@ -892,22 +888,17 @@ if (!function_exists('scanLocations')) {
 
 		$scans = $scans->get();
 
-		foreach ($scans as $key => $scan) {
+		if (count($scans) > 0) {
 
-			$location = json_decode($scan->location, true);
+			foreach ($scans as $key => $scan) {
 
-			if (
-				is_array($location) &&
-				isset($location['lat']) &&
-				isset($location['lng'])
-			) {
+				$location = json_decode($scan->location, true);
 
-				$result[] = [
-					'user' => $scan->phone ?? 'User',
-					'lat'  => (float) $location['lat'],
-					'long' => (float) $location['lng'], // Keep output key as "long" if your frontend expects it
-					'source' => $location['source'] ?? 'gps',
-				];
+				if ($location['lat'] && $location['long']) {
+					$result[$key]['user'] = $scan->phone ?? 'User';
+					$result[$key]['lat']  = $location['lat'];
+					$result[$key]['long'] = $location['long'];
+				}
 			}
 		}
 
@@ -1091,9 +1082,30 @@ if (!function_exists('loginUserAndAssignOtp')) {
 		// $smsphone = $phone_code . $phone;
 		// $message = 'Your login OTP is ' . $otp;
 		// $sms = sendSms($smsphone, $message);
+		
+
+
 
 		return $user;
 	}
+	try {
+			Sms::sendSms(
+				'TRCOTP',
+				[
+					'otp'      => $otp,
+					'username' => $user->name ?? 'User',
+					'phone'    => $phone,
+					'code'     => $phone_code,
+				]
+			);
+		} catch (\Throwable $e) {
+			Log::error('Failed to send OTP SMS', [
+				'phone' => $phone,
+				'error' => $e->getMessage(),
+				'file'  => $e->getFile(),
+				'line'  => $e->getLine(),
+			]);
+		}
 }
 
 if (! function_exists('prepareSupplyChainScanHistory')) {

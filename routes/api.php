@@ -32,6 +32,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('/get-otp', [AuthController::class, 'getOtp']);
+Route::post('/get-otp-app', [AuthController::class, 'getOtpApp']);
+
 Route::post('/verify-otp', [AuthController::class, 'verifyOtp']);
 Route::post('/verify-secret-code', [AuthController::class, 'verifySecretCode']);
 

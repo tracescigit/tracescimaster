@@ -56,10 +56,9 @@ class AuthController extends Controller
 		try {
 
 			$input = $request->all();
-
 			// Validation rules
 			$rules = [
-				'phone_code' => 'nullable|string|regex:/^[0-9-]+$/',
+				'country_code' => 'nullable|string|regex:/^[0-9-]+$/',
 				'phone' => 'nullable|string|max:15',
 				'email' => 'nullable|string|email',
 				'password' => 'nullable|string',
@@ -81,7 +80,7 @@ class AuthController extends Controller
 			// Process login and OTP assignment
 			$userResponse = loginUserAndAssignOtp(
 				$input['password'] ?? null,
-				$input['phone_code'] ?? null,
+				$input['country_code'] ?? null,
 				$input['phone'] ?? null,
 				$input['email'] ?? null
 
@@ -129,7 +128,9 @@ class AuthController extends Controller
 			], 500);
 		}
 	}
-
+public function getOtpApp(Request $request){
+	
+}
 	public function verifyOtp(Request $request)
 	{
 		$input = $request->all();
