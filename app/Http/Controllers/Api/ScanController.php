@@ -130,7 +130,11 @@ class ScanController extends Controller
 			}
 
 			$user = User::find($id);
-			$code = Code::where('code_data', $scan_code)->first();
+
+			$code = Code::where('qr_code', $scan_code)
+				->orWhere('code_data', $scan_code)
+				->first();
+
 
 			Log::info('scan.show: user and code lookup', [
 				'scan_code'   => $scan_code,

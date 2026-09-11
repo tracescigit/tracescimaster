@@ -195,7 +195,6 @@
 		}
 	}
 </style>
-
 <div class="scan-minimal">
 	<div class="scan-minimal-box">
 
@@ -399,147 +398,377 @@
 				}
 			})
 		}
-
 		async function submitOtp() {
 
-			cash('.form__input').removeClass('border-red-600')
-			cash('.form__input-error').html('')
+			cash('.form__input').removeClass('border-red-600');
+			cash('.form__input-error').html('');
 
-			let country_code = cash('#country_code').val()
-			let phone = cash('#phone').val()
-			let otp = cash('#otp').val()
+			let country_code = cash('#country_code').val();
+			let phone = cash('#phone').val();
+			let otp = cash('#otp').val();
 
-			cash('#btn-submit-otp').html('Please wait...')
+			cash('#btn-submit-otp').html('Please wait...');
 
-			axios.post("{{ url('api/verify-otp')}}", {
-				country_code: country_code,
-				phone: phone,
-				otp: otp,
-			}).then(res => {
+			axios.post("{{ url('api/verify-otp') }}", {
+					country_code: country_code,
+					phone: phone,
+					otp: otp,
+				})
+				.then(res => {
 
-				cash('#btn-submit-otp').hide();
-				cash('.form-div').hide();
-				cash('.otp-div').hide();
+					console.log("Verify OTP response:", res.data);
 
-				cash('.otp-verified-message').show();
-				global_token = res.data.token;
-				console.log('global_token set after OTP:', global_token);
+					// Get token from API response
+					const token = res.data?.data?.token;
 
-				@if($secret_code_check_required)
+					console.log("OTP token:", token);
 
-				cash('.secret-div').show();
-				cash('#btn-verify-secret_code').show();
-				cash('.secret-code').show();
+					if (!token) {
+						console.error("Token not found in OTP response:", res.data);
 
-				cash('#token').val(res.data.data.token);
+						cash('#btn-submit-otp').show().html('Submit OTP');
+						cash('#error-otp').html('Token not received. Please try again.');
 
-				@else
-
-				proceedtoProductPage(res.data.data.token);
-
-				@endif
-
-			}).catch(err => {
-
-				cash('#btn-submit-otp').show().html('Submit OTP');
-
-				// Clear previous errors
-				cash('.form__input-error').html('');
-				cash('.form__input').removeClass('border-red-600');
-
-				if (err.response && err.response.data) {
-
-					// Show API message (e.g. Invalid OTP or credentials)
-					if (err.response.data.message) {
-						cash('#otp').addClass('border-red-600');
-						cash('#error-otp').html(err.response.data.message);
+						return;
 					}
 
-					// Show validation errors if present
-					if (err.response.data.errors) {
-						for (const [key, val] of Object.entries(err.response.data.errors)) {
-							cash(`#${key}`).addClass('border-red-600');
-							cash(`#error-${key}`).html(
-								Array.isArray(val) ? val[0] : val
+					// Set global token
+					global_token = token;
+
+					console.log(
+						'global_token set after OTP:',
+						global_token
+					);
+
+					// Hide OTP form
+					cash('#btn-submit-otp').hide();
+					cash('.form-div').hide();
+					cash('.otp-div').hide();
+
+					// Show verified message
+					cash('.otp-verified-message').show();
+
+
+					@if($secret_code_check_required)
+
+					// Secret code is required
+					console.log("Secret code verification required");
+
+					cash('.secret-div').show();
+					cash('#btn-verify-secret_code').show();
+					cash('.secret-code').show();
+
+					// Store token
+					cash('#token').val(token);
+
+					@else
+
+					// Secret code is NOT required
+					console.log("Secret code verification NOT required");
+
+					console.log(
+						"Calling proceedtoProductPage with token:",
+						token
+					);
+
+					proceedtoProductPage(token);
+
+					@endif
+
+				})
+				.catch(err => {
+
+					console.error("Verify OTP error:", err);
+
+					cash('#btn-submit-otp')
+						.show()
+						.html('Submit OTP');
+
+					// Clear old errors
+					cash('.form__input-error').html('');
+					cash('.form__input').removeClass('border-red-600');
+
+
+					if (err.response && err.response.data) {
+
+						console.log(
+							"OTP API error response:",
+							err.response.data
+						);
+
+
+						// API message
+						if (err.response.data.message) {
+
+							cash('#otp').addClass('border-red-600');
+
+							cash('#error-otp').html(
+								err.response.data.message
 							);
 						}
+
+
+						// Validation errors
+						if (err.response.data.errors) {
+
+							for (
+								const [key, val] of Object.entries(err.response.data.errors)
+							) {
+
+								cash(`#${key}`)
+									.addClass('border-red-600');
+
+								cash(`#error-${key}`).html(
+									Array.isArray(val) ?
+									val[0] :
+									val
+								);
+							}
+						}
+
+					} else {
+
+						cash('#error-otp').html(
+							'Something went wrong. Please try again.'
+						);
 					}
-				} else {
-					cash('#error-otp').html('Something went wrong. Please try again.');
-				}
-			});
+				});
 		}
 
+
+		/*
+		|--------------------------------------------------------------------------
+		| Submit OTP button
+		|--------------------------------------------------------------------------
+		*/
+
 		cash('#btn-submit-otp').on('click', function() {
-			submitOtp()
-		})
+			submitOtp();
+		});
+
+
+		/*
+		|--------------------------------------------------------------------------
+		| Get OTP button
+		|--------------------------------------------------------------------------
+		*/
 
 		cash('#btn-get-otp').on('click', function() {
+
 			@if($auth_required == true)
-			getOtp()
+
+			getOtp();
+
 			@else
-			getProductWithoutAuth()
+
+			getProductWithoutAuth();
+
 			@endif
-		})
+		});
+
+
+		/*
+		|--------------------------------------------------------------------------
+		| Automatically load product when authentication is not required
+		|--------------------------------------------------------------------------
+		*/
 
 		@if($auth_required == false)
+
 		cash(document).ready(function() {
-			getProductWithoutAuth()
+
+			console.log("Auth not required - loading product");
+
+			getProductWithoutAuth();
+
 		});
+
 		@endif
+
+
+		/*
+		|--------------------------------------------------------------------------
+		| Get Product Without Authentication
+		|--------------------------------------------------------------------------
+		*/
+
 
 		async function getProductWithoutAuth() {
 
-			cash('.form__input').removeClass('border-red-600')
-			cash('.form__input-error').html('')
+			console.log("getProductWithoutAuth() started");
 
-			let country_code = cash('#country_code').val()
-			let phone = cash('#phone').val()
+			cash('.form__input').removeClass('border-red-600');
+			cash('.form__input-error').html('');
 
-			cash('#btn-get-otp').html('Please wait...')
+			let country_code = cash('#country_code').val();
+			let phone = cash('#phone').val();
 
-			axios.post("{{ url('api/without-auth')}}", {
+			console.log("Sending without-auth request:", {
 				country_code: country_code,
 				phone: phone
-			}).then(res => {
-				cash('#btn-get-otp').hide();
-				console.log("Verify OTP response:", res.data);
-				global_token = res.data.data.token;
-				console.log('global_token set after without-auth:', global_token);
+			});
 
-				if (!empty($secret_code_check_required)) {
-					verifysecretCode(res.data.token);
-				} else {
-					proceedtoProductPage2(res.data.token)
-				}
+			cash('#btn-get-otp').html('Please wait...');
 
-			}).catch(err => {
-				console.log(err)
-				cash('#btn-get-otp').html('Submit')
+			axios.post("{{ url('api/without-auth') }}", {
+					country_code: country_code,
+					phone: phone
+				})
+				.then(res => {
 
-				if (err?.response?.data?.errors) {
-					for (const [key, val] of Object.entries(err.response.data.errors)) {
-						cash(`#${key}`).addClass('border-red-600');
-						cash(`#error-${key}`).html(val);
+					console.log("Without auth API response:", res.data);
+
+					// Token is directly inside res.data
+					const token = res.data?.token;
+
+					console.log("Without auth token:", token);
+
+					if (!token) {
+
+						console.error(
+							"Token not found in without-auth response:",
+							res.data
+						);
+
+						cash('#btn-get-otp')
+							.show()
+							.html('Submit');
+
+						return;
 					}
-				}
-			})
+
+					global_token = token;
+
+					console.log(
+						"global_token set after without-auth:",
+						global_token
+					);
+
+					cash('#btn-get-otp').hide();
+
+					@if($secret_code_check_required)
+
+					console.log("Secret code verification required");
+
+					verifysecretCode(token);
+
+					@else
+
+					console.log("Secret code verification NOT required");
+
+					console.log(
+						"Calling proceedtoProductPage2 with token:",
+						token
+					);
+
+					proceedtoProductPage2(token);
+
+					@endif
+
+				})
+				.catch(err => {
+
+					console.error("Without auth API error:", err);
+
+					console.error(
+						"Without auth API error response:",
+						err.response?.data
+					);
+
+					cash('#btn-get-otp')
+						.show()
+						.html('Submit');
+
+					if (err?.response?.data?.errors) {
+
+						for (
+							const [key, val] of Object.entries(err.response.data.errors)
+						) {
+
+							cash(`#${key}`)
+								.addClass('border-red-600');
+
+							cash(`#error-${key}`).html(
+								Array.isArray(val) ?
+								val[0] :
+								val
+							);
+						}
+
+					} else if (err?.response?.data?.message) {
+
+						cash('#error-phone').html(
+							err.response.data.message
+						);
+
+					} else {
+
+						cash('#error-phone').html(
+							'Something went wrong. Please try again.'
+						);
+					}
+				});
 		}
 
-		cash(document).on('click', '.image-link', function(event) {
-			event.preventDefault();
-			var src = $(this).data('src')
-			cash('.image-modal-img').attr('src', src);
-		});
 
-		cash(document).on('click', '.report-link', function(event) {
-			event.preventDefault();
-			var batch = $(this).data('batch')
-			var product = $(this).data('product')
-			cash('.report-modal-product').val(product);
-			cash('.report-modal-batch').val(batch);
-			cash('.report-modal-token').val(global_token);
-		});
+
+
+		/*
+		|--------------------------------------------------------------------------
+		| Image modal
+		|--------------------------------------------------------------------------
+		*/
+
+		cash(document).on(
+			'click',
+			'.image-link',
+			function(event) {
+
+				event.preventDefault();
+
+				var src = $(this).data('src');
+
+				cash('.image-modal-img')
+					.attr('src', src);
+			}
+		);
+
+
+		/*
+		|--------------------------------------------------------------------------
+		| Report modal
+		|--------------------------------------------------------------------------
+		*/
+
+		cash(document).on(
+			'click',
+			'.report-link',
+			function(event) {
+
+				event.preventDefault();
+
+				var batch = $(this).data('batch');
+				var product = $(this).data('product');
+
+
+				cash('.report-modal-product')
+					.val(product);
+
+
+				cash('.report-modal-batch')
+					.val(batch);
+
+
+				cash('.report-modal-token')
+					.val(global_token);
+
+
+				console.log(
+					"Report modal token:",
+					global_token
+				);
+			}
+		);
 
 		async function report() {
 
@@ -825,42 +1054,110 @@
 		}
 
 		// ── second param removed to avoid shadowing outer global_token ──
-		async function proceedtoProductPage2(token) {
-			global_token = token;
-			console.log('global_token set in proceedtoProductPage2:', global_token);
 
-			axios.post("{{ url('api/p/'.$code)}}", {
-				token,
-				location: {
-					lat: lat,
-					long: long,
-					source: locationSource
+		async function proceedtoProductPage2(token) {
+
+			global_token = token;
+
+			console.log(
+				'global_token set in proceedtoProductPage2:',
+				global_token
+			);
+
+			try {
+
+				console.log(
+					'Sending product request with token:',
+					token
+				);
+
+				const res = await axios.post("{{ url('api/p/'.$code) }}", {
+					token: token,
+					location: {
+						lat: lat,
+						long: long,
+						source: locationSource
+					}
+				});
+
+				console.log(
+					'Product API response:',
+					res.data
+				);
+
+				if (!res.data) {
+					throw new Error('Empty response from product API');
 				}
-			}).then(res => {
-				cash('.info-div').show()
-				cash('.scan-minimal-icon').hide()
-				cash('.scan-minimal-sub').hide()
-				cash('.scan-minimal-hint').hide()
-				cash('.scan-eyebrow').hide()
+
+				if (!res.data.view) {
+					console.error(
+						'Product view is missing:',
+						res.data
+					);
+
+					throw new Error('Product view not received from server');
+				}
+
+				cash('.info-div').show();
+
+				cash('.scan-minimal-icon').hide();
+				cash('.scan-minimal-sub').hide();
+				cash('.scan-minimal-hint').hide();
+				cash('.scan-eyebrow').hide();
+
 				cash('.scan-minimal').css({
 					'align-items': 'flex-start',
 					'padding-top': '40px'
-				})
-				cash('.scan-minimal-box').css('max-width', '600px')
-				cash('.info-div').html(res.data.view)
-				cash('.text-bg').text("")
+				});
+
+				cash('.scan-minimal-box').css(
+					'max-width',
+					'600px'
+				);
+
+				cash('.info-div').html(res.data.view);
+
+				cash('.text-bg').text('');
+
 				pdIdx = 0;
 
-				if (res.data.product.applied_offer) {
+
+				if (res.data.product?.applied_offer) {
+
 					cash('#offer-modal-btn').trigger('click');
-					cash('#offer-modal-title').html(res.data.product.applied_offer.title);
-					cash('#offer-modal-description').html(res.data.product.applied_offer.description);
+
+					cash('#offer-modal-title').html(
+						res.data.product.applied_offer.title
+					);
+
+					cash('#offer-modal-description').html(
+						res.data.product.applied_offer.description
+					);
 				}
-			}).catch(err => {
-				alert(err.response.data.message)
-				window.location.reload()
-			})
+
+			} catch (err) {
+
+				console.error(
+					'Product API error:',
+					err
+				);
+
+				console.error(
+					'Product API error response:',
+					err.response?.data
+				);
+
+				const message =
+					err.response?.data?.message ||
+					err.message ||
+					'Unable to load product. Please try again.';
+
+				alert(message);
+
+				window.location.reload();
+			}
 		}
+
 
 		// ── Tab delegation ──────────────────────────────────────────
 		cash(document).on('click', '[data-pd-tab]', function() {
