@@ -160,7 +160,7 @@
 
 		cash('#fetch-offer').html('<i data-loading-icon="oval" data-color="white" class="w-5 h-5 mx-auto"></i>').svgLoader()
 
-		axios.post('{{ url('/vendor/get-offer') }}', {offer_code:cash('#offer_code').val()}).then(res => {
+		axios.post('{{ url("/vendor/get-offer") }}', {offer_code:cash('#offer_code').val()}).then(res => {
 			
 
 			if(res.data.limit!=0){
@@ -287,7 +287,7 @@
 
 		var formData = new FormData(document.querySelector('#checkout-form'))
 
-		axios.post('{{ url('/vendor/order') }}',formData).then(res => {
+		axios.post('{{ url("/vendor/order") }}',formData).then(res => {
 			console.log(res)	
 
 			if(res.data.total>0) {
@@ -318,10 +318,10 @@
 								"order_id"        : order_id,
 							}
 
-							axios.post('{{ url('/vendor/transaction') }}', orderData).then(res => {
+							axios.post('{{ url("/vendor/transaction") }}', orderData).then(res => {
 								showNotification('success','Payment success !','You successfully have purchased credits.')
 								setTimeout(function(){
-									window.location.href = '{{ url('vendor/buy-credits?page=success') }}'
+									window.location.href = '{{ url("vendor/buy-credits?page=success") }}'
 								},1000)
 							}).catch(err => {
 								showNotification('error','Error !','Something went wrong! Please try again.')

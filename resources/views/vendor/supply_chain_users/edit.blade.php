@@ -10,7 +10,7 @@
 </div>
 <div class="grid grid-cols-12 gap-6 mt-5">
 	<div class="intro-y col-span-12 lg:col-span-12">
-		<form id="update-form">
+		<form id="edit-form" enctype="multipart/form-data">
 			@csrf
 			<div class="intro-y box">
 				<div class="flex flex-col sm:flex-row items-center px-7 py-5 border-b border-gray-200 dark:border-dark-5">
@@ -20,7 +20,7 @@
 
 					<div class="grid grid-cols-12">
 
-						
+
 						<div class="input-form col-span-12 lg:col-span-6 px-2 py-1">
 							<label for="full_name" class="form-label w-full flex flex-col sm:flex-row required">
 								{{__('common.full_name')}}
@@ -63,6 +63,37 @@
 							</label>
 							<input id="address" type="text" name="address" value="{{$user->address_one}}" class="form-control form__input" placeholder="Enter address">
 							<div id="error-address" class="login__input-error w-5/6 text-theme-6"></div>
+						</div>
+						<div class="input-form col-span-12 lg:col-span-6 px-2 py-1 mt-2">
+
+							<label for="user_image" class="form-label">
+								User Image
+							</label>
+
+							<input
+								id="user_image"
+								type="file"
+								name="user_image"
+								class="form-control form__input"
+								accept=".png,.jpg,.jpeg,image/png,image/jpeg">
+
+							@if(!empty($user->user_image))
+							<div class="mt-3">
+								<img
+									src="{{ asset('storage/' . $user->user_image) }}"
+									alt="User Image"
+									class="w-24 h-24 object-cover rounded">
+							</div>
+							@endif
+
+							<div id="error-user_image"
+								class="login__input-error text-theme-6">
+							</div>
+
+							<div class="text-gray-500 text-xs mt-1">
+								Supported: PNG, JPG, JPEG. Maximum size: 2 MB.
+							</div>
+
 						</div>
 					</div>
 				</div>
@@ -126,48 +157,102 @@
 		</form>
 	</div>
 	<x-notification></x-notification>
-</div> 
+</div>
 @endsection
 
 @section('script')
+@section('script')
 <script>
-	cash(function () {
-		async function add() {
+	cash(function() {
 
-			cash('#update-form').find('.form__input').removeClass('border-theme-6')
-			cash('#update-form').find('.login__input-error').html('')
+		async function updateUser() {
 
-			var formData = new FormData(document.querySelector('#update-form'))
+			// Reset validation errors
+			cash('#edit-form')
+				.find('.form__input')
+				.removeClass('border-theme-6');
 
-			cash('#btn-update').html('<i data-loading-icon="oval" data-color="white" class="w-5 h-5 mx-auto"></i>').svgLoader()
+			cash('#edit-form')
+				.find('.login__input-error')
+				.html('');
+
+			// Create FormData from correct form
+			var formData = new FormData(
+				document.querySelector('#edit-form')
+			);
+
+			// Loading state
+			cash('#btn-update')
+				.html('<i data-loading-icon="oval" data-color="white" class="w-5 h-5 mx-auto"></i>')
+				.svgLoader();
+
 			cash('#btn-update').attr('disabled', 'true');
 
-			axios.post('{{ url('/vendor/supply-chain-users/'.encrypt($user->id).'/edit') }}', formData).then(res => {
-				cash('#btn-update').attr('disabled', 'true');
-				showNotification('success','{{__('common.success')}} !',res.data.message)
-				setTimeout(()=>{
-					window.location.reload();
-				},1000)
+			axios.post(
+					"{{ url('/vendor/supply-chain-users/' . encrypt($user->id) . '/edit') }}",
+					formData
+				)
+				.then(res => {
 
-			}).catch(err => {
-				showNotification('error','{{__('common.error')}} !',err.response.data.message)
-				cash('#btn-update').html('{{__('common.submit')}}')  
-				cash('#btn-update').removeAttr('disabled');                 
+					cash('#btn-update').attr('disabled', 'true');
 
-				if (err.response.data.errors) {
-					for (const [key, val] of Object.entries(err.response.data.errors)){
-						cash(`#${key}`).addClass('border-theme-6')
-						cash(`#error-${key}`).html(val)
+					showNotification(
+						'success',
+						'{{ __("common.success") }} !',
+						res.data.message
+					);
+
+					setTimeout(() => {
+						window.location.reload();
+					}, 1000);
+
+				})
+				.catch(err => {
+
+					cash('#btn-update').html('{{ __("common.submit") }}');
+					cash('#btn-update').removeAttr('disabled');
+
+					let message = '{{ __("common.something_went_wrong") }}';
+
+					if (err.response && err.response.data) {
+
+						if (err.response.data.message) {
+							message = err.response.data.message;
+						}
+
+						showNotification(
+							'error',
+							'{{ __("common.error") }} !',
+							message
+						);
+
+						// Validation errors
+						if (err.response.data.errors) {
+
+							for (const [key, val] of Object.entries(
+									err.response.data.errors
+								)) {
+
+								cash(`#${key}`)
+									.addClass('border-theme-6');
+
+								cash(`#error-${key}`).html(
+									Array.isArray(val) ? val[0] : val
+								);
+							}
+						}
 					}
-				}
-
-			})
+				});
 		}
 
-		cash('#update-form').on('submit', function(e) {
+		// Submit form
+		cash('#edit-form').on('submit', function(e) {
+
 			e.preventDefault();
-			add();
-		})
-	})
+
+			updateUser();
+		});
+
+	});
 </script>
 @endsection

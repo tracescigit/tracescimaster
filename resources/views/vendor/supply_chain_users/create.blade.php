@@ -10,7 +10,7 @@
 </div>
 <div class="grid grid-cols-12 gap-6 mt-5">
 	<div class="intro-y col-span-12 lg:col-span-12">
-		<form id="add-form">
+		<form id="add-form" enctype="multipart/form-data">
 			@csrf
 			<div class="intro-y box">
 				<div class="flex flex-col sm:flex-row items-center px-7 py-5 border-b border-gray-200 dark:border-dark-5">
@@ -62,6 +62,24 @@
 							</label>
 							<input id="address" type="text" name="address" class="form-control form__input" placeholder="Enter address">
 							<div id="error-address" class="login__input-error w-5/6 text-theme-6"></div>
+						</div>
+						<div class="input-form col-span-12 lg:col-span-6 px-2 py-1 mt-2">
+							<label for="user_image" class="form-label w-full flex flex-col sm:flex-row">
+								User Image
+							</label>
+
+							<input
+								id="user_image"
+								type="file"
+								name="user_image"
+								class="form-control form__input"
+								accept=".png,.jpg,.jpeg,image/png,image/jpeg">
+
+							<div id="error-user_image" class="login__input-error w-5/6 text-theme-6"></div>
+
+							<div class="text-gray-500 text-xs mt-1">
+								Supported formats: PNG, JPG, JPEG. Maximum size: 2 MB.
+							</div>
 						</div>
 					</div>
 				</div>
@@ -119,12 +137,12 @@
 		</form>
 	</div>
 	<x-notification></x-notification>
-</div> 
+</div>
 @endsection
 
 @section('script')
 <script>
-	cash(function () {
+	cash(function() {
 		async function add() {
 
 			cash('#add-form').find('.form__input').removeClass('border-theme-6')
@@ -136,19 +154,19 @@
 			cash('#btn-add').attr('disabled', 'true');
 
 
-			axios.post('{{ url('/vendor/supply-chain-users/create') }}', formData).then(res => {
-				showNotification('success','{{__('common.success')}} !',res.data.message)
-				setTimeout(()=>{
-					window.location.href = '{{ url('/vendor/supply-chain-users') }}'
-				},2000)
+			axios.post('{{ url("/vendor/supply-chain-users/create") }}', formData).then(res => {
+				showNotification('success', '{{__("common.success")}} !', res.data.message)
+				setTimeout(() => {
+					window.location.href = '{{ url("/vendor/supply-chain-users") }}'
+				}, 2000)
 
 			}).catch(err => {
-				showNotification('error','{{__('common.error')}} !',err.response.data.message)
-				cash('#btn-add').html('{{__('common.submit')}}')   
+				showNotification('error', '{{__("common.error")}} !', err.response.data.message)
+				cash('#btn-add').html('{{__("common.submit")}}');
 				cash('#btn-add').removeAttr('disabled');
 
 				if (err.response.data.errors) {
-					for (const [key, val] of Object.entries(err.response.data.errors)){
+					for (const [key, val] of Object.entries(err.response.data.errors)) {
 						cash(`#${key}`).addClass('border-theme-6')
 						cash(`#error-${key}`).html(val)
 					}
@@ -167,19 +185,59 @@
 			fetchUsers();
 		})
 
-		async function fetchUsers(){
+		async function fetchUsers() {
 			var role = cash('#role').val()
 
-			if(role){
+			if (role) {
 				axios.get(`{{ url('/vendor/get-supply-chain-users') }}/${role}`).then(res => {
 					cash('#parent_user').html(res.data.users)
 				}).catch(err => {
 					console.log(err.response.data.message)
 				})
-			}else{
+			} else {
 				cash('#parent_user').html('')
 			}
 		}
 	})
+	cash('#user_image').on('change', function() {
+
+		const file = this.files[0];
+
+		if (!file) {
+			return;
+		}
+
+		const allowedTypes = [
+			'image/png',
+			'image/jpeg'
+		];
+
+		// 2 MB
+		const maxSize = 2 * 1024 * 1024;
+
+		if (!allowedTypes.includes(file.type)) {
+
+			showNotification(
+				'error',
+				'{{ __("common.error") }} !',
+				'Only PNG, JPG and JPEG images are allowed.'
+			);
+
+			this.value = '';
+			return;
+		}
+
+		if (file.size > maxSize) {
+
+			showNotification(
+				'error',
+				'{{ __("common.error") }} !',
+				'Image size must be less than 2 MB.'
+			);
+
+			this.value = '';
+			return;
+		}
+	});
 </script>
 @endsection

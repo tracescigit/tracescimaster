@@ -12,6 +12,7 @@ use App\Models\ScanHistory;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
 
 class ReportController extends Controller
@@ -24,9 +25,10 @@ class ReportController extends Controller
         $rules = [
             'token'       =>  'required',
             'product_id'  =>  'required',
-            'batch'       =>  'nullable|exists:batches,code',
+            'batch'       =>  'nullable',
             'issue_type'  =>  'required',
-            'description' =>  'required'
+            'description' =>  'required',
+            'product_uic' =>  'required',
         ];
 
         $validator = Validator::make($input, $rules);
@@ -66,10 +68,10 @@ class ReportController extends Controller
             $batch = Batch::find($input['batch']);
             $product = Product::find($input['product_id']);
 
-            if($product){
-                $check_old = Alert::where('type','1')->where('product_id',$product->id)->where('scanned_by',$user->id)->exists();
+            if ($product) {
+                $check_old = Alert::where('type', '1')->where('reported_uic', $input['product_uic'])->where('scanned_by', $user->id)->exists();
 
-                if($check_old){
+                if ($check_old) {
                     return response([
                         'success' => false,
                         'message' => 'This product is already reported by you.',
@@ -82,25 +84,103 @@ class ReportController extends Controller
             $report = new Alert;
 
             $report->scanned_by = $user->id;
-            $report->product_id = $product->id??null;
-            $report->product_name = $product?$product->name:$input['product_id'];
-            $report->batch = $batch?$batch->code:null;
-            $report->batch_id = $batch?$batch->id:null;
+            $report->product_id = $product->id ?? null;
+            $report->product_name = $product ? ($product->name ?? $input['product_id']) : null;
+            $report->reported_uic = $input['product_uic'] ?? null;
+            $report->batch = $batch ? $batch->code : null;
+            $report->batch_id = $batch ? $batch->id : null;
             $report->issue_type = $input['issue_type'];
             $report->alert_message = $input['description'];
             $report->type = "1";
 
-            if(isset($input['code_data']) && $input['code_data']!=''){
+            if (isset($input['code_data']) && $input['code_data'] != '') {
 
-                $code = Code::where('code_data',$input['code_data'])->first();
+                $code = Code::where('code_data', $input['code_data'])->first();
 
-                if($code){
+                if ($code) {
                     $report->code_id = $code->id;
                 }
             }
 
-            if (isset($input['image']) && $input['image'] != '') {
-                $report->image = $input['image'];
+            if (!empty($request->image)) {
+
+                $imageData = base64_decode($request->image);
+
+                $folder = public_path('reports');
+
+                if (!is_dir($folder)) {
+                    mkdir($folder, 0755, true);
+                }
+
+                $fileName = 'report_' . uniqid() . '.png';
+                $filePath = $folder . DIRECTORY_SEPARATOR . $fileName;
+
+                file_put_contents($filePath, $imageData);
+
+                $report->image = 'reports/' . $fileName;
+            }
+
+            if (isset($input['location'])) {
+
+                $location = $input['location'];
+
+                // GPS Location
+                if (
+                    isset($location['source']) &&
+                    $location['source'] === 'gps' &&
+                    !empty($location['lat']) &&
+                    !empty($location['long'])
+                ) {
+
+                    $report->location = json_encode([
+                        'source' => 'gps',
+                        'lat'    => (float)$location['lat'],
+                        'lng'    => (float)$location['long'],
+                    ]);
+                }
+
+                // IP Location
+                elseif (
+                    isset($location['source']) &&
+                    $location['source'] === 'ip'
+                ) {
+
+                    $ip = $request->ip();
+
+                    // Skip localhost/private IPs
+                    if (
+                        filter_var(
+                            $ip,
+                            FILTER_VALIDATE_IP,
+                            FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE
+                        )
+                    ) {
+
+                        try {
+
+                            $response = Http::timeout(5)
+                                ->get("http://ip-api.com/json/{$ip}");
+
+                            if (
+                                $response->successful() &&
+                                $response['status'] === 'success'
+                            ) {
+
+                                $report->location = json_encode([
+                                    'source'  => 'ip',
+                                    'ip'      => $ip,
+                                    'lat'     => (float)$response['lat'],
+                                    'lng'     => (float)$response['lon'],
+                                    'city'    => $response['city'],
+                                    'region'  => $response['regionName'],
+                                    'country' => $response['country'],
+                                ]);
+                            }
+                        } catch (\Exception $e) {
+                            // Ignore location API failures
+                        }
+                    }
+                }
             }
 
             $report->save();

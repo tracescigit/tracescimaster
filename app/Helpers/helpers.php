@@ -875,12 +875,16 @@ if (! function_exists('getReportAndAlertCount')) {
 	}
 }
 
-if (! function_exists('scanLocations')) {
+if (!function_exists('scanLocations')) {
+
 	function scanLocations($user_id = null)
 	{
 		$result = [];
 
-		$scans = ScanHistory::leftJoin('codes', 'codes.id', 'scan_histories.code_id')->where('scan_histories.location', '!=', '')->whereMonth('scan_histories.created_at', Carbon::today()->month);
+		$scans = ScanHistory::leftJoin('codes', 'codes.id', '=', 'scan_histories.code_id')
+			->whereNotNull('scan_histories.location')
+			->where('scan_histories.location', '!=', '')
+			->whereMonth('scan_histories.created_at', Carbon::today()->month);
 
 		if ($user_id != null) {
 			$scans->where('codes.user_id', $user_id);
@@ -888,17 +892,22 @@ if (! function_exists('scanLocations')) {
 
 		$scans = $scans->get();
 
-		if (count($scans) > 0) {
+		foreach ($scans as $key => $scan) {
 
-			foreach ($scans as $key => $scan) {
+			$location = json_decode($scan->location, true);
 
-				$location = json_decode($scan->location, true);
+			if (
+				is_array($location) &&
+				isset($location['lat']) &&
+				isset($location['lng'])
+			) {
 
-				if ($location['lat'] && $location['long']) {
-					$result[$key]['user'] = $scan->phone ?? 'User';
-					$result[$key]['lat']  = $location['lat'];
-					$result[$key]['long'] = $location['long'];
-				}
+				$result[] = [
+					'user' => $scan->phone ?? 'User',
+					'lat'  => (float) $location['lat'],
+					'long' => (float) $location['lng'], // Keep output key as "long" if your frontend expects it
+					'source' => $location['source'] ?? 'gps',
+				];
 			}
 		}
 

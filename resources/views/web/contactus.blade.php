@@ -26,6 +26,15 @@
         }
     }
 </style>
+<link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIINfQ3gYq6a1t9Wm3XbXgZ8j8pXk2Xq6Q="
+    crossorigin="" />
+<link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    crossorigin="">
 <section class="page-title-area aboout-1-head-area">
     <div class="container">
         <div class="row">
@@ -183,39 +192,103 @@
     <div class="container-fluid no-padding">
         <div class="row">
             <div class="col-md-12 col-xs-12 col-sm-12">
-                <iframe
-                    src="https://maps.google.com/maps?q=28.430362,77.010435&z=15&output=embed"
-                    width="100%"
-                    height="450"
-                    style="border:0;">
-                </iframe>
 
-                <div style="
-        position:absolute;
-        top:20px;
-        left:20px;
-        background:#fff;
-        padding:8px 12px;
-        border-radius:4px;
-        box-shadow:0 2px 5px rgba(0,0,0,.2);
-        font-weight:bold;">
-                    Tracesci Global Pvt Ltd
+                <div id="tracesci-map"
+                    style="width:100%; height:450px; border:0;">
                 </div>
+
             </div>
         </div>
     </div>
 </div>
 @endsection
 @section('script')
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    crossorigin="">
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+        const map = L.map('tracesci-map', {
+            scrollWheelZoom: false
+        });
+
+        L.tileLayer(
+            'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+                attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
+                subdomains: 'abcd',
+                maxZoom: 20
+            }
+        ).addTo(map);
+
+        const locations = [{
+                name: 'Tracesci Global Pvt Ltd - Gurugram',
+                lat: 28.430362,
+                lng: 77.010435,
+                address: 'Gurugram, Haryana, India'
+            },
+            {
+                name: 'Tracesci Global Pvt Ltd - Chennai',
+                lat: 13.0827,
+                lng: 80.2707,
+                address: '8B, "Chaitanya Exotica", 24 Venkatnarayana Road, T. Nagar, Chennai, Tamil Nadu, India'
+            },
+            {
+                name: 'Tracesci Global Pvt Ltd - Mumbai',
+                lat: 19.0760,
+                lng: 72.8777,
+                address: 'Mumbai, Maharashtra, India'
+            }
+        ];
+
+        const markers = [];
+
+        locations.forEach(function(location) {
+
+            const marker = L.marker([
+                location.lat,
+                location.lng
+            ]).addTo(map);
+
+            marker.bindPopup(`
+                <div style="min-width:220px;">
+                    <strong>
+                        ${location.name}
+                    </strong>
+                    <br>
+                    <span>
+                        ${location.address}
+                    </span>
+                </div>
+            `);
+
+            markers.push(marker);
+        });
+
+        // Automatically position map to show all locations
+        const group = L.featureGroup(markers);
+
+        map.fitBounds(group.getBounds(), {
+            padding: [40, 40]
+        });
+
+    });
+</script>
+
+
+<!-- Your existing contact form JavaScript -->
 <script type="text/javascript">
     cash(function() {
 
         async function contact() {
+
             cash('.contact__input').removeClass('border-theme-6')
             cash('.contact__input-error').html('')
             cash('#contactError').addClass('hidden')
-            cash('#error-captcha').html('') // captcha error reset
+            cash('#error-captcha').html('')
 
             let name = cash('#name').val()
             let email = cash('#email').val()
@@ -224,9 +297,10 @@
 
             let captcha = grecaptcha.getResponse();
 
-            // 🚨 CAPTCHA VALIDATION (NEW)
             if (!captcha) {
-                cash('#error-captcha').html('Please verify that you are not a robot.')
+                cash('#error-captcha')
+                    .html('Please verify that you are not a robot.')
+
                 return false
             }
 
@@ -240,7 +314,6 @@
                 'g-recaptcha-response': captcha
             }).then(res => {
 
-                // reset captcha after success
                 grecaptcha.reset()
 
                 cash('#contactSuccess').removeClass('hidden')
@@ -262,8 +335,13 @@
                 cash('#btn-contact').html('Submit')
 
                 if (err.response?.data?.errors) {
-                    for (const [key, val] of Object.entries(err.response.data.errors)) {
+
+                    for (const [key, val] of Object.entries(
+                            err.response.data.errors
+                        )) {
+
                         cash(`#${key}`).addClass('border-theme-6')
+
                         cash(`#error-${key}`).html(val)
                     }
                 }
@@ -271,18 +349,32 @@
         }
 
         cash('#contact_form').on('keyup', function(e) {
+
             if (e.keyCode === 13) {
                 contact()
             }
+
         })
 
         cash('#btn-contact').on('click', function() {
             contact()
         })
+
     })
+
     $('#mobile').on('input', function() {
-        this.value = this.value.replace(/\D/g, '').slice(0, 10);
+
+        this.value = this.value
+            .replace(/\D/g, '')
+            .slice(0, 10);
+
     });
+</script>
+
+<script
+    src="https://www.google.com/recaptcha/api.js"
+    async
+    defer>
 </script>
 
 @endsection

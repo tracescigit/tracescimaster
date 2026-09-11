@@ -24,14 +24,15 @@ class SupplyChainUserUpdateRequest extends FormRequest
     public function rules()
     {
         $id = $this->route('id');
-        $id = decrypt($id); 
+        $id = decrypt($id);
 
         return [
-            'email'     => 'required|email|regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix|max:100|unique:users,email,'.$id,
-            'mobile'    => 'required|min:6|max:12|regex:/^[0-9-]+$/|unique:users,phone,'.$id,
+            'email'     => 'required|email|regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix|max:100|unique:users,email,' . $id,
+            'mobile'    => 'required|min:6|max:12|regex:/^[0-9-]+$/|unique:users,phone,' . $id,
             'full_name' => 'required',
             'role'      => 'required',
             'address'   => 'required',
+            'user_image' => 'nullable|image|mimes:png,jpg,jpeg|max:2048',
         ];
     }
 }
