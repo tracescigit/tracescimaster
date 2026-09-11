@@ -374,7 +374,7 @@
 
 			cash('#btn-get-otp').html('Please wait...')
 
-			axios.post("{{ url('api/get-otp')}}", {
+			axios.post("{{ url('api/get-otp-app')}}", {
 				country_code: country_code,
 				phone: phone
 			}).then(res => {

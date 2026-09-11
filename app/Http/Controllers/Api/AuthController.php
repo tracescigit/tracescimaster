@@ -58,7 +58,7 @@ class AuthController extends Controller
 			$input = $request->all();
 			// Validation rules
 			$rules = [
-				'country_code' => 'nullable|string|regex:/^[0-9-]+$/',
+				'phone_code' => 'nullable|string|regex:/^[0-9-]+$/',
 				'phone' => 'nullable|string|max:15',
 				'email' => 'nullable|string|email',
 				'password' => 'nullable|string',
@@ -128,9 +128,35 @@ class AuthController extends Controller
 			], 500);
 		}
 	}
-public function getOtpApp(Request $request){
-	
-}
+	public function getOtpApp(Request $request)
+	{
+
+		$input = $request->all();
+
+		$rules = [
+			'country_code' =>  'required|regex:/^[0-9-]+$/',
+			'phone'       =>  'required|min:10|max:10|regex:/^[0-9-]+$/',
+		];
+
+		$validator = Validator::make($input, $rules);
+
+		if ($validator->fails()) {
+			$errors = $validator->errors();
+			return response([
+				'success' => false,
+				'message' => 'Invalid request',
+				'errors' => $errors
+			], 400);
+		} else {
+			$user = createOrUpdateUserAndAssignOtp($input['country_code'], $input['phone']);
+
+			return response([
+				'success' => true,
+				'message' => 'OTP sent successfully',
+				'otp' => $user->otp
+			], 200);
+		}
+	}
 	public function verifyOtp(Request $request)
 	{
 		$input = $request->all();
@@ -256,7 +282,7 @@ public function getOtpApp(Request $request){
 				'message' => $validator->errors()->first(),
 				'errors'  => $validator->errors(),
 			], 400);
-		}else {
+		} else {
 			$verify = Code::where('qr_code', $input['code'])->where('secret_code', $input['secret_code'])->exists();
 
 			if (!$verify) {

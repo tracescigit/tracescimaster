@@ -447,15 +447,24 @@ if (! function_exists('createOrUpdateUserAndAssignOtp')) {
 		$user->save();
 
 		if ($sendsms == true) {
-			Sms::sendSms(
-				'TRCOTP',
-				[
-					'otp' => $otp,
-					'username' => $user->name ?? 'User',
+			try {
+				Sms::sendSms(
+					'TRCOTP',
+					[
+						'otp'      => $otp,
+						'username' => $user->name ?? 'User',
+						'phone'    => $phone,
+						'code'     => $phone_code,
+					]
+				);
+			} catch (\Throwable $e) {
+				Log::error('Failed to send OTP SMS', [
 					'phone' => $phone,
-					'code' => $phone_code,
-				]
-			);
+					'error' => $e->getMessage(),
+					'file'  => $e->getFile(),
+					'line'  => $e->getLine(),
+				]);
+			}
 		}
 
 		return $user;
@@ -1082,30 +1091,12 @@ if (!function_exists('loginUserAndAssignOtp')) {
 		// $smsphone = $phone_code . $phone;
 		// $message = 'Your login OTP is ' . $otp;
 		// $sms = sendSms($smsphone, $message);
-		
+
 
 
 
 		return $user;
 	}
-	try {
-			Sms::sendSms(
-				'TRCOTP',
-				[
-					'otp'      => $otp,
-					'username' => $user->name ?? 'User',
-					'phone'    => $phone,
-					'code'     => $phone_code,
-				]
-			);
-		} catch (\Throwable $e) {
-			Log::error('Failed to send OTP SMS', [
-				'phone' => $phone,
-				'error' => $e->getMessage(),
-				'file'  => $e->getFile(),
-				'line'  => $e->getLine(),
-			]);
-		}
 }
 
 if (! function_exists('prepareSupplyChainScanHistory')) {
