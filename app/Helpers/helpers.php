@@ -423,8 +423,8 @@ if (! function_exists('checkCodeExists')) {
 if (! function_exists('createOrUpdateUserAndAssignOtp')) {
 	function createOrUpdateUserAndAssignOtp($phone_code, $phone, $sendsms = true)
 	{
-		// $otp =  mt_rand(1000, 9999);
-		$otp = 1111;
+		$otp =  mt_rand(1000, 9999);
+		// $otp = 1111;
 
 		if ($phone_code == 91 && $phone == 9876543210) {
 			$otp = 1111;

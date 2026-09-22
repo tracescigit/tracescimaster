@@ -793,7 +793,7 @@ $hasMedia = !empty($fieldPermissions) && in_array('Media', $fieldPermissions);
 
 				@if(!empty($fieldPermissions) && in_array('Price', $fieldPermissions) && !empty($product['price']))
 				<div class="pd-hero-price-row">
-					<div class="pd-hero-price">{{ $product['price'] }}</div>
+					<div class="pd-hero-price">{{ $product['price_batch'] }}</div>
 					<div class="pd-hero-price-note">MRP incl. taxes</div>
 				</div>
 				@endif

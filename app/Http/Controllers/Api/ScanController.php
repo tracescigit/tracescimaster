@@ -238,6 +238,8 @@ class ScanController extends Controller
 				$response['description'] = $code->getProduct->description ? $code->getProduct->description : '';
 				$response['html_description'] = $code->getProduct->description ? $code->getProduct->description : '';
 				$response['price'] = $code->getProduct->price ? ($code->getProduct->currency . ' ' . $code->getProduct->price) : '';
+				$response['price_batch'] = $code->getBatch->price ? ($code->getBatch->currency . ' ' . $code->getBatch->price) : '';
+
 
 				Log::info('scan.show: base product fields populated', [
 					'scan_code'    => $scan_code,

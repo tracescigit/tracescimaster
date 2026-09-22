@@ -72,7 +72,7 @@
 								Price
 							</label>
 							<input id="price" type="number" name="price" class="form-control form__input"
-								value="{{ number_format((float)$product->price, 2, '.', '') }}"
+								value="{{ number_format((float)$batch->price, 2, '.', '') }}"
 								oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
 								min="0" step="0.01" maxlength="10" placeholder="Enter price" minlength="2">
 							<div id="error-price" class="login__input-error w-5/6 text-theme-6"></div>
