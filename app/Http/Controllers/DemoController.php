@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\DemoSchedule;
+use App\CustomClasses\EmailProvider;
 use Illuminate\Http\Request;
 
 class DemoController extends Controller
@@ -81,7 +82,7 @@ class DemoController extends Controller
         return view('web.demo')->with('bookedSlots', $bookedSlots);
     }
 
-    public function store(Request $request)
+    public function store(Request $request) 
     {
         $validated = $request->validate([
             'full_name' => [
@@ -144,6 +145,16 @@ class DemoController extends Controller
         }
 
         $demo = DemoSchedule::create($validated);
+
+        EmailProvider::sendMail('demo-schedule-email', [
+            'email'     => $validated['email'],
+            'username'  => $validated['full_name'],
+            'demo_date' => $validated['demo_date'],
+            'demo_time' => $validated['demo_time'],
+            'message'   => $validated['message'] ?? '-',
+            'link'      => url('/'),
+            'cc'        => 'kunal.kothari@monotech.in',
+        ]);
 
         return response()->json(['message' => 'Demo booked successfully.']);
     }
