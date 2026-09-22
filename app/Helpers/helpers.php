@@ -294,7 +294,7 @@ if (! function_exists('updateInvoices')) {
 
 			foreach ($subscriptions as $key => $subscription) {
 
-				if ($subscription->getPlan && ($subscription->getPlan->price_inr > 0 || $subscription->getPlan->price_usd > 0)) {
+				if ($subscription->getPlan && ($subscription->getPlan->price_inr > 0 || $subscription->getPlan->price_usd > 0)  && $subscription->getcompany->status == '1') {
 					$amount_inr += $subscription->getPlan->price_inr;
 					$amount_usd += $subscription->getPlan->price_usd;
 					$description[$key]['plan_id']   = $subscription->getPlan->id;
