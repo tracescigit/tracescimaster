@@ -40,7 +40,6 @@ Route::get('/generate-invoices', [CronController::class, 'generateInvoices'])->n
 // Demo Scheduling
 Route::get('/demo-scheduling', [DemoController::class, 'create'])->name('demo-schedule-create');
 Route::post('/demo-schedule-details/store', [App\Http\Controllers\DemoController::class, 'store'])->name('demo-schedule-store');
-
 // products organisation 
 Route::get('/product/razor6', [PageController::class, 'razor6'])->name('product-razor6');
 Route::get('/product/elite4', [PageController::class, 'elite4'])->name('product-elite4');
@@ -83,6 +82,8 @@ Route::middleware('auth')->group(function () {
 Route::group(['prefix' => 'admin', 'middleware' => ['admin', 'auth']], function () {
 
     Route::get('/', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin');
+
+    Route::get('/test-email-service', [App\Http\Controllers\Admin\HomeController::class, 'testEmailService'])->name('test-email-service');
 
     //Admin Profile
     Route::get('/profile', [App\Http\Controllers\Admin\HomeController::class, 'profile'])->name('admin-profile');

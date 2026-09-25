@@ -34,4 +34,17 @@ return [
         'secret_key' => env('RECAPTCHA_SECRET_KEY'),
     ],
 
+    'msg91' => [
+        'auth_key' => env('MSG91_AUTH_KEY'),
+        'domain'   => 'apimail.tracesci.in',
+        'from'     => [
+            'name'  => 'Tracesci',
+            'email' => 'support@apimail.tracesci.in',
+        ],
+        'reply_to' => [
+            ['email' => 'ecare@tracesci.in'],
+            ['email' => 'wecare@tracesci.in'],
+        ],
+    ],
+
 ];

@@ -99,5 +99,33 @@ class HomeController extends Controller
 			], 400);
 		}
 	}
+
+	public function testEmailService(Request $request)
+	{
+
+		$templateId = 'global_otp';
+		$recipients = [
+			[
+				'to' => [
+					[
+						'name'  => 'Varsha',
+						'email' => $request->email,
+					],
+				],
+				'variables' => [
+					'company_name' => 'Tracesci Company Name',
+					'otp'          => '9988',
+				],
+			],
+		];
+		
+		$result = sendMsg91Email($templateId, $recipients);
+
+		if ($result['status']) {
+			return response()->json(['message' => 'Email sent successfully!']);
+		} else {
+			return response()->json(['error' => $result['message']], 400);
+		}
+	}
 	
 }

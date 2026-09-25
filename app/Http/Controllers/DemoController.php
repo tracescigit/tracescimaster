@@ -82,84 +82,84 @@ class DemoController extends Controller
             ->mapWithKeys(fn($row) => [
                 $row->demo_date => explode(',', $row->times)
             ]);
-        return view('web.demo')->with('bookedSlots', $bookedSlots);
-    }
+            return view('web.demo')->with('bookedSlots', $bookedSlots);
+        }
 
-    public function store(Request $request) 
-    {
+        public function store(Request $request) 
+        {
 
-        $validated = $request->validate([
-            'full_name' => [
-                'required',
-                'regex:/^[A-Za-z\s.\'-]+$/',
-                'max:255'
-            ],
+            $validated = $request->validate([
+                'full_name' => [
+                    'required',
+                    'regex:/^[A-Za-z\s.\'-]+$/',
+                    'max:255'
+                ],
 
-            'email' => [
-                'required',
-                'email:rfc,dns',
-                'max:255'
-            ],
+                'email' => [
+                    'required',
+                    'email:rfc,dns',
+                    'max:255'
+                ],
 
-            'phone' => [
-                'required',
-                'digits:10'
-            ],
+                'phone' => [
+                    'required',
+                    'digits:10'
+                ],
 
-            'company_name' => [
-                'required',
-                'string',
-                'max:255'
-            ],
+                'company_name' => [
+                    'required',
+                    'string',
+                    'max:255'
+                ],
 
-            'company_email' => [
-                'nullable',
-                'email:rfc,dns',
-                'max:255'
-            ],
+                'company_email' => [
+                    'nullable',
+                    'email:rfc,dns',
+                    'max:255'
+                ],
 
-            'demo_date' => [
-                'required',
-                'date',
-                'after_or_equal:today'
-            ],
+                'demo_date' => [
+                    'required',
+                    'date',
+                    'after_or_equal:today'
+                ],
 
-            'demo_time' => [
-                'required',
-                'in:09:00,10:00,11:00,14:00,15:00,16:00,17:00'
-            ],
+                'demo_time' => [
+                    'required',
+                    'in:09:00,10:00,11:00,14:00,15:00,16:00,17:00'
+                ],
 
-            'message' => [
-                'nullable',
-                'string',
-                'max:1000'
-            ],
+                'message' => [
+                    'nullable',
+                    'string',
+                    'max:1000'
+                ],
 
-        ]);
+            ]);
 
         // Check slot isn't already taken (race condition guard)
-        $exists = DemoSchedule::where('demo_date', $validated['demo_date'])
+            $exists = DemoSchedule::where('demo_date', $validated['demo_date'])
             ->where('demo_time', $validated['demo_time'])
             ->exists();
 
-        if ($exists) {
-            return response()->json([
-                'message' => 'That slot is Already Taken. Please pick another time.'
-            ], 422);
+            if ($exists) {
+                return response()->json([
+                    'message' => 'That slot is Already Taken. Please pick another time.'
+                ], 422);
+            }
+
+            $demo = DemoSchedule::create($validated);
+
+            EmailProvider::sendMail('demo-schedule-email', [
+                'email'     => $validated['email'],
+                'username'  => $validated['full_name'],
+                'demo_date' => $validated['demo_date'],
+                'demo_time' => $validated['demo_time'],
+                'message'   => $validated['message'] ?? '-',
+                'link'      => url('/'),
+                'cc'        => 'kunal.kothari@monotech.in',
+            ]);
+
+            return response()->json(['message' => 'Demo booked successfully.']);
         }
-
-        $demo = DemoSchedule::create($validated);
-
-        EmailProvider::sendMail('demo-schedule-email', [
-            'email'     => $validated['email'],
-            'username'  => $validated['full_name'],
-            'demo_date' => $validated['demo_date'],
-            'demo_time' => $validated['demo_time'],
-            'message'   => $validated['message'] ?? '-',
-            'link'      => url('/'),
-            'cc'        => 'kunal.kothari@monotech.in',
-        ]);
-
-        return response()->json(['message' => 'Demo booked successfully.']);
     }
-}

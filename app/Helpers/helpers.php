@@ -78,28 +78,28 @@ if (! function_exists('getDesignation')) {
 		if ($user) {
 			switch ($user->type) {
 				case '1':
-					$designation = 'Administrator';
-					break;
+				$designation = 'Administrator';
+				break;
 
 				case '2':
-					$designation = 'Manufacturer';
-					break;
+				$designation = 'Manufacturer';
+				break;
 
 				case '3':
-					$designation = 'Inspector';
-					break;
+				$designation = 'Inspector';
+				break;
 
 				case '4':
-					$designation = 'Employee';
-					break;
+				$designation = 'Employee';
+				break;
 
 				case '5':
-					$designation = 'Supply Chain User';
-					break;
+				$designation = 'Supply Chain User';
+				break;
 
 				default:
-					$designation = 'User';
-					break;
+				$designation = 'User';
+				break;
 			}
 		}
 
@@ -484,7 +484,7 @@ if (! function_exists('sendEmail')) {
 				function ($message) use ($input) {
 
 					$message->to($input['email'])
-						->subject($input['email_subject']);
+					->subject($input['email_subject']);
 
 					if (!empty($input['bcc'])) {
 						$message->bcc($input['bcc']);
@@ -536,9 +536,9 @@ if (! function_exists('getAdminDetail')) {
 	{
 
 		return DB::table('users')
-			->select('users.*')
-			->where(['type' => '1'])
-			->first();
+		->select('users.*')
+		->where(['type' => '1'])
+		->first();
 	}
 }
 
@@ -1021,10 +1021,10 @@ if (!function_exists('currencies')) {
 	function currencies()
 	{
 		return Country::whereNotNull('currency')
-			->select('currency')
-			->distinct()
-			->orderBy('currency')
-			->get();
+		->select('currency')
+		->distinct()
+		->orderBy('currency')
+		->get();
 	}
 }
 
@@ -1056,8 +1056,8 @@ if (!function_exists('loginUserAndAssignOtp')) {
 		// If the user is logging in using a phone number
 		if ($phone_code && $phone) {
 			$user = User::where('phone_code', $phone_code)
-				->where('phone', $phone)
-				->first();
+			->where('phone', $phone)
+			->first();
 
 			if (!$user) {
 				return response([
@@ -1188,12 +1188,12 @@ if (! function_exists('statusComnination')) {
 
 		switch ($order->dispatch_status) {
 			case 7:
-				$result->where('code', '>', $last_status->code)->orWhere('title', 'Delayed');
-				break;
+			$result->where('code', '>', $last_status->code)->orWhere('title', 'Delayed');
+			break;
 
 			default:
-				$result->where('code', '>', $order->dispatch_status);
-				break;
+			$result->where('code', '>', $order->dispatch_status);
+			break;
 		}
 
 		$array = $result->get();
@@ -1415,5 +1415,50 @@ if (! function_exists('getProductFields')) {
 			'html_description' => 'Description',
 			'product_journey' => 'Product Journey',
 		];
+	}
+}
+
+if (!function_exists('sendMsg91Email')) {
+	function sendMsg91Email(string $templateId, array $recipients): array
+	{
+		$url = 'https://control.msg91.com/api/v5/email/send';
+		$authKey = config('services.msg91.auth_key');
+
+		$payload = [
+			'recipients'  => $recipients,
+			'from'        => config('services.msg91.from'),
+			'domain'      => config('services.msg91.domain'),
+			'reply_to'    => config('services.msg91.reply_to'),
+			'template_id' => $templateId,
+		];
+
+		try {
+			$response = Http::withHeaders([
+				'authkey'      => $authKey,
+				'Content-Type' => 'application/json',
+				'Accept'       => 'application/json',
+			])->post($url, $payload);
+
+			if ($response->successful()) {
+				return [
+					'status' => true,
+					'data'   => $response->json(),
+				];
+			}
+
+			Log::error('MSG91 Email Error: ' . $response->body());
+
+			return [
+				'status'  => false,
+				'message' => $response->json()['message'] ?? 'Failed to send email.',
+			];
+		} catch (\Exception $e) {
+			Log::error('MSG91 Email Exception: ' . $e->getMessage());
+
+			return [
+				'status'  => false,
+				'message' => $e->getMessage(),
+			];
+		}
 	}
 }
