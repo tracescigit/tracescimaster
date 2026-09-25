@@ -4,6 +4,7 @@ namespace App\CustomClasses;
 
 use Mail;
 use App\CustomClasses\SandEmail as Email;
+use Exception;
 
 class EmailProvider extends Email
 {
@@ -96,13 +97,33 @@ class EmailProvider extends Email
 			$email_body    = str_replace('{{' . $tag . '}}', $input[$tag] ?? '', $email_body);
 		}
 
-		Mail::send('emails.email', ['email_body' => $email_body], function ($message) use ($email_subject, $input) {
-			$message->to($input['email'], env('APP_NAME', 'TRACESCI'))
-				->subject($email_subject);
+		// Mail::send('emails.email', ['email_body' => $email_body], function ($message) use ($email_subject, $input) {
+		// 	$message->to($input['email'], env('APP_NAME', 'TRACESCI'))
+		// 	->subject($email_subject);
 
-			if (!empty($input['cc'])) {
-				$message->cc($input['cc']);
-			}
-		});
+		// 	if (!empty($input['cc'])) {
+		// 		$message->cc($input['cc']);
+		// 	}
+		// });
+
+		try{
+			$templateId = 'Tracesci_cloud_email';
+			$recipients = [
+				[
+					'to' => [
+						[
+							'name'  => env('APP_NAME', 'TRACESCI'),
+							'email' => $input['email'],
+						],
+					],
+					'variables' => [
+						'VAR7' => $email_subject,
+						'VAR6' => $email_body,
+					],
+				],
+			];
+
+			$result = sendMsg91Email($templateId, $recipients);
+		}catch(Exception $e){}
 	}
 }
