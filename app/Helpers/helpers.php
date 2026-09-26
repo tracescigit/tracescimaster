@@ -853,7 +853,11 @@ if (! function_exists('scanLocations')) {
 	{
 		$result = [];
 
-		$scans = ScanHistory::leftJoin('codes', 'codes.id', 'scan_histories.code_id')->where('scan_histories.location', '!=', '')->whereMonth('scan_histories.created_at', Carbon::today()->month);
+		$scans = ScanHistory::leftJoin('codes', 'codes.id', 'scan_histories.code_id')
+			->where('scan_histories.location', '!=', '')
+			->whereNotNull('scan_histories.location')
+			->whereMonth('scan_histories.created_at', Carbon::today()->month)
+			->whereYear('scan_histories.created_at', Carbon::today()->year);
 
 		if ($user_id != null) {
 			$scans->where('codes.user_id', $user_id);
@@ -861,17 +865,23 @@ if (! function_exists('scanLocations')) {
 
 		$scans = $scans->get();
 
-		if (count($scans) > 0) {
+		foreach ($scans as $scan) {
 
-			foreach ($scans as $key => $scan) {
+			$location = json_decode($scan->location, true);
 
-				$location = json_decode($scan->location, true);
+			if (!is_array($location)) {
+				continue; // invalid or empty JSON
+			}
 
-				if ($location['lat'] && $location['long']) {
-					$result[$key]['user'] = $scan->phone ?? 'User';
-					$result[$key]['lat']  = $location['lat'];
-					$result[$key]['long'] = $location['long'];
-				}
+			$lat  = $location['lat'] ?? null;
+			$long = $location['long'] ?? $location['lng'] ?? null;
+
+			if ($lat && $long) {
+				$result[] = [
+					'user' => $scan->phone ?? 'User',
+					'lat'  => $lat,
+					'long' => $long,
+				];
 			}
 		}
 

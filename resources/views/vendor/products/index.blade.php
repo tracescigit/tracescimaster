@@ -113,18 +113,23 @@
 			return cell.getData().actions;
 		}
 	},{
-		title: "PRODUCT NAME",
-		minWidth: 200,
-		responsive: 0,
-		field: "product_name",
-		hozAlign: "center",
-		vertAlign: "middle",
-		print: false,
-		download: false,
-		formatter: function formatter(cell, formatterParams) {
-			return "<div>\n                            <div class=\"font-medium whitespace-nowrap\">".concat(cell.getData().product_name, "</div>");
-		}
-	}, {
+	title: "PRODUCT NAME",
+	minWidth: 300,
+	responsive: 0,
+	field: "product_name",
+	hozAlign: "center",
+	vertAlign: "middle",
+	variableHeight: true,
+	print: false,
+	download: false,
+	formatter: function formatter(cell, formatterParams) {
+		// allow the cell to grow taller instead of cutting text off
+		cell.getElement().style.whiteSpace = "normal";
+
+		var name = cell.getData().product_name ?? '';
+		return '<div class="font-medium" title="' + name + '" style="white-space: normal; word-break: break-word; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">' + name + '</div>';
+	}
+},, {
 		title: "PRICE",
 		minWidth: 200,
 		field: "price",

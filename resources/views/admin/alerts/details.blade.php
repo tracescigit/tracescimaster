@@ -8,8 +8,8 @@
 @php
 
 $location = json_decode($alert->location);
-$lat=null;
-$long=null;
+$lat  = $location->lat ?? null;
+$long = $location->long ?? $location->lng ?? null;
 @endphp
 
 <div class="grid grid-cols-12 gap-6 mt-5">
@@ -92,11 +92,7 @@ $long=null;
 
 					<div class="intro-y col-span-12 lg:col-span-6 ">
 						<div class="grid grid-cols-12">
-							@if($location && $location->lat && $location->long)
-							@php
-							$lat = $location->lat;
-							$long = $location->long; 
-							@endphp
+							@if($lat && $long)
 							<div class="col-span-12  lg:col-span-12 px-2 py-1 mt-2">
 								<div id="map" style="height:300px; width:100%;"></div>
 							</div>
@@ -186,33 +182,31 @@ $long=null;
 
 	function initMap() {
 
+		// Skip the map when this alert has no saved location
+		if (!document.getElementById("map")) {
+			return;
+		}
+
 		const mapOptions = {
 			zoom: 4,
 			center: { lat: 20.5937, lng: 78.9629 },
 		};
 		map = new google.maps.Map(document.getElementById("map"), mapOptions);
 		const marker = new google.maps.Marker({
-    // The below line is equivalent to writing:
-    // position: new google.maps.LatLng(-34.397, 150.644)
-    position: { lat:parseFloat('{{$lat}}') , lng: parseFloat('{{$long}}') },
-    map: map,
-  });
-  // You can use a LatLng literal in place of a google.maps.LatLng object when
-  // creating the Marker object. Once the Marker object is instantiated, its
-  // position will be available as a google.maps.LatLng object. In this case,
-  // we retrieve the marker's position using the
-  // google.maps.LatLng.getPosition() method.
-  const infowindow = new google.maps.InfoWindow({
-  	content: "<p>Marker Location:" + marker.getPosition() + "</p>",
-  });
-  google.maps.event.addListener(marker, "click", () => {
-  	infowindow.open(map, marker);
-  });
-}
+			position: { lat: parseFloat('{{$lat}}'), lng: parseFloat('{{$long}}') },
+			map: map,
+		});
+		const infowindow = new google.maps.InfoWindow({
+			content: "<p>Marker Location:" + marker.getPosition() + "</p>",
+		});
+		google.maps.event.addListener(marker, "click", () => {
+			infowindow.open(map, marker);
+		});
+	}
 
-cash(document).ready(function(){
-	initMap();
-});
+	cash(document).ready(function(){
+		initMap();
+	});
 </script>
 
 <script>
