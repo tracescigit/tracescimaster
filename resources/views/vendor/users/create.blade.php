@@ -20,7 +20,7 @@
 
 					<div class="grid grid-cols-12">
 
-						
+
 						<div class="input-form col-span-12 lg:col-span-6 px-2 py-1">
 							<label for="full_name" class="form-label w-full flex flex-col sm:flex-row required">
 								{{__('common.full_name')}}
@@ -44,7 +44,9 @@
 									@endif
 								</select>
 
-								<input id="mobile" type="text" name="mobile" class="form-control form__input col-span-10" placeholder="{{__('common.enter')}}  {{__('common.mobile')}}">
+								<input id="mobile" type="text" name="mobile" class="form-control form__input col-span-10" placeholder="{{__('common.enter')}}  {{__('common.mobile')}}" maxlength="12"
+									inputmode="numeric"
+									pattern="[0-9]{10}">
 								<div id="error-mobile" class="login__input-error text-theme-6 col-span-12"></div>
 							</div>
 						</div>
@@ -63,7 +65,7 @@
 			<div class="intro-y box mt-5">
 				<div class="flex flex-col sm:flex-row items-center px-7 py-5 border-b border-gray-200 dark:border-dark-5">
 					<h2 class="font-medium text-base mr-auto">{{__('user.access_controls')}}</h2>
-				</div>	
+				</div>
 				<div class="p-5">
 					<div class="grid grid-cols-12">
 
@@ -116,7 +118,7 @@
 
 						@foreach ($modules as $key=>$module)
 						@if ($module->slug!='profile' && $module->slug!='users')
-						<div class="col-span-12 menus-div" id="{{$module->slug}}-div">	
+						<div class="col-span-12 menus-div" id="{{$module->slug}}-div">
 							<div class="grid grid-cols-12">
 								<div class="input-form col-span-3 px-2 py-1">
 									<label><i data-feather='arrow-right'></i> {{__($module->name)}}</label>
@@ -158,12 +160,12 @@
 		</form>
 	</div>
 	<x-notification></x-notification>
-</div> 
+</div>
 @endsection
 
 @section('script')
 <script>
-	cash(function () {
+	cash(function() {
 		async function add() {
 
 			cash('#add-form').find('.form__input').removeClass('border-theme-6')
@@ -175,19 +177,22 @@
 			cash('#btn-add').attr('disabled', 'true');
 
 
-			axios.post('{{ url('/vendor/users/create') }}', formData).then(res => {
-				showNotification('success','{{__('common.success')}} !',res.data.message)
-				setTimeout(()=>{
-					window.location.href = '{{ url('/vendor/users') }}'
-				},2000)
+			axios.post('{{ url(' / vendor / users / create ') }}', formData).then(res => {
+				showNotification('success', '{{__('
+					common.success ')}} !', res.data.message)
+				setTimeout(() => {
+					window.location.href = '{{ url(' / vendor / users ') }}'
+				}, 2000)
 
 			}).catch(err => {
-				showNotification('error','{{__('common.error')}} !',err.response.data.message)
-				cash('#btn-add').html('{{__('common.submit')}}')   
+				showNotification('error', '{{__('
+					common.error ')}} !', err.response.data.message)
+				cash('#btn-add').html('{{__('
+					common.submit ')}}')
 				cash('#btn-add').removeAttr('disabled');
 
 				if (err.response.data.errors) {
-					for (const [key, val] of Object.entries(err.response.data.errors)){
+					for (const [key, val] of Object.entries(err.response.data.errors)) {
 						cash(`#${key}`).addClass('border-theme-6')
 						cash(`#error-${key}`).html(val)
 					}
@@ -206,9 +211,9 @@
 			return brandAction()
 		});
 
-		async function brandAction(){
+		async function brandAction() {
 			var value = cash('#role').val()
-			if(value=='Brand User'){
+			if (value == 'Brand User') {
 				cash('#brand').show();
 				cash('.menus-div').hide()
 				cash('#scan-history-div').show()
@@ -217,7 +222,7 @@
 				cash('#schemes-view').prop('checked', true);
 				cash('#dashboard-view').prop('checked', false);
 
-			}else{
+			} else {
 				cash('.menus-div').show()
 				cash('#scan-history-view').prop('checked', false);
 				cash('#schemes-view').prop('checked', false);
