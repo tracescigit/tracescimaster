@@ -113,15 +113,39 @@
 			return cell.getData().actions;
 		}
 	},{
+<<<<<<< HEAD
 		title: "PRODUCT NAME",
 		minWidth: 200,
 		responsive: 0,
 		field: "product_name",
+=======
+	title: "PRODUCT NAME",
+	minWidth: 300,
+	responsive: 0,
+	field: "product_name",
+	hozAlign: "center",
+	vertAlign: "middle",
+	variableHeight: true,
+	print: false,
+	download: false,
+	formatter: function formatter(cell, formatterParams) {
+		// allow the cell to grow taller instead of cutting text off
+		cell.getElement().style.whiteSpace = "normal";
+
+		var name = cell.getData().product_name ?? '';
+		return '<div class="font-medium" title="' + name + '" style="white-space: normal; word-break: break-word; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">' + name + '</div>';
+	}
+},, {
+		title: "PRICE",
+		minWidth: 200,
+		field: "price",
+>>>>>>> 817b3e8b5b8d5789f5bbcbe1646b976c90a71c16
 		hozAlign: "center",
 		vertAlign: "middle",
 		print: false,
 		download: false,
 		formatter: function formatter(cell, formatterParams) {
+<<<<<<< HEAD
 			return "<div>\n                            <div class=\"font-medium whitespace-nowrap\">".concat(cell.getData().product_name, "</div>");
 		}
 	}, 
@@ -138,6 +162,11 @@
 	// 	}
 	// }
 	,{
+=======
+			return "<div>\n                            <div class=\"font-medium whitespace-nowrap\">".concat(cell.getData().price, "</div>\n                            ");
+		}
+	},  {
+>>>>>>> 817b3e8b5b8d5789f5bbcbe1646b976c90a71c16
 		title: "CREATED ON",
 		minWidth: 200,
 		field: "created_at",

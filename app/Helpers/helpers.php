@@ -889,7 +889,11 @@ if (! function_exists('scanLocations')) {
 	{
 		$result = [];
 
-		$scans = ScanHistory::leftJoin('codes', 'codes.id', 'scan_histories.code_id')->where('scan_histories.location', '!=', '')->whereMonth('scan_histories.created_at', Carbon::today()->month);
+		$scans = ScanHistory::leftJoin('codes', 'codes.id', 'scan_histories.code_id')
+			->where('scan_histories.location', '!=', '')
+			->whereNotNull('scan_histories.location')
+			->whereMonth('scan_histories.created_at', Carbon::today()->month)
+			->whereYear('scan_histories.created_at', Carbon::today()->year);
 
 		if ($user_id != null) {
 			$scans->where('codes.user_id', $user_id);
@@ -897,24 +901,23 @@ if (! function_exists('scanLocations')) {
 
 		$scans = $scans->get();
 
-		if (count($scans) > 0) {
+		foreach ($scans as $scan) {
 
-			foreach ($scans as $key => $scan) {
-				// 1. Decode safely (returns null if $scan->location is empty or invalid JSON)
-				$location = json_decode($scan->location ?? '', true);
+			$location = json_decode($scan->location, true);
 
-				// 2. Extract coordinates with safe fallbacks
-				$lat  = $location['lat'] ?? null;
-				$long = $location['long'] ?? $location['lng'] ?? null;
+			if (!is_array($location)) {
+				continue; // invalid or empty JSON
+			}
 
-				// 3. Only push to results if both values are valid
-				if ($lat && $long) {
-					$result[$key] = [
-						'user' => $scan->phone ?? 'User',
-						'lat'  => $lat,
-						'long' => $long,
-					];
-				}
+			$lat  = $location['lat'] ?? null;
+			$long = $location['long'] ?? $location['lng'] ?? null;
+
+			if ($lat && $long) {
+				$result[] = [
+					'user' => $scan->phone ?? 'User',
+					'lat'  => $lat,
+					'long' => $long,
+				];
 			}
 		}
 

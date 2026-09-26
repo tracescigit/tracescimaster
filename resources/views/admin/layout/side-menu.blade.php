@@ -77,7 +77,7 @@
 
             @if (inAllowedPermissionsByModuleSlug(Auth::id(),'plans','view'))
             <li>
-                <a href="javascript:;" class="side-menu {{request()->is('admin/plans*')?'side-menu--active':''}}">
+                <a href="javascript:;" class="side-menu {{ (request()->is('admin/plans*') || request()->routeIs('admin-edit-plans')) ? 'side-menu--active' : '' }}">
                     <div class="side-menu__icon">
                         <i data-feather="send"></i>
                     </div>
@@ -89,10 +89,10 @@
                     </div>
                 </a>
 
-                <ul class="{{request()->is('admin/plans*')?'side-menu__sub-open':''}}">
+                <ul class="{{ (request()->is('admin/plans*') || request()->routeIs('admin-edit-plans')) ? 'side-menu__sub-open' : '' }}">
                     @if (inAllowedPermissionsByModuleSlug(Auth::id(),'plans','view'))
                     <li>
-                        <a href="{{ url('admin/plans') }}" class="side-menu {{request()->is('admin/plans')?'side-menu--active':''}}">
+                        <a href="{{ url('admin/plans') }}" class="side-menu {{ (request()->is('admin/plans') || request()->routeIs('admin-edit-plans')) ? 'side-menu--active' : '' }}">
                             <div class="side-menu__icon">
                                 <i data-feather="activity"></i>
                             </div>
@@ -120,7 +120,7 @@
 
             @if (inAllowedPermissionsByModuleSlug(Auth::id(),'topups','view'))
             <li>
-                <a href="javascript:;" class="side-menu {{request()->is('admin/topups*')?'side-menu--active':''}}">
+                <a href="javascript:;" class="side-menu {{ (request()->is('admin/topups*') || request()->routeIs('admin-edit-topups')) ? 'side-menu--active' : '' }}">
                     <div class="side-menu__icon">
                         <i data-feather="plus"></i>
                     </div>
@@ -132,10 +132,10 @@
                     </div>
                 </a>
 
-                <ul class="{{request()->is('admin/topups*')?'side-menu__sub-open':''}}">
+                <ul class="{{ (request()->is('admin/topups*') || request()->routeIs('admin-edit-topups')) ? 'side-menu__sub-open' : '' }}">
                     @if (inAllowedPermissionsByModuleSlug(Auth::id(),'topups','view'))
                     <li>
-                        <a href="{{ url('admin/topups') }}" class="side-menu {{request()->is('admin/topups')?'side-menu--active':''}}">
+                        <a href="{{ url('admin/topups') }}" class="side-menu {{ (request()->is('admin/topups') || request()->routeIs('admin-edit-topups')) ? 'side-menu--active' : '' }}">
                             <div class="side-menu__icon">
                                 <i data-feather="activity"></i>
                             </div>
@@ -247,7 +247,7 @@
 
             @if (inAllowedPermissionsByModuleSlug(Auth::id(),'scan-history','view'))
             <li>
-                <a href="{{ url('admin/scanhistory') }}" class="side-menu {{request()->is('admin/scanhistory*')?'side-menu--active':''}}">
+                <a href="{{ url('admin/scanhistory') }}" class="side-menu {{ (request()->is('admin/scanhistory*') || request()->routeIs('admin-show-scanhistory')) ? 'side-menu--active' : '' }}">
                     <div class="side-menu__icon">
                         <i data-feather="maximize"></i>
                     </div>
@@ -260,7 +260,7 @@
 
             @if (inAllowedPermissionsByModuleSlug(Auth::id(),'alerts','view'))
             <li>
-                <a href="{{ url('admin/alerts') }}" class="side-menu {{request()->is('admin/alerts*')?'side-menu--active':''}}">
+                <a href="{{ url('admin/alerts') }}" class="side-menu {{ (request()->is('admin/alerts*') || request()->routeIs('admin-act-alerts')) ? 'side-menu--active' : '' }}">
                     <div class="side-menu__icon">
                         <i data-feather="bell"></i>
                     </div>
@@ -273,7 +273,7 @@
 
             @if (inAllowedPermissionsByModuleSlug(Auth::id(),'app-reports','view'))
             <li>
-                <a href="{{ url('admin/reports') }}" class="side-menu {{request()->is('admin/reports*')?'side-menu--active':''}}">
+                <a href="{{ url('admin/reports') }}" class="side-menu {{ (request()->is('admin/reports*') || request()->routeIs('admin-show-reports')) ? 'side-menu--active' : '' }}">
                     <div class="side-menu__icon">
                         <i data-feather="file-text"></i>
                     </div>
@@ -354,7 +354,7 @@
 
             @if (inAllowedPermissionsByModuleSlug(Auth::id(),'users','view'))
             <li>
-                <a href="javascript:;" class="side-menu {{request()->is('admin/users*')?'side-menu--active':''}}">
+                <a href="javascript:;" class="side-menu {{ (request()->is('admin/users*') || request()->routeIs('admin-edit-users')) ? 'side-menu--active' : '' }}">
                     <div class="side-menu__icon">
                         <i data-feather="users"></i>
                     </div>
@@ -366,10 +366,10 @@
                     </div>
                 </a>
 
-                <ul class="{{request()->is('admin/users*')?'side-menu__sub-open':''}}">
+                <ul class="{{ (request()->is('admin/users*') || request()->routeIs('admin-edit-users')) ? 'side-menu__sub-open' : '' }}">
                     @if (inAllowedPermissionsByModuleSlug(Auth::id(),'users','view'))
                     <li>
-                        <a href="{{ url('admin/users') }}" class="side-menu {{request()->is('admin/users')?'side-menu--active':''}}">
+                        <a href="{{ url('admin/users') }}" class="side-menu {{ (request()->is('admin/users') || request()->routeIs('admin-edit-users')) ? 'side-menu--active' : '' }}">
                             <div class="side-menu__icon">
                                 <i data-feather="activity"></i>
                             </div>

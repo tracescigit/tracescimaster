@@ -249,13 +249,21 @@ var bar2ChartDataSets = [{
 
 @section('script')
 
+@php
+    $scanLocations = scanLocations(Auth::user()->parent_id ?? Auth::id());
+@endphp
+
 <script type="text/javascript">
     var locations = [
-    @if (count(scanLocations(Auth::user()->parent_id??Auth::id()))>0)
-    @foreach(scanLocations(Auth::user()->parent_id??Auth::id()) as $location)
-    ['{{$location['user']}}', parseFloat("{{$location['lat']}}"), parseFloat("{{$location['long']}}")],
+    @foreach($scanLocations as $location)
+        @php
+            $lat  = $location['lat'] ?? null;
+            $long = $location['long'] ?? $location['lng'] ?? null;
+        @endphp
+        @if($lat !== null && $long !== null)
+        ['{{ $location['user'] ?? '' }}', parseFloat("{{ $lat }}"), parseFloat("{{ $long }}")],
+        @endif
     @endforeach
-    @endif
     ];
 
     var map = new google.maps.Map(document.getElementById('gmap'), {

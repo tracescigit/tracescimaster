@@ -101,7 +101,7 @@
                 <ul class="{{(request()->is('vendor/products*') || request()->is('vendor/batches*'))?'side-menu__sub-open':''}}">
                     @if (inAllowedPermissionsByModuleSlug(Auth::id(),'products','view'))
                     <li>
-                            <a href="{{ url('vendor/products') }}" class="side-menu {{ (request()->is('vendor/products') || request()->is('vendor/products/*')) ? 'side-menu--active' : '' }}">
+                        <a href="{{ url('vendor/products') }}" class="side-menu {{ (request()->is('vendor/products') || request()->is('vendor/products/*')) ? 'side-menu--active' : '' }}">
                             <div class="side-menu__icon">
                                 <i data-feather="activity"></i>
                             </div>
@@ -141,7 +141,7 @@
 
             @if (inAllowedPermissionsByModuleSlug(Auth::id(),'qr-codes','view') || inAllowedPermissionsByModuleSlug(Auth::id(),'scan-history','view') || inAllowedPermissionsByModuleSlug(Auth::id(),'alerts','view') || inAllowedPermissionsByModuleSlug(Auth::id(),'app-reports','view') || inAllowedPermissionsByModuleSlug(Auth::id(),'report-lostdamage','view'))
             <li>
-                <a href="javascript:;" class="side-menu {{(request()->is('vendor/codes*') || request()->is('vendor/bulk-upload') || request()->is('vendor/scanhistory*') || request()->is('vendor/alerts*') || request()->is('vendor/reports*') || request()->is('vendor/lost-damage*'))?'side-menu--active':''}}">
+                <a href="javascript:;" class="side-menu {{(request()->is('vendor/codes*') || request()->is('vendor/bulk-upload') || request()->is('vendor/scanhistory*') || request()->is('vendor/viewscan*') || request()->is('vendor/alerts*') || request()->routeIs('vendor-act-alerts') || request()->is('vendor/reports*') || request()->routeIs('vendor-show-reports') || request()->is('vendor/lost-damage*'))?'side-menu--active':''}}">
                     <div class="side-menu__icon">
                         <i data-feather="command"></i>
                     </div>
@@ -153,7 +153,7 @@
                     </div>
                 </a>
 
-                <ul class="{{(request()->is('vendor/codes*') || request()->is('vendor/bulk-upload') || request()->is('vendor/scanhistory*') || request()->is('vendor/alerts*') || request()->is('vendor/reports*') || request()->is('vendor/lost-damage*'))?'side-menu__sub-open':''}}">
+                <ul class="{{(request()->is('vendor/codes*') || request()->is('vendor/bulk-upload') || request()->is('vendor/scanhistory*') || request()->is('vendor/viewscan*') || request()->is('vendor/alerts*') || request()->routeIs('vendor-act-alerts') || request()->is('vendor/reports*') || request()->routeIs('vendor-show-reports') || request()->is('vendor/lost-damage*'))?'side-menu__sub-open':''}}">
                     @if (inAllowedPermissionsByModuleSlug(Auth::id(),'qr-codes','view'))
                     <li>
                         <a href="{{ url('vendor/codes') }}" class="side-menu {{request()->is('vendor/codes*')?'side-menu--active':''}}">
@@ -180,7 +180,7 @@
                     @endif
                     @if (inAllowedPermissionsByModuleSlug(Auth::id(),'scan-history','view'))
                     <li>
-                        <a href="{{ url('vendor/scanhistory') }}" class="side-menu {{request()->is('vendor/scanhistory*')?'side-menu--active':''}}">
+                        <a href="{{ url('vendor/scanhistory') }}" class="side-menu {{ (request()->is('vendor/scanhistory*') || request()->is('vendor/viewscan*')) ? 'side-menu--active' : '' }}">
                             <div class="side-menu__icon">
                                 <i data-feather="activity"></i>
                             </div>
@@ -192,7 +192,7 @@
                     @endif
                     @if (inAllowedPermissionsByModuleSlug(Auth::id(),'alerts','view'))
                     <li>
-                        <a href="{{ url('vendor/alerts') }}" class="side-menu {{request()->is('vendor/alerts*')?'side-menu--active':''}}">
+                        <a href="{{ url('vendor/alerts') }}" class="side-menu {{ (request()->is('vendor/alerts*') || request()->routeIs('vendor-act-alerts')) ? 'side-menu--active' : '' }}">
                             <div class="side-menu__icon">
                                 <i data-feather="activity"></i>
                             </div>
@@ -204,7 +204,7 @@
                     @endif
                     @if (inAllowedPermissionsByModuleSlug(Auth::id(),'app-reports','view'))
                     <li>
-                        <a href="{{ url('vendor/reports') }}" class="side-menu {{request()->is('vendor/reports*')?'side-menu--active':''}}">
+                        <a href="{{ url('vendor/reports') }}" class="side-menu {{ (request()->is('vendor/reports*') || request()->routeIs('vendor-show-reports')) ? 'side-menu--active' : '' }}">
                             <div class="side-menu__icon">
                                 <i data-feather="activity"></i>
                             </div>
@@ -257,10 +257,10 @@
                     </div>
                 </a>
 
-                <ul class="{{(request()->is('vendor/schemes*') || request()->is('vendor/cashbacks*') || request()->is('vendor/rewards*'))?'side-menu__sub-open':''}}">
+                <ul class="{{(request()->is('vendor/schemes*') || request()->is('vendor/cashbacks*') || request()->is('vendor/reward*') || request()->is('vendor/wallets*'))?'side-menu__sub-open':''}}">
                     @if (inAllowedPermissionsByModuleSlug(Auth::id(),'schemes','view'))
                     <li>
-                        <a href="{{ url('vendor/schemes') }}" class="side-menu {{request()->is('vendor/schemes')?'side-menu--active':''}}">
+                        <a href="{{ url('vendor/schemes') }}" class="side-menu {{ (request()->is('vendor/schemes') || request()->is('vendor/schemes/*') || request()->routeIs('vendor-create-schemes') || request()->routeIs('vendor-edit-schemes')) ? 'side-menu--active' : '' }}">
                             <div class="side-menu__icon">
                                 <i data-feather="gift"></i>
                             </div>
@@ -273,7 +273,7 @@
 
                     @if (inAllowedPermissionsByModuleSlug(Auth::id(),'cashbacks','view'))
                     <li>
-                        <a href="{{ url('vendor/cashbacks') }}" class="side-menu {{request()->is('vendor/cashbacks')?'side-menu--active':''}}">
+                        <a href="{{ url('vendor/cashbacks') }}" class="side-menu {{ (request()->is('vendor/cashbacks') || request()->is('vendor/cashbacks/*') || request()->routeIs('vendor-create-cashbacks') || request()->routeIs('vendor-edit-cashbacks') || request()->routeIs('vendor-show-cashbacks')) ? 'side-menu--active' : '' }}">
                             <div class="side-menu__icon">
                                 <i data-feather="gift"></i>
                             </div>
@@ -286,7 +286,7 @@
 
                     @if (inAllowedPermissionsByModuleSlug(Auth::id(),'rewards','view'))
                     <li>
-                        <a href="{{ url('vendor/rewards') }}" class="side-menu {{request()->is('vendor/rewards')?'side-menu--active':''}}">
+                        <a href="{{ url('vendor/rewards') }}" class="side-menu {{ (request()->is('vendor/rewards') || request()->is('vendor/rewards/*') || request()->routeIs('vendor-create-rewards') || request()->routeIs('vendor-edit-rewards') || request()->routeIs('vendor-show-rewards')) ? 'side-menu--active' : '' }}">
                             <div class="side-menu__icon">
                                 <i data-feather="gift"></i>
                             </div>
@@ -297,7 +297,7 @@
                     </li>
 
                     <li>
-                        <a href="{{ url('vendor/reward-orders') }}" class="side-menu {{request()->is('vendor/reward-orders')?'side-menu--active':''}}">
+                        <a href="{{ url('vendor/reward-orders') }}" class="side-menu {{ (request()->is('vendor/reward-orders') || request()->is('vendor/reward-orders/*') || request()->routeIs('vendor-reward-orders') || request()->routeIs('vendor-show-reward-orders')) ? 'side-menu--active' : '' }}">
                             <div class="side-menu__icon">
                                 <i data-feather="gift"></i>
                             </div>
@@ -338,8 +338,17 @@
                 </a>
 
                 <ul class="{{request()->is('vendor/aggregations*')?'side-menu__sub-open':''}}">
+                    @php
+                        // Level from the list page URL (?level=...), or from the record on the edit page
+                        $aggLevel = request()->get('level');
+                        if (request()->routeIs('vendor-edit-aggregations')) {
+                            $aggId = request()->route('id');
+                            try { $aggId = decrypt($aggId); } catch (\Exception $e) {}
+                            $aggLevel = optional(\App\Models\Aggregation::find($aggId))->level;
+                        }
+                    @endphp
                     <li>
-                        <a href="{{ url('vendor/aggregations?level=All') }}" class="side-menu {{(request()->is('vendor/aggregations') && request()->has('level') && request()->get('level')=='All')?'side-menu--active':''}}">
+                        <a href="{{ url('vendor/aggregations?level=All') }}" class="side-menu {{ (request()->is('vendor/aggregations*') && $aggLevel=='All') ? 'side-menu--active' : '' }}">
                             <div class="side-menu__icon">
                                 <i data-feather="activity"></i>
                             </div>
@@ -350,7 +359,7 @@
                     </li>
 
                     <li>
-                        <a href="{{ url('vendor/aggregations?level=Primary') }}" class="side-menu {{(request()->is('vendor/aggregations') && request()->has('level') && request()->get('level')=='Primary')?'side-menu--active':''}}">
+                        <a href="{{ url('vendor/aggregations?level=Primary') }}" class="side-menu {{ (request()->is('vendor/aggregations*') && $aggLevel=='Primary') ? 'side-menu--active' : '' }}">
                             <div class="side-menu__icon">
                                 <i data-feather="activity"></i>
                             </div>
@@ -361,7 +370,7 @@
                     </li>
 
                     <li>
-                        <a href="{{ url('vendor/aggregations?level=Secondary') }}" class="side-menu {{(request()->is('vendor/aggregations') && request()->has('level') && request()->get('level')=='Secondary')?'side-menu--active':''}}">
+                        <a href="{{ url('vendor/aggregations?level=Secondary') }}" class="side-menu {{ (request()->is('vendor/aggregations*') && $aggLevel=='Secondary') ? 'side-menu--active' : '' }}">
                             <div class="side-menu__icon">
                                 <i data-feather="activity"></i>
                             </div>
@@ -372,7 +381,7 @@
                     </li>
 
                     <li>
-                        <a href="{{ url('vendor/aggregations?level=Tertiary') }}" class="side-menu {{(request()->is('vendor/aggregations') && request()->has('level') && request()->get('level')=='Tertiary')?'side-menu--active':''}}">
+                        <a href="{{ url('vendor/aggregations?level=Tertiary') }}" class="side-menu {{ (request()->is('vendor/aggregations*') && $aggLevel=='Tertiary') ? 'side-menu--active' : '' }}">
                             <div class="side-menu__icon">
                                 <i data-feather="activity"></i>
                             </div>
@@ -383,7 +392,7 @@
                     </li>
 
                     <li>
-                        <a href="{{ url('vendor/aggregations?level=Pallette') }}" class="side-menu {{(request()->is('vendor/aggregations') && request()->has('level') && request()->get('level')=='Pallette')?'side-menu--active':''}}">
+                        <a href="{{ url('vendor/aggregations?level=Pallette') }}" class="side-menu {{ (request()->is('vendor/aggregations*') && $aggLevel=='Pallette') ? 'side-menu--active' : '' }}">
                             <div class="side-menu__icon">
                                 <i data-feather="activity"></i>
                             </div>

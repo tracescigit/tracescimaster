@@ -7,6 +7,7 @@
 @section('subcontent')
 @php
 $location = json_decode($alert->location);
+<<<<<<< HEAD
 
 $lat = null;
 $long = null;
@@ -20,6 +21,10 @@ $long = $location->lng ?? $location->long ?? null;
 
 $source = $location->source ?? 'gps';
 }
+=======
+$lat  = $location->lat ?? null;
+$long = $location->long ?? $location->lng ?? null;
+>>>>>>> 817b3e8b5b8d5789f5bbcbe1646b976c90a71c16
 @endphp
 
 <div class="grid grid-cols-12 gap-6 mt-5">
@@ -52,8 +57,80 @@ $source = $location->source ?? 'gps';
 					<div class="col-span-12 lg:col-span-3 px-2 py-1">
 						{{__('common.manufactured_date')}} : <span class="font-bold ml-2">{{date('M d, Y',strtotime($alert->getBatch->mfg_date))??'-'}}</span>
 					</div>
-					<div class="col-span-12 lg:col-span-3 px-2 py-1">
-						{{__('common.expiry_date')}} : <span class="font-bold ml-2">{{date('M d, Y',strtotime($alert->getBatch->exp_date))??'-'}}</span>
+
+					<div class="intro-y col-span-12 lg:col-span-6 ">
+						<div class="grid grid-cols-12">
+							@if($lat && $long)
+							<div class="col-span-12  lg:col-span-12 px-2 py-1 mt-2">
+								<div id="map" style="height:300px; width:100%;"></div>
+							</div>
+							@else
+							<div class="col-span-12 lg:col-span-12 px-2 py-1 mt-2 text-red-500">
+								{{__('scanhistory.location_not_found')}}!
+							</div>
+							@endif
+						</div>
+						<form id="assign-form" class="col-span-12">
+							<div class="col-span-12 mt-5">
+								<div class="grid grid-cols-12">
+
+									@csrf
+									<div class="col-span-12 lg:col-span-10 mt-2 px-2">
+										@if($alert->admin_assigned_to != null || Auth::user()->who_you_are=='Province Governor')
+										<label for="assigned_to" class="form-label">
+											{{__('alert.assigned_to')}}
+										</label>
+										@endif
+										
+										@if($alert->admin_assigned_to == null)
+
+										@if (Auth::user()->who_you_are=='Province Governor')
+
+										<select id="assigned_to" type="text" name="assigned_to" class="form-select form__input">
+											<option value="">{{__('common.please_select')}}</option>
+											@if (getProvinceInspector($alert->id) && count(getProvinceInspector($alert->id))>0)
+											@foreach (getProvinceInspector($alert->id) as $inspector)
+											<option value="{{$inspector->id}}">{{$inspector->name??''}}</option>
+											@endforeach
+											@endif
+										</select>
+										<div id="error-order_item" class="login__input-error w-auto text-theme-6"></div>
+										{{-- expr --}}
+										@endif
+										@else
+										<input type="text" name="assigned_to" value="{{$alert->getAssignedToAdmin->name??""}}" class="form__input form-control" readonly="">
+										@endif
+									</div>
+								</div>
+							</div>
+						</form>
+						<div class="mt-4 text-right lg:mr-28 sm:mr-5 ">
+							@if($alert->admin_assigned_to == null && Auth::user()->who_you_are=='Province Governor')
+							<button type="button" class="btn btn-primary w-32 shadow-md ml-auto" id="submit">{{__('common.submit')}}</button>
+							@endif
+						</div>
+					</div>
+					@if($alert->admin_assigned_to != null)
+					<div class="intro-y col-span-12 lg:col-span-12 mt-10 px-2">
+						<h5 class="my-3 font-bold">Investigation History</h5>
+						<table class="table-auto">
+							<thead>
+								<tr>
+									<th class="p-5 border border-dark-5 ">Reported On</th>
+									<th class="p-5 border border-dark-5 ">Assigned To</th>
+									<th class="p-5 border border-dark-5  text-center">Inspector Comments</th>
+									<th class="p-5 border border-dark-5 ">Last Updated On</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="p-5 border border-dark-5 text-center">{{	date('M d, Y',strtotime($alert->created_at))}}</td>
+									<td class="p-5 border border-dark-5 text-center">{{$alert->getAssignedToAdmin->name??''}}</td>
+									<td class="p-5 border border-dark-5 text-center">{{$alert->admin_comment}}</td>
+									<td class="p-5 border border-dark-5 text-center">{{	date('M d, Y',strtotime($alert->updated_at))}}</td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
 					@endif
 					<div class="col-span-12 lg:col-span-3 px-2 py-1">
@@ -228,42 +305,29 @@ $source = $location->source ?? 'gps';
 
 	function initMap() {
 
-		const latitude = parseFloat('{{ $lat }}');
-		const longitude = parseFloat('{{ $long }}');
+		// Skip the map when this alert has no saved location
+		if (!document.getElementById("map")) {
+			return;
+		}
 
 		const mapOptions = {
-			zoom: {{ $source == 'ip' ? 12 : 16 }},
-			center: {
-				lat: latitude,
-				lng: longitude
-			},
+			zoom: 4,
+			center: { lat: 20.5937, lng: 78.9629 },
 		};
-
 		map = new google.maps.Map(document.getElementById("map"), mapOptions);
-
 		const marker = new google.maps.Marker({
-			position: {
-				lat: latitude,
-				lng: longitude
-			},
+			position: { lat: parseFloat('{{$lat}}'), lng: parseFloat('{{$long}}') },
 			map: map,
 		});
-
-		const infoWindow = new google.maps.InfoWindow({
-			content: `{!! $source == 'ip'
-                ? '<strong>Approximate Location (IP Based)</strong>'
-                : '<strong>Exact GPS Location</strong>' !!}`
+		const infowindow = new google.maps.InfoWindow({
+			content: "<p>Marker Location:" + marker.getPosition() + "</p>",
 		});
-
-		marker.addListener("click", function() {
-			infoWindow.open(map, marker);
+		google.maps.event.addListener(marker, "click", () => {
+			infowindow.open(map, marker);
 		});
-
-		// Optional: Open the info window automatically
-		infoWindow.open(map, marker);
 	}
 
-	cash(document).ready(function() {
+	cash(document).ready(function(){
 		initMap();
 	});
 </script>
