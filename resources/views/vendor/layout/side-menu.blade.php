@@ -4,7 +4,7 @@
 @yield('subhead')
 @endsection
 
-@section('content')
+@section('content') 
 @include('vendor.layout.components.mobile-menu')
 <div class="flex">
     <!-- BEGIN: Side Menu -->
@@ -101,7 +101,7 @@
                 <ul class="{{(request()->is('vendor/products*') || request()->is('vendor/batches*'))?'side-menu__sub-open':''}}">
                     @if (inAllowedPermissionsByModuleSlug(Auth::id(),'products','view'))
                     <li>
-                        <a href="{{ url('vendor/products') }}" class="side-menu {{request()->is('vendor/products*')?'side-menu--active':''}}">
+                            <a href="{{ url('vendor/products') }}" class="side-menu {{ (request()->is('vendor/products') || request()->is('vendor/products/*')) ? 'side-menu--active' : '' }}">
                             <div class="side-menu__icon">
                                 <i data-feather="activity"></i>
                             </div>
