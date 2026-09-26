@@ -5,7 +5,7 @@
 @endsection
 
 @section('subcontent')
-<div class="intro-y flex flex-col sm:flex-row items-center mt-8">
+<div class="intro-y flex flex-col sm:flex-row items-center mt-8"> 
 	<h2 class="text-lg font-medium mr-auto">Add Product Template</h2>
 	<div class="w-full sm:w-auto flex mt-4 sm:mt-0">
 		<a href="{{ route('vendor-create-products-template') }}" class="btn btn-primary shadow-md mr-2">Add New Product Template</a>
@@ -14,8 +14,8 @@
 				<span class="w-5 h-5 flex items-center justify-center">
 					<i class="w-4 h-4" data-feather="plus"></i>
 				</span>
-			</a>
-		</div>
+			</a>  
+		</div> 
 	</div>
 </div>
 
