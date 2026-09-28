@@ -119,13 +119,13 @@
 					<a href="javascript:;" class="float-right remove-rewards" style="display:none;"><i class="w-4 h-4" data-feather="minus"></i></a>
 				</div>
 				<div class="p-5 rewards-area">
-					
+
 				</div>
 			</div>
 
 			<div class="intro-y box mt-4">
 				<div class="p-5">
-					<div class="grid grid-cols-12">	
+					<div class="grid grid-cols-12">
 						<div class="input-form col-span-12 lg:col-span-12 px-2 py-1 mt-3">
 							<button type="submit" id="btn-add" class="btn btn-primary w-full xl:w-32 xl:mr-3 align-top">Add Scheme</button>
 						</div>
@@ -136,188 +136,820 @@
 		</form>
 	</div>
 	<x-notification></x-notification>
-</div> 
+</div>
 @endsection
 
 @section('script')
 <script>
-	cash(function () {
-		async function add() {
+	cash(function() {
 
-			cash('#add-form').find('.form__input').removeClass('border-theme-6')
-			cash('#add-form').find('.login__input-error').html('')
+		/* =====================================================
+		 * DATE HELPERS
+		 * ===================================================== */
 
-			var formData = new FormData(document.querySelector('#add-form'))
+		function getToday() {
 
-			cash('#btn-add').html('<i data-loading-icon="oval" data-color="white" class="w-5 h-5 mx-auto"></i>').svgLoader()
-			cash('#btn-add').attr('disabled', 'true');
+			let today = new Date();
 
-			axios.post('{{ url('/vendor/rewards/create') }}', formData).then(res => {
-				showNotification('success','Success !',res.data.message)
-				setTimeout(()=>{
-					window.location.href = '{{ url('/vendor/rewards') }}'
-				},1000)
-			}).catch(err => {
-				showNotification('error','Error !',err.response.data.message)
-				cash('#btn-add').html('Add Scheme')  
-				cash('#btn-add').removeAttr('disabled');                 
+			let month = String(today.getMonth() + 1).padStart(2, '0');
+			let day = String(today.getDate()).padStart(2, '0');
 
-				if (err.response.data.errors) {
-					for (const [key, val] of Object.entries(err.response.data.errors)){
-						cash(`#${key}`).addClass('border-theme-6')
-						cash(`#error-${key}`).html(val)
-					}
-				}
-
-			})
+			return today.getFullYear() + '-' + month + '-' + day;
 		}
 
-		cash('#add-form').on('submit', function(e) {
-			e.preventDefault()
-			add()
-		})
 
-		cash(document).ready(function() {
-			addCodes()
-			addRewards()
+		function setupDateValidation() {
+
+			let today = getToday();
+
+			// From date cannot be before today
+			cash('#from').attr('min', today);
+
+			// To date cannot be before today
+			cash('#to').attr('min', today);
+		}
+
+
+		/* =====================================================
+		 * CLEAR FIELD ERROR
+		 * ===================================================== */
+
+		function clearFieldError(input) {
+
+			cash(input).removeClass('border-theme-6');
+
+			cash(input)
+				.closest('.input-form')
+				.find('.login__input-error')
+				.html('');
+		}
+
+
+		/* =====================================================
+		 * FROM DATE CHANGE
+		 * ===================================================== */
+
+		cash('#from').on('change', function() {
+
+			let fromDate = cash(this).val();
+
+			clearFieldError('#from');
+
+			if (fromDate) {
+
+				// To date must be same or after From date
+				cash('#to').attr('min', fromDate);
+
+				let toDate = cash('#to').val();
+
+				// Existing To Date is before From Date
+				if (toDate && toDate < fromDate) {
+
+					cash('#to').val('');
+
+					cash('#to')
+						.addClass('border-theme-6');
+
+					cash('#error-to').html(
+						'To date must be the same as or after the From date.'
+					);
+				}
+			}
 		});
 
-		cash('.add-more-codes').on('click', function(e) {
-			e.preventDefault()
-			addCodes()
 
-			if(cash('.code-wrapper').length>1){
-				cash('.remove-codes').show('slow')
+		/* =====================================================
+		 * TO DATE CHANGE
+		 * ===================================================== */
+
+		cash('#to').on('change', function() {
+
+			let fromDate = cash('#from').val();
+			let toDate = cash(this).val();
+
+			clearFieldError('#to');
+
+			if (fromDate && toDate && toDate < fromDate) {
+
+				cash('#to')
+					.addClass('border-theme-6');
+
+				cash('#error-to').html(
+					'To date must be the same as or after the From date.'
+				);
 			}
-		})
+		});
 
-		cash('.remove-codes').on('click', function(e) {
-			e.preventDefault()
-			removeCodes()
 
-			if(cash('.code-wrapper').length<2){
-				cash('.remove-codes').hide('slow')
+		/* =====================================================
+		 * SHOW VALIDATION ERRORS
+		 * ===================================================== */
+
+		function showValidationErrors(errors) {
+
+			console.log('Laravel validation errors:', errors);
+
+			for (const [key, val] of Object.entries(errors)) {
+
+				let message = Array.isArray(val) ?
+					val[0] :
+					val;
+
+
+				/* ---------------------------------------------
+				 * NORMAL FIELDS
+				 *
+				 * title
+				 * from
+				 * to
+				 * product
+				 * batch
+				 * --------------------------------------------- */
+
+				if (cash('#' + key).length) {
+
+					cash('#' + key)
+						.addClass('border-theme-6');
+
+					cash('#error-' + key)
+						.html(message);
+
+					continue;
+				}
+
+
+				/* ---------------------------------------------
+				 * CODE FIELDS
+				 *
+				 * from_codes.0
+				 * to_codes.0
+				 * from_codes.1
+				 * to_codes.1
+				 * --------------------------------------------- */
+
+				let codeMatch = key.match(
+					/^(from_codes|to_codes)\.(\d+)$/
+				);
+
+				if (codeMatch) {
+
+					let field = codeMatch[1];
+					let index = parseInt(codeMatch[2]);
+
+					let row = cash('.code-wrapper').eq(index);
+
+					if (!row.length) {
+						continue;
+					}
+
+
+					if (field === 'from_codes') {
+
+						let input = row.find(
+							'input[name="from_codes[]"]'
+						);
+
+						input.addClass('border-theme-6');
+
+						input
+							.next('.login__input-error')
+							.html(message);
+					}
+
+
+					if (field === 'to_codes') {
+
+						let input = row.find(
+							'input[name="to_codes[]"]'
+						);
+
+						input.addClass('border-theme-6');
+
+						input
+							.next('.login__input-error')
+							.html(message);
+					}
+
+					continue;
+				}
+
+
+				/* ---------------------------------------------
+				 * REWARD FIELDS
+				 *
+				 * types.0
+				 * points.0
+				 * items.0
+				 * --------------------------------------------- */
+
+				let rewardMatch = key.match(
+					/^(types|points|items)\.(\d+)$/
+				);
+
+				if (rewardMatch) {
+
+					let field = rewardMatch[1];
+					let index = parseInt(rewardMatch[2]);
+
+					let row = cash('.reward-wrapper').eq(index);
+
+					if (!row.length) {
+						continue;
+					}
+
+
+					let input = row.find(
+						`[name="${field}[]"]`
+					);
+
+					input.addClass('border-theme-6');
+
+					input
+						.next('.login__input-error')
+						.html(message);
+				}
 			}
-		})
-
-		cash('.add-more-rewards').on('click', function(e) {
-			e.preventDefault()
-			addRewards()
-
-		if(cash('.reward-wrapper').length>1){
-				cash('.remove-rewards').show('slow')
-			}
-		})
-
-		cash('.remove-rewards').on('click', function(e) {
-			e.preventDefault()
-			removePrizes()
-
-		if(cash('.reward-wrapper').length<2){
-				cash('.remove-rewards').hide('slow')
-			}
-		})
-
-		async function addCodes(){
-			var length = cash('.code-wrapper').length
-			cash('.codes-area').append('<div class="grid grid-cols-12 code-wrapper">'+
-				'<div class="input-form col-span-12 lg:col-span-6 px-2 py-1 mt-2">'+
-				'<label class="form-label w-full flex flex-col sm:flex-row">'+
-				'From Code'+
-				'</label>'+
-				'<input type="text" name="from_codes[]" class="form-control form__input">'+
-				'<div id="error-from_codes.'+length+'" class="login__input-error w-5/6 text-theme-6"></div>'+
-				'</div>'+
-				'<div class="input-form col-span-12 lg:col-span-6 px-2 py-1 mt-2">'+
-				'<label class="form-label w-full flex flex-col sm:flex-row">'+
-				'To Code'+
-				'</label>'+
-				'<input type="text" name="to_codes[]" class="form-control form__input">'+
-				'<div id="error-to_codes.'+length+'" class="login__input-error w-5/6 text-theme-6"></div>'+
-				'</div>'+
-				'</div>');
 		}
 
-		async function addRewards(){
-		cash('.rewards-area').append('<div class="grid grid-cols-12 reward-wrapper">'+
-				'<div class="input-form col-span-12 lg:col-span-4 px-2 py-1 mt-2">'+
-				'<label class="form-label w-full flex flex-col sm:flex-row">'+
-				'Type'+
-				'</label>'+
-				'<select name="types[]" class="form-control form__input" required>'+
-				'<option value="amount">Amount</option>'+
-				'<option value="product">Product</option>'+
-				'</select>'+
-				'</div>'+
-				'<div class="input-form col-span-12 lg:col-span-4 px-2 py-1 mt-2">'+
-				'<label class="form-label w-full flex flex-col sm:flex-row">'+
-				'Points'+
-				'</label>'+
-				'<input type="text" name="points[]" class="form-control form__input" required>'+
-				'</div>'+
-				'<div class="input-form col-span-12 lg:col-span-4 px-2 py-1 mt-2">'+
-				'<label class="form-label w-full flex flex-col sm:flex-row">'+
-				'Value/Item'+
-				'</label>'+
-				'<input type="text" name="items[]" class="form-control form__input" required>'+
-				'</div>'+
-				'</div>');
+
+		/* =====================================================
+		 * CLEAR ERROR WHEN USER EDITS FIELD
+		 * ===================================================== */
+
+		cash(document).on(
+			'input change',
+			'.form__input',
+			function() {
+
+				clearFieldError(this);
+			}
+		);
+
+
+		/* =====================================================
+		 * ADD
+		 * ===================================================== */
+
+		async function add() {
+
+			/* ---------------------------------------------
+			 * Clear old errors
+			 * --------------------------------------------- */
+
+			cash('#add-form')
+				.find('.form__input')
+				.removeClass('border-theme-6');
+
+			cash('#add-form')
+				.find('.login__input-error')
+				.html('');
+
+
+			/* ---------------------------------------------
+			 * Client-side date validation
+			 * --------------------------------------------- */
+
+			let today = getToday();
+
+			let fromDate = cash('#from').val();
+			let toDate = cash('#to').val();
+
+			let valid = true;
+
+
+			// From date
+			if (!fromDate) {
+
+				cash('#from')
+					.addClass('border-theme-6');
+
+				cash('#error-from').html(
+					'From date is required.'
+				);
+
+				valid = false;
+
+			} else if (fromDate < today) {
+
+				cash('#from')
+					.addClass('border-theme-6');
+
+				cash('#error-from').html(
+					'From date must be today or a future date.'
+				);
+
+				valid = false;
+			}
+
+
+			// To date
+			if (!toDate) {
+
+				cash('#to')
+					.addClass('border-theme-6');
+
+				cash('#error-to').html(
+					'To date is required.'
+				);
+
+				valid = false;
+
+			} else if (fromDate && toDate < fromDate) {
+
+				cash('#to')
+					.addClass('border-theme-6');
+
+				cash('#error-to').html(
+					'To date must be the same as or after the From date.'
+				);
+
+				valid = false;
+			}
+
+
+			// Stop if date validation fails
+			if (!valid) {
+				return;
+			}
+
+
+			/* ---------------------------------------------
+			 * Form Data
+			 * --------------------------------------------- */
+
+			var formData = new FormData(
+				document.querySelector('#add-form')
+			);
+
+
+			/* ---------------------------------------------
+			 * Loading
+			 * --------------------------------------------- */
+
+			cash('#btn-add')
+				.html(
+					'<i data-loading-icon="oval" data-color="white" class="w-5 h-5 mx-auto"></i>'
+				)
+				.svgLoader();
+
+			cash('#btn-add')
+				.attr('disabled', 'true');
+
+
+			/* ---------------------------------------------
+			 * Submit
+			 * --------------------------------------------- */
+
+			axios.post(
+					'{{ url("/vendor/rewards/create") }}',
+					formData
+				)
+				.then(res => {
+
+					showNotification(
+						'success',
+						'Success !',
+						res.data.message
+					);
+
+					setTimeout(() => {
+
+						window.location.href =
+							'{{ url("/vendor/rewards") }}';
+
+					}, 1000);
+				})
+				.catch(err => {
+
+					console.log(
+						'Server response:',
+						err.response
+					);
+
+
+					/* -----------------------------------------
+					 * Restore button
+					 * ----------------------------------------- */
+
+					cash('#btn-add')
+						.html('Add Scheme');
+
+					cash('#btn-add')
+						.removeAttr('disabled');
+
+
+					/* -----------------------------------------
+					 * Notification
+					 * ----------------------------------------- */
+
+					if (
+						err.response &&
+						err.response.data &&
+						err.response.data.message
+					) {
+
+						showNotification(
+							'error',
+							'Error !',
+							err.response.data.message
+						);
+					}
+
+
+					/* -----------------------------------------
+					 * Laravel validation errors
+					 * ----------------------------------------- */
+
+					if (
+						err.response &&
+						err.response.data &&
+						err.response.data.errors
+					) {
+
+						showValidationErrors(
+							err.response.data.errors
+						);
+					}
+				});
 		}
 
-		async function removeCodes(){
-			cash('.code-wrapper').last().remove()	
+
+		/* =====================================================
+		 * FORM SUBMIT
+		 * ===================================================== */
+
+		cash('#add-form').on(
+			'submit',
+			function(e) {
+
+				e.preventDefault();
+
+				add();
+			}
+		);
+
+
+		/* =====================================================
+		 * DOCUMENT READY
+		 * ===================================================== */
+
+		cash(document).ready(function() {
+
+			setupDateValidation();
+
+			addCodes();
+
+			addRewards();
+		});
+
+
+		/* =====================================================
+		 * ADD MORE CODES
+		 * ===================================================== */
+
+		cash('.add-more-codes').on(
+			'click',
+			function(e) {
+
+				e.preventDefault();
+
+				addCodes();
+
+				if (
+					cash('.code-wrapper').length > 1
+				) {
+
+					cash('.remove-codes')
+						.show('slow');
+				}
+			}
+		);
+
+
+		/* =====================================================
+		 * REMOVE CODES
+		 * ===================================================== */
+
+		cash('.remove-codes').on(
+			'click',
+			function(e) {
+
+				e.preventDefault();
+
+				removeCodes();
+
+				if (
+					cash('.code-wrapper').length < 2
+				) {
+
+					cash('.remove-codes')
+						.hide('slow');
+				}
+			}
+		);
+
+
+		/* =====================================================
+		 * ADD MORE REWARDS
+		 * ===================================================== */
+
+		cash('.add-more-rewards').on(
+			'click',
+			function(e) {
+
+				e.preventDefault();
+
+				addRewards();
+
+				if (
+					cash('.reward-wrapper').length > 1
+				) {
+
+					cash('.remove-rewards')
+						.show('slow');
+				}
+			}
+		);
+
+
+		/* =====================================================
+		 * REMOVE REWARDS
+		 * ===================================================== */
+
+		cash('.remove-rewards').on(
+			'click',
+			function(e) {
+
+				e.preventDefault();
+
+				removePrizes();
+
+				if (
+					cash('.reward-wrapper').length < 2
+				) {
+
+					cash('.remove-rewards')
+						.hide('slow');
+				}
+			}
+		);
+
+
+		/* =====================================================
+		 * ADD CODE ROW
+		 * ===================================================== */
+
+		async function addCodes() {
+
+			let length =
+				cash('.code-wrapper').length;
+
+
+			cash('.codes-area').append(
+
+				'<div class="grid grid-cols-12 code-wrapper">' +
+
+				'<div class="input-form col-span-12 lg:col-span-6 px-2 py-1 mt-2">' +
+
+				'<label class="form-label w-full flex flex-col sm:flex-row">' +
+				'From Code' +
+				'</label>' +
+
+				'<input ' +
+				'type="text" ' +
+				'name="from_codes[]" ' +
+				'class="form-control form__input">' +
+
+				'<div class="login__input-error w-5/6 text-theme-6"></div>' +
+
+				'</div>' +
+
+
+				'<div class="input-form col-span-12 lg:col-span-6 px-2 py-1 mt-2">' +
+
+				'<label class="form-label w-full flex flex-col sm:flex-row">' +
+				'To Code' +
+				'</label>' +
+
+				'<input ' +
+				'type="text" ' +
+				'name="to_codes[]" ' +
+				'class="form-control form__input">' +
+
+				'<div class="login__input-error w-5/6 text-theme-6"></div>' +
+
+				'</div>' +
+
+				'</div>'
+			);
 		}
 
-		async function removePrizes(){
-		cash('.reward-wrapper').last().remove()	
+
+		/* =====================================================
+		 * ADD REWARD ROW
+		 * ===================================================== */
+
+		async function addRewards() {
+
+			cash('.rewards-area').append(
+
+				'<div class="grid grid-cols-12 reward-wrapper">' +
+
+				'<div class="input-form col-span-12 lg:col-span-4 px-2 py-1 mt-2">' +
+
+				'<label class="form-label w-full flex flex-col sm:flex-row">' +
+				'Type' +
+				'</label>' +
+
+				'<select ' +
+				'name="types[]" ' +
+				'class="form-control form__input" ' +
+				'required>' +
+
+				'<option value="amount">' +
+				'Amount' +
+				'</option>' +
+
+				'<option value="product">' +
+				'Product' +
+				'</option>' +
+
+				'</select>' +
+
+				'<div class="login__input-error w-5/6 text-theme-6"></div>' +
+
+				'</div>' +
+
+
+				'<div class="input-form col-span-12 lg:col-span-4 px-2 py-1 mt-2">' +
+
+				'<label class="form-label w-full flex flex-col sm:flex-row">' +
+				'Points' +
+				'</label>' +
+
+				'<input ' +
+				'type="text" ' +
+				'name="points[]" ' +
+				'class="form-control form__input" ' +
+				'required>' +
+
+				'<div class="login__input-error w-5/6 text-theme-6"></div>' +
+
+				'</div>' +
+
+
+				'<div class="input-form col-span-12 lg:col-span-4 px-2 py-1 mt-2">' +
+
+				'<label class="form-label w-full flex flex-col sm:flex-row">' +
+				'Value/Item' +
+				'</label>' +
+
+				'<input ' +
+				'type="text" ' +
+				'name="items[]" ' +
+				'class="form-control form__input" ' +
+				'required>' +
+
+				'<div class="login__input-error w-5/6 text-theme-6"></div>' +
+
+				'</div>' +
+
+				'</div>'
+			);
 		}
+
+
+		/* =====================================================
+		 * REMOVE CODE
+		 * ===================================================== */
+
+		async function removeCodes() {
+
+			cash('.code-wrapper')
+				.last()
+				.remove();
+		}
+
+
+		/* =====================================================
+		 * REMOVE REWARD
+		 * ===================================================== */
+
+		async function removePrizes() {
+
+			cash('.reward-wrapper')
+				.last()
+				.remove();
+		}
+
+
+		/* =====================================================
+		 * FETCH BATCHES
+		 * ===================================================== */
 
 		async function fetchBatches() {
 
-			let product_id = cash('#product').val()
+			let product_id =
+				cash('#product').val();
 
 			let formData = {
-				product_id
-			}
+				product_id: product_id
+			};
 
-			axios.post('{{ url('/vendor/getbatches') }}', formData).then(res => {
-				cash('#batch').html(res.data)
-			}).catch(err => {
-				showNotification('error','Error !',err.response.data.message)
-			})
+
+			axios.post(
+					'{{ url("/vendor/getbatches") }}',
+					formData
+				)
+				.then(res => {
+
+					cash('#batch')
+						.html(res.data);
+				})
+				.catch(err => {
+
+					showNotification(
+						'error',
+						'Error !',
+						err.response.data.message
+					);
+				});
 		}
 
-		cash('#product').on('change', function() {
-			fetchBatches()
-		})
 
-		cash('#product_selection_type').on('change', function() {
-			switchTypes()
-		})
+		/* =====================================================
+		 * PRODUCT CHANGE
+		 * ===================================================== */
+
+		cash('#product').on(
+			'change',
+			function() {
+
+				clearFieldError('#product');
+
+				fetchBatches();
+			}
+		);
+
+
+		/* =====================================================
+		 * PRODUCT SELECTION TYPE
+		 * ===================================================== */
+
+		cash('#product_selection_type').on(
+			'change',
+			function() {
+
+				clearFieldError(
+					'#product_selection_type'
+				);
+
+				switchTypes();
+			}
+		);
+
+
+		/* =====================================================
+		 * SWITCH TYPES
+		 * ===================================================== */
 
 		async function switchTypes() {
 
-			let type = cash('#product_selection_type').val()
-			
-			if(type=='batch'){
+			let type =
+				cash('#product_selection_type').val();
+
+
+			if (type == 'batch') {
+
 				cash('.batch-div').show();
+
 				cash('.product-div').show();
+
 				cash('.codes-div').hide();
 			}
 
-			if(type=='product'){
+
+			if (type == 'product') {
+
 				cash('.batch-div').hide();
+
 				cash('.product-div').show();
+
 				cash('.codes-div').hide();
 			}
 
-			if(type=='chunk'){
+
+			if (type == 'chunk') {
+
 				cash('.batch-div').hide();
+
 				cash('.product-div').hide();
+
 				cash('.codes-div').show();
 			}
-			
 		}
-	})
+
+	});
 </script>
+
 @endsection

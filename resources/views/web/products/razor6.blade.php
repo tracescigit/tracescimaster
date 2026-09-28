@@ -1703,7 +1703,7 @@
 
 
                      <div class="rev-slider-btn text-center" style="margin-top: 20px;">
-                         <a href="#">Watch in Action</a>
+                         <a href="https://www.youtube.com/watch?v=-j6LBo974-E">Watch in Action</a>
                          <a href="{{ asset('Brochure/Tracesci brochure_2025_OP.pdf') }}" download>
                              Download Brochure
                          </a>

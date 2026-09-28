@@ -27,7 +27,7 @@ class UserCreateRequest extends FormRequest
 
         $rules = [
             'email'     => 'required|email|unique:users|regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix|max:100',
-            'mobile'    => 'required|unique:users,phone',
+            'mobile' => 'required|digits_between:10,12|unique:users,phone',
             'full_name' => 'required',
             'role'      => 'required',
         ];

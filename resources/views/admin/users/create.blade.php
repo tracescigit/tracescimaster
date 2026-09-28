@@ -44,7 +44,9 @@
 									@endif
 								</select>
 
-								<input id="mobile" type="text" name="mobile" class="form-control form__input col-span-10" placeholder="{{__('common.enter')}}  {{__('common.mobile')}}">
+								<input id="mobile" type="text" name="mobile" class="form-control form__input col-span-10" placeholder="{{__('common.enter')}}  {{__('common.mobile')}}" maxlength="12"
+									inputmode="numeric"
+									pattern="[0-9]{10}">
 								<div id="error-mobile" class="login__input-error text-theme-6 col-span-12"></div>
 							</div>
 						</div>
@@ -102,7 +104,7 @@
 
 						@foreach ($modules as $key=>$module)
 
-						@if ($module->slug!='categories' && $module->slug!='profile' && $module->slug!='users')						
+						@if ($module->slug!='categories' && $module->slug!='profile' && $module->slug!='users')
 						<div class="input-form col-span-3 px-2 py-1">
 							<label>{{$key+1}}. {{__($module->name)}}</label>
 						</div>
@@ -140,12 +142,12 @@
 		</form>
 	</div>
 	<x-notification></x-notification>
-</div> 
+</div>
 @endsection
 
 @section('script')
 <script>
-	cash(function () {
+	cash(function() {
 		async function add() {
 
 			cash('#add-form').find('.form__input').removeClass('border-theme-6')
@@ -156,20 +158,23 @@
 			cash('#btn-add').html('<i data-loading-icon="oval" data-color="white" class="w-5 h-5 mx-auto"></i>').svgLoader()
 			cash('#btn-add').attr('disabled', 'true');
 
-			axios.post('{{ url('/admin/users/create') }}', formData).then(res => {
-				
-				showNotification('success','{{__('common.success')}} !',res.data.message)
-				setTimeout(()=>{
-					window.location.href = '{{ url('/admin/users') }}'
-				},2000)
+			axios.post('{{ url(' / admin / users / create ') }}', formData).then(res => {
+
+				showNotification('success', '{{__('
+					common.success ')}} !', res.data.message)
+				setTimeout(() => {
+					window.location.href = '{{ url(' / admin / users ') }}'
+				}, 2000)
 
 			}).catch(err => {
-				showNotification('error','{{__('common.error')}} !',err.response.data.message)
-				cash('#btn-add').html('{{__('common.submit')}}')   
-				cash('#btn-add').removeAttr('disabled');                
+				showNotification('error', '{{__('
+					common.error ')}} !', err.response.data.message)
+				cash('#btn-add').html('{{__('
+					common.submit ')}}')
+				cash('#btn-add').removeAttr('disabled');
 
 				if (err.response.data.errors) {
-					for (const [key, val] of Object.entries(err.response.data.errors)){
+					for (const [key, val] of Object.entries(err.response.data.errors)) {
 						cash(`#${key}`).addClass('border-theme-6')
 						cash(`#error-${key}`).html(val)
 					}
@@ -184,12 +189,12 @@
 		})
 	})
 
-	cash('#role').on('change',function(){
+	cash('#role').on('change', function() {
 		var role = cash('#role').val()
-		
-		if(role=="Province Governor" || role=="DGDA Inspector"){
+
+		if (role == "Province Governor" || role == "DGDA Inspector") {
 			cash("#province-div").show();
-		}else{
+		} else {
 			cash("#province-div").hide();
 		}
 	});

@@ -1231,7 +1231,7 @@
                     <h2>Hyperloop</h2>
                     <p>Slit. Inspect. Print. All in one loop.</p>
                     <div class="rev-slider-btn text-center" style="margin-top: 20px;">
-                        <a href="#">Watch in Action</a>
+                        <a href="https://www.youtube.com/watch?v=GpZ6Zsl8aPI">Watch in Action</a>
                         <a href="{{ asset('Brochure/Hyperloop Brochure files_OP.pdf') }}" download>
                             Download Brochure
                         </a>

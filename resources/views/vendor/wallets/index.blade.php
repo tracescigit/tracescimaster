@@ -5,6 +5,7 @@
 @endsection
 
 @section('subcontent')
+
 <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
 	<h2 class="text-lg font-medium mr-auto">Reward Wallets</h2>
 </div>
@@ -76,7 +77,7 @@
 
 		@section('global_script')
 		<script>
-			var tabulatorUrl =  '{{ route('vendor-wallets') }}';
+			var tabulatorUrl =  '{{ route("vendor-wallets") }}';
 			var tabulatorColumns = [
 			{	
 				formatter: "responsiveCollapse",

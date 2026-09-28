@@ -104,7 +104,7 @@
 
 @section('global_script')
 <script>
-	var tabulatorUrl =  '{{ route('vendor-codes') }}';
+	var tabulatorUrl =  '{{ route("vendor-codes") }}';
 	var tabulatorColumns = [
 	{	
 		formatter: "responsiveCollapse",
@@ -287,7 +287,7 @@
 			cash('#action-button').html('<i data-loading-icon="oval" data-color="white" class="w-5 h-5 mx-auto"></i>').svgLoader()
 			// await helper.delay(500)
 
-			axios.post('{{ url('/vendor/codes/action') }}', formData).then(res => {
+			axios.post('{{ url("/vendor/codes/action") }}', formData).then(res => {
 				// cash('#action-button').attr('disabled', 'true');
 				showNotification('success','Success !',res.data.message)
 				cash('#action-button').html('Submit')
@@ -296,11 +296,11 @@
 
 				if(action!='export'){
 					setTimeout(()=>{
-						window.location.href = '{{ url('/vendor/codes') }}'
+						window.location.href = '{{ url("/vendor/codes") }}'
 					},1000)
 				}else{
 					const method = 'GET';
-					const url = '{{ url('/vendor/codes/bulkexport') }}';
+					const url = '{{ url("/vendor/codes/bulkexport") }}';
 
 					axios.request({
 						url,

@@ -17,13 +17,13 @@ class BulkController extends Controller
 {
     public function index()
     {
-        $products = Product::where('user_id',Auth::id())->get();
-        return view('vendor.codes.bulk_upload')->with('products',$products);
+        $products = Product::where('user_id', Auth::id())->get();
+        return view('vendor.codes.bulk_upload')->with('products', $products);
     }
 
     public function store(BulkCodeUploadRequest $request)
     {
-        try{
+        try {
             ini_set('max_execution_time', 6000);
 
             $input = $request->all();
@@ -37,63 +37,88 @@ class BulkController extends Controller
                 'total_rows'  => $count
             ];
 
-            if($count>getAvailableCredits(Auth::id())){
-                return response(['status'=>'failed','message'=>'You do not have sufficient credits to upload data. Your file has '.$count.' code data but you only have '.getAvailableCredits(Auth::id()).' credits to use.'],400);
+            if ($count > getAvailableCredits(Auth::id())) {
+                return response(['status' => 'failed', 'message' => 'You do not have sufficient credits to upload data. Your file has ' . $count . ' code data but you only have ' . getAvailableCredits(Auth::id()) . ' credits to use.'], 400);
             }
 
             $file   = $request->file('file')->store('import');
             $import = Excel::import(new CodeImport($data), $file);
-            return response(['status'=>'success','message'=>'Import in queue, please check progess in the header.'],200);
-        }
-        catch(Exception $e){
-            return response(['errors'=>['file'=>$e->errors()]],400);
+            return response(['status' => 'success', 'message' => 'Import in queue, please check progess in the header.'], 200);
+        } catch (Exception $e) {
+            return response(['errors' => ['file' => $e->errors()]], 400);
         }
     }
 
     public function getRows($file)
     {
         $fileExtension     = pathinfo($file, PATHINFO_EXTENSION);
-        $temporaryFileFactory=new \Maatwebsite\Excel\Files\TemporaryFileFactory(
-            config('excel.temporary_files.local_path', 
-                config('excel.exports.temp_path', 
-                    storage_path('framework/laravel-excel'))
+        $temporaryFileFactory = new \Maatwebsite\Excel\Files\TemporaryFileFactory(
+            config(
+                'excel.temporary_files.local_path',
+                config(
+                    'excel.exports.temp_path',
+                    storage_path('framework/laravel-excel')
+                )
             ),
             config('excel.temporary_files.remote_disk')
         );
 
         $temporaryFile = $temporaryFileFactory->make($fileExtension);
-        $currentFile = $temporaryFile->copyFrom($file,null);            
-        $reader = \Maatwebsite\Excel\Factories\ReaderFactory::make(null,$currentFile);
+        $currentFile = $temporaryFile->copyFrom($file, null);
+        $reader = \Maatwebsite\Excel\Factories\ReaderFactory::make(null, $currentFile);
         $info = $reader->listWorksheetInfo($currentFile->getLocalPath());
         $totalRows = 0;
         foreach ($info as $sheet) {
-            $totalRows+= $sheet['totalRows'];
+            $totalRows += $sheet['totalRows'];
         }
         $currentFile->delete();
 
-        return $totalRows-1;
+        return $totalRows - 1;
     }
 
-    public function assign(CodeBulkAssignRequest $request) 
+    public function assign(CodeBulkAssignRequest $request)
     {
         $input = $request->all();
-        $check_serial = Code::where('code_data',$input['from_serial_no'])->where('status','0')->where('user_id',Auth::id())->first();
-        $batch = Batch::where('code',$input['batch'])->first();
+        $serial = Code::where('code_data', $input['from_serial_no'])->first();
 
-        if (!$check_serial) {
-            return response(['errors'=>['from_serial_no'=>'Code is already associated and active. Please deactivate and then assign.']],404);
+        if (!$serial) {
+            return response([
+                'errors' => [
+                    'from_serial_no' => 'Serial number does not exist in the system.'
+                ]
+            ], 404);
         }
-        
+
+        if ($serial->status != '0') {
+            return response([
+                'errors' => [
+                    'from_serial_no' => 'Code is already active. Please deactivate it before assigning.'
+                ]
+            ], 404);
+        }
+
+        if ($serial->user_id != Auth::id()) {
+            return response([
+                'errors' => [
+                    'from_serial_no' => 'This serial number is not associated with your account.'
+                ]
+            ], 404);
+        }
+
+        $check_serial = $serial;
+
+        $batch = Batch::where('code', $input['batch'])->first();
+
         $input['from_id'] = $check_serial->id;
-        
-        $codes = Code::orderBy('id','ASC')->where('user_id',Auth::id())->where('status','0')->where('id',$input['direction'],$check_serial->id)->limit($input['quantity']);
-        
+
+        $codes = Code::orderBy('id', 'ASC')->where('user_id', Auth::id())->where('status', '0')->where('id', $input['direction'], $check_serial->id)->limit($input['quantity']);
+
         $codes->update([
             'product_id'  => $input['product'],
             'batch'       => $input['batch'],
             'batch_id'    => $batch->id
         ]);
 
-        return response(['status'=>'success','message'=>'Product and Batch assigned successfully.'],200);
+        return response(['status' => 'success', 'message' => 'Product and Batch assigned successfully.'], 200);
     }
 }

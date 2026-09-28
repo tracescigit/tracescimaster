@@ -60,7 +60,7 @@
 		<div class="tab-content">
 			<div  class="tab-pane active" role="tabpanel" aria-labelledby="ticket-tab">
 				<div class="flex mt-5">
-					<button  onclick="window.location.href='{{url('vendor/codes')}}'" class="btn w-32 border-gray-400 dark:border-dark-5 text-gray-600 dark:text-gray-300">Back to codes</button>
+					<button  onclick="window.location.href='{{url("vendor/codes")}}'" class="btn w-32 border-gray-400 dark:border-dark-5 text-gray-600 dark:text-gray-300">Back to codes</button>
 					<button type="button" class="btn btn-primary w-32 shadow-md ml-auto" id="submit">Upload data</button>
 				</div>
 			</div>
@@ -85,14 +85,14 @@
 			cash('#submit').html('<i data-loading-icon="oval" data-color="white" class="w-5 h-5 mx-auto"></i>').svgLoader()
 			cash('#submit').attr('disabled', 'true');
 
-			axios.post('{{ url('/vendor/bulk-upload') }}', formData).then(res => {
+			axios.post('{{ url("/vendor/bulk-upload") }}', formData).then(res => {
 				showNotification('success','Success !',res.data.message)
 				cash('#submit').html('Upload data')
 				cash('#file').val('')
 				cash('#submit').removeAttr('disabled');
 
 				setTimeout(function(){
-					window.location.href = '{{ url('vendor/bulk-upload') }}';
+					window.location.href = '{{ url("vendor/bulk-upload") }}';
 				},2000);
 			}).catch(err => {
 				showNotification('error','Error !',err.response.data.message)
@@ -121,7 +121,7 @@
 				product_id
 			}
 
-			axios.post('{{ url('/vendor/getbatches') }}', formData).then(res => {
+			axios.post('{{ url("/vendor/getbatches")}}', formData).then(res => {
 				cash('#batch').html(res.data)
 			}).catch(err => {
 				showNotification('error','Error !',err.response.data.message)
@@ -141,14 +141,14 @@
 
 			cash('#assign-button').html('<i data-loading-icon="oval" data-color="white" class="w-5 h-5 mx-auto"></i>').svgLoader()
 
-			axios.post('{{ url('/vendor/bulk-upload-assign') }}', formData).then(res => {
+			axios.post('{{ url("/vendor/bulk-upload-assign") }}', formData).then(res => {
 				cash('#assign-button').attr('disabled', 'true');
 				showNotification('success','Success !',res.data.message)
 				cash('#assign-button').html('Submit')
 				cash('#assign-modal').modal('hide')
 				
 				setTimeout(()=>{
-					window.location.href = '{{ url('/vendor/bulk-upload') }}'
+					window.location.href = '{{ url("/vendor/bulk-upload") }}'
 				},1000)
 
 			}).catch(err => {

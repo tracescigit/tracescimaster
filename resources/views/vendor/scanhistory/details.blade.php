@@ -53,10 +53,10 @@ $long=null;
 			</div>
 			<div class="p-5">
 				<div class="grid grid-cols-12">
-					@if($location && $location->lat && $location->long)
+					@if($location && $location->lat && ($location->lng || $location->long))
 					@php
 					$lat = $location->lat;
-					$long = $location->long; 
+					$long = $location->long ?? $location->lng; 
 					@endphp
 					<div class="col-span-12  lg:col-span-12 px-2 py-1 mt-2">
 						<div id="map" style="height:400px;"></div>

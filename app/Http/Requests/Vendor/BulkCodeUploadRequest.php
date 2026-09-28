@@ -24,7 +24,7 @@ class BulkCodeUploadRequest extends FormRequest
     public function rules()
     {
         return [
-            'file'=>'required|mimes:csv,txt|max:5000'
+            'file' => 'required|mimes:csv,txt,xls,xlsx|max:5000'
         ];
     }
 }
