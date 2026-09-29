@@ -88,7 +88,7 @@
 
 @section('global_script')
 <script>
-	var tabulatorUrl =  '{{ route('vendor-products') }}';
+	var tabulatorUrl =  '{{ route("vendor-products") }}';
 	var tabulatorColumns = [
 	{	
 		formatter: "responsiveCollapse",
@@ -113,12 +113,6 @@
 			return cell.getData().actions;
 		}
 	},{
-<<<<<<< HEAD
-		title: "PRODUCT NAME",
-		minWidth: 200,
-		responsive: 0,
-		field: "product_name",
-=======
 	title: "PRODUCT NAME",
 	minWidth: 300,
 	responsive: 0,
@@ -139,13 +133,11 @@
 		title: "PRICE",
 		minWidth: 200,
 		field: "price",
->>>>>>> 817b3e8b5b8d5789f5bbcbe1646b976c90a71c16
 		hozAlign: "center",
 		vertAlign: "middle",
 		print: false,
 		download: false,
 		formatter: function formatter(cell, formatterParams) {
-<<<<<<< HEAD
 			return "<div>\n                            <div class=\"font-medium whitespace-nowrap\">".concat(cell.getData().product_name, "</div>");
 		}
 	}, 
@@ -162,11 +154,6 @@
 	// 	}
 	// }
 	,{
-=======
-			return "<div>\n                            <div class=\"font-medium whitespace-nowrap\">".concat(cell.getData().price, "</div>\n                            ");
-		}
-	},  {
->>>>>>> 817b3e8b5b8d5789f5bbcbe1646b976c90a71c16
 		title: "CREATED ON",
 		minWidth: 200,
 		field: "created_at",

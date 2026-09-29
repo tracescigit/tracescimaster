@@ -110,7 +110,7 @@
 			cash('#submit').html('<i data-loading-icon="oval" data-color="white" class="w-5 h-5 mx-auto"></i>').svgLoader()
 			cash('#submit').attr('disabled', 'true');
 
-			axios.post('{{ url('/vendor/codes/create') }}', formData).then(res => {
+			axios.post('{{ url("/vendor/codes/create") }}', formData).then(res => {
 				showNotification('success','Success !',res.data.message)
 				cash('#submit').html('Upload data')
 				cash('#product').val('')
@@ -119,7 +119,7 @@
 				cash('#submit').removeAttr('disabled');
 
 				setTimeout(function(){
-					window.location.href = '{{ url('vendor/codes') }}';
+					window.location.href = '{{ url("vendor/codes") }}';
 				},2000);
 			}).catch(err => {
 				showNotification('error','Error !',err.response.data.message)
@@ -148,7 +148,7 @@
 				product_id
 			}
 
-			axios.post('{{ url('/vendor/getbatches') }}', formData).then(res => {
+			axios.post('{{ url("/vendor/getbatches") }}', formData).then(res => {
 				cash('#batch').html(res.data)
 			}).catch(err => {
 				showNotification('error','Error !',err.response.data.message)

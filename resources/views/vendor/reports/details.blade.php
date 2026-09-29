@@ -144,14 +144,14 @@
 
 			axios.post('{{ url('/vendor/reports/assign/'.$report->id) }}', formData).then(res => {
 				cash('#submit').attr('disabled', 'true');
-				showNotification('success','{{__('common.success')}} !',res.data.message)
+				showNotification('success','{{__("common.success")}} !',res.data.message)
 				setTimeout(()=>{
-					window.location.href = '{{ url('/vendor/reports') }}'
+					window.location.href = '{{ url("/vendor/reports") }}'
 				},2000)
 
 			}).catch(err => {
-				showNotification('error','{{__('common.error')}} !',err.response.data.message)
-				cash('#submit').html('{{__('common.submit')}}')                   
+				showNotification('error','{{__("common.error")}} !',err.response.data.message)
+				cash('#submit').html('{{__("common.submit")}}')                   
 
 				if (err.response.data.errors) {
 					for (const [key, val] of Object.entries(err.response.data.errors)){

@@ -206,10 +206,10 @@
 						"order_id"        : order_id,
 					}
 
-					axios.post('{{ url('/vendor/invoice-transaction') }}', orderData).then(res => {
+					axios.post('{{ url("/vendor/invoice-transaction") }}', orderData).then(res => {
 						showNotification('success','Payment success !','You successfully have paid invoice.')
 						setTimeout(function(){
-							window.location.href = '{{ url('vendor/invoices') }}'
+							window.location.href = '{{ url("vendor/invoices") }}'
 						},1000)
 					}).catch(err => {
 						cash('#pay-now').html('Pay Now');
@@ -239,7 +239,7 @@
 	cash(function () {
 		async function remove() {
 
-			let url = '{{ url('vendor/invoice-remove') }}'
+			let url = '{{ url("vendor/invoice-remove") }}'
 			let plan_id = cash('#target').val()
 
 			if(!url){

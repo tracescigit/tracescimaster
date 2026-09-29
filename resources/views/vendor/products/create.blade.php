@@ -43,7 +43,7 @@
 							<div id="error-brand" class="login__input-error w-5/6 text-theme-6"></div>
 						</div>
 
-						
+
 						<div class="input-form col-span-6 lg:col-span-6 px-2 py-1 mt-2">
 							<label for="template" class="form-label w-full flex flex-col sm:flex-row">
 								Select Template
@@ -174,36 +174,58 @@
 
 			cash('#add-form').find('.form__input').removeClass('border-theme-6')
 			cash('#add-form').find('.login__input-error').html('')
+
 			var formData = new FormData(document.querySelector('#add-form'))
 
 			cash('#btn-add').attr('disabled', 'true');
 			cash('#btn-add').html('<i data-loading-icon="oval" data-color="white" class="w-5 h-5 mx-auto"></i>').svgLoader()
 
-			axios.post("{{ url('/vendor/products/create') }}", formData).then(res => {
-				showNotification('success', 'Success !', res.data.message)
-				setTimeout(() => {
-					window.location.href = "{{ url('/vendor/products')}}"
-				}, 1000)
+			axios.post("{{ url('/vendor/products/create') }}", formData)
+				.then(res => {
 
-			}).catch(err => {
-				cash('#btn-add').removeAttr('disabled');
-				showNotification('error', 'Error !', err.response.data.message)
-				cash('#btn-add').html('Add product')
+					showNotification(
+						'success',
+						'Success !',
+						message
+					)
 
-				if (err.response.data.errors) {
-					for (const [key, val] of Object.entries(err.response.data.errors)) {
-						cash(`#${key}`).addClass('border-theme-6')
-						cash(`#error-${key}`).html(val)
+					setTimeout(() => {
+						window.location.href = "{{ url('/vendor/products')}}"
+					}, 1000)
+
+				})
+				.catch(function(err) {
+
+					cash('#btn-add').removeAttr('disabled');
+					cash('#btn-add').html('Add product');
+
+					let message = 'Something went wrong. Please try again.';
+
+					if (err.response && err.response.data && err.response.data.message) {
+						message = err.response.data.message;
 					}
-				}
 
-			})
+					showNotification(
+						'error',
+						'Error!',
+						message
+					);
+
+					if (err.response && err.response.data && err.response.data.errors) {
+						for (const [key, val] of Object.entries(err.response.data.errors)) {
+							cash(`#${key}`).addClass('border-theme-6');
+							cash(`#error-${key}`).html(val);
+						}
+					}
+				});
+
+
 		}
 
 		cash('#add-form').on('submit', function(e) {
 			e.preventDefault();
 			add();
-		})
+		});
 	})
 </script>
 @endsection

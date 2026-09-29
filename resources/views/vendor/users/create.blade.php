@@ -177,18 +177,15 @@
 			cash('#btn-add').attr('disabled', 'true');
 
 
-			axios.post('{{ url(' / vendor / users / create ') }}', formData).then(res => {
-				showNotification('success', '{{__('
-					common.success ')}} !', res.data.message)
+			axios.post('{{ url("/vendor/users/create") }}', formData).then(res => {
+				showNotification('success', '{{__("common.success")}} !', res.data.message)
 				setTimeout(() => {
-					window.location.href = '{{ url(' / vendor / users ') }}'
+					window.location.href = '{{ url("/vendor/users") }}'
 				}, 2000)
 
 			}).catch(err => {
-				showNotification('error', '{{__('
-					common.error ')}} !', err.response.data.message)
-				cash('#btn-add').html('{{__('
-					common.submit ')}}')
+				showNotification('error', '{{__("common.error")}} !', err.response.data.message)
+				cash('#btn-add').html('{{__("common.submit")}}')
 				cash('#btn-add').removeAttr('disabled');
 
 				if (err.response.data.errors) {

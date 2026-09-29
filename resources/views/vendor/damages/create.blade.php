@@ -100,10 +100,10 @@
 		cash('#add-stamp').html('<i data-loading-icon="oval" data-color="white" class="w-5 h-5 mx-auto"></i>').svgLoader()
 		
 
-		axios.post('{{ url('/vendor/check-stamps') }}', formData).then(res => {
+		axios.post('{{ url("/vendor/check-stamps") }}', formData).then(res => {
 
 			if(stamps.includes(res.data.stamp)){
-				showNotification('error','{{__('common.error')}} !','Label is already added to this lot.')
+				showNotification('error','{{__("common.error")}} !','Label is already added to this lot.')
 				cash('#add-stamp').html('Add Label')
 				return false;
 			}
@@ -114,7 +114,7 @@
 			}
 
 		}).catch(err => {
-			showNotification('error','{{__('common.error')}} !',err.response.data.message)
+			showNotification('error','{{__("common.error")}} !',err.response.data.message)
 			cash('#add-stamp').html('Add Label')                   
 
 			if (err.response.data.errors) {
@@ -148,7 +148,7 @@
 			window.print();
 			document.body.innerHTML = originalContents;
 		}else{
-			showNotification('error','{{__('common.error')}} !','Please add some stamps before printing.')
+			showNotification('error','{{__("common.error")}} !','Please add some stamps before printing.')
 			return false;
 		}
 	}
@@ -162,20 +162,20 @@
 
 			cash('#submit').html('<i data-loading-icon="oval" data-color="white" class="w-5 h-5 mx-auto"></i>').svgLoader()
 
-			axios.post('{{ url('/vendor/lost-damage/create') }}', formData).then(res => {
-				showNotification('success','{{__('common.success')}} !',res.data.message)
+			axios.post('{{ url("/vendor/lost-damage/create") }}', formData).then(res => {
+				showNotification('success','{{__("common.success")}} !',res.data.message)
 				setTimeout(function(){
 					window.location.reload();
 				},1000)
 
 				
 			}).catch(err => {
-				showNotification('error','{{__('common.error')}} !',err.response.data.message)
+				showNotification('error','{{__("common.error")}} !',err.response.data.message)
 				cash('#submit').html('Submit Lot')
 			})
 
 		}else{
-			showNotification('error','{{__('common.error')}} !','Please add some stamps before printing.')
+			showNotification('error','{{__("common.error")}} !','Please add some stamps before printing.')
 			return false;
 		}
 	}

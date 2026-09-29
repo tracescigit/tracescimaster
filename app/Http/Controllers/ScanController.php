@@ -9,9 +9,8 @@ class ScanController extends Controller
 {
 	public function show(Request $request, $code)
 	{
-		$qr = Code::where('qr_code', $code)->first();
+		$qr = Code::where('qr_code', $code)->orWhere('code_data', $code)->first();
 		$product = $qr->getProduct;
-
 		$auth_required = true;
 		if ($qr->getProduct->pin_required == 1) {
 			$secret_code_check_required = true;
