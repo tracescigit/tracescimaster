@@ -134,15 +134,11 @@ $source = $location->source ?? 'gps';
 		const longitude = parseFloat('{{ $long }}');
 
 		const mapOptions = {
-			zoom: {
-				{
-					$source == 'ip' ? 12 : 16
-				}
-			},
+			zoom: {{ $source == 'ip' ? 12 : 16 }},
 			center: {
 				lat: latitude,
 				lng: longitude
-			},
+			}
 		};
 
 		map = new google.maps.Map(document.getElementById("map"), mapOptions);

@@ -17,7 +17,7 @@
 </div>
 <div class="grid grid-cols-12 gap-6 mt-5">
 	<div class="intro-y col-span-12 lg:col-span-12">
-		<form id="add-form">
+		<form id="update-form">
 			@csrf
 			<div class="intro-y box">
 				<div class="flex flex-col sm:flex-row items-center px-7 py-5 border-b border-gray-200 dark:border-dark-5">
@@ -81,7 +81,7 @@
 				</div>
 			</div>
 			<div class="input-form col-span-12 lg:col-span-12 py-1 mt-3">
-				<button type="submit" id="btn-add" class="btn btn-primary w-full xl:w-32 xl:mr-3 align-top">Edit Template</button>
+				<button type="submit" id="btn-update" class="btn btn-primary w-full xl:w-32 xl:mr-3 align-top">Edit Template</button>
 			</div>
 		</form>
 	</div>
@@ -103,7 +103,7 @@
 			cash('#btn-update').attr('disabled', 'true');
 
 
-			axios.post("{{ url('/vendor/products/'.encrypt($template->id).'/edit') }}", formData).then(res => {
+			axios.post("{{ url('/vendor/products_template/'.encrypt($template->id).'/update') }}", formData).then(res => {
 				showNotification('success', 'Success !', res.data.message)
 				setTimeout(() => {
 					window.location.href = "{{ url('/vendor/products_template') }}"
@@ -125,7 +125,7 @@
 			})
 		}
 
-		cash('#btn-add').on('submit', function(e) {
+		cash('#update-form').on('submit', function(e) {
 			e.preventDefault();
 			add();
 		})

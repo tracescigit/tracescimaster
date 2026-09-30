@@ -278,7 +278,7 @@ Route::group(['prefix' => 'vendor', 'middleware' => ['vendor', 'auth']], functio
     Route::get('/products_template/create', [App\Http\Controllers\Vendor\ProductTemplateController::class, 'create'])->name('vendor-create-products-template');
     Route::post('/products_template/create', [App\Http\Controllers\Vendor\ProductTemplateController::class, 'store']);
     Route::get('/products_template/{id}/edit', [App\Http\Controllers\Vendor\ProductTemplateController::class, 'edit'])->name('vendor-edit-products-template');
-    Route::post('/products_template/{id}/edit', [App\Http\Controllers\Vendor\ProductTemplateController::class, 'update']);
+    Route::post('/products_template/{id}/update', [App\Http\Controllers\Vendor\ProductTemplateController::class, 'update']);
     // Route::post('/products/{id}/destroy', [App\Http\Controllers\Vendor\ProductController::class, 'destroy']);
     //End Template product routes
     //Batch routes

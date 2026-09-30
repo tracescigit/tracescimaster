@@ -204,26 +204,70 @@
 @endsection
 @section('script')
 
+<!-- Leaflet CSS -->
+<link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+<!-- MapLibre CSS -->
+<link
+    rel="stylesheet"
+    href="https://unpkg.com/maplibre-gl@5.6.2/dist/maplibre-gl.css" />
+
+<!-- Leaflet JS -->
 <script
-    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-    crossorigin="">
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
 </script>
+
+<!-- MapLibre JS -->
+<script
+    src="https://unpkg.com/maplibre-gl@5.6.2/dist/maplibre-gl.js">
+</script>
+
+<!-- Leaflet ↔ MapLibre bridge -->
+<script
+    src="https://unpkg.com/@maplibre/maplibre-gl-leaflet@0.0.22/leaflet-maplibre-gl.js">
+</script>
+
+
+<style>
+    #tracesci-map {
+        width: 100%;
+        height: 500px;
+    }
+</style>
+
+
+<div id="tracesci-map"></div>
+
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
 
+        /*
+         * Create Leaflet map
+         */
         const map = L.map('tracesci-map', {
             scrollWheelZoom: false
         });
 
-        L.tileLayer(
-            'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-                attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
-                subdomains: 'abcd',
-                maxZoom: 20
-            }
-        ).addTo(map);
 
+        /*
+         * OpenFreeMap
+         *
+         * No API key required.
+         * No registration required.
+         *
+         * Liberty style
+         */
+        L.maplibreGL({
+            style: 'https://tiles.openfreemap.org/styles/liberty'
+        }).addTo(map);
+
+
+        /*
+         * Company locations
+         */
         const locations = [{
                 name: 'Tracesci Global Pvt Ltd - Gurugram',
                 lat: 28.430362,
@@ -234,7 +278,7 @@
                 name: 'Tracesci Global Pvt Ltd - Chennai',
                 lat: 13.0827,
                 lng: 80.2707,
-                address: '8B, "Chaitanya Exotica", 24 Venkatnarayana Road, T. Nagar, Chennai, Tamil Nadu, India'
+                address: '8B, Chaitanya Exotica, 24 Venkatnarayana Road, T. Nagar, Chennai, Tamil Nadu, India'
             },
             {
                 name: 'Tracesci Global Pvt Ltd - Mumbai',
@@ -244,6 +288,10 @@
             }
         ];
 
+
+        /*
+         * Add markers
+         */
         const markers = [];
 
         locations.forEach(function(location) {
@@ -253,30 +301,45 @@
                 location.lng
             ]).addTo(map);
 
+
+            /*
+             * Popup
+             */
             marker.bindPopup(`
-                <div style="min-width:220px;">
-                    <strong>
-                        ${location.name}
-                    </strong>
-                    <br>
-                    <span>
-                        ${location.address}
-                    </span>
-                </div>
-            `);
+            <div style="
+                min-width: 240px;
+                font-family: Arial, sans-serif;
+                line-height: 1.5;
+            ">
+                <strong style="font-size: 15px;">
+                    ${location.name}
+                </strong>
+
+                <br>
+
+                <span style="font-size: 13px;">
+                    ${location.address}
+                </span>
+            </div>
+        `);
+
 
             markers.push(marker);
         });
 
-        // Automatically position map to show all locations
+
+        /*
+         * Automatically fit map around all locations
+         */
         const group = L.featureGroup(markers);
 
         map.fitBounds(group.getBounds(), {
-            padding: [40, 40]
+            padding: [50, 50]
         });
 
     });
 </script>
+
 
 
 <!-- Your existing contact form JavaScript -->

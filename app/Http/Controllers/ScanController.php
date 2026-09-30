@@ -24,7 +24,7 @@ class ScanController extends Controller
 
 		$brand = $qr->getProduct->brand ?? 'TRACESCI';
 		$brand_logo = $qr->getProduct->logo ?? '';
-
+		
 
 		return view('web.scan.index')->with('code', $code)->with('auth_required', $auth_required)->with('brand', $brand)->with('brand_logo', $brand_logo)->with('secret_code_check_required', $secret_code_check_required);
 	}

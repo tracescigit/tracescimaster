@@ -183,15 +183,17 @@
 			axios.post("{{ url('/vendor/products/create') }}", formData)
 				.then(res => {
 
+					console.log(res.data);
+
 					showNotification(
 						'success',
-						'Success !',
-						message
-					)
+						'Success!',
+						res.data.message || 'Product created successfully.'
+					);
 
 					setTimeout(() => {
-						window.location.href = "{{ url('/vendor/products')}}"
-					}, 1000)
+						window.location.href = "{{ url('/vendor/products')}}";
+					}, 1000);
 
 				})
 				.catch(function(err) {
@@ -201,7 +203,10 @@
 
 					let message = 'Something went wrong. Please try again.';
 
-					if (err.response && err.response.data && err.response.data.message) {
+					if (err.response &&
+						err.response.data &&
+						err.response.data.message) {
+
 						message = err.response.data.message;
 					}
 
@@ -211,8 +216,13 @@
 						message
 					);
 
-					if (err.response && err.response.data && err.response.data.errors) {
-						for (const [key, val] of Object.entries(err.response.data.errors)) {
+					if (err.response &&
+						err.response.data &&
+						err.response.data.errors) {
+
+						for (const [key, val] of Object.entries(
+								err.response.data.errors
+							)) {
 							cash(`#${key}`).addClass('border-theme-6');
 							cash(`#error-${key}`).html(val);
 						}

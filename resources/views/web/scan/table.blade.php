@@ -2,7 +2,6 @@
 @php
 $fieldPermissions = json_decode($permissions['field_name']) ?? [];
 $isGenuine = !empty($product['genuine_product']);
-
 $carouselImages = [];
 if (!empty($fieldPermissions) && in_array('Product Image', $fieldPermissions) && !empty($product['image']))
 $carouselImages[] = $product['image'];

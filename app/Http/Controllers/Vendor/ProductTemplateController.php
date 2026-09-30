@@ -7,6 +7,7 @@ use App\Http\Requests\TemplateCreateRequest;
 use App\Http\Requests\TemplateEditRequest;
 use App\Models\Product;
 use App\Models\ProductTemplate;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -99,13 +100,16 @@ class ProductTemplateController extends Controller
     {
         try {
             $id = decrypt($id);
-            $input   = $request->all();
-            $template = new ProductTemplate;
+
+            $input = $request->all();
+
+            $template = ProductTemplate::findOrFail($id);
+
             $template->name = $input['name'];
-            $template->field_name = json_encode($input['fields']);
-            $template->user_id = Auth::user()->id;
-            $template->status = 1;
+            $template->field_name = json_encode($request->fields ?? []);
+
             $template->save();
+
             return response(['message' => 'Template updated successfully.'], 201);
         } catch (Exception $e) {
             return response(['message' => 'Something went wrong.'], 503);

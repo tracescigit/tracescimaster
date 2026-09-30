@@ -7,7 +7,6 @@
 @section('subcontent')
 @php
 $location = json_decode($alert->location);
-<<<<<<< HEAD
 
 $lat = null;
 $long = null;
@@ -21,10 +20,6 @@ $long = $location->lng ?? $location->long ?? null;
 
 $source = $location->source ?? 'gps';
 }
-=======
-$lat  = $location->lat ?? null;
-$long = $location->long ?? $location->lng ?? null;
->>>>>>> 817b3e8b5b8d5789f5bbcbe1646b976c90a71c16
 @endphp
 
 <div class="grid grid-cols-12 gap-6 mt-5">
@@ -57,19 +52,10 @@ $long = $location->long ?? $location->lng ?? null;
 					<div class="col-span-12 lg:col-span-3 px-2 py-1">
 						{{__('common.manufactured_date')}} : <span class="font-bold ml-2">{{date('M d, Y',strtotime($alert->getBatch->mfg_date))??'-'}}</span>
 					</div>
+					@endif
 
 					<div class="intro-y col-span-12 lg:col-span-6 ">
-						<div class="grid grid-cols-12">
-							@if($lat && $long)
-							<div class="col-span-12  lg:col-span-12 px-2 py-1 mt-2">
-								<div id="map" style="height:300px; width:100%;"></div>
-							</div>
-							@else
-							<div class="col-span-12 lg:col-span-12 px-2 py-1 mt-2 text-red-500">
-								{{__('scanhistory.location_not_found')}}!
-							</div>
-							@endif
-						</div>
+						
 						<form id="assign-form" class="col-span-12">
 							<div class="col-span-12 mt-5">
 								<div class="grid grid-cols-12">
@@ -81,7 +67,7 @@ $long = $location->long ?? $location->lng ?? null;
 											{{__('alert.assigned_to')}}
 										</label>
 										@endif
-										
+
 										@if($alert->admin_assigned_to == null)
 
 										@if (Auth::user()->who_you_are=='Province Governor')
@@ -124,10 +110,10 @@ $long = $location->long ?? $location->lng ?? null;
 							</thead>
 							<tbody>
 								<tr>
-									<td class="p-5 border border-dark-5 text-center">{{	date('M d, Y',strtotime($alert->created_at))}}</td>
+									<td class="p-5 border border-dark-5 text-center">{{ date('M d, Y',strtotime($alert->created_at))}}</td>
 									<td class="p-5 border border-dark-5 text-center">{{$alert->getAssignedToAdmin->name??''}}</td>
 									<td class="p-5 border border-dark-5 text-center">{{$alert->admin_comment}}</td>
-									<td class="p-5 border border-dark-5 text-center">{{	date('M d, Y',strtotime($alert->updated_at))}}</td>
+									<td class="p-5 border border-dark-5 text-center">{{ date('M d, Y',strtotime($alert->updated_at))}}</td>
 								</tr>
 							</tbody>
 						</table>
@@ -144,6 +130,7 @@ $long = $location->long ?? $location->lng ?? null;
 					<div class="col-span-12 lg:col-span-3 mt-5 px-2 py-1">
 						{{__('scanhistory.scanned_by')}} : <span class="font-bold ml-2">{{$alert->getUser?($alert->getUser->phone??'-'):'-'}}</span>
 					</div>
+					
 				</div>
 
 				<div class="intro-y col-span-12 lg:col-span-6">
@@ -312,11 +299,17 @@ $long = $location->long ?? $location->lng ?? null;
 
 		const mapOptions = {
 			zoom: 4,
-			center: { lat: 20.5937, lng: 78.9629 },
+			center: {
+				lat: 20.5937,
+				lng: 78.9629
+			},
 		};
 		map = new google.maps.Map(document.getElementById("map"), mapOptions);
 		const marker = new google.maps.Marker({
-			position: { lat: parseFloat('{{$lat}}'), lng: parseFloat('{{$long}}') },
+			position: {
+				lat: parseFloat('{{$lat}}'),
+				lng: parseFloat('{{$long}}')
+			},
 			map: map,
 		});
 		const infowindow = new google.maps.InfoWindow({
@@ -327,7 +320,7 @@ $long = $location->long ?? $location->lng ?? null;
 		});
 	}
 
-	cash(document).ready(function(){
+	cash(document).ready(function() {
 		initMap();
 	});
 </script>
