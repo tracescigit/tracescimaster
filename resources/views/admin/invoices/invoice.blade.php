@@ -53,20 +53,51 @@
 							</div>
 						</div>
 						@else
-						<form action="{{ route('admin.invoice.upload-document', $invoice->id) }}" method="POST" enctype="multipart/form-data" class="border border-dashed border-gray-300 dark:border-dark-5 rounded-lg px-4 py-3 text-left">
+						<form action="{{ route('admin.invoice.upload-document', $invoice->id) }}"
+							method="POST"
+							enctype="multipart/form-data"
+							class="border border-dashed border-gray-300 dark:border-dark-5 rounded-lg px-4 py-3 text-left">
+
 							@csrf
+
 							<div class="flex items-center gap-2 mb-2">
 								<i data-feather="upload-cloud" class="w-4 h-4 text-gray-500"></i>
-								<span class="text-xs uppercase tracking-wide text-gray-500">{{__('order.payment_proof')}}</span>
+
+								<span class="text-xs uppercase tracking-wide text-gray-500">
+									{{ __('order.payment_proof') }}
+								</span>
 							</div>
+
 							<div class="flex items-center gap-2">
-								<input type="file" name="payment_document" accept=".pdf,.jpg,.jpeg,.png" required
+								<input type="file"
+									name="payment_document"
+									accept=".pdf,.jpg,.jpeg,.png"
+									required
 									class="text-xs w-full file:mr-2 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-medium file:bg-theme-1 file:text-white dark:file:bg-theme-10 hover:file:opacity-90 file:cursor-pointer cursor-pointer">
-								<button type="submit" class="btn btn-rounded-primary btn-sm shrink-0">
-									{{__('common.upload')}}
+							</div>
+
+							{{-- Status --}}
+							<div class="mt-3 pt-3 border-t border-gray-200 dark:border-dark-5">
+								<label class="text-xs uppercase tracking-wide text-gray-500 block mb-1">
+									Status
+								</label>
+
+								<select name="status"
+									class="form-select form-select-sm w-full rounded-md">
+									<option value="1">Active</option>
+									<option value="0">Inactive</option>
+								</select>
+							</div>
+
+							{{-- Submit --}}
+							<div class="mt-3">
+								<button type="submit"
+									class="btn btn-rounded-primary btn-sm w-full">
+									{{ __('common.submit') }}
 								</button>
 							</div>
 						</form>
+
 						@endif
 					</div>
 
@@ -205,7 +236,163 @@
 			<div class="text-xl text-theme-1 dark:text-theme-10 font-medium mt-2">&#8377; {{number_format((float)$invoice->amount_inr,2,'.','')}}</div>
 			@endif
 		</div>
+
 	</div>
+	<div class="card mt-4 bg-light border-0 rounded-3">
+		<div class="card-body p-4">
+
+			{{-- Section Heading --}}
+			<div class="d-flex align-items-center justify-content-between mb-3">
+				<h4 class="mb-0 text-dark fw-bold">
+					Previous Invoices History
+				</h4>
+			</div>
+
+			{{-- Invoice History Card --}}
+			<div class="card border rounded-3 shadow-sm overflow-hidden">
+				<div class="card-body p-0">
+
+					@if($invoices->count())
+
+					<div class="table-responsive">
+						<table class="table table-hover align-middle mb-0">
+							<thead class="bg-light border-bottom">
+								<tr class="text-secondary small text-uppercase" style="letter-spacing: .04em;">
+									<th class="text-nowrap fw-semibold py-3 ps-4">Description</th>
+									<th class="text-end text-nowrap fw-semibold py-3">Amount INR</th>
+									<th class="text-end text-nowrap fw-semibold py-3">Amount USD</th>
+									<th class="text-nowrap fw-semibold py-3">Type</th>
+									<th class="text-nowrap fw-semibold py-3">Date</th>
+									<th class="text-center text-nowrap fw-semibold py-3 pe-4">Document</th>
+								</tr>
+							</thead>
+
+							<tbody>
+								@foreach($invoices as $item)
+
+								@php
+								$description = json_decode($item->description, true);
+								@endphp
+
+								<tr>
+
+									{{-- Description --}}
+									<td class="py-3 ps-4">
+										@if(!empty($description) && is_array($description))
+
+										@foreach($description as $data)
+										<div class="{{ !$loop->last ? 'border-bottom pb-2 mb-2' : '' }}">
+
+											<div class="fw-semibold text-dark">
+												{{ $data['plan'] ?? '-' }}
+											</div>
+
+											@if(!empty($data['credits']))
+											<div class="text-muted small mt-1">
+												<span class="fw-medium">
+													Credits:
+												</span>
+												{{ $data['credits'] }}
+											</div>
+											@endif
+
+										</div>
+										@endforeach
+
+										@else
+										<span class="text-muted">-</span>
+										@endif
+									</td>
+
+									{{-- Amount INR --}}
+									<td class="text-end text-nowrap fw-semibold text-dark py-3" style="font-variant-numeric: tabular-nums;">
+										₹{{ number_format((float) ($item->amount_inr ?? 0), 2) }}
+									</td>
+
+									{{-- Amount USD --}}
+									<td class="text-end text-nowrap fw-semibold text-dark py-3" style="font-variant-numeric: tabular-nums;">
+										${{ number_format((float) ($item->amount_usd ?? 0), 2) }}
+									</td>
+
+									{{-- Type --}}
+									<td class="py-3">
+										@if($item->type == '0')
+										<span class="badge rounded-pill bg-primary-subtle text-primary-emphasis border border-primary-subtle fw-medium px-3 py-2">
+											Bill Invoice
+										</span>
+										@elseif($item->type == '1')
+										<span class="badge rounded-pill bg-info-subtle text-info-emphasis border border-info-subtle fw-medium px-3 py-2">
+											Credit Invoice
+										</span>
+										@elseif($item->type == '2')
+										<span class="badge rounded-pill bg-warning-subtle text-warning-emphasis border border-warning-subtle fw-medium px-3 py-2">
+											Label Order Invoice
+										</span>
+										@else
+										<span class="badge rounded-pill bg-secondary-subtle text-secondary-emphasis border border-secondary-subtle fw-medium px-3 py-2">
+											Unknown
+										</span>
+										@endif
+									</td>
+
+									{{-- Date --}}
+									<td class="text-nowrap py-3">
+										@if($item->created_at)
+										<div class="fw-medium text-dark">
+											{{ $item->created_at->format('d M Y') }}
+										</div>
+										<div class="text-muted small">
+											{{ $item->created_at->format('h:i A') }}
+										</div>
+										@else
+										<span class="text-muted">-</span>
+										@endif
+									</td>
+
+									{{-- Document --}}
+									<td class="text-center py-3 pe-4">
+										@if($item->payment_document)
+										<a href="{{ asset($item->payment_document) }}"
+											target="_blank"
+											class="btn btn-sm btn-outline-primary rounded-pill px-3">
+											View File
+										</a>
+										@else
+										<span class="text-muted small">
+											No File
+										</span>
+										@endif
+									</td>
+
+								</tr>
+
+								@endforeach
+							</tbody>
+						</table>
+					</div>
+
+					@else
+
+					<div class="text-center py-5">
+						<div class="text-muted mb-2">
+							No previous invoices found for this user.
+						</div>
+
+						<small class="text-secondary">
+							Invoice history will appear here once available.
+						</small>
+					</div>
+
+					@endif
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+
 </div>
 <!-- END: Order Invoice -->
 

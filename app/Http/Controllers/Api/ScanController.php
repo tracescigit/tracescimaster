@@ -320,7 +320,7 @@ class ScanController extends Controller
 
 				$scan_history = new ScanHistory;
 
-				// dd($applied_offer);
+				
 
 				if ($applied_offer) {
 					$response['applied_offer'] = ['title' => $applied_offer->title, 'description' => $applied_offer->description];
@@ -371,7 +371,7 @@ class ScanController extends Controller
 					'applied_offer'        => (bool) $applied_offer,
 				]);
 
-				if (($other_than_me_scans || $more_than_ip > 15 || $code->status == '0') && !$applied_offer) {
+				if (($more_than_ip > 15 || $code->status == '0') && !$applied_offer) {
 					$scan_history->genuine = '0';
 
 					Log::info('scan.show: marking scan_history as NOT genuine', [

@@ -73,10 +73,22 @@ class InvoiceController extends Controller
     public function show($id)
     {
         $id = decrypt($id);
-        $invoice = Invoice::where('id', $id)->with('getUser')->first();
 
-        return view('admin.invoices.invoice')->with('invoice', $invoice)->with('page_name', 'admin-invoices');
+        $invoice = Invoice::where('id', $id)
+            ->with('getUser')
+            ->firstOrFail();
+
+        $invoices = Invoice::where('user_id', $invoice->user_id)
+            ->where('id', '!=', $invoice->id) // exclude current invoice
+            ->latest('created_at')
+            ->get();
+
+        return view('admin.invoices.invoice')
+            ->with('invoice', $invoice)
+            ->with('invoices', $invoices)
+            ->with('page_name', 'admin-invoices');
     }
+
 
     public function transaction(Request $request)
     {
@@ -160,53 +172,112 @@ class InvoiceController extends Controller
         }
     }
 
+    // public function downloadInvoice($id)
+    // {
+    //     $invoiceId = decrypt($id);
+    //     $invoice_no = prepareInvoiceId($invoiceId);
+
+    //     $invoiceDetail = Invoice::where('id', $invoiceId)
+    //         ->with('getUser')
+    //         ->firstOrFail();
+
+    //     $invoice_des = json_decode($invoiceDetail->description, true);
+
+    //     // Render invoice content into HTML
+    //     $html = view('admin.invoices.download', [
+    //         'invoice' => $invoiceDetail,
+    //         'description' => $invoice_des,
+    //     ])->render();
+
+    //     // Pass rendered HTML to PDF view
+    //     $pdf = PDF::loadView('admin.pdf.payment_slip', [
+    //         'html' => $html,
+    //         'invoice' => $invoiceDetail,
+    //         'description' => $invoice_des,
+    //         'invoice_no' => $invoice_no,
+    //     ]);
+
+    //     $path = public_path('pdf/receipts');
+
+    //     if (!\File::isDirectory($path)) {
+    //         \File::makeDirectory($path, 0755, true);
+    //     }
+
+    //     $pdfName = $invoice_no . '.pdf';
+    //     $file = $path . '/' . $pdfName;
+
+    //     $pdf->save($file);
+
+    //     return response()->download($file, $pdfName, [
+    //         'Content-Type' => 'application/pdf',
+    //     ]);
+    // }
     public function downloadInvoice($id)
     {
-        $invoiceId  = decrypt($id);
-        $invoice_no = prepareInvoiceId($invoiceId);
+        try {
+            $invoiceId = decrypt($id);
 
-        $invoiceDetail = Invoice::where('id', $invoiceId)->with('getUser')->first();
+            $invoice_no = prepareInvoiceId($invoiceId);
 
-        $invoice_des =  json_decode($invoiceDetail->description, true);
+            $invoiceDetail = Invoice::with('getUser')
+                ->where('id', $invoiceId)
+                ->firstOrFail();
 
-        $template = InvoiceTemplate::whereName('payment_slip')->first();
-        $html = $template->html;
+            $description = json_decode($invoiceDetail->description, true);
 
-        $dynamic_values         = $template->variables;
-        $dynamic_values         = array_map('trim', explode(',', $template->variables));
+            $pdf = PDF::loadView('admin.invoices.download', [
+                'invoice' => $invoiceDetail,
+                'description' => $description,
+                'invoice_no' => $invoice_no,
+            ]);
 
-        $adminDetail = getAdminDetail();
+            $path = public_path('pdf/receipts');
 
-        $html = view('admin.invoices.download')->with('invoice', $invoiceDetail)->with('description', $invoice_des);
+            if (!file_exists($path)) {
+                mkdir($path, 0755, true);
+            }
 
-        $path = base_path('/public/pdf/receipts/');
-        $pdfName = 'payment_slip' . '.pdf';
+            $pdfName = $invoice_no . '.pdf';
+            $file = $path . DIRECTORY_SEPARATOR . $pdfName;
 
-        $pdf = PDF::loadView('admin.pdf.payment_slip', ['html' => $html]);
+            $pdf->save($file);
 
-        if (!\File::isDirectory($path)) {
-            \File::makeDirectory($path, 493, true);
+            if (!file_exists($file)) {
+                throw new \Exception('PDF file was not created.');
+            }
+
+            return response()->download(
+                $file,
+                $pdfName,
+                [
+                    'Content-Type' => 'application/pdf',
+                ]
+            )->deleteFileAfterSend(false);
+        } catch (\Throwable $e) {
+
+            \Log::error('Invoice PDF Error', [
+                'message' => $e->getMessage(),
+                'file' => $e->getFile(),
+                'line' => $e->getLine(),
+            ]);
+
+            dd($e->getMessage(), $e->getFile(), $e->getLine());
         }
-
-        $pdf->save($path . $pdfName);
-        $file = $path . $pdfName;
-
-        $headers = array(
-            'Content-Type: application/pdf',
-        );
-
-        return Response::download($file, '' . $invoice_no . '.pdf', $headers);
     }
+
 
     public function uploadPaymentDocument(Request $request, $id)
     {
         $request->validate([
             'payment_document' => 'required|file|mimes:pdf,jpg,jpeg,png|max:5120',
+            'status' => 'required|in:0,1',
         ]);
-
         $invoice = Invoice::findOrFail($id);
         $path = $request->file('payment_document')->store('payment-documents', 'public');
-        $invoice->update(['payment_document' => 'storage/' . $path]);
+        $invoice->update([
+            'payment_document' => 'storage/' . $path,
+            'status' => $request->input('status') ?? 0
+        ]);
 
         return back()->with('success', 'Payment document uploaded successfully.');
     }

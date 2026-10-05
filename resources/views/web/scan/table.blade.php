@@ -915,7 +915,7 @@ $hasMedia = !empty($fieldPermissions) && in_array('Media', $fieldPermissions);
 				@if(!empty($fieldPermissions) && in_array('Price', $fieldPermissions))
 				<div class="pd-fcell">
 					<div class="pd-flbl"><i class="fa fa-dollar"></i> Price</div>
-					<div class="pd-fval price">{{ $product['price'] ?? '—' }}</div>
+					<div class="pd-fval price">{{ $product['price_batch'] ?? 0.00 }}</div>
 				</div>
 				@endif
 				@if(!empty($fieldPermissions) && in_array('Tax Class', $fieldPermissions))
