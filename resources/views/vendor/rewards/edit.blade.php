@@ -513,7 +513,7 @@
 			 * ================================================= */
 
 			axios.post(
-					'{{ url(' / vendor / rewards / '.encrypt($reward->id).' / edit ') }}',
+					'{{ url("/vendor/rewards/".encrypt($reward->id)."/edit") }}',
 					formData
 				)
 				.then(res => {
@@ -525,9 +525,7 @@
 					);
 
 					setTimeout(() => {
-
-						window.location.reload();
-
+						window.location.href = '{{ url("/vendor/rewards") }}';
 					}, 1000);
 
 				})

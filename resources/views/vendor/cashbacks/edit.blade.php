@@ -489,7 +489,7 @@
 			 * ================================================= */
 
 			axios.post(
-					'{{ url(' / vendor / cashbacks / '.encrypt($cashback->id).' / edit ') }}',
+					'{{ url("/vendor/cashbacks/".encrypt($cashback->id)."/edit") }}',
 					formData
 				)
 				.then(res => {
@@ -501,9 +501,7 @@
 					);
 
 					setTimeout(() => {
-
-						window.location.reload();
-
+						window.location.href = '{{ url("/vendor/cashbacks") }}';
 					}, 1000);
 
 				})

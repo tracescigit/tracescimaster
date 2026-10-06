@@ -351,9 +351,7 @@
 			 * --------------------------------------------- */
 
 			axios.post(
-					'{{ url("/vendor/cashbacks/create")}}',
-					formData
-				)
+					'{{ url("/vendor/cashbacks/create")}}', formData)
 				.then(res => {
 
 					showNotification(
@@ -363,10 +361,7 @@
 					);
 
 					setTimeout(() => {
-
-						window.location.href =
-							'{{ url("/vendor/cashbacks") }';
-
+						window.location.href = '{{ url("/vendor/cashbacks") }}';
 					}, 1000);
 				})
 				.catch(err => {

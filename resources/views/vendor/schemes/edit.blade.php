@@ -525,7 +525,7 @@
 			 * ================================================= */
 
 			axios.post(
-					'{{ url(' / vendor / schemes / '.encrypt($scheme->id).' / edit ') }}',
+					'{{ url("/vendor/schemes/".encrypt($scheme->id)."/edit") }}',
 					formData
 				)
 				.then(res => {
@@ -537,8 +537,8 @@
 					);
 
 					setTimeout(() => {
-
-						window.location.reload();
+						window.location.href =
+							'{{ url("/vendor/schemes") }}';
 
 					}, 1000);
 
