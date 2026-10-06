@@ -78,28 +78,28 @@ if (! function_exists('getDesignation')) {
 		if ($user) {
 			switch ($user->type) {
 				case '1':
-				$designation = 'Administrator';
-				break;
+					$designation = 'Administrator';
+					break;
 
 				case '2':
-				$designation = 'Manufacturer';
-				break;
+					$designation = 'Manufacturer';
+					break;
 
 				case '3':
-				$designation = 'Inspector';
-				break;
+					$designation = 'Inspector';
+					break;
 
 				case '4':
-				$designation = 'Employee';
-				break;
+					$designation = 'Employee';
+					break;
 
 				case '5':
-				$designation = 'Supply Chain User';
-				break;
+					$designation = 'Supply Chain User';
+					break;
 
 				default:
-				$designation = 'User';
-				break;
+					$designation = 'User';
+					break;
 			}
 		}
 
@@ -484,7 +484,7 @@ if (! function_exists('sendEmail')) {
 				function ($message) use ($input) {
 
 					$message->to($input['email'])
-					->subject($input['email_subject']);
+						->subject($input['email_subject']);
 
 					if (!empty($input['bcc'])) {
 						$message->bcc($input['bcc']);
@@ -536,9 +536,9 @@ if (! function_exists('getAdminDetail')) {
 	{
 
 		return DB::table('users')
-		->select('users.*')
-		->where(['type' => '1'])
-		->first();
+			->select('users.*')
+			->where(['type' => '1'])
+			->first();
 	}
 }
 
@@ -624,6 +624,20 @@ if (! function_exists('inAllowedPermissionsByModuleSlug')) {
 
 		$user   = User::find($user_id);
 		$module = Module::where('slug', $module_slug)->where('type', $type)->first();
+		Log::info('LOST DAMAGE SIDEBAR DEBUG', [
+			'user_id' => $user_id,
+			'user_type' => $user->type,
+			'module_slug' => $module_slug,
+			'requested_type' => $type,
+			'module_id' => $module->id ?? null,
+			'module_type' => $module->type ?? null,
+			'permission_exists' => $module
+				? Permission::where('user_id', $user_id)
+				->where('module_id', $module->id)
+				->where($permission, '1')
+				->exists()
+				: false,
+		]);
 
 		if ($module) {
 			$exists = Permission::where('user_id', $user_id)->where('module_id', $module->id)->where($permission, '1')->exists();
@@ -1024,10 +1038,10 @@ if (!function_exists('currencies')) {
 	function currencies()
 	{
 		return Country::whereNotNull('currency')
-		->select('currency')
-		->distinct()
-		->orderBy('currency')
-		->get();
+			->select('currency')
+			->distinct()
+			->orderBy('currency')
+			->get();
 	}
 }
 
@@ -1059,8 +1073,8 @@ if (!function_exists('loginUserAndAssignOtp')) {
 		// If the user is logging in using a phone number
 		if ($phone_code && $phone) {
 			$user = User::where('phone_code', $phone_code)
-			->where('phone', $phone)
-			->first();
+				->where('phone', $phone)
+				->first();
 
 			if (!$user) {
 				return response([
@@ -1191,12 +1205,12 @@ if (! function_exists('statusComnination')) {
 
 		switch ($order->dispatch_status) {
 			case 7:
-			$result->where('code', '>', $last_status->code)->orWhere('title', 'Delayed');
-			break;
+				$result->where('code', '>', $last_status->code)->orWhere('title', 'Delayed');
+				break;
 
 			default:
-			$result->where('code', '>', $order->dispatch_status);
-			break;
+				$result->where('code', '>', $order->dispatch_status);
+				break;
 		}
 
 		$array = $result->get();

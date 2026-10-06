@@ -32,7 +32,7 @@
                 </a>
             </li>
 
-            @if (inAllowedPermissionsByModuleSlug(Auth::id(),'registrations','view'))
+            @if (inAllowedPermissionsByModuleSlug(Auth::id(),'registrations','view',Auth::user()->type))
             <li>
                 <a href="javascript:;" class="side-menu {{request()->is('admin/registrations*')?'side-menu--active':''}}">
                     <div class="side-menu__icon">
@@ -47,7 +47,7 @@
                 </a>
 
                 <ul class="{{request()->is('admin/registrations*')?'side-menu__sub-open':''}}">
-                    @if (inAllowedPermissionsByModuleSlug(Auth::id(),'registrations','view'))
+                    @if (inAllowedPermissionsByModuleSlug(Auth::id(),'registrations','view',Auth::user()->type))
                     <li>
                         <a href="{{ url('admin/registrations') }}" class="side-menu {{request()->is('admin/registrations')?'side-menu--active':''}}">
                             <div class="side-menu__icon">
@@ -59,7 +59,7 @@
                         </a>
                     </li>
                     @endif
-                    @if (inAllowedPermissionsByModuleSlug(Auth::id(),'registrations','modify'))
+                    @if (inAllowedPermissionsByModuleSlug(Auth::id(),'registrations','modify',Auth::user()->type))
                     <li>
                         <a href="{{ url('admin/registrations/create') }}" class="side-menu {{request()->is('admin/registrations/create')?'side-menu--active':''}}">
                             <div class="side-menu__icon">
@@ -75,7 +75,7 @@
             </li>
             @endif
 
-            @if (inAllowedPermissionsByModuleSlug(Auth::id(),'plans','view'))
+            @if (inAllowedPermissionsByModuleSlug(Auth::id(),'plans','view',Auth::user()->type))
             <li>
                 <a href="javascript:;" class="side-menu {{ (request()->is('admin/plans*') || request()->routeIs('admin-edit-plans')) ? 'side-menu--active' : '' }}">
                     <div class="side-menu__icon">
@@ -90,7 +90,7 @@
                 </a>
 
                 <ul class="{{ (request()->is('admin/plans*') || request()->routeIs('admin-edit-plans')) ? 'side-menu__sub-open' : '' }}">
-                    @if (inAllowedPermissionsByModuleSlug(Auth::id(),'plans','view'))
+                    @if (inAllowedPermissionsByModuleSlug(Auth::id(),'plans','view',Auth::user()->type))
                     <li>
                         <a href="{{ url('admin/plans') }}" class="side-menu {{ (request()->is('admin/plans') || request()->routeIs('admin-edit-plans')) ? 'side-menu--active' : '' }}">
                             <div class="side-menu__icon">
@@ -102,7 +102,7 @@
                         </a>
                     </li>
                     @endif
-                    @if (inAllowedPermissionsByModuleSlug(Auth::id(),'plans','modify'))
+                    @if (inAllowedPermissionsByModuleSlug(Auth::id(),'plans','modify',Auth::user()->type))
                     <li>
                         <a href="{{ url('admin/plans/create') }}" class="side-menu {{request()->is('admin/plans/create')?'side-menu--active':''}}">
                             <div class="side-menu__icon">
@@ -118,7 +118,7 @@
             </li>
             @endif
 
-            @if (inAllowedPermissionsByModuleSlug(Auth::id(),'topups','view'))
+            @if (inAllowedPermissionsByModuleSlug(Auth::id(),'topups','view',Auth::user()->type))
             <li>
                 <a href="javascript:;" class="side-menu {{ (request()->is('admin/topups*') || request()->routeIs('admin-edit-topups')) ? 'side-menu--active' : '' }}">
                     <div class="side-menu__icon">
@@ -133,7 +133,7 @@
                 </a>
 
                 <ul class="{{ (request()->is('admin/topups*') || request()->routeIs('admin-edit-topups')) ? 'side-menu__sub-open' : '' }}">
-                    @if (inAllowedPermissionsByModuleSlug(Auth::id(),'topups','view'))
+                    @if (inAllowedPermissionsByModuleSlug(Auth::id(),'topups','view',Auth::user()->type))
                     <li>
                         <a href="{{ url('admin/topups') }}" class="side-menu {{ (request()->is('admin/topups') || request()->routeIs('admin-edit-topups')) ? 'side-menu--active' : '' }}">
                             <div class="side-menu__icon">
@@ -145,7 +145,7 @@
                         </a>
                     </li>
                     @endif
-                    @if (inAllowedPermissionsByModuleSlug(Auth::id(),'topups','modify'))
+                    @if (inAllowedPermissionsByModuleSlug(Auth::id(),'topups','modify',Auth::user()->type))
                     <li>
                         <a href="{{ url('admin/topups/create') }}" class="side-menu {{request()->is('admin/topups/create')?'side-menu--active':''}}">
                             <div class="side-menu__icon">
@@ -161,7 +161,7 @@
             </li>
             @endif
 
-            @if (inAllowedPermissionsByModuleSlug(Auth::id(),'offers','view'))
+            @if (inAllowedPermissionsByModuleSlug(Auth::id(),'offers','view',Auth::user()->type))
             <li>
                 <a href="javascript:;" class="side-menu {{request()->is('admin/offers*')?'side-menu--active':''}}">
                     <div class="side-menu__icon">
@@ -176,7 +176,7 @@
                 </a>
 
                 <ul class="{{request()->is('admin/offers*')?'side-menu__sub-open':''}}">
-                    @if (inAllowedPermissionsByModuleSlug(Auth::id(),'offers','view'))
+                    @if (inAllowedPermissionsByModuleSlug(Auth::id(),'offers','view',Auth::user()->type))
                     <li>
                         <a href="{{ url('admin/offers') }}" class="side-menu {{request()->is('admin/offers')?'side-menu--active':''}}">
                             <div class="side-menu__icon">
@@ -188,7 +188,7 @@
                         </a>
                     </li>
                     @endif
-                    @if (inAllowedPermissionsByModuleSlug(Auth::id(),'offers','modify'))
+                    @if (inAllowedPermissionsByModuleSlug(Auth::id(),'offers','modify',Auth::user()->type))
                     <li>
                         <a href="{{ url('admin/offers/create') }}" class="side-menu {{request()->is('admin/offers/create')?'side-menu--active':''}}">
                             <div class="side-menu__icon">
@@ -204,7 +204,7 @@
             </li>
             @endif
 
-            @if (inAllowedPermissionsByModuleSlug(Auth::id(),'invoices','view'))
+            @if (inAllowedPermissionsByModuleSlug(Auth::id(),'invoices','view',Auth::user()->type))
             <li>
                 <a href="{{ url('admin/invoices') }}" class="side-menu {{request()->is('admin/invoices*')?'side-menu--active':''}}">
                     <div class="side-menu__icon">
@@ -217,7 +217,7 @@
             </li>
             @endif
 
-            @if (inAllowedPermissionsByModuleSlug(Auth::id(),'qr-codes','view'))
+            @if (inAllowedPermissionsByModuleSlug(Auth::id(),'qr-codes','view',Auth::user()->type))
             <li>
                 <a href="{{ url('admin/codes') }}" class="side-menu {{request()->is('admin/codes*')?'side-menu--active':''}}">
                     <div class="side-menu__icon">
@@ -232,7 +232,7 @@
 
 
 
-            @if (inAllowedPermissionsByModuleSlug(Auth::id(),'qr-label-orders','modify'))
+            @if (inAllowedPermissionsByModuleSlug(Auth::id(),'qr-label-orders','modify',Auth::user()->type))
             <li>
                 <a href="{{ url('admin/qr-label-orders') }}" class="side-menu {{request()->is('admin/qr-label-orders')?'side-menu--active':''}}">
                     <div class="side-menu__icon">
@@ -245,7 +245,7 @@
             </li>
             @endif
 
-            @if (inAllowedPermissionsByModuleSlug(Auth::id(),'scan-history','view'))
+            @if (inAllowedPermissionsByModuleSlug(Auth::id(),'scan-history','view',Auth::user()->type))
             <li>
                 <a href="{{ url('admin/scanhistory') }}" class="side-menu {{ (request()->is('admin/scanhistory*') || request()->routeIs('admin-show-scanhistory')) ? 'side-menu--active' : '' }}">
                     <div class="side-menu__icon">
@@ -258,7 +258,7 @@
             </li>
             @endif
 
-            @if (inAllowedPermissionsByModuleSlug(Auth::id(),'alerts','view'))
+            @if (inAllowedPermissionsByModuleSlug(Auth::id(),'alerts','view',Auth::user()->type))
             <li>
                 <a href="{{ url('admin/alerts') }}" class="side-menu {{ (request()->is('admin/alerts*') || request()->routeIs('admin-act-alerts')) ? 'side-menu--active' : '' }}">
                     <div class="side-menu__icon">
@@ -271,7 +271,7 @@
             </li>
             @endif
 
-            @if (inAllowedPermissionsByModuleSlug(Auth::id(),'app-reports','view'))
+            @if (inAllowedPermissionsByModuleSlug(Auth::id(),'app-reports','view',Auth::user()->type))
             <li>
                 <a href="{{ url('admin/reports') }}" class="side-menu {{ (request()->is('admin/reports*') || request()->routeIs('admin-show-reports')) ? 'side-menu--active' : '' }}">
                     <div class="side-menu__icon">
@@ -284,7 +284,7 @@
             </li>
             @endif
 
-            @if (inAllowedPermissionsByModuleSlug(Auth::id(),'lost-damage','view'))
+            @if (inAllowedPermissionsByModuleSlug(Auth::id(),'report-lostdamage','view',Auth::user()->type))
             <li>
                 <a href="{{ url('admin/lost-damage') }}" class="side-menu {{request()->is('admin/lost-damage*')?'side-menu--active':''}}">
                     <div class="side-menu__icon">
@@ -297,7 +297,7 @@
             </li>
             @endif
 
-            @if (inAllowedPermissionsByModuleSlug(Auth::id(),'label-sizes','view') || inAllowedPermissionsByModuleSlug(Auth::id(),'material-types','view') || inAllowedPermissionsByModuleSlug(Auth::id(),'printing-cost','view') || inAllowedPermissionsByModuleSlug(Auth::id(),'qr-label-orders','view'))
+            @if (inAllowedPermissionsByModuleSlug(Auth::id(),'label-sizes','view',Auth::user()->type) || inAllowedPermissionsByModuleSlug(Auth::id(),'material-types','view',Auth::user()->type) || inAllowedPermissionsByModuleSlug(Auth::id(),'printing-cost','view',Auth::user()->type) || inAllowedPermissionsByModuleSlug(Auth::id(),'qr-label-orders','view',Auth::user()->type))
             <li>
                 <a href="javascript:;" class="side-menu {{request()->is('admin/label-sizes*')?'side-menu--active':''}}">
                     <div class="side-menu__icon">
@@ -312,7 +312,7 @@
                 </a>
 
                 <ul class="{{(request()->is('admin/label-sizes*') || request()->is('admin/material-types*') || request()->is('admin/printing-cost*') || request()->is('admin/qr-label-orders*'))?'side-menu__sub-open':''}}">
-                    @if (inAllowedPermissionsByModuleSlug(Auth::id(),'label-sizes','view'))
+                    @if (inAllowedPermissionsByModuleSlug(Auth::id(),'label-sizes','view',Auth::user()->type))
                     <li>
                         <a href="{{ url('admin/label-sizes') }}" class="side-menu {{request()->is('admin/label-sizes')?'side-menu--active':''}}">
                             <div class="side-menu__icon">
@@ -324,7 +324,7 @@
                         </a>
                     </li>
                     @endif
-                    @if (inAllowedPermissionsByModuleSlug(Auth::id(),'material-types','view'))
+                    @if (inAllowedPermissionsByModuleSlug(Auth::id(),'material-types','view',Auth::user()->type))
                     <li>
                         <a href="{{ url('admin/material-types') }}" class="side-menu {{request()->is('admin/material-types')?'side-menu--active':''}}">
                             <div class="side-menu__icon">
@@ -336,7 +336,7 @@
                         </a>
                     </li>
                     @endif
-                    @if (inAllowedPermissionsByModuleSlug(Auth::id(),'printing-cost','modify'))
+                    @if (inAllowedPermissionsByModuleSlug(Auth::id(),'printing-cost','modify',Auth::user()->type))
                     <li>
                         <a href="{{ url('admin/printing-cost') }}" class="side-menu {{request()->is('admin/printing-cost')?'side-menu--active':''}}">
                             <div class="side-menu__icon">
@@ -352,7 +352,7 @@
             </li>
             @endif
 
-            @if (inAllowedPermissionsByModuleSlug(Auth::id(),'users','view'))
+            @if (inAllowedPermissionsByModuleSlug(Auth::id(),'users','view',Auth::user()->type))
             <li>
                 <a href="javascript:;" class="side-menu {{ (request()->is('admin/users*') || request()->routeIs('admin-edit-users')) ? 'side-menu--active' : '' }}">
                     <div class="side-menu__icon">
@@ -367,7 +367,7 @@
                 </a>
 
                 <ul class="{{ (request()->is('admin/users*') || request()->routeIs('admin-edit-users')) ? 'side-menu__sub-open' : '' }}">
-                    @if (inAllowedPermissionsByModuleSlug(Auth::id(),'users','view'))
+                    @if (inAllowedPermissionsByModuleSlug(Auth::id(),'users','view',Auth::user()->type))
                     <li>
                         <a href="{{ url('admin/users') }}" class="side-menu {{ (request()->is('admin/users') || request()->routeIs('admin-edit-users')) ? 'side-menu--active' : '' }}">
                             <div class="side-menu__icon">
@@ -379,7 +379,7 @@
                         </a>
                     </li>
                     @endif
-                    @if (inAllowedPermissionsByModuleSlug(Auth::id(),'users','modify'))
+                    @if (inAllowedPermissionsByModuleSlug(Auth::id(),'users','modify',Auth::user()->type))
                     <li>
                         <a href="{{ url('admin/users/create') }}" class="side-menu {{request()->is('admin/users/create')?'side-menu--active':''}}">
                             <div class="side-menu__icon">
@@ -394,7 +394,7 @@
                 </ul>
             </li>
             @endif
-            @if (inAllowedPermissionsByModuleSlug(Auth::id(),'blogs','view'))
+            @if (inAllowedPermissionsByModuleSlug(Auth::id(),'blogs','view',Auth::user()->type))
             <li>
                 <a href="{{ url('admin/Blog') }}" class="side-menu {{request()->is('admin/Blog*')?'side-menu--active':''}}">
                     <div class="side-menu__icon">
@@ -406,7 +406,7 @@
                 </a>
             </li>
             @endif
-            @if (inAllowedPermissionsByModuleSlug(Auth::id(),'events','view'))
+            @if (inAllowedPermissionsByModuleSlug(Auth::id(),'events','view',Auth::user()->type))
             <li>
                 <a href="{{ url('admin/Events') }}" class="side-menu {{request()->is('admin/Events*')?'side-menu--active':''}}">
                     <div class="side-menu__icon">
@@ -418,7 +418,7 @@
                 </a>
             </li>
             @endif
-            @if (inAllowedPermissionsByModuleSlug(Auth::id(),'demo schedule','view'))
+            @if (inAllowedPermissionsByModuleSlug(Auth::id(),'demo schedule','view',Auth::user()->type))
             <li>
                 <a href="{{ url('admin/demo-schedule-details') }}" class="side-menu {{request()->is('admin/demo-schedule-details*')?'side-menu--active':''}}">
                     <div class="side-menu__icon">

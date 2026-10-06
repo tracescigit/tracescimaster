@@ -55,7 +55,7 @@
                                 <div id="error-tax_registration_number" class="login__input-error w-100 text-theme-6 mt-2 mb-2"></div>
                             </div>
 
-                            <h2 class="font-medium col-span-12 px-2 mt-3 mb-2 text-base mr-auto">Upload your documents (In pdf / jpg format , max 2 MB size))</h2>
+                            <h2 class="font-medium col-span-12 px-2 mt-3 mb-2 text-base mr-auto">Upload your documents (In pdf / jpg format , max 2 MB size)</h2>
 
                             <div class="input-form col-span-12 lg:col-span-6 px-2 mt-2">
                                 <label for="" class="text-gray-600">Upload your self photo Identity Proof </label>
@@ -107,7 +107,7 @@
 
                 showNotification('success','Success !',res.data.message)
                 setTimeout(()=>{
-                    window.location.href = '{{ url('/register/otp') }}'
+                    window.location.href = '{{ url("/register/otp") }}'
                 },2000)
 
             }).catch(err => {

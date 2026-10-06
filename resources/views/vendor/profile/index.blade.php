@@ -123,7 +123,6 @@
                                 Company CIN
                             </label>
                             <input id="company_cin" type="text" value="{{Auth::user()->getCompany?Auth::user()->getCompany->cin:''}}" name="company_cin" class="form-control form__input" placeholder="Enter company cin" maxlength="21">
-                            <div id="error-company_cin" class="login__input-error w-5/6 text-theme-6"></div>
                         </div>
 
                         <div class="col-span-12 lg:col-span-6 mt-4">
@@ -236,7 +235,7 @@
             cash('#btn-update').attr('disabled', 'true');   
             
 
-            axios.post('{{ route('vendor-update-profile') }}', formData).then(res => {
+            axios.post('{{ route("vendor-update-profile") }}', formData).then(res => {
                 showNotification('success','Success !',res.data.message)
                 setTimeout(()=>{
                     window.location.reload();

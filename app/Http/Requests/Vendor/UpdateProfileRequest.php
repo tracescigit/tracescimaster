@@ -33,7 +33,7 @@ class UpdateProfileRequest extends FormRequest
             'mobile'  => 'required|min:6|max:12|regex:/^[0-9-]+$/|unique:users,phone,'.$id,
             'company_name'  => 'required|max:100',
             'company_address'  => 'required',
-            'company_cin'  => 'required|min:21|max:21',
+            // 'company_cin'  => 'required|min:21|max:21',
             'company_gst_no'  => 'required|string|min:15|max:15|regex:/^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$/',
             'self_kyc'  => 'nullable|mimes:txt,jpg,jpeg,pdf,doc,docx|max:500000',
             'company_roc'  => 'nullable|mimes:txt,jpg,jpeg,pdf,doc,docx|max:500000',

@@ -28,7 +28,7 @@ class CompanyRequest extends FormRequest
             'company_address'  => 'required',
             'company_city'  => 'required',
             'company_country'  => 'required',
-            'tax_registration_number'  => 'required',
+            'tax_registration_number'  => 'required|string|min:15|max:15|regex:/^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$/',
             'identity_proof'  => 'required|mimes:pdf,jpg,jpeg|max:2048',
             'registration_certificate'  => 'required|mimes:pdf,jpg,jpeg|max:2048',
             'gst_or_vat_certificate'  => 'required|mimes:pdf,jpg,jpeg|max:2048',
