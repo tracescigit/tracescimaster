@@ -160,13 +160,15 @@
 
 		function setupDateValidation() {
 
-			let today = getToday();
+			// No minimum date restriction.
+			// Past, today and future dates are allowed.
 
-			// From date cannot be before today
-			cash('#from').attr('min', today);
+			let fromDate = cash('#from').val();
 
-			// To date cannot be before today
-			cash('#to').attr('min', today);
+			// To date must be same as or after From date
+			if (fromDate) {
+				cash('#to').attr('min', fromDate);
+			}
 		}
 
 
@@ -409,8 +411,6 @@
 			 * Client-side date validation
 			 * --------------------------------------------- */
 
-			let today = getToday();
-
 			let fromDate = cash('#from').val();
 			let toDate = cash('#to').val();
 
@@ -425,17 +425,6 @@
 
 				cash('#error-from').html(
 					'From date is required.'
-				);
-
-				valid = false;
-
-			} else if (fromDate < today) {
-
-				cash('#from')
-					.addClass('border-theme-6');
-
-				cash('#error-from').html(
-					'From date must be today or a future date.'
 				);
 
 				valid = false;

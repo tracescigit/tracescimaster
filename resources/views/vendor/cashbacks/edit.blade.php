@@ -161,14 +161,6 @@
 
 		function setupDateValidation() {
 
-			let today = getToday();
-
-			// From date cannot be before today
-			cash('#from').attr('min', today);
-
-			// To date cannot be before today
-			cash('#to').attr('min', today);
-
 			// If From date already has a value,
 			// To date cannot be before From date
 			let fromDate = cash('#from').val();
@@ -200,7 +192,6 @@
 
 		cash('#from').on('change', function() {
 
-			let today = getToday();
 			let fromDate = cash('#from').val();
 			let toDate = cash('#to').val();
 
@@ -208,18 +199,6 @@
 			clearFieldError('#to');
 
 			if (!fromDate) {
-				return;
-			}
-
-			// From date cannot be before today
-			if (fromDate < today) {
-
-				cash('#from').addClass('border-theme-6');
-
-				cash('#error-from').html(
-					'From date must be today or a future date.'
-				);
-
 				return;
 			}
 
@@ -243,25 +222,12 @@
 
 		cash('#to').on('change', function() {
 
-			let today = getToday();
 			let fromDate = cash('#from').val();
 			let toDate = cash('#to').val();
 
 			clearFieldError('#to');
 
 			if (!toDate) {
-				return;
-			}
-
-			// To date cannot be before today
-			if (toDate < today) {
-
-				cash('#to').addClass('border-theme-6');
-
-				cash('#error-to').html(
-					'To date must be today or a future date.'
-				);
-
 				return;
 			}
 
@@ -298,6 +264,7 @@
 				 * product
 				 * batch
 				 */
+
 				if (cash('#' + key).length) {
 
 					cash('#' + key)
@@ -357,6 +324,7 @@
 			/*
 			 * Clear old errors
 			 */
+
 			cash('#update-form')
 				.find('.form__input')
 				.removeClass('border-theme-6');
@@ -370,8 +338,6 @@
 			 * DATE VALIDATION
 			 * ================================================= */
 
-			let today = getToday();
-
 			let fromDate = cash('#from').val();
 			let toDate = cash('#to').val();
 
@@ -381,6 +347,7 @@
 			/*
 			 * FROM DATE REQUIRED
 			 */
+
 			if (!fromDate) {
 
 				cash('#from').addClass('border-theme-6');
@@ -394,44 +361,15 @@
 
 
 			/*
-			 * FROM DATE MUST BE TODAY OR AFTER
-			 */
-			else if (fromDate < today) {
-
-				cash('#from').addClass('border-theme-6');
-
-				cash('#error-from').html(
-					'From date must be today or a future date.'
-				);
-
-				valid = false;
-			}
-
-
-			/*
 			 * TO DATE REQUIRED
 			 */
+
 			if (!toDate) {
 
 				cash('#to').addClass('border-theme-6');
 
 				cash('#error-to').html(
 					'To date is required.'
-				);
-
-				valid = false;
-			}
-
-
-			/*
-			 * TO DATE MUST BE TODAY OR AFTER
-			 */
-			else if (toDate < today) {
-
-				cash('#to').addClass('border-theme-6');
-
-				cash('#error-to').html(
-					'To date must be today or a future date.'
 				);
 
 				valid = false;
@@ -456,6 +394,7 @@
 			/*
 			 * STOP IF DATE VALIDATION FAILED
 			 */
+
 			if (!valid) {
 				return;
 			}
@@ -523,6 +462,7 @@
 					/*
 					 * Laravel validation errors
 					 */
+
 					if (
 						err.response &&
 						err.response.data &&

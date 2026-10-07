@@ -132,6 +132,30 @@
 			cash('#add-form').find('.form__input').removeClass('border-theme-6')
 			cash('#add-form').find('.login__input-error').html('')
 
+			// Date validation
+			let mfgDate = cash('#mfg_date').val();
+			let expDate = cash('#exp_date').val();
+
+			let valid = true;
+
+			if (!mfgDate) {
+				cash('#mfg_date').addClass('border-theme-6');
+				cash('#error-mfg_date').html('Manufactured date is required.');
+				valid = false;
+			}
+
+			if (expDate && mfgDate && expDate < mfgDate) {
+				cash('#exp_date').addClass('border-theme-6');
+				cash('#error-exp_date').html(
+					'Expiry date must be the same as or after the Manufactured date.'
+				);
+				valid = false;
+			}
+
+			if (!valid) {
+				return;
+			}
+
 			var formData = new FormData(document.querySelector('#add-form'))
 
 			cash('#btn-add').html('<i data-loading-icon="oval" data-color="white" class="w-5 h-5 mx-auto"></i>').svgLoader()
@@ -162,6 +186,41 @@
 			e.preventDefault();
 			add();
 		})
+
+		// Validate expiry date when Manufactured date changes
+		cash('#mfg_date').on('change', function() {
+			let mfgDate = cash('#mfg_date').val();
+			let expDate = cash('#exp_date').val();
+
+			cash('#mfg_date').removeClass('border-theme-6');
+			cash('#error-mfg_date').html('');
+
+			if (mfgDate && expDate && expDate < mfgDate) {
+				cash('#exp_date').addClass('border-theme-6');
+				cash('#error-exp_date').html(
+					'Expiry date must be the same as or after the Manufactured date.'
+				);
+			} else {
+				cash('#exp_date').removeClass('border-theme-6');
+				cash('#error-exp_date').html('');
+			}
+		});
+
+		// Validate expiry date when Expiry date changes
+		cash('#exp_date').on('change', function() {
+			let mfgDate = cash('#mfg_date').val();
+			let expDate = cash('#exp_date').val();
+
+			cash('#exp_date').removeClass('border-theme-6');
+			cash('#error-exp_date').html('');
+
+			if (mfgDate && expDate && expDate < mfgDate) {
+				cash('#exp_date').addClass('border-theme-6');
+				cash('#error-exp_date').html(
+					'Expiry date must be the same as or after the Manufactured date.'
+				);
+			}
+		});
 
 	})
 </script>

@@ -115,6 +115,7 @@ class AggregationController extends Controller
             }
 
             $available_quantity = Code::where('id','>=',$check_from_serial->id)->where('product_id','>',0)->where('id','<=',$check_to_serial->id)->where('aggregation_id',NULL)->where('user_id',Auth::user()->parent_id??Auth::id())->count();
+            
 
             if($available_quantity<=0){
                 return response(['errors'=>['quantity'=>'Not enough QR codes available.']],404);

@@ -31,7 +31,7 @@ class Code extends Model
 		}
 
 		$orderby  = $orderby ? $orderby : 'codes.id';
-		$order    = $order ? $order : 'ASC';
+		$order    = $order ? $order : 'DESC';
 
 		if ($search_value && !empty($search_value)) {
 			$search_value = strtolower($search_value);

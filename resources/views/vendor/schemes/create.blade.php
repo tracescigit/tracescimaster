@@ -348,22 +348,33 @@
 		 * ========================================== */
 
 		function getToday() {
+
 			let today = new Date();
 
 			let month = String(today.getMonth() + 1).padStart(2, '0');
+
 			let day = String(today.getDate()).padStart(2, '0');
 
 			return `${today.getFullYear()}-${month}-${day}`;
+
 		}
 
+
 		function setupDateValidation() {
-			let today = getToday();
 
-			// From date cannot be before today
-			cash('#from').attr('min', today);
+			// No minimum date restriction.
+			// Past, today and future dates are allowed.
 
-			// To date cannot be before today
-			cash('#to').attr('min', today);
+			let fromDate = cash('#from').val();
+
+			if (fromDate) {
+
+				// To date must be same or after From date
+
+				cash('#to').attr('min', fromDate);
+
+			}
+
 		}
 
 
@@ -372,6 +383,7 @@
 		 * ========================================== */
 
 		function clearFieldError(field) {
+
 			cash(field).removeClass('border-theme-6');
 
 			let errorElement = cash(field)
@@ -379,6 +391,7 @@
 				.find('.login__input-error');
 
 			errorElement.html('');
+
 		}
 
 
@@ -395,28 +408,38 @@
 			if (fromDate) {
 
 				// To date must be same or after From date
+
 				cash('#to').attr('min', fromDate);
 
 				let toDate = cash('#to').val();
 
 				// If selected To Date is before From Date
+
 				if (toDate && toDate < fromDate) {
 
 					cash('#to').val('');
+
 					cash('#to').addClass('border-theme-6');
 
 					cash('#error-to').html(
+
 						'To date must be the same as or after the From date.'
+
 					);
+
 				}
+
 			}
+
 		});
 
 
 		cash('#to').on('change', function() {
+
 			clearFieldError('#to');
 
 			let fromDate = cash('#from').val();
+
 			let toDate = cash(this).val();
 
 			if (fromDate && toDate && toDate < fromDate) {
@@ -424,9 +447,13 @@
 				cash('#to').addClass('border-theme-6');
 
 				cash('#error-to').html(
+
 					'To date must be the same as or after the From date.'
+
 				);
+
 			}
+
 		});
 
 
@@ -456,6 +483,7 @@
 						.html(message);
 
 					continue;
+
 				}
 
 
@@ -469,19 +497,25 @@
 				// ==========================================
 
 				let codeMatch = key.match(
+
 					/^(from_codes|to_codes)\.(\d+)$/
+
 				);
 
 				if (codeMatch) {
 
 					let type = codeMatch[1];
+
 					let index = parseInt(codeMatch[2]);
 
 					// Find the correct code-wrapper
+
 					let wrapper = cash('.code-wrapper').eq(index);
 
 					if (!wrapper.length) {
+
 						continue;
+
 					}
 
 
@@ -498,6 +532,7 @@
 						wrapper
 							.find('.error-from-code')
 							.html(message);
+
 					}
 
 
@@ -514,9 +549,11 @@
 						wrapper
 							.find('.error-to-code')
 							.html(message);
+
 					}
 
 					continue;
+
 				}
 
 
@@ -528,47 +565,60 @@
 				// ==========================================
 
 				let prizeMatch = key.match(
+
 					/^(items|quantity)\.(\d+)$/
+
 				);
 
 				if (prizeMatch) {
 
 					let type = prizeMatch[1];
+
 					let index = parseInt(prizeMatch[2]);
 
 					let wrapper = cash('.prize-wrapper').eq(index);
 
 					if (!wrapper.length) {
+
 						continue;
+
 					}
+
 
 					if (type === 'items') {
 
-						let input = wrapper.find('input[name="items[]"]');
+						let input = wrapper.find(
+							'input[name="items[]"]'
+						);
 
 						input.addClass('border-theme-6');
 
 						wrapper
 							.find('.error-item')
 							.html(message);
+
 					}
+
 
 					if (type === 'quantity') {
 
-						let input = wrapper.find('input[name="quantity[]"]');
+						let input = wrapper.find(
+							'input[name="quantity[]"]'
+						);
 
 						input.addClass('border-theme-6');
 
 						wrapper
 							.find('.error-quantity')
 							.html(message);
+
 					}
+
 				}
+
 			}
+
 		}
-
-
-
 
 
 		/* ==========================================
@@ -576,8 +626,11 @@
 		 * ========================================== */
 
 		cash(document).on(
+
 			'input change',
+
 			'.form__input',
+
 			function() {
 
 				cash(this).removeClass('border-theme-6');
@@ -586,7 +639,9 @@
 					.closest('.input-form')
 					.find('.login__input-error')
 					.html('');
+
 			}
+
 		);
 
 
@@ -597,6 +652,7 @@
 		async function add() {
 
 			// Clear all previous errors
+
 			cash('#add-form')
 				.find('.form__input')
 				.removeClass('border-theme-6');
@@ -610,63 +666,69 @@
 			 * Client-side date validation
 			 * ------------------------------------------ */
 
-			let today = getToday();
-
 			let fromDate = cash('#from').val();
+
 			let toDate = cash('#to').val();
 
 			let valid = true;
 
 
 			// From date required
+
 			if (!fromDate) {
 
 				cash('#from').addClass('border-theme-6');
 
 				cash('#error-from').html(
+
 					'From date is required.'
+
 				);
 
 				valid = false;
 
-			} else if (fromDate < today) {
-
-				cash('#from').addClass('border-theme-6');
-
-				cash('#error-from').html(
-					'From date must be today or a future date.'
-				);
-
-				valid = false;
 			}
 
 
 			// To date required
+
 			if (!toDate) {
 
 				cash('#to').addClass('border-theme-6');
 
 				cash('#error-to').html(
+
 					'To date is required.'
+
 				);
 
 				valid = false;
 
-			} else if (fromDate && toDate < fromDate) {
+			}
+
+
+			// To date must be same or after From date
+			else if (fromDate && toDate < fromDate) {
 
 				cash('#to').addClass('border-theme-6');
 
 				cash('#error-to').html(
+
 					'To date must be the same as or after the From date.'
+
 				);
 
 				valid = false;
+
 			}
 
 
 			// Stop submission if date validation fails
+
 			if (!valid) {
+
 				return;
+
 			}
 
 
@@ -675,7 +737,9 @@
 			 * ------------------------------------------ */
 
 			var formData = new FormData(
+
 				document.querySelector('#add-form')
+
 			);
 
 
@@ -684,12 +748,17 @@
 			 * ------------------------------------------ */
 
 			cash('#btn-add').html(
+
 				'<i data-loading-icon="oval" data-color="white" class="w-5 h-5 mx-auto"></i>'
+
 			).svgLoader();
 
 			cash('#btn-add').attr(
+
 				'disabled',
+
 				'true'
+
 			);
 
 
@@ -698,56 +767,87 @@
 			 * ------------------------------------------ */
 
 			axios.post(
+
 					'{{ url("/vendor/schemes/create") }}',
+
 					formData
+
 				)
+
 				.then(res => {
 
 					showNotification(
+
 						'success',
+
 						'Success !',
+
 						res.data.message
+
 					);
 
 					setTimeout(() => {
 
 						window.location.href =
+
 							'{{ url("/vendor/schemes") }}';
 
 					}, 1000);
+
 				})
+
 				.catch(err => {
 
 					showNotification(
+
 						'error',
+
 						'Error !',
+
 						err.response?.data?.message ||
+
 						'Something went wrong.'
+
 					);
 
 
 					// Restore button
+
 					cash('#btn-add').html(
+
 						'Add Scheme'
+
 					);
 
 					cash('#btn-add').removeAttr(
+
 						'disabled'
+
 					);
 
 
 					// Show Laravel validation errors
+
 					if (
+
 						err.response &&
+
 						err.response.data &&
+
 						err.response.data.errors
+
 					) {
 
 						showValidationErrors(
+
 							err.response.data.errors
+
 						);
+
 					}
+
 				});
+
 		}
 
 
@@ -756,13 +856,17 @@
 		 * ========================================== */
 
 		cash('#add-form').on(
+
 			'submit',
+
 			function(e) {
 
 				e.preventDefault();
 
 				add();
+
 			}
+
 		);
 
 
@@ -777,6 +881,7 @@
 			addCodes();
 
 			addPrizes();
+
 		});
 
 
@@ -785,7 +890,9 @@
 		 * ========================================== */
 
 		cash('.add-more-codes').on(
+
 			'click',
+
 			function(e) {
 
 				e.preventDefault();
@@ -793,13 +900,19 @@
 				addCodes();
 
 				if (
+
 					cash('.code-wrapper').length > 1
+
 				) {
 
 					cash('.remove-codes')
+
 						.show('slow');
+
 				}
+
 			}
+
 		);
 
 
@@ -808,7 +921,9 @@
 		 * ========================================== */
 
 		cash('.remove-codes').on(
+
 			'click',
+
 			function(e) {
 
 				e.preventDefault();
@@ -816,13 +931,19 @@
 				removeCodes();
 
 				if (
+
 					cash('.code-wrapper').length < 2
+
 				) {
 
 					cash('.remove-codes')
+
 						.hide('slow');
+
 				}
+
 			}
+
 		);
 
 
@@ -831,7 +952,9 @@
 		 * ========================================== */
 
 		cash('.add-more-prizes').on(
+
 			'click',
+
 			function(e) {
 
 				e.preventDefault();
@@ -839,13 +962,19 @@
 				addPrizes();
 
 				if (
+
 					cash('.prize-wrapper').length > 1
+
 				) {
 
 					cash('.remove-prizes')
+
 						.show('slow');
+
 				}
+
 			}
+
 		);
 
 
@@ -854,7 +983,9 @@
 		 * ========================================== */
 
 		cash('.remove-prizes').on(
+
 			'click',
+
 			function(e) {
 
 				e.preventDefault();
@@ -862,13 +993,19 @@
 				removePrizes();
 
 				if (
+
 					cash('.prize-wrapper').length < 2
+
 				) {
 
 					cash('.remove-prizes')
+
 						.hide('slow');
+
 				}
+
 			}
+
 		);
 
 
@@ -881,16 +1018,21 @@
 			let index = cash('.code-wrapper').length;
 
 			cash('.codes-area').append(
+
 				'<div class="grid grid-cols-12 code-wrapper">' +
 
 				'<div class="input-form col-span-12 lg:col-span-6 px-2 py-1 mt-2">' +
 
 				'<label class="form-label w-full flex flex-col sm:flex-row">' +
+
 				'From Code' +
+
 				'</label>' +
 
 				'<input type="text" ' +
+
 				'name="from_codes[]" ' +
+
 				'class="form-control form__input from-code">' +
 
 				'<div class="login__input-error w-full text-theme-6 error-from-code"></div>' +
@@ -900,11 +1042,15 @@
 				'<div class="input-form col-span-12 lg:col-span-6 px-2 py-1 mt-2">' +
 
 				'<label class="form-label w-full flex flex-col sm:flex-row">' +
+
 				'To Code' +
+
 				'</label>' +
 
 				'<input type="text" ' +
+
 				'name="to_codes[]" ' +
+
 				'class="form-control form__input to-code">' +
 
 				'<div class="login__input-error w-full text-theme-6 error-to-code"></div>' +
@@ -912,10 +1058,10 @@
 				'</div>' +
 
 				'</div>'
+
 			);
+
 		}
-
-
 
 
 		/* ==========================================
@@ -931,32 +1077,45 @@
 				'<div class="input-form col-span-12 lg:col-span-6 px-2 py-1 mt-2">' +
 
 				'<label class="form-label w-full flex flex-col sm:flex-row">' +
+
 				'Item' +
+
 				'</label>' +
 
 				'<input ' +
+
 				'type="text" ' +
+
 				'name="items[]" ' +
+
 				'class="form-control form__input" ' +
+
 				'required>' +
 
 				'<div class="login__input-error w-5/6 text-theme-6"></div>' +
 
 				'</div>' +
 
-
 				'<div class="input-form col-span-12 lg:col-span-6 px-2 py-1 mt-2">' +
 
 				'<label class="form-label w-full flex flex-col sm:flex-row">' +
+
 				'Quantity' +
+
 				'</label>' +
 
 				'<input ' +
+
 				'type="number" ' +
+
 				'min="1" ' +
+
 				'step="1" ' +
+
 				'name="quantity[]" ' +
+
 				'class="form-control form__input" ' +
+
 				'required>' +
 
 				'<div class="login__input-error w-5/6 text-theme-6"></div>' +
@@ -964,7 +1123,9 @@
 				'</div>' +
 
 				'</div>'
+
 			);
+
 		}
 
 
@@ -975,8 +1136,11 @@
 		async function removeCodes() {
 
 			cash('.code-wrapper')
+
 				.last()
+
 				.remove();
+
 		}
 
 
@@ -987,8 +1151,11 @@
 		async function removePrizes() {
 
 			cash('.prize-wrapper')
+
 				.last()
+
 				.remove();
+
 		}
 
 
@@ -1001,29 +1168,46 @@
 			let product_id = cash('#product').val();
 
 			let formData = {
+
 				product_id: product_id
+
 			};
 
 
 			axios.post(
+
 					'{{ url("/vendor/getbatches") }}',
+
 					formData
+
 				)
+
 				.then(res => {
 
 					cash('#batch').html(
+
 						res.data
+
 					);
+
 				})
+
 				.catch(err => {
 
 					showNotification(
+
 						'error',
+
 						'Error !',
+
 						err.response?.data?.message ||
+
 						'Unable to fetch batches.'
+
 					);
+
 				});
+
 		}
 
 
@@ -1032,14 +1216,19 @@
 		 * ========================================== */
 
 		cash('#product').on(
+
 			'change',
+
 			function() {
 
 				// Clear product error
+
 				clearFieldError('#product');
 
 				fetchBatches();
+
 			}
+
 		);
 
 
@@ -1048,11 +1237,15 @@
 		 * ========================================== */
 
 		cash('#product_selection_type').on(
+
 			'change',
+
 			function() {
 
 				switchTypes();
+
 			}
+
 		);
 
 
@@ -1063,10 +1256,12 @@
 		async function switchTypes() {
 
 			let type =
+
 				cash('#product_selection_type').val();
 
 
 			// By Batch
+
 			if (type == 'batch') {
 
 				cash('.batch-div').show();
@@ -1074,10 +1269,12 @@
 				cash('.product-div').show();
 
 				cash('.codes-div').hide();
+
 			}
 
 
 			// By Product
+
 			if (type == 'product') {
 
 				cash('.batch-div').hide();
@@ -1085,10 +1282,12 @@
 				cash('.product-div').show();
 
 				cash('.codes-div').hide();
+
 			}
 
 
 			// By Code Range
+
 			if (type == 'chunk') {
 
 				cash('.batch-div').hide();
@@ -1096,7 +1295,9 @@
 				cash('.product-div').hide();
 
 				cash('.codes-div').show();
+
 			}
+
 		}
 
 	});

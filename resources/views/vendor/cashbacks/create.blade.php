@@ -148,13 +148,6 @@
 
 		function setupDateValidation() {
 
-			let today = getToday();
-
-			// From date cannot be before today
-			cash('#from').attr('min', today);
-
-			// To date cannot be before today
-			cash('#to').attr('min', today);
 		}
 
 
@@ -252,8 +245,6 @@
 			 * Date validation
 			 * --------------------------------------------- */
 
-			let today = getToday();
-
 			let fromDate = cash('#from').val();
 			let toDate = cash('#to').val();
 
@@ -273,18 +264,6 @@
 				valid = false;
 
 			}
-			// From date cannot be before today
-			else if (fromDate < today) {
-
-				cash('#from')
-					.addClass('border-theme-6');
-
-				cash('#error-from').html(
-					'From date must be today or a future date.'
-				);
-
-				valid = false;
-			}
 
 
 			// To date required
@@ -300,6 +279,7 @@
 				valid = false;
 
 			}
+
 			// To date cannot be before From date
 			else if (fromDate && toDate < fromDate) {
 

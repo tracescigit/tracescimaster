@@ -3,7 +3,7 @@
 		<div class="modal-content">
 			<div class="modal-body p-0">
 				<div class="p-5 text-center mb-2">
-					<div class="text-xl text-green-600">Codes uploaded successfully.</div>
+					<div class="text-xl text-green-600">Code processing completed.</div>
 				</div>
 				<div class="p-5 mb-2 progress-details-div">
 				</div>

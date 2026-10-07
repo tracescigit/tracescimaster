@@ -20,24 +20,22 @@ class RewardController extends Controller
 {
     public function index(Request $request)
     {
-        if($request->ajax())
-        {   
+        if ($request->ajax()) {
             $limit          = $request->input('size');
             $page           = $request->input('page');
-            $search_field   = $request['filters']?$request['filters']['0']['field']:'';
-            $search_type    = $request['filters']?$request['filters']['0']['type']:'';
-            $search_value   = $request['filters']?$request['filters']['0']['value']:'';
-            $orderby        = $request['sorters']?$request['sorters']['0']['field']:'';         
+            $search_field   = $request['filters'] ? $request['filters']['0']['field'] : '';
+            $search_type    = $request['filters'] ? $request['filters']['0']['type'] : '';
+            $search_value   = $request['filters'] ? $request['filters']['0']['value'] : '';
+            $orderby        = $request['sorters'] ? $request['sorters']['0']['field'] : '';
             $order          = $orderby != "" ? $request['sorters']['0']['dir'] : "";
 
-            $response       = RewardScheme::getRewardSchemeModel($limit, $page, $orderby, $order, $search_field , $search_type, $search_value);
+            $response       = RewardScheme::getRewardSchemeModel($limit, $page, $orderby, $order, $search_field, $search_type, $search_value);
 
-            if(!$response){
+            if (!$response) {
                 $rewards      = [];
                 $last_page  = 0;
                 $total = 0;
-            }
-            else{
+            } else {
                 $rewards      = $response['response'];
                 $last_page   = $response['last_page'];
                 $total       = $response['total'];
@@ -49,13 +47,13 @@ class RewardController extends Controller
             foreach ($rewards as $reward) {
 
 
-                $u['title']     = $reward->title??'-';
-                $u['from']      = $reward->from??'-';
-                $u['to']        = $reward->to??'-';
-                $u['status']    = $reward->status??'-';
+                $u['title']     = $reward->title ?? '-';
+                $u['from']      = $reward->from ?? '-';
+                $u['to']        = $reward->to ?? '-';
+                $u['status']    = $reward->status ?? '-';
 
-                $actions            = view('vendor.rewards.actions',['reward' => $reward]);
-                $u['actions']       = $actions->render(); 
+                $actions            = view('vendor.rewards.actions', ['reward' => $reward]);
+                $u['actions']       = $actions->render();
 
                 $rewardData[] = $u;
                 $i++;
@@ -65,7 +63,7 @@ class RewardController extends Controller
             $return = [
                 "last_page"         =>  $last_page,
                 "data"              =>  $rewardData,
-                "total"=>$total
+                "total" => $total
             ];
 
             return $return;
@@ -74,14 +72,14 @@ class RewardController extends Controller
     }
 
     public function create()
-    {   
-        $products = Product::where('user_id',Auth::user()->parent_id??Auth::id())->where('status','1')->get();
-        return view('vendor.rewards.create')->with('page_name','vendor-rewards')->with('products',$products); 
+    {
+        $products = Product::where('user_id', Auth::user()->parent_id ?? Auth::id())->where('status', '1')->get();
+        return view('vendor.rewards.create')->with('page_name', 'vendor-rewards')->with('products', $products);
     }
 
     public function store(RewardSchemeCreateRequest $request)
     {
-        try{
+        try {
             $input   = $request->all();
 
             $reward = new RewardScheme;
@@ -90,7 +88,7 @@ class RewardController extends Controller
             $reward->from = $input['from'];
             $reward->to  = $input['to'];
             $reward->points  = $input['reward_points'];
-            $reward->user_id = Auth::user()->parent_id??Auth::id();
+            $reward->user_id = Auth::user()->parent_id ?? Auth::id();
             $reward->status = $input['status'];
             $reward->product_selection_type = $input['product_selection_type'];
 
@@ -98,8 +96,8 @@ class RewardController extends Controller
 
             // dd($input);
 
-            if (isset($input['points']) && count($input['points'])>0) {
-                for ($i=0; $i < count($input['points']); $i++) { 
+            if (isset($input['points']) && count($input['points']) > 0) {
+                for ($i = 0; $i < count($input['points']); $i++) {
                     $item = [
                         'points'    => $input['points'][$i],
                         'item'      => $input['items'][$i],
@@ -110,19 +108,28 @@ class RewardController extends Controller
             }
 
             $reward->items = json_encode($items);
-            $reward->save();
 
-            if ($input['product_selection_type']=='product') {
+            if ($input['product_selection_type'] == 'product') {
+
+                $reward->save();
+
                 $reward->product_id = $input['product'];
-                $product_codes = Code::where('user_id',Auth::user()->parent_id??Auth::id())->where('product_id',$input['product'])->get();
+
+                $product_codes = Code::where('user_id', Auth::user()->parent_id ?? Auth::id())
+                    ->where('product_id', $input['product'])
+                    ->get();
+
                 if (!$product_codes->isEmpty()) {
                     foreach ($product_codes as $product_code) {
 
-                        $exists = CouponCode::where('user_id',Auth::user()->parent_id??Auth::id())->where('code_id',$product_code->id)->where('reward_id',$reward->id)->exists();
+                        $exists = CouponCode::where('user_id', Auth::user()->parent_id ?? Auth::id())
+                            ->where('code_id', $product_code->id)
+                            ->where('reward_id', $reward->id)
+                            ->exists();
 
                         if (!$exists) {
                             CouponCode::create([
-                                'user_id' => Auth::user()->parent_id??Auth::id(),
+                                'user_id' => Auth::user()->parent_id ?? Auth::id(),
                                 'code_id' => $product_code->id,
                                 'reward_id' => $reward->id,
                                 'coupon_code' => getCouponCode()
@@ -130,54 +137,104 @@ class RewardController extends Controller
                         }
                     }
                 }
+            } elseif ($input['product_selection_type'] == 'batch') {
 
-            }elseif($input['product_selection_type']=='batch'){
-                $batch = Batch::where('code',$input['batch'])->first();
+                $reward->save();
+
+                $batch = Batch::where('code', $input['batch'])->first();
                 $reward->batch_id = $batch->id;
 
-                $batch_codes = Code::where('user_id',Auth::user()->parent_id??Auth::id())->where('batch_id',$reward->batch_id)->get();
+                $batch_codes = Code::where('user_id', Auth::user()->parent_id ?? Auth::id())
+                    ->where('batch_id', $reward->batch_id)
+                    ->get();
 
                 if (!$batch_codes->isEmpty()) {
                     foreach ($batch_codes as $batch_code) {
 
-                        $exists = CouponCode::where('user_id',Auth::user()->parent_id??Auth::id())->where('code_id',$batch_code->id)->where('reward_id',$reward->id)->exists();
+                        $exists = CouponCode::where('user_id', Auth::user()->parent_id ?? Auth::id())
+                            ->where('code_id', $batch_code->id)
+                            ->where('reward_id', $reward->id)
+                            ->exists();
 
                         if (!$exists) {
                             CouponCode::create([
-                                'user_id' => Auth::user()->parent_id??Auth::id(),
+                                'user_id' => Auth::user()->parent_id ?? Auth::id(),
                                 'code_id' => $batch_code->id,
                                 'reward_id' => $reward->id,
                                 'coupon_code' => getCouponCode()
                             ]);
                         }
-
                     }
                 }
+            } else {
 
-            }else{
                 $codes = [];
 
-                if (isset($input['from_codes']) && count($input['from_codes'])>0) {
-                    for ($i=0; $i < count($input['from_codes']); $i++) { 
+                if (isset($input['from_codes']) && count($input['from_codes']) > 0) {
+                    for ($i = 0; $i < count($input['from_codes']); $i++) {
+
+                        $fromCode = $input['from_codes'][$i];
+                        $toCode = $input['to_codes'][$i];
+
+                        $inactiveCodeExists = Code::whereBetween('code_data', [
+                            $fromCode,
+                            $toCode
+                        ])
+                            ->where('status', '0')
+                            ->exists();
+
+                        if ($inactiveCodeExists) {
+                            return response([
+                                'message' => 'The selected codes are not activated. Please activate first.'
+                            ], 422);
+                        }
+
                         $item = [
                             'from'  => $input['from_codes'][$i],
                             'to'    => $input['to_codes'][$i],
                         ];
+
                         array_push($codes, $item);
+                    }
+                }
 
-                        $from = Code::where('user_id',Auth::user()->parent_id??Auth::id())->where('code_data',$input['from_codes'][$i])->first();
-                        $to = Code::where('user_id',Auth::user()->parent_id??Auth::id())->where('code_data',$input['to_codes'][$i])->first();
+                /*
+             * Save only after all code validation has passed.
+             */
+                $reward->save();
 
-                        if ($from && $to && $to->id>$from->id) {
-                            $between_codes = Code::where('user_id',Auth::user()->parent_id??Auth::id())->where('id','>=',$from->id)->where('id','<=',$to->id)->get();
+                /*
+             * Now create coupon codes.
+             */
+                if (!empty($codes)) {
+                    foreach ($codes as $code) {
+
+                        $from = Code::where('user_id', Auth::user()->parent_id ?? Auth::id())
+                            ->where('code_data', $code['from'])
+                            ->first();
+
+                        $to = Code::where('user_id', Auth::user()->parent_id ?? Auth::id())
+                            ->where('code_data', $code['to'])
+                            ->first();
+
+                        if ($from && $to && $to->id > $from->id) {
+
+                            $between_codes = Code::where('user_id', Auth::user()->parent_id ?? Auth::id())
+                                ->where('id', '>=', $from->id)
+                                ->where('id', '<=', $to->id)
+                                ->get();
+
                             if (!$between_codes->isEmpty()) {
                                 foreach ($between_codes as $between_code) {
 
-                                    $exists = CouponCode::where('user_id',Auth::user()->parent_id??Auth::id())->where('code_id',$between_code->id)->where('reward_id',$reward->id)->exists();
+                                    $exists = CouponCode::where('user_id', Auth::user()->parent_id ?? Auth::id())
+                                        ->where('code_id', $between_code->id)
+                                        ->where('reward_id', $reward->id)
+                                        ->exists();
 
                                     if (!$exists) {
                                         CouponCode::create([
-                                            'user_id' => Auth::user()->parent_id??Auth::id(),
+                                            'user_id' => Auth::user()->parent_id ?? Auth::id(),
                                             'code_id' => $between_code->id,
                                             'reward_id' => $reward->id,
                                             'coupon_code' => getCouponCode()
@@ -186,7 +243,6 @@ class RewardController extends Controller
                                 }
                             }
                         }
-
                     }
                 }
 
@@ -195,31 +251,30 @@ class RewardController extends Controller
 
             $reward->save();
 
-            return response(['message'=>'Reward Scheme created successfully.'], 201);
-
-        }catch(Exception $e){
-            return response(['message'=>'Something went wrong.'], 503);
+            return response(['message' => 'Reward Scheme created successfully.'], 201);
+        } catch (Exception $e) {
+            return response(['message' => 'Something went wrong.'], 503);
         }
     }
 
     public function edit($id)
-    {   
+    {
         $id = decrypt($id);
 
         $reward = RewardScheme::find($id);
-        $products = Product::where('user_id',Auth::user()->parent_id??Auth::id())->where('status','1')->get();
+        $products = Product::where('user_id', Auth::user()->parent_id ?? Auth::id())->where('status', '1')->get();
         $batch = null;
 
         if ($reward->batch_id) {
             $batch = Batch::find($reward->batch_id);
         }
 
-        return view('vendor.rewards.edit')->with('reward',$reward)->with('page_name', 'vendor-rewards')->with('products',$products)->with('batch',$batch);
+        return view('vendor.rewards.edit')->with('reward', $reward)->with('page_name', 'vendor-rewards')->with('products', $products)->with('batch', $batch);
     }
 
-    public function update(RewardSchemeUpdateRequest $request ,$id)
+    public function update(RewardSchemeUpdateRequest $request, $id)
     {
-        try{
+        try {
             $id = decrypt($id);
 
             $input   = $request->all();
@@ -229,7 +284,7 @@ class RewardController extends Controller
             $reward->from = $input['from'];
             $reward->to  = $input['to'];
             $reward->points  = $input['reward_points'];
-            $reward->user_id = Auth::user()->parent_id??Auth::id();
+            $reward->user_id = Auth::user()->parent_id ?? Auth::id();
             $reward->status = $input['status'];
 
             $old_type = $reward->product_selection_type;
@@ -237,8 +292,8 @@ class RewardController extends Controller
             $reward->product_selection_type = $input['product_selection_type'];
 
             $items = [];
-            if (isset($input['points']) && count($input['points'])>0) {
-                for ($i=0; $i < count($input['points']); $i++) { 
+            if (isset($input['points']) && count($input['points']) > 0) {
+                for ($i = 0; $i < count($input['points']); $i++) {
                     $item = [
                         'points'    => $input['points'][$i],
                         'item'      => $input['items'][$i],
@@ -250,21 +305,21 @@ class RewardController extends Controller
             $reward->items = json_encode($items);
             $reward->save();
 
-            if ($old_type!=$input['product_selection_type']) {
-                $delete = CouponCode::where('reward_id',$reward->id)->delete();
+            if ($old_type != $input['product_selection_type']) {
+                $delete = CouponCode::where('reward_id', $reward->id)->delete();
             }
 
-            if ($input['product_selection_type']=='product') {
+            if ($input['product_selection_type'] == 'product') {
                 $reward->product_id = $input['product'];
-                $product_codes = Code::where('user_id',Auth::user()->parent_id??Auth::id())->where('product_id',$input['product'])->get();
+                $product_codes = Code::where('user_id', Auth::user()->parent_id ?? Auth::id())->where('product_id', $input['product'])->get();
                 if (!$product_codes->isEmpty()) {
                     foreach ($product_codes as $product_code) {
 
-                        $exists = CouponCode::where('user_id',Auth::user()->parent_id??Auth::id())->where('code_id',$product_code->id)->where('reward_id',$reward->id)->exists();
+                        $exists = CouponCode::where('user_id', Auth::user()->parent_id ?? Auth::id())->where('code_id', $product_code->id)->where('reward_id', $reward->id)->exists();
 
                         if (!$exists) {
                             CouponCode::create([
-                                'user_id' => Auth::user()->parent_id??Auth::id(),
+                                'user_id' => Auth::user()->parent_id ?? Auth::id(),
                                 'code_id' => $product_code->id,
                                 'reward_id' => $reward->id,
                                 'coupon_code' => getCouponCode()
@@ -272,54 +327,68 @@ class RewardController extends Controller
                         }
                     }
                 }
-
-            }elseif($input['product_selection_type']=='batch'){
-                $batch = Batch::where('code',$input['batch'])->first();
+            } elseif ($input['product_selection_type'] == 'batch') {
+                $batch = Batch::where('code', $input['batch'])->first();
                 $reward->batch_id = $batch->id;
 
-                $batch_codes = Code::where('user_id',Auth::user()->parent_id??Auth::id())->where('batch_id',$reward->batch_id)->get();
+                $batch_codes = Code::where('user_id', Auth::user()->parent_id ?? Auth::id())->where('batch_id', $reward->batch_id)->get();
 
                 if (!$batch_codes->isEmpty()) {
                     foreach ($batch_codes as $batch_code) {
 
-                        $exists = CouponCode::where('user_id',Auth::user()->parent_id??Auth::id())->where('code_id',$batch_code->id)->where('reward_id',$reward->id)->exists();
+                        $exists = CouponCode::where('user_id', Auth::user()->parent_id ?? Auth::id())->where('code_id', $batch_code->id)->where('reward_id', $reward->id)->exists();
 
                         if (!$exists) {
                             CouponCode::create([
-                                'user_id' => Auth::user()->parent_id??Auth::id(),
+                                'user_id' => Auth::user()->parent_id ?? Auth::id(),
                                 'code_id' => $batch_code->id,
                                 'reward_id' => $reward->id,
                                 'coupon_code' => getCouponCode()
                             ]);
                         }
-
                     }
                 }
-
-            }else{
+            } else {
                 $codes = [];
 
-                if (isset($input['from_codes']) && count($input['from_codes'])>0) {
-                    for ($i=0; $i < count($input['from_codes']); $i++) { 
+                if (isset($input['from_codes']) && count($input['from_codes']) > 0) {
+                    for ($i = 0; $i < count($input['from_codes']); $i++) {
+
+                        $fromCode = $input['from_codes'][$i];
+                        $toCode = $input['to_codes'][$i];
+
+                        $inactiveCodeExists = Code::whereBetween('code_data', [
+                            $fromCode,
+                            $toCode
+                        ])
+                            ->where('status', '0')
+                            ->exists();
+
+                        if ($inactiveCodeExists) {
+                            return response([
+                                'message' => 'The selected codes are not activated. Please activate first.'
+                            ], 422);
+                        }
+
                         $item = [
                             'from'  => $input['from_codes'][$i],
                             'to'    => $input['to_codes'][$i],
                         ];
                         array_push($codes, $item);
 
-                        $from = Code::where('user_id',Auth::user()->parent_id??Auth::id())->where('code_data',$input['from_codes'][$i])->first();
-                        $to = Code::where('user_id',Auth::user()->parent_id??Auth::id())->where('code_data',$input['to_codes'][$i])->first();
+                        $from = Code::where('user_id', Auth::user()->parent_id ?? Auth::id())->where('code_data', $input['from_codes'][$i])->first();
+                        $to = Code::where('user_id', Auth::user()->parent_id ?? Auth::id())->where('code_data', $input['to_codes'][$i])->first();
 
-                        if ($from && $to && $to->id>$from->id) {
-                            $between_codes = Code::where('user_id',Auth::user()->parent_id??Auth::id())->where('id','>=',$from->id)->where('id','<=',$to->id)->get();
+                        if ($from && $to && $to->id > $from->id) {
+                            $between_codes = Code::where('user_id', Auth::user()->parent_id ?? Auth::id())->where('id', '>=', $from->id)->where('id', '<=', $to->id)->get();
                             if (!$between_codes->isEmpty()) {
                                 foreach ($between_codes as $between_code) {
 
-                                    $exists = CouponCode::where('user_id',Auth::user()->parent_id??Auth::id())->where('code_id',$between_code->id)->where('reward_id',$reward->id)->exists();
+                                    $exists = CouponCode::where('user_id', Auth::user()->parent_id ?? Auth::id())->where('code_id', $between_code->id)->where('reward_id', $reward->id)->exists();
 
                                     if (!$exists) {
                                         CouponCode::create([
-                                            'user_id' => Auth::user()->parent_id??Auth::id(),
+                                            'user_id' => Auth::user()->parent_id ?? Auth::id(),
                                             'code_id' => $between_code->id,
                                             'reward_id' => $reward->id,
                                             'coupon_code' => getCouponCode()
@@ -328,7 +397,6 @@ class RewardController extends Controller
                                 }
                             }
                         }
-
                     }
                 }
 
@@ -337,25 +405,23 @@ class RewardController extends Controller
 
             $reward->save();
 
-            return response(['message'=>'Reward Scheme updated successfully.'], 201);
-
-        }catch(Exception $e){
-            return response(['message'=>'Something went wrong.'], 503);
+            return response(['message' => 'Reward Scheme updated successfully.'], 201);
+        } catch (Exception $e) {
+            return response(['message' => 'Something went wrong.'], 503);
         }
     }
 
     public function destroy($id)
     {
-        try{
+        try {
             $id = decrypt($id);
 
             $reward = RewardScheme::find($id);
             $reward->delete();
 
-            return response(['message'=>'Reward Scheme deleted successfully.'], 200);
-
-        }catch(Exception $e){
-            return response(['message'=>'Something went wrong.'], 503);
+            return response(['message' => 'Reward Scheme deleted successfully.'], 200);
+        } catch (Exception $e) {
+            return response(['message' => 'Something went wrong.'], 503);
         }
     }
 
@@ -363,7 +429,7 @@ class RewardController extends Controller
     {
         $id = decrypt($id);
         $reward = RewardScheme::find($id);
-        $coupon_codes = CouponCode::where('reward_id',$reward->id)->get();
+        $coupon_codes = CouponCode::where('reward_id', $reward->id)->get();
 
         return Excel::download(new CouponCodeExport($coupon_codes), 'coupon_codes.xlsx');
     }
@@ -373,11 +439,11 @@ class RewardController extends Controller
         $id = decrypt($id);
 
         $reward = RewardScheme::find($id);
-        $transactions = Wallet::where('reward_id',$reward->id)->get();
-        $credits = Wallet::where('type','credit')->where('status','Success')->where('reward_id',$reward->id)->sum('points');
-        $debits = Wallet::where('type','debit')->where('status','Success')->where('reward_id',$reward->id)->sum('points');
-        $balance = $credits-$debits;
+        $transactions = Wallet::where('reward_id', $reward->id)->get();
+        $credits = Wallet::where('type', 'credit')->where('status', 'Success')->where('reward_id', $reward->id)->sum('points');
+        $debits = Wallet::where('type', 'debit')->where('status', 'Success')->where('reward_id', $reward->id)->sum('points');
+        $balance = $credits - $debits;
 
-        return view('vendor.rewards.transactions')->with('reward',$reward)->with('credits',$credits)->with('debits',$debits)->with('balance',$balance)->with('transactions',$transactions);
+        return view('vendor.rewards.transactions')->with('reward', $reward)->with('credits', $credits)->with('debits', $debits)->with('balance', $balance)->with('transactions', $transactions);
     }
 }
