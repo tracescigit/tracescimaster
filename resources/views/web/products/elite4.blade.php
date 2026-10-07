@@ -1,5 +1,5 @@
 @extends('web.layouts.app')
-@section('content')
+@section('subhead')
 
 <style>
     *,
@@ -220,6 +220,7 @@
         flex-wrap: wrap;
     }
 
+    /* 
     .btn {
         display: inline-flex;
         align-items: center;
@@ -231,7 +232,7 @@
         text-decoration: none;
         transition: all 0.2s;
         letter-spacing: 0.02em;
-    }
+    } */
 
     .btn-primary {
         background: var(--teal);
@@ -1190,7 +1191,7 @@
         margin-bottom: 32px;
     }
 
-    .form-group {
+    /* .form-group {
         margin-bottom: 18px;
     }
 
@@ -1226,7 +1227,7 @@
     .form-group textarea {
         min-height: 100px;
         resize: vertical;
-    }
+    } */
 
     .form-submit {
         background: var(--teal);
@@ -1344,6 +1345,7 @@
         transform: none;
     }
 
+<<<<<<< HEAD
     .product_demo {
         background: #f5f5f5;
         padding: 10px 0px 20px 0;
@@ -1477,6 +1479,8 @@
 
 
 
+=======
+>>>>>>> 583f7e0a55cf3be68d4030be4bf3bd647b844fb0
     /* ── MOBILE ── */
     @media (max-width: 960px) {
         nav {
@@ -1696,6 +1700,8 @@
         }
     }
 </style>
+@endsection
+@section('content')
 
 <!-- <div class="rev_slider_wrapper">
     <div id="slider1" class="rev_slider" data-version="5.0">
@@ -1709,6 +1715,7 @@
                     class="rev-slidebg"
                     data-bgposition="center center"
                     data-bgfit="auto"
+<<<<<<< HEAD
                     data-bgrepeat="no-repeat"> -->
 <!-- <img src="{{asset('dist/images/elite4_machine.png')}}"
     class="rev-slidebg"
@@ -1718,6 +1725,12 @@
     style="width:100%; max-width:900px; height:auto; margin:auto;"> -->
 <!-- LAYER 1 -->
 <!-- <div class="tp-caption tp-resizeme"
+=======
+                    data-bgrepeat="no-repeat">
+
+                <!-- LAYER 1 -->
+                <div class="tp-caption tp-resizeme"
+>>>>>>> 583f7e0a55cf3be68d4030be4bf3bd647b844fb0
                     data-x="center"
                     data-y="top"
                     data-voffset="120"
@@ -1756,11 +1769,15 @@
                     data-x="center" data-y="top" data-voffset="430"
                     data-start="2800" data-transform_in="y:[100%];opacity:0;s:800;"
                     data-transform_out="opacity:0;s:300" ;>
+<<<<<<< HEAD
                     <div class="rev-slider-btn text-center">
                         <a a href="{{ url(Auth::check()?myDashboard():'/login') }}">Login</a>
                         <a a href="{{ url(Auth::check()?myDashboard():'/register') }}">Register</a>
                     </div>
                 </div> -->
+=======
+                </div>
+>>>>>>> 583f7e0a55cf3be68d4030be4bf3bd647b844fb0
 
 <!-- </li> -->
 
@@ -2378,6 +2395,7 @@
     </div>
     </div>
 </section>
+<<<<<<< HEAD
 <div class="product_demo">
     <div class="container">
         <div class="row">
@@ -2410,38 +2428,42 @@
     </div>
 </div>
 
+=======
+@endsection
+>>>>>>> 583f7e0a55cf3be68d4030be4bf3bd647b844fb0
 @section('script')
 
 <script>
-{{-- Scroll reveal --}}
-const reveals = document.querySelectorAll('.reveal');
-const io = new IntersectionObserver(entries => {
-entries.forEach(e => {
-if (e.isIntersecting) {
-e.target.classList.add('visible');
-io.unobserve(e.target);
-}
-});
-}, { threshold: 0.1 });
-reveals.forEach(el => io.observe(el));
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.classList.add('visible');
+                io.unobserve(e.target);
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+    reveals.forEach(el => io.observe(el));
 
-{{-- Word rotator --}}
-const words = ['High Speed Multicolor Inkjet', 'CMYK UV & Aqueous Inks', 'Variable Data Printing', 'Track & Trace'];
-let idx = 0;
-const el = document.getElementById('rotateWord');
-if (el) {
-el.style.transition = 'opacity 0.3s, transform 0.3s';
-setInterval(() => {
-el.style.opacity = '0';
-el.style.transform = 'translateY(12px)';
-setTimeout(() => {
-idx = (idx + 1) % words.length;
-el.textContent = words[idx];
-el.style.opacity = '1';
-el.style.transform = 'translateY(0)';
-}, 300);
-}, 2400);
-}
+
+    const words = ['High Speed Multicolor Inkjet', 'CMYK UV & Aqueous Inks', 'Variable Data Printing', 'Track & Trace'];
+    let idx = 0;
+    const el = document.getElementById('rotateWord');
+    if (el) {
+        el.style.transition = 'opacity 0.3s, transform 0.3s';
+        setInterval(() => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(12px)';
+            setTimeout(() => {
+                idx = (idx + 1) % words.length;
+                el.textContent = words[idx];
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            }, 300);
+        }, 2400);
+    }
 </script>
 
 <script type="text/javascript">
@@ -2513,5 +2535,4 @@ el.style.transform = 'translateY(0)';
     });
 </script>
 
-@endsection
 @endsection

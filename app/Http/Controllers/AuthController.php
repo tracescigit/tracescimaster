@@ -143,8 +143,11 @@ class AuthController extends Controller
 
     public function company(CompanyRequest $request)
     {
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 583f7e0a55cf3be68d4030be4bf3bd647b844fb0
         try {
             $input = $request->all();
             $user  = Session::get('user');
@@ -164,13 +167,16 @@ class AuthController extends Controller
                 $input['gst_or_vat_certificate'] = $this->getFilePath($file);
             }
 
-            $user['otp']     =  mt_rand(1000, 9999);
+            // $user['otp']     =  mt_rand(1000, 9999);
+            $user['otp']     =  1111;
+
             $user['company'] = $input;
 
             Session::put('user', $user);
 
             $code = $user['country_code'];
             $mobile = $user['mobile'];
+<<<<<<< HEAD
 
             Sms::sendSms(
                 'TRCOTP',
@@ -220,6 +226,26 @@ class AuthController extends Controller
                     'line'    => $e->getLine(),
                     'file'    => $e->getFile(),
                 ]);
+=======
+          if (env('APP_URL') != 'http://localhost') {
+                Sms::sendSms(
+                    'TRCOTP',
+                    [
+                        'otp' => $user['otp'],
+                        'username' => $user['name'],
+                        'phone' => $mobile,
+                        'code' => $code,
+                    ]
+                );
+                EmailProvider::sendMail(
+                    'user-otp-email',
+                    [
+                        'otp' => $user['otp'],
+                        'username' => $user['name'],
+                        'email' => $user['email']
+                    ]
+                );
+>>>>>>> 583f7e0a55cf3be68d4030be4bf3bd647b844fb0
             }
             return response(['message' => 'Please follow next step.'], 201);
         } catch (Exception $e) {
@@ -314,6 +340,7 @@ class AuthController extends Controller
         );
         try {
 
+<<<<<<< HEAD
             $mail_array = [];
             $mail_array['email_subject'] = 'Welcome to Tracesci';
             $mail_array['email'] = $user->email;
@@ -418,6 +445,28 @@ class AuthController extends Controller
                 'file'    => $e->getFile(),
             ]);
         }
+=======
+        EmailProvider::sendMail(
+            'user-welcome-email',
+            [
+                'username' => $user->name,
+                'email' => $user->email
+            ]
+        );
+
+        EmailProvider::sendMail(
+            'admin-user-registration-request',
+            [
+                'name' => $user->name,
+                'username' => $user->name,
+                'email' => env('MAIL_FROM_ADDRESS', 'jetsciglobal@gmail.com'),
+                'phone' => $user->phone,
+                'company' => $session['company']['company_name'] ?? '',
+                'plan' => '-',
+                'amount' => '-',
+            ]
+        );
+>>>>>>> 583f7e0a55cf3be68d4030be4bf3bd647b844fb0
 
         return response([
             'success' => true,
@@ -509,6 +558,7 @@ class AuthController extends Controller
                 ]
             );
 
+<<<<<<< HEAD
             try {
 
                 $mail_array = [];
@@ -555,6 +605,16 @@ class AuthController extends Controller
                     'file'    => $e->getFile(),
                 ]);
             }
+=======
+            EmailProvider::sendMail(
+                'user-forgot-password',
+                [
+                    'username' => $user->name,
+                    'email' => $user->email,
+                    'password' => $password,
+                ]
+            );
+>>>>>>> 583f7e0a55cf3be68d4030be4bf3bd647b844fb0
 
             $user->password = bcrypt($password);
             $user->save();

@@ -1,6 +1,5 @@
  @extends('web.layouts.app')
- @section('content')
-
+ @section('subhead')
  <style>
      *,
      *::before,
@@ -1693,6 +1692,7 @@
          }
      }
  </style>
+<<<<<<< HEAD
  <section class="page-title-area2 aboout-4-head-area">
      <div class="container">
          <div class="row">
@@ -1700,6 +1700,11 @@
                  <div class="about-head-content">
                      <h2>Razor6</h2>
                      <p>Precision-engineered Piezo DOD technology delivering</p>
+=======
+ @endsection
+ @section('content')
+
+>>>>>>> 583f7e0a55cf3be68d4030be4bf3bd647b844fb0
 
 
                      <div class="rev-slider-btn text-center" style="margin-top: 20px;">

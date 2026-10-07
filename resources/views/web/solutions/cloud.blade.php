@@ -1,5 +1,5 @@
 @extends('web.layouts.app')
-@section('content')
+@section('subhead')
 <style>
     /* Section spacing */
     .help-content-area {
@@ -54,6 +54,7 @@
         right: -220px !important;
     }
 
+<<<<<<< HEAD
     .product_demo {
         background: #f5f5f5;
         padding: 10px 0px 20px 0;
@@ -181,10 +182,15 @@
     }
 
 
+<<<<<<< HEAD
     .pricing-row {
         display: flex;
         flex-wrap: wrap;
     }
+=======
+=======
+>>>>>>> c0a77dd70cf985bff0f2d75ca1d256caca44f48c
+>>>>>>> 583f7e0a55cf3be68d4030be4bf3bd647b844fb0
 
     .pricing-col {
         display: flex;
@@ -599,6 +605,9 @@
         box-sizing: border-box;
     }
 </style>
+@endsection
+@section('content')
+
 <div class="rev_slider_wrapper">
     <div id="slider1" class="rev_slider" data-version="5.0">
         <ul>
