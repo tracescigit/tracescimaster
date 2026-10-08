@@ -110,9 +110,6 @@
                 .html('<i data-loading-icon="oval" data-color="white" class="w-5 h-5 mx-auto"></i>')
                 .svgLoader();
 
-<<<<<<< HEAD
-            await helper.delay(500);
-=======
             axios.post(`forgot-password`, {
                 email: email
             }).then(res => {
@@ -123,7 +120,6 @@
             }).catch(err => {
                 showNotification('error', 'Error !', err.response.data.message)
                 cash('#btn-reset').html('Submit')
->>>>>>> 583f7e0a55cf3be68d4030be4bf3bd647b844fb0
 
             axios.post('forgot-password', {
                     email: email

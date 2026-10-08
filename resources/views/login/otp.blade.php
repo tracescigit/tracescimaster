@@ -70,17 +70,10 @@
 
             axios.post(`{{url('/register/otp')}}`, formData).then(res => {
 
-<<<<<<< HEAD
-                showNotification('success', 'Success !', res.data.message)
-                setTimeout(() => {
-                    window.location.href = "{{ url('/register/success') }}"
-                }, 2000)
-=======
                 showNotification('success','Success !',res.data.message)
                 setTimeout(()=>{
                     window.location.href = '{{ url("/register/success") }}'
                 },2000)
->>>>>>> 583f7e0a55cf3be68d4030be4bf3bd647b844fb0
 
             }).catch(err => {
                 showNotification('error', 'Error !', err.response.data.message)
