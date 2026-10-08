@@ -782,62 +782,6 @@
 <!-- Pricing Table -->
 
 
-<<<<<<< HEAD
-=======
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="all-link pricinig-head-btn text-center">
-              <a href="#">Monthly</a>
-              <a href="#">Yearly</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      @foreach(getPlan() as $plan)
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-6 col-md-4">
-            <div class="pricing-table-content text-center wow fadeInLeft">
-              <div class="pricing-table-head">
-                <div class="pricing-head-top">
-                  <span>{{$plan->title}}</span>
-</div>
-<div class="pricing-head-content">
-  <span>
-    @if ($country=='India')
-    &#8377; {{$plan->price_inr}}
-    @else
-    $ {{$plan->price_usd}}
-    @endif
-  </span>
-  <span>/ Monthly</span>
-</div>
-</div>
-<div class="pricing-table-inner-content">
-  <div class="pricing-table-title">
-    <p>All plans are include Funnel Report, Cohort Report, Revenue Report, People Search, and A/B Testing Report.</p>
-  </div>
-  <div class="pricing-table-list">
-    <ul>
-      {!!$plan->description!!}
-    </ul>
-    <div class="all-link pricinig-bottom-btn text-center">
-      <a class="btn btn-default" href="{{url('register')}}">Sign up</a>
-    </div>
-  </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-@endforeach
-<div class="pricing-table-self">
-  <img src="{{asset('dist/images/pricing-table-self.png')}}">
-</div>
-</section>--}}
-
->>>>>>> 583f7e0a55cf3be68d4030be4bf3bd647b844fb0
 
 
 <!-- Event Calendar -->

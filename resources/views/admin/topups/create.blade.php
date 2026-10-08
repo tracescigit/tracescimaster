@@ -106,10 +106,10 @@
 			cash('#btn-add').html('<i data-loading-icon="oval" data-color="white" class="w-5 h-5 mx-auto"></i>').svgLoader()
 			cash('#btn-add').attr('disabled', 'true');
 
-			axios.post('{{ url('/admin/topups/create') }}', formData).then(res => {
+			axios.post('{{ url("/admin/topups/create") }}', formData).then(res => {
 				showNotification('success','Success !',res.data.message)
 				setTimeout(()=>{
-					window.location.href = '{{ url('/admin/topups') }}'
+					window.location.href = '{{ url("/admin/topups") }}'
 				},1000)
 
 			}).catch(err => {

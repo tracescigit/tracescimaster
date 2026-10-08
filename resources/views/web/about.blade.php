@@ -176,13 +176,7 @@
         text-align: center;
     }
 </style>
-<<<<<<< HEAD
 <section class="page-title-area aboout-5-head-area">
-=======
-@endsection
-@section('content')
-<section class="page-title-area aboout-1-head-area">
->>>>>>> 583f7e0a55cf3be68d4030be4bf3bd647b844fb0
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">

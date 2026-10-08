@@ -172,7 +172,7 @@
 			cash('#btn-update').html('<i data-loading-icon="oval" data-color="white" class="w-5 h-5 mx-auto"></i>').svgLoader()
 			// await helper.delay(500)
 
-			axios.post('{{ url('/admin/products/'.encrypt($product->id).'/edit') }}', formData).then(res => {
+			axios.post('{{ url("/admin/products/".encrypt($product->id)."/edit") }}', formData).then(res => {
 				// cash('#btn-update').attr('disabled', 'true');
 				showNotification('success','Success !',res.data.message)
 				setTimeout(()=>{

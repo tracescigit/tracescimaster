@@ -81,7 +81,7 @@
 @endsection
 @section('global_script')
 <script>
-	var tabulatorUrl =  '{{ route('admin-scan-history') }}';
+	var tabulatorUrl =  '{{ route("admin-scan-history") }}';
 	var tabulatorColumns = [
 	{	
 		formatter: "responsiveCollapse",

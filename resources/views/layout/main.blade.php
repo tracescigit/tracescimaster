@@ -40,7 +40,7 @@
 
         @if(request()->is('vendor*') && env('APP_ENV')!='local')
         setInterval(function() {
-            axios.get('{{ url('vendor/getrecords/credits') }}').then(res => {
+            axios.get('{{ url("vendor/getrecords/credits") }}').then(res => {
                 if(res.data.credit){
                     cash('.credit-notification').html(res.data.credit);
                 }

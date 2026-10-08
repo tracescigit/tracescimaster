@@ -81,7 +81,7 @@
 
 @section('global_script')
 <script>
-	var tabulatorUrl =  '{{ route('admin-qr-label-orders') }}';
+	var tabulatorUrl =  '{{ route("admin-qr-label-orders") }}';
 	var tabulatorColumns = [
 	{	
 		formatter: "responsiveCollapse",

@@ -75,10 +75,10 @@
 			cash('#btn-add').html('<i data-loading-icon="oval" data-color="white" class="w-5 h-5 mx-auto"></i>').svgLoader()
 			cash('#btn-add').attr('disabled', 'true');
 
-			axios.post('{{ url('/admin/printing-cost/create') }}', formData).then(res => {
+			axios.post('{{ url("/admin/printing-cost/create") }}', formData).then(res => {
 				showNotification('success','Success !',res.data.message)
 				setTimeout(()=>{
-					window.location.href = '{{ url('/admin/printing-cost') }}'
+					window.location.href = '{{ url("/admin/printing-cost") }}'
 				},1000)
 
 			}).catch(err => {

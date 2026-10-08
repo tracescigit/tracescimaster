@@ -91,11 +91,11 @@
 
 			
 
-			axios.post('{{ url('/vendor/support/'.encrypt($ticket->id).'/edit') }}', formData).then(res => {
+			axios.post('{{ url("/vendor/support/" . encrypt($ticket->id) . "/edit") }}', formData).then(res => {
 				
 				showNotification('success','Success !',res.data.message)
 				setTimeout(()=>{
-					window.location.href = '{{ url('/vendor/support') }}'
+					window.location.href = '{{ url("/vendor/support") }}'
 				},1000)
 
 			}).catch(err => {

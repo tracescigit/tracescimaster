@@ -96,15 +96,10 @@
 
     gtag('config', 'G-SM33TFD3S8');
   </script>
-<<<<<<< HEAD
   @php
   $year = date('Y');
   @endphp
 
-=======
-
-  @yield('subhead')
->>>>>>> 583f7e0a55cf3be68d4030be4bf3bd647b844fb0
 </head>
 
 <body class="home fixed-header">

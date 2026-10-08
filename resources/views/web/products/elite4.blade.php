@@ -1345,7 +1345,6 @@
         transform: none;
     }
 
-<<<<<<< HEAD
     .product_demo {
         background: #f5f5f5;
         padding: 10px 0px 20px 0;
@@ -1479,8 +1478,6 @@
 
 
 
-=======
->>>>>>> 583f7e0a55cf3be68d4030be4bf3bd647b844fb0
     /* ── MOBILE ── */
     @media (max-width: 960px) {
         nav {
@@ -1715,7 +1712,6 @@
                     class="rev-slidebg"
                     data-bgposition="center center"
                     data-bgfit="auto"
-<<<<<<< HEAD
                     data-bgrepeat="no-repeat"> -->
 <!-- <img src="{{asset('dist/images/elite4_machine.png')}}"
     class="rev-slidebg"
@@ -1725,12 +1721,6 @@
     style="width:100%; max-width:900px; height:auto; margin:auto;"> -->
 <!-- LAYER 1 -->
 <!-- <div class="tp-caption tp-resizeme"
-=======
-                    data-bgrepeat="no-repeat">
-
-                <!-- LAYER 1 -->
-                <div class="tp-caption tp-resizeme"
->>>>>>> 583f7e0a55cf3be68d4030be4bf3bd647b844fb0
                     data-x="center"
                     data-y="top"
                     data-voffset="120"
@@ -1769,15 +1759,11 @@
                     data-x="center" data-y="top" data-voffset="430"
                     data-start="2800" data-transform_in="y:[100%];opacity:0;s:800;"
                     data-transform_out="opacity:0;s:300" ;>
-<<<<<<< HEAD
                     <div class="rev-slider-btn text-center">
                         <a a href="{{ url(Auth::check()?myDashboard():'/login') }}">Login</a>
                         <a a href="{{ url(Auth::check()?myDashboard():'/register') }}">Register</a>
                     </div>
                 </div> -->
-=======
-                </div>
->>>>>>> 583f7e0a55cf3be68d4030be4bf3bd647b844fb0
 
 <!-- </li> -->
 
@@ -2395,7 +2381,6 @@
     </div>
     </div>
 </section>
-<<<<<<< HEAD
 <div class="product_demo">
     <div class="container">
         <div class="row">
@@ -2428,9 +2413,6 @@
     </div>
 </div>
 
-=======
-@endsection
->>>>>>> 583f7e0a55cf3be68d4030be4bf3bd647b844fb0
 @section('script')
 
 <script>

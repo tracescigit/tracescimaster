@@ -76,7 +76,7 @@
 		@endsection
 		@section('global_script')
 		<script>
-			var tabulatorUrl =  '{{ route('admin-lost-damage') }}';
+			var tabulatorUrl =  '{{ route("admin-lost-damage") }}';
 			var tabulatorColumns = [
 			{	
 				formatter: "responsiveCollapse",

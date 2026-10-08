@@ -124,7 +124,7 @@
 
 			// await helper.delay(500)
 
-			axios.post('{{ url('/admin/codes/create') }}', formData, config).then(res => {
+			axios.post('{{ url("/admin/codes/create") }}', formData, config).then(res => {
 				// cash('#submit').attr('disabled', 'true');
 				showNotification('success','Success !',res.data.message)
 				cash('#submit').html('Upload data')
@@ -133,7 +133,7 @@
 				cash('#batch').val('')
 
 				const method = 'GET';
-				const url = '{{ url('/admin/codes/export') }}';
+				const url = '{{ url("/admin/codes/export") }}';
 				
 				axios.request({
 					url,
@@ -149,8 +149,8 @@
 					link.click();
 					link.remove();
 
-					axios.get('{{ url('/admin/codes/mark-exported') }}', formData, config).then(res => {
-						window.location.href = '{{ url('/admin/codes') }}'
+					axios.get('{{ url("/admin/codes/mark-exported") }}', formData, config).then(res => {
+						window.location.href = '{{ url("/admin/codes") }}'
 					});
 
 				});
