@@ -1,17 +1,14 @@
 @extends('web.layouts.app')
-@section('subhead')
+@section('content')
 <style>
-    /* Section spacing */
     .help-content-area {
         padding: 60px 0;
     }
 
-    /* Accordion spacing */
     .help-accordion {
         margin-bottom: 30px;
     }
 
-    /* Fix panel spacing */
     .panel {
         margin-bottom: 10px;
     }
@@ -32,13 +29,11 @@
         font-weight: 500;
     }
 
-    /* Improve readability */
     .panel-body {
         font-size: 14px;
         line-height: 1.7;
     }
 
-    /* Fix image alignment */
     .help-slider-text {
         display: flex;
         align-items: start;
@@ -46,7 +41,6 @@
         height: 100%;
     }
 
-    /* Image fix */
     .help-img {
         max-width: 100%;
         height: auto;
@@ -54,7 +48,6 @@
         right: -220px !important;
     }
 
-<<<<<<< HEAD
     .product_demo {
         background: #f5f5f5;
         padding: 10px 0px 20px 0;
@@ -181,16 +174,10 @@
         transform: translateX(7px);
     }
 
-
-<<<<<<< HEAD
     .pricing-row {
         display: flex;
         flex-wrap: wrap;
     }
-=======
-=======
->>>>>>> c0a77dd70cf985bff0f2d75ca1d256caca44f48c
->>>>>>> 583f7e0a55cf3be68d4030be4bf3bd647b844fb0
 
     .pricing-col {
         display: flex;
@@ -232,14 +219,12 @@
         margin-top: auto;
     }
 
-    /* Desktop */
     @media (min-width: 1200px) {
         .pricing-card {
             min-height: 500px;
         }
     }
 
-    /* Tablet */
     @media (max-width: 991px) {
         .pricing-card {
             min-height: 650px;
@@ -250,7 +235,6 @@
         }
     }
 
-    /* Mobile */
     @media (max-width: 767px) {
         .pricing-card {
             min-height: auto;
@@ -266,18 +250,13 @@
         }
     }
 
-    /* Small Mobile */
     @media (max-width: 480px) {
         .pricing-card {
             padding: 15px;
         }
     }
 
-    /* ================= RESPONSIVE ================= */
-
-    /* Tablet */
     @media (max-width: 991px) {
-
         .help-content-area .row {
             display: block;
         }
@@ -292,9 +271,7 @@
         }
     }
 
-    /* Mobile */
     @media (max-width: 576px) {
-
         .panel-title a {
             font-size: 14px;
             line-height: 1.4;
@@ -321,7 +298,6 @@
         box-sizing: border-box;
     }
 
-    /* ---- Hero / Revolution slider ---- */
     @media (max-width: 767px) {
         .rev_slider_wrapper {
             min-height: 300px;
@@ -338,13 +314,11 @@
         }
     }
 
-    /* ---- Welcome section – 4-column grid ---- */
     @media (max-width: 991px) {
         .welcome-single-content {
             margin-bottom: 30px;
         }
 
-        /* 2-up on tablet */
         .welcome-content .col-sm-3 {
             width: 50%;
             float: left;
@@ -352,17 +326,12 @@
     }
 
     @media (max-width: 575px) {
-
-        /* 1-up on mobile */
         .welcome-content .col-sm-3 {
             width: 100%;
             float: none;
         }
     }
 
-    /* ---- Industries grid – 6 columns ---- */
-    /* Bootstrap col-xs-6 already renders 2-per-row on mobile — no override needed */
-    /* Ensure industry images scale but respect the height="150" attribute */
     #application .wp-post-image {
         max-width: 100%;
         width: auto !important;
@@ -376,7 +345,6 @@
         }
     }
 
-    /* ---- Software screenshot rows (image + text side-by-side) ---- */
     @media (max-width: 767px) {
         .software-screen-section .row.align-items-center {
             display: flex;
@@ -400,7 +368,6 @@
         }
     }
 
-    /* ---- Real-time tracking – 3-column screenshots ---- */
     @media (max-width: 767px) {
         .software-screen-section .col-md-4 {
             width: 100%;
@@ -408,7 +375,6 @@
         }
     }
 
-    /* ---- Solution / Features section – 3-column grid ---- */
     @media (max-width: 767px) {
         .solution-content .col-sm-6 {
             width: 100%;
@@ -416,7 +382,6 @@
         }
     }
 
-    /* ---- Pricing section – 3-column grid ---- */
     @media (max-width: 767px) {
 
         #pricing_table .col-sm-6,
@@ -436,7 +401,6 @@
         }
     }
 
-    /* ---- Product demo section ---- */
     @media (max-width: 767px) {
         .product_demo {
             min-height: auto;
@@ -458,7 +422,6 @@
         }
     }
 
-    /* ---- Video section ---- */
     @media (max-width: 767px) {
         .video-home .bg {
             background-size: 30% !important;
@@ -475,7 +438,6 @@
         }
     }
 
-    /* ---- Help / How it works image – remove off-screen absolute on mobile ---- */
     @media (max-width: 991px) {
         .help-img {
             position: relative !important;
@@ -486,14 +448,12 @@
         }
     }
 
-    /* ---- Analytics & Anti-counterfeit row ---- */
     @media (max-width: 767px) {
-        .software-screen-section .col-md-6[style*="padding-right"] {
+        .software-screen-section .col-md-6[style="padding-right"] {
             padding-right: 15px !important;
         }
     }
 
-    /* ---- Main titles ---- */
     @media (max-width: 575px) {
         .main-title h2 {
             font-size: 22px !important;
@@ -508,7 +468,6 @@
         }
     }
 
-    /* ---- Hero / Revolution slider ---- */
     @media (max-width: 1199px) {
         .heading-rp-small {
             font-size: 36px !important;
@@ -557,7 +516,6 @@
             line-height: 1.4 !important;
         }
 
-        /* Force layers to not overflow horizontally */
         .tp-caption {
             width: 90vw !important;
             left: 5vw !important;
@@ -565,7 +523,6 @@
             text-align: center !important;
         }
 
-        /* Hide the <br> so subtext wraps naturally on small screens */
         .tp-caption br {
             display: none;
         }
@@ -587,8 +544,6 @@
         }
     }
 
-    /* ---- General: prevent horizontal overflow ---- */
-    /* Scoped to content images — excludes .wp-post-image (industry icons) and slider images */
     .software-screen-section img,
     .solution-area img,
     .welcome-area img:not(.wp-post-image):not(.rev-slidebg),
@@ -598,29 +553,23 @@
         height: auto;
     }
 
-    /* box-sizing scoped to layout elements only — avoids breaking Revolution Slider / plugins */
     .container,
     .row,
-    [class*="col-"] {
+    [class="col-"] {
         box-sizing: border-box;
     }
 </style>
-@endsection
-@section('content')
-
 <div class="rev_slider_wrapper">
     <div id="slider1" class="rev_slider" data-version="5.0">
         <ul>
             <!-- SLIDE 1 -->
             <li data-index="rs-3" data-transition="parallaxtoright" data-delay="6500">
-
                 <!-- MAIN IMAGE -->
                 <img src="{{asset('dist/images/solution-bg.png')}}"
                     class="rev-slidebg"
                     data-bgposition="center center"
                     data-bgfit="cover"
                     data-bgrepeat="no-repeat">
-
                 <!-- LAYER 1 -->
                 <div class="tp-caption tp-resizeme"
                     data-x="center" data-y="top" data-voffset="120"
@@ -630,7 +579,6 @@
                         One Platform. Every Stakeholder. Zero Counterfeits.
                     </span>
                 </div>
-
                 <!-- LAYER 2 -->
                 <div class="tp-caption tp-resizeme"
                     data-x="center" data-y="top" data-voffset="190"
@@ -640,7 +588,6 @@
                         Cloud-Based Product Tracking
                     </div>
                 </div>
-
                 <!-- LAYER 3 -->
                 <div class="tp-caption tp-resizeme"
                     data-x="center" data-y="top" data-voffset="300"
@@ -651,13 +598,10 @@
                         from manufacturer to end consumer — accessible by brands, inspectors, and governments.
                     </div>
                 </div>
-
             </li>
-
         </ul>
     </div>
 </div>
-
 
 <!-- the content -->
 <div class="welcome-area" style="background-color:#fff">
@@ -669,7 +613,6 @@
                     <div class="main-shadow-heading">
                         <h2>Cloud-Powered Traceability</h2>
                     </div>
-
                     <h2>Cloud-Powered <span style="color:#7a0d7d">Traceability Platform</span></h2>
                     <h3>Cloud-Based Product Serialization, Authentication & Supply Chain Traceability</h3>
                 </div>
@@ -679,7 +622,6 @@
     <div class="welcome-content">
         <div class="container">
             <div class="row">
-
                 <!-- ITEM 1 -->
                 <div class="col-sm-3 col-md-3">
                     <div class="welcome-single-content wow fadeInLeft text-center">
@@ -687,11 +629,9 @@
                         <h2><span>01.</span> Verify</h2>
                         <p>
                             Detect suspicious scans and diversion risks with advanced analytics for faster enforcement response and stronger supply chain protection.
-
                         </p>
                     </div>
                 </div>
-
                 <!-- ITEM 2 -->
                 <div class="col-sm-3 col-md-3">
                     <div class="welcome-single-content wow fadeInDown text-center">
@@ -702,7 +642,6 @@
                         </p>
                     </div>
                 </div>
-
                 <!-- ITEM 3 -->
                 <div class="col-sm-3 col-md-3">
                     <div class="welcome-single-content wow fadeInUp text-center">
@@ -713,7 +652,6 @@
                         </p>
                     </div>
                 </div>
-
                 <!-- ITEM 4 -->
                 <div class="col-sm-3 col-md-3">
                     <div class="welcome-single-content wow fadeInRight text-center">
@@ -723,11 +661,9 @@
                             Enable governments to prevent illicit trade, secure tax revenues, and help brands protect markets while driving innovation and economic growth.
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
-
     <!-- Industries Section -->
     <div id="application" class="refresh-phone padding-content">
         <div class="container">
@@ -808,7 +744,6 @@
     </div>
 </div>
 
-
 <!-- Dashboard Screenshot Section -->
 <div class="software-screen-section" style="padding: 60px 0; background: #fff;">
     <div class="container">
@@ -831,7 +766,6 @@
     </div>
 </div>
 
-
 <!-- Features Section -->
 <div class="solution-area" style="background-color: #f5f5f5;">
     <div class="container">
@@ -847,7 +781,6 @@
             </div>
         </div>
     </div>
-
     <div class="solution-content">
         <div class="container">
             <div class="row">
@@ -900,15 +833,11 @@
                     </div>
                 </div>
             </div>
-
             <!-- Serialization Feature Highlight -->
-
-
 
         </div>
     </div>
 </div>
-
 <div class="software-screen-section" style="padding: 60px 0; background-color:#fff;">
     <div class="container">
         <div class="row align-items-center">
@@ -929,7 +858,6 @@
         </div>
     </div>
 </div>
-
 <!-- Video Section -->
 <div class="video-home" style="width: auto;">
     <div class="riven-container container video-container">
@@ -961,11 +889,9 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </div>
-
 <!-- Real-Time Tracking Screenshots -->
 <div class="software-screen-section" style="padding: 60px 0; background-color:#fff">
     <div class="container">
@@ -997,10 +923,7 @@
     </div>
 </div>
 
-
 <!-- Pricing Section -->
-
-
 
 <!-- Pricing Section -->
 <section id="pricing_table" class="pricing-table-section grey-bg">
@@ -1027,7 +950,6 @@
                         <div class="pricing-head-top">
                             <span>{{ $plan->title }}</span>
                         </div>
-
                         <div class="pricing-head-content">
                             <span>
                                 @if ($country == 'India')
@@ -1040,19 +962,16 @@
                             </span>
                         </div>
                     </div>
-
                     <div class="pricing-table-inner-content">
                         <div class="pricing-table-title">
                             <strong>Credits:</strong> {{ $plan->credits }}
                         </div>
-
                         <div class="pricing-table-list">
                             <div class="plan-description">
                                 <ul>
                                     {!! $plan->description !!}
                                 </ul>
                             </div>
-
                             <div class="all-link pricinig-bottom-btn text-center mt-auto">
                                 <a href="{{ route('register-view') }}">
                                     Sign Up Now <i class="fa fa-long-arrow-right"></i>
@@ -1069,7 +988,6 @@
         <img src="{{asset('dist/images/pricing-table-self.png')}}">
     </div>
 </section>
-
 <!-- Analytics & Reporting Section -->
 <div class="software-screen-section" style="padding: 60px 0; background-color:#fff">
     <div class="container">
@@ -1083,7 +1001,6 @@
                         signals — revealing exactly where fakes are entering your supply chain and which markets
                         are most at risk, so brands, inspectors and governments can act fast.
                     </p>
-
                 </div>
             </div>
             <div class="col-md-6 wow fadeInRight">
@@ -1091,7 +1008,6 @@
             </div>
         </div>
     </div>
-
     <x-notification></x-notification>
     <!-- </div> -->
 </div>
@@ -1099,36 +1015,29 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-
                 <!-- <div class="demo-badge">
-                    Elite4 High-Speed Inkjet System
-                </div> -->
-
+Elite4 High-Speed Inkjet System
+</div> -->
                 <h2>
                     Blockchain-Powered Product &amp; <span style="color: #7a0d7d;">Traceability & Authentication</span>
                 </h2>
-
                 <p>
                     Tracesci Cloud Solution enables secure product serialization, anti-counterfeit
                     verification, mobile authentication, and end-to-end supply chain traceability
                     through a scalable blockchain-powered platform built for modern manufacturers,
                     regulators, and global distribution networks.
                 </p>
-
                 <div class="demo-actions">
                     <a href="{{route('demo-schedule-create')}}" class="enterprise-btn">
                         Schedule Cloud Demo
                         <i class="fa fa-long-arrow-right"></i>
                     </a>
                 </div>
-
             </div>
         </div>
     </div>
 </div>
-
 @endsection
-
 
 @section('script')
 <script type="text/javascript">
@@ -1137,12 +1046,10 @@
             cash('.contact__input').removeClass('border-theme-6')
             cash('.contact__input-error').html('')
             cash('#contactError').addClass('hidden')
-
             let name = cash('#name').val()
             let email = cash('#email').val()
             let mobile = cash('#mobile').val()
             let message = cash('#message').val()
-
             cash('#contactwait').removeClass('hidden')
             axios.post('{{ url("send_inquiry") }}', {
                 name: name,

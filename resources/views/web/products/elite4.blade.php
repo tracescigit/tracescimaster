@@ -1,5 +1,5 @@
 @extends('web.layouts.app')
-@section('subhead')
+@section('content')
 
 <style>
     *,
@@ -220,7 +220,6 @@
         flex-wrap: wrap;
     }
 
-    /* 
     .btn {
         display: inline-flex;
         align-items: center;
@@ -232,7 +231,7 @@
         text-decoration: none;
         transition: all 0.2s;
         letter-spacing: 0.02em;
-    } */
+    }
 
     .btn-primary {
         background: var(--teal);
@@ -1191,7 +1190,7 @@
         margin-bottom: 32px;
     }
 
-    /* .form-group {
+    .form-group {
         margin-bottom: 18px;
     }
 
@@ -1227,7 +1226,7 @@
     .form-group textarea {
         min-height: 100px;
         resize: vertical;
-    } */
+    }
 
     .form-submit {
         background: var(--teal);
@@ -1697,8 +1696,6 @@
         }
     }
 </style>
-@endsection
-@section('content')
 
 <!-- <div class="rev_slider_wrapper">
     <div id="slider1" class="rev_slider" data-version="5.0">
@@ -2416,36 +2413,35 @@
 @section('script')
 
 <script>
-    const reveals = document.querySelectorAll('.reveal');
-    const io = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-            if (e.isIntersecting) {
-                e.target.classList.add('visible');
-                io.unobserve(e.target);
-            }
-        });
-    }, {
-        threshold: 0.1
-    });
-    reveals.forEach(el => io.observe(el));
+{{-- Scroll reveal --}}
+const reveals = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver(entries => {
+entries.forEach(e => {
+if (e.isIntersecting) {
+e.target.classList.add('visible');
+io.unobserve(e.target);
+}
+});
+}, { threshold: 0.1 });
+reveals.forEach(el => io.observe(el));
 
-
-    const words = ['High Speed Multicolor Inkjet', 'CMYK UV & Aqueous Inks', 'Variable Data Printing', 'Track & Trace'];
-    let idx = 0;
-    const el = document.getElementById('rotateWord');
-    if (el) {
-        el.style.transition = 'opacity 0.3s, transform 0.3s';
-        setInterval(() => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(12px)';
-            setTimeout(() => {
-                idx = (idx + 1) % words.length;
-                el.textContent = words[idx];
-                el.style.opacity = '1';
-                el.style.transform = 'translateY(0)';
-            }, 300);
-        }, 2400);
-    }
+{{-- Word rotator --}}
+const words = ['High Speed Multicolor Inkjet', 'CMYK UV & Aqueous Inks', 'Variable Data Printing', 'Track & Trace'];
+let idx = 0;
+const el = document.getElementById('rotateWord');
+if (el) {
+el.style.transition = 'opacity 0.3s, transform 0.3s';
+setInterval(() => {
+el.style.opacity = '0';
+el.style.transform = 'translateY(12px)';
+setTimeout(() => {
+idx = (idx + 1) % words.length;
+el.textContent = words[idx];
+el.style.opacity = '1';
+el.style.transform = 'translateY(0)';
+}, 300);
+}, 2400);
+}
 </script>
 
 <script type="text/javascript">
@@ -2517,4 +2513,5 @@
     });
 </script>
 
+@endsection
 @endsection

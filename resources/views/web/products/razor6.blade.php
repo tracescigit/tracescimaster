@@ -1,5 +1,6 @@
  @extends('web.layouts.app')
- @section('subhead')
+ @section('content')
+
  <style>
      *,
      *::before,
