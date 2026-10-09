@@ -357,7 +357,7 @@
 
         <!-- MAIN IMAGE -->
         <!-- <img src="{{asset('dist/images/slide2.png')}}" -->
-        <img src="{{asset('dist/images/index_wallpaper7.png')}}"
+        <img src="{{asset('dist/images/index_wallpaper7.webp')}}"
           class="rev-slidebg"
           data-bgposition="center center"
           data-bgfit="cover"

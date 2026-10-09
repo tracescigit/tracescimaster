@@ -111,7 +111,7 @@
           </li>
 
           <li class="{{ request()->is('solutions/*') || request()->is('product/*') ? 'active' : '' }}">
-            <a href="{{ route('cloud-solution') }}">Solution</a>
+            <a href="{{ route('cloud-solution') }}">Solutions</a>
             <ul class="dropdown">
 
               <!-- 1) SOFTWARE -->
