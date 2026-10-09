@@ -12,6 +12,21 @@
     color: #222;
   }
 
+  #solution-slider .solution-slider-img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    /* square */
+    overflow: hidden;
+  }
+
+  #solution-slider .solution-slider-img img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
   .uranus.tparrows:before {
     font-family: "revicons";
     font-size: 30px;
@@ -24,10 +39,13 @@
     transition: color 0.3s;
     z-index: 2;
     position: relative;
-    background: #fff;
+    background: #fff; 
     min-width: 70px;
     min-height: 70px;
   }
+  #solution-slider .solution-slider-content {
+  padding: 0 12px;   /* 24px gap between slides */
+}
 
   .trace-process-section {
     background: #f5f5f5;
@@ -258,11 +276,12 @@
       font-size: 16px;
     }
   }
+
   @media (max-width: 767px) {
     .uranus.tparrows {
-        display: none !important;
+      display: none !important;
     }
-}
+  }
 </style>
 @endsection
 @section('content')
@@ -278,7 +297,7 @@
 
         <!-- MAIN IMAGE -->
         <!-- <img src="{{asset('dist/images/slide1.png')}}" -->
-        <img src="{{asset('dist/images/index-wallpaper4.png')}}"
+        <img src="{{asset('dist/images/index-wallpaper4.webp')}}"
           class="rev-slidebg"
           data-bgposition="center center"
           data-bgfit="cover"
@@ -558,7 +577,7 @@
       <div class="row">
         <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 0.3s">
           <div class="thumbnail-game text-center">
-            <img height="150" src="{{asset('dist/images/apprels.png')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
+            <img height="150" src="{{asset('dist/images/apprels.webp')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
           </div>
           <div class="desc text-center">
             <h3>Apparel</h3>
@@ -566,7 +585,7 @@
         </div>
         <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 0.6s">
           <div class="thumbnail-game text-center">
-            <img height="150" src="{{asset('dist/images/food.png')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
+            <img height="150" src="{{asset('dist/images/food.webp')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
           </div>
           <div class="desc text-center">
             <h3>Food</h3>
@@ -574,7 +593,7 @@
         </div>
         <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 0.9s">
           <div class="thumbnail-game text-center">
-            <img height="150" src="{{asset('dist/images/automobile.png')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
+            <img height="150" src="{{asset('dist/images/automobile.webp')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
           </div>
           <div class="desc text-center">
             <h3>Automobile</h3>
@@ -582,7 +601,7 @@
         </div>
         <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 1.2s">
           <div class="thumbnail-game text-center">
-            <img height="150" src="{{asset('dist/images/tobacco.png')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
+            <img height="150" src="{{asset('dist/images/tobacco.webp')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
           </div>
           <div class="desc text-center">
             <h3>Tobacco</h3>
@@ -590,7 +609,7 @@
         </div>
         <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 0.9s">
           <div class="thumbnail-game text-center">
-            <img height="150" src="{{asset('dist/images/medicine.png')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
+            <img height="150" src="{{asset('dist/images/medicine.webp')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
           </div>
           <div class="desc text-center">
             <h3>Pharma</h3>
@@ -598,7 +617,7 @@
         </div>
         <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 1.2s">
           <div class="thumbnail-game text-center">
-            <img height="150" src="{{asset('dist/images/drink.png')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
+            <img height="150" src="{{asset('dist/images/drink.webp')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
           </div>
           <div class="desc text-center">
             <h3>Beverages</h3>
@@ -902,6 +921,139 @@
 </div>
 @if(!empty($blogs) && count($blogs) > 0)
 
+<style>
+  /* ---- Blog section: plain grid, 4 cards per row (no slider) ---- */
+  .solution-2-area .solution-2-content > .container {
+    width: 100% !important;
+    max-width: 1300px;                /* overall width: lower = smaller cards */
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  /* ---- carousel: 4 cards in view, slide with arrows ---- */
+  .home-blog-carousel {
+    position: relative;
+    --per-view: 4;                    /* cards visible at once */
+    --gap: 30px;                      /* space between cards */
+  }
+
+  .home-blog-grid {
+    display: flex;
+    gap: var(--gap);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding: 10px 2px 25px;           /* room for the card shadow */
+    scrollbar-width: none;            /* hide scrollbar (Firefox) */
+    -ms-overflow-style: none;
+  }
+
+  .home-blog-grid::-webkit-scrollbar {
+    display: none;                    /* hide scrollbar (Chrome/Safari) */
+  }
+
+  .home-blog-grid > .solution-slider-content {
+    flex: 0 0 calc((100% - (var(--per-view) - 1) * var(--gap)) / var(--per-view));
+    scroll-snap-align: start;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  @media (max-width: 1199px) { .home-blog-carousel { --per-view: 3; } }
+  @media (max-width: 991px)  { .home-blog-carousel { --per-view: 2; --gap: 20px; } }
+  @media (max-width: 575px)  { .home-blog-carousel { --per-view: 1; } }
+
+  /* arrows */
+  .home-blog-nav {
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+    z-index: 5;
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 50%;
+    background: #fff;
+    color: #7a0d7d;
+    font-size: 22px;
+    line-height: 44px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+    transition: background 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+  }
+
+  .home-blog-nav:hover {
+    background: #7a0d7d;
+    color: #fff;
+  }
+
+  .home-blog-nav[disabled] {
+    opacity: 0.35;
+    cursor: default;
+    pointer-events: none;
+  }
+
+  .home-blog-prev { left: -22px; }
+  .home-blog-next { right: -22px; }
+
+  @media (max-width: 767px) {
+    .home-blog-prev { left: 0; }
+    .home-blog-next { right: 0; }
+  }
+
+  /* ---- card look: white box, rounded corners, soft shadow ---- */
+  .home-blog-grid .blog-slide-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: #fff;
+    border-radius: 14px;
+    padding: 12px;                    /* space around the image */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .home-blog-grid .blog-slide-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
+  }
+
+  /* ---- every image the same square (1:1) size ---- */
+  .home-blog-grid .solution-slider-img {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-top: 100%;                /* 100% of the width = square */
+    overflow: hidden;
+    border-radius: 10px;
+  }
+
+  .home-blog-grid .solution-slider-img img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;                /* fill the square, crop the overflow */
+    object-position: center;
+    display: block;
+  }
+
+  /* ---- text under the image; Learn More lines up at the bottom ---- */
+  .home-blog-grid .solution-slider-text {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 14px 4px 4px;
+    background: transparent;
+  }
+
+  .home-blog-grid .solution-slider-text > a {
+    margin-top: auto;
+  }
+</style>
+
 <section class="solution-2-area grey-bg">
 
   <div class="container">
@@ -922,15 +1074,19 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <div id="solution-slider" class="owl-carousel all-carousel owl-theme">
+          <div class="home-blog-carousel">
+          <button type="button" class="home-blog-nav home-blog-prev" aria-label="Previous blogs"><i class="fa fa-angle-left"></i></button>
+          <button type="button" class="home-blog-nav home-blog-next" aria-label="Next blogs"><i class="fa fa-angle-right"></i></button>
+          <div class="home-blog-grid">
             @foreach($blogs as $index => $blog)
             @if($index == 6)
             @break
             @endif
             <div class="solution-slider-content">
+              <div class="blog-slide-card">
               <div class="solution-slider-img">
                 <img src="{{ asset('storage/' . $blog->image_path) }}"
-                  alt="Current blog image">
+                  alt="{{ $blog->title ?? 'Blog image' }}">
               </div>
               <div class="solution-slider-text">
                 <div class="full-intro-head">
@@ -940,11 +1096,13 @@
                 </div>
                 <p>{{ $blog->title ?? 'Blog Title' }}</p>
                 <!-- <p>{!!Str::limit($blog->description ?? 'Blog description', 100)!!}</p> -->
-                <a href="{{route('blog')}}">Learn More <i class="fa fa-long-arrow-right"></i></a>
+                <a href="{{ route('blog-details', ['id' => encrypt($blog->id)]) }}">Learn More <i class="fa fa-long-arrow-right"></i></a>
               </div>
+              </div><!-- /.blog-slide-card -->
             </div>
             @endforeach
           </div>
+          </div><!-- /.home-blog-carousel -->
 
         </div>
       </div>
@@ -1204,5 +1362,45 @@
   });
 </script>
 
+
+<!-- Blog carousel: arrows slide one card at a time -->
+<script>
+  (function () {
+    function initBlogCarousel() {
+      var wrap  = document.querySelector('.home-blog-carousel');
+      if (!wrap) return;
+      var track = wrap.querySelector('.home-blog-grid');
+      var prev  = wrap.querySelector('.home-blog-prev');
+      var next  = wrap.querySelector('.home-blog-next');
+
+      function step() {
+        var card = track.querySelector('.solution-slider-content');
+        if (!card) return track.clientWidth;
+        var gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap) || 0;
+        return card.getBoundingClientRect().width + gap;
+      }
+
+      function updateArrows() {
+        var max = track.scrollWidth - track.clientWidth - 2;
+        prev.disabled = track.scrollLeft <= 2;
+        next.disabled = track.scrollLeft >= max;
+        var hide = track.scrollWidth <= track.clientWidth + 2;   // all cards fit: no arrows
+        prev.style.display = next.style.display = hide ? 'none' : '';
+      }
+
+      prev.addEventListener('click', function () { track.scrollBy({ left: -step(), behavior: 'smooth' }); });
+      next.addEventListener('click', function () { track.scrollBy({ left:  step(), behavior: 'smooth' }); });
+      track.addEventListener('scroll', updateArrows, { passive: true });
+      window.addEventListener('resize', updateArrows);
+      updateArrows();
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initBlogCarousel);
+    } else {
+      initBlogCarousel();
+    }
+  })();
+</script>
 
 @endsection

@@ -448,7 +448,7 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-6 wow fadeInLeft">
-                        <img src="{{ asset('dist/images/enterprise.png') }}" alt="Enterprise Serialization"
+                        <img src="{{ asset('dist/images/enterprise.webp') }}" alt="Enterprise Serialization"
                             style="width:100%; height:auto; border-radius:8px; box-shadow: 0 10px 40px rgba(122,13,125,0.15);">
                     </div>
                     <div class="col-md-6 wow fadeInRight" style="padding-left:40px; display:flex; align-items:center;">
@@ -509,7 +509,7 @@
             <div class="row align-items-center">
 
                 <div class="col-md-6 wow fadeInRight" style="padding-top:85px;">
-                    <img src="{{ asset('dist/images/enterprise_infra.png') }}" alt="Tracesci Enterprise Infrastructure" style="width:100%; height:auto; border-radius:8px; box-shadow: 0 10px 40px rgba(122,13,125,0.15);">
+                    <img src="{{ asset('dist/images/enterprise_infra.webp') }}" alt="Tracesci Enterprise Infrastructure" style="width:100%; height:auto; border-radius:8px; box-shadow: 0 10px 40px rgba(122,13,125,0.15);">
                 </div>
                 <div class="col-md-6">
                     <div class="main-title wow fadeInLeft">

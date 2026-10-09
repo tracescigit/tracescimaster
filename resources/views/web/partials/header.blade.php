@@ -14,12 +14,8 @@
             <a href="{{ url('/about') }}">About</a>
           </li>
 
-          <li class="{{ request()->is('product/razor6') ? 'active' : '' }}">
-            <a href="{{ url('/product/razor6') }}">Products</a>
-          </li>
-
-          <li class="{{ request()->is('solutions/cloud') ? 'active' : '' }}">
-            <a href="{{ url('/cloud-solution') }}">Solution</a>
+          <li class="{{ request()->is('solutions/*') || request()->is('product/*') ? 'active' : '' }}">
+            <a href="{{ route('cloud-solution') }}">Solution</a>
           </li>
 
           <!-- <li class="{{ request()->routeIs('blog') ? 'active' : '' }}">
@@ -60,7 +56,21 @@
 
 
 
-<header class="header-area navbar-fixed-top">
+<style>
+  /* ---- top nav: white at 20% opacity ONLY while the page is at the top ---- */
+  .header-area.navbar-fixed-top.at-top {
+    background: rgba(255, 255, 255, 0.2) !important;   /* 0.2 = 20% */
+    transition: background 0.3s ease;
+  }
+
+  .header-area.navbar-fixed-top.at-top .menuzord,
+  .header-area.navbar-fixed-top.at-top .menuzord-menu-bg {
+    background: transparent !important;
+  }
+  /* once scrolled, .at-top is removed and the theme's own nav style applies */
+</style>
+
+<header class="header-area navbar-fixed-top at-top">
   <div class="container custom-header">
     <div class="row">
 
@@ -100,39 +110,48 @@
             <a href="{{ url('/about') }}">About</a>
           </li>
 
-          <li class="{{ request()->is('solutions/cloud') || request()->is('solutions/enterprise') ? 'active' : '' }}">
+          <li class="{{ request()->is('solutions/*') || request()->is('product/*') ? 'active' : '' }}">
             <a href="{{ route('cloud-solution') }}">Solution</a>
             <ul class="dropdown">
-              <li>
-                <a href="{{ route('cloud-solution') }}">Cloud</a>
+
+              <!-- 1) SOFTWARE -->
+              <li class="{{ request()->is('solutions/*') ? 'active' : '' }}">
+                <a href="{{ route('cloud-solution') }}">Software</a>
+                <ul class="dropdown">
+                  <li>
+                    <a href="{{ route('cloud-solution') }}">Cloud</a>
+                  </li>
+                  <li>
+                    <a href="{{ route('enterprise-solution') }}">Enterprise</a>
+                  </li>
+                  <li>
+                    <a href="{{ url('/') }}#application">Customise</a>
+                  </li>
+                </ul>
               </li>
-              <li>
-                <a href="{{ route('enterprise-solution') }}">Enterprise</a>
+
+              <!-- 2) EQUIPMENTS -->
+              <li class="{{ request()->is('product/*') ? 'active' : '' }}">
+                <a href="{{ route('product-hyperloop') }}">Equipments</a>
+                <ul class="dropdown">
+                  <li>
+                    <a href="{{ route('product-hyperloop') }}">Hyperloop</a>
+                  </li>
+                  <li>
+                    <a href="{{ route('product-razor6') }}">Razor 6</a>
+                  </li>
+                  <li>
+                    <a href="{{ route('product-elite4') }}">Elite 4</a>
+                  </li>
+                </ul>
               </li>
-              <li>
-                <a href="#application">Customise</a>
-              </li>
+
             </ul>
           </li>
 
-          <li class="{{ request()->is('product/razor6') || request()->is('product/elite4') || request()->is('product/hyperloop') ? 'active' : '' }}">
-            <a href="{{ url('/product/razor6') }}">Products</a>
-            <ul class="dropdown">
-              <li>
-                <a href="{{ route('product-razor6') }}">Razor 6</a>
-              </li>
-              <li>
-                <a href="{{ route('product-elite4') }}">Elite 4</a>
-              </li>
-              <li>
-                <a href="{{ route('product-hyperloop') }}">Hyperloop</a>
-              </li>
-            </ul>
-          </li>
-
-          <!-- <li class="{{ request()->is('blog') ? 'active' : '' }}">
+          <li class="{{ request()->is('blog') ? 'active' : '' }}">
             <a href="{{ route('blog') }}">Blogs</a>
-          </li> -->
+          </li>
 
           <li class="{{ request()->is('get_in_touch') ? 'active' : '' }}">
             <a href="{{ route('contact-us') }}">Get In Touch</a>
@@ -154,3 +173,22 @@
     </div>
   </div>
 </header>
+
+<script>
+  // white 20% background only at the top of the page; theme style after scrolling
+  (function () {
+    var header = document.querySelector('.header-area.navbar-fixed-top');
+    if (!header) return;
+
+    function updateHeader() {
+      if (window.pageYOffset <= 10) {
+        header.classList.add('at-top');
+      } else {
+        header.classList.remove('at-top');
+      }
+    }
+
+    updateHeader();
+    window.addEventListener('scroll', updateHeader, { passive: true });
+  })();
+</script>
