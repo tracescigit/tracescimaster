@@ -812,7 +812,7 @@
 
                 <div class="event-desc">
                   <h3 class="title-eventpost">
-                    Gulf Print Pack
+                     <a href="https://www.gulfprintpack.com/" class="various fancybox.ajax">Gulf Print Pack</a>
                   </h3>
                   <div class="event_post_desc">
                     28 September - 30 September,<br>
@@ -843,7 +843,7 @@
 
                 <div class="event-desc">
                   <h3 class="title-eventpost">
-                    Loupe India 2026
+                    <a href="https://www.loupe-india.com/" class="various fancybox.ajax">Loupe India 2026</a> 
                   </h3>
                   <div class="event_post_desc">
                     29 October - 1 November,<br>
@@ -881,7 +881,7 @@
                 </div>
                 <div class="event-desc">
                   <h3 class="title-eventpost">
-                    <a href="event-lightbox.html" class="various fancybox.ajax">PMEC 2026</a>
+                    <a href="https://www.cphi.com/india/" class="various fancybox.ajax">PMEC 2026</a>
                   </h3>
                   <div class="event_post_desc">
                     24 Nov - 26 Nov <br> India Expo Centre and Mart, Greater Noida, Delhi India

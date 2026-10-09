@@ -86,7 +86,7 @@
 @endsection
 @section('global_script')
 <script>
-	var tabulatorUrl =  '{{ route('vendor-scan-history') }}';
+	var tabulatorUrl =  '{{ route("vendor-scan-history") }}';
 	var tabulatorColumns = [
 	{	
 		formatter: "responsiveCollapse",
@@ -158,19 +158,21 @@
 		formatter: function formatter(cell, formatterParams) {
 			return "<div>\n                            <div class=\"font-medium whitespace-nowrap\">".concat(cell.getData().phone, "</div>\n                            ");
 		}
-	},{
-		title: "{{strtoupper(__('common.web_link'))}}",
-		minWidth: 200,
-		responsive: 0,
-		field: "url",
-		hozAlign: "center",
-		vertAlign: "middle",
-		print: true,
-		download: true,
-		formatter: function formatter(cell, formatterParams) {
-			return '<a class="btn p-1 btn-primary" href="'+cell.getData().url+'" title="View Link" target="_blank">Link</a>';
-		}
-	},  {
+	},
+	// {
+	// 	title: "{{strtoupper(__('common.web_link'))}}",
+	// 	minWidth: 200,
+	// 	responsive: 0,
+	// 	field: "url",
+	// 	hozAlign: "center",
+	// 	vertAlign: "middle",
+	// 	print: true,
+	// 	download: true,
+	// 	formatter: function formatter(cell, formatterParams) {
+	// 		return '<a class="btn p-1 btn-primary" href="'+cell.getData().url+'" title="View Link" target="_blank">Link</a>';
+	// 	}
+	// },  
+	{
 		title: "{{strtoupper(__('scanhistory.scan_date'))}}",
 		minWidth: 200,
 		field: "created_at",
