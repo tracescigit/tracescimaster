@@ -792,7 +792,7 @@ $hasMedia = !empty($fieldPermissions) && in_array('Media', $fieldPermissions);
 
 				@if(!empty($fieldPermissions) && in_array('Price', $fieldPermissions) && !empty($product['price']))
 				<div class="pd-hero-price-row">
-					<div class="pd-hero-price">{{ $product['price_batch'] }}</div>
+					<div class="pd-hero-price">{{ $product['price_batch'] != null && $product['price_batch'] != "" ? $product['price_batch'] : 0.00 }}</div>
 					<div class="pd-hero-price-note">MRP incl. taxes</div>
 				</div>
 				@endif
@@ -915,7 +915,7 @@ $hasMedia = !empty($fieldPermissions) && in_array('Media', $fieldPermissions);
 				@if(!empty($fieldPermissions) && in_array('Price', $fieldPermissions))
 				<div class="pd-fcell">
 					<div class="pd-flbl"><i class="fa fa-dollar"></i> Price</div>
-					<div class="pd-fval price">{{ $product['price_batch'] ?? 0.00 }}</div>
+					<div class="pd-fval price">{{ $product['price_batch'] != null && $product['price_batch'] != "" ? $product['price_batch'] : 0.00 }}</div>
 				</div>
 				@endif
 				@if(!empty($fieldPermissions) && in_array('Tax Class', $fieldPermissions))

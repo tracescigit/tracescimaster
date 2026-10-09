@@ -166,7 +166,7 @@
 								class="form-select form__input">
 								<option value="product">By Product Name</option>
 								<option value="batch">By Batch Code</option>
-								<option value="chunk">By Ranges of Codes</option>
+								<option value="chunk">By products Serial Ranges</option>
 							</select>
 
 							<div

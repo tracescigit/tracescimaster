@@ -81,7 +81,7 @@
 							<select id="product_selection_type" name="product_selection_type" class="form-select form__input">
 								<option value="product" {{$scheme->product_selection_type=='product'?'selected':''}}>By Product Name</option>
 								<option value="batch" {{$scheme->product_selection_type=='batch'?'selected':''}}>By Batch Code</option>
-								<option value="chunk" {{$scheme->product_selection_type=='chunk'?'selected':''}}>By Ranges of Codes</option>
+								<option value="chunk" {{$scheme->product_selection_type=='chunk'?'selected':''}}>By products Serial Ranges</option>
 							</select>
 						</div>
 
