@@ -11,10 +11,10 @@
 </div>
 
 <div class="intro-y box p-5 mt-5">
-	
+
 	<div class="grid grid-cols-12">
-		<form id="tabulator-html-filter-form" class="xl:flex sm:mr-auto col-span-12" >
-			
+		<form id="tabulator-html-filter-form" class="xl:flex sm:mr-auto col-span-12">
+
 			<div class="sm:flex items-center sm:mr-4">
 				<label class="w-12 flex-none xl:w-auto xl:flex-initial mr-2">{{__('common.field')}}</label>
 				<select id="tabulator-html-filter-field" class="form-select w-full sm:w-32 xxl:w-full mt-2 sm:mt-0 sm:w-auto">
@@ -28,14 +28,14 @@
 			</div>
 			<div class="sm:flex items-center sm:mr-4 mt-2 xl:mt-0">
 				<label class="w-12 flex-none xl:w-auto xl:flex-initial mr-2">{{__('common.type')}}</label>
-				<select id="tabulator-html-filter-type" class="form-select w-full mt-2 sm:mt-0 sm:w-auto" >
+				<select id="tabulator-html-filter-type" class="form-select w-full mt-2 sm:mt-0 sm:w-auto">
 					<option value="like" selected>{{__('common.like')}}</option>
 					<option value="=">=</option>
 				</select>
 			</div>
 			<div class="sm:flex items-center sm:mr-4 mt-2 xl:mt-0">
 				<label class="w-12 flex-none xl:w-auto xl:flex-initial mr-2">{{__('common.value')}}</label>
-				<input id="tabulator-html-filter-value" type="text" class="form-control sm:w-40 xxl:w-full mt-2 sm:mt-0"  placeholder="{{__('common.search')}}...">
+				<input id="tabulator-html-filter-value" type="text" class="form-control sm:w-40 xxl:w-full mt-2 sm:mt-0" placeholder="{{__('common.search')}}...">
 			</div>
 			<div class="sm:flex items-center sm:mr-4 mt-2 xl:mt-0">
 				<label class="w-12 flex-none xl:w-auto xl:flex-initial mr-2">{{__('common.from_date')}}</label>
@@ -44,11 +44,11 @@
 			<div class="sm:flex items-center mt-2 xl:mt-0">
 				<label class="w-12 flex-none xl:w-auto xl:flex-initial mr-2">{{__('common.to_date')}}</label>
 				<input id="tabulator-html-filter-end-date" type="date" class="form-control sm:w-40 xxl:w-full mt-2 sm:mt-0">
-			</div>			
+			</div>
 		</form>
 		<div class="mt-5 col-span-12">
 			<div class="grid grid-cols-12">
-				
+
 				<div class="dropdown col-span-6 lg:col-span-9">
 					<button class="dropdown-toggle btn btn-outline-secondary w-full sm:w-auto" aria-expanded="false">
 						<i data-feather="file-text" class="w-4 h-4 mr-2"></i> {{__('common.export')}} <i data-feather="chevron-down" class="w-4 h-4 ml-auto sm:ml-2"></i>
@@ -71,8 +71,8 @@
 					</div>
 				</div>
 				<div class="flex  col-span-6 lg:col-span-3 justify-end">
-					<button id="tabulator-html-filter-go" type="button" class="btn btn-primary w-full sm:w-16" >{{__('common.go')}}</button>
-					<button id="tabulator-html-filter-reset" type="button" class="btn btn-secondary w-full sm:w-16 mt-2 sm:mt-0 sm:ml-1" >{{__('common.reset')}}</button>
+					<button id="tabulator-html-filter-go" type="button" class="btn btn-primary w-full sm:w-16">{{__('common.go')}}</button>
+					<button id="tabulator-html-filter-reset" type="button" class="btn btn-secondary w-full sm:w-16 mt-2 sm:mt-0 sm:ml-1">{{__('common.reset')}}</button>
 				</div>
 			</div>
 		</div>
@@ -85,156 +85,161 @@
 
 @section('global_script')
 <script>
-	var tabulatorUrl =  "{{ route('admin-codes') }}";
-	var tabulatorColumns = [
-	{	
-		formatter: "responsiveCollapse",
-		width: 40,
-		minWidth: 30,
-		align: "center",
-		resizable: false,
-		headerSort: false,
-		print: false,
-		download: false,
-		collapsed:true,
-	},{
-		title: "{{strtoupper(__('code.index_serial_number'))}}",
-		minWidth: 200,
-		field: "id",
-		responsive:0,
-		vertAlign: "middle",
-		print: false,
-		download: false,
-		formatter: function formatter(cell, formatterParams) {
-			return "<div>\n                            <div class=\"font-medium whitespace-nowrap\">".concat(cell.getData().id, "</div>");
-		}
-	},{
-		title: "{{strtoupper(__('common.product_name'))}}",
-		minWidth: 180,
-		responsive: 0,
-		field: "product_id",
-		vertAlign: "middle",
-		hozAlign: "center",
-		print: false,
-		download: false,
-		formatter: function formatter(cell, formatterParams) {
-			return "<div>\n                            <div class=\"font-medium whitespace-nowrap\">".concat(cell.getData().product_id, "</div>");
-		}
-	},{
-		title: "{{strtoupper('Product Serial No.')}}",
-		minWidth: 220,
-		field: "code_data",
-		responsive: 0,
-		hozAlign: "center",
-		vertAlign: "middle",
-		print: false,
-		download: false,
-		formatter: function formatter(cell, formatterParams) {
-			return "<div>\n                            <div class=\"font-medium whitespace-nowrap\">".concat(cell.getData().code_data, "</div>");
-		}
-	},
-	{
-		title: "{{strtoupper(__('common.manufacturer_name'))}}",
-		minWidth: 180,
-		responsive: 0,
-		field: "business_name",
-		vertAlign: "middle",
-		hozAlign: "center",
-		print: false,
-		download: false,
-		formatter: function formatter(cell, formatterParams) {
-			return "<div>\n                            <div class=\"font-medium whitespace-nowrap\">".concat(cell.getData().business_name, "</div>");
-		}
-	},{
-		title: "{{strtoupper(__('common.batch_code'))}}",
-		minWidth: 180,
-		responsive: 0,
-		field: "batch",
-		vertAlign: "middle",
-		hozAlign: "center",
-		print: false,
-		download: false,
-		formatter: function formatter(cell, formatterParams) {
-			return "<div>\n                            <div class=\"font-medium whitespace-nowrap\">".concat(cell.getData().batch, "</div>");
-		}
-	},{
-		title: "{{strtoupper(__('common.web_link'))}}",
-		maxWidth: 150,
-		responsive: 0,
-		field: "url",
-		hozAlign: "center",
-		vertAlign: "middle",
-		print: false,
-		download: false,
-		formatter: function formatter(cell, formatterParams) {
-			return '<a class="btn p-1 btn-primary" href="'+cell.getData().url+'" title="View Link" target="_blank">Link</a>';
-		}
-	},  {
-		title: "{{strtoupper(__('common.created_on'))}}",
-		minWidth: 180,
-		field: "created_at",
-		hozAlign: "center",
-		vertAlign: "middle",
-		print: false,
-		download: false
-	},
-	{
-		title: "{{strtoupper(__('common.status'))}}",
-		minWidth: 180,
-		field: "status",
-		hozAlign: "center",
-		vertAlign: "middle",
-		print: false,
-		download: false
-	}, {
-		title: "{{strtoupper(__('code.index_serial_number'))}}",
-		field: "id",
-		visible: false,
-		print: true,
-		download: true
-	}, {
-		title: "{{strtoupper(__('common.product_name'))}}",
-		field: "product_id",
-		visible: false,
-		print: true,
-		download: true
-	}, {
-		title: "{{strtoupper('Product Serial No.')}}",
-		field: "code_data",
-		visible: false,
-		print: true,
-		download: true
-	},{
-		title: "{{strtoupper(__('common.manufacturer_name'))}}",
-		field: "business_name",
-		visible: false,
-		print: true,
-		download: true
-	},{
-		title: "{{strtoupper(__('common.batch_code'))}}",
-		field: "batch",
-		visible: false,
-		print: true,
-		download: true
-	},{
-		title: "{{strtoupper(__('common.web_link'))}}",
-		field: "url",
-		visible: false,
-		print: true,
-		download: true
-	}, {
-		title: "{{strtoupper(__('common.created_on'))}}",
-		field: "created_at",
-		visible: false,
-		print: true,
-		download: true
-	}, {
-		title: "{{strtoupper(__('common.status'))}}",
-		field: "status",
-		visible: false,
-		print: true,
-		download: true
-	},
+	var tabulatorUrl = "{{ route('admin-codes') }}";
+	var tabulatorColumns = [{
+			formatter: "responsiveCollapse",
+			width: 40,
+			minWidth: 30,
+			align: "center",
+			resizable: false,
+			headerSort: false,
+			print: false,
+			download: false,
+			collapsed: true,
+		}, {
+			title: "{{strtoupper(__('code.index_serial_number'))}}",
+			minWidth: 200,
+			field: "id",
+			responsive: 0,
+			vertAlign: "middle",
+			print: false,
+			download: false,
+			formatter: function formatter(cell, formatterParams) {
+				return "<div>\n                            <div class=\"font-medium whitespace-nowrap\">".concat(cell.getData().id, "</div>");
+			}
+		}, {
+			title: "{{strtoupper(__('common.product_name'))}}",
+			minWidth: 180,
+			responsive: 0,
+			field: "product_id",
+			vertAlign: "middle",
+			hozAlign: "center",
+			print: false,
+			download: false,
+			formatter: function formatter(cell, formatterParams) {
+				return "<div>\n                            <div class=\"font-medium whitespace-nowrap\">".concat(cell.getData().product_id, "</div>");
+			}
+		}, {
+			title: "{{strtoupper('Product Serial No.')}}",
+			minWidth: 220,
+			field: "code_data",
+			responsive: 0,
+			hozAlign: "center",
+			vertAlign: "middle",
+			print: false,
+			download: false,
+			formatter: function formatter(cell, formatterParams) {
+				return "<div>\n                            <div class=\"font-medium whitespace-nowrap\">".concat(cell.getData().code_data, "</div>");
+			}
+		},
+		{
+			title: "{{strtoupper(__('common.manufacturer_name'))}}",
+			minWidth: 180,
+			responsive: 0,
+			field: "business_name",
+			vertAlign: "middle",
+			hozAlign: "center",
+			print: false,
+			download: false,
+			formatter: function formatter(cell, formatterParams) {
+				return "<div>\n                            <div class=\"font-medium whitespace-nowrap\">".concat(cell.getData().business_name, "</div>");
+			}
+		}, {
+			title: "{{strtoupper(__('common.batch_code'))}}",
+			minWidth: 180,
+			responsive: 0,
+			field: "batch",
+			vertAlign: "middle",
+			hozAlign: "center",
+			print: false,
+			download: false,
+			formatter: function formatter(cell, formatterParams) {
+				return "<div>\n                            <div class=\"font-medium whitespace-nowrap\">".concat(cell.getData().batch, "</div>");
+			}
+		}, {
+			title: "{{strtoupper(__('common.web_link'))}}",
+			maxWidth: 150,
+			responsive: 0,
+			field: "url",
+			hozAlign: "center",
+			vertAlign: "middle",
+			print: false,
+			download: false,
+			formatter: function formatter(cell, formatterParams) {
+				var url = cell.getData().url;
+
+				if (url != null && url != '' && url != '-') {
+					return '<a class="btn p-1 btn-primary" href="' + url + '" title="View Link" target="_blank">Link</a>';
+				}
+
+				return '--';
+			}
+		}, {
+			title: "{{strtoupper(__('common.created_on'))}}",
+			minWidth: 180,
+			field: "created_at",
+			hozAlign: "center",
+			vertAlign: "middle",
+			print: false,
+			download: false
+		},
+		{
+			title: "{{strtoupper(__('common.status'))}}",
+			minWidth: 180,
+			field: "status",
+			hozAlign: "center",
+			vertAlign: "middle",
+			print: false,
+			download: false
+		}, {
+			title: "{{strtoupper(__('code.index_serial_number'))}}",
+			field: "id",
+			visible: false,
+			print: true,
+			download: true
+		}, {
+			title: "{{strtoupper(__('common.product_name'))}}",
+			field: "product_id",
+			visible: false,
+			print: true,
+			download: true
+		}, {
+			title: "{{strtoupper('Product Serial No.')}}",
+			field: "code_data",
+			visible: false,
+			print: true,
+			download: true
+		}, {
+			title: "{{strtoupper(__('common.manufacturer_name'))}}",
+			field: "business_name",
+			visible: false,
+			print: true,
+			download: true
+		}, {
+			title: "{{strtoupper(__('common.batch_code'))}}",
+			field: "batch",
+			visible: false,
+			print: true,
+			download: true
+		}, {
+			title: "{{strtoupper(__('common.web_link'))}}",
+			field: "url",
+			visible: false,
+			print: true,
+			download: true
+		}, {
+			title: "{{strtoupper(__('common.created_on'))}}",
+			field: "created_at",
+			visible: false,
+			print: true,
+			download: true
+		}, {
+			title: "{{strtoupper(__('common.status'))}}",
+			field: "status",
+			visible: false,
+			print: true,
+			download: true
+		},
 	];
 </script>
 
@@ -243,5 +248,3 @@
 @section('script')
 
 @endsection
-
-

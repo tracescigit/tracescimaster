@@ -53,7 +53,7 @@
 
                         <li class="icon_list_item">
                             <div class="icon_list_icon">
-                                <h5><i class="fa fa-map-marker" aria-hidden="true"></i> Office </h5>
+                                <h5><i class="fa fa-map-marker" aria-hidden="true"></i> Head Office </h5>
                             </div>
                             <b>Tracesci Global Pvt Ltd.,<br>
                                 8B, "Chaitanya Exotica", 24 venkatnarayana Road,<br>
@@ -73,7 +73,6 @@
                                 <h5><i class="fa fa-phone" aria-hidden="true"></i> Phone</h5>
                             </div>
                             <a href="callto:+911244226771">+91-44-28115-7928</a>
-                            <a href="callto:+911244226771">+91-44-28115-7894</a>
                         </li>
                         <li class="icon_list_item">
                             <div class="icon_list_icon">
@@ -252,7 +251,7 @@
                 name: 'Tracesci Global Pvt Ltd - Gurugram',
                 lat: 28.430362,
                 lng: 77.010435,
-                address: 'Gurugram, Haryana, India'
+                address: 'B-15, Infocity 1, Sector 34, Gurugram, Haryana, India'
             },
             {
                 name: 'Tracesci Global Pvt Ltd - Chennai',

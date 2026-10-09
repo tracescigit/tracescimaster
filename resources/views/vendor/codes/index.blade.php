@@ -29,7 +29,7 @@
 
 <div class="intro-y box p-5 mt-5">
 	<div class="grid grid-cols-12">
-		<form id="tabulator-html-filter-form" class="xl:flex sm:mr-auto col-span-12" >
+		<form id="tabulator-html-filter-form" class="xl:flex sm:mr-auto col-span-12">
 
 			<div class="sm:flex items-center sm:mr-4">
 				<label class="w-12 flex-none xl:w-auto xl:flex-initial mr-2">{{__('common.field')}}</label>
@@ -43,14 +43,14 @@
 			</div>
 			<div class="sm:flex items-center sm:mr-4 mt-2 xl:mt-0">
 				<label class="w-12 flex-none xl:w-auto xl:flex-initial mr-2">{{__('common.type')}}</label>
-				<select id="tabulator-html-filter-type" class="form-select w-full mt-2 sm:mt-0 sm:w-auto" >
+				<select id="tabulator-html-filter-type" class="form-select w-full mt-2 sm:mt-0 sm:w-auto">
 					<option value="like" selected>{{__('common.like')}}</option>
 					<option value="=">=</option>
 				</select>
 			</div>
 			<div class="sm:flex items-center sm:mr-4 mt-2 xl:mt-0">
 				<label class="w-12 flex-none xl:w-auto xl:flex-initial mr-2">{{__('common.value')}}</label>
-				<input id="tabulator-html-filter-value" type="text" class="form-control sm:w-40 xxl:w-full mt-2 sm:mt-0"  placeholder="{{__('common.search')}}...">
+				<input id="tabulator-html-filter-value" type="text" class="form-control sm:w-40 xxl:w-full mt-2 sm:mt-0" placeholder="{{__('common.search')}}...">
 			</div>
 			<div class="sm:flex items-center sm:mr-4 mt-2 xl:mt-0">
 				<label class="w-12 flex-none xl:w-auto xl:flex-initial mr-2">{{__('common.from_date')}}</label>
@@ -59,7 +59,7 @@
 			<div class="sm:flex items-center mt-2 xl:mt-0">
 				<label class="w-12 flex-none xl:w-auto xl:flex-initial mr-2">{{__('common.to_date')}}</label>
 				<input id="tabulator-html-filter-end-date" type="date" class="form-control sm:w-40 xxl:w-full mt-2 sm:mt-0">
-			</div>			
+			</div>
 		</form>
 		<div class="mt-5 col-span-12">
 			<div class="grid grid-cols-12">
@@ -86,8 +86,8 @@
 					</div>
 				</div>
 				<div class="flex  col-span-6 lg:col-span-3 justify-end">
-					<button id="tabulator-html-filter-go" type="button" class="btn btn-primary w-full sm:w-16" >{{__('common.go')}}</button>
-					<button id="tabulator-html-filter-reset" type="button" class="btn btn-secondary w-full sm:w-16 mt-2 sm:mt-0 sm:ml-1" >{{__('common.reset')}}</button>
+					<button id="tabulator-html-filter-go" type="button" class="btn btn-primary w-full sm:w-16">{{__('common.go')}}</button>
+					<button id="tabulator-html-filter-reset" type="button" class="btn btn-secondary w-full sm:w-16 mt-2 sm:mt-0 sm:ml-1">{{__('common.reset')}}</button>
 				</div>
 			</div>
 		</div>
@@ -104,136 +104,141 @@
 
 @section('global_script')
 <script>
-	var tabulatorUrl =  '{{ route("vendor-codes") }}';
-	var tabulatorColumns = [
-	{	
-		formatter: "responsiveCollapse",
-		width: 40,
-		minWidth: 30,
-		align: "center",
-		resizable: false,
-		headerSort: false,
-		print: false,
-		download: false,
-		collapsed:true,
-	},{
-		title: "INDEX SERIAL NO",
-		maxWidth: 100,
-		responsive: 0,
-		field: "id",
-		vertAlign: "middle",
-		print: false,
-		download: false,
-		formatter: function formatter(cell, formatterParams) {
-			return "<div>\n<div class=\"font-medium whitespace-nowrap\">".concat(cell.getData().id, "</div>");
-		}
-	},{
-		title: "PRODUCT NAME",
-		minWidth: 180,
-		responsive: 0,
-		field: "product_id",
-		vertAlign: "middle",
-		hozAlign: "center",
-		print: false,
-		download: false,
-		formatter: function formatter(cell, formatterParams) {
-			return "<div>\n                            <div class=\"font-medium whitespace-nowrap\">".concat(cell.getData().product_id, "</div>");
-		}
-	},{
-		title: "PRODUCT SERIAL NO",
-		minWidth: 180,
-		responsive: 0,
-		field: "code_data",
-		hozAlign: "center",
-		vertAlign: "middle",
-		print: false,
-		download: false,
-		formatter: function formatter(cell, formatterParams) {
-			return "<div>\n                            <div class=\"font-medium whitespace-nowrap\">".concat(cell.getData().code_data, "</div>");
-		}
-	},{
-		title: "WEB LINK",
-		minWidth: 160,
-		responsive: 0,
-		field: "url",
-		hozAlign: "center",
-		vertAlign: "middle",
-		print: false,
-		download: false,
-		formatter: function formatter(cell, formatterParams) {
-			return '<a class="btn p-1 btn-primary" href="'+cell.getData().url+'" title="View Link" target="_blank">Link</a>';
-		}
-	}, {
-		title: "BATCH CODE",
-		minWidth: 180,
-		field: "batch",
-		hozAlign: "center",
-		vertAlign: "middle",
-		print: false,
-		download: false,
-		formatter: function formatter(cell, formatterParams) {
-			return "<div>\n                            <div class=\"font-medium whitespace-nowrap\">".concat(cell.getData().batch, "</div>\n                            ");
-		}
-	}, {
-		title: "CREATED ON",
-		minWidth: 160,
-		field: "created_at",
-		hozAlign: "center",
-		vertAlign: "middle",
-		print: false,
-		download: false
-	},  {
-		title: "STATUS",
-		minWidth: 160,
-		field: "status",
-		hozAlign: "center",
-		vertAlign: "middle",
-		print: false,
-		download: false,
-		formatter: function formatter(cell, formatterParams) {
-			return cell.getData().actions;
-		}
-	},
-	{
-		title: "PRODUCT NAME",
-		field: "product_id",
-		visible: false,
-		print: true,
-		download: true
-	}, {
-		title: "BATCH",
-		field: "batch",
-		visible: false,
-		print: true,
-		download: true
-	},{
-		title: "CODE DATA",
-		field: "code_data",
-		visible: false,
-		print: true,
-		download: true
-	},{
-		title: "WEB LINK",
-		field: "url",
-		visible: false,
-		print: true,
-		download: true
-	}, {
-		title: "CREATED AT",
-		field: "created_at",
-		visible: false,
-		print: true,
-		download: true
-	}, {
-		title: "STATUS",
-		field: "status",
-		visible: false,
-		print: true,
-		download: true,
-		formatterPrint: function formatterPrint(cell) {
-			return cell.getValue()=='1' ? "Active" : "Inactive";
-		}
-	},
+	var tabulatorUrl = '{{ route("vendor-codes") }}';
+	var tabulatorColumns = [{
+			formatter: "responsiveCollapse",
+			width: 40,
+			minWidth: 30,
+			align: "center",
+			resizable: false,
+			headerSort: false,
+			print: false,
+			download: false,
+			collapsed: true,
+		}, {
+			title: "INDEX SERIAL NO",
+			maxWidth: 100,
+			responsive: 0,
+			field: "id",
+			vertAlign: "middle",
+			print: false,
+			download: false,
+			formatter: function formatter(cell, formatterParams) {
+				return "<div>\n<div class=\"font-medium whitespace-nowrap\">".concat(cell.getData().id, "</div>");
+			}
+		}, {
+			title: "PRODUCT NAME",
+			minWidth: 180,
+			responsive: 0,
+			field: "product_id",
+			vertAlign: "middle",
+			hozAlign: "center",
+			print: false,
+			download: false,
+			formatter: function formatter(cell, formatterParams) {
+				return "<div>\n                            <div class=\"font-medium whitespace-nowrap\">".concat(cell.getData().product_id, "</div>");
+			}
+		}, {
+			title: "PRODUCT SERIAL NO",
+			minWidth: 180,
+			responsive: 0,
+			field: "code_data",
+			hozAlign: "center",
+			vertAlign: "middle",
+			print: false,
+			download: false,
+			formatter: function formatter(cell, formatterParams) {
+				return "<div>\n                            <div class=\"font-medium whitespace-nowrap\">".concat(cell.getData().code_data, "</div>");
+			}
+		}, {
+			title: "WEB LINK",
+			minWidth: 160,
+			responsive: 0,
+			field: "url",
+			hozAlign: "center",
+			vertAlign: "middle",
+			print: false,
+			download: false,
+			formatter: function formatter(cell, formatterParams) {
+				var url = cell.getData().url;
+
+				if (url != null && url != '' && url != '-') {
+					return '<a class="btn p-1 btn-primary" href="' + url + '" title="View Link" target="_blank">Link</a>';
+				}
+
+				return '--';
+			}
+		}, {
+			title: "BATCH CODE",
+			minWidth: 180,
+			field: "batch",
+			hozAlign: "center",
+			vertAlign: "middle",
+			print: false,
+			download: false,
+			formatter: function formatter(cell, formatterParams) {
+				return "<div>\n                            <div class=\"font-medium whitespace-nowrap\">".concat(cell.getData().batch, "</div>\n                            ");
+			}
+		}, {
+			title: "CREATED ON",
+			minWidth: 160,
+			field: "created_at",
+			hozAlign: "center",
+			vertAlign: "middle",
+			print: false,
+			download: false
+		}, {
+			title: "STATUS",
+			minWidth: 160,
+			field: "status",
+			hozAlign: "center",
+			vertAlign: "middle",
+			print: false,
+			download: false,
+			formatter: function formatter(cell, formatterParams) {
+				return cell.getData().actions;
+			}
+		},
+		{
+			title: "PRODUCT NAME",
+			field: "product_id",
+			visible: false,
+			print: true,
+			download: true
+		}, {
+			title: "BATCH",
+			field: "batch",
+			visible: false,
+			print: true,
+			download: true
+		}, {
+			title: "CODE DATA",
+			field: "code_data",
+			visible: false,
+			print: true,
+			download: true
+		}, {
+			title: "WEB LINK",
+			field: "url",
+			visible: false,
+			print: true,
+			download: true
+		}, {
+			title: "CREATED AT",
+			field: "created_at",
+			visible: false,
+			print: true,
+			download: true
+		}, {
+			title: "STATUS",
+			field: "status",
+			visible: false,
+			print: true,
+			download: true,
+			formatterPrint: function formatterPrint(cell) {
+				return cell.getValue() == '1' ? "Active" : "Inactive";
+			}
+		},
 	];
 </script>
 
@@ -242,12 +247,12 @@
 @section('script')
 
 <script>
-	cash(function () {
+	cash(function() {
 		async function deactivate() {
 
 			let url = cash('#target').val()
 
-			if(!url){
+			if (!url) {
 				return false;
 			}
 
@@ -259,13 +264,13 @@
 
 			axios.post(url, formData).then(res => {
 				cash('#dismiss-modal').trigger('click')
-				showNotification('success','Success !',res.data.message)
-				setTimeout(()=>{
+				showNotification('success', 'Success !', res.data.message)
+				setTimeout(() => {
 					window.location.reload()
-				},1000)
+				}, 1000)
 			}).catch(err => {
 				cash('#dismiss-modal').trigger('click')
-				showNotification('error','Error !',err.response.data.message)
+				showNotification('error', 'Error !', err.response.data.message)
 				cash('#deact-button').html('Deactivate Now')
 			})
 		}
@@ -289,41 +294,43 @@
 
 			axios.post('{{ url("/vendor/codes/action") }}', formData).then(res => {
 				// cash('#action-button').attr('disabled', 'true');
-				showNotification('success','Success !',res.data.message)
+				showNotification('success', 'Success !', res.data.message)
 				cash('#action-button').html('Submit')
 				cash('#action-modal').modal('hide')
-				
 
-				if(action!='export'){
-					setTimeout(()=>{
+
+				if (action != 'export') {
+					setTimeout(() => {
 						window.location.href = '{{ url("/vendor/codes") }}'
-					},1000)
-				}else{
+					}, 1000)
+				} else {
 					const method = 'GET';
 					const url = '{{ url("/vendor/codes/bulkexport") }}';
 
 					axios.request({
-						url,
-						method,
-						responseType: 'blob', 
-					})
-					.then(({ data }) => {
-						const downloadUrl = window.URL.createObjectURL(new Blob([data]));
-						const link = document.createElement('a');
-						link.href = downloadUrl;
-						link.setAttribute('download', 'code.xlsx'); 
-						document.body.appendChild(link);
-						link.click();
-						link.remove();
-					});
+							url,
+							method,
+							responseType: 'blob',
+						})
+						.then(({
+							data
+						}) => {
+							const downloadUrl = window.URL.createObjectURL(new Blob([data]));
+							const link = document.createElement('a');
+							link.href = downloadUrl;
+							link.setAttribute('download', 'code.xlsx');
+							document.body.appendChild(link);
+							link.click();
+							link.remove();
+						});
 				}
 
 			}).catch(err => {
-				showNotification('error','Error !',err.response.data.message)
-				cash('#action-button').html('Submit')                   
+				showNotification('error', 'Error !', err.response.data.message)
+				cash('#action-button').html('Submit')
 
 				if (err.response.data.errors) {
-					for (const [key, val] of Object.entries(err.response.data.errors)){
+					for (const [key, val] of Object.entries(err.response.data.errors)) {
 						cash(`#${key}`).addClass('border-theme-6')
 						cash(`#error-${key}`).html(val)
 					}
@@ -340,5 +347,3 @@
 </script>
 
 @endsection
-
-

@@ -15,7 +15,7 @@
           </li>
 
           <li class="{{ request()->is('solutions/*') || request()->is('product/*') ? 'active' : '' }}">
-            <a href="{{ route('cloud-solution') }}">Solution</a>
+            <a>Solutions</a>
           </li>
 
           <!-- <li class="{{ request()->routeIs('blog') ? 'active' : '' }}">
@@ -111,7 +111,7 @@
           </li>
 
           <li class="{{ request()->is('solutions/*') || request()->is('product/*') ? 'active' : '' }}">
-            <a href="{{ route('cloud-solution') }}">Solution</a>
+            <a >Solution</a>
             <ul class="dropdown">
 
               <!-- 1) SOFTWARE -->
@@ -124,9 +124,9 @@
                   <li>
                     <a href="{{ route('enterprise-solution') }}">Enterprise</a>
                   </li>
-                  <li>
+                  <!-- <li>
                     <a href="{{ url('/') }}#application">Customise</a>
-                  </li>
+                  </li> -->
                 </ul>
               </li>
 

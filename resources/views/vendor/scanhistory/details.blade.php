@@ -58,7 +58,6 @@ $long=null;
 
 					@php
 					$locationData = (array) $location;
-					dd($locationData);
 					$lat = $locationData['lat'] ?? null;
 					$long = $locationData['lng'] ?? $locationData['long'] ?? null;
 

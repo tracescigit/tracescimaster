@@ -10,6 +10,11 @@ class ScanController extends Controller
 	public function show(Request $request, $code)
 	{
 		$qr = Code::where('qr_code', $code)->orWhere('code_data', $code)->first();
+		if (empty($qr->product_id) || empty($qr->batch_id)) {
+			return response()->json([
+				'message' => 'No Product or Batch Associated with this Serial Number'
+			], 422);
+		}
 		$product = $qr->getProduct;
 		$totalScans = $qr->getScanHistory()->count();
 		$auth_required = true;
