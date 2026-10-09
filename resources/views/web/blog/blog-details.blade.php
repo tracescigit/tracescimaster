@@ -103,16 +103,16 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12 text-center">
-        {{--<div class="about-head-content">
-          <h2>Blog Single Post</h2>
-          <p>Metrics insights & articles, A blog about analytics, marketing & testing</p>
-        </div>--}}
-        <div class="breadcrumbs text-center">
-          <ul class="page-breadcrumbs">
-            <li><a href="#">home</a></li>
-            <li><a href="#">Blog Details</a></li>
-          </ul>
+        <div class="about-head-content">
+          <h2>Blog Details</h2>
+          <p></p>
         </div>
+        <!-- <div class="breadcrumbs text-center">
+          <ul class="page-breadcrumbs">
+            <li><a href="{{ url('/') }}">Home</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div> -->
       </div>
     </div>
   </div>
@@ -164,7 +164,7 @@
                   $desc = substr_replace($desc, $closeMark, $m[0][1], 0);
               } else {
                   $desc = $desc . $closeMark;
-              }
+              } 
             @endphp
 
             <div class="blog-quote">
