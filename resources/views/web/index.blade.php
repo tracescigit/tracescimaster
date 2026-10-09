@@ -1,5 +1,5 @@
 @extends('web.layouts.app')
-@section('content')
+@section('subhead')
 <style>
   .uranus.tparrows {
     cursor: pointer;
@@ -283,6 +283,9 @@
     }
   }
 </style>
+@endsection
+@section('content')
+
 <!-- slider -->
 
 <div class="rev_slider_wrapper">

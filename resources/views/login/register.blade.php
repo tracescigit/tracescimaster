@@ -130,10 +130,10 @@
 
                 axios.post(`{{url('/register')}}`, formData).then(res => {
 
-                    showNotification('success', 'Success !', res.data.message)
-                    setTimeout(() => {
-                        window.location.href = "{{ url('/register/company-informations') }}"
-                    }, 2000)
+                showNotification('success', 'Success !', res.data.message)
+                setTimeout(() => {
+                    window.location.href = '{{ url("/register/company-informations") }}'
+                }, 2000)
 
                 }).catch(err => {
                     showNotification('error', 'Error !', err.response.data.message)

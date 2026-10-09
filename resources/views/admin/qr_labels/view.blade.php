@@ -118,15 +118,15 @@
 
 			cash('#btn-update').html('<i data-loading-icon="oval" data-color="white" class="w-5 h-5 mx-auto"></i>').svgLoader()
 
-			axios.post('{{ url('/admin/qr-label-orders/'.encrypt($order->id).'/edit') }}', formData).then(res => {
+			axios.post('{{ url("/admin/qr-label-orders/".encrypt($order->id)."/edit") }}', formData).then(res => {
 				cash('#btn-update').attr('disabled', 'true');
-				showNotification('success','{{__('common.success')}} !',res.data.message)
+				showNotification('success','{{__("common.success")}} !',res.data.message)
 				setTimeout(()=>{
 					window.location.reload()
 				},1000)
 
 			}).catch(err => {
-				showNotification('error','{{__('common.error')}} !',err.response.data.message)
+				showNotification('error','{{__("common.error")}} !',err.response.data.message)
 				cash('#btn-update').html('Update order')                  
 
 				if (err.response.data.errors) {

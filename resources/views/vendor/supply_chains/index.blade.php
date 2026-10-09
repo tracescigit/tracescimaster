@@ -134,7 +134,7 @@
 
 			cash('#add-new-button').html('<i data-loading-icon="oval" data-color="white" class="w-5 h-5 mx-auto"></i>').svgLoader()
 
-			axios.post('{{ url('/vendor/supply-chain-management/create') }}', formData).then(res => {
+			axios.post('{{ url("/vendor/supply-chain-management/create") }}', formData).then(res => {
 
 				showNotification('success','Success !',res.data.message)
 

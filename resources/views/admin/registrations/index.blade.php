@@ -23,11 +23,11 @@
 
 <div class="intro-y box p-5 mt-5">
 	<div class="grid grid-cols-12">
-		<form id="tabulator-html-filter-form" class="xl:flex sm:mr-auto col-span-12" >
-			
+		<form id="tabulator-html-filter-form" class="xl:flex sm:mr-auto col-span-12">
+
 			<div class="sm:flex items-center sm:mr-4">
 				<label class="w-12 flex-none xl:w-auto xl:flex-initial mr-2">{{__('common.field')}}</label>
-				<select id="tabulator-html-filter-field" class="form-select w-full sm:w-32 xxl:w-full mt-2 sm:mt-0 sm:w-auto">	
+				<select id="tabulator-html-filter-field" class="form-select w-full sm:w-32 xxl:w-full mt-2 sm:mt-0 sm:w-auto">
 					{{-- <option value="company">{{__('common.company')}}</option> --}}
 					<option value="email">{{__('common.email')}}</option>
 					<option value="phone">{{__('common.mobile')}}</option>
@@ -39,14 +39,14 @@
 			</div>
 			<div class="sm:flex items-center sm:mr-4 mt-2 xl:mt-0">
 				<label class="w-12 flex-none xl:w-auto xl:flex-initial mr-2">{{__('common.type')}}</label>
-				<select id="tabulator-html-filter-type" class="form-select w-full mt-2 sm:mt-0 sm:w-auto" >
+				<select id="tabulator-html-filter-type" class="form-select w-full mt-2 sm:mt-0 sm:w-auto">
 					<option value="like" selected>{{__('common.like')}}</option>
 					<option value="=">=</option>
 				</select>
 			</div>
 			<div class="sm:flex items-center sm:mr-4 mt-2 xl:mt-0">
 				<label class="w-12 flex-none xl:w-auto xl:flex-initial mr-2">{{__('common.value')}}</label>
-				<input id="tabulator-html-filter-value" type="text" class="form-control sm:w-40 xxl:w-full mt-2 sm:mt-0"  placeholder="{{__('common.search')}}...">
+				<input id="tabulator-html-filter-value" type="text" class="form-control sm:w-40 xxl:w-full mt-2 sm:mt-0" placeholder="{{__('common.search')}}...">
 			</div>
 			<div class="sm:flex items-center sm:mr-4 mt-2 xl:mt-0">
 				<label class="w-12 flex-none xl:w-auto xl:flex-initial mr-2">{{__('common.from_date')}}</label>
@@ -55,11 +55,11 @@
 			<div class="sm:flex items-center mt-2 xl:mt-0">
 				<label class="w-12 flex-none xl:w-auto xl:flex-initial mr-2">{{__('common.to_date')}}</label>
 				<input id="tabulator-html-filter-end-date" type="date" class="form-control sm:w-40 xxl:w-full mt-2 sm:mt-0">
-			</div>			
+			</div>
 		</form>
 		<div class="mt-5 col-span-12">
 			<div class="grid grid-cols-12">
-				
+
 				<div class="dropdown col-span-6 lg:col-span-9">
 					<button class="dropdown-toggle btn btn-outline-secondary w-full sm:w-auto" aria-expanded="false">
 						<i data-feather="file-text" class="w-4 h-4 mr-2"></i> {{__('common.export')}} <i data-feather="chevron-down" class="w-4 h-4 ml-auto sm:ml-2"></i>
@@ -82,8 +82,8 @@
 					</div>
 				</div>
 				<div class="flex  col-span-6 lg:col-span-3 justify-end">
-					<button id="tabulator-html-filter-go" type="button" class="btn btn-primary w-full sm:w-16" >{{__('common.go')}}</button>
-					<button id="tabulator-html-filter-reset" type="button" class="btn btn-secondary w-full sm:w-16 mt-2 sm:mt-0 sm:ml-1" >{{__('common.reset')}}</button>
+					<button id="tabulator-html-filter-go" type="button" class="btn btn-primary w-full sm:w-16">{{__('common.go')}}</button>
+					<button id="tabulator-html-filter-reset" type="button" class="btn btn-secondary w-full sm:w-16 mt-2 sm:mt-0 sm:ml-1">{{__('common.reset')}}</button>
 				</div>
 			</div>
 		</div>
@@ -96,135 +96,137 @@
 
 @section('global_script')
 <script>
-	var tabulatorUrl =  '{{ route('admin-registrations') }}';
-	var tabulatorColumns = [
-	{	
-		formatter: "responsiveCollapse",
-		width: 40,
-		minWidth: 30,
-		align: "center",
-		resizable: false,
-		headerSort: false,
-		print: false,
-		download: false,
-	},
-	@if (hasRoutePermission('admin-edit-registrations',Auth::id()) || hasRoutePermission('admin-destroy-registrations',Auth::id()))
-	{
-		title: "ACTIONS",
-		minWidth: 100,
-		field: "actions",
-		vertAlign: "middle",
-		print: false,
-		headerSort: false,
-		download: false,
-		formatter: function formatter(cell, formatterParams) {
-			return cell.getData().actions;
+	var tabulatorUrl = '{{ route("admin-registrations") }}';
+	var tabulatorColumns = [{
+			formatter: "responsiveCollapse",
+			width: 40,
+			minWidth: 30,
+			align: "center",
+			resizable: false,
+			headerSort: false,
+			print: false,
+			download: false,
+		},
+		@if(hasRoutePermission('admin-edit-registrations', Auth::id()) || hasRoutePermission('admin-destroy-registrations', Auth::id())) {
+			title: "ACTIONS",
+			minWidth: 100,
+			field: "actions",
+			vertAlign: "middle",
+			print: false,
+			headerSort: false,
+			download: false,
+			formatter: function formatter(cell, formatterParams) {
+				return cell.getData().actions;
+			}
+		},
+		@endif {
+			title: "USER NAME",
+			minWidth: 200,
+			field: "name",
+			@if(hasRoutePermission('admin-edit-registrations', Auth::id()) || hasRoutePermission('admin-destroy-registrations', Auth::id()))
+			hozAlign: "left",
+			@endif
+			vertAlign: "left",
+			headerHozAlign: "left",
+			print: false,
+			download: false,
+			formatter: function formatter(cell, formatterParams) {
+				return "<div>\n                            <div class=\"font-medium whitespace-nowrap\">".concat(cell.getData().name, "</div>\n                            <div class=\"text-gray-600 text-xs whitespace-nowrap\">").concat(cell.getData().company, "</div>\n                        </div>");
+			}
+		}, {
+			title: "{{strtoupper(__('common.email'))}}",
+			minWidth: 200,
+			field: "email",
+			hozAlign: "left",
+			headerHozAlign: "left",
+			vertAlign: "left",
+			print: false,
+			download: false
+		}, {
+			title: "{{strtoupper(__('common.mobile'))}}",
+			minWidth: 200,
+			field: "phone",
+			hozAlign: "right",
+			headerHozAlign: "right",
+			vertAlign: "right",
+			print: false,
+			download: false
+		}, {
+			title: "{{strtoupper(__('common.document_verified'))}} : ",
+			minWidth: 200,
+			field: "active",
+			hozAlign: "center",
+			headerHozAlign: "center",
+			vertAlign: "middle",
+			print: false,
+			download: false
+		}, {
+			title: "{{strtoupper(__('common.status'))}}",
+			minWidth: 200,
+			field: "status",
+			hozAlign: "center",
+			headerHozAlign: "center",
+			vertAlign: "middle",
+			print: false,
+			download: false
+		},
+		{
+			title: "{{strtoupper('User Name')}}",
+			field: "name",
+			visible: false,
+			print: true,
+			download: true
+		}, {
+			title: "{{strtoupper(__('common.email'))}}",
+			field: "email",
+			visible: false,
+			print: true,
+			download: true
+		}, {
+			title: "{{strtoupper(__('common.mobile'))}}",
+			field: "phone",
+			visible: false,
+			print: true,
+			download: true
+		}, {
+			title: "{{strtoupper(__('common.tax_number'))}}",
+			field: "tax_number",
+			visible: false,
+			print: true,
+			download: true
+		}, {
+			title: "{{strtoupper(__('common.city'))}}",
+			field: "city",
+			visible: false,
+			print: true,
+			download: true
+		}, {
+			title: "{{strtoupper(__('common.country'))}}",
+			field: "country",
+			visible: false,
+			print: true,
+			download: true
+		}, {
+			title: "{{strtoupper(__('common.status'))}}",
+			field: "status",
+			visible: false,
+			print: true,
+			download: true
+		},
+		{
+			title: "{{strtoupper(__('common.document_verified'))}}",
+			field: "active",
+			visible: false,
+			print: true,
+			download: true
+		},
+		{
+			title: "CREATED ON",
+			field: "created_at",
+			visible: true,
+			print: true,
+			download: true
 		}
-	},
-	@endif
-	{
-		title: "USER NAME",
-		minWidth: 200,
-		field: "name",
-		@if (hasRoutePermission('admin-edit-registrations',Auth::id()) || hasRoutePermission('admin-destroy-registrations',Auth::id()))
-		hozAlign: "center",
-		@endif
-		vertAlign: "middle",
-		print: false,
-		download: false,
-		formatter: function formatter(cell, formatterParams) {
-			return "<div>\n                            <div class=\"font-medium whitespace-nowrap\">".concat(cell.getData().name, "</div>\n                            <div class=\"text-gray-600 text-xs whitespace-nowrap\">").concat(cell.getData().company, "</div>\n                        </div>");
-		}
-	}, {
-		title: "{{strtoupper(__('common.email'))}}",
-		minWidth: 200,
-		field: "email",
-		hozAlign: "center",
-		vertAlign: "middle",
-		print: false,
-		download: false
-	}, {
-		title: "{{strtoupper(__('common.mobile'))}}",
-		minWidth: 200,
-		field: "phone",
-		hozAlign: "center",
-		vertAlign: "middle",
-		print: false,
-		download: false
-	},{
-		title: "{{strtoupper(__('common.document_verified'))}} : ",
-		minWidth: 200,
-		field: "active",
-		hozAlign: "center",
-		vertAlign: "middle",
-		print: false,
-		download: false
-	}, {
-		title: "{{strtoupper(__('common.status'))}}",
-		minWidth: 200,
-		field: "status",
-		hozAlign: "center",
-		vertAlign: "middle",
-		print: false,
-		download: false
-	},  
-	{
-		title: "{{strtoupper('User Name')}}",
-		field: "name",
-		visible: false,
-		print: true,
-		download: true
-	}, {
-		title: "{{strtoupper(__('common.email'))}}",
-		field: "email",
-		visible: false,
-		print: true,
-		download: true
-	}, {
-		title: "{{strtoupper(__('common.mobile'))}}",
-		field: "phone",
-		visible: false,
-		print: true,
-		download: true
-	},{
-		title: "{{strtoupper(__('common.tax_number'))}}",
-		field: "tax_number",
-		visible: false,
-		print: true,
-		download: true
-	},{
-		title: "{{strtoupper(__('common.city'))}}",
-		field: "city",
-		visible: false,
-		print: true,
-		download: true
-	},{
-		title: "{{strtoupper(__('common.country'))}}",
-		field: "country",
-		visible: false,
-		print: true,
-		download: true
-	},{
-		title: "{{strtoupper(__('common.status'))}}",
-		field: "status",
-		visible: false,
-		print: true,
-		download: true
-	},
-	{
-		title: "{{strtoupper(__('common.document_verified'))}}",
-		field: "active",
-		visible: false,
-		print: true,
-		download: true
-	},
-	{
-		title: "CREATED ON",
-		field: "created_at",
-		visible: true,
-		print: true,
-		download: true
-	}
 	];
 </script>
 @endsection

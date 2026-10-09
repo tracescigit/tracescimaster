@@ -110,7 +110,16 @@
                 .html('<i data-loading-icon="oval" data-color="white" class="w-5 h-5 mx-auto"></i>')
                 .svgLoader();
 
-            await helper.delay(500);
+            axios.post(`forgot-password`, {
+                email: email
+            }).then(res => {
+                showNotification('success', 'Success !', res.data.message)
+                setTimeout(() => {
+                    window.location.href = '{{ url("/login") }}'
+                }, 2000)
+            }).catch(err => {
+                showNotification('error', 'Error !', err.response.data.message)
+                cash('#btn-reset').html('Submit')
 
             axios.post('forgot-password', {
                     email: email

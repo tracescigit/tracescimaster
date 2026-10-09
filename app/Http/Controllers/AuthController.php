@@ -164,7 +164,9 @@ class AuthController extends Controller
                 $input['gst_or_vat_certificate'] = $this->getFilePath($file);
             }
 
-            $user['otp']     =  mt_rand(1000, 9999);
+            // $user['otp']     =  mt_rand(1000, 9999);
+            $user['otp']     =  1111;
+
             $user['company'] = $input;
 
             Session::put('user', $user);

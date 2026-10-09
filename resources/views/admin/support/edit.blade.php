@@ -106,11 +106,11 @@
 
 			
 
-			axios.post('{{ url('/admin/support/'.encrypt($ticket->id).'/edit') }}', formData).then(res => {
+			axios.post('{{ url("/admin/support/".encrypt($ticket->id)."/edit") }}', formData).then(res => {
 				
 				showNotification('success','Success !',res.data.message)
 				setTimeout(()=>{
-					window.location.href = '{{ url('/admin/support') }}'
+					window.location.href = '{{ url("/admin/support") }}'
 				},1000)
 
 			}).catch(err => {

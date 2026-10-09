@@ -90,7 +90,7 @@
 			cash('#btn-update').html('<i data-loading-icon="oval" data-color="white" class="w-5 h-5 mx-auto"></i>').svgLoader()
 			cash('#btn-update').attr('disabled', 'true');
 
-			axios.post('{{ url('/admin/material-types/'.encrypt($material_type->id).'/edit') }}', formData).then(res => {
+			axios.post('{{ url("/admin/material-types/".encrypt($material_type->id)."/edit") }}', formData).then(res => {
 				
 				showNotification('success','Success !',res.data.message)
 				setTimeout(()=>{

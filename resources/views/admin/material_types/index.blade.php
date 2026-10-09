@@ -87,7 +87,7 @@
 
 @section('global_script')
 <script>
-	var tabulatorUrl =  '{{ route('admin-material-types') }}';
+	var tabulatorUrl =  '{{ route("admin-material-types") }}';
 	var tabulatorColumns = [
 	{	
 		formatter: "responsiveCollapse",

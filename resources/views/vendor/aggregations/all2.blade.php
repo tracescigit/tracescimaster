@@ -72,7 +72,7 @@
 
 @section('global_script')
 <script>
-	var tabulatorUrl =  '{{ url('vendor/aggregations?level='.$_GET['level']) }}';
+	var tabulatorUrl =  "{{ url('vendor/aggregations?level='.$_GET['level']) }}";
 	var tabulatorColumns = [
 	{	
 		formatter: "responsiveCollapse",

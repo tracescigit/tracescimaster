@@ -118,7 +118,7 @@
             cash('#btn-update').html('<i data-loading-icon="oval" data-color="white" class="w-5 h-5 mx-auto"></i>').svgLoader()
             // await helper.delay(500)
 
-            axios.post('{{ route('admin-update-profile') }}', formData).then(res => {
+            axios.post('{{ route("admin-update-profile") }}', formData).then(res => {
                 // cash('#btn-update').attr('disabled', 'true');
                 showNotification('success','Success !',res.data.message)
                 setTimeout(()=>{

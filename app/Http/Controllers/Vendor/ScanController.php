@@ -6,33 +6,33 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\ScanHistory;
 use Illuminate\Support\Facades\Auth;
-use Http;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class ScanController extends Controller
 {
 	public function index(Request $request)
-	{	
+	{
 
-		if($request->ajax())
-		{	
+		if ($request->ajax()) {
 			$limit          = $request->input('size');
 			$page           = $request->input('page');
-			$search_field   = $request['filters']?$request['filters']['0']['field']:'';
-			$search_type    = $request['filters']?$request['filters']['0']['type']:'';
-			$search_value   = $request['filters']?$request['filters']['0']['value']:'';
-			$orderby        = $request['sorters']?$request['sorters']['0']['field']:'';			
+			$search_field   = $request['filters'] ? $request['filters']['0']['field'] : '';
+			$search_type    = $request['filters'] ? $request['filters']['0']['type'] : '';
+			$search_value   = $request['filters'] ? $request['filters']['0']['value'] : '';
+			$orderby        = $request['sorters'] ? $request['sorters']['0']['field'] : '';
 			$order          = $orderby != "" ? $request['sorters']['0']['dir'] : "";
 
-			$response       = ScanHistory::getVendorScanModel($limit, $page, $orderby, $order, $search_field , $search_type, $search_value, Auth::user()->parent_id??Auth::id());
+			$response       = ScanHistory::getVendorScanModel($limit, $page, $orderby, $order, $search_field, $search_type, $search_value, Auth::user()->parent_id ?? Auth::id());
 
 
 
-			if(!$response){
+			if (!$response) {
 				$scans      = [];
 				$last_page  = 0;
 				$total = 0;
-			}
-			else{
+			} else {
 				$scans      = $response['response'];
 				$last_page     = $response['last_page'];
 				$total     = $response['total'];
@@ -43,16 +43,16 @@ class ScanController extends Controller
 
 			foreach ($scans as $scan) {
 
-				$u['product_name']          = $scan->getCode->getProduct->name??'-';
-				$u['code_data']             = $scan->getCode->code_data??'-';
-				$u['phone']     			= $scan->phone??'-';
-				$u['ip_address']     		= $scan->ip_address??'-';
-				$u['created_at']      		= date('M d, Y',strtotime($scan->created_at))??'-';
-				$actions           			= view('vendor.scanhistory.actions',['id' => $scan->id]);
-				$u['actions']      			= $actions->render(); 
+				$u['product_name']          = $scan->getCode->getProduct->name ?? '-';
+				$u['code_data']             = $scan->getCode->code_data ?? '-';
+				$u['phone']     			= $scan->phone ?? '-';
+				$u['ip_address']     		= $scan->ip_address ?? '-';
+				$u['created_at']      		= date('M d, Y', strtotime($scan->created_at)) ?? '-';
+				$actions           			= view('vendor.scanhistory.actions', ['id' => $scan->id]);
+				$u['actions']      			= $actions->render();
 
-				$genuine                    = view('vendor.scanhistory.genuine',['genuine' => $scan->genuine]);
-                $u['genuine']               = $genuine->render(); 
+				$genuine                    = view('vendor.scanhistory.genuine', ['genuine' => $scan->genuine]);
+				$u['genuine']               = $genuine->render();
 
 				$scanData[] = $u;
 				$i++;
@@ -70,33 +70,78 @@ class ScanController extends Controller
 		return view('vendor.scanhistory.index');
 	}
 
+
+
 	public function show($id)
-	{   
+	{
 		$id = decrypt($id);
 		$scandetail = ScanHistory::find($id);
-
+		$location = null;
 		$full_address = null;
 
-		if ($scandetail->location && $scandetail->location!='') {
+		if ($scandetail && !empty($scandetail->location)) {
+			$location = is_array($scandetail->location)
+				? $scandetail->location
+				: json_decode($scandetail->location, true);
 
-			$location = json_decode($scandetail->location,true);
+			$lat = $location['lat'] ?? null;
+			$lng = $location['lng'] ?? $location['long'] ?? null;
 
-			if(isset($location['lat']) && isset($location['long'])){
-				$response = Http::get('https://maps.googleapis.com/maps/api/geocode/json?latlng='.$location['lat'].','.$location['long'].'&key=AIzaSyDkYcFk5rZMvW2Sf0JnCZm9YGvG-Zwgb2U');
+			if (
+				is_array($location) && is_numeric($lat) && is_numeric($lng)
+				&& (empty($location['city']) || empty($location['region']) || empty($location['country']))
+			) {
+				$key = 'geo_' . md5(round($lat, 5) . ',' . round($lng, 5));
+				$geo = Cache::get($key);
 
-				if($response->body())
-				{
-					$body= json_decode($response->body(),true);
+				if (!$geo) {
+					try {
+						// OpenStreetMap Nominatim: free, no key, commercial use allowed (max 1 req/s, cache results)
+						$res = Http::timeout(10)
+							->withHeaders(['User-Agent' => 'TracesciApp/1.0 (wecare@tracesci.in)'])
+							->get('https://nominatim.openstreetmap.org/reverse', [
+								'format' => 'json',
+								'lat' => $lat,
+								'long' => $lng,
+								'addressdetails' => 1,
+								'accept-language' => 'en',
+							]);
 
-					if ($body['results'] && $body['results'][0] && $body['results'][0]['formatted_address']) {
-						$full_address = $body['results'][0]['formatted_address'];
+						$a = $res->successful() ? ($res->json('address') ?? []) : [];
+
+						if ($a) {
+							$geo = [
+								'full_address' => $res->json('display_name'),
+								'city' => $a['city'] ?? $a['town'] ?? $a['municipality'] ?? $a['village']
+									?? $a['city_district'] ?? $a['state_district'] ?? $a['county']
+									?? $a['suburb'] ?? $a['hamlet'] ?? null,
+								'region' => $a['state'] ?? $a['region'] ?? $a['province'] ?? $a['state_district'] ?? null,
+								'country' => $a['country'] ?? null,
+							];
+							Cache::put($key, $geo, now()->addDays(30));
+							
+						}
+					} catch (\Throwable $e) {
+						Log::warning('Reverse geocoding failed', ['scan_history_id' => $id, 'error' => $e->getMessage()]);
+					}
+				}
+
+				if ($geo) {
+					$full_address = $geo['full_address'];
+
+					foreach (['city', 'region', 'country'] as $k) {
+						if (empty($location[$k])) {
+							$location[$k] = $geo[$k];
+						}
 					}
 				}
 			}
 		}
-		
-		return view('vendor.scanhistory.details')->with('scandetail',$scandetail)->with('full_address',$full_address)->with('page_name','vendor-scanhistory');
+
+		return view('vendor.scanhistory.details')
+			->with('scandetail', $scandetail)
+			->with('location', $location)
+			->with('full_address', $full_address)
+			->with('page_name', 'vendor-scanhistory');
 	}
-
-
 }

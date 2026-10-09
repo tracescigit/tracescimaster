@@ -87,7 +87,7 @@
 
 @section('global_script')
 <script>
-	var tabulatorUrl =  '{{ route('admin-label-sizes') }}';
+	var tabulatorUrl =  '{{ route("admin-label-sizes") }}';
 	var tabulatorColumns = [
 	{	
 		formatter: "responsiveCollapse",

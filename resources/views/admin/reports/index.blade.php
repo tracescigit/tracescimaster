@@ -81,7 +81,7 @@
 @endsection
 @section('global_script')
 <script>
-	var tabulatorUrl =  '{{ route('admin-reports') }}';
+	var tabulatorUrl =  '{{ route("admin-reports") }}';
 	var tabulatorColumns = [
 	{	
 		formatter: "responsiveCollapse",

@@ -50,7 +50,7 @@
 
 @section('global_script')
 <script>
-	var tabulatorUrl =  '{{ route('admin-emails') }}';
+	var tabulatorUrl =  '{{ route("admin-emails") }}';
 	var tabulatorColumns = [
 	{	
 		formatter: "responsiveCollapse",

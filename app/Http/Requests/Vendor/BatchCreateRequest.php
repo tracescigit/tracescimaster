@@ -24,13 +24,13 @@ class BatchCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'code'          => 'required|max:100|regex:/(^[a-zA-Z0-9-()_ ]+$)/u',
-            'price'         => 'required|numeric|max:99999999.99|regex:/^[0-9.]+$/',
-            'currency' => 'required',
-            'gs1_code'      => 'max:50',
-            'mfg_date'      => 'required|date',
-            'exp_date'      => 'nullable|date',
-            'product'       => 'required',
+            'code'      => 'required|max:100|unique:batches,code|regex:/(^[a-zA-Z0-9-()_ ]+$)/u',
+            'price'     => 'required|numeric|max:99999999.99|regex:/^[0-9.]+$/',
+            'currency'  => 'required',
+            'gs1_code'  => 'max:50',
+            'mfg_date'  => 'required|date',
+            'exp_date'  => 'nullable|date|after_or_equal:mfg_date',
+            'product'   => 'required',
         ];
     }
 }

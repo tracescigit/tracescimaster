@@ -247,7 +247,7 @@
 			'value':size
 		};
 
-		axios.post('{{ url('/vendor/qr-labels/resources') }}', formData).then(res => {
+		axios.post('{{ url("/vendor/qr-labels/resources") }}', formData).then(res => {
 			if(res.data.url){
 				setQrImage(res.data.url)
 			}
@@ -302,7 +302,7 @@
 			'value':type
 		};
 
-		axios.post('{{ url('/vendor/qr-labels/resources') }}', formData).then(res => {
+		axios.post('{{ url("/vendor/qr-labels/resources") }}', formData).then(res => {
 			if(res.data.material_cost){
 				cash('#material_cost').val(res.data.material_cost);
 			}
@@ -345,7 +345,7 @@
 			'quantity':quantity
 		};
 
-		axios.post('{{ url('/vendor/qr-labels/resources') }}', formData).then(res => {
+		axios.post('{{ url("/vendor/qr-labels/resources") }}', formData).then(res => {
 			cash('.codes-message').html(res.data.message)
 			cash('#codes_ready').val('yes')
 			calculatePrice()
@@ -494,20 +494,20 @@
 					formData.append("_token", "{{ csrf_token() }}");
 					// APi Call here
 					
-					axios.post('{{ url('/vendor/qr-labels/create') }}', formData, {
+					axios.post('{{ url("/vendor/qr-labels/create") }}', formData, {
 						headers: {
 							'Content-Type': 'multipart/form-data'
 						}
 					}).then(res => {
 						showNotification('success','Success !',res.data.message)
 						setTimeout(()=>{
-							window.location.href = '{{ url('/vendor/qr-labels') }}'
+							window.location.href = '{{ url("/vendor/qr-labels") }}'
 						},1000)
 
 					}).catch(err => {
 						showNotification('error','Error !',err.response.data.message)
 						setTimeout(()=>{
-							window.location.href = '{{ url('/vendor/qr-labels/create') }}'
+							window.location.href = '{{ url("/vendor/qr-labels/create") }}'
 						},1000)
 					})
 

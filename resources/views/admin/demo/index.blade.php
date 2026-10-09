@@ -94,19 +94,21 @@
 			print: false,
 			download: false,
 			collapsed: true,
-		}, {
-			title: "ACTIONS",
-			maxWidth: 150,
-			field: "actions",
-			responsive: 1,
-			vertAlign: "middle",
-			print: false,
-			headerSort: false,
-			download: false,
-			formatter: function formatter(cell, formatterParams) {
-				return cell.getData().actions;
-			}
-		}, {
+		}, 
+		// {
+		// 	title: "ACTIONS",
+		// 	maxWidth: 150,
+		// 	field: "actions",
+		// 	responsive: 1,
+		// 	vertAlign: "middle",
+		// 	print: false,
+		// 	headerSort: false,
+		// 	download: false,
+		// 	formatter: function formatter(cell, formatterParams) {
+		// 		return cell.getData().actions;
+		// 	}
+		// }, 
+		{
 			title: "{{strtoupper(__('common.company_name'))}}",
 			minWidth: 220,
 			responsive: 0,

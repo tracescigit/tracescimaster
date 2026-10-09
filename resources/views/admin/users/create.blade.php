@@ -158,19 +158,16 @@
 			cash('#btn-add').html('<i data-loading-icon="oval" data-color="white" class="w-5 h-5 mx-auto"></i>').svgLoader()
 			cash('#btn-add').attr('disabled', 'true');
 
-			axios.post('{{ url(' / admin / users / create ') }}', formData).then(res => {
+			axios.post('{{ url("/admin/users/create") }}', formData).then(res => {
 
-				showNotification('success', '{{__('
-					common.success ')}} !', res.data.message)
+				showNotification('success', '{{__("common.success")}} !', res.data.message)
 				setTimeout(() => {
-					window.location.href = '{{ url(' / admin / users ') }}'
+					window.location.href = '{{ url("/admin/users") }}'
 				}, 2000)
 
 			}).catch(err => {
-				showNotification('error', '{{__('
-					common.error ')}} !', err.response.data.message)
-				cash('#btn-add').html('{{__('
-					common.submit ')}}')
+				showNotification('error', '{{__("common.error")}} !', err.response.data.message)
+				cash('#btn-add').html('{{__("common.submit")}}')
 				cash('#btn-add').removeAttr('disabled');
 
 				if (err.response.data.errors) {
