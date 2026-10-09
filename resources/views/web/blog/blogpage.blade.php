@@ -59,9 +59,11 @@
   /* ---- same-size image for every blog ---- */
   .blog-card-img {
     display: block;
-    width: 100%;
+    width: calc(100% - 24px);   /* leaves 12px of padding on each side */
+    margin: 12px 12px 0;        /* padding around the image inside the card */
     aspect-ratio: 1 / 1;        /* square - change to 4 / 3 or 16 / 9 if preferred */
     overflow: hidden;
+    border-radius: 10px;        /* rounded image corners */
   }
 
   .blog-card-img img {
@@ -149,7 +151,7 @@
 
   .blog-card-link:hover i {
     margin-left: 10px;
-  }
+  } 
 </style>
 
 <!-- =========================

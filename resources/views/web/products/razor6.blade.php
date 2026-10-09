@@ -1,4 +1,4 @@
- @extends('web.layouts.app')
+@extends('web.layouts.app')
  @section('content')
 
  <style>
@@ -1692,6 +1692,131 @@
              padding: 15px 20px;
          }
      }
+     /* ── GET IN TOUCH (unique class names so theme CSS can't interfere) ── */
+     .rz-contact {
+         background: #fff;
+         padding: 80px 24px !important;
+     }
+
+     .rz-contact-inner {
+         max-width: 1140px;
+         margin: 0 auto;
+         padding-left: 60px;             /* extra space on the left of the image */
+         display: flex !important;
+         align-items: center;            /* image and text vertically centred */
+         gap: 60px;
+     }
+
+     .rz-contact-photo,
+     .rz-contact-text {
+         flex: 1 1 0;                    /* two equal halves */
+         min-width: 0;
+         position: relative !important;
+         top: auto !important;
+         left: auto !important;
+         width: auto !important;
+         height: auto !important;
+         margin: 0 !important;
+     }
+
+     .rz-contact-photo {
+         border-radius: 12px;
+         overflow: hidden;
+         box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+     }
+
+     /* ---- shift the image 50px to the left (desktop only) ---- */
+     @media (min-width: 992px) {
+         .rz-contact .rz-contact-inner .rz-contact-photo.visible,
+         .rz-contact .rz-contact-inner .rz-contact-photo {
+             left: -100px !important;    /* negative = moves left; use a positive value to move right */
+         }
+     }
+
+     .rz-contact-photo img {
+         display: block;
+         width: 100% !important;
+         height: auto !important;
+         aspect-ratio: 4 / 3;
+         object-fit: cover;
+         object-position: center;
+         margin: 0 !important;
+     }
+
+     .rz-eyebrow {
+         font-size: 12px;
+         font-weight: 700;
+         letter-spacing: 0.15em;
+         text-transform: uppercase;
+         color: #7a0d7d;
+         margin-bottom: 12px;
+     }
+
+     .rz-contact-title {
+         font-family: 'Lora', serif;
+         font-size: 30px;
+         font-weight: 800;
+         line-height: 1.2;
+         color: var(--navy);
+         margin: 0 0 16px;
+     }
+
+     .rz-contact-title span {
+         color: #7a0d7d;
+     }
+
+     .rz-contact-body {
+         font-size: 15px;
+         line-height: 1.8;
+         color: var(--muted);
+         margin: 0 0 24px;
+         text-align: left;
+     }
+
+     .rz-contact-list {
+         list-style: none;
+         margin: 0;
+         padding: 0;
+     }
+
+     .rz-contact-list li {
+         position: relative;
+         padding-left: 22px;
+         margin-bottom: 12px;
+         font-size: 15px;
+         line-height: 1.5;
+         color: var(--navy);
+         font-weight: 500;
+     }
+
+     .rz-contact-list li::before {
+         content: "";
+         position: absolute;
+         left: 0;
+         top: 0.5em;
+         width: 8px;
+         height: 8px;
+         border-radius: 50%;
+         background: #7a0d7d;
+     }
+
+     @media (max-width: 991px) {
+         .rz-contact-inner {
+             flex-direction: column;
+             gap: 36px;
+             padding-left: 0;            /* no extra left space when stacked on phones */
+         }
+
+         .rz-contact-photo,
+         .rz-contact-text {
+             flex: none;
+             width: 100% !important;
+         }
+
+         .rz-contact {
+             padding: 50px 20px !important;
+         }
+     }
  </style>
  <section class="page-title-area2 aboout-4-head-area">
      <div class="container">
@@ -2114,39 +2239,31 @@
          </div>
      </section>
 
-     <section id="contact" style="padding:50px">
-         <div class="contact-photo reveal">
-             <img src="{{ asset('dist/images/razor6_meeting.jpg') }}" alt="Man and woman working together" />
-         </div>
-         <div class="contact-form-wrap reveal" style="transition-delay:0.1s">
-             <div class="section-eyebrow">Get In Touch</div>
-             <div class="contact-tagline">Ready to shift into<br><span>production mode?</span></div>
-             <p class="contact-body">Tell us about your production requirements and we'll configure the ideal Razor6 system for your line — including any ancillary equipment needed for a complete solution.</p>
-             <div class="contact-highlights">
-                 <div class="contact-highlight">
-                     <div class="ch-dot"></div>
-                     Industrial inkjet for 24×7 environments
-                 </div>
-                 <div class="contact-highlight">
-                     <div class="ch-dot"></div>
-                     UV cured &amp; aqueous ink compatibility
-                 </div>
-                 <div class="contact-highlight">
-                     <div class="ch-dot"></div>
-                     Tracesci RapidPro VDP software included
-                 </div>
-                 <div class="contact-highlight">
-                     <div class="ch-dot"></div>
-                     Quick return on investment
-                 </div>
-                 <div class="contact-highlight">
-                     <div class="ch-dot"></div>
-                     Full ancillary equipment range available
-                 </div>
+     <section class="rz-contact">
+         <div class="rz-contact-inner">
+
+             <!-- LEFT: image -->
+             <div class="rz-contact-photo reveal">
+                 <img src="{{ asset('dist/images/razor6_meeting.jpg') }}" alt="Man and woman working together" />
              </div>
+
+             <!-- RIGHT: text -->
+             <div class="rz-contact-text reveal" style="transition-delay:0.1s">
+                 <div class="rz-eyebrow">Get In Touch</div>
+                 <h2 class="rz-contact-title">Ready to shift into<br><span>production mode?</span></h2>
+                 <p class="rz-contact-body">Tell us about your production requirements and we'll configure the ideal Razor6 system for your line — including any ancillary equipment needed for a complete solution.</p>
+                 <ul class="rz-contact-list">
+                     <li>Industrial inkjet for 24×7 environments</li>
+                     <li>UV cured &amp; aqueous ink compatibility</li>
+                     <li>Tracesci RapidPro VDP software included</li>
+                     <li>Quick return on investment</li>
+                     <li>Full ancillary equipment range available</li>
+                 </ul>
+             </div>
+
          </div>
- </div>
- </section>
+     </section>
+ </div><!-- /.solution-area -->
  <div class="product_demo">
      <div class="container">
          <div class="row">

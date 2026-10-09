@@ -111,7 +111,7 @@
           </li>
 
           <li class="{{ request()->is('solutions/*') || request()->is('product/*') ? 'active' : '' }}">
-            <a >Solution</a>
+            <a >Solutions</a>
             <ul class="dropdown">
 
               <!-- 1) SOFTWARE -->
