@@ -1320,7 +1320,7 @@
          top: 0;
          height: 110%;
          width: 60%;
-         background: url('/dist/images/Razor6_small5.png') no-repeat center center !important;
+         background: url('/dist/images/Razor6_small5.webp') no-repeat center center !important;
          background-size: cover !important;
          box-shadow: -8px 0px 8px rgba(0, 0, 0, 0.1);
      }
@@ -1662,7 +1662,7 @@
              height: 300px !important;
              margin: 40px 0 !important;
 
-             background-image: url('/dist/images/razor6_mobile_small.png') !important;
+             background-image: url('/dist/images/razor6_mobile_small.webp') !important;
              background-position: center center !important;
              background-repeat: no-repeat !important;
              background-size: contain !important;

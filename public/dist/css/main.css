@@ -4673,7 +4673,7 @@ input:focus {
 .aboout-2-head-area { 
     background:
         linear-gradient(to bottom, transparent, rgba(255, 248, 200, 0.1)),
-        url(../images/elite4_banner.png);
+        url(../images/elite4_banner.webp);
     background-size: cover;
     background-position: center; 
 }
@@ -4684,7 +4684,7 @@ input:focus {
     background-repeat: no-repeat;
 }
 .aboout-5-head-area {
-    background: url(../images/slide2.png);
+    background: url(../images/about-us-bg.webp);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -4694,7 +4694,7 @@ input:focus {
 .aboout-3-head-area {
     background-image:
         linear-gradient(to bottom, transparent, rgba(255, 248, 200, 0.2)),
-        url(../images/hyperloop_banner2.png);
+        url(../images/hyperloop_banner2.webp);
     background-size: 100%, auto; /* gradient fills, image stays original size */
     background-position: center top;
     background-repeat: no-repeat;
@@ -4703,7 +4703,7 @@ input:focus {
 .aboout-4-head-area {
     background:
         linear-gradient(to bottom, transparent, rgba(255, 248, 200, 0.2)),
-        url(../images/razor6_banner2.png);
+        url(../images/razor6_banner2.webp);
 
     background-size: cover;
     background-position: center;
@@ -4729,7 +4729,7 @@ input:focus {
     .aboout-4-head-area {
         background:
         linear-gradient(to bottom, transparent, rgba(255, 248, 200, 0.6)),
-        url(../images/razor6_mobile.png);
+        url(../images/razor6_mobile.webp);
         background-size: cover;
         background-position: center;
         padding: 80px 0 60px;

@@ -606,7 +606,7 @@
             <li data-index="rs-3" data-transition="parallaxtoright" data-delay="6500">
 
                 <!-- MAIN IMAGE -->
-                <img src="{{asset('dist/images/solution-bg.png')}}"
+                <img src="{{asset('dist/images/solution-bg.png')}}" 
                     class="rev-slidebg"
                     data-bgposition="center center"
                     data-bgfit="cover"
@@ -747,7 +747,7 @@
             <div class="row">
                 <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 0.3s">
                     <div class="thumbnail-game text-center">
-                        <img height="150" src="{{asset('web/images/fmcg.png')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="Apparel" />
+                        <img height="150" src="{{asset('web/images/fmcg.webp')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="Apparel" />
                     </div>
                     <div class="desc text-center">
                         <h3>FMCG</h3>
@@ -755,7 +755,7 @@
                 </div>
                 <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 0.6s">
                     <div class="thumbnail-game text-center">
-                        <img height="150" src="{{asset('web/images/dairy.png')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="Food" />
+                        <img height="150" src="{{asset('web/images/dairy.webp')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="Food" />
                     </div>
                     <div class="desc text-center">
                         <h3>Dairy</h3>
@@ -763,7 +763,7 @@
                 </div>
                 <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 0.9s">
                     <div class="thumbnail-game text-center">
-                        <img height="150" src="{{asset('web/images/chemicals.png')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="Automobile" />
+                        <img height="150" src="{{asset('web/images/chemicals.webp')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="Automobile" />
                     </div>
                     <div class="desc text-center">
                         <h3>Chemicals</h3>
@@ -771,7 +771,7 @@
                 </div>
                 <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 1.2s">
                     <div class="thumbnail-game text-center">
-                        <img height="150" src="{{asset('web/images/textiles.png')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="Tobacco" />
+                        <img height="150" src="{{asset('web/images/textiles.webp')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="Tobacco" />
                     </div>
                     <div class="desc text-center">
                         <h3>Textiles</h3>
@@ -779,7 +779,7 @@
                 </div>
                 <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 0.9s">
                     <div class="thumbnail-game text-center">
-                        <img height="150" src="{{asset('web/images/packaging.png')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="Pharma" />
+                        <img height="150" src="{{asset('web/images/packaging.webp')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="Pharma" />
                     </div>
                     <div class="desc text-center">
                         <h3>Packaging</h3>
@@ -787,7 +787,7 @@
                 </div>
                 <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 1.2s">
                     <div class="thumbnail-game text-center">
-                        <img height="150" src="{{asset('web/images/warehousing.png')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="Beverages" />
+                        <img height="150" src="{{asset('web/images/warehousing.webp')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="Beverages" />
                     </div>
                     <div class="desc text-center">
                         <h3>Warehousing</h3>
@@ -816,7 +816,7 @@
                 </div>
             </div>
             <div class="col-md-6 wow fadeInRight">
-                <img src="{{ asset('dist/images/analytics.png') }}" alt="Tracesci Dashboard Screenshot" style="width:100%; height:80%; border-radius:8px; box-shadow: 0 10px 40px rgba(122,13,125,0.15);">
+                <img src="{{ asset('dist/images/analytics.webp') }}" alt="Tracesci Dashboard Screenshot" style="width:100%; height:80%; border-radius:8px; box-shadow: 0 10px 40px rgba(122,13,125,0.15);">
             </div>
         </div>
     </div>
@@ -904,7 +904,7 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-md-6 wow fadeInLeft">
-                <img src="{{ asset('dist/images/serialization.png') }}" alt="Product Serialization Screenshot" style="width:100%; height:auto; border-radius:8px; box-shadow: 0 10px 40px rgba(122,13,125,0.15);">
+                <img src="{{ asset('dist/images/serialization.webp') }}" alt="Product Serialization Screenshot" style="width:100%; height:auto; border-radius:8px; box-shadow: 0 10px 40px rgba(122,13,125,0.15);">
             </div>
             <div class="col-md-6 wow fadeInRight" style="padding-left:40px;">
                 <div class="main-title text-left">
@@ -981,7 +981,7 @@
                 <p style="text-align:center; margin-top:12px; color:#000000; font-weight:600;">Full Scan History Timeline</p>
             </div>
             <div class="col-md-4 wow fadeInRight" style="margin-bottom:20px;">
-                <img src="{{ asset('dist/images/blogchain.png') }}" alt="Blockchain Verification Ledger" style="width:100%; height:auto; border-radius:8px; box-shadow: 0 8px 30px rgba(0,0,0,0.1);">
+                <img src="{{ asset('dist/images/blogchain.webp') }}" alt="Blockchain Verification Ledger" style="width:100%; height:auto; border-radius:8px; box-shadow: 0 8px 30px rgba(0,0,0,0.1);">
                 <p style="text-align:center; margin-top:12px; color:#000000; font-weight:600;">Immutable Blockchain Ledger</p>
             </div>
         </div>
@@ -1078,7 +1078,7 @@
                 </div>
             </div>
             <div class="col-md-6 wow fadeInRight">
-                <img src="{{ asset('dist/images/conterfied.png') }}" alt="Tracesci Analytics Dashboard" style="width:100%; height:auto; border-radius:8px; box-shadow: 0 10px 40px rgba(122,13,125,0.15);">
+                <img src="{{ asset('dist/images/conterfied.webp') }}" alt="Tracesci Analytics Dashboard" style="width:100%; height:auto; border-radius:8px; box-shadow: 0 10px 40px rgba(122,13,125,0.15);">
             </div>
         </div>
     </div>

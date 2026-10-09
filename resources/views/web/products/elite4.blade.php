@@ -16,7 +16,7 @@
         top: 0;
         height: 100%;
         width: 60%;
-        background: url('/dist/images/elite4_section.png') no-repeat center center !important;
+        background: url('/dist/images/elite4_section.webp') no-repeat center center !important;
         background-size: cover !important;
         box-shadow: -8px 0px 8px rgba(0, 0, 0, 0.1);
     }
@@ -1674,7 +1674,7 @@
 
     @media (max-width: 767px) {
         .aboout-2-head-area {
-            background-image: url('/dist/images/elite4_mobile_banner.png');
+            background-image: url('/dist/images/elite4_mobile_banner.webp');
             background-position: top center;
             background-size: cover;
             height: 100svh;

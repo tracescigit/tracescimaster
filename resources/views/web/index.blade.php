@@ -12,6 +12,21 @@
     color: #222;
   }
 
+  #solution-slider .solution-slider-img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    /* square */
+    overflow: hidden;
+  }
+
+  #solution-slider .solution-slider-img img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
   .uranus.tparrows:before {
     font-family: "revicons";
     font-size: 30px;
@@ -24,10 +39,13 @@
     transition: color 0.3s;
     z-index: 2;
     position: relative;
-    background: #fff;
+    background: #fff; 
     min-width: 70px;
     min-height: 70px;
   }
+  #solution-slider .solution-slider-content {
+  padding: 0 12px;   /* 24px gap between slides */
+}
 
   .trace-process-section {
     background: #f5f5f5;
@@ -258,11 +276,12 @@
       font-size: 16px;
     }
   }
+
   @media (max-width: 767px) {
     .uranus.tparrows {
-        display: none !important;
+      display: none !important;
     }
-}
+  }
 </style>
 <!-- slider -->
 
@@ -275,7 +294,7 @@
 
         <!-- MAIN IMAGE -->
         <!-- <img src="{{asset('dist/images/slide1.png')}}" -->
-        <img src="{{asset('dist/images/index-wallpaper4.png')}}"
+        <img src="{{asset('dist/images/index-wallpaper4.webp')}}"
           class="rev-slidebg"
           data-bgposition="center center"
           data-bgfit="cover"
@@ -555,7 +574,7 @@
       <div class="row">
         <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 0.3s">
           <div class="thumbnail-game text-center">
-            <img height="150" src="{{asset('dist/images/apprels.png')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
+            <img height="150" src="{{asset('dist/images/apprels.webp')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
           </div>
           <div class="desc text-center">
             <h3>Apparel</h3>
@@ -563,7 +582,7 @@
         </div>
         <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 0.6s">
           <div class="thumbnail-game text-center">
-            <img height="150" src="{{asset('dist/images/food.png')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
+            <img height="150" src="{{asset('dist/images/food.webp')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
           </div>
           <div class="desc text-center">
             <h3>Food</h3>
@@ -571,7 +590,7 @@
         </div>
         <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 0.9s">
           <div class="thumbnail-game text-center">
-            <img height="150" src="{{asset('dist/images/automobile.png')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
+            <img height="150" src="{{asset('dist/images/automobile.webp')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
           </div>
           <div class="desc text-center">
             <h3>Automobile</h3>
@@ -579,7 +598,7 @@
         </div>
         <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 1.2s">
           <div class="thumbnail-game text-center">
-            <img height="150" src="{{asset('dist/images/tobacco.png')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
+            <img height="150" src="{{asset('dist/images/tobacco.webp')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
           </div>
           <div class="desc text-center">
             <h3>Tobacco</h3>
@@ -587,7 +606,7 @@
         </div>
         <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 0.9s">
           <div class="thumbnail-game text-center">
-            <img height="150" src="{{asset('dist/images/medicine.png')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
+            <img height="150" src="{{asset('dist/images/medicine.webp')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
           </div>
           <div class="desc text-center">
             <h3>Pharma</h3>
@@ -595,7 +614,7 @@
         </div>
         <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 1.2s">
           <div class="thumbnail-game text-center">
-            <img height="150" src="{{asset('dist/images/drink.png')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
+            <img height="150" src="{{asset('dist/images/drink.webp')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
           </div>
           <div class="desc text-center">
             <h3>Beverages</h3>
@@ -937,7 +956,7 @@
                 </div>
                 <p>{{ $blog->title ?? 'Blog Title' }}</p>
                 <!-- <p>{!!Str::limit($blog->description ?? 'Blog description', 100)!!}</p> -->
-                <a href="{{route('blog')}}">Learn More <i class="fa fa-long-arrow-right"></i></a>
+                <a href="{{ route('blog-details', ['id' => encrypt($blog->id)]) }}">Learn More <i class="fa fa-long-arrow-right"></i></a>
               </div>
             </div>
             @endforeach
