@@ -26,15 +26,6 @@
         }
     }
 </style>
-<link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    integrity="sha256-p4NxAoJBhIINfQ3gYq6a1t9Wm3XbXgZ8j8pXk2Xq6Q="
-    crossorigin="" />
-<link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    crossorigin="">
 <section class="page-title-area aboout-1-head-area">
     <div class="container">
         <div class="row">
@@ -228,17 +219,6 @@
 <script
     src="https://unpkg.com/@maplibre/maplibre-gl-leaflet@0.0.22/leaflet-maplibre-gl.js">
 </script>
-
-
-<style>
-    #tracesci-map {
-        width: 100%;
-        height: 500px;
-    }
-</style>
-
-
-<div id="tracesci-map"></div>
 
 
 <script>
