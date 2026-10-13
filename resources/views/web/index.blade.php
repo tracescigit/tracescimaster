@@ -15,7 +15,6 @@
   #solution-slider .solution-slider-img {
     width: 100%;
     aspect-ratio: 1 / 1;
-    /* square */
     overflow: hidden;
   }
 
@@ -39,13 +38,14 @@
     transition: color 0.3s;
     z-index: 2;
     position: relative;
-    background: #fff; 
+    background: #fff;
     min-width: 70px;
     min-height: 70px;
   }
+
   #solution-slider .solution-slider-content {
-  padding: 0 12px;   /* 24px gap between slides */
-}
+    padding: 0 12px;
+  }
 
   .trace-process-section {
     background: #f5f5f5;
@@ -95,13 +95,12 @@
     height: auto;
   }
 
-  /* ---- Card grid: flex row so all cards in a row share equal height ---- */
   .process-grid {
     display: flex;
     flex-wrap: wrap;
   }
 
-  .process-grid>[class*="col-"] {
+  .process-grid>[class="col-"] {
     display: flex;
     flex-direction: column;
     margin-bottom: 30px;
@@ -167,7 +166,6 @@
   }
 
   @media (max-width: 991px) {
-
     .trace-process-section {
       padding: 0;
     }
@@ -185,7 +183,7 @@
       max-width: 100%;
     }
 
-    .process-grid>[class*="col-"] {
+    .process-grid>[class="col-"] {
       margin-bottom: 30px;
     }
 
@@ -204,7 +202,6 @@
   }
 
   @media (max-width: 767px) {
-
     .trace-process-section {
       padding: 0;
     }
@@ -222,7 +219,7 @@
       max-width: 100%;
     }
 
-    .process-grid>[class*="col-"] {
+    .process-grid>[class="col-"] {
       width: 100%;
       flex-direction: column;
       margin-bottom: 20px;
@@ -249,7 +246,6 @@
   }
 
   @media (max-width: 480px) {
-
     .section-title h2 {
       font-size: 26px;
     }
@@ -285,16 +281,12 @@
 </style>
 @endsection
 @section('content')
-
 <!-- slider -->
-
 <div class="rev_slider_wrapper">
   <div id="slider1" class="rev_slider" data-version="5.0">
     <ul>
-
       <!-- SLIDE 1 -->
       <li data-index="rs-1" data-transition="parallaxtoright" data-delay="6500">
-
         <!-- MAIN IMAGE -->
         <!-- <img src="{{asset('dist/images/slide1.png')}}" -->
         <img src="{{asset('dist/images/index-wallpaper4.webp')}}"
@@ -302,7 +294,6 @@
           data-bgposition="center center"
           data-bgfit="cover"
           data-bgrepeat="no-repeat">
-
         <!-- LAYER 1 -->
         <div class="tp-caption tp-resizeme"
           data-x="center"
@@ -315,7 +306,6 @@
             Let us help you to authenticate and track your product
           </span>
         </div>
-
         <!-- LAYER 2 -->
         <div class="tp-caption tp-resizeme"
           data-x="center" data-y="top" data-voffset="190"
@@ -326,7 +316,6 @@
             SUPPLY CHAIN TRACESCI PLATFORM
           </div>
         </div>
-
         <!-- LAYER 3 -->
         <div class="tp-caption tp-resizeme"
           data-x="center" data-y="top" data-voffset="300"
@@ -337,7 +326,6 @@
             developing a plan that is custom-built for your business.
           </div>
         </div>
-
         <!-- LAYER 4 (Buttons) -->
         <div class="tp-caption tp-resizeme"
           data-x="center" data-y="top" data-voffset="430"
@@ -348,13 +336,9 @@
             <a href="{{ url(Auth::check()?myDashboard():'/register') }}">Register</a>
           </div>
         </div>
-
       </li>
-
       <!-- SLIDE 2 -->
-
       <li data-index="rs-2" data-transition="parallaxtoright" data-delay="6500">
-
         <!-- MAIN IMAGE -->
         <!-- <img src="{{asset('dist/images/slide2.png')}}" -->
         <img src="{{asset('dist/images/index_wallpaper7.webp')}}"
@@ -362,7 +346,6 @@
           data-bgposition="center center"
           data-bgfit="cover"
           data-bgrepeat="no-repeat">
-
         <!-- LAYER 1 -->
         <div class="tp-caption tp-resizeme"
           data-x="center" data-y="top" data-voffset="120"
@@ -373,7 +356,6 @@
             Informed decisions. Exceptional results
           </span>
         </div>
-
         <!-- LAYER 2 -->
         <div class="tp-caption tp-resizeme"
           data-x="center" data-y="top" data-voffset="190"
@@ -383,7 +365,6 @@
             Engage, Authenticate, and Protect
           </div>
         </div>
-
         <!-- LAYER 3 -->
         <div class="tp-caption tp-resizeme"
           data-x="center" data-y="top" data-voffset="300"
@@ -394,7 +375,6 @@
             developing a plan that is custom-built for your business.
           </div>
         </div>
-
         <!-- LAYER 4 (Buttons) -->
         <div class="tp-caption tp-resizeme"
           data-x="center" data-y="top" data-voffset="430"
@@ -405,19 +385,15 @@
             <a href="{{ url(Auth::check()?myDashboard():'/register') }}">Register</a>
           </div>
         </div>
-
       </li>
-
       <!-- SLIDE 3 -->
       <li data-index="rs-3" data-transition="parallaxtoright" data-delay="6500">
-
         <!-- MAIN IMAGE -->
         <img src="{{asset('dist/images/slide3.png')}}"
           class="rev-slidebg"
           data-bgposition="center center"
           data-bgfit="cover"
           data-bgrepeat="no-repeat">
-
         <!-- LAYER 1 -->
         <div class="tp-caption tp-resizeme"
           data-x="center" data-y="top" data-voffset="120"
@@ -427,7 +403,6 @@
             Informed decisions. Exceptional results
           </span>
         </div>
-
         <!-- LAYER 2 -->
         <div class="tp-caption tp-resizeme"
           data-x="center" data-y="top" data-voffset="190"
@@ -437,7 +412,6 @@
             Turn Consumers Into Brand Protectors
           </div>
         </div>
-
         <!-- LAYER 3 -->
         <div class="tp-caption tp-resizeme"
           data-x="center" data-y="top" data-voffset="300"
@@ -448,7 +422,6 @@
             developing a plan that is custom-built for your business.
           </div>
         </div>
-
         <!-- LAYER 4 (Buttons) -->
         <div class="tp-caption tp-resizeme"
           data-x="center" data-y="top" data-voffset="430"
@@ -459,13 +432,10 @@
             <a href="{{ url(Auth::check()?myDashboard():'/register') }}">Register</a>
           </div>
         </div>
-
       </li>
-
     </ul>
   </div>
 </div>
-
 
 <!-- the content -->
 <div class="welcome-area" style="background-color:#fff">
@@ -486,66 +456,47 @@
   <div class="welcome-content">
     <div class="container">
       <div class="row">
-
         <!-- ITEM 1 -->
         <div class="col-sm-3 col-md-3">
           <div class="welcome-single-content wow fadeInLeft text-center">
 
-
-
             <h3>Brand Protection</h3>
             <h2><span>01.</span> Secure</h2>
-
             <p>
               Ensure products are genuine with non-additive digital authentication
             </p>
-
           </div>
         </div>
-
         <!-- ITEM 2 -->
         <div class="col-sm-3 col-md-3">
           <div class="welcome-single-content wow fadeInDown text-center">
-
             <h3>Traceability</h3>
             <h2><span>02.</span> Track</h2>
-
             <p>
               Blockchain-driven supply chain tracking with real-time insights.
-
             </p>
-
           </div>
         </div>
-
         <!-- ITEM 3 -->
         <div class="col-sm-3 col-md-3">
           <div class="welcome-single-content wow fadeInUp text-center">
-
             <h3>Real Time Alerts</h3>
             <h2><span>03.</span> Monitor</h2>
-
             <p>
               Conditions to help prevent product damage, diversion or waste
             </p>
-
           </div>
         </div>
-
         <!-- ITEM 4 -->
         <div class="col-sm-3 col-md-3">
           <div class="welcome-single-content wow fadeInRight text-center">
-
             <h3>GS1 Compliant</h3>
             <h2><span>04.</span> Standardize</h2>
-
             <p>
               Fully customised solution in compliance with GS1 standards
             </p>
-
           </div>
         </div>
-
       </div>
     </div>
   </div>
@@ -562,12 +513,10 @@
             </div>
           </div>
           <div class="refresh-phone-content">
-
             <div class="text-desc">
               <p class="text-center">The SaaS platform provides brand owners deep consumer and supply chain insights regarding their products like <br>real-time GPS location, scanning pattern and suspicious activity alerts.<br>It will help to get actionable product data for strategic decision-making and operational excellence.</p>
             </div>
             <p class="industries-text">Industries we cater</p>
-
           </div>
           <div class="spacer-100"></div>
         </div>
@@ -625,13 +574,10 @@
         </div>
       </div>
     </div>
-
     <div class="spacer-100"></div>
   </div>
 </div>
-
 <!-- features -->
-
 <div class="solution-area" style="padding: 0px 0;background-color:#fff;">
   <!-- MAIN TITLE AREA -->
   <div class="container">
@@ -648,7 +594,6 @@
     </div>
   </div>
 
-
   <!-- END TITLE -->
   <div class="solution-content">
     <div class="container">
@@ -657,7 +602,6 @@
           <div class="solution-single-content solution-single-content-no-border wow fadeInLeft">
             <h2>Easy to use</h2>
             <p>Scalable solution enabling secure traceability, compliance, counterfeit prevention, operational efficiency, and supply chain visibility for Products.
-
             </p>
             <a href="#"></a>
             <span><i class="icon icon-Chart"></i></span>
@@ -711,7 +655,6 @@
       </div>
     </div>
   </div>
-
   <div id="howitworks" style="background-color: #f5f5f5; margin-top: 50px; ">
     <div class="container">
       <div class="row">
@@ -728,80 +671,60 @@
       </div>
     </div>
     <!-- END TITLE -->
-
     <section class="trace-process-section">
       <div class="container">
-
         <!-- SECTION TITLE -->
-
         <!-- CENTER IMAGE -->
         <div class="center-image text-center">
           <img src="{{ asset('dist/images/bbchain.png') }}"
             class="img-responsive center-block"
             alt="Blockchain Traceability">
         </div>
-
         <!-- PROCESS GRID -->
         <div class="row process-grid">
-
           <div class="col-md-6 col-sm-6 mb-4">
             <div class="process-card">
               <div class="step-badge">01</div>
               <h3>Enterprise Onboarding</h3>
               <p>
                 Register manufacturers, verify compliance documents, and provide secure platform access with role-based controls, enabling seamless onboarding, authenticated operations, centralized management, and real-time visibility across the supply chain ecosystem while ensuring security, transparency, and regulatory compliance.
-
               </p>
             </div>
           </div>
-
           <div class="col-md-6 col-sm-6 mb-4">
             <div class="process-card">
               <div class="step-badge">02</div>
               <h3>Product Serialization</h3>
               <p>
                 Create SKUs, define packaging hierarchies, and configure serialization workflows with ease, enabling accurate product identification, seamless aggregation, efficient inventory control, real-time traceability, and secure supply chain operations across manufacturing, distribution, and retail environments.
-
               </p>
             </div>
           </div>
-
           <div class="col-md-6 col-sm-6 mb-4">
             <div class="process-card">
               <div class="step-badge">03</div>
               <h3>Cryptographic Code Generation</h3>
               <p>
                 Print and activate unique QR codes or barcode identities on every product, enabling secure authentication, real-time traceability, anti-counterfeiting protection, streamlined inventory management, seamless aggregation, and complete visibility across manufacturing, distribution, retail, and consumer verification processes.
-
               </p>
             </div>
           </div>
-
           <div class="col-md-6 col-sm-6 mb-4">
             <div class="process-card">
               <div class="step-badge">04</div>
               <h3>Supply Chain Surveillance & Enforcement</h3>
               <p>
                 Monitor product movement, detect suspicious activity, and verify authenticity in real time, enabling faster fraud prevention, supply chain transparency, secure product tracking, intelligent risk detection, enforcement response, and trusted consumer engagement across manufacturing, distribution, and retail networks.
-
               </p>
             </div>
           </div>
-
         </div>
-
       </div>
     </section>
   </div>
 </div>
 
-
-
-
 <!-- Pricing Table -->
-
-
-
 
 <!-- Event Calendar -->
 <div id="event_calendar" class="padding-content content-section" style="background-color:#fff">
@@ -817,76 +740,59 @@
     <div class="spacer-35"></div>
     <div class="event-container">
       <div class="event-contents row">
-
         <!-- 1st EVENT (LEFT) -->
         <div class="event-content col-md-6 col-sm-12 col-xs-12">
           <div class="row row-event">
-
             <div class="event-box-conner col-md-10 col-sm-10 col-xs-10">
               <div class="event_post_content bg-gradient">
-
                 <div class="event-thumb">
                   <img src="{{asset('web/images/Gulf print pack logo.png')}}" class="event-img">
                 </div>
-
                 <div class="event-desc">
                   <h3 class="title-eventpost">
-                     <a href="https://www.gulfprintpack.com/" class="various fancybox.ajax">Gulf Print Pack</a>
+                    <a href="https://www.gulfprintpack.com/" target="_blank" class="various">Gulf Print Pack</a>
                   </h3>
                   <div class="event_post_desc">
                     28 September - 30 September,<br>
                     Dubai World Trade Centre, Dubai
                   </div>
                 </div>
-
               </div>
             </div>
-
             <div class="event-box-center col-md-2 col-sm-2 col-xs-2">
               <div class="event_post_date">SEP 28</div>
             </div>
-
           </div>
         </div>
-
         <!-- 2nd EVENT (RIGHT) -->
         <div class="event-content col-md-6 col-sm-12 col-xs-12">
           <div class="row row-event">
-
             <div class="event-box-conner col-md-10 col-sm-10 col-xs-10">
               <div class="event_post_content bg-gradient">
-
                 <div class="event-thumb">
                   <img src="{{asset('web/images/loupe.png')}}" class="event-img">
                 </div>
-
                 <div class="event-desc">
                   <h3 class="title-eventpost">
-                    <a href="https://www.loupe-india.com/" class="various fancybox.ajax">Loupe India 2026</a> 
+                    <a href="https://www.loupe-india.com/" target="_blank" class="various">Loupe India 2026</a>
                   </h3>
                   <div class="event_post_desc">
                     29 October - 1 November,<br>
                     Greater Noida, Delhi NCR, India
                   </div>
                 </div>
-
               </div>
             </div>
-
             <div class="event-box-center col-md-2 col-sm-2 col-xs-2">
               <div class="event_post_date">OCT 29</div>
             </div>
-
           </div>
         </div>
-
         <!-- 3rd EVENT (LEFT again) -->
-
         <div class="event-content col-md-6 col-sm-12 col-xs-12" style="margin:0;">
           <div class="row row-event">
             <div class="event-box-conner col-md-10 col-sm-10 col-xs-10">
               <div class="event_post_content bg-gradient">
-
                 <div class="event-thumb">
                   <iframe
                     src="https://www.google.com/maps?q=India+Expo+Mart+Limited,+Knowledge+Park+II,+Greater+Noida&z=16&output=embed"
@@ -900,7 +806,8 @@
                 </div>
                 <div class="event-desc">
                   <h3 class="title-eventpost">
-                    <a href="https://www.cphi.com/india/" class="various fancybox.ajax">PMEC 2026</a>
+                    <!-- <a href="https://www.cphi.com/india/" class="various fancybox.ajax">PMEC 2026</a> -->
+                    <a href="https://www.cphi.com/india/" target="_blank" class="various">PMEC 2026</a>
                   </h3>
                   <div class="event_post_desc">
                     24 Nov - 26 Nov <br> India Expo Centre and Mart, Greater Noida, Delhi India
@@ -920,21 +827,18 @@
 </div>
 </div>
 @if(!empty($blogs) && count($blogs) > 0)
-
 <style>
-  /* ---- Blog section: plain grid, 4 cards per row (no slider) ---- */
-  .solution-2-area .solution-2-content > .container {
+  .solution-2-area .solution-2-content>.container {
     width: 100% !important;
-    max-width: 1300px;                /* overall width: lower = smaller cards */
+    max-width: 1300px;
     padding-left: 20px;
     padding-right: 20px;
   }
 
-  /* ---- carousel: 4 cards in view, slide with arrows ---- */
   .home-blog-carousel {
     position: relative;
-    --per-view: 4;                    /* cards visible at once */
-    --gap: 30px;                      /* space between cards */
+    --per-view: 4;
+    --gap: 30px;
   }
 
   .home-blog-grid {
@@ -943,27 +847,41 @@
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
-    padding: 10px 2px 25px;           /* room for the card shadow */
-    scrollbar-width: none;            /* hide scrollbar (Firefox) */
+    padding: 10px 2px 25px;
+    scrollbar-width: none;
     -ms-overflow-style: none;
   }
 
   .home-blog-grid::-webkit-scrollbar {
-    display: none;                    /* hide scrollbar (Chrome/Safari) */
+    display: none;
   }
 
-  .home-blog-grid > .solution-slider-content {
+  .home-blog-grid>.solution-slider-content {
     flex: 0 0 calc((100% - (var(--per-view) - 1) * var(--gap)) / var(--per-view));
     scroll-snap-align: start;
     padding: 0 !important;
     margin: 0 !important;
   }
 
-  @media (max-width: 1199px) { .home-blog-carousel { --per-view: 3; } }
-  @media (max-width: 991px)  { .home-blog-carousel { --per-view: 2; --gap: 20px; } }
-  @media (max-width: 575px)  { .home-blog-carousel { --per-view: 1; } }
+  @media (max-width: 1199px) {
+    .home-blog-carousel {
+      --per-view: 3;
+    }
+  }
 
-  /* arrows */
+  @media (max-width: 991px) {
+    .home-blog-carousel {
+      --per-view: 2;
+      --gap: 20px;
+    }
+  }
+
+  @media (max-width: 575px) {
+    .home-blog-carousel {
+      --per-view: 1;
+    }
+  }
+
   .home-blog-nav {
     position: absolute;
     top: 40%;
@@ -994,22 +912,31 @@
     pointer-events: none;
   }
 
-  .home-blog-prev { left: -22px; }
-  .home-blog-next { right: -22px; }
-
-  @media (max-width: 767px) {
-    .home-blog-prev { left: 0; }
-    .home-blog-next { right: 0; }
+  .home-blog-prev {
+    left: -22px;
   }
 
-  /* ---- card look: white box, rounded corners, soft shadow ---- */
+  .home-blog-next {
+    right: -22px;
+  }
+
+  @media (max-width: 767px) {
+    .home-blog-prev {
+      left: 0;
+    }
+
+    .home-blog-next {
+      right: 0;
+    }
+  }
+
   .home-blog-grid .blog-slide-card {
     display: flex;
     flex-direction: column;
     height: 100%;
     background: #fff;
     border-radius: 14px;
-    padding: 12px;                    /* space around the image */
+    padding: 12px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
@@ -1019,12 +946,11 @@
     box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
   }
 
-  /* ---- every image the same square (1:1) size ---- */
   .home-blog-grid .solution-slider-img {
     position: relative;
     width: 100%;
     height: 0;
-    padding-top: 100%;                /* 100% of the width = square */
+    padding-top: 100%;
     overflow: hidden;
     border-radius: 10px;
   }
@@ -1035,12 +961,11 @@
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;                /* fill the square, crop the overflow */
+    object-fit: cover;
     object-position: center;
     display: block;
   }
 
-  /* ---- text under the image; Learn More lines up at the bottom ---- */
   .home-blog-grid .solution-slider-text {
     display: flex;
     flex-direction: column;
@@ -1049,13 +974,11 @@
     background: transparent;
   }
 
-  .home-blog-grid .solution-slider-text > a {
+  .home-blog-grid .solution-slider-text>a {
     margin-top: auto;
   }
 </style>
-
 <section class="solution-2-area grey-bg">
-
   <div class="container">
     <div class="row">
       <div class="col-md-12 text-center">
@@ -1069,60 +992,56 @@
       </div>
     </div>
   </div>
-
   <div class="solution-2-content">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
           <div class="home-blog-carousel">
-          <button type="button" class="home-blog-nav home-blog-prev" aria-label="Previous blogs"><i class="fa fa-angle-left"></i></button>
-          <button type="button" class="home-blog-nav home-blog-next" aria-label="Next blogs"><i class="fa fa-angle-right"></i></button>
-          <div class="home-blog-grid">
-            @foreach($blogs as $index => $blog)
-            @if($index == 6)
-            @break
-            @endif
-            <div class="solution-slider-content">
-              <div class="blog-slide-card">
-              <div class="solution-slider-img">
-                <img src="{{ asset('storage/' . $blog->image_path) }}"
-                  alt="{{ $blog->title ?? 'Blog image' }}">
+            <button type="button" class="home-blog-nav home-blog-prev" aria-label="Previous blogs"><i class="fa fa-angle-left"></i></button>
+            <button type="button" class="home-blog-nav home-blog-next" aria-label="Next blogs"><i class="fa fa-angle-right"></i></button>
+            <div class="home-blog-grid">
+              @foreach($blogs as $index => $blog)
+              @if($index == 6)
+              @break
+              @endif
+              <div class="solution-slider-content">
+                <div class="blog-slide-card">
+                  <div class="solution-slider-img">
+                    <img src="{{ asset('storage/' . $blog->image_path) }}"
+                      alt="{{ $blog->title ?? 'Blog image' }}">
+                  </div>
+                  <div class="solution-slider-text">
+                    <div class="full-intro-head">
+                      <p>
+                        <!-- {{$blog->publish_date ?? '--'}} <span><a href="#">Business</a></span>. -->
+                      </p>
+                    </div>
+                    <p>{{ $blog->title ?? 'Blog Title' }}</p>
+                    <!-- <p>{!!Str::limit($blog->description ?? 'Blog description', 100)!!}</p> -->
+                    <a href="{{ route('blog-details', ['id' => encrypt($blog->id)]) }}">Learn More <i class="fa fa-long-arrow-right"></i></a>
+                  </div>
+                </div><!-- /.blog-slide-card -->
               </div>
-              <div class="solution-slider-text">
-                <div class="full-intro-head">
-                  <p>
-                    <!-- {{$blog->publish_date ?? '--'}} <span><a href="#">Business</a></span>. -->
-                  </p>
-                </div>
-                <p>{{ $blog->title ?? 'Blog Title' }}</p>
-                <!-- <p>{!!Str::limit($blog->description ?? 'Blog description', 100)!!}</p> -->
-                <a href="{{ route('blog-details', ['id' => encrypt($blog->id)]) }}">Learn More <i class="fa fa-long-arrow-right"></i></a>
-              </div>
-              </div><!-- /.blog-slide-card -->
+              @endforeach
             </div>
-            @endforeach
-          </div>
           </div><!-- /.home-blog-carousel -->
-
         </div>
       </div>
     </div>
   </div>
-
 </section>
-
 @endif
 <!-- Testimonials -->
 {{--<div id="review" class="">
-  <div class="testimonials bg-gradient">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-          <div class="testimonial">
-            <div id="testimonial_slide" class=" owl-carousel">
-              <div class="testimonial-content">
-                <div class="testimonial-profile">
-                  <img width="100" height="100" alt="testimonial" src="{{asset('web/images/150x150.jpg')}}" class="testimonial-img">
+<div class="testimonials bg-gradient">
+<div class="container">
+<div class="row">
+<div class="col-md-12 col-sm-12 col-xs-12">
+<div class="testimonial">
+<div id="testimonial_slide" class=" owl-carousel">
+<div class="testimonial-content">
+<div class="testimonial-profile">
+<img width="100" height="100" alt="testimonial" src="{{asset('web/images/150x150.jpg')}}" class="testimonial-img">
 </div>
 <h3 class="name"> Vikas Sethi</h3>
 <p class="job">Product manager, Agro Company</p>
@@ -1147,148 +1066,129 @@
 </div>
 </div>
 </div>--}}
-
 <!-- Get In Touch -->
 {{--<div id="get_in_touch" class="contact-box padding-content content-section">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="riven-heading text-center" data-sr="enter bottom wait 0.3s">
-              <h2><span>Get In</span> Touch</h2>
-              <p class="text">Feel free to discuss your project with us, we assure you best of support...</p>
-            </div>
-          </div>
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <div class="contact-info">
-              <ul>
+<div class="container">
+<div class="row">
+<div class="col-md-12 col-sm-12 col-xs-12">
+<div class="riven-heading text-center" data-sr="enter bottom wait 0.3s">
+<h2><span>Get In</span> Touch</h2>
+<p class="text">Feel free to discuss your project with us, we assure you best of support...</p>
+</div>
+</div>
+<div class="col-md-4 col-sm-4 col-xs-12">
+<div class="contact-info">
+<ul>
+<li class="icon_list_item">
+<div class="icon_list_icon">
+<h5><i class="fa fa-map-marker" aria-hidden="true"></i> Office </h5>
+</div>
+Tracesci Pvt Ltd.,<br>
+B-15, InfoCity Phase 1, Sector 34,<br>
+Gurugram-122001, Haryana, India
+</li>
+<li class="icon_list_item">
+<div class="icon_list_icon">
+<h5><i class="fa fa-phone" aria-hidden="true"></i> Phone</h5>
+</div>
+<a href="callto:+911244226771">+91-124-422-6771</a>
+</li>
+<li class="icon_list_item">
+<div class="icon_list_icon">
+<h5><i class="fa fa-envelope" aria-hidden="true"> </i> Email</h5>
+</div>
+<a href="mailto:wecare@tracesci.in">wecare@tracesci.in</a>
+</li>
+<li>
+<h5>Find us elsewhere</h5>
+<ul class="social-networks">
+<li class="social-fb first"><a href="https://www.facebook.com/jetsciglobal/"><i class="fa fa-facebook"></i></a></li>
+<li class="social-linkedin"><a href="https://www.linkedin.com/company/jetsciglobal"><i class="fa fa-linkedin"></i></a></li>
+<li class="social-youtube"><a href="https://www.youtube.com/channel/UCDnSaAwRgBssFuTUX_2iCJw"><i class="fa fa-youtube-play"></i></a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-md-8 col-sm-8 col-xs-12">
+<div class="wpcf7">
+<form id="#contact_form" class="wpcf7-form">
+@csrf
+<div class="contact-form">
+<p class="inner-input mb-0">
+<label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+Name
+</label>
+<span class="your-name"><input type="text" id="name" class="contact__input" name="name" required></span>
+<div id="error-name" class="text-danger contact__input-error mb-3"></div>
+</p>
+<p class="inner-input mb-0">
+<label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-email">
+Email
+</label>
+<span class="your-email"><input type="email" id="email" class="contact__input" name="email" required></span>
+<div id="error-email" class="text-danger contact__input-error mb-3"></div>
+</p>
 
-                <li class="icon_list_item">
-                  <div class="icon_list_icon">
-                    <h5><i class="fa fa-map-marker" aria-hidden="true"></i> Office </h5>
-                  </div>
-                  Tracesci Pvt Ltd.,<br>
-                  B-15, InfoCity Phase 1, Sector 34,<br>
-                  Gurugram-122001, Haryana, India
+<p class="inner-input mb-0">
+<label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-mobile">
+Mobile
+</label>
+<span class="your-mobile"><input type="text" id="mobile" class="contact__input" name="mobile" required></span>
+<div id="error-mobile" class="text-danger contact__input-error mb-3"></div>
+</p>
+<p class="inner-input mb-0">
+<label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-message">
+Message
+</label>
+<span class="textarea"><textarea id="message" class="area contact__input" name="message" required></textarea></span>
+<div id="error-message" class="text-danger contact__input-error mb-3"></div>
+</p>
+<p class="contact-submit"><button id="btn-contact" type="button" class="btn btn-default button" data-loading-text="Loading...">Submit</button></p>
+</div>
+</form>
+<div class="alert alert-warning hidden" id="contactwait">
+<strong>Please Wait!</strong>
+</div>
+<div class="alert alert-success hidden" id="contactSuccess">
+<strong>Success!</strong> Your message has been sent to us.
+</div>
+<div class="alert alert-error p-0 hidden" id="contactError">
+<strong>Error!</strong> There was an error sending your message.
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="spacer-90"></div>
+</div>
 
-                </li>
-                <li class="icon_list_item">
-                  <div class="icon_list_icon">
-                    <h5><i class="fa fa-phone" aria-hidden="true"></i> Phone</h5>
-                  </div>
-
-                  <a href="callto:+911244226771">+91-124-422-6771</a>
-                </li>
-                <li class="icon_list_item">
-                  <div class="icon_list_icon">
-                    <h5><i class="fa fa-envelope" aria-hidden="true"> </i> Email</h5>
-                  </div>
-
-                  <a href="mailto:wecare@tracesci.in">wecare@tracesci.in</a>
-
-                </li>
-                <li>
-                  <h5>Find us elsewhere</h5>
-                  <ul class="social-networks">
-                    <li class="social-fb first"><a href="https://www.facebook.com/jetsciglobal/"><i class="fa fa-facebook"></i></a></li>
-                    <li class="social-linkedin"><a href="https://www.linkedin.com/company/jetsciglobal"><i class="fa fa-linkedin"></i></a></li>
-                    <li class="social-youtube"><a href="https://www.youtube.com/channel/UCDnSaAwRgBssFuTUX_2iCJw"><i class="fa fa-youtube-play"></i></a></li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md-8 col-sm-8 col-xs-12">
-            <div class="wpcf7">
-              <form id="#contact_form" class="wpcf7-form">
-                @csrf
-                <div class="contact-form">
-                  <p class="inner-input mb-0">
-                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-                      Name
-                    </label>
-                    <span class="your-name"><input type="text" id="name" class="contact__input" name="name" required></span>
-                  <div id="error-name" class="text-danger contact__input-error mb-3"></div>
-
-                  </p>
-
-                  <p class="inner-input mb-0">
-                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-email">
-                      Email
-                    </label>
-                    <span class="your-email"><input type="email" id="email" class="contact__input" name="email" required></span>
-                  <div id="error-email" class="text-danger contact__input-error mb-3"></div>
-                  </p>
-
-
-                  <p class="inner-input mb-0">
-                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-mobile">
-                      Mobile
-                    </label>
-                    <span class="your-mobile"><input type="text" id="mobile" class="contact__input" name="mobile" required></span>
-                  <div id="error-mobile" class="text-danger contact__input-error mb-3"></div>
-                  </p>
-
-                  <p class="inner-input mb-0">
-                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-message">
-                      Message
-                    </label>
-                    <span class="textarea"><textarea id="message" class="area contact__input" name="message" required></textarea></span>
-                  <div id="error-message" class="text-danger contact__input-error mb-3"></div>
-
-                  </p>
-
-                  <p class="contact-submit"><button id="btn-contact" type="button" class="btn btn-default button" data-loading-text="Loading...">Submit</button></p>
-                </div>
-              </form>
-              <div class="alert alert-warning hidden" id="contactwait">
-                <strong>Please Wait!</strong>
-              </div>
-              <div class="alert alert-success hidden" id="contactSuccess">
-                <strong>Success!</strong> Your message has been sent to us.
-              </div>
-
-              <div class="alert alert-error p-0 hidden" id="contactError">
-                <strong>Error!</strong> There was an error sending your message.
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="spacer-90"></div>
-    </div>
-
-
-
-    <!-- Map -->
-    <div class="map-info map-contact">
-      <div class="container-fluid no-padding">
-        <div class="row">
-          <div class="col-md-12 col-xs-12 col-sm-12">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3508.631880488345!2d77.01043561507808!3d28.430362582498017!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d181b33427c19%3A0x1d7f2dae6742eec3!2sJETSCI%C2%AE%20Global!5e0!3m2!1sen!2sin!4v1625823933261!5m2!1sen!2sin" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-          </div>
-        </div>
-      </div>
-    </div>--}}
+<!-- Map -->
+<div class="map-info map-contact">
+<div class="container-fluid no-padding">
+<div class="row">
+<div class="col-md-12 col-xs-12 col-sm-12">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3508.631880488345!2d77.01043561507808!3d28.430362582498017!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d181b33427c19%3A0x1d7f2dae6742eec3!2sJETSCI%C2%AE%20Global!5e0!3m2!1sen!2sin!4v1625823933261!5m2!1sen!2sin" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+</div>
+</div>
+</div>
+</div>--}}
 <x-notification></x-notification>
 </div>
 </div>
 @endsection
 
-
 @section('script')
-
 <script type="text/javascript">
   cash(function() {
     async function contact() {
       cash('.contact__input').removeClass('border-theme-6')
       cash('.contact__input-error').html('')
       cash('#contactError').addClass('hidden')
-
       let name = cash('#name').val()
       let email = cash('#email').val()
       let mobile = cash('#mobile').val()
       let message = cash('#message').val()
-
       cash('#contactwait').removeClass('hidden')
       axios.post('{{ url("send_inquiry") }}', {
         name: name,
@@ -1308,9 +1208,7 @@
         cash('#contactError').removeClass('hidden')
         cash('#contactSuccess').addClass('hidden')
         cash('#contactwait').addClass('hidden')
-
         cash('#btn-contact').html('Submit')
-
         if (err.response.data.errors) {
           for (const [key, val] of Object.entries(err.response.data.errors)) {
             cash(`#${key}`).addClass('border-theme-6')
@@ -1318,7 +1216,6 @@
           }
         }
       })
-
     }
     cash('#contact_form').on('keyup', function(e) {
       if (e.keyCode === 13) {
@@ -1332,14 +1229,11 @@
 </script>
 <script>
   var revapi;
-
   jQuery(document).ready(function() {
     revapi = jQuery("#slider1").show().revolution({
       sliderType: "standard",
       sliderLayout: "fullscreen",
-
       delay: 999999999, // ⛔ disable auto sliding
-
       navigation: {
         arrows: {
           enable: true,
@@ -1347,31 +1241,26 @@
           hide_onleave: false
         }
       },
-
       stopLoop: "on",
       stopAfterLoops: 0,
       stopAtSlide: 1,
-
       disableProgressBar: "on",
-
       fullScreenOffsetContainer: "" // add header selector if needed
     });
-
     // ✅ extra safety: pause autoplay
     revapi.revpause();
   });
 </script>
 
-
 <!-- Blog carousel: arrows slide one card at a time -->
 <script>
-  (function () {
+  (function() {
     function initBlogCarousel() {
-      var wrap  = document.querySelector('.home-blog-carousel');
+      var wrap = document.querySelector('.home-blog-carousel');
       if (!wrap) return;
       var track = wrap.querySelector('.home-blog-grid');
-      var prev  = wrap.querySelector('.home-blog-prev');
-      var next  = wrap.querySelector('.home-blog-next');
+      var prev = wrap.querySelector('.home-blog-prev');
+      var next = wrap.querySelector('.home-blog-next');
 
       function step() {
         var card = track.querySelector('.solution-slider-content');
@@ -1384,17 +1273,27 @@
         var max = track.scrollWidth - track.clientWidth - 2;
         prev.disabled = track.scrollLeft <= 2;
         next.disabled = track.scrollLeft >= max;
-        var hide = track.scrollWidth <= track.clientWidth + 2;   // all cards fit: no arrows
+        var hide = track.scrollWidth <= track.clientWidth + 2; // all cards fit: no arrows
         prev.style.display = next.style.display = hide ? 'none' : '';
       }
-
-      prev.addEventListener('click', function () { track.scrollBy({ left: -step(), behavior: 'smooth' }); });
-      next.addEventListener('click', function () { track.scrollBy({ left:  step(), behavior: 'smooth' }); });
-      track.addEventListener('scroll', updateArrows, { passive: true });
+      prev.addEventListener('click', function() {
+        track.scrollBy({
+          left: -step(),
+          behavior: 'smooth'
+        });
+      });
+      next.addEventListener('click', function() {
+        track.scrollBy({
+          left: step(),
+          behavior: 'smooth'
+        });
+      });
+      track.addEventListener('scroll', updateArrows, {
+        passive: true
+      });
       window.addEventListener('resize', updateArrows);
       updateArrows();
     }
-
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', initBlogCarousel);
     } else {
@@ -1402,5 +1301,4 @@
     }
   })();
 </script>
-
 @endsection

@@ -61,10 +61,10 @@ $long=null;
 					$lat = $locationData['lat'] ?? null;
 					$long = $locationData['lng'] ?? $locationData['long'] ?? null;
 
-					$city = $locationData['city'] ?? null;
-					$region = $locationData['region'] ?? null;
-					$country = $locationData['country'] ?? null;
-					$source = $locationData['source'] ?? 'unknown';
+					$city = $locationDetails['city'] ?? null;
+					$region = $locationDetails['region'] ?? null;
+					$country = $locationDetails['country'] ?? null;
+					$source = $locationDetails['source'] ?? 'unknown';
 					@endphp
 
 					@if($lat !== null && $long !== null)

@@ -77,12 +77,25 @@ class ScanController extends Controller
 		$id = decrypt($id);
 		$scandetail = ScanHistory::find($id);
 		$location = null;
+		$locationDetails = [
+			'source' => null,
+			'city' => null,
+			'region' => null,
+			'country' => null,
+		];
 		$full_address = null;
 
 		if ($scandetail && !empty($scandetail->location)) {
 			$location = is_array($scandetail->location)
 				? $scandetail->location
 				: json_decode($scandetail->location, true);
+
+			if (is_array($location)) {
+				$locationDetails['source'] = $location['source'] ?? null;
+				$locationDetails['city'] = $location['city'] ?? null;
+				$locationDetails['region'] = $location['region'] ?? null;
+				$locationDetails['country'] = $location['country'] ?? null;
+			}
 
 			$lat = $location['lat'] ?? null;
 			$lng = $location['lng'] ?? $location['long'] ?? null;
@@ -96,18 +109,21 @@ class ScanController extends Controller
 
 				if (!$geo) {
 					try {
-						// OpenStreetMap Nominatim: free, no key, commercial use allowed (max 1 req/s, cache results)
 						$res = Http::timeout(10)
-							->withHeaders(['User-Agent' => 'TracesciApp/1.0 (wecare@tracesci.in)'])
+							->withHeaders([
+								'User-Agent' => 'TracesciApp/1.0 (wecare@tracesci.in)',
+							])
 							->get('https://nominatim.openstreetmap.org/reverse', [
 								'format' => 'json',
 								'lat' => $lat,
-								'long' => $lng,
+								'lon' => $lng,
 								'addressdetails' => 1,
 								'accept-language' => 'en',
 							]);
 
-						$a = $res->successful() ? ($res->json('address') ?? []) : [];
+						$a = $res->successful()
+							? ($res->json('address') ?? [])
+							: [];
 
 						if ($a) {
 							$geo = [
@@ -115,23 +131,27 @@ class ScanController extends Controller
 								'city' => $a['city'] ?? $a['town'] ?? $a['municipality'] ?? $a['village']
 									?? $a['city_district'] ?? $a['state_district'] ?? $a['county']
 									?? $a['suburb'] ?? $a['hamlet'] ?? null,
-								'region' => $a['state'] ?? $a['region'] ?? $a['province'] ?? $a['state_district'] ?? null,
+								'region' => $a['state'] ?? $a['region'] ?? $a['province']
+									?? $a['state_district'] ?? null,
 								'country' => $a['country'] ?? null,
 							];
+
 							Cache::put($key, $geo, now()->addDays(30));
-							
 						}
 					} catch (\Throwable $e) {
-						Log::warning('Reverse geocoding failed', ['scan_history_id' => $id, 'error' => $e->getMessage()]);
+						Log::warning('Reverse geocoding failed', [
+							'scan_history_id' => $id,
+							'error' => $e->getMessage(),
+						]);
 					}
 				}
 
 				if ($geo) {
-					$full_address = $geo['full_address'];
+					$full_address = $geo['full_address'] ?? null;
 
 					foreach (['city', 'region', 'country'] as $k) {
-						if (empty($location[$k])) {
-							$location[$k] = $geo[$k];
+						if (empty($locationDetails[$k])) {
+							$locationDetails[$k] = $geo[$k] ?? null;
 						}
 					}
 				}
@@ -141,6 +161,7 @@ class ScanController extends Controller
 		return view('vendor.scanhistory.details')
 			->with('scandetail', $scandetail)
 			->with('location', $location)
+			->with('locationDetails', $locationDetails)
 			->with('full_address', $full_address)
 			->with('page_name', 'vendor-scanhistory');
 	}
