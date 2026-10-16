@@ -39,13 +39,15 @@
     transition: color 0.3s;
     z-index: 2;
     position: relative;
-    background: #fff; 
+    background: #fff;
     min-width: 70px;
     min-height: 70px;
   }
+
   #solution-slider .solution-slider-content {
-  padding: 0 12px;   /* 24px gap between slides */
-}
+    padding: 0 12px;
+    /* 24px gap between slides */
+  }
 
   .trace-process-section {
     background: #f5f5f5;
@@ -805,7 +807,7 @@
 
 <!-- Event Calendar -->
 <div id="event_calendar" class="padding-content content-section" style="background-color:#fff">
-  <div class="container">
+  <!-- <div class="container">
     <div class="row">
       <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="riven-heading text-center" data-sr="enter bottom wait 0.3s">
@@ -818,7 +820,7 @@
     <div class="event-container">
       <div class="event-contents row">
 
-        <!-- 1st EVENT (LEFT) -->
+      
         <div class="event-content col-md-6 col-sm-12 col-xs-12">
           <div class="row row-event">
 
@@ -849,7 +851,7 @@
           </div>
         </div>
 
-        <!-- 2nd EVENT (RIGHT) -->
+       
         <div class="event-content col-md-6 col-sm-12 col-xs-12">
           <div class="row row-event">
 
@@ -880,7 +882,7 @@
           </div>
         </div>
 
-        <!-- 3rd EVENT (LEFT again) -->
+   
 
         <div class="event-content col-md-6 col-sm-12 col-xs-12" style="margin:0;">
           <div class="row row-event">
@@ -915,6 +917,56 @@
         </div>
       </div>
     </div>
+  </div> -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="riven-heading text-center" data-sr="enter bottom wait 0.3s">
+          <h2>Events<span style="color:#7a0d7d" ;> Calendar</span></h2>
+          <p class="text">Save the dates. We would love to see you..</p>
+        </div>
+      </div>
+    </div>
+    <div class="spacer-35"></div>
+    <div class="event-container">
+      <div class="event-contents row">
+
+        @foreach($events as $event)
+        <div class="event-content col-md-6 col-sm-12 col-xs-12">
+          <div class="row row-event">
+
+            <div class="event-box-conner col-md-10 col-sm-10 col-xs-10">
+              <div class="event_post_content bg-gradient">
+
+                <div class="event-thumb">
+                  <img src="{{ Storage::url($event->image_path) }}" class="event-img">
+                </div>
+
+                <div class="event-desc">
+                  <h3 class="title-eventpost">
+                    <p class="various fancybox.ajax">{!!$event->description!!}</p>
+                  </h3>
+                  <div class="event_post_desc">
+                    {{$event->start_date}} - {{$event->end_date}},<br>
+                    {{$event->address}}, {{$event->city}}
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="event-box-center col-md-2 col-sm-2 col-xs-2">
+              <div class="event_post_date">{{$event->start_date}}</div>
+            </div>
+
+          </div>
+        </div>
+        @endforeach
+
+
+
+      </div>
+    </div>
   </div>
   <div class="spacer-100"></div>
 </div>
@@ -923,9 +975,10 @@
 
 <style>
   /* ---- Blog section: plain grid, 4 cards per row (no slider) ---- */
-  .solution-2-area .solution-2-content > .container {
+  .solution-2-area .solution-2-content>.container {
     width: 100% !important;
-    max-width: 1300px;                /* overall width: lower = smaller cards */
+    max-width: 1300px;
+    /* overall width: lower = smaller cards */
     padding-left: 20px;
     padding-right: 20px;
   }
@@ -933,8 +986,10 @@
   /* ---- carousel: 4 cards in view, slide with arrows ---- */
   .home-blog-carousel {
     position: relative;
-    --per-view: 4;                    /* cards visible at once */
-    --gap: 30px;                      /* space between cards */
+    --per-view: 4;
+    /* cards visible at once */
+    --gap: 30px;
+    /* space between cards */
   }
 
   .home-blog-grid {
@@ -943,25 +998,43 @@
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
-    padding: 10px 2px 25px;           /* room for the card shadow */
-    scrollbar-width: none;            /* hide scrollbar (Firefox) */
+    padding: 10px 2px 25px;
+    /* room for the card shadow */
+    scrollbar-width: none;
+    /* hide scrollbar (Firefox) */
     -ms-overflow-style: none;
   }
 
   .home-blog-grid::-webkit-scrollbar {
-    display: none;                    /* hide scrollbar (Chrome/Safari) */
+    display: none;
+    /* hide scrollbar (Chrome/Safari) */
   }
 
-  .home-blog-grid > .solution-slider-content {
+  .home-blog-grid>.solution-slider-content {
     flex: 0 0 calc((100% - (var(--per-view) - 1) * var(--gap)) / var(--per-view));
     scroll-snap-align: start;
     padding: 0 !important;
     margin: 0 !important;
   }
 
-  @media (max-width: 1199px) { .home-blog-carousel { --per-view: 3; } }
-  @media (max-width: 991px)  { .home-blog-carousel { --per-view: 2; --gap: 20px; } }
-  @media (max-width: 575px)  { .home-blog-carousel { --per-view: 1; } }
+  @media (max-width: 1199px) {
+    .home-blog-carousel {
+      --per-view: 3;
+    }
+  }
+
+  @media (max-width: 991px) {
+    .home-blog-carousel {
+      --per-view: 2;
+      --gap: 20px;
+    }
+  }
+
+  @media (max-width: 575px) {
+    .home-blog-carousel {
+      --per-view: 1;
+    }
+  }
 
   /* arrows */
   .home-blog-nav {
@@ -994,12 +1067,22 @@
     pointer-events: none;
   }
 
-  .home-blog-prev { left: -22px; }
-  .home-blog-next { right: -22px; }
+  .home-blog-prev {
+    left: -22px;
+  }
+
+  .home-blog-next {
+    right: -22px;
+  }
 
   @media (max-width: 767px) {
-    .home-blog-prev { left: 0; }
-    .home-blog-next { right: 0; }
+    .home-blog-prev {
+      left: 0;
+    }
+
+    .home-blog-next {
+      right: 0;
+    }
   }
 
   /* ---- card look: white box, rounded corners, soft shadow ---- */
@@ -1009,7 +1092,8 @@
     height: 100%;
     background: #fff;
     border-radius: 14px;
-    padding: 12px;                    /* space around the image */
+    padding: 12px;
+    /* space around the image */
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
@@ -1024,7 +1108,8 @@
     position: relative;
     width: 100%;
     height: 0;
-    padding-top: 100%;                /* 100% of the width = square */
+    padding-top: 100%;
+    /* 100% of the width = square */
     overflow: hidden;
     border-radius: 10px;
   }
@@ -1035,7 +1120,8 @@
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;                /* fill the square, crop the overflow */
+    object-fit: cover;
+    /* fill the square, crop the overflow */
     object-position: center;
     display: block;
   }
@@ -1049,7 +1135,7 @@
     background: transparent;
   }
 
-  .home-blog-grid .solution-slider-text > a {
+  .home-blog-grid .solution-slider-text>a {
     margin-top: auto;
   }
 </style>
@@ -1075,33 +1161,33 @@
       <div class="row">
         <div class="col-md-12">
           <div class="home-blog-carousel">
-          <button type="button" class="home-blog-nav home-blog-prev" aria-label="Previous blogs"><i class="fa fa-angle-left"></i></button>
-          <button type="button" class="home-blog-nav home-blog-next" aria-label="Next blogs"><i class="fa fa-angle-right"></i></button>
-          <div class="home-blog-grid">
-            @foreach($blogs as $index => $blog)
-            @if($index == 6)
-            @break
-            @endif
-            <div class="solution-slider-content">
-              <div class="blog-slide-card">
-              <div class="solution-slider-img">
-                <img src="{{ asset('storage/' . $blog->image_path) }}"
-                  alt="{{ $blog->title ?? 'Blog image' }}">
+            <button type="button" class="home-blog-nav home-blog-prev" aria-label="Previous blogs"><i class="fa fa-angle-left"></i></button>
+            <button type="button" class="home-blog-nav home-blog-next" aria-label="Next blogs"><i class="fa fa-angle-right"></i></button>
+            <div class="home-blog-grid">
+              @foreach($blogs as $index => $blog)
+              @if($index == 6)
+              @break
+              @endif
+              <div class="solution-slider-content">
+                <div class="blog-slide-card">
+                  <div class="solution-slider-img">
+                    <img src="{{ asset('storage/' . $blog->image_path) }}"
+                      alt="{{ $blog->title ?? 'Blog image' }}">
+                  </div>
+                  <div class="solution-slider-text">
+                    <div class="full-intro-head">
+                      <p>
+                        <!-- {{$blog->publish_date ?? '--'}} <span><a href="#">Business</a></span>. -->
+                      </p>
+                    </div>
+                    <p>{{ $blog->title ?? 'Blog Title' }}</p>
+                    <!-- <p>{!!Str::limit($blog->description ?? 'Blog description', 100)!!}</p> -->
+                    <a href="{{ route('blog-details', ['id' => encrypt($blog->id)]) }}">Learn More <i class="fa fa-long-arrow-right"></i></a>
+                  </div>
+                </div><!-- /.blog-slide-card -->
               </div>
-              <div class="solution-slider-text">
-                <div class="full-intro-head">
-                  <p>
-                    <!-- {{$blog->publish_date ?? '--'}} <span><a href="#">Business</a></span>. -->
-                  </p>
-                </div>
-                <p>{{ $blog->title ?? 'Blog Title' }}</p>
-                <!-- <p>{!!Str::limit($blog->description ?? 'Blog description', 100)!!}</p> -->
-                <a href="{{ route('blog-details', ['id' => encrypt($blog->id)]) }}">Learn More <i class="fa fa-long-arrow-right"></i></a>
-              </div>
-              </div><!-- /.blog-slide-card -->
+              @endforeach
             </div>
-            @endforeach
-          </div>
           </div><!-- /.home-blog-carousel -->
 
         </div>
@@ -1365,13 +1451,13 @@
 
 <!-- Blog carousel: arrows slide one card at a time -->
 <script>
-  (function () {
+  (function() {
     function initBlogCarousel() {
-      var wrap  = document.querySelector('.home-blog-carousel');
+      var wrap = document.querySelector('.home-blog-carousel');
       if (!wrap) return;
       var track = wrap.querySelector('.home-blog-grid');
-      var prev  = wrap.querySelector('.home-blog-prev');
-      var next  = wrap.querySelector('.home-blog-next');
+      var prev = wrap.querySelector('.home-blog-prev');
+      var next = wrap.querySelector('.home-blog-next');
 
       function step() {
         var card = track.querySelector('.solution-slider-content');
@@ -1384,13 +1470,25 @@
         var max = track.scrollWidth - track.clientWidth - 2;
         prev.disabled = track.scrollLeft <= 2;
         next.disabled = track.scrollLeft >= max;
-        var hide = track.scrollWidth <= track.clientWidth + 2;   // all cards fit: no arrows
+        var hide = track.scrollWidth <= track.clientWidth + 2; // all cards fit: no arrows
         prev.style.display = next.style.display = hide ? 'none' : '';
       }
 
-      prev.addEventListener('click', function () { track.scrollBy({ left: -step(), behavior: 'smooth' }); });
-      next.addEventListener('click', function () { track.scrollBy({ left:  step(), behavior: 'smooth' }); });
-      track.addEventListener('scroll', updateArrows, { passive: true });
+      prev.addEventListener('click', function() {
+        track.scrollBy({
+          left: -step(),
+          behavior: 'smooth'
+        });
+      });
+      next.addEventListener('click', function() {
+        track.scrollBy({
+          left: step(),
+          behavior: 'smooth'
+        });
+      });
+      track.addEventListener('scroll', updateArrows, {
+        passive: true
+      });
       window.addEventListener('resize', updateArrows);
       updateArrows();
     }

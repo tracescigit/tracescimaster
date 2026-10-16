@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ContactUsRequest;
 use App\Http\Requests\SubscribeRequest;
 use App\Models\Blog;
+use App\Models\Event;
 use App\Models\Subscriber;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
@@ -20,12 +21,13 @@ class PageController extends Controller
     {
         $blogs = Blog::where('is_allowed', 1)->get();
         $country = 'India';
+        $events=Event::where('is_allowed',1)->where('status',1)->get();
 
         // if ($position = Location::get()) {
         //     $country = $position->countryName;
         // }
 
-        return view('web.index')->with('country', $country)->with('blogs', $blogs);
+        return view('web.index')->with('country', $country)->with('blogs', $blogs)->with('events', $events);
     }
     public function about()
     {
