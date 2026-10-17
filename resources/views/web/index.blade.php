@@ -45,9 +45,7 @@
 
   #solution-slider .solution-slider-content {
     padding: 0 12px;
-    <<<<<<< HEAD=======
     /* 24px gap between slides */
-    >>>>>>>46bed14201e9085a188b2e14f6951ca30a4ab705
   }
 
   .trace-process-section {
@@ -813,7 +811,7 @@
                 </div>
                 <div class="event-desc">
                   <h3 class="title-eventpost">
-                    <!-- <a href="https://www.cphi.com/india/" class="various fancybox.ajax">PMEC 2026</a> -->
+                     <a href="https://www.cphi.com/india/" class="various fancybox.ajax">PMEC 2026</a>
   <a href="https://www.cphi.com/india/" target="_blank" class="various">PMEC 2026</a>
   </h3>
   <div class="event_post_desc">
@@ -829,58 +827,58 @@
 </div>
 </div>
 </div>
-</div> -->
-<div class="container">
-  <div class="row">
-    <div class="col-md-12 col-sm-12 col-xs-12">
-      <div class="riven-heading text-center" data-sr="enter bottom wait 0.3s">
-        <h2>Events<span style="color:#7a0d7d" ;> Calendar</span></h2>
-        <p class="text">Save the dates. We would love to see you..</p>
-      </div>
-    </div>
-  </div>
-  <div class="spacer-35"></div>
-  <div class="event-container">
-    <div class="event-contents row">
-
-      @foreach($events as $event)
-      <div class="event-content col-md-6 col-sm-12 col-xs-12">
-        <div class="row row-event">
-
-          <div class="event-box-conner col-md-10 col-sm-10 col-xs-10">
-            <div class="event_post_content bg-gradient">
-
-              <div class="event-thumb">
-                <img src="{{ Storage::url($event->image_path) }}" class="event-img">
-              </div>
-
-              <div class="event-desc">
-                <h3 class="title-eventpost">
-                  <p class="various fancybox.ajax">{!!$event->description!!}</p>
-                </h3>
-                <div class="event_post_desc">
-                  {{$event->start_date}} - {{$event->end_date}},<br>
-                  {{$event->address}}, {{$event->city}}
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-          <div class="event-box-center col-md-2 col-sm-2 col-xs-2">
-            <div class="event_post_date">{{$event->start_date}}</div>
-          </div>
-
+</div>   -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="riven-heading text-center" data-sr="enter bottom wait 0.3s">
+          <h2>Events<span style="color:#7a0d7d" ;> Calendar</span></h2>
+          <p class="text">Save the dates. We would love to see you..</p>
         </div>
       </div>
-      @endforeach
+    </div>
+    <div class="spacer-35"></div>
+    <div class="event-container">
+      <div class="event-contents row">
+
+        @foreach($events as $event)
+        <div class="event-content col-md-6 col-sm-12 col-xs-12">
+          <div class="row row-event">
+
+            <div class="event-box-conner col-md-10 col-sm-10 col-xs-10">
+              <div class="event_post_content bg-gradient">
+
+                <div class="event-thumb">
+                  <img src="{{ Storage::url($event->image_path) }}" class="event-img">
+                </div>
+
+                <div class="event-desc">
+                  <h3 class="title-eventpost">
+                    <p class="various fancybox.ajax">{!!$event->description!!}</p>
+                  </h3>
+                  <div class="event_post_desc">
+                    {{$event->start_date}} - {{$event->end_date}},<br>
+                    {{$event->address}}, {{$event->city}}
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="event-box-center col-md-2 col-sm-2 col-xs-2">
+              <div class="event_post_date">{{$event->start_date}}</div>
+            </div>
+
+          </div>
+        </div>
+        @endforeach
 
 
 
+      </div>
     </div>
   </div>
-</div>
-<div class="spacer-100"></div>
+  <div class="spacer-100"></div>
 </div>
 </div>
 @if(!empty($blogs) && count($blogs) > 0)
@@ -1346,13 +1344,7 @@ Message
         next.disabled = track.scrollLeft >= max;
         var hide = track.scrollWidth <= track.clientWidth + 2; // all cards fit: no arrows
         prev.style.display = next.style.display = hide ? 'none' : '';
-      } <<
-      << << < HEAD
-        ===
-        === =
-
-        >>>
-        >>> > 46 bed14201e9085a188b2e14f6951ca30a4ab705
+      }
       prev.addEventListener('click', function() {
         track.scrollBy({
           left: -step(),
