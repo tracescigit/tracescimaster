@@ -45,6 +45,9 @@
 
   #solution-slider .solution-slider-content {
     padding: 0 12px;
+    <<<<<<< HEAD=======
+    /* 24px gap between slides */
+    >>>>>>>46bed14201e9085a188b2e14f6951ca30a4ab705
   }
 
   .trace-process-section {
@@ -728,7 +731,7 @@
 
 <!-- Event Calendar -->
 <div id="event_calendar" class="padding-content content-section" style="background-color:#fff">
-  <div class="container">
+  <!-- <div class="container">
     <div class="row">
       <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="riven-heading text-center" data-sr="enter bottom wait 0.3s">
@@ -740,7 +743,8 @@
     <div class="spacer-35"></div>
     <div class="event-container">
       <div class="event-contents row">
-        <!-- 1st EVENT (LEFT) -->
+
+      
         <div class="event-content col-md-6 col-sm-12 col-xs-12">
           <div class="row row-event">
             <div class="event-box-conner col-md-10 col-sm-10 col-xs-10">
@@ -764,7 +768,8 @@
             </div>
           </div>
         </div>
-        <!-- 2nd EVENT (RIGHT) -->
+
+       
         <div class="event-content col-md-6 col-sm-12 col-xs-12">
           <div class="row row-event">
             <div class="event-box-conner col-md-10 col-sm-10 col-xs-10">
@@ -788,7 +793,9 @@
             </div>
           </div>
         </div>
-        <!-- 3rd EVENT (LEFT again) -->
+
+   
+
         <div class="event-content col-md-6 col-sm-12 col-xs-12" style="margin:0;">
           <div class="row row-event">
             <div class="event-box-conner col-md-10 col-sm-10 col-xs-10">
@@ -807,30 +814,82 @@
                 <div class="event-desc">
                   <h3 class="title-eventpost">
                     <!-- <a href="https://www.cphi.com/india/" class="various fancybox.ajax">PMEC 2026</a> -->
-                    <a href="https://www.cphi.com/india/" target="_blank" class="various">PMEC 2026</a>
-                  </h3>
-                  <div class="event_post_desc">
-                    24 Nov - 26 Nov <br> India Expo Centre and Mart, Greater Noida, Delhi India
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="event-box-center col-md-2 col-sm-2 col-xs-2">
-              <div class="event_post_date">APR 26</div>
-            </div>
-          </div>
-        </div>
+  <a href="https://www.cphi.com/india/" target="_blank" class="various">PMEC 2026</a>
+  </h3>
+  <div class="event_post_desc">
+    24 Nov - 26 Nov <br> India Expo Centre and Mart, Greater Noida, Delhi India
+  </div>
+</div>
+</div>
+</div>
+<div class="event-box-center col-md-2 col-sm-2 col-xs-2">
+  <div class="event_post_date">APR 26</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div> -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="riven-heading text-center" data-sr="enter bottom wait 0.3s">
+        <h2>Events<span style="color:#7a0d7d" ;> Calendar</span></h2>
+        <p class="text">Save the dates. We would love to see you..</p>
       </div>
     </div>
   </div>
-  <div class="spacer-100"></div>
+  <div class="spacer-35"></div>
+  <div class="event-container">
+    <div class="event-contents row">
+
+      @foreach($events as $event)
+      <div class="event-content col-md-6 col-sm-12 col-xs-12">
+        <div class="row row-event">
+
+          <div class="event-box-conner col-md-10 col-sm-10 col-xs-10">
+            <div class="event_post_content bg-gradient">
+
+              <div class="event-thumb">
+                <img src="{{ Storage::url($event->image_path) }}" class="event-img">
+              </div>
+
+              <div class="event-desc">
+                <h3 class="title-eventpost">
+                  <p class="various fancybox.ajax">{!!$event->description!!}</p>
+                </h3>
+                <div class="event_post_desc">
+                  {{$event->start_date}} - {{$event->end_date}},<br>
+                  {{$event->address}}, {{$event->city}}
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="event-box-center col-md-2 col-sm-2 col-xs-2">
+            <div class="event_post_date">{{$event->start_date}}</div>
+          </div>
+
+        </div>
+      </div>
+      @endforeach
+
+
+
+    </div>
+  </div>
+</div>
+<div class="spacer-100"></div>
 </div>
 </div>
 @if(!empty($blogs) && count($blogs) > 0)
 <style>
+  /* ---- Blog section: plain grid, 4 cards per row (no slider) ---- */
   .solution-2-area .solution-2-content>.container {
     width: 100% !important;
     max-width: 1300px;
+    /* overall width: lower = smaller cards */
     padding-left: 20px;
     padding-right: 20px;
   }
@@ -838,7 +897,9 @@
   .home-blog-carousel {
     position: relative;
     --per-view: 4;
+    /* cards visible at once */
     --gap: 30px;
+    /* space between cards */
   }
 
   .home-blog-grid {
@@ -848,12 +909,15 @@
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     padding: 10px 2px 25px;
+    /* room for the card shadow */
     scrollbar-width: none;
+    /* hide scrollbar (Firefox) */
     -ms-overflow-style: none;
   }
 
   .home-blog-grid::-webkit-scrollbar {
     display: none;
+    /* hide scrollbar (Chrome/Safari) */
   }
 
   .home-blog-grid>.solution-slider-content {
@@ -920,6 +984,10 @@
     right: -22px;
   }
 
+  .home-blog-next {
+    right: -22px;
+  }
+
   @media (max-width: 767px) {
     .home-blog-prev {
       left: 0;
@@ -937,6 +1005,7 @@
     background: #fff;
     border-radius: 14px;
     padding: 12px;
+    /* space around the image */
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
@@ -951,6 +1020,7 @@
     width: 100%;
     height: 0;
     padding-top: 100%;
+    /* 100% of the width = square */
     overflow: hidden;
     border-radius: 10px;
   }
@@ -962,6 +1032,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    /* fill the square, crop the overflow */
     object-position: center;
     display: block;
   }
@@ -1275,7 +1346,13 @@ Message
         next.disabled = track.scrollLeft >= max;
         var hide = track.scrollWidth <= track.clientWidth + 2; // all cards fit: no arrows
         prev.style.display = next.style.display = hide ? 'none' : '';
-      }
+      } <<
+      << << < HEAD
+        ===
+        === =
+
+        >>>
+        >>> > 46 bed14201e9085a188b2e14f6951ca30a4ab705
       prev.addEventListener('click', function() {
         track.scrollBy({
           left: -step(),
