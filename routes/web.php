@@ -7,6 +7,7 @@ use App\Http\Controllers\DarkModeController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\CronController;
 use App\Http\Controllers\DemoController;
+use App\Http\Controllers\IndustryController;
 use App\Http\Controllers\SolutionController;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
@@ -44,6 +45,9 @@ Route::post('/demo-schedule-details/store', [App\Http\Controllers\DemoController
 Route::get('/product/razor6', [PageController::class, 'razor6'])->name('product-razor6');
 Route::get('/product/elite4', [PageController::class, 'elite4'])->name('product-elite4');
 Route::get('/product/hyperloop', [PageController::class, 'hyperloop'])->name('product-hyperloop');
+
+// Industries
+Route::get('/Industries', [IndustryController::class, 'industry'])->name('industry');
 
 // Solutions
 Route::get('/solutions/cloud', [SolutionController::class, 'cloud'])->name('cloud-solution');

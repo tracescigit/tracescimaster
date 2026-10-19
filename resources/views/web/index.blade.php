@@ -685,8 +685,8 @@
         <div class="row process-grid">
           <div class="col-md-6 col-sm-6 mb-4">
             <div class="process-card">
-              <div class="step-badge">01</div>
-              <h3>Enterprise Onboarding</h3>
+              <div class="step-badge"><span style="color:#7a0d7d;"><strong>01.</strong></span></div>
+              <h3><span style="color:#7a0d7d;">Enterprise</span> Onboarding</h3>
               <p>
                 Register manufacturers, verify compliance documents, and provide secure platform access with role-based controls, enabling seamless onboarding, authenticated operations, centralized management, and real-time visibility across the supply chain ecosystem while ensuring security, transparency, and regulatory compliance.
               </p>
@@ -694,8 +694,8 @@
           </div>
           <div class="col-md-6 col-sm-6 mb-4">
             <div class="process-card">
-              <div class="step-badge">02</div>
-              <h3>Product Serialization</h3>
+              <div class="step-badge"><span style="color:#7a0d7d;"><strong>02.</strong></span></div>
+              <h3>Product <span style="color:#7a0d7d;">Serialization</span></h3>
               <p>
                 Create SKUs, define packaging hierarchies, and configure serialization workflows with ease, enabling accurate product identification, seamless aggregation, efficient inventory control, real-time traceability, and secure supply chain operations across manufacturing, distribution, and retail environments.
               </p>
@@ -703,8 +703,8 @@
           </div>
           <div class="col-md-6 col-sm-6 mb-4">
             <div class="process-card">
-              <div class="step-badge">03</div>
-              <h3>Cryptographic Code Generation</h3>
+              <div class="step-badge"><span style="color:#7a0d7d;"><strong>03.</strong></span></div>
+              <h3>Cryptographic <span style="color:#7a0d7d;">Code Generation</span></h3>
               <p>
                 Print and activate unique QR codes or barcode identities on every product, enabling secure authentication, real-time traceability, anti-counterfeiting protection, streamlined inventory management, seamless aggregation, and complete visibility across manufacturing, distribution, retail, and consumer verification processes.
               </p>
@@ -712,8 +712,8 @@
           </div>
           <div class="col-md-6 col-sm-6 mb-4">
             <div class="process-card">
-              <div class="step-badge">04</div>
-              <h3>Supply Chain Surveillance & Enforcement</h3>
+              <div class="step-badge"><span style="color:#7a0d7d;"><strong>04.</strong></span></div>
+              <h3><span style="color:#7a0d7d;">Supply Chain </span> Surveillance & Enforcement</h3>
               <p>
                 Monitor product movement, detect suspicious activity, and verify authenticity in real time, enabling faster fraud prevention, supply chain transparency, secure product tracking, intelligent risk detection, enforcement response, and trusted consumer engagement across manufacturing, distribution, and retail networks.
               </p>
@@ -831,7 +831,10 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12 col-sm-12 col-xs-12">
-        <div class="riven-heading text-center" data-sr="enter bottom wait 0.3s">
+        <div class="riven-heading text-center main-title wow zoomIn" style="margin-top: 0;" data-sr="enter bottom wait 0.3s">
+          <div class="main-shadow-heading">
+            <h2>Events <span>Calendar</span></h2>
+          </div>
           <h2>Events<span style="color:#7a0d7d" ;> Calendar</span></h2>
           <p class="text">Save the dates. We would love to see you..</p>
         </div>
@@ -852,21 +855,30 @@
                   <img src="{{ Storage::url($event->image_path) }}" class="event-img">
                 </div>
 
+
                 <div class="event-desc">
                   <h3 class="title-eventpost">
-                    <p class="various fancybox.ajax">{!!$event->description!!}</p>
+                    <p class="various fancybox.ajax">
+                      <b style="font-size: larger;color:#222222;">{{$event->name}}</b>
+                    </p>
                   </h3>
+
                   <div class="event_post_desc">
-                    {{$event->start_date}} - {{$event->end_date}},<br>
-                    {{$event->address}}, {{$event->city}}
+                    <span style="color:#7a0d7d;"><strong>{{ $event->start_date ? \Carbon\Carbon::parse($event->start_date)->format('d-m-Y') : '' }}</strong>
+                      @if($event->end_date)
+                      - <strong>{{ \Carbon\Carbon::parse($event->end_date)->format('d-m-Y') }}</strong></span>
+                    @endif
+                    <br>
+                    <strong>{{ $event->address }}, {{ $event->city }}</strong>
                   </div>
                 </div>
+
 
               </div>
             </div>
 
             <div class="event-box-center col-md-2 col-sm-2 col-xs-2">
-              <div class="event_post_date">{{$event->start_date}}</div>
+              <div class="event_post_date">{{ $event->start_date ? \Carbon\Carbon::parse($event->start_date)->format('d-m-Y') : '' }}</div>
             </div>
 
           </div>
@@ -1029,7 +1041,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     /* fill the square, crop the overflow */
     object-position: center;
     display: block;
@@ -1052,11 +1064,8 @@
     <div class="row">
       <div class="col-md-12 text-center">
         <div class="main-title wow zoomIn">
-          <div class="main-shadow-heading">
-            <h2>Our Blog</h2>
-          </div>
-          <h2>Our <span style="color: #7a0d7d;">Blog</span></h2>
-          <h3>A blog about analytics, marketing & testing</h3>
+          <h2>Our <span style="color: #7a0d7d;">Blogs</span></h2>
+          <h3>Some blogs about analytics, marketing ,Industry & more.</h3>
         </div>
       </div>
     </div>

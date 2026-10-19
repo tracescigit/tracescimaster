@@ -59,7 +59,8 @@
 <style>
   /* ---- top nav: white at 20% opacity ONLY while the page is at the top ---- */
   .header-area.navbar-fixed-top.at-top {
-    background: rgba(255, 255, 255, 0.2) !important;   /* 0.2 = 20% */
+    background: rgba(255, 255, 255, 0.2) !important;
+    /* 0.2 = 20% */
     transition: background 0.3s ease;
   }
 
@@ -67,6 +68,7 @@
   .header-area.navbar-fixed-top.at-top .menuzord-menu-bg {
     background: transparent !important;
   }
+
   /* once scrolled, .at-top is removed and the theme's own nav style applies */
 </style>
 
@@ -110,8 +112,12 @@
             <a href="{{ url('/about') }}">About</a>
           </li>
 
+          <li class="{{ request()->is('Industries') ? 'active' : '' }}">
+            <a href="{{ route('industry') }}">Industry</a>
+          </li>
+          
           <li class="{{ request()->is('solutions/*') || request()->is('product/*') ? 'active' : '' }}">
-            <a >Solutions</a>
+            <a>Solutions</a>
             <ul class="dropdown">
 
               <!-- 1) SOFTWARE -->
@@ -176,7 +182,7 @@
 
 <script>
   // white 20% background only at the top of the page; theme style after scrolling
-  (function () {
+  (function() {
     var header = document.querySelector('.header-area.navbar-fixed-top');
     if (!header) return;
 
@@ -189,6 +195,8 @@
     }
 
     updateHeader();
-    window.addEventListener('scroll', updateHeader, { passive: true });
+    window.addEventListener('scroll', updateHeader, {
+      passive: true
+    });
   })();
 </script>
