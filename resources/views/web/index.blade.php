@@ -295,6 +295,16 @@
           data-bgposition="center center"
           data-bgfit="cover"
           data-bgrepeat="no-repeat">
+        <!-- SPOTLIGHT PANEL (sits behind the text layers) -->
+        <div class="tp-caption"
+          data-x="center" data-y="top" data-voffset="85"
+          data-width="['940','820','640','320']"
+          data-height="['440','440','440','470']"
+          data-start="600"
+          data-transform_in="opacity:0;s:600;"
+          data-transform_out="opacity:0;s:300"
+          style="width:940px; height:440px; max-width:94vw; background:radial-gradient(ellipse at center, rgba(255,255,255,.45) 0%, rgba(255,255,255,.32) 58%, rgba(255,255,255,.10) 100%); border:0; border-radius:18px; -webkit-backdrop-filter:blur(2px); backdrop-filter:blur(2px); pointer-events:none;"></div>
+
         <!-- LAYER 1 -->
         <div class="tp-caption tp-resizeme"
           data-x="center"
@@ -314,7 +324,7 @@
           data-transform_in="y:[100%];opacity:0;s:800;"
           data-transform_out="opacity:0;s:300" ;>
           <div class="text-center heading-rp-small" style="transition: none; line-height: 58px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 1px; font-weight: 800; font-size: 50px;">
-            SUPPLY CHAIN TRACESCI PLATFORM
+            SUPPLY CHAIN <span style="color:#7a0d7d;">TRACESCI</span> PLATFORM
           </div>
         </div>
         <!-- LAYER 3 -->
@@ -347,6 +357,16 @@
           data-bgposition="center center"
           data-bgfit="cover"
           data-bgrepeat="no-repeat">
+        <!-- SPOTLIGHT PANEL (sits behind the text layers) -->
+        <div class="tp-caption"
+          data-x="center" data-y="top" data-voffset="85"
+          data-width="['940','820','640','320']"
+          data-height="['440','440','440','470']"
+          data-start="600"
+          data-transform_in="opacity:0;s:600;"
+          data-transform_out="opacity:0;s:300"
+          style="width:940px; height:440px; max-width:94vw; background:radial-gradient(ellipse at center, rgba(255,255,255,.45) 0%, rgba(255,255,255,.32) 58%, rgba(255,255,255,.10) 100%); border:0; border-radius:18px; -webkit-backdrop-filter:blur(2px); backdrop-filter:blur(2px); pointer-events:none;"></div>
+
         <!-- LAYER 1 -->
         <div class="tp-caption tp-resizeme"
           data-x="center" data-y="top" data-voffset="120"
@@ -363,7 +383,7 @@
           data-start="1800" data-transform_in="y:[100%];opacity:0;s:800;"
           data-transform_out="opacity:0;s:300" ;>
           <div class="text-center heading-rp-small" style="transition: none; line-height: 58px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 1px; font-weight: 800; font-size: 50px;">
-            Engage, Authenticate, and Protect
+            Engage, Authenticate, and <span style="color:#7a0d7d;"> Protect</span>
           </div>
         </div>
         <!-- LAYER 3 -->
@@ -395,6 +415,16 @@
           data-bgposition="center center"
           data-bgfit="cover"
           data-bgrepeat="no-repeat">
+        <!-- SPOTLIGHT PANEL (sits behind the text layers) -->
+        <div class="tp-caption"
+          data-x="center" data-y="top" data-voffset="85"
+          data-width="['940','820','640','320']"
+          data-height="['440','440','440','470']"
+          data-start="600"
+          data-transform_in="opacity:0;s:600;"
+          data-transform_out="opacity:0;s:300"
+          style="width:940px; height:440px; max-width:94vw; background:radial-gradient(ellipse at center, rgba(255,255,255,.45) 0%, rgba(255,255,255,.32) 58%, rgba(255,255,255,.10) 100%); border:0; border-radius:18px; -webkit-backdrop-filter:blur(2px); backdrop-filter:blur(2px); pointer-events:none;"></div>
+
         <!-- LAYER 1 -->
         <div class="tp-caption tp-resizeme"
           data-x="center" data-y="top" data-voffset="120"
@@ -410,7 +440,7 @@
           data-start="1800" data-transform_in="y:[100%];opacity:0;s:800;"
           data-transform_out="opacity:0;s:300" ;>
           <div class="text-center heading-rp-small" style="transition: none; line-height: 58px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 1px; font-weight: 800; font-size: 50px;">
-            Turn Consumers Into Brand Protectors
+            Turn <span style="color:#7a0d7d;">Consumers</span> to Brand Protectors
           </div>
         </div>
         <!-- LAYER 3 -->
