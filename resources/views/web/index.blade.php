@@ -758,6 +758,7 @@
 <!-- Pricing Table -->
 
 <!-- Event Calendar -->
+@if($events->count() > 0)
 <div id="event_calendar" class="padding-content content-section" style="background-color:#fff">
   <!-- <div class="container">
     <div class="row">
@@ -858,6 +859,7 @@
 </div>
 </div>
 </div>   -->
+
   <div class="container">
     <div class="row">
       <div class="col-md-12 col-sm-12 col-xs-12">
@@ -920,6 +922,7 @@
       </div>
     </div>
   </div>
+  @endif
   <div class="spacer-100"></div>
 </div>
 </div>
