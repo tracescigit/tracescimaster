@@ -709,7 +709,7 @@
                 </div>
             </div>
             <div class="col-md-6 wow fadeInRight">
-                <img src="{{ asset('dist/images/Wood_Interior.jpg') }}" alt="Wood and interior panels with variable data marking" class="industry-img" style="margin-top:70px;">
+                <img src="{{ asset('dist/images/wood_interior.jpg') }}" alt="Wood and interior panels with variable data marking" class="industry-img" style="margin-top:70px;">
             </div>
         </div>
     </div>
