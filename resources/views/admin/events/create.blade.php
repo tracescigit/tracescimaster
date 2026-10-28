@@ -406,14 +406,28 @@
 @endsection
 
 @section('script')
+
+
 <script>
     cash(function() {
+        var REQUIRED_W = 455;
+        var REQUIRED_H = 215;
+        var MAX_FILE_SIZE = 2 * 1024 * 1024;
+        var isSubmitting = false;
 
-        // Status badge live preview
+        var form = document.getElementById('add-form');
+        var button = document.getElementById('btn-add');
+
+        var originalButtonHtml = button ? button.innerHTML : '';
+        var originalThumb = document.getElementById('current-img-thumb');
+        var originalThumbSrc = originalThumb ? originalThumb.src : null;
+
+        // Status badge preview
         cash('#status').on('change', function() {
-            var val = cash(this).val();
             var badge = document.getElementById('status-badge');
-            if (val === '1') {
+            if (!badge) return;
+
+            if (this.value === '1') {
                 badge.textContent = 'Active';
                 badge.className = 'status-preview active';
             } else {
@@ -422,96 +436,378 @@
             }
         });
 
-        async function add() {
+        function showError(id, message) {
+            var field = document.getElementById(id);
+            var error = document.getElementById('error-' + id);
 
-            // Reset all errors
-            cash('#add-form').find('input, select, textarea').removeClass('border-theme-6');
-            cash('#add-form').find('.login__input-error').html('');
+            if (field) {
+                field.classList.add('border-theme-6');
+                field.setAttribute('aria-invalid', 'true');
+            }
 
-            // Reset TinyMCE border
-            if (typeof tinymce !== "undefined" && tinymce.get('description')) {
+            if (error) {
+                error.textContent = message;
+            }
+
+            if (id === 'description' &&
+                typeof tinymce !== 'undefined' &&
+                tinymce.get('description')) {
+                tinymce.get('description').getContainer().style.border =
+                    '1px solid #ef4444';
+            }
+        }
+
+        function clearError(id) {
+            var field = document.getElementById(id);
+            var error = document.getElementById('error-' + id);
+
+            if (field) {
+                field.classList.remove('border-theme-6');
+                field.removeAttribute('aria-invalid');
+            }
+
+            if (error) {
+                error.textContent = '';
+            }
+
+            if (id === 'description' &&
+                typeof tinymce !== 'undefined' &&
+                tinymce.get('description')) {
+                tinymce.get('description').getContainer().style.border = '';
+            }
+        }
+
+        function getDescription() {
+            if (typeof tinymce !== 'undefined' &&
+                tinymce.get('description')) {
+                return tinymce.get('description')
+                    .getContent({
+                        format: 'text'
+                    }).trim();
+            }
+
+            var field = document.getElementById('description');
+            return field ? field.value.trim() : '';
+        }
+
+        // Validate text, date, status and any other required fields
+        function validateFields() {
+            var valid = true;
+
+            // Clear previous field errors
+            form.querySelectorAll('.login__input-error').forEach(function(el) {
+                el.textContent = '';
+            });
+
+            form.querySelectorAll('[aria-invalid="true"]').forEach(function(el) {
+                el.removeAttribute('aria-invalid');
+                el.classList.remove('border-theme-6');
+            });
+
+            if (typeof tinymce !== 'undefined' &&
+                tinymce.get('description')) {
                 tinymce.get('description').getContainer().style.border = '';
             }
 
-            var formData = new FormData(document.querySelector('#add-form'));
+            // Title
+            var title = document.getElementById('title');
 
-            cash('#btn-add')
-                .html('<i data-loading-icon="oval" data-color="white" class="w-4 h-4 mr-2"></i> Saving…')
-                .svgLoader();
+            if (title && !title.value.trim()) {
+                showError('title', 'Please enter the event title.');
+                valid = false;
+            }
 
-            cash('#btn-add').attr('disabled', 'true');
+            // Date: supports common event form field IDs
+            var dateField = document.getElementById('event_date') ||
+                document.getElementById('publish_date') ||
+                document.getElementById('date');
 
-            axios.post("{{ url('/admin/Events/store') }}", formData)
-                .then(res => {
-                    showNotification('success', 'Success!', res.data.message);
+            if (dateField) {
+                var value = dateField.value;
+                var parsed = value ? new Date(value) : null;
 
-                    setTimeout(() => {
-                        window.location.href = "{{ url('/admin/Events') }}";
-                    }, 1000);
-                })
-                .catch(err => {
+                if (!value || !parsed || isNaN(parsed.getTime())) {
+                    showError(dateField.id, 'Please select a valid date.');
+                    valid = false;
+                }
+            }
 
-                    showNotification('error', 'Error!', err.response.data.message);
+            // Publisher, if this field exists
+            var publisher = document.getElementById('publish_by');
 
-                    cash('#btn-add').html(
-                        '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Add Event'
-                    );
+            if (publisher && !publisher.value.trim()) {
+                showError('publish_by', 'Please enter the publisher name.');
+                valid = false;
+            }
 
-                    cash('#btn-add').removeAttr('disabled');
+            // Status
+            var status = document.getElementById('status');
 
-                    if (err.response.data.errors) {
+            if (status && !['0', '1'].includes(status.value)) {
+                showError('status', 'Please select a valid status.');
+                valid = false;
+            }
 
-                        for (const [key, val] of Object.entries(err.response.data.errors)) {
+            // Description: optional, but if supplied must contain 2+ characters
+            var description = getDescription();
 
-                            let field = cash(`#${key}`);
+            if (description.length === 1) {
+                showError(
+                    'description',
+                    'Description must contain at least 2 characters.'
+                );
+                valid = false;
+            }
 
-                            if (key === 'description') {
-                                field = cash('#description');
+            // Validate all other controls marked required in HTML.
+            form.querySelectorAll('input[required], select[required], textarea[required]')
+                .forEach(function(field) {
+                    if (field.type === 'file') return;
+                    if (field.type === 'checkbox' && !field.checked) {
+                        showError(field.id, 'This field is required.');
+                        valid = false;
+                        return;
+                    }
 
-                                if (typeof tinymce !== "undefined" && tinymce.get('description')) {
-                                    tinymce.get('description').getContainer().style.border = '1px solid #ef4444';
-                                }
-                            }
-
-                            if (key === 'event_img') {
-                                field = cash('#event_img');
-                            }
-
-                            // Add error class
-                            field.addClass('border-theme-6');
-
-                            // Show error message
-                            cash(`#error-${key}`).html(val);
-                        }
-
-                        // Scroll to first error
-                        var firstError = document.querySelector('.border-theme-6');
-                        if (firstError) {
-                            firstError.scrollIntoView({
-                                behavior: 'smooth',
-                                block: 'center'
-                            });
-                        }
+                    if (field.type !== 'checkbox' && !field.value.trim()) {
+                        showError(field.id, 'This field is required.');
+                        valid = false;
                     }
                 });
+
+            return valid;
         }
 
-        // Submit handler
+        // Validate event image type, size and exact dimensions
+        function validateImage(file) {
+            return new Promise(function(resolve) {
+                if (!file) {
+                    showError('event_img', 'Please select an event image.');
+                    resolve(false);
+                    return;
+                }
+
+                if (!['image/jpeg', 'image/png'].includes(file.type)) {
+                    showError(
+                        'event_img',
+                        'Only JPG, JPEG, and PNG images are allowed.'
+                    );
+                    resolve(false);
+                    return;
+                }
+
+                if (file.size > MAX_FILE_SIZE) {
+                    showError('event_img', 'Image size must not exceed 2 MB.');
+                    resolve(false);
+                    return;
+                }
+
+                var objectUrl = URL.createObjectURL(file);
+                var img = new Image();
+
+                img.onload = function() {
+                    var width = img.naturalWidth;
+                    var height = img.naturalHeight;
+
+                    URL.revokeObjectURL(objectUrl);
+
+                    if (width !== REQUIRED_W || height !== REQUIRED_H) {
+                        showError(
+                            'event_img',
+                            'Image must be exactly 455 × 215 pixels. ' +
+                            'Selected image: ' + width + ' × ' + height + ' pixels.'
+                        );
+
+                        resolve(false);
+                        return;
+                    }
+
+                    clearError('event_img');
+
+                    var thumb = document.getElementById('current-img-thumb');
+
+                    if (thumb) {
+                        var reader = new FileReader();
+
+                        reader.onload = function(e) {
+                            thumb.src = e.target.result;
+                        };
+
+                        reader.readAsDataURL(file);
+                    }
+
+                    resolve(true);
+                };
+
+                img.onerror = function() {
+                    URL.revokeObjectURL(objectUrl);
+
+                    showError(
+                        'event_img',
+                        'Could not read the image. Please select a valid JPG or PNG.'
+                    );
+
+                    resolve(false);
+                };
+
+                img.src = objectUrl;
+            });
+        }
+
+        // Validate immediately when the image is selected
+        cash('#event_img').on('change', async function() {
+            var input = this;
+            var file = input.files[0];
+
+            clearError('event_img');
+
+            if (!file) return;
+
+            var valid = await validateImage(file);
+
+            if (!valid) {
+                input.value = '';
+
+                if (originalThumb && originalThumbSrc) {
+                    originalThumb.src = originalThumbSrc;
+                }
+            }
+        });
+
+        // Clear a field's error when the user corrects it
+        cash('#add-form input, #add-form select, #add-form textarea')
+            .on('input change', function() {
+                clearError(this.id);
+            });
+
+        async function add() {
+            if (isSubmitting) return;
+
+            if (!validateFields()) {
+                var firstError = form.querySelector('[aria-invalid="true"]');
+
+                if (firstError) {
+                    firstError.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+                    firstError.focus();
+                }
+
+                return;
+            }
+
+            isSubmitting = true;
+
+            if (button) {
+                button.disabled = true;
+                button.innerHTML = 'Validating…';
+            }
+
+            try {
+                var imageInput = document.getElementById('event_img');
+                var imageValid = await validateImage(
+                    imageInput ? imageInput.files[0] : null
+                );
+
+                if (!imageValid) {
+                    if (imageInput) {
+                        imageInput.value = '';
+                        imageInput.focus();
+                    }
+
+                    if (originalThumb && originalThumbSrc) {
+                        originalThumb.src = originalThumbSrc;
+                    }
+
+                    return;
+                }
+
+                // Sync TinyMCE content before constructing FormData
+                if (typeof tinymce !== 'undefined') {
+                    tinymce.triggerSave();
+                }
+
+                // Recheck fields before submitting
+                if (!validateFields()) {
+                    var invalid = form.querySelector('[aria-invalid="true"]');
+
+                    if (invalid) {
+                        invalid.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'center'
+                        });
+                        invalid.focus();
+                    }
+
+                    return;
+                }
+
+                var formData = new FormData(form);
+
+                button.innerHTML =
+                    '<i data-loading-icon="oval" data-color="white" class="w-4 h-4 mr-2"></i> Saving…';
+
+                cash('#btn-add').svgLoader();
+
+                var res = await axios.post(
+                    "{{ url('/admin/Events/store') }}",
+                    formData
+                );
+
+                showNotification('success', 'Success!', res.data.message);
+
+                setTimeout(function() {
+                    window.location.href = "{{ url('/admin/Events') }}";
+                }, 1000);
+
+            } catch (err) {
+                var response = err.response;
+                var data = response && response.data ? response.data : {};
+
+                showNotification(
+                    'error',
+                    'Error!',
+                    data.message || 'Unable to save the event. Please try again.'
+                );
+
+                if (data.errors) {
+                    Object.entries(data.errors).forEach(function([key, messages]) {
+                        var message = Array.isArray(messages) ?
+                            messages.join(' ') :
+                            messages;
+
+                        showError(key, message);
+                    });
+
+                    var firstError = form.querySelector('[aria-invalid="true"]');
+
+                    if (firstError) {
+                        firstError.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'center'
+                        });
+                        firstError.focus();
+                    }
+                }
+
+            } finally {
+                isSubmitting = false;
+
+                if (button) {
+                    button.disabled = false;
+                    button.innerHTML = originalButtonHtml;
+                }
+            }
+        }
+
+        // AJAX submit
         cash('#add-form').on('submit', function(e) {
             e.preventDefault();
             add();
         });
-
-        // Remove error on input change
-        cash('input, select, textarea').on('input change', function() {
-            cash(this).removeClass('border-theme-6');
-
-            let id = cash(this).attr('id');
-            if (id) {
-                cash(`#error-${id}`).html('');
-            }
-        });
-
     });
 </script>
+
+
 @endsection

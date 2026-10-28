@@ -321,9 +321,10 @@
 
                         {{-- Image --}}
                         <div class="input-form col-span-12 lg:col-span-6 px-2 py-1 mt-1">
-                            <label for="blog_image" class="form-label">
+                            <label for="blog_img" class="form-label">
                                 Blog Image <span class="required-mark" aria-hidden="true">*</span>
                             </label>
+
                             <input
                                 id="blog_img"
                                 type="file"
@@ -331,9 +332,19 @@
                                 accept="image/png, image/jpeg, image/jpg"
                                 class="form-control form__input"
                                 aria-required="true"
-                                aria-describedby="error-allowed_users hint-allowed_users">
-                            <p id="hint-blog_img" class="input-hint">Upload a Associated Image (JPG, PNG, JPEG). Max size: 2MB.</p>
-                            <div id="error-blog_img" class="login__input-error w-5/6 text-theme-6" role="alert" aria-live="polite"></div>
+                                aria-describedby="hint-blog_img error-blog_img">
+
+                            <p id="hint-blog_img" class="input-hint">
+                                Upload an associated image in JPG, JPEG, or PNG format.
+                                Maximum file size: 2MB.
+                                <strong style="color:red;">Required dimensions: 325 × 325 pixels.</strong>
+                                Images with different dimensions may not display properly.
+                            </p>
+
+                            <div id="error-blog_img"
+                                class="login__input-error w-5/6 text-theme-6"
+                                role="alert"
+                                aria-live="polite"></div>
                         </div>
 
                         {{-- Section: Permissions --}}
@@ -356,7 +367,7 @@
                                 </label>
                             </div>
 
-                           
+
 
                             <p id="hint-allowed" class="input-hint">Mark the Checkbox for Displaying Blog.</p>
                             <div id="error-allowed" class="login__input-error w-5/6 text-theme-6" role="alert" aria-live="polite"></div>
@@ -421,14 +432,24 @@
 @endsection
 
 @section('script')
+
 <script>
     cash(function() {
+        var REQUIRED_W = 325;
+        var REQUIRED_H = 325;
+        var MAX_FILE_SIZE = 2 * 1024 * 1024;
+        var isSubmitting = false;
 
-        // Status badge live preview
+        var form = document.getElementById('add-form');
+        var originalThumb = document.getElementById('current-img-thumb');
+        var originalThumbSrc = originalThumb ? originalThumb.src : null;
+
+        // Status badge preview
         cash('#status').on('change', function() {
-            var val = cash(this).val();
             var badge = document.getElementById('status-badge');
-            if (val === '1') {
+            if (!badge) return;
+
+            if (cash(this).val() === '1') {
                 badge.textContent = 'Active';
                 badge.className = 'status-preview active';
             } else {
@@ -437,98 +458,358 @@
             }
         });
 
-        async function add() {
+        function showError(id, message) {
+            var field = document.getElementById(id);
+            var error = document.getElementById('error-' + id);
 
-            // Reset all errors
-            cash('#add-form').find('input, select, textarea').removeClass('border-theme-6');
-            cash('#add-form').find('.login__input-error').html('');
-
-            // Reset TinyMCE border
-            if (typeof tinymce !== "undefined" && tinymce.get('description')) {
-                tinymce.get('description').getContainer().style.border = '';
+            if (field) {
+                field.classList.add('border-theme-6');
+                field.setAttribute('aria-invalid', 'true');
             }
 
-            var formData = new FormData(document.querySelector('#add-form'));
+            if (error) {
+                error.textContent = message;
+            }
 
-            cash('#btn-add')
-                .html('<i data-loading-icon="oval" data-color="white" class="w-4 h-4 mr-2"></i> Saving…')
-                .svgLoader();
-
-            cash('#btn-add').attr('disabled', 'true');
-
-            axios.post("{{ url('/admin/Blog/store') }}", formData)
-                .then(res => {
-                    showNotification('success', 'Success!', res.data.message);
-
-                    setTimeout(() => {
-                        window.location.href = "{{ url('/admin/Blog')}}";
-                    }, 1000);
-                })
-                .catch(err => {
-
-                    showNotification('error', 'Error!', err.response.data.message);
-
-                    cash('#btn-add').html(
-                        '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Add blog'
-                    );
-
-                    cash('#btn-add').removeAttr('disabled');
-
-                    if (err.response.data.errors) {
-
-                        for (const [key, val] of Object.entries(err.response.data.errors)) {
-
-                            let field = cash(`#${key}`);
-
-                           
-
-                            if (key === 'description') {
-                                field = cash('#description');
-
-                                if (typeof tinymce !== "undefined" && tinymce.get('description')) {
-                                    tinymce.get('description').getContainer().style.border = '1px solid #ef4444';
-                                }
-                            }
-
-                            if (key === 'blog_img') {
-                                field = cash('#blog_img');
-                            }
-
-                            // Add error class
-                            field.addClass('border-theme-6');
-
-                            // Show error message
-                            cash(`#error-${key}`).html(val);
-                        }
-
-                        // Scroll to first error
-                        var firstError = document.querySelector('.border-theme-6');
-                        if (firstError) {
-                            firstError.scrollIntoView({
-                                behavior: 'smooth',
-                                block: 'center'
-                            });
-                        }
-                    }
-                });
+            if (id === 'description' &&
+                typeof tinymce !== 'undefined' &&
+                tinymce.get('description')) {
+                tinymce.get('description').getContainer().style.border =
+                    '1px solid #ef4444';
+            }
         }
 
-        // Submit handler
+        function clearError(id) {
+            var field = document.getElementById(id);
+            var error = document.getElementById('error-' + id);
+
+            if (field) {
+                field.classList.remove('border-theme-6');
+                field.removeAttribute('aria-invalid');
+            }
+
+            if (error) {
+                error.textContent = '';
+            }
+
+            if (id === 'description' &&
+                typeof tinymce !== 'undefined' &&
+                tinymce.get('description')) {
+                tinymce.get('description').getContainer().style.border = '';
+            }
+        }
+
+        function clearAllErrors() {
+            form.querySelectorAll('.border-theme-6').forEach(function(field) {
+                field.classList.remove('border-theme-6');
+                field.removeAttribute('aria-invalid');
+            });
+
+            form.querySelectorAll('.login__input-error').forEach(function(error) {
+                error.textContent = '';
+            });
+
+            if (typeof tinymce !== 'undefined' &&
+                tinymce.get('description')) {
+                tinymce.get('description').getContainer().style.border = '';
+            }
+        }
+
+        function getDescription() {
+            if (typeof tinymce !== 'undefined' &&
+                tinymce.get('description')) {
+                return tinymce.get('description')
+                    .getContent({
+                        format: 'text'
+                    }).trim();
+            }
+
+            return document.getElementById('description').value.trim();
+        }
+
+        // Validate all non-image fields
+        function validateFields() {
+            var valid = true;
+            var title = document.getElementById('title');
+            var date = document.getElementById('publish_date');
+            var publisher = document.getElementById('publish_by');
+            var status = document.getElementById('status');
+            var description = getDescription();
+
+            clearError('title');
+            clearError('publish_date');
+            clearError('publish_by');
+            clearError('status');
+            clearError('description');
+
+            if (!title.value.trim()) {
+                showError('title', 'Please enter the blog title.');
+                valid = false;
+            }
+
+            var dateValue = date.value;
+            var parsedDate = dateValue ?
+                new Date(dateValue + 'T00:00:00Z') :
+                null;
+
+            if (!dateValue ||
+                !parsedDate ||
+                isNaN(parsedDate.getTime()) ||
+                parsedDate.toISOString().slice(0, 10) !== dateValue) {
+                showError('publish_date', 'Please select a valid published date.');
+                valid = false;
+            }
+
+            if (!publisher.value.trim()) {
+                showError('publish_by', 'Please enter the publisher name.');
+                valid = false;
+            }
+
+            if (!['0', '1'].includes(status.value)) {
+                showError('status', 'Please select a valid status.');
+                valid = false;
+            }
+
+            // Description is optional, but if entered must contain 2+ characters.
+            if (description.length === 1) {
+                showError(
+                    'description',
+                    'Description must contain at least 2 characters.'
+                );
+                valid = false;
+            }
+
+            return valid;
+        }
+
+        // Validate the selected image and dimensions
+        function validateImage(file) {
+            return new Promise(function(resolve) {
+                if (!file) {
+                    showError('blog_img', 'Please select a blog image.');
+                    resolve(false);
+                    return;
+                }
+
+                if (!['image/jpeg', 'image/png'].includes(file.type)) {
+                    showError(
+                        'blog_img',
+                        'Only JPG, JPEG, and PNG images are allowed.'
+                    );
+                    resolve(false);
+                    return;
+                }
+
+                if (file.size > MAX_FILE_SIZE) {
+                    showError('blog_img', 'Image size must not exceed 2MB.');
+                    resolve(false);
+                    return;
+                }
+
+                var objectUrl = URL.createObjectURL(file);
+                var img = new Image();
+
+                img.onload = function() {
+                    var width = img.naturalWidth;
+                    var height = img.naturalHeight;
+
+                    URL.revokeObjectURL(objectUrl);
+
+                    if (width !== REQUIRED_W || height !== REQUIRED_H) {
+                        showError(
+                            'blog_img',
+                            'Image must be exactly 325 × 325 pixels. ' +
+                            'Selected image: ' + width + ' × ' + height + ' pixels.'
+                        );
+                        resolve(false);
+                        return;
+                    }
+
+                    clearError('blog_img');
+                    resolve(true);
+                };
+
+                img.onerror = function() {
+                    URL.revokeObjectURL(objectUrl);
+                    showError(
+                        'blog_img',
+                        'Could not read this image. Please select a valid JPG or PNG.'
+                    );
+                    resolve(false);
+                };
+
+                img.src = objectUrl;
+            });
+        }
+
+        // Immediate image validation and preview on selection
+        cash('#blog_img').on('change', async function() {
+            var input = this;
+            var file = input.files[0];
+
+            clearError('blog_img');
+
+            if (!file) return;
+
+            var valid = await validateImage(file);
+
+            if (!valid) {
+                input.value = '';
+
+                if (originalThumb && originalThumbSrc) {
+                    originalThumb.src = originalThumbSrc;
+                }
+
+                return;
+            }
+
+            var thumb = document.getElementById('current-img-thumb');
+
+            if (thumb) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    thumb.src = e.target.result;
+                };
+
+                reader.readAsDataURL(file);
+            }
+        });
+
+        async function add() {
+            if (isSubmitting) return;
+
+            clearAllErrors();
+
+            if (!validateFields()) {
+                var firstInvalid = form.querySelector('[aria-invalid="true"]');
+
+                if (firstInvalid) {
+                    firstInvalid.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+                    firstInvalid.focus();
+                }
+
+                return;
+            }
+
+            isSubmitting = true;
+
+            var button = document.getElementById('btn-add');
+            var originalButtonHtml = button.innerHTML;
+
+            button.disabled = true;
+            button.innerHTML = 'Validating image…';
+
+            try {
+                var file = document.getElementById('blog_img').files[0];
+                var imageValid = await validateImage(file);
+
+                if (!imageValid) {
+                    document.getElementById('blog_img').value = '';
+
+                    if (originalThumb && originalThumbSrc) {
+                        originalThumb.src = originalThumbSrc;
+                    }
+
+                    document.getElementById('blog_img').focus();
+                    return;
+                }
+
+                // Sync TinyMCE content to its textarea before creating FormData.
+                if (typeof tinymce !== 'undefined') {
+                    tinymce.triggerSave();
+                }
+
+                // Revalidate fields in case values changed during image validation.
+                if (!validateFields()) {
+                    var invalid = form.querySelector('[aria-invalid="true"]');
+
+                    if (invalid) {
+                        invalid.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'center'
+                        });
+                        invalid.focus();
+                    }
+
+                    return;
+                }
+
+                var formData = new FormData(form);
+
+                button.innerHTML = 'Saving…';
+
+                var res = await axios.post(
+                    "{{ url('/admin/Blog/store') }}",
+                    formData
+                );
+
+                showNotification('success', 'Success!', res.data.message);
+
+                setTimeout(function() {
+                    window.location.href = "{{ url('/admin/Blog') }}";
+                }, 1000);
+
+            } catch (err) {
+                var response = err.response;
+                var data = response && response.data ? response.data : {};
+
+                showNotification(
+                    'error',
+                    'Error!',
+                    data.message || 'Unable to save the blog. Please try again.'
+                );
+
+                if (data.errors) {
+                    Object.entries(data.errors).forEach(function([key, messages]) {
+                        var message = Array.isArray(messages) ?
+                            messages[0] :
+                            messages;
+
+                        if (document.getElementById(key)) {
+                            showError(key, message);
+                        } else {
+                            var errorBox = document.getElementById('error-' + key);
+
+                            if (errorBox) {
+                                errorBox.textContent = message;
+                            }
+                        }
+                    });
+
+                    var firstError = form.querySelector('[aria-invalid="true"]');
+
+                    if (firstError) {
+                        firstError.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'center'
+                        });
+                        firstError.focus();
+                    }
+                }
+
+            } finally {
+                isSubmitting = false;
+                button.disabled = false;
+                button.innerHTML = originalButtonHtml;
+            }
+        }
+
+        // Clear an individual field's error as the user corrects it.
+        cash('#add-form input, #add-form select, #add-form textarea')
+            .on('input change', function() {
+                clearError(this.id);
+            });
+
+        // AJAX submission
         cash('#add-form').on('submit', function(e) {
             e.preventDefault();
             add();
         });
-
-        // Remove error on input change
-        cash('input, select, textarea').on('input change', function() {
-            cash(this).removeClass('border-theme-6');
-
-            let id = cash(this).attr('id');
-            if (id) {
-                cash(`#error-${id}`).html('');
-            }
-        });
-
     });
 </script>
+
 @endsection
