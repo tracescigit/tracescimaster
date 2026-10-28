@@ -300,7 +300,7 @@
           data-transform_in="y:[100%];opacity:0;s:800;"
           data-transform_out="opacity:0;s:300" ;>
           <span class="sl-italic" style='transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px; font-family: "Lora", serif;'>
-            Let us help you to authenticate and track your product
+            Print. Identify. Authenticate. Track. Trace.
           </span>
         </div>
         <!-- LAYER 2 -->
@@ -310,7 +310,7 @@
           data-transform_in="y:[100%];opacity:0;s:800;"
           data-transform_out="opacity:0;s:300" ;>
           <div class="text-center heading-rp-small" style="transition: none; line-height: 58px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 1px; font-weight: 800; font-size: 50px;">
-            SUPPLY CHAIN <span style="color:#7a0d7d;">TRACESCI</span> PLATFORM
+            Complete <span style="color:#7a0d7d;">Track &amp; Trace</span> Platform
           </div>
         </div>
         <!-- LAYER 3 -->
@@ -319,8 +319,8 @@
           data-start="2400" data-transform_in="y:[100%];opacity:0;s:800;"
           data-transform_out="opacity:0;s:300" ;>
           <div class="sl-italic sl-italic-2 text-center" style='transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px; font-family: "Lora", serif;'>
-            Our strategists will help you set an objective and choose your tools,<br>
-            developing a plan that is custom-built for your business.
+            From variable data printing to authentication and serialization,<br>
+            Tracesci gives every product a unique identity, traced end to end.
           </div>
         </div>
         <!-- LAYER 4 (Buttons) -->
@@ -396,7 +396,7 @@
       <!-- SLIDE 3 -->
       <li data-index="rs-3" data-transition="parallaxtoright" data-delay="6500">
         <!-- MAIN IMAGE -->
-        <img src="{{asset('dist/images/slide3.png')}}"
+        <img src="{{asset('dist/images/slide3.jpg')}}"
           class="rev-slidebg"
           data-bgposition="center center"
           data-bgfit="cover"
@@ -417,7 +417,7 @@
           data-start="1200" data-transform_in="y:[100%];opacity:0;s:800;"
           data-transform_out="opacity:0;s:300" ;>
           <span class="sl-italic" style='transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;font-family: "Lora", serif;'>
-            Multicolor Variable Data Printing. Exceptional results
+            Multicolor Variable Data Printing for 24×7 Production
           </span>
         </div>
         <!-- LAYER 2 -->
@@ -426,7 +426,7 @@
           data-start="1800" data-transform_in="y:[100%];opacity:0;s:800;"
           data-transform_out="opacity:0;s:300" ;>
           <div class="text-center heading-rp-small" style="transition: none; line-height: 58px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 1px; font-weight: 800; font-size: 50px;">
-            Highspeed <span style="color:#7a0d7d;">Inkject</span> Printing Solutions
+            High-Speed <span style="color:#7a0d7d;">Inkjet</span> Printing<br> Solutions
           </div>
         </div>
         <!-- LAYER 3 -->
@@ -435,8 +435,8 @@
           data-start="2400" data-transform_in="y:[100%];opacity:0;s:800;"
           data-transform_out="opacity:0;s:300" ;>
           <div class="sl-italic sl-italic-2 text-center" style='transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;font-family: "Lora", serif;'>
-            High-Speed Variable Data Printing for 24×7 Production<br>
-            developing a plan that is custom-built for your business.
+            Hyperloop, Elite 4 and Razor 6: high-speed variable data printing<br>
+            systems built for non-stop 24×7 production.
           </div>
         </div>
         <!-- LAYER 4 (Buttons) -->
@@ -991,10 +991,10 @@
 </div>
 @if(!empty($blogs) && count($blogs) > 0)
 <style>
-  /* ---- Blog section: plain grid, 4 cards per row (no slider) ---- */
+  /* ---- Blog section: 3 cards visible, arrows slide to the rest ---- */
   .solution-2-area .solution-2-content>.container {
     width: 100% !important;
-    max-width: 1300px;
+    max-width: 1150px;
     /* overall width: lower = smaller cards */
     padding-left: 20px;
     padding-right: 20px;
@@ -1002,7 +1002,7 @@
 
   .home-blog-carousel {
     position: relative;
-    --per-view: 4;
+    --per-view: 3;
     /* cards visible at once */
     --gap: 30px;
     /* space between cards */
@@ -1017,13 +1017,11 @@
     padding: 10px 2px 25px;
     /* room for the card shadow */
     scrollbar-width: none;
-    /* hide scrollbar (Firefox) */
     -ms-overflow-style: none;
   }
 
   .home-blog-grid::-webkit-scrollbar {
     display: none;
-    /* hide scrollbar (Chrome/Safari) */
   }
 
   .home-blog-grid>.solution-slider-content {
@@ -1031,12 +1029,6 @@
     scroll-snap-align: start;
     padding: 0 !important;
     margin: 0 !important;
-  }
-
-  @media (max-width: 1199px) {
-    .home-blog-carousel {
-      --per-view: 3;
-    }
   }
 
   @media (max-width: 991px) {
@@ -1090,10 +1082,6 @@
     right: -22px;
   }
 
-  .home-blog-next {
-    right: -22px;
-  }
-
   @media (max-width: 767px) {
     .home-blog-prev {
       left: 0;
@@ -1111,7 +1099,6 @@
     background: #fff;
     border-radius: 14px;
     padding: 12px;
-    /* space around the image */
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
@@ -1126,7 +1113,7 @@
     width: 100%;
     height: 0;
     padding-top: 100%;
-    /* 100% of the width = square */
+    /* square */
     overflow: hidden;
     border-radius: 10px;
   }
@@ -1138,7 +1125,6 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
-    /* fill the square, crop the overflow */
     object-position: center;
     display: block;
   }
@@ -1155,6 +1141,7 @@
     margin-top: auto;
   }
 </style>
+
 <section class="solution-2-area grey-bg">
   <div class="container">
     <div class="row">
@@ -1171,8 +1158,13 @@
       <div class="row">
         <div class="col-md-12">
           <div class="home-blog-carousel">
+
+            {{-- Arrows only appear when there are more than 3 blogs to show --}}
+            @if(min(count($blogs), 6) > 3)
             <button type="button" class="home-blog-nav home-blog-prev" aria-label="Previous blogs"><i class="fa fa-angle-left"></i></button>
             <button type="button" class="home-blog-nav home-blog-next" aria-label="Next blogs"><i class="fa fa-angle-right"></i></button>
+            @endif
+
             <div class="home-blog-grid">
               @foreach($blogs as $index => $blog)
               @if($index == 6)
@@ -1206,147 +1198,8 @@
 </section>
 @endif
 <!-- Testimonials -->
-{{--<div id="review" class="">
-<div class="testimonials bg-gradient">
-<div class="container">
-<div class="row">
-<div class="col-md-12 col-sm-12 col-xs-12">
-<div class="testimonial">
-<div id="testimonial_slide" class=" owl-carousel">
-<div class="testimonial-content">
-<div class="testimonial-profile">
-<img width="100" height="100" alt="testimonial" src="{{asset('web/images/150x150.jpg')}}" class="testimonial-img">
-</div>
-<h3 class="name"> Vikas Sethi</h3>
-<p class="job">Product manager, Agro Company</p>
-<div class="team_description">
-  <p>Easy onboarding process, no technical knowledge required and seamless integration is the highlights of th solution. Good work.</p>
-</div>
-</div>
-<div class="testimonial-content">
-  <div class="testimonial-profile">
-    <img width="100" height="100" alt="testimonial" src="{{asset('web/images/150x150.jpg')}}" class="testimonial-img">
-  </div>
-  <h3 class="name"> LyLy Parker</h3>
-  <p class="job">MD, Label Printer</p>
-  <div class="team_description">
-    <p>We usually asked by our client to provide track and trace solution with different use cases, TRACESCI works well with maximum scenario and thats the reason we recommend this..</p>
-  </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>--}}
-<!-- Get In Touch -->
-{{--<div id="get_in_touch" class="contact-box padding-content content-section">
-<div class="container">
-<div class="row">
-<div class="col-md-12 col-sm-12 col-xs-12">
-<div class="riven-heading text-center" data-sr="enter bottom wait 0.3s">
-<h2><span>Get In</span> Touch</h2>
-<p class="text">Feel free to discuss your project with us, we assure you best of support...</p>
-</div>
-</div>
-<div class="col-md-4 col-sm-4 col-xs-12">
-<div class="contact-info">
-<ul>
-<li class="icon_list_item">
-<div class="icon_list_icon">
-<h5><i class="fa fa-map-marker" aria-hidden="true"></i> Office </h5>
-</div>
-Tracesci Pvt Ltd.,<br>
-B-15, InfoCity Phase 1, Sector 34,<br>
-Gurugram-122001, Haryana, India
-</li>
-<li class="icon_list_item">
-<div class="icon_list_icon">
-<h5><i class="fa fa-phone" aria-hidden="true"></i> Phone</h5>
-</div>
-<a href="callto:+911244226771">+91-124-422-6771</a>
-</li>
-<li class="icon_list_item">
-<div class="icon_list_icon">
-<h5><i class="fa fa-envelope" aria-hidden="true"> </i> Email</h5>
-</div>
-<a href="mailto:wecare@tracesci.in">wecare@tracesci.in</a>
-</li>
-<li>
-<h5>Find us elsewhere</h5>
-<ul class="social-networks">
-<li class="social-fb first"><a href="https://www.facebook.com/jetsciglobal/"><i class="fa fa-facebook"></i></a></li>
-<li class="social-linkedin"><a href="https://www.linkedin.com/company/jetsciglobal"><i class="fa fa-linkedin"></i></a></li>
-<li class="social-youtube"><a href="https://www.youtube.com/channel/UCDnSaAwRgBssFuTUX_2iCJw"><i class="fa fa-youtube-play"></i></a></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-<div class="col-md-8 col-sm-8 col-xs-12">
-<div class="wpcf7">
-<form id="#contact_form" class="wpcf7-form">
-@csrf
-<div class="contact-form">
-<p class="inner-input mb-0">
-<label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-Name
-</label>
-<span class="your-name"><input type="text" id="name" class="contact__input" name="name" required></span>
-<div id="error-name" class="text-danger contact__input-error mb-3"></div>
-</p>
-<p class="inner-input mb-0">
-<label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-email">
-Email
-</label>
-<span class="your-email"><input type="email" id="email" class="contact__input" name="email" required></span>
-<div id="error-email" class="text-danger contact__input-error mb-3"></div>
-</p>
 
-<p class="inner-input mb-0">
-<label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-mobile">
-Mobile
-</label>
-<span class="your-mobile"><input type="text" id="mobile" class="contact__input" name="mobile" required></span>
-<div id="error-mobile" class="text-danger contact__input-error mb-3"></div>
-</p>
-<p class="inner-input mb-0">
-<label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-message">
-Message
-</label>
-<span class="textarea"><textarea id="message" class="area contact__input" name="message" required></textarea></span>
-<div id="error-message" class="text-danger contact__input-error mb-3"></div>
-</p>
-<p class="contact-submit"><button id="btn-contact" type="button" class="btn btn-default button" data-loading-text="Loading...">Submit</button></p>
-</div>
-</form>
-<div class="alert alert-warning hidden" id="contactwait">
-<strong>Please Wait!</strong>
-</div>
-<div class="alert alert-success hidden" id="contactSuccess">
-<strong>Success!</strong> Your message has been sent to us.
-</div>
-<div class="alert alert-error p-0 hidden" id="contactError">
-<strong>Error!</strong> There was an error sending your message.
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="spacer-90"></div>
-</div>
 
-<!-- Map -->
-<div class="map-info map-contact">
-<div class="container-fluid no-padding">
-<div class="row">
-<div class="col-md-12 col-xs-12 col-sm-12">
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3508.631880488345!2d77.01043561507808!3d28.430362582498017!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d181b33427c19%3A0x1d7f2dae6742eec3!2sJETSCI%C2%AE%20Global!5e0!3m2!1sen!2sin!4v1625823933261!5m2!1sen!2sin" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-</div>
-</div>
-</div>
-</div>--}}
 <x-notification></x-notification>
 </div>
 </div>
@@ -1407,22 +1260,22 @@ Message
     revapi = jQuery("#slider1").show().revolution({
       sliderType: "standard",
       sliderLayout: "fullscreen",
-      delay: 999999999, // ⛔ disable auto sliding
+      delay: 300, // 2 seconds per slide
       navigation: {
+        onHoverStop: "off", // keep sliding even while the mouse is over it
         arrows: {
           enable: true,
           style: "uranus",
           hide_onleave: false
         }
       },
-      stopLoop: "on",
-      stopAfterLoops: 0,
-      stopAtSlide: 1,
+      stopLoop: "off", // keep looping forever
+      stopAfterLoops: -1,
+      stopAtSlide: -1,
       disableProgressBar: "on",
       fullScreenOffsetContainer: "" // add header selector if needed
     });
-    // ✅ extra safety: pause autoplay
-    revapi.revpause();
+    // removed: revapi.revpause();
   });
 </script>
 
@@ -1432,42 +1285,64 @@ Message
     function initBlogCarousel() {
       var wrap = document.querySelector('.home-blog-carousel');
       if (!wrap) return;
+
       var track = wrap.querySelector('.home-blog-grid');
       var prev = wrap.querySelector('.home-blog-prev');
       var next = wrap.querySelector('.home-blog-next');
 
+      // Arrows are not rendered when there are 3 or fewer blogs, so stop safely
+      if (!track || !prev || !next) return;
+
+      // Scroll distance = one card + the gap
       function step() {
         var card = track.querySelector('.solution-slider-content');
         if (!card) return track.clientWidth;
-        var gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap) || 0;
+        var styles = getComputedStyle(track);
+        var gap = parseFloat(styles.columnGap || styles.gap) || 0;
         return card.getBoundingClientRect().width + gap;
       }
 
+      // Disable arrows at the ends, hide them if all cards already fit
       function updateArrows() {
         var max = track.scrollWidth - track.clientWidth - 2;
         prev.disabled = track.scrollLeft <= 2;
         next.disabled = track.scrollLeft >= max;
-        var hide = track.scrollWidth <= track.clientWidth + 2; // all cards fit: no arrows
+
+        var hide = track.scrollWidth <= track.clientWidth + 2;
         prev.style.display = next.style.display = hide ? 'none' : '';
       }
+
       prev.addEventListener('click', function() {
         track.scrollBy({
           left: -step(),
           behavior: 'smooth'
         });
       });
+
       next.addEventListener('click', function() {
         track.scrollBy({
           left: step(),
           behavior: 'smooth'
         });
       });
+
       track.addEventListener('scroll', updateArrows, {
         passive: true
       });
-      window.addEventListener('resize', updateArrows);
+
+      // Recalculate after a resize (debounced so it doesn't run on every pixel)
+      var resizeTimer;
+      window.addEventListener('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(updateArrows, 100);
+      });
+
+      // Images load after the page, which can change the width, so check again
+      window.addEventListener('load', updateArrows);
+
       updateArrows();
     }
+
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', initBlogCarousel);
     } else {

@@ -358,10 +358,13 @@
                                 accept="image/png, image/jpeg, image/jpg"
                                 class="form-control form__input"
                                 aria-describedby="error-event_img hint-event_img">
-                            <p id="hint-event_img" class="input-hint">Upload a new image to replace the current one (JPG, PNG, JPEG). Max size: 2MB. Leave blank to keep existing.</p>
+                            <p id="hint-event_img" class="input-hint">
+                                Upload a new image to replace the current one (JPG, PNG, JPEG). Max size: 2MB. Leave blank to keep existing.
+                                <strong style="color:red;">Image dimensions must be exactly (455px × 215px)</strong>, otherwise the image will not be displayed properly on the homepage.
+                            </p>
 
                             {{-- Current Image Preview --}}
-                            @if($event->image_path) 
+                            @if($event->image_path)
                             <div class="current-image-preview">
                                 <img
                                     src="{{ asset('storage/' . $event->image_path) }}"
@@ -463,6 +466,9 @@
 <script>
     cash(function() {
 
+        var REQUIRED_W = 455;
+        var REQUIRED_H = 215;
+
         // Status badge live preview
         cash('#status').on('change', function() {
             var val = cash(this).val();
@@ -476,19 +482,60 @@
             }
         });
 
-        // Live image preview on new file selection
+        // Remember the original image so we can restore it if a bad file is picked
+        var thumbEl = document.getElementById('current-img-thumb');
+        var originalThumbSrc = thumbEl ? thumbEl.src : null;
+
+        // Image validation (455 × 215 px) + live preview on new file selection
         cash('#event_img').on('change', function() {
-            var file = this.files[0];
+            var input = this;
+            var file = input.files[0];
+            var errBox = document.getElementById('error-event_img');
+
             if (!file) return;
 
-            var thumb = document.getElementById('current-img-thumb');
-            if (thumb) {
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    thumb.src = e.target.result;
-                };
-                reader.readAsDataURL(file);
-            }
+            var objectUrl = URL.createObjectURL(file);
+            var img = new Image();
+
+            img.onload = function() {
+                URL.revokeObjectURL(objectUrl);
+
+                if (img.width !== REQUIRED_W || img.height !== REQUIRED_H) {
+                    // Invalid size: show error, clear the file, restore the old preview
+                    errBox.textContent = 'Image must be exactly ' + REQUIRED_W + ' × ' + REQUIRED_H +
+                        ' px (uploaded: ' + img.width + ' × ' + img.height + ' px).';
+                    cash(input).addClass('border-theme-6');
+                    input.value = '';
+
+                    var thumb = document.getElementById('current-img-thumb');
+                    if (thumb && originalThumbSrc) {
+                        thumb.src = originalThumbSrc;
+                    }
+                    return;
+                }
+
+                // Valid size: clear any error and show the live preview
+                errBox.textContent = '';
+                cash(input).removeClass('border-theme-6');
+
+                var thumb = document.getElementById('current-img-thumb');
+                if (thumb) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        thumb.src = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            };
+
+            img.onerror = function() {
+                URL.revokeObjectURL(objectUrl);
+                errBox.textContent = 'Could not read this image. Please choose a valid JPG or PNG file.';
+                cash(input).addClass('border-theme-6');
+                input.value = '';
+            };
+
+            img.src = objectUrl;
         });
 
         async function update() {

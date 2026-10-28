@@ -294,7 +294,7 @@
                         {{-- City --}}
                         <div class="input-form col-span-12 lg:col-span-6 px-2 py-1 mt-1">
                             <label for="city" class="form-label">
-                              Event City <span class="required-mark" aria-hidden="true">*</span>
+                                Event City <span class="required-mark" aria-hidden="true">*</span>
                             </label>
                             <input
                                 id="city"
@@ -322,7 +322,10 @@
                                 class="form-control form__input"
                                 aria-required="true"
                                 aria-describedby="error-event_img hint-event_img">
-                            <p id="hint-event_img" class="input-hint">Upload an Associated Image (JPG, PNG, JPEG). Max size: 2MB.</p>
+                            <p id="hint-event_img" class="input-hint">
+                                Upload an associated image (JPG, PNG, JPEG). Max size: 2MB.
+                                <strong style="color:red;">Image dimensions must be exactly (455px × 215px)</strong>, otherwise the image will not be displayed properly on the homepage.
+                            </p>
                             <div id="error-event_img" class="login__input-error w-5/6 text-theme-6" role="alert" aria-live="polite"></div>
                         </div>
 

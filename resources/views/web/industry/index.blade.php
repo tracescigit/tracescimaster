@@ -507,7 +507,7 @@
                     data-start="1200" data-transform_in="y:[100%];opacity:0;s:800;"
                     data-transform_out="opacity:0;s:300">
                     <span style='transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 200; font-size: 17px; font-family: "Lora", serif;'>
-                        Print. Identify. Authenticate. Track. Trace.
+                        Inkjet Printing. Traceability Software. One Partner.
                     </span>
                 </div>
 
@@ -516,7 +516,7 @@
                     data-start="1800" data-transform_in="y:[100%];opacity:0;s:800;"
                     data-transform_out="opacity:0;s:300">
                     <div class="text-center heading-rp-small" style="transition: none; line-height: 58px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 1px; font-weight: 800; font-size: 50px;">
-                        Industry-Specific Traceability Solutions
+                        Expertise from Printing to Traceability
                     </div>
                 </div>
 
@@ -525,9 +525,71 @@
                     data-start="2400" data-transform_in="y:[100%];opacity:0;s:800;"
                     data-transform_out="opacity:0;s:300">
                     <div class="text-center" style='transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 200; font-size: 17px; font-family: "Lora", serif;'>
-                        From Variable Data Printing to Product Authentication and Track &amp; Trace —<br>
-                        applications built around the way your industry makes and ships products.
+                        Software and inkjet printing expertise, built around how your industry works.<br>
+                        Here are some of the industries we serve:
                     </div>
+                </div>
+
+                {{-- Industry quick links --}}
+                <div class="tp-caption tp-resizeme"
+                    data-x="center" data-y="top"
+                    data-voffset="['410','410','400','380']"
+                    data-width="['900','720','480','300']"
+                    data-height="auto"
+                    data-whitespace="normal"
+                    data-start="3000"
+                    data-transform_in="y:[100%];opacity:0;s:800;"
+                    data-transform_out="opacity:0;s:300"
+                    data-responsive_offset="on">
+                    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:12px;">
+
+                        <a href="#wood"
+                            style="display:inline-block; padding:9px 26px; border:1.5px solid #000; border-radius:0; background:#fff; color:#000; font-size:15px; font-weight:700; letter-spacing:.5px; text-decoration:none; transition:background .25s, color .25s, transform .25s;"
+                            onmouseover="this.style.background='#000'; this.style.color='#fff'; this.style.transform='translateY(-2px)';"
+                            onmouseout="this.style.background='#fff'; this.style.color='#000'; this.style.transform='none';">Wood</a>
+
+                        <a href="#pharmaceutical"
+                            style="display:inline-block; padding:9px 26px; border:1.5px solid #000; border-radius:0; background:#fff; color:#000; font-size:15px; font-weight:700; letter-spacing:.5px; text-decoration:none; transition:background .25s, color .25s, transform .25s;"
+                            onmouseover="this.style.background='#000'; this.style.color='#fff'; this.style.transform='translateY(-2px)';"
+                            onmouseout="this.style.background='#fff'; this.style.color='#000'; this.style.transform='none';">Pharma</a>
+
+                        <a href="#foam"
+                            style="display:inline-block; padding:9px 26px; border:1.5px solid #000; border-radius:0; background:#fff; color:#000; font-size:15px; font-weight:700; letter-spacing:.5px; text-decoration:none; transition:background .25s, color .25s, transform .25s;"
+                            onmouseover="this.style.background='#000'; this.style.color='#fff'; this.style.transform='translateY(-2px)';"
+                            onmouseout="this.style.background='#fff'; this.style.color='#000'; this.style.transform='none';">Foam</a>
+
+                        <a href="#other-industries"
+                            style="display:inline-block; padding:9px 26px; border:1.5px solid #000; border-radius:0; background:#fff; color:#000; font-size:15px; font-weight:700; letter-spacing:.5px; text-decoration:none; transition:background .25s, color .25s, transform .25s;"
+                            onmouseover="this.style.background='#000'; this.style.color='#fff'; this.style.transform='translateY(-2px)';"
+                            onmouseout="this.style.background='#fff'; this.style.color='#000'; this.style.transform='none';">Custom</a>
+
+                    </div>
+                </div>
+
+                {{-- Explore more + down arrow --}}
+                <div class="tp-caption tp-resizeme"
+                    data-x="center" data-y="top"
+                    data-voffset="['490','490','480','450']"
+                    data-width="auto" data-height="auto"
+                    data-start="3600"
+                    data-transform_in="y:[100%];opacity:0;s:800;"
+                    data-transform_out="opacity:0;s:300"
+                    data-responsive_offset="on">
+                    <a href="#overview" id="hero-explore"
+                        style="display:inline-flex; flex-direction:column; align-items:center; color:#222; font-size:15px; font-weight:700; letter-spacing:1px; text-transform:uppercase; text-decoration:none;"
+                        onmouseover="this.style.color='#7a0d7d';"
+                        onmouseout="this.style.color='#222';">
+                        <span>Explore more</span>
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7a0d7d" stroke-width="2.5"
+                            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-top:6px;">
+                            <g>
+                                <animateTransform attributeName="transform" type="translate"
+                                    values="0 0; 0 4; 0 0" dur="1.4s" repeatCount="indefinite" />
+                                <path d="M12 3v14" />
+                                <polyline points="19 11 12 18 5 11" />
+                            </g>
+                        </svg>
+                    </a>
                 </div>
 
             </li>
@@ -984,6 +1046,14 @@
             fullScreenOffsetContainer: ""
         });
         revapi.revpause();
+    });
+</script>
+<script>
+    document.getElementById('hero-explore').addEventListener('click', function(e) {
+        e.preventDefault();
+        document.getElementById('overview').scrollIntoView({
+            behavior: 'smooth'
+        });
     });
 </script>
 @endsection
