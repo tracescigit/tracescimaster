@@ -150,21 +150,7 @@
     margin: 0;
   }
 
-  .industries-text {
-    display: inline-block;
-    padding: 10px 30px;
-    font-size: 14px;
-    line-height: 1.4em;
-    text-transform: capitalize;
-    color: #fff !important;
-    background-color: #343434;
-    border: 1px solid #343434;
-    border-radius: 0.375rem;
-    margin: 0;
-    position: relative;
-    z-index: 15;
-    font-weight: 500;
-  }
+
 
   @media (max-width: 991px) {
     .trace-process-section {
@@ -431,7 +417,7 @@
           data-start="1200" data-transform_in="y:[100%];opacity:0;s:800;"
           data-transform_out="opacity:0;s:300" ;>
           <span class="sl-italic" style='transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;font-family: "Lora", serif;'>
-            Informed decisions. Exceptional results
+            Multicolor Variable Data Printing. Exceptional results
           </span>
         </div>
         <!-- LAYER 2 -->
@@ -440,7 +426,7 @@
           data-start="1800" data-transform_in="y:[100%];opacity:0;s:800;"
           data-transform_out="opacity:0;s:300" ;>
           <div class="text-center heading-rp-small" style="transition: none; line-height: 58px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 1px; font-weight: 800; font-size: 50px;">
-            Turn <span style="color:#7a0d7d;">Consumers</span> to Brand Protectors
+            Highspeed <span style="color:#7a0d7d;">Inkject</span> Printing Solutions
           </div>
         </div>
         <!-- LAYER 3 -->
@@ -449,7 +435,7 @@
           data-start="2400" data-transform_in="y:[100%];opacity:0;s:800;"
           data-transform_out="opacity:0;s:300" ;>
           <div class="sl-italic sl-italic-2 text-center" style='transition: none; line-height: 28px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 17px;font-family: "Lora", serif;'>
-            Our strategists will help you set an objective and choose your tools,<br>
+            High-Speed Variable Data Printing for 24×7 Production<br>
             developing a plan that is custom-built for your business.
           </div>
         </div>
@@ -459,8 +445,8 @@
           data-start="2800" data-transform_in="y:[100%];opacity:0;s:800;"
           data-transform_out="opacity:0;s:300" ;>
           <div class="rev-slider-btn text-center">
-            <a href="{{ url(Auth::check()?myDashboard():'/login') }}">Login</a>
-            <a href="{{ url(Auth::check()?myDashboard():'/register') }}">Register</a>
+            <!-- <a href="{{ url(Auth::check()?myDashboard():'/login') }}">Login</a> -->
+            <a href="{{ url(Auth::check()?myDashboard():'/demo-scheduling') }}">Schedule a Demo</a>
           </div>
         </div>
       </li>
@@ -532,22 +518,26 @@
     </div>
   </div>
   <!-- refresh-phone -->
-  <div id="application" class="refresh-phone padding-content">
+  <div id="printing-systems" class="refresh-phone padding-content">
     <div class="container">
       <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
           <div class="title-block">
             <div class="riven-heading text-center" data-sr="enter top wait 0.3s">
               <h2>
-                Powered by <span style="color:#7a0d7d" ;>Block Chain</span> Authentic, safe and connected
+                High-Speed Variable Data Printing for <span style="color:#7a0d7d">24×7 Production</span>
               </h2>
             </div>
           </div>
           <div class="refresh-phone-content">
             <div class="text-desc">
-              <p class="text-center">The SaaS platform provides brand owners deep consumer and supply chain insights regarding their products like <br>real-time GPS location, scanning pattern and suspicious activity alerts.<br>It will help to get actionable product data for strategic decision-making and operational excellence.</p>
+              <p class="text-center">Multicolor variable data printing and automated digital slitting at up to 200 m/min (subject to substrate type), <br>with 100% online inspection at up to 250 m/min that detects scratches, stains, de-ink, foreign particles, colour deviations and logo errors.<br>UV-curable and aqueous ink systems, resolutions of 600×600 and 600×300 dpi and more, with easy operation and quick ROI.</p>
             </div>
-            <p class="industries-text">Industries we cater</p>
+            <div style="display:flex; align-items:center; justify-content:center; gap:16px;">
+              <span style="display:block; width:56px; height:2px; background:#000000;"></span>
+              <p style="margin:0; font-size:14px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:#7a0d7d;">Our Printing Systems</p>
+              <span style="display:block; width:56px; height:2px; background:#000000;"></span>
+            </div>
           </div>
           <div class="spacer-100"></div>
         </div>
@@ -555,54 +545,52 @@
     </div>
     <div class="container">
       <div class="row">
-        <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 0.3s">
+
+        <!-- HYPERLOOP -->
+        <div class="col-md-4 col-sm-4 col-xs-12 mb-4" data-sr="enter left and move 20px wait 0.3s">
           <div class="thumbnail-game text-center">
-            <img height="150" src="{{asset('dist/images/apprels.webp')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
+            <a href="{{ route('product-hyperloop') }}">
+              <img height="200" style="object-fit:cover;" src="{{asset('dist/images/hyperloop_mobile_banner.png')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="Hyperloop high-speed inkjet printing system" />
+            </a>
           </div>
           <div class="desc text-center">
-            <h3>Apparel</h3>
+            <h2>Hyperloop</h2>
+            <p style="color:#7a0d7d; font-weight:600; margin:6px 0 8px;">Slit. Inspect. Print. All in one loop.</p>
+            <p style="color:#555; font-size:14px; line-height:1.7; margin:0 0 10px;">Automated digital slitting, 100% online inspection and variable data printing in a single pass. Reads 1D, 2D, QR and security codes with OCR and ICV verification, generating inspection reports automatically.</p>
+            <a href="{{ route('product-hyperloop') }}" style="color:#7a0d7d; font-weight:700; font-size:14px;">Know more &rarr;</a>
           </div>
         </div>
-        <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 0.6s">
+
+        <!-- ELITE 4 -->
+        <div class="col-md-4 col-sm-4 col-xs-12 mb-4" data-sr="enter left and move 20px wait 0.6s">
           <div class="thumbnail-game text-center">
-            <img height="150" src="{{asset('dist/images/food.webp')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
+            <a href="{{ route('product-elite4') }}">
+              <img height="200" style="object-fit:cover;" src="{{asset('dist/images/elite4_section.webp')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="Elite 4 high-speed inkjet printing system" />
+            </a>
           </div>
           <div class="desc text-center">
-            <h3>Food</h3>
+            <h2>Elite 4</h2>
+            <p style="color:#7a0d7d; font-weight:600; margin:6px 0 8px;">High-speed inkjet for 24×7 production.</p>
+            <p style="color:#555; font-size:14px; line-height:1.7; margin:0 0 10px;">Multicolor high-speed variable data printing built for non-stop 24×7 production, running at up to 200 m/min depending on the substrate type. Dependable, consistent output with easy operation and quick ROI.</p>
+            <a href="{{ route('product-elite4') }}" style="color:#7a0d7d; font-weight:700; font-size:14px;">Know more &rarr;</a>
           </div>
         </div>
-        <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 0.9s">
+
+        <!-- RAZOR 6 -->
+        <div class="col-md-4 col-sm-4 col-xs-12 mb-4" data-sr="enter left and move 20px wait 0.9s">
           <div class="thumbnail-game text-center">
-            <img height="150" src="{{asset('dist/images/automobile.webp')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
+            <a href="{{ route('product-razor6') }}">
+              <img height="200" style="object-fit:cover;" src="{{asset('dist/images/Razor6_small5.webp')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="Razor 6 high-speed inkjet printing system" />
+            </a>
           </div>
           <div class="desc text-center">
-            <h3>Automobile</h3>
+            <h2>Razor 6</h2>
+            <p style="color:#7a0d7d; font-weight:600; margin:6px 0 8px;">Sharp, high-resolution variable data printing.</p>
+            <p style="color:#555; font-size:14px; line-height:1.7; margin:0 0 10px;">UV-curable and aqueous ink systems deliver high-speed printing at 600×600 and 600×300 dpi and more, with sharp, consistent print quality. Simple to operate, with a quick return on your investment.</p>
+            <a href="{{ route('product-razor6') }}" style="color:#7a0d7d; font-weight:700; font-size:14px;">Know more &rarr;</a>
           </div>
         </div>
-        <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 1.2s">
-          <div class="thumbnail-game text-center">
-            <img height="150" src="{{asset('dist/images/tobacco.webp')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
-          </div>
-          <div class="desc text-center">
-            <h3>Tobacco</h3>
-          </div>
-        </div>
-        <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 0.9s">
-          <div class="thumbnail-game text-center">
-            <img height="150" src="{{asset('dist/images/medicine.webp')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
-          </div>
-          <div class="desc text-center">
-            <h3>Pharma</h3>
-          </div>
-        </div>
-        <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 1.2s">
-          <div class="thumbnail-game text-center">
-            <img height="150" src="{{asset('dist/images/drink.webp')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
-          </div>
-          <div class="desc text-center">
-            <h3>Beverages</h3>
-          </div>
-        </div>
+
       </div>
     </div>
     <div class="spacer-100"></div>
@@ -925,6 +913,81 @@
   @endif
   <div class="spacer-100"></div>
 </div>
+</div>
+<div id="application" class="refresh-phone padding-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="title-block">
+          <div class="riven-heading text-center" data-sr="enter top wait 0.3s">
+            <h2>
+              Powered by <span style="color:#7a0d7d" ;>Block Chain</span> Authentic, safe and connected
+            </h2>
+          </div>
+        </div>
+        <div class="refresh-phone-content">
+          <div class="text-desc">
+            <p class="text-center">The SaaS platform provides brand owners deep consumer and supply chain insights regarding their products like <br>real-time GPS location, scanning pattern and suspicious activity alerts.<br>It will help to get actionable product data for strategic decision-making and operational excellence.</p>
+          </div>
+          <p class="industries-text">Industries we cater</p>
+        </div>
+        <div class="spacer-100"></div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 0.3s">
+        <div class="thumbnail-game text-center">
+          <img height="150" src="{{asset('dist/images/apprels.webp')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
+        </div>
+        <div class="desc text-center">
+          <h3>Apparel</h3>
+        </div>
+      </div>
+      <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 0.6s">
+        <div class="thumbnail-game text-center">
+          <img height="150" src="{{asset('dist/images/food.webp')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
+        </div>
+        <div class="desc text-center">
+          <h3>Food</h3>
+        </div>
+      </div>
+      <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 0.9s">
+        <div class="thumbnail-game text-center">
+          <img height="150" src="{{asset('dist/images/automobile.webp')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
+        </div>
+        <div class="desc text-center">
+          <h3>Automobile</h3>
+        </div>
+      </div>
+      <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 1.2s">
+        <div class="thumbnail-game text-center">
+          <img height="150" src="{{asset('dist/images/tobacco.webp')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
+        </div>
+        <div class="desc text-center">
+          <h3>Tobacco</h3>
+        </div>
+      </div>
+      <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 0.9s">
+        <div class="thumbnail-game text-center">
+          <img height="150" src="{{asset('dist/images/medicine.webp')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
+        </div>
+        <div class="desc text-center">
+          <h3>Pharma</h3>
+        </div>
+      </div>
+      <div class="col-md-2 col-sm-2 col-xs-6 mb-4" data-sr="enter left and move 20px wait 1.2s">
+        <div class="thumbnail-game text-center">
+          <img height="150" src="{{asset('dist/images/drink.webp')}}" class="attachment-post-thumbnail size-post-thumbnail w-100 wp-post-image" alt="character-3" />
+        </div>
+        <div class="desc text-center">
+          <h3>Beverages</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="spacer-100"></div>
 </div>
 @if(!empty($blogs) && count($blogs) > 0)
 <style>

@@ -112,10 +112,31 @@
             <a href="{{ url('/about') }}">About</a>
           </li>
 
-          <li class="{{ request()->is('Industries') ? 'active' : '' }}">
+          <!-- <li class="{{ request()->is('Industries') ? 'active' : '' }}">
             <a href="{{ route('industry') }}">Industry</a>
+          </li> -->
+          <li class="{{ request()->routeIs('industry') ? 'active' : '' }}">
+            <a href="{{ route('industry') }}">Industry</a>
+            <ul class="dropdown">
+              <li>
+                <a href="{{ route('industry') }}#wood">Wood &amp; Interior</a>
+              </li>
+              <li>
+                <a href="{{ route('industry') }}#pharmaceutical">Pharmaceutical</a>
+              </li>
+              <li>
+                <a href="{{ route('industry') }}#foam">Foam &amp; Industrial</a>
+              </li>
+              <li>
+                <a href="{{ route('industry') }}#other-industries">Other Industries</a>
+              </li>
+            </ul>
           </li>
-          
+
+
+
+
+
           <li class="{{ request()->is('solutions/*') || request()->is('product/*') ? 'active' : '' }}">
             <a>Solutions</a>
             <ul class="dropdown">
