@@ -102,7 +102,9 @@
 		print: false,
 		download: false,
 		collapsed:true,
-	},{
+	},
+	@if(hasRoutePermission('admin-create-plans', Auth::id()) || hasRoutePermission('admin-edit-plans', Auth::id())) {
+		{
 		title: "ACTIONS",
 		minWidth: 180,
 		field: "actions",
@@ -114,7 +116,8 @@
 		formatter: function formatter(cell, formatterParams) {
 			return cell.getData().actions;
 		}
-	},{
+	},
+	@endif{
 		title: "PLAN TITLE",
 		minWidth: 200,
 		responsive: 0,

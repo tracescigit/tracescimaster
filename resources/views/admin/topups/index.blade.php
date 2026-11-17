@@ -102,7 +102,7 @@
 		print: false,
 		download: false,
 		collapsed:true,
-	},	{
+	},	@if(hasRoutePermission('admin-create-topups', Auth::id()) || hasRoutePermission('admin-edit-topups', Auth::id())) {{
 		title: "ACTIONS",
 		minWidth: 180	,
 		field: "actions",
@@ -114,7 +114,7 @@
 		formatter: function formatter(cell, formatterParams) {
 			return cell.getData().actions;
 		}
-	},{
+	},@endif{
 		title: "TOPUP TITLE",
 		minWidth: 180,
 		responsive: 0,

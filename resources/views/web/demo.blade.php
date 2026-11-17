@@ -724,11 +724,12 @@
         .page-footer a:hover {
             color: #7a0d7d;
         }
+        
     </style>
 </head>
 
 <body>
-    <section class="page-title-area blog-standard2-area">
+    <section class="page-title-area blog-standard-area">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-center">

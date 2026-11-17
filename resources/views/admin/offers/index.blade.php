@@ -96,7 +96,7 @@
 		print: false,
 		download: false,
 		collapsed:true,
-	},{
+	},@if(hasRoutePermission('admin-create-offers', Auth::id()) || hasRoutePermission('admin-edit-offers', Auth::id())) {{
 		title: "ACTIONS",
 		maxWidth: 160,
 		field: "actions",
@@ -108,7 +108,7 @@
 		formatter: function formatter(cell, formatterParams) {
 			return cell.getData().actions;
 		}
-	},{
+	},@endif{
 		title: "OFFER TITLE",
 		minWidth: 200,
 		responsive: 0,

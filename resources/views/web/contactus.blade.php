@@ -95,7 +95,7 @@
             </div>
             <div class="col-md-8 col-sm-8 col-xs-12">
                 <div class="wpcf7">
-                    <form id="#contact_form" class="wpcf7-form">
+                    <form id="contact_form" class="wpcf7-form">
                         @csrf
                         <div class="contact-form">
                             <p class="inner-input mb-0">
@@ -327,54 +327,52 @@
 
         async function contact() {
 
-            cash('.contact__input').removeClass('border-theme-6')
-            cash('.contact__input-error').html('')
-            cash('#contactError').addClass('hidden')
-            cash('#error-captcha').html('')
+            cash('.contact__input').removeClass('border-theme-6');
+            cash('.contact__input-error').html('');
+            cash('#contactError').addClass('hidden');
+            cash('#error-captcha').html('');
 
-            let name = cash('#name').val()
-            let email = cash('#email').val()
-            let mobile = cash('#mobile').val()
-            let message = cash('#message').val()
+            let name = cash('#name').val();
+            let email = cash('#email').val();
+            let mobile = cash('#mobile').val();
+            let message = cash('#message').val();
 
+            // Get a fresh CAPTCHA response
             let captcha = grecaptcha.getResponse();
 
             if (!captcha) {
-                cash('#error-captcha')
-                    .html('Please verify that you are not a robot.')
-
-                return false
+                cash('#error-captcha').html(
+                    'Please verify that you are not a robot.'
+                );
+                return;
             }
 
-            cash('#contactwait').removeClass('hidden')
+            cash('#contactwait').removeClass('hidden');
+            cash('#btn-contact').prop('disabled', true);
 
-            axios.post("{{url('send_inquiry')}}", {
-                name: name,
-                email: email,
-                mobile: mobile,
-                message: message,
-                'g-recaptcha-response': captcha
-            }).then(res => {
+            try {
 
-                grecaptcha.reset()
+                const res = await axios.post("{{ url('send_inquiry') }}", {
+                    name,
+                    email,
+                    mobile,
+                    message,
+                    'g-recaptcha-response': captcha
+                });
 
-                cash('#contactSuccess').removeClass('hidden')
-                cash('#contactError').addClass('hidden')
-                cash('#contactwait').addClass('hidden')
+                cash('#contactSuccess').removeClass('hidden');
+                cash('#contactError').addClass('hidden');
 
                 setTimeout(() => {
-                    window.location.reload()
-                }, 3000)
+                    window.location.reload();
+                }, 3000);
 
-            }).catch(err => {
+            } catch (err) {
 
-                grecaptcha.reset()
+                grecaptcha.reset();
 
-                cash('#contactError').removeClass('hidden')
-                cash('#contactSuccess').addClass('hidden')
-                cash('#contactwait').addClass('hidden')
-
-                cash('#btn-contact').html('Submit')
+                cash('#contactError').removeClass('hidden');
+                cash('#contactSuccess').addClass('hidden');
 
                 if (err.response?.data?.errors) {
 
@@ -382,12 +380,21 @@
                             err.response.data.errors
                         )) {
 
-                        cash(`#${key}`).addClass('border-theme-6')
-
-                        cash(`#error-${key}`).html(val)
+                        if (key === 'g-recaptcha-response') {
+                            cash('#error-captcha').html(val.join('<br>'));
+                        } else {
+                            cash(`#${key}`).addClass('border-theme-6');
+                            cash(`#error-${key}`).html(val.join('<br>'));
+                        }
                     }
                 }
-            })
+
+            } finally {
+
+                cash('#contactwait').addClass('hidden');
+                cash('#btn-contact').prop('disabled', false);
+
+            }
         }
 
         cash('#contact_form').on('keyup', function(e) {

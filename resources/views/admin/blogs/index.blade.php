@@ -106,7 +106,7 @@
 		print: false,
 		download: false,
 		collapsed: true,
-	}, {
+	},@if(hasRoutePermission('admin-blogs-create', Auth::id()) || hasRoutePermission('admin-blogs-edit', Auth::id())) { {
 		title: "ACTIONS",
 		maxWidth: 150,
 		field: "actions",
@@ -118,7 +118,7 @@
 		formatter: function formatter(cell, formatterParams) {
 			return cell.getData().actions;
 		}
-	}, {
+	},@endif {
 		title: "{{strtoupper(__('blog.title'))}}",
 		minWidth: 220,
 		responsive: 0,

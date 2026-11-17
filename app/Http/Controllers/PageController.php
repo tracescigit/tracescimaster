@@ -21,7 +21,7 @@ class PageController extends Controller
     {
         $blogs = Blog::where('is_allowed', 1)->get();
         $country = 'India';
-        $events=Event::where('is_allowed',1)->where('status',1)->get();
+        $events = Event::where('is_allowed', 1)->where('status', 1)->get();
 
         // if ($position = Location::get()) {
         //     $country = $position->countryName;
@@ -763,18 +763,33 @@ class PageController extends Controller
     public function sendInquiry(ContactUsRequest $request)
     {
         // dd($request->all());
+        $token = $request->input('g-recaptcha-response');
+
+        if (empty($token)) {
+            return response()->json([
+                'errors' => [
+                    'g-recaptcha-response' => [
+                        'Please complete the CAPTCHA.'
+                    ]
+                ]
+            ], 422);
+        }
+
         $captcha = Http::asForm()->post(
             'https://www.google.com/recaptcha/api/siteverify',
             [
-                'secret' => env('RECAPTCHA_SECRET_KEY'),
-                'response' => $request->{'g-recaptcha-response'},
-                'remoteip' => $request->ip()
+                'secret' => config('services.recaptcha.secret'),
+                'response' => $token,
             ]
         );
 
         $result = $captcha->json();
 
-        if (!$result['success']) {
+        if (!($result['success'] ?? false)) {
+
+            \Log::error('Recaptcha verification failed', [
+                'error_codes' => $result['error-codes'] ?? [],
+            ]);
 
             return response()->json([
                 'errors' => [

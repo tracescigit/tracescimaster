@@ -106,7 +106,7 @@
 		print: false,
 		download: false,
 		collapsed:true,
-	},	{
+	},@if(hasRoutePermission('admin-events-create', Auth::id()) || hasRoutePermission('admin-events-edit', Auth::id())) { {	{
 		title: "ACTIONS",
 		maxWidth: 150,
 		field: "actions",
