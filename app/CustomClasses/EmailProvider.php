@@ -20,6 +20,10 @@ class EmailProvider extends Email
 			'transaction-mail'					=> 'transaction-mail',
 			'invoice-generation-mail'			=> 'invoice-generation-mail',
 			'demo-schedule-email'				=> 'demo-schedule-email',
+			'newsletter-email'                 => 'newsletter-email',
+			'user-credential-email'            => 'user-credential-email',
+			'user-profile-rejection'           => 'user-profile-rejection'
+
 		];
 	}
 
@@ -106,7 +110,7 @@ class EmailProvider extends Email
 		// 	}
 		// });
 
-		try{
+		try {
 			$templateId = 'Tracesci_cloud_email';
 			$recipients = [
 				[
@@ -124,6 +128,7 @@ class EmailProvider extends Email
 			];
 
 			$result = sendMsg91Email($templateId, $recipients);
-		}catch(Exception $e){}
+		} catch (Exception $e) {
+		}
 	}
 }
