@@ -14,13 +14,14 @@ use App\Models\Sms;
 use App\Models\Subscription;
 use App\Models\User;
 use Carbon\Carbon;
-use EmailProvider;
+// use EmailProvider;
 use File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Str;
+use App\CustomClasses\EmailProvider;
 
 class RegistrationController extends Controller
 {
@@ -232,46 +233,58 @@ class RegistrationController extends Controller
 
                 try {
 
-                    $mail_array = [];
-                    $mail_array['email_subject'] = 'Your Tracesci Login Credentials';
-                    $mail_array['email'] = $user->email;
+                    //         $mail_array = [];
+                    //         $mail_array['email_subject'] = 'Your Tracesci Login Credentials';
+                    //         $mail_array['email'] = $user->email;
 
-                    $mail_array['email_body'] = '
-            <p>Dear <strong>' . $user->name . '</strong>,</p>
+                    //         $mail_array['email_body'] = '
+                    // <p>Dear <strong>' . $user->name . '</strong>,</p>
 
-            <p>Your Tracesci account has been created successfully. Please find your login credentials below:</p>
+                    // <p>Your Tracesci account has been created successfully. Please find your login credentials below:</p>
 
-            <table border="0" cellpadding="5">
-                <tr>
-                    <td><strong>Name</strong></td>
-                    <td>' . $user->name . '</td>
-                </tr>
-                <tr>
-                    <td><strong>Email</strong></td>
-                    <td>' . $user->email . '</td>
-                </tr>
-                <tr>
-                    <td><strong>Phone</strong></td>
-                    <td>' . ($user->phone ?? '-') . '</td>
-                </tr>
-                <tr>
-                    <td><strong>Password</strong></td>
-                    <td>' . $password . '</td>
-                </tr>
-            </table>
+                    // <table border="0" cellpadding="5">
+                    //     <tr>
+                    //         <td><strong>Name</strong></td>
+                    //         <td>' . $user->name . '</td>
+                    //     </tr>
+                    //     <tr>
+                    //         <td><strong>Email</strong></td>
+                    //         <td>' . $user->email . '</td>
+                    //     </tr>
+                    //     <tr>
+                    //         <td><strong>Phone</strong></td>
+                    //         <td>' . ($user->phone ?? '-') . '</td>
+                    //     </tr>
+                    //     <tr>
+                    //         <td><strong>Password</strong></td>
+                    //         <td>' . $password . '</td>
+                    //     </tr>
+                    // </table>
 
-            <p>For security reasons, we recommend changing your password after your first login.</p>
+                    // <p>For security reasons, we recommend changing your password after your first login.</p>
 
-            <p>Regards,<br>
-            <strong>Tracesci Team</strong></p>';
+                    // <p>Regards,<br>
+                    // <strong>Tracesci Team</strong></p>';
 
-                    Log::info('User Credential Mail Data', $mail_array);
+                    //         Log::info('User Credential Mail Data', $mail_array);
 
-                    $result = SandEmail::sendDirectMail($mail_array);
+                    //         $result = SandEmail::sendDirectMail($mail_array);
 
-                    Log::info('User Credential Mail Result', [
-                        'result' => $result
+                    //         Log::info('User Credential Mail Result', [
+                    //             'result' => $result
+                    //         ]);
+                    EmailProvider::sendMail('user-credential-email', [
+                        'email'     => $user->email,
+                        'username'  => $user->name,
+                        'phone' => $user->phone ?? '-',
+                        'password' => $password,
                     ]);
+                    // $result = SandEmail::sendDirectMail($mail_array);
+
+                    // Log::info('User Credential Mail Result', [
+                    //     'result' => $result
+                    // ]);
+
                 } catch (\Throwable $e) {
 
                     Log::error('User Credential Mail Failed', [
@@ -440,30 +453,21 @@ class RegistrationController extends Controller
             if ($oldactive == '0' && $user->status == '1') {
 
                 try {
-
-                    $mail_array = [];
-                    $mail_array['email_subject'] = 'Your Tracesci Profile Has Been Approved';
-                    $mail_array['email'] = $user->email;
-
-                    $mail_array['email_body'] = '
-            <p>Dear <strong>' . $user->name . '</strong>,</p>
-
-            <p>We are pleased to inform you that your <strong>Tracesci</strong> account has been successfully approved.</p>
-
-            <p>You can now log in and access all the features available on the Tracesci platform.</p>
-
-            <p>If you have any questions or require assistance, please feel free to contact our support team.</p>
-
-            <p>Regards,<br>
-            <strong>Tracesci Team</strong></p>';
-
-                    Log::info('User Profile Approval Mail Data', $mail_array);
-
-                    $result = SandEmail::sendDirectMail($mail_array);
-
-                    Log::info('User Profile Approval Mail Result', [
-                        'result' => $result
+                    $password = Str::random(6);
+                    $user->password = bcrypt($password);
+                    $user->save();
+                    EmailProvider::sendMail('user-credential-email', [
+                        'email'     => $user->email,
+                        'username'  => $user->name,
+                        'phone' => $user->phone ?? '-',
+                        'password' => $password,
                     ]);
+                    // $result = SandEmail::sendDirectMail($mail_array);
+
+                    // Log::info('User Credential Mail Result', [
+                    //     'result' => $result
+                    // ]);
+
                 } catch (\Throwable $e) {
 
                     Log::error('User Profile Approval Mail Failed', [
@@ -478,29 +482,39 @@ class RegistrationController extends Controller
 
                 try {
 
-                    $mail_array = [];
-                    $mail_array['email_subject'] = 'Tracesci Profile Verification Update';
-                    $mail_array['email'] = $user->email;
+                    //         $mail_array = [];
+                    //         $mail_array['email_subject'] = 'Tracesci Profile Verification Update';
+                    //         $mail_array['email'] = $user->email;
 
-                    $mail_array['email_body'] = '
-            <p>Dear <strong>' . $user->name . '</strong>,</p>
+                    //         $mail_array['email_body'] = '
+                    // <p>Dear <strong>' . $user->name . '</strong>,</p>
 
-            <p>Thank you for registering with <strong>Tracesci</strong>.</p>
+                    // <p>Thank you for registering with <strong>Tracesci</strong>.</p>
 
-            <p>After reviewing your profile, we regret to inform you that your account could not be approved at this time.</p>
+                    // <p>After reviewing your profile, we regret to inform you that your account could not be approved at this time.</p>
 
-            <p>If you believe this was an error or would like additional information, please contact our support team.</p>
+                    // <p>If you believe this was an error or would like additional information, please contact our support team.</p>
 
-            <p>Regards,<br>
-            <strong>Tracesci Team</strong></p>';
+                    // <p>Regards,<br>
+                    // <strong>Tracesci Team</strong></p>';
 
-                    Log::info('User Profile Rejection Mail Data', $mail_array);
+                    //         Log::info('User Profile Rejection Mail Data', $mail_array);
 
-                    $result = SandEmail::sendDirectMail($mail_array);
+                    //         $result = SandEmail::sendDirectMail($mail_array);
 
-                    Log::info('User Profile Rejection Mail Result', [
-                        'result' => $result
+                    //         Log::info('User Profile Rejection Mail Result', [
+                    //             'result' => $result
+                    //         ]);
+                    EmailProvider::sendMail('user-profile-rejection', [
+                        'username'  => $user->name,
+
                     ]);
+                    // $result = SandEmail::sendDirectMail($mail_array);
+
+                    // Log::info('User Credential Mail Result', [
+                    //     'result' => $result
+                    // ]);
+
                 } catch (\Throwable $e) {
 
                     Log::error('User Profile Rejection Mail Failed', [

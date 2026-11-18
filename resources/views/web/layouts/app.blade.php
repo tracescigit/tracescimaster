@@ -171,7 +171,7 @@
       $("#menuzord").menuzord();
     });
   </script> -->
-  <script>
+  <!-- <script>
     cash('#subscribenow').on('submit', function(e) {
       e.preventDefault();
       var form = $(this);
@@ -184,7 +184,7 @@
         cash('#subsmessage').html('Something went wrong. Please try again.');
       });
     });
-  </script>
+  </script> -->
   <script>
     document.addEventListener('click', function(e) {
       var tab = e.target.closest('[data-pd-tab]');
@@ -204,6 +204,42 @@
 
       var panel = document.getElementById('pd-tab-' + tab.getAttribute('data-pd-tab'));
       if (panel) panel.classList.add('pd-on');
+    });
+
+
+
+    document.addEventListener('submit', function(e) {
+      if (e.target.matches('.newsletter-form')) {
+        e.preventDefault();
+
+        let formData = new FormData(e.target);
+        let subsmessage = document.getElementById('subsmessage');
+
+        subsmessage.innerHTML = '';
+
+        axios.post('{{ url("/subscribe") }}', formData)
+          .then(res => {
+            subsmessage.textContent = res.data.message;
+            subsmessage.classList.remove('text-danger');
+            subsmessage.classList.add('text-success');
+
+            e.target.reset();
+          })
+          .catch(err => {
+            let message = err.response?.data?.message ||
+              'Something went wrong. Please try again.';
+
+            showNotification(
+              'error',
+              '{{__("common.error")}} !',
+              message
+            );
+
+            subsmessage.textContent = message;
+            subsmessage.classList.remove('text-success');
+            subsmessage.classList.add('text-danger');
+          });
+      }
     });
   </script>
   @yield('script')

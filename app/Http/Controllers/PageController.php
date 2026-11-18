@@ -9,10 +9,12 @@ use App\Http\Requests\SubscribeRequest;
 use App\Models\Blog;
 use App\Models\Event;
 use App\Models\Subscriber;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Stevebauman\Location\Facades\Location;
+use App\CustomClasses\EmailProvider;
 
 class PageController extends Controller
 {
@@ -92,33 +94,55 @@ class PageController extends Controller
         return view('web.blog.blog-details')->with('blog', $blog);
     }
 
+
+
     public function addSubscriber(SubscribeRequest $request)
     {
         $input = $request->all();
+
         $subscriber = Subscriber::where('email', $input['email'])->first();
 
-        $body = '
-        <p> Hi,You have new subscriber on below email - </p>
-        <p> ' . $input['email'] . ' <p>
-        <p> Thanks - Team Tracesci </p>
+        if ($subscriber) {
+            return [
+                'status' => true,
+                'message' => 'You are already subscribed to our newsletter.'
+            ];
+        }
+
+        $subscriber = Subscriber::create($input);
+
+        try {
+            // Notify admin about the new subscriber
+            $body = '
+            <p>Hi, You have a new subscriber with the below email address:</p>
+            <p>' . e($input['email']) . '</p>
+            <p>Thanks - Team Tracesci</p>
         ';
 
-        $data = [
-            'email' => 'jetsciglobal@monotech.in',
-            'email_subject' => 'New subscriber on Tracesci',
-            'bcc' => 'kunal.kothari@monotech.in',
-            'email_body' => $body
-        ];
+            $data = [
+                'email'         => 'jetsciglobal@monotech.in',
+                'email_subject' => 'New subscriber on Tracesci',
+                'bcc'           => 'kunal.kothari@monotech.in',
+                'email_body'    => $body
+            ];
 
-        $send_email = sendFrontEmail($data);
+            sendFrontEmail($data);
 
-        if ($subscriber) {
-            return ['status' => true, 'message' => 'You are already subscribed to our newsletter.'];
-        } else {
-            $subscriber = Subscriber::create($input);
-            return ['status' => true, 'message' => 'You are now subscribed to our newsletter.'];
+            // Send subscription confirmation email to the user
+            EmailProvider::sendMail('newsletter-email', [
+                'email' => $input['email']
+            ]);
+        } catch (\Throwable $e) {
+            \Log::error('Newsletter subscription email failed: ' . $e->getMessage());
         }
+
+        return [
+            'status' => true,
+            'message' => 'You are now subscribed to our newsletter.'
+        ];
     }
+
+
 
     /**
      * Show specified view.
@@ -136,7 +160,16 @@ class PageController extends Controller
             // 'layout' => 'side-menu'
         ]);
     }
-
+    public function newsletter(Request $request)
+    {
+        $validated = $request->validate([
+            'email' => [
+                'required',
+                'email:rfc,dns',
+                'max:255'
+            ],
+        ]);
+    }
     /**
      * Show specified view.
      *

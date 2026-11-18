@@ -36,6 +36,7 @@ Route::get('/about-monotech-systems-limited', [PageController::class, 'monotech'
 Route::get('/cancellation-or-refund-policy', [PageController::class, 'cancellation'])->name('cancellation');
 Route::post('/subscribe', [PageController::class, 'addSubscriber'])->name('subscribe');
 
+
 Route::get('/generate-invoices', [CronController::class, 'generateInvoices'])->name('generateInvoices');
 
 // Demo Scheduling

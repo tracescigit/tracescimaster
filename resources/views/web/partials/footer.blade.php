@@ -162,7 +162,7 @@
                 </form>
 
                 <div id="subsmessage"
-                  class="text-white mt-3">
+                  class="text-white mt-3" style="background-color: white">
                 </div>
                 @endif
               </div>
@@ -174,69 +174,6 @@
     </div>
   </section>
 
-  <!-- <div class="footer-main-content">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-6 col-md-3">
-          <div class="footer-main-content-inner footer-first-content">
-            <h2>About Metrics</h2>
-            <ul>
-              <li><a href="{{route('about')}}">About Us</a></li>
-            </ul>
-            <a href="#"><img src="images/logo.png" alt=""></a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-2">
-          <div class="footer-main-content-inner">
-            <h2>Our Products</h2>
-            <ul>
-              <li><a href="{{ route('home') }}#howitworks">Take The Tour</a></li>
-              <li><a href="{{ route('cloud-solution') }}#pricing_table">Plans & Pricing</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-sm-4 col-md-2">
-          <div class="footer-main-content-inner">
-            <h2>Explore</h2>
-            <ul>
-              <li><a href="{{route('cloud-solution')}}">Cloud Solution</a></li>
-              <li><a href="{{route('enterprise-solution')}}">Enterprise Solution</a></li>
-              <li><a href="{{route('home')}}">Custom Solution</a></li>
-              <li><a href="{{route('home')}}">Dashboard</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-sm-4 col-md-2">
-          <div class="footer-main-content-inner">
-            <h2>Need Help</h2>
-            <ul>
-              <li><a href="{{route('contact-us')}}">Contact Us</a></li>
-              <li><a href="{{route('blog')}}">Our Blog</a></li>
-              <li><a href="{{ route('home') }}#howitworks">FAQs</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-sm-4 col-md-3">
-          <div class="footer-main-content-inner footer-last-content">
-            <h2>Newsletter</h2>
-            <ul>
-              <li><a href="#">Don’t miss to subscribe to our news feeds,</a></li>
-              <li><a href="#">kindly fill the form below.</a></li>
-            </ul>
-            <form>
-              @if (request()->route()->uri!='p/{code}')
-              <div class="form-group footer-subscription">
-                <input type="email" placeholder="Enter your email" name="email" class="form-control" id="email">
-                <input type="submit" name="send" value="Submit" class="btn btn-default">
-              </div>
-              <div id="subsmessage" class="text-center text-white" style="margin-top: 20px;"></div>
-              @endif
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> -->
   <div class="footer-bottom">
     <div class="container">
       <div class="row">

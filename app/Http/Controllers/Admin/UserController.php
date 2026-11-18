@@ -16,13 +16,14 @@ use App\Models\Sms;
 use App\Models\User;
 use Auth;
 use Carbon\Carbon;
-use EmailProvider;
+// use EmailProvider;
 use File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use App\CustomClasses\EmailProvider;
 
 class UserController extends Controller
 {
@@ -161,46 +162,51 @@ class UserController extends Controller
 
             try {
 
-                $mail_array = [];
-                $mail_array['email_subject'] = 'Your Tracesci Login Credentials';
-                $mail_array['email'] = $user->email;
+                //         $mail_array = [];
+                //         $mail_array['email_subject'] = 'Your Tracesci Login Credentials';
+                //         $mail_array['email'] = $user->email;
 
-                $mail_array['email_body'] = '
-        <p>Dear <strong>' . $user->name . '</strong>,</p>
+                //         $mail_array['email_body'] = '
+                // <p>Dear <strong>' . $user->name . '</strong>,</p>
 
-        <p>Your Tracesci account has been created successfully. Please find your login credentials below:</p>
+                // <p>Your Tracesci account has been created successfully. Please find your login credentials below:</p>
 
-        <table border="0" cellpadding="5">
-            <tr>
-                <td><strong>Name</strong></td>
-                <td>' . $user->name . '</td>
-            </tr>
-            <tr>
-                <td><strong>Email</strong></td>
-                <td>' . $user->email . '</td>
-            </tr>
-            <tr>
-                <td><strong>Phone</strong></td>
-                <td>' . ($user->phone ?? '-') . '</td>
-            </tr>
-            <tr>
-                <td><strong>Password</strong></td>
-                <td>' . $password . '</td>
-            </tr>
-        </table>
+                // <table border="0" cellpadding="5">
+                //     <tr>
+                //         <td><strong>Name</strong></td>
+                //         <td>' . $user->name . '</td>
+                //     </tr>
+                //     <tr>
+                //         <td><strong>Email</strong></td>
+                //         <td>' . $user->email . '</td>
+                //     </tr>
+                //     <tr>
+                //         <td><strong>Phone</strong></td>
+                //         <td>' . ($user->phone ?? '-') . '</td>
+                //     </tr>
+                //     <tr>
+                //         <td><strong>Password</strong></td>
+                //         <td>' . $password . '</td>
+                //     </tr>
+                // </table>
 
-        <p>For security reasons, we recommend changing your password after your first login.</p>
+                // <p>For security reasons, we recommend changing your password after your first login.</p>
 
-        <p>Regards,<br>
-        <strong>Tracesci Team</strong></p>';
+                // <p>Regards,<br>
+                // <strong>Tracesci Team</strong></p>';
 
-                Log::info('User Credential Mail Data', $mail_array);
-
-                $result = SandEmail::sendDirectMail($mail_array);
-
-                Log::info('User Credential Mail Result', [
-                    'result' => $result
+                // Log::info('User Credential Mail Data', $mail_array);
+                EmailProvider::sendMail('user-credential-email', [
+                    'email'     => $user->email,
+                    'username'  => $user->name,
+                    'phone' => $user->phone ?? '-',
+                    'password' => $password,
                 ]);
+                // $result = SandEmail::sendDirectMail($mail_array);
+
+                // Log::info('User Credential Mail Result', [
+                //     'result' => $result
+                // ]);
             } catch (\Throwable $e) {
 
                 Log::error('User Credential Mail Failed', [
@@ -291,7 +297,23 @@ class UserController extends Controller
                     }
                 }
             }
+            if (isset($input['login_password']) && $input['login_password'] != '') {
+                try {
+                    EmailProvider::sendMail('user-credential-email', [
+                        'email'     => $user->email,
+                        'username'  => $user->name,
+                        'phone' => $user->phone ?? '-',
+                        'password' => $input['login_password'],
+                    ]);
+                } catch (\Throwable $e) {
 
+                    Log::error('User Credential Mail Failed', [
+                        'message' => $e->getMessage(),
+                        'line'    => $e->getLine(),
+                        'file'    => $e->getFile(),
+                    ]);
+                }
+            }
             return response(['message' => 'User updated successfully.'], 200);
         } catch (Exception $e) {
             return response(['message' => 'Something went wrong.'], 503);
