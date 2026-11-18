@@ -26,7 +26,6 @@ class RegistrationUpdateRequest extends FormRequest
     {
         $id = $this->route('id');
         $id = decrypt($id);
-
         $user = User::find($id);
         return [
             'email'   => 'required|email|max:100|regex:/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix|unique:users,email,' . $id,
@@ -41,7 +40,7 @@ class RegistrationUpdateRequest extends FormRequest
             'default_plan' => 'required',
             'city' => 'required',
             'country' => 'required',
-            'tax_registration_number' => 'required|unique:companies,gst,' . $user->getCompany->id. ',id',
+            'tax_registration_number' => 'required|string|size:15|regex:/^[A-Za-z0-9-]{15}$/|unique:companies,gst,' . $user->getCompany->id . ',id',
         ];
     }
 }

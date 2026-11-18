@@ -35,7 +35,7 @@ class RegistrationCreateRequest extends FormRequest
             'default_plan' => 'required',
             'city' => 'required',
             'country' => 'required',
-            'tax_registration_number' => 'required|unique:companies,gst',
+            'tax_registration_number' => 'required|string|size:15|regex:/^[A-Za-z0-9-]{15}$/|unique:companies,gst',
         ];
     }
 }
