@@ -25,6 +25,7 @@ class CodeController extends Controller
 {
 	public function index(Request $request)
 	{
+		ini_set('memory_limit', '512M');
 		if ($request->ajax()) {
 			$limit          = $request->input('size');
 			$page           = $request->input('page');
