@@ -11,7 +11,7 @@ use App\Http\Controllers\IndustryController;
 use App\Http\Controllers\SolutionController;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Admin\Msg91TemplateController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -85,6 +85,10 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => ['admin', 'auth']], function () {
+    Route::post(
+        '/msg91/sync-templates',
+        [Msg91TemplateController::class, 'syncTemplates']
+    )->name('admin.msg91.sync-templates');
 
     Route::get('/', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin');
 

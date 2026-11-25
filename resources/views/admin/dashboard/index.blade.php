@@ -16,6 +16,15 @@
                     <a href="" class="ml-auto flex text-theme-1 dark:text-theme-10">
                         <i data-feather="refresh-ccw" class="w-4 h-4 mr-3"></i> Reload Data
                     </a>
+
+                    <!-- <button type="button" id="syncMsg91Templates" class="btn btn-primary">
+                        Sync All Templates with MSG91
+                    </button>
+
+                    <div id="syncResult" class="mt-3"></div> -->
+
+
+
                 </div>
                 <div class="grid grid-cols-12 gap-6 mt-1">
 
@@ -230,13 +239,12 @@
 @section('script')
 
 <script type="text/javascript">
-
     var locations = [
-    @if (count(scanLocations())>0)
-    @foreach(scanLocations() as $location)
-    ['{{$location['user']}}', parseFloat("{{$location['lat']}}"), parseFloat("{{$location['long']}}")],
-    @endforeach
-    @endif
+        @if(count(scanLocations()) > 0)
+        @foreach(scanLocations() as $location)['{{$location['
+            user ']}}', parseFloat("{{$location['lat']}}"), parseFloat("{{$location['long']}}")],
+        @endforeach
+        @endif
     ];
 
     var map = new google.maps.Map(document.getElementById('gmap'), {
@@ -249,7 +257,7 @@
 
     var marker, i;
 
-    for (i = 0; i < locations.length; i++) { 
+    for (i = 0; i < locations.length; i++) {
         marker = new google.maps.Marker({
             position: new google.maps.LatLng(locations[i][1], locations[i][2]),
             map: map
@@ -257,11 +265,61 @@
 
         google.maps.event.addListener(marker, 'click', (function(marker, i) {
             return function() {
-              infowindow.setContent(locations[i][0]);
-              infowindow.open(map, marker);
-          }
-      })(marker, i));
+                infowindow.setContent(locations[i][0]);
+                infowindow.open(map, marker);
+            }
+        })(marker, i));
     }
+</script>
+<script>
+    document.getElementById('syncMsg91Templates')
+        .addEventListener('click', function() {
 
+            if (!confirm('Are you sure you want to sync all email templates with MSG91?')) {
+                return;
+            }
+
+            let button = this;
+
+            button.disabled = true;
+            button.innerText = 'Syncing...';
+
+            fetch("{{ route('admin.msg91.sync-templates') }}", {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({})
+                })
+                .then(response => response.json())
+                .then(data => {
+
+                    document.getElementById('syncResult').innerHTML =
+                        `<div class="alert alert-${data.status ? 'success' : 'warning'}">
+                    ${data.message}<br>
+                    Total: ${data.total}<br>
+                    Success: ${data.success}<br>
+                    Failed: ${data.failed}
+                </div>`;
+
+                    console.log(data);
+
+                })
+                .catch(error => {
+
+                    document.getElementById('syncResult').innerHTML =
+                        '<div class="alert alert-danger">Something went wrong. Check Laravel logs.</div>';
+
+                    console.error(error);
+
+                })
+                .finally(() => {
+                    button.disabled = false;
+                    button.innerText = 'Sync All Templates with MSG91';
+                });
+
+        });
 </script>
 @endsection

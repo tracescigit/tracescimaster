@@ -27,7 +27,7 @@ class EmailProvider extends Email
 		];
 	}
 
-	public static function sendMail($slug, $input = array())
+	public static function sendMailold($slug, $input = array())
 	{
 		$callback = lcfirst(str_replace(' ', '', ucwords(str_replace('-', ' ', $slug))));
 
@@ -36,6 +36,18 @@ class EmailProvider extends Email
 		} else {
 			parent::send($slug, $input);
 		}
+	}
+	public static function sendMail($slug, $input = [])
+	{
+		$callback = lcfirst(
+			str_replace(' ', '', ucwords(str_replace('-', ' ', $slug)))
+		);
+
+		if (method_exists(self::class, $callback)) {
+			return self::$callback(self::getSlug($slug), $input);
+		}
+
+		return parent::send($slug, $input);
 	}
 
 	public static function getSlug($key)

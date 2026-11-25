@@ -36,13 +36,12 @@ return [
 
     'msg91' => [
         'auth_key' => env('MSG91_AUTH_KEY'),
-        'domain'   => 'apimail.tracesci.in',
+        'domain'   => 'tracesci.in',
         'from'     => [
             'name'  => 'Tracesci',
-            'email' => 'support@apimail.tracesci.in',
+            'email' => 'wecare@tracesci.in',
         ],
         'reply_to' => [
-            ['email' => 'ecare@tracesci.in'],
             ['email' => 'wecare@tracesci.in'],
         ],
     ],

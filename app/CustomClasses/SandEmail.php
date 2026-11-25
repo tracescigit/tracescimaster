@@ -12,10 +12,11 @@ use App\Models\EmailTemplate;
 use Illuminate\Mail\Mailable;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail as FacadesMail;
+use Illuminate\Support\Facades\Http;
 
 class SandEmail
 {
-	protected static function send($slug, $input)
+	protected static function sendold($slug, $input)
 	{
 		$input = (array) $input;
 
@@ -62,7 +63,7 @@ class SandEmail
 		log::info('Email Data', $array_data);
 		$send_email = sendEmail($array_data);
 	}
-	public static function sendEmail($input)
+	public static function sendEmailold($input)
 	{
 		try {
 
@@ -131,6 +132,210 @@ class SandEmail
 				'message' => $e->getMessage(),
 				'file' => $e->getFile(),
 				'line' => $e->getLine(),
+			]);
+
+			return false;
+		}
+	}
+
+	protected static function send($slug, $input)
+	{
+		try {
+
+			$input = (array) $input;
+
+			$template = EmailTemplate::whereSlug($slug)->first();
+
+			if (!$template) {
+				Log::error('Email Template Not Found', [
+					'slug' => $slug
+				]);
+
+				return false;
+			}
+
+			if (empty($template->msg91_template_id)) {
+				Log::error('MSG91 Template ID Missing', [
+					'slug' => $slug
+				]);
+
+				return false;
+			}
+
+			// Basic application variables
+			$input['app_name'] = config('app.name');
+			$input['app_url'] = url('/');
+
+			// Prepare URL variables
+			if (isset($input['url']) && is_array($input['url'])) {
+				foreach ($input['url'] as $key => $url) {
+					$input[$key] = $input['app_url'] . $url;
+				}
+			}
+
+			// Read dynamic variable names
+			$dynamicValues = array_filter(
+				array_map('trim', explode(',', $template->text_tag ?? ''))
+			);
+
+			$dynamicValues = array_unique(array_merge(
+				$dynamicValues,
+				['app_name', 'app_url']
+			));
+
+			// Prepare MSG91 variables
+			$variables = [];
+
+			foreach ($dynamicValues as $key) {
+				$variables[$key] = $input[$key] ?? '';
+			}
+
+			$arrayData = [
+				'email' => $input['email'],
+				'template_id' => $template->msg91_template_id,
+				'variables' => $variables,
+			];
+
+			// Optional CC and BCC
+			if (!empty($input['cc'])) {
+				$arrayData['cc'] = $input['cc'];
+			}
+
+			if (!empty($input['bcc'])) {
+				$arrayData['bcc'] = $input['bcc'];
+			}
+
+			return self::sendEmail($arrayData);
+		} catch (\Throwable $e) {
+
+			Log::error('Email Processing Failed', [
+				'slug' => $slug,
+				'message' => $e->getMessage()
+			]);
+
+			return false;
+		}
+	}
+
+	public static function sendEmail($input)
+	{
+		try {
+
+			$templateId = $input['template_id'];
+
+			$payload = [
+				'recipients' => [
+					[
+						'to' => [
+							[
+								'email' => $input['email']
+							]
+						],
+						'variables' => $input['variables'] ?? []
+					]
+				],
+
+				'from' => [
+					'name' => config('services.msg91.from_name'),
+					'email' => config('services.msg91.from_email')
+				],
+
+				'domain' => config('services.msg91.email_domain'),
+
+				'template_id' => (string) $input['template_id'],
+			];
+
+			// Optional CC
+			if (!empty($input['cc'])) {
+				$payload['recipients'][0]['cc'] = collect(
+					(array) $input['cc']
+				)->map(function ($email) {
+					return ['email' => $email];
+				})->values()->all();
+			}
+
+			if (!empty($input['bcc'])) {
+				$payload['recipients'][0]['bcc'] = collect(
+					(array) $input['bcc']
+				)->map(function ($email) {
+					return ['email' => $email];
+				})->values()->all();
+			}
+
+			$response = Http::withHeaders([
+				'accept' => 'application/json',
+				'authkey' => config('services.msg91.auth_key'),
+				'content-type' => 'application/json',
+			])->post(
+				'https://control.msg91.com/api/v5/email/send',
+				$payload
+			);
+
+			$result = $response->json();
+
+			if (
+				$response->successful() &&
+				isset($result['status']) &&
+				$result['status'] === 'success' &&
+				empty($result['hasError'])
+			) {
+
+				Log::info('MSG91 Email Sent', [
+					'email' => $input['email'],
+					'response' => $result
+				]);
+
+				return true;
+			}
+
+			Log::error('MSG91 Email Failed', [
+				'email' => $input['email'],
+				'status_code' => $response->status(),
+				'response' => $result
+			]);
+
+			return false;
+		} catch (\Throwable $e) {
+
+			Log::error('MSG91 Email Exception', [
+				'message' => $e->getMessage(),
+				'file' => $e->getFile(),
+				'line' => $e->getLine()
+			]);
+
+			return false;
+		}
+	}
+
+	public static function createMsg91Template($input)
+	{
+		try {
+
+			$payload = [
+				'name' => $input['name'],
+				'slug' => $input['slug'],
+				'subject' => $input['subject'],
+				'body' => $input['body'],
+			];
+
+			$response = Http::withHeaders([
+				'accept' => 'application/json',
+				'authkey' => config('services.msg91.auth_key'),
+				'content-type' => 'application/json',
+			])->post(
+				'https://control.msg91.com/api/v5/email/templates',
+				$payload
+			);
+
+			Log::info('MSG91 Template Creation Response', [
+				'response' => $response->json()
+			]);
+
+			return $response->json();
+		} catch (\Throwable $e) {
+
+			Log::error('MSG91 Template Creation Failed', [
+				'message' => $e->getMessage()
 			]);
 
 			return false;

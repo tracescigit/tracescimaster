@@ -1,42 +1,42 @@
 <?php
 
 namespace App;
-
+use Illuminate\Support\Facades\Log;
 class Faker
 {
     public static function fakeUsers()
     {
         $users = collect([
-            [ 'name' => 'Johnny Depp', 'gender' => 'male' ],
-            [ 'name' => 'Al Pacino', 'gender' => 'male' ],
-            [ 'name' => 'Robert De Niro', 'gender' => 'male' ],
-            [ 'name' => 'Kevin Spacey', 'gender' => 'male' ],
-            [ 'name' => 'Denzel Washington', 'gender' => 'male' ],
-            [ 'name' => 'Russell Crowe', 'gender' => 'male' ],
-            [ 'name' => 'Brad Pitt', 'gender' => 'male' ],
-            [ 'name' => 'Angelina Jolie', 'gender' => 'female' ],
-            [ 'name' => 'Leonardo DiCaprio', 'gender' => 'male' ],
-            [ 'name' => 'Tom Cruise', 'gender' => 'male' ],
-            [ 'name' => 'John Travolta', 'gender' => 'male' ],
-            [ 'name' => 'Arnold Schwarzenegger', 'gender' => 'male' ],
-            [ 'name' => 'Sylvester Stallone', 'gender' => 'male' ],
-            [ 'name' => 'Kate Winslet', 'gender' => 'female' ],
-            [ 'name' => 'Christian Bale', 'gender' => 'male' ],
-            [ 'name' => 'Morgan Freeman', 'gender' => 'male' ],
-            [ 'name' => 'Keanu Reeves', 'gender' => 'male' ],
-            [ 'name' => 'Nicolas Cage', 'gender' => 'male' ],
-            [ 'name' => 'Hugh Jackman', 'gender' => 'male' ],
-            [ 'name' => 'Edward Norton', 'gender' => 'male' ],
-            [ 'name' => 'Bruce Willis', 'gender' => 'male' ],
-            [ 'name' => 'Tom Hanks', 'gender' => 'male' ],
-            [ 'name' => 'Charlize Theron', 'gender' => 'female' ],
-            [ 'name' => 'Will Smith', 'gender' => 'male' ],
-            [ 'name' => 'Sean Connery', 'gender' => 'male' ],
-            [ 'name' => 'Keira Knightley', 'gender' => 'female' ],
-            [ 'name' => 'Vin Diesel', 'gender' => 'male' ],
-            [ 'name' => 'Matt Damon', 'gender' => 'male' ],
-            [ 'name' => 'Richard Gere', 'gender' => 'male' ],
-            [ 'name' => 'Catherine Zeta-Jones', 'gender' => 'female' ]
+            ['name' => 'Johnny Depp', 'gender' => 'male'],
+            ['name' => 'Al Pacino', 'gender' => 'male'],
+            ['name' => 'Robert De Niro', 'gender' => 'male'],
+            ['name' => 'Kevin Spacey', 'gender' => 'male'],
+            ['name' => 'Denzel Washington', 'gender' => 'male'],
+            ['name' => 'Russell Crowe', 'gender' => 'male'],
+            ['name' => 'Brad Pitt', 'gender' => 'male'],
+            ['name' => 'Angelina Jolie', 'gender' => 'female'],
+            ['name' => 'Leonardo DiCaprio', 'gender' => 'male'],
+            ['name' => 'Tom Cruise', 'gender' => 'male'],
+            ['name' => 'John Travolta', 'gender' => 'male'],
+            ['name' => 'Arnold Schwarzenegger', 'gender' => 'male'],
+            ['name' => 'Sylvester Stallone', 'gender' => 'male'],
+            ['name' => 'Kate Winslet', 'gender' => 'female'],
+            ['name' => 'Christian Bale', 'gender' => 'male'],
+            ['name' => 'Morgan Freeman', 'gender' => 'male'],
+            ['name' => 'Keanu Reeves', 'gender' => 'male'],
+            ['name' => 'Nicolas Cage', 'gender' => 'male'],
+            ['name' => 'Hugh Jackman', 'gender' => 'male'],
+            ['name' => 'Edward Norton', 'gender' => 'male'],
+            ['name' => 'Bruce Willis', 'gender' => 'male'],
+            ['name' => 'Tom Hanks', 'gender' => 'male'],
+            ['name' => 'Charlize Theron', 'gender' => 'female'],
+            ['name' => 'Will Smith', 'gender' => 'male'],
+            ['name' => 'Sean Connery', 'gender' => 'male'],
+            ['name' => 'Keira Knightley', 'gender' => 'female'],
+            ['name' => 'Vin Diesel', 'gender' => 'male'],
+            ['name' => 'Matt Damon', 'gender' => 'male'],
+            ['name' => 'Richard Gere', 'gender' => 'male'],
+            ['name' => 'Catherine Zeta-Jones', 'gender' => 'female']
         ]);
 
         return $users->random(3)->map(function ($user) {
@@ -48,12 +48,27 @@ class Faker
         });
     }
 
+    // public static function fakePhotos()
+    // {
+    //     $photos = [];
+    //     for ($i = 0; $i < 15; $i++) {
+    //         $photos[] = 'profile-' . rand(1, 15) . '.jpg';
+    //     }
+    //     return collect($photos)->random(10);
+    // }
     public static function fakePhotos()
     {
+        Log::info('Faker fakePhotos called', [
+            'memory' => memory_get_usage(true) / 1024 / 1024,
+            'trace' => debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 5)
+        ]);
+
         $photos = [];
+
         for ($i = 0; $i < 15; $i++) {
             $photos[] = 'profile-' . rand(1, 15) . '.jpg';
         }
+
         return collect($photos)->random(10);
     }
 
@@ -120,16 +135,16 @@ class Faker
     public static function fakeProducts()
     {
         $products = collect([
-            [ 'name' => 'Dell XPS 13', 'category' => 'PC & Laptop' ],
-            [ 'name' => 'Apple MacBook Pro 13', 'category' => 'PC & Laptop' ],
-            [ 'name' => 'Oppo Find X2 Pro', 'category' => 'Smartphone & Tablet' ],
-            [ 'name' => 'Samsung Galaxy S20 Ultra', 'category' => 'Smartphone & Tablet' ],
-            [ 'name' => 'Sony Master Series A9G', 'category' => 'Electronic' ],
-            [ 'name' => 'Samsung Q90 QLED TV', 'category' => 'Electronic' ],
-            [ 'name' => 'Nike Air Max 270', 'category' => 'Sport & Outdoor' ],
-            [ 'name' => 'Nike Tanjun', 'category' => 'Sport & Outdoor' ],
-            [ 'name' => 'Nikon Z6', 'category' => 'Photography' ],
-            [ 'name' => 'Sony A7 III', 'category' => 'Photography' ]
+            ['name' => 'Dell XPS 13', 'category' => 'PC & Laptop'],
+            ['name' => 'Apple MacBook Pro 13', 'category' => 'PC & Laptop'],
+            ['name' => 'Oppo Find X2 Pro', 'category' => 'Smartphone & Tablet'],
+            ['name' => 'Samsung Galaxy S20 Ultra', 'category' => 'Smartphone & Tablet'],
+            ['name' => 'Sony Master Series A9G', 'category' => 'Electronic'],
+            ['name' => 'Samsung Q90 QLED TV', 'category' => 'Electronic'],
+            ['name' => 'Nike Air Max 270', 'category' => 'Sport & Outdoor'],
+            ['name' => 'Nike Tanjun', 'category' => 'Sport & Outdoor'],
+            ['name' => 'Nikon Z6', 'category' => 'Photography'],
+            ['name' => 'Sony A7 III', 'category' => 'Photography']
         ]);
 
         return $products->shuffle();
@@ -170,16 +185,16 @@ class Faker
     public static function fakeFiles()
     {
         $files = collect([
-            [ 'file_name' => 'Celine Dion - Ashes.mp4', 'type' => 'MP4', 'size' => '20 MB' ],
-            [ 'file_name' => 'Laravel 7', 'type' => 'Empty Folder', 'size' => '120 MB' ],
-            [ 'file_name' => Faker::fakeImages()->first(), 'type' => 'Image', 'size' => '1.2 MB' ],
-            [ 'file_name' => 'Repository', 'type' => 'Folder', 'size' => '20 KB' ],
-            [ 'file_name' => 'Resources.txt', 'type' => 'TXT', 'size' => '2.2 MB' ],
-            [ 'file_name' => 'Routes.php', 'type' => 'PHP', 'size' => '1 KB' ],
-            [ 'file_name' => 'Dota 2', 'type' => 'Folder', 'size' => '112 GB' ],
-            [ 'file_name' => 'Documentation', 'type' => 'Empty Folder', 'size' => '4 MB' ],
-            [ 'file_name' => Faker::fakeImages()->first(), 'type' => 'Image', 'size' => '1.4 MB' ],
-            [ 'file_name' => Faker::fakeImages()->first(), 'type' => 'Image', 'size' => '1 MB' ]
+            ['file_name' => 'Celine Dion - Ashes.mp4', 'type' => 'MP4', 'size' => '20 MB'],
+            ['file_name' => 'Laravel 7', 'type' => 'Empty Folder', 'size' => '120 MB'],
+            ['file_name' => Faker::fakeImages()->first(), 'type' => 'Image', 'size' => '1.2 MB'],
+            ['file_name' => 'Repository', 'type' => 'Folder', 'size' => '20 KB'],
+            ['file_name' => 'Resources.txt', 'type' => 'TXT', 'size' => '2.2 MB'],
+            ['file_name' => 'Routes.php', 'type' => 'PHP', 'size' => '1 KB'],
+            ['file_name' => 'Dota 2', 'type' => 'Folder', 'size' => '112 GB'],
+            ['file_name' => 'Documentation', 'type' => 'Empty Folder', 'size' => '4 MB'],
+            ['file_name' => Faker::fakeImages()->first(), 'type' => 'Image', 'size' => '1.4 MB'],
+            ['file_name' => Faker::fakeImages()->first(), 'type' => 'Image', 'size' => '1 MB']
         ]);
 
         return $files->shuffle();
@@ -188,7 +203,10 @@ class Faker
     public static function fakeJobs()
     {
         $jobs = collect([
-            'Frontend Engineer', 'Software Engineer', 'Backend Engineer', 'DevOps Engineer'
+            'Frontend Engineer',
+            'Software Engineer',
+            'Backend Engineer',
+            'DevOps Engineer'
         ]);
 
         return $jobs->shuffle();
@@ -202,25 +220,25 @@ class Faker
     public static function fakeFoods()
     {
         $foods = collect([
-            [ 'name' => 'Vanilla Latte', 'image' => 'food-beverage-1.jpg' ],
-            [ 'name' => 'Milkshake', 'image' => 'food-beverage-2.jpg' ],
-            [ 'name' => 'Soft Drink', 'image' => 'food-beverage-3.jpg' ],
-            [ 'name' => 'Root Beer', 'image' => 'food-beverage-4.jpg' ],
-            [ 'name' => 'Pocari', 'image' => 'food-beverage-5.jpg' ],
-            [ 'name' => 'Ultimate Burger', 'image' => 'food-beverage-6.jpg' ],
-            [ 'name' => 'Hotdog', 'image' => 'food-beverage-7.jpg' ],
-            [ 'name' => 'Avocado Burger', 'image' => 'food-beverage-8.jpg' ],
-            [ 'name' => 'Spaghetti Fettucine Aglio with Beef Bacon', 'image' => 'food-beverage-9.jpg' ],
-            [ 'name' => 'Spaghetti Fettucine Aglio with Smoked Salmon', 'image' => 'food-beverage-10.jpg' ],
-            [ 'name' => 'Curry Penne and Cheese', 'image' => 'food-beverage-11.jpg' ],
-            [ 'name' => 'French Fries', 'image' => 'food-beverage-12.jpg' ],
-            [ 'name' => 'Virginia Cheese Fries', 'image' => 'food-beverage-13.jpg' ],
-            [ 'name' => 'Virginia Cheese Wedges', 'image' => 'food-beverage-14.jpg' ],
-            [ 'name' => 'Fried/Grilled Banana', 'image' => 'food-beverage-15.jpg' ],
-            [ 'name' => 'Crispy Mushroom', 'image' => 'food-beverage-16.jpg' ],
-            [ 'name' => 'Fried Calamari', 'image' => 'food-beverage-17.jpg' ],
-            [ 'name' => 'Chicken Wings', 'image' => 'food-beverage-18.jpg' ],
-            [ 'name' => 'Snack Platter', 'image' => 'food-beverage-19.jpg' ]
+            ['name' => 'Vanilla Latte', 'image' => 'food-beverage-1.jpg'],
+            ['name' => 'Milkshake', 'image' => 'food-beverage-2.jpg'],
+            ['name' => 'Soft Drink', 'image' => 'food-beverage-3.jpg'],
+            ['name' => 'Root Beer', 'image' => 'food-beverage-4.jpg'],
+            ['name' => 'Pocari', 'image' => 'food-beverage-5.jpg'],
+            ['name' => 'Ultimate Burger', 'image' => 'food-beverage-6.jpg'],
+            ['name' => 'Hotdog', 'image' => 'food-beverage-7.jpg'],
+            ['name' => 'Avocado Burger', 'image' => 'food-beverage-8.jpg'],
+            ['name' => 'Spaghetti Fettucine Aglio with Beef Bacon', 'image' => 'food-beverage-9.jpg'],
+            ['name' => 'Spaghetti Fettucine Aglio with Smoked Salmon', 'image' => 'food-beverage-10.jpg'],
+            ['name' => 'Curry Penne and Cheese', 'image' => 'food-beverage-11.jpg'],
+            ['name' => 'French Fries', 'image' => 'food-beverage-12.jpg'],
+            ['name' => 'Virginia Cheese Fries', 'image' => 'food-beverage-13.jpg'],
+            ['name' => 'Virginia Cheese Wedges', 'image' => 'food-beverage-14.jpg'],
+            ['name' => 'Fried/Grilled Banana', 'image' => 'food-beverage-15.jpg'],
+            ['name' => 'Crispy Mushroom', 'image' => 'food-beverage-16.jpg'],
+            ['name' => 'Fried Calamari', 'image' => 'food-beverage-17.jpg'],
+            ['name' => 'Chicken Wings', 'image' => 'food-beverage-18.jpg'],
+            ['name' => 'Snack Platter', 'image' => 'food-beverage-19.jpg']
         ]);
 
         return $foods->shuffle();
