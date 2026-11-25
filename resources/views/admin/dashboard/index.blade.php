@@ -241,8 +241,7 @@
 <script type="text/javascript">
     var locations = [
         @if(count(scanLocations()) > 0)
-        @foreach(scanLocations() as $location)['{{$location['
-            user ']}}', parseFloat("{{$location['lat']}}"), parseFloat("{{$location['long']}}")],
+        @foreach(scanLocations() as $location)['{{$location['user']}}', parseFloat("{{$location['lat']}}"), parseFloat("{{$location['long']}}")],
         @endforeach
         @endif
     ];

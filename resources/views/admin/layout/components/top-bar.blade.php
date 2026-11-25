@@ -16,7 +16,7 @@
     <!-- BEGIN: Account Menu -->
     <div class="intro-x dropdown w-8 h-8">
         <div class="dropdown-toggle w-8 h-8 rounded-full overflow-hidden shadow-lg image-fit zoom-in" role="button" aria-expanded="false">
-            <img alt="{{ env('APP_NAME') }}" src="{{ asset('dist/images/' . $fakers[9]['photos'][0]) }}">
+            <img alt="{{ env('APP_NAME') }}" src="{{ asset('dist/images/logo.svg') }}">
         </div>
         <div class="dropdown-menu w-56">
             <div class="dropdown-menu__content box bg-theme-26 dark:bg-dark-6 text-white">
