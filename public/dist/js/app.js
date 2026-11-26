@@ -150910,8 +150910,7 @@ reference element's position.
                                     pagination: "remote",
                                     paginationSize: 10,
                                     paginationSizeSelector: [
-                                        10, 100, 1000, 10000, 100000, 1000000,
-                                        10000000,
+                                        10, 100, 1000, 10000
                                     ],
                                     layout: "fitColumns",
                                     responsiveLayout: "collapse",

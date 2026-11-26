@@ -1,7 +1,9 @@
 <?php
 
 namespace App;
+
 use Illuminate\Support\Facades\Log;
+
 class Faker
 {
     public static function fakeUsers()
@@ -58,18 +60,24 @@ class Faker
     // }
     public static function fakePhotos()
     {
-        Log::info('Faker fakePhotos called', [
-            'memory' => memory_get_usage(true) / 1024 / 1024,
-            'trace' => debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 5)
-        ]);
+        static $photos = null;
 
-        $photos = [];
-
-        for ($i = 0; $i < 15; $i++) {
-            $photos[] = 'profile-' . rand(1, 15) . '.jpg';
+        if ($photos !== null) {
+            return $photos;
         }
 
-        return collect($photos)->random(10);
+        Log::debug('Faker fakePhotos called', [
+            'memory_mb' => round(memory_get_usage(true) / 1024 / 1024, 2),
+            'trace' => debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 5),
+        ]);
+
+        $numbers = range(1, 15);
+        shuffle($numbers);
+
+        $photos = collect(array_slice($numbers, 0, 10))
+            ->map(fn($number) => "profile-{$number}.jpg");
+
+        return $photos;
     }
 
     public static function fakeImages()

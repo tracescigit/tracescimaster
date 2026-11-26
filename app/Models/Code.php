@@ -11,49 +11,87 @@ class Code extends Model
 
 	protected $fillable = ['product_id', 'batch', 'batch_id', 'qr_code', 'url', 'user_id', 'status', 'code_data', 'exported', 'aggregation_id', 'order_id', 'secret_code', 'deactivate_reason', 'deactivated_at', 'deactivated_by'];
 
-	public static function getCodeModel($limit, $page, $orderby, $order, $search_field, $search_type, $search_value, $user_id = null, $start_date = null, $end_date = null)
-	{
-		$q = Code::where('codes.id', '!=', '')->leftJoin('products', 'codes.product_id', '=', 'products.id')
-			->leftJoin('users', 'codes.user_id', '=', 'users.id')
-			->leftJoin('companies', 'codes.user_id', '=', 'companies.user_id')
-			->select(['codes.*', 'codes.created_at as date', 'codes.status as code_status', 'products.name', 'users.name as user_name', 'companies.name as business_name']);
 
-		if ($user_id != null) {
+	public static function getCodeModel(
+		$limit,
+		$page,
+		$orderby,
+		$order,
+		$search_field,
+		$search_type,
+		$search_value,
+		$user_id = null,
+		$start_date = null,
+		$end_date = null
+	) {
+		$limit = max(1, min((int) $limit, 10000));
+		$page = max(1, (int) $page);
+
+		$allowedSortFields = [
+			'id' => 'codes.id',
+			'created_at' => 'codes.created_at',
+			'status' => 'codes.status',
+			'batch' => 'codes.batch',
+		];
+
+		$orderby = $allowedSortFields[$orderby] ?? 'codes.id';
+		$order = strtoupper($order) === 'ASC' ? 'ASC' : 'DESC';
+
+		$q = Code::query()
+			->with([
+				'getProduct.getUser.getCompany'
+			]);
+
+		if ($user_id !== null) {
 			$q->where('codes.user_id', $user_id);
 		}
 
-		if ($start_date != null) {
-			$q->whereDate('codes.created_at', '>=', $start_date);
+		if ($start_date) {
+			$q->where('codes.created_at', '>=', $start_date . ' 00:00:00');
 		}
 
-		if ($end_date != null) {
-			$q->whereDate('codes.created_at', '<=', $end_date);
+		if ($end_date) {
+			$q->where('codes.created_at', '<=', $end_date . ' 23:59:59');
 		}
 
-		$orderby  = $orderby ? $orderby : 'codes.id';
-		$order    = $order ? $order : 'DESC';
-
-		if ($search_value && !empty($search_value)) {
+		if (!empty($search_value)) {
 			$search_value = strtolower($search_value);
-			if ($search_value == 'inactive') {
+
+			if ($search_value === 'inactive') {
 				$search_value = '0';
-			}
-			if ($search_value == 'active') {
+			} elseif ($search_value === 'active') {
 				$search_value = '1';
 			}
 
-			$q->where(function ($query) use ($search_field, $search_type, $search_value) {
-				$query->where($search_field, $search_type, ($search_type == 'like' ? ('%' . $search_value . '%') : $search_value));
-			});
+			$allowedSearchFields = [
+				'status' => 'codes.status',
+				'batch' => 'codes.batch',
+				'code_data' => 'codes.code_data',
+			];
+
+			$field = $allowedSearchFields[$search_field] ?? null;
+
+			if ($field) {
+				$q->where(
+					$field,
+					$search_type === 'like' ? 'LIKE' : '=',
+					$search_type === 'like'
+						? '%' . $search_value . '%'
+						: $search_value
+				);
+			}
 		}
 
+		$response = $q->orderBy($orderby, $order)
+			->paginate($limit, ['codes.*'], 'page', $page);
 
-		$total = $q->count();
-
-		$response =  $q->orderBy($orderby, $order)->paginate($limit, ['*'], 'page', $page);
-
-		return ['response' => $response, 'last_page' => $response->lastPage(), 'total' => $total];
+		return [
+			'response' => $response,
+			'last_page' => $response->lastPage(),
+			'total' => $response->total(),
+		];
 	}
+
 
 	public function getProduct()
 	{

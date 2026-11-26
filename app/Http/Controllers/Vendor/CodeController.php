@@ -23,67 +23,122 @@ use Maatwebsite\Excel\Facades\Excel as FacadesExcel;
 
 class CodeController extends Controller
 {
+
 	public function index(Request $request)
 	{
 		ini_set('memory_limit', '512M');
+
 		if ($request->ajax()) {
-			$limit          = $request->input('size');
-			$page           = $request->input('page');
-			$search_field   = $request['filters'] ? $request['filters']['0']['field'] : '';
-			$search_type    = $request['filters'] ? $request['filters']['0']['type'] : '';
-			$search_value   = $request['filters'] ? $request['filters']['0']['value'] : '';
-			$orderby        = $request['sorters'] ? $request['sorters']['0']['field'] : '';
-			$order          = $orderby != "" ? $request['sorters']['0']['dir'] : "";
 
-			$start_date = $request['filters'] ? $request['filters']['1']['value'] : '';
-			$end_date = $request['filters'] ? $request['filters']['2']['value'] : '';
+			$limit = max(1, min((int) $request->input('size', 10), 10000));
+			$page = max(1, (int) $request->input('page', 1));
 
-			$response       = Code::getCodeModel($limit, $page, $orderby, $order, $search_field, $search_type, $search_value, Auth::id(), $start_date, $end_date);
+			$filters = $request->input('filters', []);
+			$sorters = $request->input('sorters', []);
+
+			$search_field = $filters[0]['field'] ?? '';
+			$search_type = $filters[0]['type'] ?? '';
+			$search_value = $filters[0]['value'] ?? '';
+
+			$start_date = $filters[1]['value'] ?? '';
+			$end_date = $filters[2]['value'] ?? '';
+
+			$orderby = $sorters[0]['field'] ?? '';
+			$order = $sorters[0]['dir'] ?? '';
+
+			$response = Code::getCodeModel(
+				$limit,
+				$page,
+				$orderby,
+				$order,
+				$search_field,
+				$search_type,
+				$search_value,
+				Auth::id(),
+				$start_date,
+				$end_date
+			);
 
 			if (!$response) {
-				$codes      = [];
-				$last_page  = 0;
+				$codes = [];
+				$last_page = 0;
 				$total = 0;
 			} else {
-				$codes      = $response['response'];
-				$last_page     = $response['last_page'];
-				$total     = $response['total'];
+				$codes = $response['response'];
+				$last_page = $response['last_page'];
+				$total = $response['total'];
 			}
 
-			$codeData = array();
-			$i = 1;
+			$codeData = [];
 
-			foreach ($codes as $code) {
-				$u['id']             = $i;
-				$u['status']         = $code->status ?? '-';
-				$u['batch']          = $code->batch ?? '-';
-				$u['batch_id']       = $code->batch_id ?? '-';
-				$u['code_data']      = $code->code_data ?? '-';
+			foreach ($codes as $key => $code) {
+
+				$status = $code->status == '1';
+
+				$u = [];
+
+				$u['id'] = $key + 1;
+				$u['status'] = $code->status ?? '-';
+				$u['batch'] = $code->batch ?? '-';
+				$u['batch_id'] = $code->batch_id ?? '-';
+				$u['code_data'] = $code->code_data ?? '-';
+
 				$u['url'] = (!empty($code->product_id) || !empty($code->batch_id))
 					? ($code->url ?? '-')
 					: '-';
-				$u['product_id']     = $code->getProduct ? ($code->getProduct->name) : '-';
-				$u['created_at']     = date('M d, Y', strtotime($code->created_at));
 
-				$actions            = view('vendor.codes.actions', ['code' => $code]);
-				$u['actions']       = $actions->render();
+				$u['product_id'] = $code->getProduct?->name ?? '-';
+
+				$u['created_at'] = $code->created_at
+					? date('M d, Y', strtotime($code->created_at))
+					: '-';
+
+				// Generate actions HTML directly instead of rendering Blade repeatedly.
+				$status = $code->status == '1';
+
+				$actionUrl = url(
+					'vendor/codes/' . encrypt($code->id) . '/deactivate'
+				);
+
+				$u['actions'] = '
+    <div class="flex lg:justify-center items-center">
+        <a class="edit flex items-center mr-3 text-' .
+					($status ? 'green-500' : 'red-500') . '"
+            title="' . ($status ? 'Deactivate Now' : 'Activate Now') . '"
+            href="javascript:void(0);"
+            data-toggle="modal"
+            data-target="#deactivate-confirmation-modal"
+            onclick="cash(\'#deactivate-confirmation-modal\').find(\'#target\').val(\'' .
+					e($actionUrl) . '\')">
+
+            <i data-feather="check-square" class="w-4 h-4 mr-1"></i>
+
+            ' . ($status ? 'Active' : 'Inactive') . '
+
+        </a>
+    </div>
+';
 
 				$codeData[] = $u;
-				$i++;
-				unset($u);
 			}
 
-			$return = [
-				"last_page"		    =>  $last_page,
-				"data"              =>  $codeData,
-				"total"             =>  $total
-			];
-
-			return $return;
+			return response()->json([
+				'last_page' => $last_page,
+				'data' => $codeData,
+				'total' => $total,
+			]);
 		}
-		$progress = UploadProgress::where('user_id', Auth::user()->parent_id ?? Auth::id())->where('status', '1')->exists();
+
+		$progress = UploadProgress::where(
+			'user_id',
+			Auth::user()->parent_id ?? Auth::id()
+		)
+			->where('status', '1')
+			->exists();
+
 		return view('vendor.codes.index')->with('progress', $progress);
 	}
+
 
 	public function create()
 	{

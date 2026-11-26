@@ -125,8 +125,19 @@ class CodeController extends Controller
 				$u['status']         = $this->status($code->code_data, $code->status, $code->seized_by);
 
 
-				$actions            = view('admin.codes.actions', ['code' => $code]);
-				$u['actions']       = $actions->render();
+				$url = url('admin/codes/' . encrypt($code->id) . '/deactivate');
+				$status = $code->status == '1';
+				$u['actions'] = '
+<div class="flex lg:justify-center items-center">
+    <a class="edit flex items-center mr-3 text-' . ($status ? 'green-500' : 'red-500') . '"
+       title="' . ($status ? 'Deactivate Now' : 'Activate Now') . '"
+       href="javascript:void(0);"
+       data-toggle="modal"
+       data-target="#deactivate-confirmation-modal"
+       onclick="cash(\'#deactivate-confirmation-modal\').find(\'#target\').val(\'' . e($url) . '\')">
+        <i data-feather="thumbs-' . ($status ? 'up' : 'down') . '" class="w-4 h-4 mr-1"></i>
+    </a>
+</div>';
 
 				$codeData[] = $u;
 				$i++;
